@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>singup</title>
+  <link rel="stylesheet" href="signupstyle.css">
+</head>
+<body>
+  <header class="topbox">
+    <a href="index.html">
+      <img class="logo" src="Linkbrary.png">
+    </a>
+    <div class="gotosignin">
+      <span id="signinask">이미 회원이신가요?</span>
+      <a class="signin" href="signin.html">로그인하기</a>
+    </div>
+  </header>
+  <main class="inputform">
+    <div class="getemail">
+      <form>
+        <label id="inputemail" for="signupemail">이메일</label>
+        <input id="signupemail" name="email" type="email">    
+      </form>
+    </div>
+    <div class="getpassword">
+      <form>
+        <label id="inputpassword" for="signuppassword">비밀번호</label>
+        <div class="passwordbox">
+          <input id="signuppassword" name="password" type="password">
+          <img class="eyevector" src="Vector.jpg">
+        </div>
+      </form>
+    </div>
+    <div class="getpasswordconfirmation">
+      <form>
+        <label id="inputpasswordconfirmation" for="passwordconfirmation">비밀번호확인</label>
+        <div class="passwordconfirmationbox">
+          <input id="passwordconfirmation" name="password" type="password">
+          <img class="eyevector" src="Vector.jpg">
+        </div>
+      </form>
+    </div>
+  </main>
+  <div class="entering">
+    <button class="entersignup">회원가입</button>
+  </div>
+  <footer class="anothersignup">
+    <div class="anothersignupmessage">
+      다른 방식으로 가입하기
+    </div>
+    <div class="anothersignupicon">
+      <a href="https://www.google.com/" target="_blank">
+        <img class="googleicon" src="google icon.png">
+      </a>
+      <a href="https://www.kakaocorp.com/page/">
+        <img class="kakaoicon" src="kakao icon.png">
+      </a>
+    </div>
+  </footer>
+</body>
+</html>
