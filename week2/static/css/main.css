@@ -188,6 +188,7 @@ header {
 }
 
 .content-04-img .popup {
+    width: 26rem;
     position: absolute;
     top: 7rem; /* 112px; */
     left: 4.8125rem; /* 77px; */
