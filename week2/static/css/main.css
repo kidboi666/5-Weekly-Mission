@@ -1,6 +1,6 @@
 /* 상단 gnb */
 header {
-    position: sticky;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100%;
@@ -9,7 +9,7 @@ header {
     align-items: center;
     flex-direction: row;
     padding: 1.25rem 12.5rem; /* 20px 200px; */
-    z-index: 999;
+    z-index: var(--z-top); /* 1000; */
     background-color: var(--Linkbrary-bg);
 }
 
@@ -23,6 +23,7 @@ header {
     align-items: center;
     gap: 2.5rem; /* 40px; */
     background-color: var(--Linkbrary-bg);
+    margin-top: 5rem;
 }
 
 .content-01 h1 {
@@ -124,16 +125,16 @@ header {
     flex-shrink: 0;
 }
 
-.content-02-right .card{
+.content-02-img .card{
     width: 17.4375rem; /* 279px; */
     height: 17.1875rem; /* 275px; */
 }
 
-.content-02-right .card2 {
+.content-02-img .card2 {
     position: relative;
 }
 
-.content-02-right .frame{
+.content-02-img .frame{
     width: 15.25rem; /* 244px; */
     height: 15.0625rem; /* 241px; */
     position: absolute;
@@ -142,7 +143,7 @@ header {
     transform: translate(-50%, -50%);
 }
 
-.content-02-right .download-icon{
+.content-02-img .download-icon{
     position: absolute;
     right: 0;
     bottom: 0;
@@ -166,7 +167,7 @@ header {
     -webkit-text-fill-color: transparent;
 }
 
-.content-04-right {
+.content-04-img {
     width: 35.625rem; /* 570px; */
     height: 29.3125rem; /* 469px; */
     background-image: url(../images/landing/content-01.png);
@@ -177,7 +178,7 @@ header {
     position: relative;
 }
 
-.content-04-right .dim {
+.content-04-img .dim {
     width: 35.625rem; /* 570px; */
     height: 29.3125rem; /* 469px; */
     flex-shrink: 0;
@@ -186,17 +187,17 @@ header {
     box-shadow: 0rem 0.25rem 1.5625rem 0rem rgba(0, 0, 0, 0.08); /* 0px 4px 25px 0px rgba(0, 0, 0, 0.08); */
 }
 
-.content-04-right .popup {
+.content-04-img .popup {
     position: absolute;
     top: 7rem; /* 112px; */
     left: 4.8125rem; /* 77px; */
 }
 
-.content-05-left {
+.content-05-img {
     position: relative;
 }
 
-.content-05-left img {
+.content-05-img img {
     position: absolute;
     top: 3.4375rem; /* 55px; */
     left: 3.75rem; /* 60px; */
@@ -205,7 +206,7 @@ header {
     border-radius: 0.9375rem; /* 15px; */
 }
 
-.content-05-left .dim {
+.content-05-img .dim {
     position: absolute;
     top: 3.4375rem; /* 55px; */
     left: 3.75rem; /* 60px; */

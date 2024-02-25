@@ -10,6 +10,8 @@
     --Linkbrary-gray10: #E7EFFB;
     --Grey-Light: #F5F5F5;
     --Linkbrary-bg: #F0F6FF;
+    --z-top: 1000;
+    --z-above: 100;
 }
 
 html {
@@ -21,34 +23,6 @@ html {
     padding: 0;
     box-sizing: border-box;
     font-family: 'Pretendard';
-}
-
-/* 버튼 */
-.primary-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.625rem; /* 10px; */
-    padding: 1rem 1.25rem; /* 16px 20px; */
-    border-radius: 0.5rem; /* 8px; */
-    background: linear-gradient(91deg, var(--Linkbrary-primary-color) 0.12%, #6AE3FE 101.84%);
-    border: none;
-    color: var(--Grey-Light);
-    font-size: 1.125rem; /* 18px; */
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.primary-btn.sm {
-    width: 8rem; /* 128px; */
-}
-
-.primary-btn.md {
-    width: 21.875rem; /* 350px; */
-}
-
-.primary-btn.lg {
-    width: 25rem; /* 400px; */
 }
 
 .cursor-point {
