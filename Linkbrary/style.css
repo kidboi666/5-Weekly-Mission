@@ -417,6 +417,10 @@ section {
   -webkit-text-fill-color: transparent;
 }
 
+.header-login {
+  width: 128px;
+}
+
 .img-border {
   border: 2px solid var(--d3-gray-color);
   border-radius: 50%;
@@ -790,10 +794,6 @@ section {
   display: flex;
   margin: 0;
   padding: 0;
-}
-
-#login {
-  width: 128px;
 }
 
 #s1 {
