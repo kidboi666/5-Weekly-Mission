@@ -4,17 +4,11 @@ const shareBtn = document.getElementById("shareFolderBtn");
 const shareSpan = document.querySelector("#shareFolderModal .close");
 
 shareBtn.onclick = function() {
-    shareModal.style.display = "block";
+    shareModal.classList.add("show-modal");
 }
 
 shareSpan.onclick = function() {
-    shareModal.style.display = "none";
-}
-
-window.onclick = function(event) {
-    if (event.target === shareModal) {
-        shareModal.style.display = "none";
-    }
+    shareModal.classList.remove("show-modal");
 }
 
 // 폴더 추가하기 모달
@@ -23,17 +17,11 @@ const addBtn = document.getElementById("addFolderBtn");
 const addSpan = document.querySelector("#addFolderModal .close");
 
 addBtn.onclick = function() {
-    addModal.style.display = "block";
+    addModal.classList.add("show-modal");
 }
 
 addSpan.onclick = function() {
-    addModal.style.display = "none";
-}
-
-window.onclick = function(event) {
-    if (event.target === addModal) {
-        addModal.style.display = "none";
-    }
+    addModal.classList.remove("show-modal");
 }
 
 // 폴더에 추가하기 모달
@@ -42,51 +30,50 @@ const toBtn = document.getElementById("toFolderBtn");
 const toSpan = document.querySelector("#toFolderModal .close");
 
 toBtn.onclick = function() {
-    toModal.style.display = "block";
+    toModal.classList.add("show-modal");
 }
 
 toSpan.onclick = function() {
-    toModal.style.display = "none";
+    toModal.classList.remove("show-modal");
 }
 
+// 삭제하기 모달
+const deleteModal = document.getElementById('deleteModal');
+const deleteBtn = document.getElementById("deleteBtn");
+const deleteSpan = document.querySelector("#deleteModal .close");
+
+deleteBtn.onclick = function() {
+    deleteModal.classList.add("show-modal");
+}
+
+deleteSpan.onclick = function() {
+    deleteModal.classList.remove("show-modal");
+}
+
+// 모달 영역 외부 클릭 시 모달 숨기기
 window.onclick = function(event) {
-    if (event.target === toModal) {
-        toModal.style.display = "none";
+    if (event.target === shareModal) {
+        shareModal.classList.remove("show-modal");
     }
-}
-
-// 링크 삭제하기 모달
-const modal = document.getElementById('deleteModal');
-const btn = document.getElementById('deleteBtn');
-const closeBtn = document.querySelector('#deleteModal .close');
-
-btn.onclick = function() {
-    modal.style.display = "block";
-}
-
-closeBtn.onclick = function() {
-    modal.style.display = "none";
-}
-
-window.onclick = function(event) {
-    if (event.target === modal) {
-        modal.style.display = "none";
+    if (event.target === addModal) {
+        addModal.classList.remove("show-modal");
+    }
+    if (event.target === toModal) {
+        toModal.classList.remove("show-modal");
+    }
+    if (event.target === deleteModal) {
+        deleteModal.classList.remove("show-modal");
     }
 }
 
 // dot menu
-document.getElementById('dotMenu').addEventListener('click', function(event) {
-    event.stopPropagation();
+document.getElementById('dotMenu').addEventListener('click', function (event) {
+    event.stopPropagation();    // 현재 이벤트의 전파를 중단
     const menu = document.getElementById('menu');
-    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    menu.classList.toggle('show_dot_menu'); // 없으면 추가하고, 이미 있는 경우 제거
 });
 
 // 초기에 메뉴 숨기기
-document.getElementById('menu').addEventListener('click', function(event) {
-    event.stopPropagation(); 
-});
-
-document.addEventListener('click', function(event) {
-    const menu = document.getElementById('menu');
-    menu.style.display = 'none'; // 문서의 다른 영역을 클릭하면 메뉴를 숨김
+document.getElementById('menu').addEventListener('click', function (event) {
+    event.stopPropagation();    // 현재 이벤트의 전파를 중단
 });

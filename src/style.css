@@ -227,6 +227,10 @@ input:focus {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
+.show-modal {
+    display: block;
+}
+
 .modal_container {
     position: relative;
     background-color: var(--white);
@@ -399,6 +403,33 @@ input:focus {
     background-color: hsla(0,0%,62%,.04);
 }
 
+.dot_menu {
+    display: none;
+    position: absolute;
+    right: 10px;
+    bottom: 30px;
+    background-color: #fff;
+    box-shadow: 0px 8px 15px 0px rgba(0,0,0,0.1);
+    z-index: 1;
+}
+
+.show_dot_menu {
+    display: block;
+}
+
+.dot_menu_item {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    color: var(--gray1);
+    cursor: pointer;
+}
+
+.dot_menu_item:hover{
+    color: var(--primary);
+    background-color: var(--gray4);
+}
+
+
 /* c a r d */
 .card_grid_container {
     width: 90%;
@@ -496,28 +527,6 @@ input:focus {
 .left_time_p{
     color: var(--gray1);
     font-size: 0.8rem;
-}
-
-.dot_menu {
-    display: none;
-    position: absolute;
-    right: 10px;
-    bottom: 30px;
-    background-color: #fff;
-    box-shadow: 0px 8px 15px 0px rgba(0,0,0,0.1);
-    z-index: 1;
-}
-
-.dot_menu_item {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-    color: var(--gray1);
-    cursor: pointer;
-}
-
-.dot_menu_item:hover{
-    color: var(--primary);
-    background-color: var(--gray4);
 }
 
 .card_txt_div_body{    
