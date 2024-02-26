@@ -54,6 +54,10 @@ button:hover {
   scale: 1.02;
 }
 
+em {
+  font-style: normal;
+}
+
 footer {
   margin: 0;
   padding: 0;
