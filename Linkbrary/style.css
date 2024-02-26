@@ -686,7 +686,7 @@ section {
 }
 
 .small-card {
-  width: 100px !important;
+  width: 100px;
 }
 
 .small-side {
