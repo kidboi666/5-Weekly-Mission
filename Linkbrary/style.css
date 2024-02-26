@@ -140,6 +140,12 @@ section {
   align-items: center;
 }
 
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
 /*====================================          CLASS           ==================================*/
 
 .add-favorite {
