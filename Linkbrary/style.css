@@ -300,6 +300,16 @@ li {
   background-color: transparent;
 }
 
+.feature-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
 .folder-add {
   color: var(--primary-color);
 }
@@ -696,16 +706,6 @@ li {
   line-height: 15px; /* 115.385% */
 }
 
-.small-side {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin: 0;
-  padding: 0;
-}
-
 .social-links {
   display: flex;
   gap: 16px;
@@ -837,12 +837,12 @@ li {
     gap: 60px;
   }
 
-  .small-side {
+  .feature-description {
     order: 1;
     align-items: center;
     justify-content: center;
   }
-  .small-side div {
+  .feature-description div {
     display: flex;
     flex-direction: column;
     align-items: center;
