@@ -1,8 +1,6 @@
 @import "../global.css";
 
 body {
-    width: 100vw;
-    height: 100vh;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -152,4 +150,19 @@ main {
 
 .icon_style_front {
     z-index: 1; 
+}
+
+/* tablet */
+@media (min-width: 768px) and (max-width: 1199px) {
+    body {
+        padding-top: 200px;
+    }
+}
+
+/* mobile */
+@media (min-width: 375px) and (max-width: 767px) {
+    body {
+        padding-top: 120px;
+        padding: 120px 32px;
+    }
 }
