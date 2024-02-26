@@ -41,8 +41,10 @@ button {
   background-color: var(--white-color);
   font-weight: 600;
   font-size: 1em;
+  cursor: pointer;
 }
-button:hover {
+button:hover,
+button:focus {
   cursor: pointer;
   filter: brightness(1.2);
   scale: 1.02;
