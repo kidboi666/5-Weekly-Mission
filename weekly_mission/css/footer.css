@@ -40,12 +40,10 @@
 .footer-policy{
 	color: #cfcfcf;
 	text-decoration-line: none;
-	cursor: pointer;
 }
 .footer-FAQ{
 	color: #cfcfcf;
 	text-decoration-line: none;
-	cursor: pointer;
 }
 
 .footer-Icons {
@@ -55,7 +53,6 @@
 
 .footer-icon{
 	width:20px;
-	cursor: pointer;
 }
 
 @media(max-width: 767px){

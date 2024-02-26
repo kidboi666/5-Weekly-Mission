@@ -1,12 +1,4 @@
 
-/*End of: 전역 설정 */
-
-/* 버튼 설정 */
-button{
-	cursor: pointer;
-}
-/* End of: 버튼 설정 */
-
 /* 페이지 전체(배경) 설정 */
 .background{
 	background-color: #f0f6ff;
