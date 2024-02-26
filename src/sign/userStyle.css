@@ -1,24 +1,4 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-size: 1rem;
-    -webkit-user-select: none; /* Chrome, Safari, Opera */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; 
-
-    /* Color Define */
-    --primary: #6D6AFE;
-    --red: #FF5B56;
-    --black: #111322;
-    --white: #FFFFFF;
-    --gray1: #3E3E43;
-    --gray2: #9FA6B2;
-    --gray3: #CCD5E3;
-    --gray4: #E7EFFB;
-    --gray5: #F0F6FF;
-}
+@import "../global.css";
 
 body {
     width: 100vw;
@@ -74,20 +54,20 @@ main {
     gap: 24px;
 }
 
-.input_div {
+.input_box {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-.input_div label {
+.input_box label {
     color: var(--black);
     font-size: 14px;
     font-weight: 400;
 }
 
-.input_div input {
+.input_box input {
     width: 100%;
     height: auto;
     padding: 18px 15px;
@@ -97,12 +77,27 @@ main {
     outline: none;
 }
 
-.input_div input:focus {
+.input_box input:focus {
     border: 1px solid var(--primary);
 }
 
-.input_div input:invalid {
+.input_box input:invalid {
     border: 1px solid var(--red);
+}
+
+.sign_pw {
+    position: relative; 
+}
+
+.eye-button {
+    position: absolute;
+    bottom: 0.9rem;
+    right: 0.9rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 .submit_btn {
@@ -137,6 +132,7 @@ main {
 
 .other_icons {
     display: flex;
+    justify-content: center;    
     align-items: center;
     gap: 16px;
 }
@@ -144,4 +140,16 @@ main {
 .other_icon {
     width: 42px;
     height: 42px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon_style_back {
+    position: absolute;
+}
+
+.icon_style_front {
+    z-index: 1; 
 }

@@ -9,24 +9,21 @@
 <body>
     <header class="navbar">
         <a href="/" class="logo">
-            <img src="https://weekly-mission-git-ian-react-codeit-bootcamp.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.bf91b446.png&w=256&q=75" width="133" height="24"/>
+            <img src="./src/images/logo.svg" width="133" height="24" alt="logo"/>
         </a>
-        <a href="signin.html">
+        <a href="./src/sign/signin.html">
             <button class="login-button">로그인</button>
         </a>        
     </header>
     <main>
         <p class="main_txt"><span class="main_txt_gra">세상의 모든 정보</span>를</p>
         <p class="main_txt">쉽게 저장하고 관리해 보세요</p>
-        <a href="signup.html">
+        <a href="./src/sign/signup.html">
             <button class="main_add_btn" >링크 추가하기</button>
         </a>
         <section>
             <div class="search_div">
-                <svg class="search_svg" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6.84442 12.8363C10.1539 12.8363 12.8368 10.1534 12.8368 6.84393C12.8368 3.53444 10.1539 0.851562 6.84442 0.851562C3.53493 0.851562 0.852051 3.53444 0.852051 6.84393C0.852051 10.1534 3.53493 12.8363 6.84442 12.8363Z" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M11.0122 11.3242L13.3616 13.6675" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <img src="./src/images/Search.svg" width="15" height="15" alt="search_icon"/>
                 <input class="search_input" placeholder="링크를 검색해보세요">
             </div>
             <div class="main_btn_div">
@@ -38,12 +35,8 @@
                 <button class="add_folder_btn" id="addFolderBtn">폴더 추가 +</button>
                 <div id="addFolderModal" class="modal">
                     <div class="modal_container">
-                        <div class="close">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="12" cy="12" r="12" fill="#E7EFFB"/>
-                                <path d="M8 8L16 16" stroke="#9FA6B2" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M16 8L8 16" stroke="#9FA6B2" stroke-width="2" stroke-linecap="round"/>
-                            </svg>                                
+                        <div class="close" id="addFolderCloseBtn">
+                            <img src="./src/images/close.png" width="24" height="24">                             
                         </div>
                         <div class="modal_header">
                             <p class="modal_header_title">폴더 추가</p>
@@ -59,15 +52,15 @@
                 <p>전체</p>
                 <div class="main_sub_nav_side">
                     <div class="main_sub_nav_side_items" id="shareFolderBtn">
-                        <img src="https://weekly-mission-git-ian-react-codeit-bootcamp.vercel.app/_next/static/media/folder-share.28b441ab.svg" width="18" height="18" alt="폴더 공유"/>
+                        <img src="./src/images/share.svg" width="18" height="18" alt="폴더 공유"/>
                         공유
                     </div>
                     <div class="main_sub_nav_side_items">
-                        <img src="https://weekly-mission-git-ian-react-codeit-bootcamp.vercel.app/_next/static/media/folder-pen.93f98e0b.svg" width="18" height="18" alt="폴더 이름 변경"/>
+                        <img src="./src/images/pen.svg" width="18" height="18" alt="폴더 이름 변경"/>
                         이름 변경
                     </div>
                     <div class="main_sub_nav_side_items">
-                        <img src="https://weekly-mission-git-ian-react-codeit-bootcamp.vercel.app/_next/static/media/folder-delete.db795a49.svg" width="18" height="18" alt="폴더 삭제"/>
+                        <img src="./src/images/delete.svg" width="18" height="18" alt="폴더 삭제"/>
                         삭제
                     </div>
                 </div>
@@ -75,11 +68,7 @@
             <div id="shareFolderModal" class="modal">
                 <div class="modal_container">
                     <div class="close">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="12" cy="12" r="12" fill="#E7EFFB"/>
-                            <path d="M8 8L16 16" stroke="#9FA6B2" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M16 8L8 16" stroke="#9FA6B2" stroke-width="2" stroke-linecap="round"/>
-                        </svg>                                
+                        <img src="./src/images/close.png" width="24" height="24">                                
                     </div>
                     <div class="modal_header">
                         <p class="modal_header_title">폴더 공유하기</p>
@@ -88,16 +77,16 @@
                     <div class="modal_content_div">
                         <div class="share_modal_utils">
                             <div class="share_modal_utils_icon">
-                                <img src="https://weekly-mission-git-ian-react-codeit-bootcamp.vercel.app/_next/static/media/sns-logo-kakaotalk.8caa0b6a.svg" width="42" height="42" alt="카카오톡"/>
+                                <img src="./src/images/kakaotalk.png" width="42" height="42" alt="카카오톡"/>
                                 카카오톡
                             </div>
                             <div class="share_modal_utils_icon">
-                                <img src="https://weekly-mission-git-ian-react-codeit-bootcamp.vercel.app/_next/static/media/sns-logo-facebook-color.2e878d2e.svg" width="42" height="42" alt="페이스북"/>
+                                <img src="./src/images/facebook.png" width="42" height="42" alt="페이스북"/>
                                 페이스북
                             </div>
                             <div class="share_modal_utils_icon">
                                 <div class="share_modal_utils_icon_back">
-                                    <img src="https://weekly-mission-git-ian-react-codeit-bootcamp.vercel.app/_next/static/media/copy-link.881034c1.svg" width="18" height="18" alt="링크 복사"/>
+                                    <img src="./src/images/link.png" width="42" height="42" alt="링크 복사"/>
                                 </div>
                                 링크 복사
                             </div>
@@ -108,28 +97,15 @@
             <div class="card_grid_container">
                 <div class="card">
                     <div class="star">
-                        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_3_773)">
-                            <path d="M16.9094 2.37585C16.9453 2.29893 17.0547 2.29893 17.0906 2.37585L21.1136 10.9916C21.269 11.3244 21.5802 11.5577 21.9433 11.6135L30.9917 13.0032C31.0719 13.0155 31.1048 13.1134 31.0482 13.1717L24.4597 19.9597C24.2174 20.2093 24.1075 20.5588 24.1632 20.9021L25.7128 30.4513C25.7261 30.5338 25.6385 30.5953 25.5655 30.5547L17.5343 26.092C17.202 25.9073 16.798 25.9073 16.4657 26.092L8.43452 30.5547C8.3615 30.5953 8.27386 30.5338 8.28724 30.4513L9.8368 20.9021C9.89251 20.5587 9.78257 20.2093 9.54033 19.9597L2.95177 13.1717C2.89519 13.1134 2.92805 13.0155 3.00835 13.0032L12.0567 11.6135C12.4198 11.5577 12.731 11.3244 12.8864 10.9916L16.9094 2.37585Z" fill="black" fill-opacity="0.2" stroke="white"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_3_773">
-                            <rect width="34" height="34" fill="white"/>
-                            </clipPath>
-                            </defs>
-                        </svg>                            
+                        <img src="./src/images/star_full.png" width="34" height="34" alt="star">                            
                     </div>
                     <div class="card_img_div">
-                        <img class="card_img" src="./src/panda.jpg">
+                        <img class="card_img" src="./src/images/panda.jpg">
                     </div>
                     <div class="card_txt_div">
                         <div class="card_txt_div_top">
                             <p class="left_time_p">10 minutes ago</p>
-                            <svg class="dot_div" id="dotMenu" width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="3.5" cy="8.5" r="1.5" fill="#333236"/>
-                                <circle cx="10.5" cy="8.5" r="1.5" fill="#333236"/>
-                                <circle cx="17.5" cy="8.5" r="1.5" fill="#333236"/>
-                            </svg>  
+                            <img src="./src/images/dot.svg" id="dotMenu" width="21" height="17" alt="dot"/>
                             <div class="dot_menu" id="menu">
                                 <div class="dot_menu_item" id="deleteBtn">삭제하기</div>
                                 <div class="dot_menu_item" id="toFolderBtn">폴더에 추가</div>                                
@@ -137,11 +113,7 @@
                             <div id="toFolderModal" class="modal">
                                 <div class="modal_container">
                                     <div class="close">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <circle cx="12" cy="12" r="12" fill="#E7EFFB"/>
-                                            <path d="M8 8L16 16" stroke="#9FA6B2" stroke-width="2" stroke-linecap="round"/>
-                                            <path d="M16 8L8 16" stroke="#9FA6B2" stroke-width="2" stroke-linecap="round"/>
-                                        </svg>                                
+                                        <img src="./src/images/close.png" id="dotMenu" width="24" height="24" alt="close"/>                                
                                     </div>
                                     <div class="modal_header">
                                         <p class="modal_header_title">폴더에 추가</p>
@@ -151,23 +123,17 @@
                                         <div class="modal_content">
                                             <p class="modal_folder_name">폴더 이름</p>
                                             <p class="modal_link_cnt">{링크 개수}</p>
-                                            <svg class="checkmark" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1.875 7.40726L5.46875 12.25L13.125 2.75" stroke="#6D6AFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg>                                    
+                                            <img src="./src/images/check.png" width="14" height="14" alt="check" class="checkmark">                                 
                                         </div>
                                         <div class="modal_content">
                                             <p class="modal_folder_name">조혜진</p>
                                             <p class="modal_link_cnt">{링크 개수}</p>
-                                            <svg class="checkmark" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1.875 7.40726L5.46875 12.25L13.125 2.75" stroke="#6D6AFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg>                                    
+                                            <img src="./src/images/check.png" width="14" height="14" alt="check" class="checkmark">                                      
                                         </div>
                                         <div class="modal_content">
                                             <p class="modal_folder_name">취업 준비</p>
                                             <p class="modal_link_cnt">{링크 개수}</p>
-                                            <svg class="checkmark" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1.875 7.40726L5.46875 12.25L13.125 2.75" stroke="#6D6AFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg>                                    
+                                            <img src="./src/images/check.png" width="14" height="14" alt="check" class="checkmark">                                      
                                         </div>
                                     </div>
                                     <button class="modal_btn">추가하기</button>
@@ -176,11 +142,7 @@
                             <div id="deleteModal" class="modal">
                                 <div class="modal_container">
                                     <div class="close">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <circle cx="12" cy="12" r="12" fill="#E7EFFB"/>
-                                            <path d="M8 8L16 16" stroke="#9FA6B2" stroke-width="2" stroke-linecap="round"/>
-                                            <path d="M16 8L8 16" stroke="#9FA6B2" stroke-width="2" stroke-linecap="round"/>
-                                        </svg>                                
+                                        <img src="./src/images/close.png" width="24" height="24">                                
                                     </div>
                                     <div class="modal_header">
                                         <p class="modal_header_title">링크 삭제</p>
@@ -200,94 +162,62 @@
                 </div>
                 <div class="card">
                     <div class="star">
-                        <svg width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14.9094 1.37585C14.9453 1.29893 15.0547 1.29893 15.0906 1.37585L19.1136 9.99161C19.269 10.3244 19.5802 10.5577 19.9433 10.6135L28.9917 12.0032C29.0719 12.0155 29.1048 12.1134 29.0482 12.1717L22.4597 18.9597C22.2174 19.2093 22.1075 19.5588 22.1632 19.9021L23.7128 29.4513C23.7261 29.5338 23.6385 29.5953 23.5655 29.5547L15.5343 25.092C15.202 24.9073 14.798 24.9073 14.4657 25.092L6.43452 29.5547C6.3615 29.5953 6.27386 29.5338 6.28724 29.4513L7.8368 19.9021C7.89251 19.5587 7.78257 19.2093 7.54033 18.9597L0.95177 12.1717C0.895187 12.1134 0.928051 12.0155 1.00835 12.0032L10.0567 10.6135C10.4198 10.5577 10.731 10.3244 10.8864 9.99161L14.9094 1.37585Z" fill="#6D6AFE" stroke="white"/>
-                        </svg>                                                    
+                        <img src="./src/images/star_empty.png" width="34" height="34" alt="star">                                                      
                     </div>
                     <div class="card_img_div">
                         <div class="img_thumbnail_div">
-                            <svg class="img_thumbnail" width="133" height="24" viewBox="0 0 133 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5.20583 15.7049V0.792232H0V20.2718H14.9638V15.7049H5.20583Z" fill="#6D6AFE"/>
-                                <path d="M21.6801 20.2718V5.12621H16.4743V20.2718H21.6801ZM21.6801 3.96117V0H16.4743V3.96117H21.6801Z" fill="#6D6AFE"/>
-                                <path d="M33.1713 4.66019C31.117 4.66019 29.5062 5.42913 28.409 6.71068V5.12621H23.2032V20.2718H28.409V13.4913C28.4557 10.5786 29.7397 9.34369 31.8407 9.34369C33.6382 9.34369 34.3385 10.2524 34.3385 12.4194V20.2718H39.5444V11.5107C39.5444 6.92039 37.8169 4.66019 33.1713 4.66019Z" fill="#6D6AFE"/>
-                                <path d="M46.0405 10.0893V0H40.8347V20.2718H46.0405V16.7068L48.2116 14.167L50.7328 20.2718H56.4755L53.184 12.233H49.869L56.0087 5.12621H50.3359L46.0405 10.0893Z" fill="#6D6AFE"/>
-                                <path d="M67.0849 20.7379C70.2364 20.7379 74.1116 18.9437 74.1116 12.699C74.1116 6.45437 70.2364 4.66019 67.0849 4.66019C65.3341 4.66019 63.77 5.17281 62.5094 6.03495V0H57.3035V20.2718H62.5094V19.3631C63.77 20.2485 65.3341 20.7379 67.0849 20.7379ZM65.7076 16.1942C63.91 16.1942 62.5094 15.2854 62.5094 12.699V12.5126C62.5794 10.0893 63.9567 9.20388 65.7076 9.20388C67.7152 9.20388 68.9058 10.2524 68.9058 12.699C68.9058 15.1689 67.7152 16.1942 65.7076 16.1942Z" fill="#6D6AFE"/>
-                                <path d="M74.935 20.2718H80.1409V13.9573C80.1876 11.0214 81.5182 9.32039 86.1638 9.32039V4.66019C83.3624 4.66019 81.3781 5.63883 80.1409 7.1068V5.12621H74.935V20.2718Z" fill="#6D6AFE"/>
-                                <path d="M93.541 20.7379C95.2685 20.7379 96.8559 20.2485 98.1165 19.3631V20.2718H103.322V5.12621H98.1165V6.03495C96.8559 5.17281 95.2685 4.66019 93.541 4.66019C90.3895 4.66019 86.5143 6.45437 86.5143 12.699C86.5143 18.9437 90.3895 20.7379 93.541 20.7379ZM94.9183 16.1942C92.9107 16.1942 91.7201 15.1689 91.7201 12.699C91.7201 10.2524 92.9107 9.20388 94.9183 9.20388C96.7159 9.20388 98.1165 10.1359 98.1165 12.699C98.1165 15.2854 96.7159 16.1942 94.9183 16.1942Z" fill="#6D6AFE"/>
-                                <path d="M104.613 20.2718H109.819V13.9573C109.865 11.0214 111.196 9.32039 115.841 9.32039V4.66019C113.04 4.66019 111.056 5.63883 109.819 7.1068V5.12621H104.613V20.2718Z" fill="#6D6AFE"/>
-                                <path d="M127.794 5.12621V11.7204C127.234 12.3495 126.23 12.6058 125.063 12.6058C122.588 12.6058 121.865 11.8369 121.865 10.4155V5.12621H116.659V10.7883C116.659 14.9359 119.6 17.1728 123.686 17.1728C125.203 17.1728 126.604 16.8466 127.794 16.2874V16.8466C127.794 18.9204 127 19.666 124.946 19.666C123.242 19.666 122.425 19.1534 122.191 17.965H116.962C117.383 22.2524 119.694 24 124.946 24C130.666 24 133 21.9029 133 16.4505V5.12621H127.794Z" fill="#6D6AFE"/>
-                            </svg>
+                            <img src="./src/images/logo.svg" width="133" height="24" alt="thumbnail" class="img_thumbnail">
                         </div>
                     </div>
                     <div class="card_txt_div">
                         <div class="card_txt_div_top">
                             <p class="left_time_p">10 minutes ago</p>
-                            <div class="dot_div">
-                                <svg class="dot_div" id="dotMenu" width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="3.5" cy="8.5" r="1.5" fill="#333236"/>
-                                    <circle cx="10.5" cy="8.5" r="1.5" fill="#333236"/>
-                                    <circle cx="17.5" cy="8.5" r="1.5" fill="#333236"/>
-                                </svg>  
-                                <div class="dot_menu" id="menu">
-                                    <div class="dot_menu_item" id="deleteBtn">삭제하기</div>
-                                    <div class="dot_menu_item" id="toFolderBtn">폴더에 추가</div>                                
-                                </div>                             
-                                <div id="toFolderModal" class="modal">
-                                    <div class="modal_container">
-                                        <div class="close">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="12" cy="12" r="12" fill="#E7EFFB"/>
-                                                <path d="M8 8L16 16" stroke="#9FA6B2" stroke-width="2" stroke-linecap="round"/>
-                                                <path d="M16 8L8 16" stroke="#9FA6B2" stroke-width="2" stroke-linecap="round"/>
-                                            </svg>                                
-                                        </div>
-                                        <div class="modal_header">
-                                            <p class="modal_header_title">폴더에 추가</p>
-                                            <p class="modal_header_subtitle">링크 주소</p>
-                                        </div>
-                                        <div class="modal_content_div">
-                                            <div class="modal_content">
-                                                <p class="modal_folder_name">폴더 이름</p>
-                                                <p class="modal_link_cnt">{링크 개수}</p>
-                                                <svg class="checkmark" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M1.875 7.40726L5.46875 12.25L13.125 2.75" stroke="#6D6AFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>                                    
-                                            </div>
-                                            <div class="modal_content">
-                                                <p class="modal_folder_name">조혜진</p>
-                                                <p class="modal_link_cnt">{링크 개수}</p>
-                                                <svg class="checkmark" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M1.875 7.40726L5.46875 12.25L13.125 2.75" stroke="#6D6AFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>                                    
-                                            </div>
-                                            <div class="modal_content">
-                                                <p class="modal_folder_name">취업 준비</p>
-                                                <p class="modal_link_cnt">{링크 개수}</p>
-                                                <svg class="checkmark" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M1.875 7.40726L5.46875 12.25L13.125 2.75" stroke="#6D6AFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>                                    
-                                            </div>
-                                        </div>
-                                        <button class="modal_btn">추가하기</button>
-                                    </div>
-                                </div>
-                                <div id="deleteModal" class="modal">
-                                    <div class="modal_container">
-                                        <div class="close">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="12" cy="12" r="12" fill="#E7EFFB"/>
-                                                <path d="M8 8L16 16" stroke="#9FA6B2" stroke-width="2" stroke-linecap="round"/>
-                                                <path d="M16 8L8 16" stroke="#9FA6B2" stroke-width="2" stroke-linecap="round"/>
-                                            </svg>                                
-                                        </div>
-                                        <div class="modal_header">
-                                            <p class="modal_header_title">링크 삭제</p>
-                                            <p class="modal_header_subtitle">링크 주소</p>
-                                        </div>
-                                        <button class="modal_btn">삭제하기</button>
-                                    </div>
-                                </div>
+                            <img src="./src/images/dot.svg" id="dotMenu" width="21" height="17" alt="dot"/>
+                            <div class="dot_menu" id="menu">
+                                <div class="dot_menu_item" id="deleteBtn">삭제하기</div>
+                                <div class="dot_menu_item" id="toFolderBtn">폴더에 추가</div>                                
                             </div>                             
+                            <div id="toFolderModal" class="modal">
+                                <div class="modal_container">
+                                    <div class="close">
+                                        <img src="./src/images/close.png" id="dotMenu" width="24" height="24" alt="close"/>                                
+                                    </div>
+                                    <div class="modal_header">
+                                        <p class="modal_header_title">폴더에 추가</p>
+                                        <p class="modal_header_subtitle">링크 주소</p>
+                                    </div>
+                                    <div class="modal_content_div">
+                                        <div class="modal_content">
+                                            <p class="modal_folder_name">폴더 이름</p>
+                                            <p class="modal_link_cnt">{링크 개수}</p>
+                                            <img src="./src/images/check.png" width="14" height="14" alt="check" class="checkmark">                           
+                                        </div>
+                                        <div class="modal_content">
+                                            <p class="modal_folder_name">조혜진</p>
+                                            <p class="modal_link_cnt">{링크 개수}</p>
+                                            <img src="./src/images/check.png" width="14" height="14" alt="check" class="checkmark">                                      
+                                        </div>
+                                        <div class="modal_content">
+                                            <p class="modal_folder_name">취업 준비</p>
+                                            <p class="modal_link_cnt">{링크 개수}</p>
+                                            <img src="./src/images/check.png" width="14" height="14" alt="check" class="checkmark">                                      
+                                        </div>
+                                    </div>
+                                    <button class="modal_btn">추가하기</button>
+                                </div>
+                            </div>
+                            <div id="deleteModal" class="modal">
+                                <div class="modal_container">
+                                    <div class="close">
+                                        <img src="./src/images/close.png" width="24" height="24">                                   
+                                    </div>
+                                    <div class="modal_header">
+                                        <p class="modal_header_title">링크 삭제</p>
+                                        <p class="modal_header_subtitle">링크 주소</p>
+                                    </div>
+                                    <button class="modal_btn">삭제하기</button>
+                                </div>
+                            </div>
                         </div>
                         <div class="card_txt_div_body">
                             일본의 캐릭터 개발 회사인 San-X(산엑스)에서 2003년 9월에 출시한 오리지널 캐릭터. 이름은 휴식을 취한다는 뜻의 영단어 릴랙스(Relax)와 곰을 뜻하는 일본어 쿠마(kuma)의 합성어이다. 로마자 표기는 'Rilakkuma'로 초기에는 'Relaxuma'로 쓰이기도 하였으나 2012년 부터 Rilakkuma로 공식적으로 쓰고 있다.일본의 캐릭터 개발 회사인 San-X(산엑스)에서 2003년 9월에 출시한 오리지널 캐릭터. 이름은 휴식을 취한다는 뜻의 영단어 릴랙스(Relax)와 곰을 뜻하는 일본어 쿠마(kuma)의 합성어이다. 로마자 표기는 'Rilakkuma'로 초기에는 'Relaxuma'로 쓰이기도 하였으나 2012년 부터 Rilakkuma로 공식적으로 쓰고 있다.
@@ -299,30 +229,15 @@
                 </div>
                 <div class="card">
                     <div class="star">
-                        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_3_773)">
-                            <path d="M16.9094 2.37585C16.9453 2.29893 17.0547 2.29893 17.0906 2.37585L21.1136 10.9916C21.269 11.3244 21.5802 11.5577 21.9433 11.6135L30.9917 13.0032C31.0719 13.0155 31.1048 13.1134 31.0482 13.1717L24.4597 19.9597C24.2174 20.2093 24.1075 20.5588 24.1632 20.9021L25.7128 30.4513C25.7261 30.5338 25.6385 30.5953 25.5655 30.5547L17.5343 26.092C17.202 25.9073 16.798 25.9073 16.4657 26.092L8.43452 30.5547C8.3615 30.5953 8.27386 30.5338 8.28724 30.4513L9.8368 20.9021C9.89251 20.5587 9.78257 20.2093 9.54033 19.9597L2.95177 13.1717C2.89519 13.1134 2.92805 13.0155 3.00835 13.0032L12.0567 11.6135C12.4198 11.5577 12.731 11.3244 12.8864 10.9916L16.9094 2.37585Z" fill="black" fill-opacity="0.2" stroke="white"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_3_773">
-                            <rect width="34" height="34" fill="white"/>
-                            </clipPath>
-                            </defs>
-                        </svg>                            
+                        <img src="./src/images/star_full.png" width="34" height="34" alt="star">                               
                     </div>
                     <div class="card_img_div">
-                        <img class="card_img" src="./src/me.jpg">
+                        <img class="card_img" src="./src/images/me.jpg">
                     </div>
                     <div class="card_txt_div">
                         <div class="card_txt_div_top">
                             <p class="left_time_p">10 minutes ago</p>
-                            <div class="dot_div">
-                                <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="3.5" cy="8.5" r="1.5" fill="#333236"/>
-                                    <circle cx="10.5" cy="8.5" r="1.5" fill="#333236"/>
-                                    <circle cx="17.5" cy="8.5" r="1.5" fill="#333236"/>
-                                </svg>   
-                            </div>                             
+                            <img src="./src/images/dot.svg" id="dotMenu" width="21" height="17" alt="dot"/>                             
                         </div>
                         <div class="card_txt_div_body">
                             리락쿠마와 가오루 씨(リラックマとカオルさん) 애니메이션이 2019년 4월 19일에 넷플릭스 오리지널 시리즈로 공개되었다. 스톱 모션을 활용한 퍼펫 애니메이션으로 제작되었다.
@@ -334,19 +249,10 @@
                 </div>
                 <div class="card">
                     <div class="star">
-                        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_3_773)">
-                            <path d="M16.9094 2.37585C16.9453 2.29893 17.0547 2.29893 17.0906 2.37585L21.1136 10.9916C21.269 11.3244 21.5802 11.5577 21.9433 11.6135L30.9917 13.0032C31.0719 13.0155 31.1048 13.1134 31.0482 13.1717L24.4597 19.9597C24.2174 20.2093 24.1075 20.5588 24.1632 20.9021L25.7128 30.4513C25.7261 30.5338 25.6385 30.5953 25.5655 30.5547L17.5343 26.092C17.202 25.9073 16.798 25.9073 16.4657 26.092L8.43452 30.5547C8.3615 30.5953 8.27386 30.5338 8.28724 30.4513L9.8368 20.9021C9.89251 20.5587 9.78257 20.2093 9.54033 19.9597L2.95177 13.1717C2.89519 13.1134 2.92805 13.0155 3.00835 13.0032L12.0567 11.6135C12.4198 11.5577 12.731 11.3244 12.8864 10.9916L16.9094 2.37585Z" fill="black" fill-opacity="0.2" stroke="white"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_3_773">
-                            <rect width="34" height="34" fill="white"/>
-                            </clipPath>
-                            </defs>
-                        </svg>                            
+                        <img src="./src/images/star_full.png" width="34" height="34" alt="star">                                  
                     </div>
                     <div class="card_img_div">
-                        <img class="card_img" src="./src/me2.jpg">
+                        <img class="card_img" src="./src/images/me2.jpg">
                     </div>
                     <div class="card_txt_div">
                         <div class="card_txt_div_top">
@@ -369,30 +275,15 @@
                 </div>
                 <div class="card">
                     <div class="star">
-                        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_3_773)">
-                            <path d="M16.9094 2.37585C16.9453 2.29893 17.0547 2.29893 17.0906 2.37585L21.1136 10.9916C21.269 11.3244 21.5802 11.5577 21.9433 11.6135L30.9917 13.0032C31.0719 13.0155 31.1048 13.1134 31.0482 13.1717L24.4597 19.9597C24.2174 20.2093 24.1075 20.5588 24.1632 20.9021L25.7128 30.4513C25.7261 30.5338 25.6385 30.5953 25.5655 30.5547L17.5343 26.092C17.202 25.9073 16.798 25.9073 16.4657 26.092L8.43452 30.5547C8.3615 30.5953 8.27386 30.5338 8.28724 30.4513L9.8368 20.9021C9.89251 20.5587 9.78257 20.2093 9.54033 19.9597L2.95177 13.1717C2.89519 13.1134 2.92805 13.0155 3.00835 13.0032L12.0567 11.6135C12.4198 11.5577 12.731 11.3244 12.8864 10.9916L16.9094 2.37585Z" fill="black" fill-opacity="0.2" stroke="white"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_3_773">
-                            <rect width="34" height="34" fill="white"/>
-                            </clipPath>
-                            </defs>
-                        </svg>                            
+                        <img src="./src/images/star_empty.png" width="34" height="34" alt="star">                                  
                     </div>
                     <div class="card_img_div">
-                        <img class="card_img" src="./src/me3.jpg">
+                        <img class="card_img" src="./src/images/me3.jpg">
                     </div>
                     <div class="card_txt_div">
                         <div class="card_txt_div_top">
                             <p class="left_time_p">10 minutes ago</p>
-                            <div class="dot_div">
-                                <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="3.5" cy="8.5" r="1.5" fill="#333236"/>
-                                    <circle cx="10.5" cy="8.5" r="1.5" fill="#333236"/>
-                                    <circle cx="17.5" cy="8.5" r="1.5" fill="#333236"/>
-                                </svg>   
-                            </div>                             
+                            <img src="./src/images/dot.svg" id="dotMenu" width="21" height="17" alt="dot"/>                            
                         </div>
                         <div class="card_txt_div_body">
                             리락쿠마와 코리락쿠마는 진짜 곰이 아닌 곰인형이다. 리락쿠마의 등 뒤에 달린 지퍼와 코리락쿠마의 목에 있는 빨간 단추가 이들이 진짜 곰이 아님을 말해주고 있다. 다만 챠이로이코구마는 숲속에 살고 있는 진짜 아기 반달가슴곰이다.
@@ -414,12 +305,12 @@
                         한 공간에 저장하세요.
                     </p>
                 </div>
-                <img src="./src/a.png" class="article_img">
+                <img src="./src/images/a.png" class="article_img">
             </div>
         </article>
         <article>
             <div class="b_frame">
-                <img src="./src/b.png" class="article_img">
+                <img src="./src/images/b.png" class="article_img">
                 <div class="b_frame_txt_container">
                     <p class="b_frame_txt">링크를 폴더로 <span class="b_frame_txt_gra1">관리</span>하세요</p>
                     <p class="b_frame_subtxt">
@@ -438,12 +329,12 @@
                         가족, 친구, 동료들에게 쉽고 빠르게 링크를 공유해 보세요.
                     </p>
                 </div>
-                <img src="./src/c.png" class="article_img">                                                  
+                <img src="./src/images/c.png" class="article_img">                                                  
             </div>
         </article>
         <article>
             <div class="b_frame">
-                <img src="./src/d.png" class="article_img">
+                <img src="./src/images/d.png" class="article_img">
                 <div class="b_frame_txt_container">
                     <p class="b_frame_txt">저장한 링크를 <span class="b_frame_txt_gra1">검색</span>해보세요</p>
                     <p class="b_frame_subtxt">
@@ -461,128 +352,19 @@
         </div>
         <div class="footer_icon_div">
             <a target="_blank" href="https://www.facebook.com/">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1 9.90377C1 14.3783 4.24975 18.099 8.5 18.8535V12.3533H6.25V9.85352H8.5V7.85327C8.5 5.60327 9.94975 4.35377 12.0002 4.35377C12.6497 4.35377 13.3503 4.45352 13.9998 4.55327V6.85352H12.85C11.7498 6.85352 11.5 7.40327 11.5 8.10377V9.85352H13.9L13.5002 12.3533H11.5V18.8535C15.7502 18.099 19 14.379 19 9.90377C19 4.92602 14.95 0.853516 10 0.853516C5.05 0.853516 1 4.92602 1 9.90377Z" fill="white"/>
-                </svg>
+                <img src="./src/images/facebook.svg" width="20" height="20" alt="facebook">
             </a>
             <a target="_blank" href="https://www.twitter.com/">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19.7029 4.11366C19.0071 4.42199 18.2596 4.63033 17.4737 4.72449C18.2846 4.23932 18.8912 3.47572 19.1804 2.57616C18.4186 3.02865 17.5849 3.34716 16.7154 3.51783C16.1307 2.89355 15.3563 2.47977 14.5124 2.34072C13.6684 2.20168 12.8022 2.34515 12.0481 2.74887C11.2941 3.15259 10.6944 3.79396 10.3422 4.57341C9.99003 5.35287 9.90503 6.22679 10.1004 7.05949C8.55682 6.98199 7.04677 6.58079 5.66827 5.88192C4.28977 5.18305 3.07362 4.20213 2.09875 3.00283C1.76542 3.57783 1.57375 4.24449 1.57375 4.95449C1.57338 5.59366 1.73078 6.22303 2.03198 6.78677C2.33319 7.35051 2.76888 7.83119 3.30042 8.18616C2.68398 8.16655 2.08114 7.99998 1.54208 7.70033V7.75033C1.54202 8.64678 1.85211 9.51564 2.41974 10.2095C2.98736 10.9033 3.77756 11.3794 4.65625 11.557C4.0844 11.7118 3.48486 11.7346 2.90292 11.6237C3.15083 12.395 3.63375 13.0695 4.28406 13.5528C4.93437 14.036 5.71951 14.3038 6.52958 14.3187C5.15444 15.3982 3.45616 15.9837 1.70792 15.9812C1.39823 15.9812 1.08881 15.9632 0.78125 15.927C2.55581 17.068 4.62153 17.6735 6.73125 17.6712C13.8729 17.6712 17.7771 11.7562 17.7771 6.62616C17.7771 6.45949 17.7729 6.29116 17.7654 6.12449C18.5248 5.57531 19.1803 4.89524 19.7013 4.11616L19.7029 4.11366Z" fill="white"/>
-                </svg>
+                <img src="./src/images/twitter.svg" width="20" height="20" alt="twitter">
             </a>
             <a target="_blank" href="https://www.youtube.com/">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_3_938)">
-                    <path d="M19.5829 5.42142C19.4696 5.01745 19.249 4.65171 18.9445 4.36309C18.6314 4.06559 18.2477 3.85279 17.8295 3.74476C16.2645 3.33226 9.99454 3.33226 9.99454 3.33226C7.38065 3.30252 4.7674 3.43332 2.16954 3.72392C1.75136 3.83993 1.36834 4.0575 1.05454 4.35726C0.746204 4.65392 0.522871 5.01976 0.406204 5.42059C0.125949 6.93038 -0.0102189 8.46338 -0.000462243 9.99892C-0.0104622 11.5331 0.125371 13.0656 0.406204 14.5773C0.520371 14.9764 0.742871 15.3406 1.05204 15.6348C1.3612 15.9289 1.7462 16.1414 2.16954 16.2539C3.75537 16.6656 9.99454 16.6656 9.99454 16.6656C12.6118 16.6954 15.2283 16.5646 17.8295 16.2739C18.2477 16.1659 18.6314 15.9531 18.9445 15.6556C19.2489 15.367 19.4693 15.0012 19.582 14.5973C19.8696 13.0881 20.0094 11.5544 19.9995 10.0181C20.0212 8.47526 19.8815 6.93439 19.5829 5.42059V5.42142ZM8.0012 12.8523V7.14642L13.2179 9.99976L8.0012 12.8523Z" fill="white"/>
-                    </g>
-                    <defs>
-                    <clipPath id="clip0_3_938">
-                    <rect width="20" height="20" fill="white"/>
-                    </clipPath>
-                    </defs>
-                </svg>
+                <img src="./src/images/youtube.svg" width="20" height="20" alt="youtube">
             </a>
             <a target="_blank" href="https://www.instagram.com/">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9.49787 7.51898C7.93707 7.51898 6.66333 8.79271 6.66333 10.3535C6.66333 11.9143 7.93707 13.1881 9.49787 13.1881C11.0587 13.1881 12.3324 11.9143 12.3324 10.3535C12.3324 8.79271 11.0587 7.51898 9.49787 7.51898ZM17.9994 10.3535C17.9994 9.17972 18.01 8.01656 17.9441 6.84489C17.8782 5.48398 17.5677 4.27616 16.5725 3.28099C15.5752 2.28369 14.3695 1.97535 13.0086 1.90944C11.8348 1.84352 10.6717 1.85415 9.5 1.85415C8.32621 1.85415 7.16305 1.84352 5.99138 1.90944C4.63046 1.97535 3.42264 2.28581 2.42747 3.28099C1.43017 4.27829 1.12184 5.48398 1.05592 6.84489C0.99 8.01869 1.00063 9.18185 1.00063 10.3535C1.00063 11.5252 0.99 12.6905 1.05592 13.8621C1.12184 15.2231 1.4323 16.4309 2.42747 17.426C3.42477 18.4233 4.63046 18.7317 5.99138 18.7976C7.16517 18.8635 8.32833 18.8529 9.5 18.8529C10.6738 18.8529 11.837 18.8635 13.0086 18.7976C14.3695 18.7317 15.5774 18.4212 16.5725 17.426C17.5698 16.4287 17.8782 15.2231 17.9441 13.8621C18.0121 12.6905 17.9994 11.5273 17.9994 10.3535ZM9.49787 14.7148C7.08437 14.7148 5.13655 12.767 5.13655 10.3535C5.13655 7.94001 7.08437 5.99219 9.49787 5.99219C11.9114 5.99219 13.8592 7.94001 13.8592 10.3535C13.8592 12.767 11.9114 14.7148 9.49787 14.7148ZM14.0378 6.83214C13.4743 6.83214 13.0193 6.37708 13.0193 5.81357C13.0193 5.25007 13.4743 4.79501 14.0378 4.79501C14.6013 4.79501 15.0564 5.25007 15.0564 5.81357C15.0565 5.94738 15.0303 6.07991 14.9792 6.20356C14.9281 6.32721 14.853 6.43956 14.7584 6.53418C14.6638 6.6288 14.5515 6.70382 14.4278 6.75494C14.3041 6.80607 14.1716 6.8323 14.0378 6.83214Z" fill="white"/>
-                </svg>
+                <img src="./src/images/instagram.svg" width="20" height="20" alt="instagram">
             </a>
         </div>
     </footer>    
+    <script src="./src/script.js"></script>
 </body>
 </html>
-<script>
-    // 폴더 공유하기 모달
-    var shareModal = document.getElementById('shareFolderModal');
-    var shareBtn = document.getElementById("shareFolderBtn");
-    var shareSpan = document.querySelector("#shareFolderModal .close");
-
-    shareBtn.onclick = function() {
-        shareModal.style.display = "block";
-    }
-
-    shareSpan.onclick = function() {
-        shareModal.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-        if (event.target == shareModal) {
-            shareModal.style.display = "none";
-        }
-    }
-
-    // 폴더 추가하기 모달
-    var addModal = document.getElementById('addFolderModal');
-    var addBtn = document.getElementById("addFolderBtn");
-    var addSpan = document.querySelector("#addFolderModal .close");
-
-    addBtn.onclick = function() {
-        addModal.style.display = "block";
-    }
-
-    addSpan.onclick = function() {
-        addModal.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-        if (event.target == addModal) {
-            addModal.style.display = "none";
-        }
-    }
-
-    // 폴더에 추가하기 모달
-    var toModal = document.getElementById('toFolderModal');
-    var toBtn = document.getElementById("toFolderBtn");
-    var toSpan = document.querySelector("#toFolderModal .close");
-
-    toBtn.onclick = function() {
-        toModal.style.display = "block";
-    }
-
-    toSpan.onclick = function() {
-        toModal.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-        if (event.target == toModal) {
-            toModal.style.display = "none";
-        }
-    }
-
-    // 링크 삭제하기 모달
-    var modal = document.getElementById('deleteModal');
-    var btn = document.getElementById('deleteBtn');
-    var closeBtn = document.querySelector('#deleteModal .close');
-
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
-
-    closeBtn.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
-    // dot menu
-    document.getElementById('dotMenu').addEventListener('click', function(event) {
-        event.stopPropagation();
-        var menu = document.getElementById('menu');
-        menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-    });
-
-    // 초기에 메뉴 숨기기
-    document.getElementById('menu').addEventListener('click', function(event) {
-        event.stopPropagation(); 
-    });
-
-    document.addEventListener('click', function(event) {
-        var menu = document.getElementById('menu');
-        menu.style.display = 'none'; // 문서의 다른 영역을 클릭하면 메뉴를 숨김
-    });
-
-</script>
