@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
 /* Color Define */
 :root {
     --primary: #6D6AFE;
@@ -14,7 +21,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    font-family: "Pretendard";
+    font-family: "Pretendard-Regular";
     font-size: 1rem;
     -webkit-user-select: none; /* Chrome, Safari, Opera */
     -moz-user-select: none; /* Firefox */

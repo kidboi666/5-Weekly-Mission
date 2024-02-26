@@ -60,6 +60,11 @@ main {
     overflow-x: hidden;
 }
 
+.main_txt_box{
+    width: 720px;
+    height: auto;
+}
+
 .main_txt{
     font-size: 64px;
     font-weight: 700;
@@ -548,7 +553,7 @@ input:focus {
 /* a r t i c l e */
 article {
     background-color: var(--white);
-    padding: 50px ;
+    padding: 50px;
     width: 100vw;
     min-width: 500px;
     height: auto;
@@ -558,29 +563,28 @@ article {
 }
 
 .a_frame{
-    width: 1000px;
-    height: 450px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+            "title image"
+            "subtitle image"; 
+    grid-gap: 0 160px;
 }
 
 .a_frame.mt{
     margin-top: 120px;
 }
 
-.a_frame_txt_container{
-    width: 300px;
-    height: auto;
-}
-
 .a_frame_txt{
+    width: 300px;
     font-size: 48px;
     font-weight: 700;
     color: #000000;
-    text-align: left;
     line-height: normal;
-    letter-spacing: -3px;
+    letter-spacing: -0.3px;
+    grid-area: title; 
+    align-self: flex-end;
 }
 
 .a_frame_txt .a_frame_txt_gra1{
@@ -598,35 +602,36 @@ article {
 }
 
 .a_frame_subtxt{
+    width: 300px;
     color: #6B6B6B;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 150%;
     margin-top: 10px;
-    letter-spacing: -0.7px;
+    grid-area: subtitle; 
 }
 
 .b_frame{
-    width: 1000px;
     height: 450px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.b_frame_txt_container{
-    width: 310px;
-    height: auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+            "image title"
+            "image subtitle"; 
+    grid-gap: 0 160px;
 }
 
 .b_frame_txt{
+    width: 300px;
     font-size: 48px;
     font-weight: 700;
     color: #000000;
-    text-align: right;
     line-height: normal;
-    letter-spacing: -3px;
+    letter-spacing: -0.3px;
+    grid-area: title; 
+    align-self: flex-end;
 }
 
 .b_frame_txt .b_frame_txt_gra1{
@@ -644,14 +649,14 @@ article {
 }
 
 .b_frame_subtxt{
+    width: 300px;
     color: #6B6B6B;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 150%;
     margin-top: 10px;
-    text-align: right;
-    letter-spacing: -0.7px;
+    grid-area: subtitle; 
 }
 
 .article_img{
@@ -659,6 +664,7 @@ article {
     width: 550px;
     height: 450px;
     object-fit: cover; 
+    grid-area: image; 
 }
 
 /* f o o t e r */
@@ -666,20 +672,11 @@ footer {
     width: 100%;
     height: 160px;
     background-color: var(--black);
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr auto; 
     padding: 32px 104px;
     line-height: 1.6rem;
     margin-top: 120px;
-}
-
-.footer_div {
-    width: 100%;
-    height: 20px;
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
 }
 
 .footer_codeit {
@@ -687,9 +684,10 @@ footer {
     font-size: 16px;
 }
 
-.footer_center_div{
+.footer_center_div {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 163px;
     height: 18px;
 }
@@ -700,59 +698,156 @@ footer {
     text-decoration: none;
 }
 
-.footer_icon_div{
+.footer_icon_div {
     display: flex;
     justify-content: space-between;
     width: 116px;
     height: 18px;
 }
 
-.footer_icon_div a{
+.footer_icon_div a {
     cursor: pointer;
     width: 20px;
     height: 20px;
 }
-  
-@media screen and (max-width: 1200px) {
+
+/* tablet */
+@media (min-width: 768px) and (max-width: 1199px) {
     header {
-        padding-left: 200px;
-        padding-right: 200px;
+        padding-left: 32px;
+        padding-right: 32px;
     }
+
+    .main_txt_box{
+        width: 480px;
+        height: auto;
+    }
+
+    .main_txt{
+        line-height: 80px;
+        font-size: 64px;
+    }
+
+    .card_grid_container{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 20px;
+    }
+
     footer {
         padding-left: 104px;
         padding-right: 104px;
     }
-}
 
-@media (max-width: 1000px) {
     .a_frame {
-        width: 80%;
-        min-width: 500px;
+        grid-gap: 0 50px;
     }
 
     .b_frame {
-        width: 80%;
-        min-width: 500px;
+        grid-gap: 0 50px;
     }
 
-    .a_frame_txt_container {
-        min-width: 150px;
+    .article_img{
+        width: 385px;
+        height: auto;
+    }
+    
+}
+
+/* mobile */
+@media (min-width: 375px) and (max-width: 767px) {
+    header {
+        padding-left: 32px;
+        padding-right: 32px;
     }
 
-    .b_frame_txt_container {
-        min-width: 150px;
+    .main_txt_box{
+        width: 240px;
+        height: auto;
     }
 
-    .a_frame_txt {
-        font-size: 2rem;
+    .main_txt{
+        line-height: 42px;
+        font-size: 32px;
     }
 
-    .b_frame_txt {
-        font-size: 2rem;
+    .card_grid_container{
+        grid-template-columns: repeat(1, 1fr);
+        gap: 40px 20px;
     }
 
-    .article_img {
-        width: 50%;
-        min-width: 50px;
+    article {
+        padding: 33px;
+    }
+
+    .a_frame {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+                "title"
+                "image" 
+                "subtitle"; 
+    }
+
+    .b_frame {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+                "title"
+                "image" 
+                "subtitle"; 
+    }
+
+    .article_img{
+        width: 325px;
+        height: auto;
+    }
+
+    .a_frame_txt{
+        width: 325px;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .a_frame_subtxt{
+        width: 325px;
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .b_frame_txt{
+        width: 325px;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .b_frame_subtxt{
+        width: 325px;
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    footer {
+        margin-top: 40px;
+        padding-left: 32px;
+        padding-right: 32px;
+        grid-template-columns: auto auto;
+        grid-template-areas:
+            "footer_center footer_icon"
+            "footer_codeit ."; 
+        gap: 60px;
+    }
+
+    .footer_center_div {
+        grid-area: footer_center; 
+    }
+
+    .footer_codeit {
+        grid-area: footer_codeit; 
+    }
+
+    .footer_icon_div {
+        grid-area: footer_icon;
     }
 }
