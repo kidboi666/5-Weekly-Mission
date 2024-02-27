@@ -24,12 +24,12 @@
 <link href="css/nav.css" rel="stylesheet">
 
 <nav class="nav">
-	<div class="nav-container">
-		<a class="nav-logo" href="index.html">
+	<div class="nav__contents">
+		<a class="nav__logo" href="index.html">
 			<img src="images/Linkbrary.svg">
 		</a>
-		<a class="nav-login_button" href='login.html'>
-			<p class="nav-login-label">로그인</p>
+		<a class="nav__login-button" href='login.html'>
+			<p class="nav__login-label">로그인</p>
 		</a>
 	</div>
 </nav>
@@ -38,49 +38,49 @@
 <!-- contents-01 -->
 <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'>
 <link href="css/index.css" rel="stylesheet">
-<section class="landing-1">
-	<div class="landing-1-txt">
+<section class="landing-section--main">
+	<div class="landing-section__text--main">
 		<p class="first-line"><span class="colored-text-1">세상의 모든 정보</span>를</p>
 		<p class="second-line">쉽게 저장하고 관리해 보세요</p>
 	</div>
-	<a class="landing-1-btn" onclick="location.href = 'signup.html'">
-		<p class="label">링크 추가하기</p>
+	<a class="landing-section__button--main" onclick="location.href = 'signup.html'">
+		<p>링크 추가하기</p>
 	</a>
-	<div class="landing-1-img">
+	<div class="landing-section__image--main">
 		<img src="images/image_25.png">
 	</div>
 </section>
 
 <!-- contents-02 -->
-<section class="landing-2">
-	<div class="landing-contents">
-		<div class="landing-text">
-			<div class="txt1">
+<section class="landing-section--first">
+	<div class="landing-section__contents--first">
+		<div class="landing-section__text-area--large">
+			<div class="landing-section__text--large">
 				<span class="colored-text-2">원하는 링크</span>를 저장하세요
 			</div>
-			<div class="txt2">
+			<div class="landing-section__text--small">
 				나중에 읽고 싶은 글, 다시 보고 싶은 영상,<div class="enter-tablet enter-pc"></div>
 				사고 싶은 옷,<div class="enter-mobile"></div> 기억하고 싶은 모든 것을<div class="enter-tablet enter-pc"></div>
 				한 공간에 저장하세요.
 			</div>
 		</div>
-		<div class="landing-img">
+		<div class="landing-section__image">
 			<img src="images/_img1_landing.svg">
 		</div>
 	</div>
 </section>
 
 <!-- contents-03 -->
-<section class="landing-3">
-	<div class="landing-contents arrange-4-mobile">
-		<div class="landing-img">
+<section class="landing-section">
+	<div class="landing-section__contents arrange-4-mobile">
+		<div class="landing-section__image">
 			<img src="images/_img2_landing.svg">
 		</div>
-		<div class="landing-text txt_size1">
-			<div class="txt1">
+		<div class="landing-section__text-area--medium">
+			<div class="landing-section__text--large">
 				링크를 폴더로 <span class="colored-text-3">관리</span>하세요
 			</div>
-			<div class="txt2">
+			<div class="landing-section__text--small">
 				나만의 폴더를 무제한으로 만들고<div class="enter-tablet enter-pc"></div>
 				다양하게 활용할 수<div class="enter-mobile"></div> 있습니다.<div class="enter-tablet enter-pc"></div>
 			</div>
@@ -89,36 +89,36 @@
 </section>
 
 <!-- contents-04 -->
-<section class="landing-3">
-	<div class="landing-contents">
-		<div class="landing-text txt_size2">
-			<div class="txt1">
+<section class="landing-section">
+	<div class="landing-section__contents">
+		<div class="landing-section__text-area--large">
+			<div class="landing-section__text--large">
 				저장한 링크를 <span class="colored-text-4">공유</span>해 보세요
 			</div>
-			<div class="txt2">
+			<div class="landing-section__text--small">
 				여러 링크를 폴더에 담고 공유할 수 <div class="enter-tablet"></div>있습니다.<div class="enter-pc"></div>
 				가족,<div class="enter-mobile"></div> 친구, 동료들에게 쉽고<div class="enter-tablet"></div> 빠르게 링크를<div
 					class="enter-pc"></div>
 				공유해 보세요.
 			</div>
 		</div>
-		<div class="landing-img">
+		<div class="landing-section__image">
 			<img src="images/_img3_landing.svg">
 		</div>
 	</div>
 </section>
 
 <!-- contents-05 -->
-<section class="landing-3">
-	<div class="landing-contents arrange-4-mobile">
-		<div class="landing-img">
+<section class="landing-section">
+	<div class="landing-section__contents arrange-4-mobile">
+		<div class="landing-section__image">
 			<img src="images/_img4_landing.svg">
 		</div>
-		<div class="landing-text txt_size3">
-			<div class="txt1">
+		<div class="landing-section__text-area--small">
+			<div class="landing-section__text--large">
 				저장한 링크를 <span class="colored-text-5">검색</span>해 보세요
 			</div>
-			<div class="txt2">
+			<div class="landing-section__text--small">
 				중요한 정보들을 검색으로 쉽게<div class="enter-tablet"></div> 찾아보세요.
 			</div>
 		</div>
@@ -128,29 +128,30 @@
 <link href="css/footer.css" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
 <footer class="footer">
-	<div class="footer-frame">
-		<div class="footer-components">
-			<a class="footer-codeit">©codeit - 2023</a>
-			<div class="footer-linkbox">
-				<a href="#" class="footer-policy">
+	<div class="footer__frame">
+		<div class="footer__contents">
+
+			<a class="footer__codeit">©codeit - 2023</a>
+			<div class="footer__linkbox">
+				<a href="#" class="footer__policy">
 					Privacy Policy
 				</a>
-				<a href="#" class="footer-FAQ">
+				<a href="#" class="footer__FAQ">
 					FAQ
 				</a>
 			</div>
-			<div class="footer-Icons">
-				<a class="footer-icon" href="https://www.facebook.com/" target="_blank">
-					<img src="images/facebook_logo.svg" alt="페이스북 로고">
+			<div class="footer__icon-box">
+				<a href="https://www.facebook.com/" target="_blank">
+					<img src="images/facebook_logo.svg">
 				</a>
-				<a class="footer-icon" href="https://twitter.com/?lang=ko" target="_blank">
-					<img src="images/twitter_logo.svg" alt="트위터 로고">
+				<a href="https://twitter.com/?lang=ko" target="_blank">
+					<img src="images/twitter_logo.svg">
 				</a>
-				<a class="footer-icon" href="https://www.youtube.com/" target="_blank">
-					<img src="images/youtube_logo.svg" alt="유튜브 로고">
+				<a href="https://www.youtube.com/" target="_blank">
+					<img src="images/youtube_logo.svg">
 				</a>
-				<a class="footer-icon" href="https://www.instagram.com/" target="_blank">
-					<img src="images/instagram_logo.svg" alt="인스타그램 로고">
+				<a href="https://www.instagram.com/" target="_blank">
+					<img src="images/instagram_logo.svg">
 				</a>
 			</div>
 		</div>

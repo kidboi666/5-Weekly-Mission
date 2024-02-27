@@ -33,7 +33,7 @@
 /* End of: 텍스트 색상 설정 */
 
 /* Section 정의 */
-.landing-1 {
+.landing-section--main {
 	position: relative;
 	margin: 0;
 	background-color: #f0f6ff;
@@ -46,8 +46,7 @@
 	justify-content: space-between;
 	padding-top: 70px;
 }
-
-.landing-2 {
+.landing-section--first {
 	position: relative;
 	margin: 0;
 	width: 100%;
@@ -55,8 +54,7 @@
 	display: flex;
 	justify-content: center;
 }
-
-.landing-3 {
+.landing-section {
 	position: relative;
 	margin: 0;
 	width: 100%;
@@ -68,11 +66,25 @@
 /* End of: Section 정의 */
 
 /* Section 별 컨텐츠 영역 정의 */
-.landing-contents {
+.landing-section__contents {
 	max-width: 998px;
 	width: 100%;
 	height: 450px;
 	position: absolute;
+	top: 50px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+.landing-section__contents--first {
+	max-width: 998px;
+	width: 100%;
+	height: 450px;
+	position: absolute;
+	top: 120px;
 	left: 50%;
 	transform: translateX(-50%);
 	display: flex;
@@ -81,18 +93,12 @@
 	justify-content: space-between;
 }
 
-.landing-2>.landing-contents {
-	top: 120px;
-}
 
-.landing-3>.landing-contents {
-	top: 50px;
-}
 
 /* End of: Section 별 컨텐츠 영역 정의 */
 
 /* 링크 추가하기 버튼 설정 */
-.landing-1-btn {
+.landing-section__button--main {
 	max-width: 350px;
 	width: 100%;
 	height: 53px;
@@ -104,8 +110,7 @@
 	justify-content: center;
 	text-decoration: none;
 }
-
-.landing-1-btn>.label {
+.landing-section__button--main > p {
 	color: #f5f5f5;
 	font-family: 'Pretendard';
 	font-size: 18px;
@@ -115,7 +120,7 @@
 /* End of: 링크 추가하기 버튼 설정 */
 
 /* Section 별 텍스트 영역 정의 */
-.landing-1-txt {
+.landing-section__text--main {
 	line-height: 80px;
 	font-size: 64px;
 	text-align: center;
@@ -128,46 +133,44 @@
 	align-items: center;
 }
 
-.landing-text {
+.landing-section__text-area--small{
 	width: 291px;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: space-between;
+	height: 148px;
 }
-
-.landing-2 .landing-text {
-	height: 198px;
-}
-
-.landing-3 .txt_size1 {
+.landing-section__text-area--medium{
+	width: 291px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-between;
 	height: 172px;
 }
-
-.landing-3 .txt_size2 {
+.landing-section__text-area--large{
+	width: 291px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-between;
 	height: 198px;
-}
-
-.landing-3 .txt_size3 {
-	height: 148px;
 }
 
 /* End of: Section 별 텍스트 영역 정의 */
 
 /* text 영역 내 텍스트 세부 설정 */
-.landing-1-txt>* {
+.landing-section__text--main > * {
 	margin: 0;
 }
-
-.landing-1-txt>.first-line {
+.landing-section__text--main > .first-line {
 	margin: 0;
 }
-
-.landing-1-txt>.second-line {
+.landing-section__text--main > .second-line {
 	margin: 0;
 }
-
-.landing-text>.txt1 {
+.landing-section__text--large {
 	width: 280px;
 	font-size: 48px;
 	font-weight: 700;
@@ -178,8 +181,7 @@
 	word-spacing: -4px;
 	height: 116px;
 }
-
-.landing-text>.txt2 {
+.landing-section__text--small {
 	width: 300px;
 	font-size: 16px;
 	text-align: left;
@@ -206,7 +208,7 @@
 /* End of: text 영역 내 텍스트 세부 설정 */
 
 /* 이미지 설정 */
-.landing-1-img {
+.landing-section__image--main {
 	max-width: 1200px;
 	width: 100%;
 	height: 590px;
@@ -218,17 +220,17 @@
 	align-items: center;
 	overflow: hidden;
 }
-.landing-1-img>img {
+.landing-section__image--main > img {
 	max-width: 1118px;
 	width: 100%;
 	height: 590px;
 }
-.landing-img {
+.landing-section__image {
 	max-width: 550px;
 	width: 100%;
 	height: 450px;
 }
-.landing-img>img {
+.landing-section__image>img {
 	width: 100%;
 	height: 450px;
 }
@@ -239,34 +241,36 @@
 @media(max-width: 1199px) {
 
 	/* Resize Section */
-	.landing-1 {
+	.landing-section--main {
 		height: 756px;
 		padding-top: 40px;
 	}
-	.landing-2 {
+	.landing-section--first {
 		height: 445px;
 	}
-	.landing-3 {
+	.landing-section {
 		height: 415px;
 	}
 	/* End of: Resize Section */
 
 	/* Resize contents frame and text */
-	.landing-contents {
+	.landing-section__contents {
 		width: 700px;
 		height: 315px;
 	}
-	.landing-2>.landing-contents {
+	.landing-section__contents--first {
+		width: 700px;
+		height: 315px;
 		top: 80px;
 	}
-	.landing-1-txt>.second-line {
+	.landing-section__text--main >.second-line {
 		margin: 0;
 		width: 380px;
 	}
 	/* End of: Resize text */
 
 	/* Resize image */
-	.landing-1-img {
+	.landing-section__image--main {
 		max-width: 700px;
 		width: 100%;
 		height: 343px;
@@ -274,19 +278,17 @@
 		padding-left: 23.8px;
 		padding-right: 23.8px;
 	}
-
-	.landing-1-img>img {
+	.landing-section__image--main > img {
 		max-width: 650px;
 		width: 100%;
 		height: 343px;
 	}
 
-	.landing-img {
+	.landing-section__image {
 		width: 385px;
 		height: 315px;
 	}
-
-	.landing-img>img {
+	.landing-section__image>img {
 		width: 100%;
 		height: 315px;
 	}
@@ -310,51 +312,49 @@
 @media(max-width: 767px) {
     
 	/* Section 재설정 */
-	.landing-1 {
+	.landing-section--main {
 		height: 399px;
 		padding-top: 28px;
 	}
-	.landing-2 {
+	.landing-section--first {
 		height: 451px;
 	}
-	.landing-3 {
+	.landing-section {
 		height: 457px;
 	}
 	/* End of: Section 재설정 */
 
 	/* 바로가기 버튼 재설정 */
-	.landing-1-btn {
+	.landing-section__button--main {
 		max-width: 200px;
 		width: 100%;
 		height: 37px;
 	}
-	.landing-1-btn>.label {
+	.landing-section__button--main > p {
 		font-size: 14px;
 	}
 	/* End of: 바로가기 버튼 재설정 */
 
 	/* 컨텐츠 영역 재설정 */
-	.landing-2>.landing-contents {
-		top: 80px;
-	}
-	.landing-contents {
+	.landing-section__contents {
 		width: 325px;
 		height: 375px;
 		flex-direction: column;
-	}
-	.landing-2>.landing-contents {
 		top: 40px;
 	}
-	.landing-3>.landing-contents {
+	.landing-section__contents--first {
+		width: 325px;
+		height: 375px;
+		flex-direction: column;
 		top: 40px;
 	}
-	.landing-contents.arrange-4-mobile {
+	.landing-section__contents.arrange-4-mobile {
 		flex-direction: column-reverse;
 	}
 	/* End of: 컨텐츠 영역 재설정 */
 
     /* 텍스트 설정 */
-	.landing-1-txt {
+	.landing-section__text--main {
 		width: 250px;
 		height: 126px;
 		line-height: 42px;
@@ -362,29 +362,36 @@
 		padding: 0;
 		letter-spacing: -3px;
 	}
-	.landing-1-txt>.second-line {
+	.landing-section__text--main >.second-line {
 		width: 210px;
 	}
-	.landing-text {
+
+	.landing-section__text-area--small{
 		width: 100%;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
 		justify-content: space-between;
-	}
-	.landing-2 .landing-text {
-		height: 85px;
-	}
-	.landing-3 .txt_size1 {
-		height: 85px;
-	}
-	.landing-3 .txt_size2 {
-		height: 85px;
-	}
-	.landing-3 .txt_size3 {
 		height: 62px;
 	}
-	.landing-text>.txt1 {
+	.landing-section__text-area--medium{
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: space-between;
+		height: 85px;
+	}
+	.landing-section__text-area--large{
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: space-between;
+		height: 85px;
+	}
+
+	.landing-section__text--large {
 		width: 100%;
 		font-size: 24px;
 		line-height: 28.6px;
@@ -392,7 +399,7 @@
 		word-spacing: 0;
 		height: 29px;
 	}
-	.landing-text>.txt2 {
+	.landing-section__text--small {
 		width: 100%;
 		font-size: 15px;
 		line-height: 22.5px;
@@ -417,7 +424,7 @@
 	/* End of: 텍스트 미세조정 */
 
 	/* 이미지 설정 */
-	.landing-1-img {
+	.landing-section__image--main {
 		max-width: 325px;
 		width: 100%;
 		height: 160px;
@@ -425,17 +432,17 @@
 		padding-left: 11px;
 		padding-right: 11px;
 	}
-	.landing-1-img>img {
+	.landing-section__image--main > img {
 		max-width: 302px;
 		width: 100%;
 		height: 178.7px;
 	}
-	.landing-img {
+	.landing-section__image {
 		max-width: 325px;
 		width: 100%;
 		height: 265px;
 	}
-	.landing-img>img {
+	.landing-section__image>img {
 		width: 100%;
 		height: 265px;
 	}
