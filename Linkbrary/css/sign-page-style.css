@@ -67,10 +67,12 @@
 }
 
 .sign {
+  margin: 238px 0;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 30px;
 }
 

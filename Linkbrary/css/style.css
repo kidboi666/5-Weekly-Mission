@@ -22,6 +22,7 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   min-width: 600px;
 }
@@ -86,14 +87,13 @@ img {
 }
 
 main {
+  width: 100%;
   height: 100%;
-  padding: 70px auto 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
   flex: 1;
-  justify-content: center;
 }
 
 section {
@@ -573,6 +573,7 @@ section {
 }
 
 .top-heading {
+  margin-top: 70px;
   color: #000;
   font-size: 4em;
   font-style: normal;
