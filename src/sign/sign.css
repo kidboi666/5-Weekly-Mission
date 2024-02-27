@@ -1,4 +1,5 @@
 @import "../global.css";
+@import "../reset.css";
 
 body {
     overflow: hidden;

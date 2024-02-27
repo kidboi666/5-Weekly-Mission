@@ -18,10 +18,10 @@
 <body>
     <header class="navbar">
         <a href="/" class="logo">
-            <img src="./src/images/logo.svg" width="133" height="24" alt="logo"/>
+            <img src="../public/logo.svg" width="133" height="24" alt="logo"/>
         </a>
-        <a href="./src/sign/signin.html">
-            <button class="login-button">로그인</button>
+        <a href="./src/sign/signin.html" class="login-button">
+            로그인
         </a>        
     </header>
     <main>
@@ -35,7 +35,7 @@
         </a>
         <section>
             <div class="search_div">
-                <img src="./src/images/Search.svg" width="15" height="15" alt="search_icon"/>
+                <img src="../public/Search.svg" width="15" height="15" alt="search_icon"/>
                 <input class="search_input" placeholder="링크를 검색해보세요">
             </div>
             <div class="main_btn_div">
@@ -48,7 +48,7 @@
                 <div id="addFolderModal" class="modal">
                     <div class="modal_container">
                         <div class="close" id="addFolderCloseBtn">
-                            <img src="./src/images/close.png" width="24" height="24">                             
+                            <img src="../public/close.png" width="24" height="24">                             
                         </div>
                         <div class="modal_header">
                             <p class="modal_header_title">폴더 추가</p>
@@ -64,15 +64,15 @@
                 <p>전체</p>
                 <div class="main_sub_nav_side">
                     <button class="main_sub_nav_side_items" id="shareFolderBtn">
-                        <img src="./src/images/share.svg" width="18" height="18" alt="폴더 공유"/>
+                        <img src="../public/share.svg" width="18" height="18" alt="폴더 공유"/>
                         공유
                     </button>
                     <button class="main_sub_nav_side_items">
-                        <img src="./src/images/pen.svg" width="18" height="18" alt="폴더 이름 변경"/>
+                        <img src="../public/pen.svg" width="18" height="18" alt="폴더 이름 변경"/>
                         이름 변경
                     </button>
                     <button class="main_sub_nav_side_items">
-                        <img src="./src/images/delete.svg" width="18" height="18" alt="폴더 삭제"/>
+                        <img src="../public/delete.svg" width="18" height="18" alt="폴더 삭제"/>
                         삭제
                     </button>
                 </div>
@@ -80,7 +80,7 @@
             <div id="shareFolderModal" class="modal">
                 <div class="modal_container">
                     <div class="close">
-                        <img src="./src/images/close.png" width="24" height="24">                                
+                        <img src="../public/close.png" width="24" height="24">                                
                     </div>
                     <div class="modal_header">
                         <p class="modal_header_title">폴더 공유하기</p>
@@ -89,16 +89,16 @@
                     <div class="modal_content_div">
                         <div class="share_modal_utils">
                             <div class="share_modal_utils_icon">
-                                <img src="./src/images/kakaotalk.png" width="42" height="42" alt="카카오톡"/>
+                                <img src="../public/kakaotalk.png" width="42" height="42" alt="카카오톡"/>
                                 카카오톡
                             </div>
                             <div class="share_modal_utils_icon">
-                                <img src="./src/images/facebook.png" width="42" height="42" alt="페이스북"/>
+                                <img src="../public/facebook.png" width="42" height="42" alt="페이스북"/>
                                 페이스북
                             </div>
                             <div class="share_modal_utils_icon">
                                 <div class="share_modal_utils_icon_back">
-                                    <img src="./src/images/link.png" width="42" height="42" alt="링크 복사"/>
+                                    <img src="../public/link.png" width="42" height="42" alt="링크 복사"/>
                                 </div>
                                 링크 복사
                             </div>
@@ -109,15 +109,15 @@
             <div class="card_grid_container">
                 <div class="card">
                     <div class="star">
-                        <img src="./src/images/star_full.png" width="34" height="34" alt="star">                            
+                        <img src="../public/star_full.png" width="34" height="34" alt="star">                            
                     </div>
                     <div class="card_img_div">
-                        <img class="card_img" src="./src/images/panda.jpg">
+                        <img class="card_img" src="../public/panda.jpg">
                     </div>
                     <div class="card_txt_div">
                         <div class="card_txt_div_top">
                             <p class="left_time_p">10 minutes ago</p>
-                            <img src="./src/images/dot.svg" id="dotMenu" width="21" height="17" alt="dot"/>
+                            <img src="../public/dot.svg" id="dotMenu" width="21" height="17" alt="dot"/>
                             <div class="dot_menu" id="menu">
                                 <div class="dot_menu_item" id="deleteBtn">삭제하기</div>
                                 <div class="dot_menu_item" id="toFolderBtn">폴더에 추가</div>                                
@@ -125,7 +125,7 @@
                             <div id="toFolderModal" class="modal">
                                 <div class="modal_container">
                                     <div class="close">
-                                        <img src="./src/images/close.png" id="dotMenu" width="24" height="24" alt="close"/>                                
+                                        <img src="../public/close.png" id="dotMenu" width="24" height="24" alt="close"/>                                
                                     </div>
                                     <div class="modal_header">
                                         <p class="modal_header_title">폴더에 추가</p>
@@ -135,17 +135,17 @@
                                         <div class="modal_content">
                                             <p class="modal_folder_name">폴더 이름</p>
                                             <p class="modal_link_cnt">{링크 개수}</p>
-                                            <img src="./src/images/check.png" width="14" height="14" alt="check" class="checkmark">                                 
+                                            <img src="../public/check.png" width="14" height="14" alt="check" class="checkmark">                                 
                                         </div>
                                         <div class="modal_content">
                                             <p class="modal_folder_name">조혜진</p>
                                             <p class="modal_link_cnt">{링크 개수}</p>
-                                            <img src="./src/images/check.png" width="14" height="14" alt="check" class="checkmark">                                      
+                                            <img src="../public/check.png" width="14" height="14" alt="check" class="checkmark">                                      
                                         </div>
                                         <div class="modal_content">
                                             <p class="modal_folder_name">취업 준비</p>
                                             <p class="modal_link_cnt">{링크 개수}</p>
-                                            <img src="./src/images/check.png" width="14" height="14" alt="check" class="checkmark">                                      
+                                            <img src="../public/check.png" width="14" height="14" alt="check" class="checkmark">                                      
                                         </div>
                                     </div>
                                     <button class="modal_btn">추가하기</button>
@@ -154,7 +154,7 @@
                             <div id="deleteModal" class="modal">
                                 <div class="modal_container">
                                     <div class="close">
-                                        <img src="./src/images/close.png" width="24" height="24">                                
+                                        <img src="../public/close.png" width="24" height="24">                                
                                     </div>
                                     <div class="modal_header">
                                         <p class="modal_header_title">링크 삭제</p>
@@ -174,17 +174,17 @@
                 </div>
                 <div class="card">
                     <div class="star">
-                        <img src="./src/images/star_empty.png" width="34" height="34" alt="star">                                                      
+                        <img src="../public/star_empty.png" width="34" height="34" alt="star">                                                      
                     </div>
                     <div class="card_img_div">
                         <div class="img_thumbnail_div">
-                            <img src="./src/images/logo.svg" width="133" height="24" alt="thumbnail" class="img_thumbnail">
+                            <img src="../public/logo.svg" width="133" height="24" alt="thumbnail" class="img_thumbnail">
                         </div>
                     </div>
                     <div class="card_txt_div">
                         <div class="card_txt_div_top">
                             <p class="left_time_p">10 minutes ago</p>
-                            <img src="./src/images/dot.svg" id="dotMenu" width="21" height="17" alt="dot"/>
+                            <img src="../public/dot.svg" id="dotMenu" width="21" height="17" alt="dot"/>
                             <div class="dot_menu" id="menu">
                                 <div class="dot_menu_item" id="deleteBtn">삭제하기</div>
                                 <div class="dot_menu_item" id="toFolderBtn">폴더에 추가</div>                                
@@ -192,7 +192,7 @@
                             <div id="toFolderModal" class="modal">
                                 <div class="modal_container">
                                     <div class="close">
-                                        <img src="./src/images/close.png" id="dotMenu" width="24" height="24" alt="close"/>                                
+                                        <img src="../public/close.png" id="dotMenu" width="24" height="24" alt="close"/>                                
                                     </div>
                                     <div class="modal_header">
                                         <p class="modal_header_title">폴더에 추가</p>
@@ -202,17 +202,17 @@
                                         <div class="modal_content">
                                             <p class="modal_folder_name">폴더 이름</p>
                                             <p class="modal_link_cnt">{링크 개수}</p>
-                                            <img src="./src/images/check.png" width="14" height="14" alt="check" class="checkmark">                           
+                                            <img src="../public/check.png" width="14" height="14" alt="check" class="checkmark">                           
                                         </div>
                                         <div class="modal_content">
                                             <p class="modal_folder_name">조혜진</p>
                                             <p class="modal_link_cnt">{링크 개수}</p>
-                                            <img src="./src/images/check.png" width="14" height="14" alt="check" class="checkmark">                                      
+                                            <img src="../public/check.png" width="14" height="14" alt="check" class="checkmark">                                      
                                         </div>
                                         <div class="modal_content">
                                             <p class="modal_folder_name">취업 준비</p>
                                             <p class="modal_link_cnt">{링크 개수}</p>
-                                            <img src="./src/images/check.png" width="14" height="14" alt="check" class="checkmark">                                      
+                                            <img src="../public/check.png" width="14" height="14" alt="check" class="checkmark">                                      
                                         </div>
                                     </div>
                                     <button class="modal_btn">추가하기</button>
@@ -221,7 +221,7 @@
                             <div id="deleteModal" class="modal">
                                 <div class="modal_container">
                                     <div class="close">
-                                        <img src="./src/images/close.png" width="24" height="24">                                   
+                                        <img src="../public/close.png" width="24" height="24">                                   
                                     </div>
                                     <div class="modal_header">
                                         <p class="modal_header_title">링크 삭제</p>
@@ -241,15 +241,15 @@
                 </div>
                 <div class="card">
                     <div class="star">
-                        <img src="./src/images/star_full.png" width="34" height="34" alt="star">                               
+                        <img src="../public/star_full.png" width="34" height="34" alt="star">                               
                     </div>
                     <div class="card_img_div">
-                        <img class="card_img" src="./src/images/me.jpg">
+                        <img class="card_img" src="../public/me.jpg">
                     </div>
                     <div class="card_txt_div">
                         <div class="card_txt_div_top">
                             <p class="left_time_p">10 minutes ago</p>
-                            <img src="./src/images/dot.svg" id="dotMenu" width="21" height="17" alt="dot"/>                             
+                            <img src="../public/dot.svg" id="dotMenu" width="21" height="17" alt="dot"/>                             
                         </div>
                         <div class="card_txt_div_body">
                             리락쿠마와 가오루 씨(リラックマとカオルさん) 애니메이션이 2019년 4월 19일에 넷플릭스 오리지널 시리즈로 공개되었다. 스톱 모션을 활용한 퍼펫 애니메이션으로 제작되었다.
@@ -261,10 +261,10 @@
                 </div>
                 <div class="card">
                     <div class="star">
-                        <img src="./src/images/star_full.png" width="34" height="34" alt="star">                                  
+                        <img src="../public/star_full.png" width="34" height="34" alt="star">                                  
                     </div>
                     <div class="card_img_div">
-                        <img class="card_img" src="./src/images/me2.jpg">
+                        <img class="card_img" src="../public/me2.jpg">
                     </div>
                     <div class="card_txt_div">
                         <div class="card_txt_div_top">
@@ -287,15 +287,15 @@
                 </div>
                 <div class="card">
                     <div class="star">
-                        <img src="./src/images/star_empty.png" width="34" height="34" alt="star">                                  
+                        <img src="../public/star_empty.png" width="34" height="34" alt="star">                                  
                     </div>
                     <div class="card_img_div">
-                        <img class="card_img" src="./src/images/me3.jpg">
+                        <img class="card_img" src="../public/me3.jpg">
                     </div>
                     <div class="card_txt_div">
                         <div class="card_txt_div_top">
                             <p class="left_time_p">10 minutes ago</p>
-                            <img src="./src/images/dot.svg" id="dotMenu" width="21" height="17" alt="dot"/>                            
+                            <img src="../public/dot.svg" id="dotMenu" width="21" height="17" alt="dot"/>                            
                         </div>
                         <div class="card_txt_div_body">
                             리락쿠마와 코리락쿠마는 진짜 곰이 아닌 곰인형이다. 리락쿠마의 등 뒤에 달린 지퍼와 코리락쿠마의 목에 있는 빨간 단추가 이들이 진짜 곰이 아님을 말해주고 있다. 다만 챠이로이코구마는 숲속에 살고 있는 진짜 아기 반달가슴곰이다.
@@ -315,12 +315,12 @@
                     사고 싶은 옷, 기억하고 싶은 모든 것을
                     한 공간에 저장하세요.
                 </p>
-                <img src="./src/images/a.png" class="article_img">
+                <img src="../public/a.png" class="article_img">
             </div>
         </article>
         <article>
             <div class="b_frame">
-                <img src="./src/images/b.png" class="article_img">
+                <img src="../public/b.png" class="article_img">
                 <p class="b_frame_txt">링크를 폴더로 <span class="b_frame_txt_gra1">관리</span>하세요</p>
                 <p class="b_frame_subtxt">
                     나만의 폴더를 무제한으로 만들고 
@@ -335,12 +335,12 @@
                     여러 링크를 폴더에 담고 공유할 수 있습니다. 
                     가족, 친구, 동료들에게 쉽고 빠르게 링크를 공유해 보세요.
                 </p>
-                <img src="./src/images/c.png" class="article_img">                                                  
+                <img src="../public/c.png" class="article_img">                                                  
             </div>
         </article>
         <article>
             <div class="b_frame">
-                <img src="./src/images/d.png" class="article_img">
+                <img src="../public/d.png" class="article_img">
                 <p class="b_frame_txt">저장한 링크를 <span class="b_frame_txt_gra1">검색</span>해보세요</p>
                 <p class="b_frame_subtxt">
                     중요한 정보들을 검색으로 쉽게 찾아보세요.
@@ -356,16 +356,16 @@
         </div>
         <div class="footer_icon_div">
             <a target="_blank" href="https://www.facebook.com/">
-                <img src="./src/images/facebook.svg" width="20" height="20" alt="facebook">
+                <img src="../public/facebook.svg" width="20" height="20" alt="facebook">
             </a>
             <a target="_blank" href="https://www.twitter.com/">
-                <img src="./src/images/twitter.svg" width="20" height="20" alt="twitter">
+                <img src="../public/twitter.svg" width="20" height="20" alt="twitter">
             </a>
             <a target="_blank" href="https://www.youtube.com/">
-                <img src="./src/images/youtube.svg" width="20" height="20" alt="youtube">
+                <img src="../public/youtube.svg" width="20" height="20" alt="youtube">
             </a>
             <a target="_blank" href="https://www.instagram.com/">
-                <img src="./src/images/instagram.svg" width="20" height="20" alt="instagram">
+                <img src="../public/instagram.svg" width="20" height="20" alt="instagram">
             </a>
         </div>
     </footer>    
