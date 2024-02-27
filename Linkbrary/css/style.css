@@ -475,7 +475,7 @@ section {
 
 .search-input {
   width: 100%;
-  background-image: url(img/Search.svg);
+  background-image: url("/img/Search.svg");
   background-repeat: no-repeat;
   background-position: left center;
   font-size: 1em;
@@ -616,7 +616,7 @@ section {
 #s1 {
   background-color: inherit;
   padding: 50px 0px;
-  background-image: url("img/_dim.png");
+  background-image: url("/img/_dim.png");
   background-repeat: no-repeat;
   background-position: top center;
   max-width: 1920px;
