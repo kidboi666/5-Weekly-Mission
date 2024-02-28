@@ -6,7 +6,7 @@
 
 header {
   background-color: #F0F6FF;
-  position: fixed;
+  position: sticky;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -59,7 +59,6 @@ header .login_btn {
 .container {
   left: 0;
   width: 100%;
-  margin-top: 93px;
   align-items: center;
 }
 
