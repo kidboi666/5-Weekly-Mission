@@ -1,5 +1,16 @@
 @import './global.css';
 
+/*Mobile size*/
+@media (min-width: 375px) and (max-width: 767px) {
+  html {
+    width: 100%;
+    max-width: 40rem;
+    margin-top: 10rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+}
+
 body {
   padding-top: 10rem;
   padding-bottom: 10rem;
