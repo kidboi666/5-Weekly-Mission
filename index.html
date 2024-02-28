@@ -1,127 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./src/style.css" />
     <title>Linkbrary</title>
   </head>
   <body>
+    <nav>
+      <div class="top-logo">
+        <a href="index.html">
+          <img src="./img/logo.svg" />
+        </a>
+        <a class="top-login" href="signin.html">
+          <span>로그인</span>
+        </a>
+      </div>
+    </nav>
+
+    <!--header 부분-->
     <header>
-      <nav>
-        <a href="./"
-          ><div class="top-logo"><img src="img/logo.png" /></div
-        ></a>
-        <a href="./signin.html"><div class="top-login">로그인</div></a>
-      </nav>
-    </header>
-    <main>
-      <!--1번째 파트-->
-      <section class="sec1">
-        <h1 class="sec1-title">
-          <span class="sec1-sub">세상의 모든 정보</span>를<br />
+      <div class="landing-header">
+        <h1 class="header-title">
+          <span class="header-gradient">세상의 모든 정보</span>를<br />
           쉽게 저장하고 관리해 보세요
         </h1>
-        <a href="./signup.html"><div class="signup-link">링크 추가하기</div></a>
-        <div>
-          <img src="img/section1.png" class="sec1-img" />
-        </div>
+        <a class="signup-link" href="signup.html">
+          <span>링크 추가하기</span>
+        </a>
+        <img src="./img/landing-header.png" class="header-img" />
+      </div>
+    </header>
+
+    <!--1번째 섹션-->
+    <article>
+      <section>
+        <h2 class="title">
+          <span class="title1-gradient">원하는 링크</span>를<br />
+          저장하세요
+        </h2>
+        <h6 class="description">
+          나중에 읽고 싶은 글, 다시보고 싶은 영성,<br />
+          사고 싶은 옷, 기억하고 싶은 모든 것을<br />
+          한 공간에 저장하세요.
+        </h6>
+        <img src="./img/landing-section1.png" class="sec-img" />
       </section>
 
-      <!--2번째 파트-->
+      <!--2번째 섹션-->
       <section>
-        <div class="section-content">
-          <div class="section-title">
-            <h2 class="sec2-title">
-              <span class="sec2-sub">원하는 링크</span>를<br />
-              저장하세요
-            </h2>
-            <!-- <h6 class="sec2-detail"> -->
-              나중에 읽고 싶은 글, 다시보고 싶은 영성,<br />
-              사고 싶은 옷, 기억하고 싶은 모든 것을<br />
-              한 공간에 저장하세요.
-            </h6>
-          </div>
-          <img src="img/section2.png" class="sec2-img" />
-        </div>
+        <h2 class="title">
+          링크를 폴더로<br />
+          <span class="title2-gradient">관리</span>하세요
+        </h2>
+        <h6 class="description">
+          나만의 폴더를 무제한으로 만들고<br />
+          다양하게 활용할 수 있습니다.
+        </h6>
+        <img src="./img/landing-section2.png" class="sec-img" />
       </section>
 
-      <!--3번째 파트-->
+      <!--3번째 섹션-->
       <section>
-        <div class="section-content">
-          <img src="img/section3.png" class="sec3-img" />
-          <div class="section-title">
-            <h2 class="sec3-title">
-              링크를 폴더로<br />
-              <span class="sec3-sub">관리</span>하세요
-            </h2>
-            <h6 class="sec3-detail">
-              나만의 폴더를 무제한으로 만들고<br />
-              다양하게 활용할 수 있습니다.
-            </h6>
-          </div>
-        </div>
+        <h2 class="title">
+          저장한 링크를<br />
+          <span class="title3-gradient">공유</span>해 보세요
+        </h2>
+        <h6 class="description">
+          여러 링크를 폴더에 담고 공유할 수 있습니다.<br />
+          가족, 친구, 동료들에게 쉽고 빠르게 링크를<br />
+          공유해 보세요.
+        </h6>
+        <img src="./img/landing-section3.png" class="sec-img" />
       </section>
 
-      <!--4번째 파트-->
+      <!--4번째 섹션-->
       <section>
-        <div class="section-content">
-          <div class="section-title">
-            <h2 class="sec4-title">
-              저장한 링크를<br />
-              <span class="sec4-sub">공유</span>해 보세요
-            </h2>
-            <h6 class="sec4-detail">
-              여러 링크를 폴더에 담고 공유할 수 있습니다.<br />
-              가족, 친구, 동료들에게 쉽고 빠르게 링크를<br />
-              공유해 보세요.
-            </h6>
-          </div>
-          <img src="img/section4.png" class="sec4-img" />
-        </div>
+        <h2 class="title">
+          저장한 링크를<br />
+          <span class="title4-gradient">검색</span>해 보세요
+        </h2>
+        <h6 class="description">중요한 정보들을 검색으로 쉽게 찾아보세요.</h6>
+        <img src="./img/landing-section4.png" class="sec-img" />
       </section>
+    </article>
 
-      <!--5번째 파트-->
-      <section>
-        <div class="section-content">
-          <img src="img/section5.png" class="sec5-img" />
-          <div class="section-title">
-            <h2 class="sec5-title">
-              저장한 링크를<br />
-              <span class="sec5-sub">검색</span>해 보세요
-            </h2>
-            <h6 class="sec5-detail">
-              중요한 정보들을 검색으로 쉽게 찾아보세요.
-            </h6>
-          </div>
-        </div>
-      </section>
-    </main>
     <footer>
-      <div>
-        <h6 class="footer-codeit">©codeit - 2023</h6>
-      </div>
-      <div class="footer-link">
-        <a href="/privacy.html">
-          <div class="footer-link1">privacy Policy</div>
-        </a>
-        <a href="/faq.html">
-          <div class="footer-link2">FAQ</div>
-        </a>
-      </div>
-      <div class="footer-sns">
-        <a href="http://www.facebook.com" target="_blank"
-          ><div class="icon-fb"><img src="/img/fb.png" /></div
-        ></a>
-        <a href="http://www.twitter.com" target="_blank"
-          ><div class="icon-tw"><img src="/img/tw.png" /></div
-        ></a>
-        <a href="http://www.youtube.com" target="_blank"
-          ><div class="icon-yt"><img src="/img/yt.png" /></div
-        ></a>
-        <a href="http://www.instagram.com" target="_blank"
-          ><div class="icon-ig"><img src="/img/ig.png" /></div
-        ></a>
+      <div class="footer-box">
+        <span class="footer-codeit">©codeit - 2023</span>
+        <div class="footer-links">
+          <a class="footer-link" href="privacy.html">Privacy Policy</a>
+          <a class="footer-link" href="faq.html">FAQ</a>
+        </div>
+        <div class="footer-sns">
+          <a href="https://www.facebook.com" target="_blank">
+            <img src="./img/fb.png" />
+          </a>
+          <a href="https://www.twitter.com" target="_blank">
+            <img src="/img/tw.png" />
+          </a>
+          <a href="https://www.youtube.com" target="_blank">
+            <img src="/img/yt.png" />
+          </a>
+          <a href="https://www.instagram.com" target="_blank">
+            <img src="/img/ig.png" />
+          </a>
+        </div>
       </div>
     </footer>
   </body>
