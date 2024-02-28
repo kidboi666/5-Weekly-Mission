@@ -42,7 +42,7 @@ body {
   gap: 8px;
 }
 
-.sign_up a {
+.sign_up > a {
   color: #6D6AFE;
   font-size: 16px;
   font-weight: 600;
