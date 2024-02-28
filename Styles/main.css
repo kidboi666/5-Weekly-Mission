@@ -14,6 +14,7 @@ nav {
   background-image: url(../Images/logo.svg);
   flex: 0 0 133px;
   height: 24px;
+  background-size: cover;
 }
 
 nav .button-grad.signin {
@@ -61,8 +62,8 @@ header {
 }
 
 .intro img {
-  width: 1200px;
-  height: 590px;
+  width: 1118px;
+  height: 659px;
 }
 
 /* MAIN */
@@ -168,27 +169,103 @@ footer {
   height: 20px;
 }
 
-@media (max-width: 1500px) {
-  nav .button-grad.signin {
-    flex-basis: 100px;
+/* PC */
+@media (min-width: 1200px) {
+  .hidden {
+    display: none;
   }
-  .intro h1 {
-    font-size: 48px;
+}
+
+/* TABLET */
+@media (max-width: 1199px) {
+  .pc:not(.tablet),
+  .mobile {
+    display: none;
   }
-  .intro .button-grad.signup {
-    width: 280px;
+  .tablet:not(.flex) {
+    display: block;
+  }
+  nav {
+    justify-content: center;
+    gap: 450px;
+    padding: 20px 32px;
   }
   .intro img {
-    width: 900px;
+    width: 650px;
+    height: 380px;
   }
   .content {
-    gap: 80px;
+    gap: 51px;
   }
   .content img {
-    width: 400px;
+    width: 385px;
+    height: 315px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+  .tablet:not(.mobile) {
+    display: none;
+  }
+  .mobile {
+    display: block;
+  }
+  nav {
+    justify-content: space-between;
+    gap: 0;
+  }
+  .logo {
+    flex-basis: 88px;
+    height: 16px;
+  }
+  nav .button-grad.signin {
+    flex-basis: 80px;
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  .intro {
+    padding: 28px 32px 0;
+  }
+  .intro h1 {
+    font-size: 32px;
+    line-height: 130%;
+  }
+  .intro .button-grad.signup {
+    width: 200px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .intro img {
+    width: 100%;
     height: auto;
   }
+  .content {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px 32px 36px;
+    gap: 0;
+  }
   .content h2 {
-    font-size: 40px;
+    font-size: 24px;
+  }
+  .content p {
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0;
+  }
+  .content img {
+    width: 100%;
+    height: auto;
+    margin: 20px 0 16px;
+  }
+  .info {
+    padding: 32px 32px 64px;
+  }
+  .license-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
   }
 }
