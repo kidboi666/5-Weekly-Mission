@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <html lang="ko">
 
 
@@ -12,6 +14,7 @@
 	<link href="css/auth.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="js/password-visible.js"></script>
+	<script src="js/login.js"></script>
 	<meta name="description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요.">
 	<meta name="keywords" content="도서관, 책, 정보, 데이터베이스">
 	<meta name="author" content="SeungRyeolBaek">
@@ -30,7 +33,7 @@
 <body class="auth-background">
 
 	<div class="login-content">
-		<form class="auth__login-form">
+		<form class="auth__login-form" id="loginForm">
 			<div class="auth-route">
 				<a class="auth-route__home" href="index.html">
 					<img src="images/Linkbrary.svg" alt="Link-brary 로고">
@@ -49,15 +52,21 @@
 					<div class="auth__label">
 						이메일
 					</div>
-					<input class="auth__input-field" type="email" />
+					<div class="auth__input-wrapper">
+						<input class="auth__input-field auth__input-border--default" type="email" id="emailInput" />
+						<div class="error-message" id="emailError"></div>
+					</div>
 				</div>
 				<div class="auth__input-entry">
 					<div class="auth__label">
 						비밀번호
 					</div>
-					<div class="input-binder">
-						<input class="auth__input-field" type="password" />
-						<i class="fa fa-eye fa-lg password-visible"></i>
+					<div class="auth__input-wrapper">
+						<div class="input-binder">
+							<input class="auth__input-field auth__input-border--default" type="password" id="passwordInput" />
+							<i class="fa fa-eye fa-lg password-visible"></i>
+						</div>
+						<div class="error-message" id="passwordError"></div>
 					</div>
 				</div>
 			</div>
