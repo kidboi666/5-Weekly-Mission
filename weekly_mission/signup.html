@@ -14,6 +14,8 @@
 	<link href="css/auth.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="js/password-visible.js"></script>
+	<script src="js/auth.js"></script>
+	<script src="js/auth-signup.js"></script>
 	<meta name="description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요.">
 	<meta name="keywords" content="도서관, 책, 정보, 데이터베이스">
 	<meta name="author" content="SeungRyeolBaek">
@@ -32,7 +34,7 @@
 <body class="auth-background">
 
 	<div class="signup-content">
-		<form class="auth__signup-form">
+		<form class="auth__signup-form" id="signupForm">
 			<div class="auth-route">
 				<a class="auth-route__home" href="index.html">
 					<img src="images/Linkbrary.svg" alt="Link-brary 로고">
@@ -52,8 +54,8 @@
 						이메일
 					</div>
 					<div class="auth__input-wrapper">
-						<input class="auth__input-field auth__input-border--default" type="email">
-						<div class="error-message"></div>
+						<input class="auth__input-field auth__input-border--default" type="email" id="emailInput">
+						<div class="error-message" id="emailError"></div>
 					</div>
 					
 				</div>
@@ -63,10 +65,10 @@
 					</div>
 					<div class="auth__input-wrapper">
 						<div class="input-binder">
-							<input class="auth__input-field auth__input-border--default" type="password" />
+							<input class="auth__input-field auth__input-border--default" type="password" id="passwordInput" />
 							<i class="fa fa-eye fa-lg password-visible"></i>
 						</div>
-						<div class="error-message"></div>
+						<div class="error-message" id="passwordError"></div>
 					</div>
 					
 				</div>
@@ -76,10 +78,10 @@
 					</div>
 					<div class="auth__input-wrapper">
 						<div class="input-binder">
-							<input class="auth__input-field auth__input-border--default" type="password" />
+							<input class="auth__input-field auth__input-border--default" type="password" id="passwordCheck" />
 							<i class="fa fa-eye fa-lg password-visible"></i>
 						</div>
-						<div class="error-message"></div>
+						<div class="error-message" id="passwordCheckError"></div>
 					</div>
 					
 				</div>
