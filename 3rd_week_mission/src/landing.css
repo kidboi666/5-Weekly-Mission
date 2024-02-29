@@ -259,7 +259,7 @@ footer {
 
 /*모바일 환경*/
 
-@media (min-width: 375px) and (max-width: 767px) {
+@media (max-width: 767px) {
   body {
     display: flex;
     flex-direction: column;
