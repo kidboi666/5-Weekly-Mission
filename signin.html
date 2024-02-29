@@ -1,43 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Linkbrary</title>
-    <link rel="stylesheet" href="styles/singin-up.css" />
+    <link rel="stylesheet" href="styles/signin-up.css" />
   </head>
   <body>
-    <div class="container">
-      <header>
-        <a href="index.html"
-          ><img src="img/signin/signin-logo.svg" alt="Linkbrary-logo"
-        /></a>
-        <div class="ask-signup">
-          <p>회원이 아니신가요?</p>
-          <a href="signup.html">회원가입 하기</a>
-        </div>
-      </header>
+    <header>
+      <a href="index.html">
+        <img src="img/signin/signin-logo.svg" alt="Linkbrary-logo" />
+      </a>
+      <div class="header-message">
+        <p>회원이 아니신가요?</p>
+        <a href="signup.html">회원가입 하기</a>
+      </div>
+    </header>
+    <div class="sign-wrap">
       <form>
-        <label for="email" class="label-email">이메일</label>
-        <input type="email" id="email" class="input-email" />
-        <label for="pwd" class="label-pwd">비밀번호</label>
-        <div class="form-pwd-wrap">
-          <input type="password" id="pwd" class="input-pwd" />
-          <img src="img/signin/eye-off.svg" alt="eye-off" class="eye-off" />
-        </div>
-        <button type="button" class="signin-btn">로그인</button>
-        <div class="social-wrap">
-          <p class="social-tagline">소셜 로그인</p>
-          <div class="social-link">
-            <a href="https://www.google.co.kr/?hl=ko"
-              ><img src="img/signin/google.png" alt="google-logo"
-            /></a>
-            <a href="https://www.kakaocorp.com/page/service/service/KakaoTalk">
-              <img src="img/signin/kakao.png" alt="kakako-logo"
-            /></a>
+        <div class="input-wrap">
+          <div class="sign-input">
+            <label for="email" class="sign-label">이메일</label>
+            <input type="email" id="email" class="input-text" />
+          </div>
+          <div class="sign-input password">
+            <label for="pwd" class="sign-label">비밀번호</label>
+            <input type="password" id="pwd" class="input-text" />
+            <button type="button" class="eye-btn">
+              <img src="img/signin/eye-off.svg" alt="eye-off" />
+            </button>
           </div>
         </div>
+        <button type="button" class="signin-btn">로그인</button>
       </form>
+      <div class="sns-wrap">
+        <p class="sns-text">소셜 로그인</p>
+        <div class="sns-link">
+          <a href="https://www.google.co.kr/?hl=ko">
+            <img src="img/signin/google.png" alt="google-logo" />
+          </a>
+          <a href="https://www.kakaocorp.com/page/service/service/KakaoTalk">
+            <img src="img/signin/kakao.png" alt="kakako-logo" />
+          </a>
+        </div>
+      </div>
     </div>
   </body>
 </html>
