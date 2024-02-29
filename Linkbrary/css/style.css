@@ -613,7 +613,7 @@ section {
   display: flex;
 }
 
-#s1 {
+#page-sample-section {
   background-color: inherit;
   padding: 50px 0px;
   background-image: url("/img/_dim.png");
@@ -625,7 +625,7 @@ section {
   overflow: hidden;
 }
 
-#s2 {
+#feature-description-section {
   background-color: var(--white-color);
   max-width: 1920px;
   margin: -400px 0 0;
@@ -635,7 +635,7 @@ section {
   height: 9000px;
 }
 
-@media (max-width: 1118px) {
+@media (max-width: 1199px) {
   body {
     font-size: 12px;
   }
