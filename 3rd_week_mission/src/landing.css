@@ -299,6 +299,7 @@ footer {
     height: 100%;
     object-fit: fill;
     margin-top:1.4rem;
+    order: 2;
   }
 
   .title {
@@ -308,6 +309,7 @@ footer {
 
   .description {
     font-size: 1.5rem;
+    order: 3;
   }
 
   .slogan {
