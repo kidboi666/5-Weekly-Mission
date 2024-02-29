@@ -338,6 +338,16 @@ section {
   padding: 32px 104px 64px;
 }
 
+.feature-description-section {
+  background-color: var(--white-color);
+  max-width: 1920px;
+  margin: -120px 0 0;
+  padding: 120px 0px 50px;
+  gap: 100px;
+  flex: 1;
+  height: 9000px;
+}
+
 .gradient1 {
   background: linear-gradient(91deg, #6d6afe 17.28%, #ff9f9f 74.98%);
   background-clip: text;
@@ -430,9 +440,10 @@ section {
 }
 
 .page-sample-content {
+  position: relative;
   padding: 20px 10%;
   max-width: 1118px;
-  width: 100%;
+  width: 58.2291%;
   aspect-ratio: 1118/659;
   border-radius: 25px;
   border-radius: 25px;
@@ -444,15 +455,20 @@ section {
   gap: 20px;
 }
 
+.page-sample-dim-effect {
+  position: absolute;
+  top: 0;
+  max-width: 1168px;
+  width: 60.83%;
+  height: calc(100% - 120px);
+}
+
 .page-sample-section {
+  position: relative;
   background-color: inherit;
-  padding: 50px 18.75%;
-  background-image: url("/img/_dim.png");
-  background-repeat: no-repeat;
-  background-position: top center;
+  padding: 50px 0 0;
   max-width: 1920px;
-  width: 100vw;
-  height: 953px;
+  width: 100%;
   overflow: hidden;
 }
 
@@ -622,16 +638,6 @@ section {
 #link-add {
   margin-top: 40px;
   width: 350px;
-}
-
-#feature-description-section {
-  background-color: var(--white-color);
-  max-width: 1920px;
-  margin: -400px 0 0;
-  padding: 120px 0px 50px;
-  gap: 100px;
-  flex: 1;
-  height: 9000px;
 }
 
 @media (max-width: 1199px) {
