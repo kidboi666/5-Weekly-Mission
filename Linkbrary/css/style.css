@@ -102,8 +102,6 @@ main {
 section {
   max-width: 1920px;
   width: 100%;
-  padding: 50px 461px;
-  background-color: var(--white-color);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -340,12 +338,10 @@ section {
 
 .feature-description-section {
   background-color: var(--white-color);
-  max-width: 1920px;
   margin: -120px 0 0;
-  padding: 120px 0px 50px;
+  padding: 120px 0px;
   gap: 100px;
   flex: 1;
-  height: 9000px;
 }
 
 .gradient1 {
@@ -467,9 +463,8 @@ section {
   position: relative;
   background-color: inherit;
   padding: 50px 0 0;
-  max-width: 1920px;
-  width: 100%;
   overflow: hidden;
+  gap: 40px;
 }
 
 .policy-bar {
@@ -636,23 +631,12 @@ section {
 /*====================================           ID          ==================================*/
 
 #link-add {
-  margin-top: 40px;
   width: 350px;
 }
 
 @media (max-width: 1199px) {
   body {
     font-size: 12px;
-  }
-
-  section {
-    min-width: 800px;
-    width: 100%;
-  }
-
-  #content1 {
-    width: 100%;
-    min-width: 800px;
   }
 
   .container {
