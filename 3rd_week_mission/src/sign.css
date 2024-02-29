@@ -150,10 +150,12 @@ header {
   padding-top: 0.2rem;
   background-color: #f5e14b;
 }
+
 /*모바일 환경*/
+
 @media (min-width: 375px) and (max-width: 767px) { 
   .sign-box {
-    width:100%;
+    width: 100%;
     max-width: 40rem;
     margin-left: 3.2rem;
     margin-right: 3.2rem;
