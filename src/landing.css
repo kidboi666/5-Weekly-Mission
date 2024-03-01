@@ -25,6 +25,28 @@ nav {
   padding: 0 20rem;
 }
 
+@media (max-width: 1199px) {
+  .gnb {
+    padding: 0;
+    gap: 538px;
+    justify-content: center;
+  }
+  a.logo {
+    margin-left: 32px;
+  }
+  a.login-btn {
+    margin-right: 32px;
+  }
+}
+@media (max-width: 863px) {
+  .gnb {
+    gap: 0;
+    justify-content: space-between;
+  }
+}
+
+.background-clip-text
+
 header {
   display: flex;
   flex-direction: column;
