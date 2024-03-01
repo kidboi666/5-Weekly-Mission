@@ -402,6 +402,10 @@ section {
   aspect-ratio: 12/10;
 }
 
+.link-add {
+  width: 350px;
+}
+
 .link-list {
   display: flex;
   flex-direction: column;
@@ -637,7 +641,3 @@ section {
   color: rgb(249, 249, 78);
 }
 /*====================================           ID          ==================================*/
-
-#link-add {
-  width: 350px;
-}
