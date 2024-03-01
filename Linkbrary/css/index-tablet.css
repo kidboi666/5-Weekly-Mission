@@ -7,6 +7,10 @@
     width: 472px;
   }
 
+  .card {
+    font-size: 10px;
+  }
+
   .container {
     width: 698px;
     height: 315px;
