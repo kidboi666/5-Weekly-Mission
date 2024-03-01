@@ -1,12 +1,4 @@
 @media (max-width: 1199px) {
-  header {
-    padding: 20px 32px;
-  }
-
-  .btn {
-    padding: 16px;
-  }
-
   .heading-style {
     width: 84%;
     display: block;

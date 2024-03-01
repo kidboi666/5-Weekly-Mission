@@ -133,7 +133,7 @@ section {
     var(--primary-color),
     var(--skyblue-color)
   );
-  padding: 0;
+  padding: 16px;
   border-radius: 8px;
   display: flex;
   justify-content: center;
