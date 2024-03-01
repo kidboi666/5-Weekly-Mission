@@ -2,8 +2,7 @@
   box-sizing: border-box;
 }
 
-footer{
-  display: flex;
+.footer-wrap{
   height: 160px;
   padding: 32px 104px 64px 104px;
   flex-direction: column;
@@ -14,7 +13,7 @@ footer{
   color: white; 
 }
 
-.footer-wrap{
+.footer-element{
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
