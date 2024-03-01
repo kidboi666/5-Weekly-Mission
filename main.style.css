@@ -93,14 +93,21 @@ a {
 .section {
   width: 998px;
   margin: 120px auto 50px;
+}
+.section__content {
   display: grid;
   grid-template: 1fr/2fr;
   grid-template-areas: "img des";
 }
-.section.save {
+.section__content--reverse {
+  display: grid;
+  grid-template: 1fr/2fr;
   grid-template-areas: "des img";
 }
+
 .description-section {
+  padding: 30px;
+  width: 450px;
   grid-area: des;
   display: flex;
   flex-direction: column;
@@ -150,9 +157,6 @@ h2 {
   background-clip: text;
 }
 
-.section.share {
-  grid-template-areas: "des img";
-}
 .share--gradient {
   background: linear-gradient(
     99.5deg,
@@ -233,6 +237,11 @@ h2 {
     text-align: center;
     width: 300px;
   }
+  .description-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .signup__link {
     width: 200px;
     height: 37px;
@@ -257,13 +266,14 @@ h2 {
     left: 11.1px;
     border-radius: 25px;
   }
-  .section,
-  .section.save,
-  .section.share {
+  .section__content,
+  .section__content--reverse {
     grid-template: 2fr/1fr;
     grid-template-areas:
       "des"
       "img";
-    text-align: center;
+    justify-content: center;
+    align-content: center;
+    /* place-items: center; */
   }
 }
