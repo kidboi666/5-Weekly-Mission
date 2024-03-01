@@ -13,6 +13,7 @@
 
 body{
   background: var(--Linkbrary-bg, #F0F6FF);
+  margin: 0;
 }
 
 .auth-layout{
@@ -61,7 +62,7 @@ body{
 .auth-form{
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 30px;
 }
 
@@ -187,3 +188,34 @@ body{
   position: absolute;
   inset: 10px 8px 8px 8px;
 }
+
+/* 모바일 사이즈 */
+
+@media (max-width : 767px) {
+main{
+  padding: 120px 32px 0;
+}
+
+.auth-layout{
+  display: flex;
+  padding: 0;
+  width: auto;
+  max-width: 400px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
+.auth__gap,
+.auth-form__group,
+.auth-form__input-group,
+.auth-form__input-group input,
+.auth-btn,
+.social-auth{
+  width: 100%;
+  max-width: 400px;
+  align-items: stretch;
+}
+}
+  
