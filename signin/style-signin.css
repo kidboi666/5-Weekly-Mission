@@ -65,7 +65,7 @@ input:focus {
 }
 
 
-button {
+.signin_buttons {
   padding: 16px 20px;
   /* width: 128px; */
   border-radius: 8px;
