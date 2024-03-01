@@ -3,6 +3,12 @@
     padding: 20px 32px;
   }
 
+  .heading-style {
+    width: 84%;
+    display: block;
+    margin: auto;
+  }
+
   .top-heading {
     width: 472px;
   }

@@ -4,8 +4,13 @@
   }
 
   .top-heading {
-    width: 72%;
+    width: 100%;
     font-size: 3em;
+    line-height: 1.3em;
+  }
+
+  .link-add {
+    width: 60%;
   }
 
   .page-sample-section {
