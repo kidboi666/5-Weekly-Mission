@@ -1,2 +1,23 @@
 @media (max-width: 767px) {
+  header {
+    padding: 20px 32px;
+  }
+
+  .top-heading {
+    width: 72%;
+    font-size: 3em;
+  }
+
+  .page-sample-section {
+    padding: 28px 32px 0;
+    gap: 24px;
+  }
+
+  .page-sample-content {
+    width: 95.7191%;
+  }
+
+  .page-sample-dim-effect {
+    width: 100%;
+  }
 }
