@@ -149,6 +149,10 @@ section{
   gap: 157px;
 }
 
+.section__card.reverse{
+  flex-direction: row-reverse;
+}
+
 .section__frame{
   display: flex;
   width: 291px;

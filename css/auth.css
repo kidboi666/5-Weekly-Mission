@@ -15,7 +15,7 @@ body{
   background: var(--Linkbrary-bg, #F0F6FF);
 }
 
-.sign-up-layout{
+.auth-layout{
   padding: 238px 0px 117px 0px;
   display: flex;
   flex-direction: column;
@@ -23,21 +23,21 @@ body{
   gap: 32px;
 }
 
-.sign-up__gap{
+.auth__gap{
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 30px;
 }
 
-.sign-up-header{
+.auth-header{
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
 }
 
-.sign-up-header__iogin-massage{
+.auth-header__massage{
   display: flex;
   align-items: center;
   gap: 8px;
@@ -49,7 +49,7 @@ body{
   line-height: 24px; /* 150% */
 }
 
-.login-btn{
+.auth-header__btn{
   color: var(--Linkbrary-primary-color, #6D6AFE);
   font-family: Pretendard;
   font-size: 16px;
@@ -58,28 +58,28 @@ body{
   line-height: normal;
 }
 
-.sign-up-form{
+.auth-form{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 30px;
 }
 
-.sign-up-form__group{
+.auth-form__group{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
 }
 
-.sign-up-form__input-group{
+.auth-form__input-group{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 12px;
 }
 
-.sign-up-form__input-group label{
+.auth-form__input-group label{
   color: var(--black, #000);
   font-family: Pretendard;
   font-size: 14px;
@@ -88,7 +88,7 @@ body{
   line-height: normal;
 }
 
-.sign-up-form__input-group input{
+.auth-form__input-group input{
   display: flex;
   width: 400px;
   padding: 18px 15px;
@@ -99,31 +99,31 @@ body{
   background: var(--Linkbrary-white, #FFF);
 }
 
-.sign-up-form__input-group input:hover{
+.auth-form__input-group input:hover{
   border-radius: 8px;
   border: 1px solid var(--Linkbrary-primary-color, #6D6AFE);
   background: var(--Linkbrary-white, #FFF);
 }
 
-.sign-up-form__password-input{
+.auth-form__password-input{
   position: relative;
 }
 
-.signup-form__password-toggle-btn{
+.auth-form__password-toggle-btn{
   border: none;
   background: none;
   cursor: pointer;
   padding: 0;
 }
 
-.signin-form__password-icon{
+.auth-form__password-icon{
   position: absolute;
   top: 18px;
   right: 15px;
   bottom: 18px;
 }
 
-.sign-up-btn{
+.auth-btn{
   display: flex;
   width: 400px;
   padding: 16px 20px;
@@ -142,7 +142,7 @@ body{
   cursor: pointer;
 }
 
-.social-sign-up{
+.social-auth{
   display: flex;
   width: 400px;
   padding: 12px 24px;
@@ -153,17 +153,17 @@ body{
   background: var(--Linkbrary-gray10, #E7EFFB);
 }
 
-.social-sign-up__icons{
+.social-auth__icons{
   display: flex;
   align-items: flex-start;
   gap: 16px;
 }
 
-.social-sign-up__icon{
+.social-auth__icon{
   position: relative;
 }
 
-.social-sign-up__background{
+.social-auth__background{
   width: 42px;
   height: 42px;
   flex-shrink: 0;
