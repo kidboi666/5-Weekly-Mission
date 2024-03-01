@@ -1,0 +1,21 @@
+/* stylesheet 초기화 */
+* {
+    margin: 0;
+    font-family: "Pretendard";
+}
+
+html, body {
+    font-size: 62.5%;
+}
+
+button {
+    border: none;
+    padding: unset;
+    background-color: unset;
+    cursor: pointer;
+  }
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
