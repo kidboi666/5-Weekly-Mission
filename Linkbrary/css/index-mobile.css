@@ -3,6 +3,19 @@
     padding: 20px 32px;
   }
 
+  .btn {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .sign-logo {
+    width: 88px;
+  }
+
+  .header-login {
+    width: 80px;
+  }
+
   h3 {
     font-size: 24px;
   }
