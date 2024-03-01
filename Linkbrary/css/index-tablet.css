@@ -3,6 +3,10 @@
     padding: 20px 32px;
   }
 
+  .btn {
+    padding: 16px;
+  }
+
   .heading-style {
     width: 84%;
     display: block;
@@ -11,6 +15,10 @@
 
   .top-heading {
     width: 472px;
+  }
+
+  .page-sample-section {
+    padding-top: 40px;
   }
 
   .card {
@@ -61,29 +69,4 @@
   .share-bg {
     display: none;
   }
-
-  /* .container {
-      width: 100%;
-      height: auto;
-      flex-direction: column;
-      align-items: center;
-      gap: 60px;
-    }
-  
-    .feature-description {
-      order: 1;
-      align-items: center;
-      justify-content: center;
-    }
-  
-    .feature-description div {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .feature-example-image {
-      height: 450px;
-      order: 2;
-    } */
 }
