@@ -25,26 +25,6 @@ nav {
   padding: 0 20rem;
 }
 
-@media (max-width: 1199px) {
-  .gnb {
-    padding: 0;
-    gap: 538px;
-    justify-content: center;
-  }
-  a.logo {
-    margin-left: 32px;
-  }
-  a.login-btn {
-    margin-right: 32px;
-  }
-}
-@media (max-width: 863px) {
-  .gnb {
-    gap: 0;
-    justify-content: space-between;
-  }
-}
-
 .background-clip-text
 
 header {
@@ -214,4 +194,72 @@ footer {
   display: flex;
   column-gap: 1.2rem;
   height: 2rem;
+}
+
+@media (max-width: 1199px) {
+  .gnb {
+    padding: 0;
+    gap: 538px;
+    justify-content: center;
+  }
+  a.logo {
+    margin-left: 32px;
+  }
+  a.login-btn {
+    margin-right: 32px;
+  }
+}
+@media (max-width: 863px) {
+  .gnb {
+    gap: 0;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-image {
+    width: 100%;
+    height: auto;
+  }
+  
+  .hero-header {
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 28px;
+  }
+  
+  .content-image {
+    width: 100%;
+    height: auto
+  }
+
+  article {
+    padding-top: 0; 
+  }
+
+  section {
+    padding:40px 32px 40px 32px;
+    display: flex;
+    flex-direction: column;
+    
+    
+  }
+  .title {
+    order: 0;
+    margin-bottom: 20px;
+    width: 100%;
+    height: auto;
+  }
+  
+  .content-image {
+    order: 1;
+    margin-bottom: 16px;
+  }
+
+  .description {
+    order: 2;
+  }
+
+  
+  
 }
