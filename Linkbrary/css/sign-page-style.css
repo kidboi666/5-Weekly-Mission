@@ -1,3 +1,6 @@
+main {
+  padding: 238px 0;
+}
 .eye-btn {
   background-color: inherit;
   position: absolute;
@@ -21,13 +24,15 @@
 .incorrect-password {
   position: absolute;
   color: var(--red-color);
-  margin-top: 6px;
+  bottom: -25px;
 }
 
 .input-label {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%;
+  max-width: 400px;
 }
 
 .join {
@@ -67,8 +72,8 @@
 }
 
 .sign {
-  padding: 238px 0;
-  height: 100%;
+  width: 100%;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,7 +83,7 @@
 
 .sign-input {
   display: flex;
-  width: 400px;
+  width: 100%;
   padding: 18px 15px;
   justify-content: center;
   align-items: center;
@@ -88,7 +93,7 @@
 }
 
 .sign-input:focus {
-  border: 1px solid var(--skyblue-color);
+  border: 1px solid var(--primary-color);
 }
 
 .sign-form {
@@ -98,8 +103,9 @@
   font-size: 14px;
   margin: 0;
   padding: 0;
-  width: 400px;
+  width: 100%;
   align-items: center;
+  flex-grow: 1;
 }
 
 .signup-btn {
@@ -127,7 +133,7 @@
 }
 
 @media (max-width: 767px) {
-  .sign {
+  main {
     padding: 120px 32px;
   }
 }
