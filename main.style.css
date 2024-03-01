@@ -93,16 +93,15 @@ a {
 .section {
   width: 998px;
   margin: 120px auto 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .section__content {
-  display: grid;
-  grid-template: 1fr/2fr;
-  grid-template-areas: "img des";
+  display: flex;
 }
 .section__content--reverse {
-  display: grid;
-  grid-template: 1fr/2fr;
-  grid-template-areas: "des img";
+  display: flex;
 }
 
 .description-section {
@@ -266,14 +265,16 @@ h2 {
     left: 11.1px;
     border-radius: 25px;
   }
+  .section {
+    margin-top: 80px;
+  }
   .section__content,
   .section__content--reverse {
     grid-template: 2fr/1fr;
     grid-template-areas:
       "des"
       "img";
-    justify-content: center;
-    align-content: center;
+
     /* place-items: center; */
   }
 }
