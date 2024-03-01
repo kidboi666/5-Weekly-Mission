@@ -24,7 +24,6 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  min-width: 600px;
 }
 
 button {
@@ -427,6 +426,10 @@ section {
 .logo {
   width: 150px;
   height: 24px;
+}
+
+.mobile-description {
+  display: none;
 }
 
 .no-shrink-card {

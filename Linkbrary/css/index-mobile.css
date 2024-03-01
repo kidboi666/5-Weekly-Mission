@@ -3,9 +3,13 @@
     padding: 20px 32px;
   }
 
+  h3 {
+    font-size: 24px;
+  }
+
   .top-heading {
     width: 100%;
-    font-size: 3em;
+    font-size: 2em;
     line-height: 1.3em;
   }
 
@@ -20,9 +24,57 @@
 
   .page-sample-content {
     width: 95.7191%;
+    aspect-ratio: 303/179;
+    background-image: url("/img/share-bg-o.png");
+    background-size: cover;
   }
 
   .page-sample-dim-effect {
     width: 100%;
+  }
+
+  .search-bar {
+    display: none;
+  }
+
+  .link-list {
+    display: none;
+  }
+
+  .page-sample-dim-effect {
+    height: calc(100% - 40px);
+  }
+
+  .feature-description-section {
+    margin-top: -40px;
+    padding: 40px 32px;
+  }
+
+  .container {
+    position: relative;
+    flex-direction: column;
+    gap: 20px;
+    height: fit-content;
+    width: fit-content;
+    width: 100%;
+  }
+
+  .feature-description {
+    align-items: flex-start;
+  }
+
+  .feature-example-image {
+    order: 1;
+    width: 100%;
+    flex-shrink: 1;
+  }
+
+  .description {
+    display: none;
+  }
+
+  .mobile-description {
+    display: block;
+    order: 2;
   }
 }
