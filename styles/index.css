@@ -1,35 +1,5 @@
 @import "./global.css";
 
-/**/
-.flexbox {
-  background-color: aquamarine;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 15.7rem;
-  padding: 5rem 0;
-  width: 99.8rem;
-  height: 45rem;
-  flex-flow: column wrap;
-  gap: 1rem 15.7rem;
-}
-
-.flexbox > h2 {
-  margin: 0;
-  font-size: 4.8rem;
-  font-weight: 700;
-  line-height: normal;
-}
-.flexbox > p {
-  margin: 0;
-  font-size: 1.6rem;
-  font-weight: 400;
-  line-height: 150%;
-  color: #6b6b6b;
-}
-/**/
-
 body {
   display: flex;
   flex-direction: column;
@@ -124,46 +94,41 @@ header {
 
 /* main 안에 section 영역 */
 main {
-  padding-top: 7rem;
-  padding-bottom: 12rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
+  padding-top: 12rem;
+  padding-bottom: 17rem;
 }
 
 section {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 15.7rem;
-  padding: 5rem 0;
-}
-
-.contents-img {
-  width: 55rem;
+  width: 99.8rem;
   height: 45rem;
-}
-
-.description {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1rem;
-  font-weight: 700;
-  line-height: normal;
+  padding: 5rem 0;
+  flex-flow: column wrap;
+  gap: 1rem 15.7rem;
 }
 
-.description h2 {
+section > h2 {
   margin: 0;
   font-size: 4.8rem;
   font-weight: 700;
   line-height: normal;
 }
-
-.description p {
-  display: flex;
+section > p {
   margin: 0;
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 150%;
   color: #6b6b6b;
+}
+
+.contents-img {
+  width: 55rem;
+  height: 45rem;
 }
 
 .background-clip {
@@ -236,6 +201,7 @@ footer {
   line-height: normal;
 }
 
+/* tablet size */
 @media (max-width: 1199px) {
   .gnb {
     display: flex;
@@ -265,25 +231,22 @@ footer {
     height: 31.5rem;
   }
 
-  section {
-    gap: 5.1rem;
+  main {
+    padding-top: 8rem;
+    padding-bottom: 17rem;
   }
 
-  .flexbox {
-    width: 100%;
-    gap: 1rem 5.1rem;
+  section {
     width: 69.8rem;
     height: 31.5rem;
+    gap: 1rem 5.1rem;
   }
 }
-/* mobile */
+
+/* mobile size */
 @media (max-width: 767px) {
-  section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2.4rem;
-    background-color: #68e8f9;
+  br {
+    display: none;
   }
 
   header {
@@ -295,8 +258,19 @@ footer {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    max-width: 76.7rem;
     height: 6.3rem;
-    padding: 0 3.2rem;
+    padding: 1.3rem 3.2rem;
+  }
+
+  .gnb > img {
+    width: 8.9rem;
+    height: 1.6rem;
+  }
+
+  .header-link.signin {
+    width: 8rem;
+    height: 3.7rem;
   }
 
   .header-contents {
@@ -311,32 +285,40 @@ footer {
     word-break: keep-all;
   }
 
+  .header-link.add {
+    width: 20rem;
+  }
+
   .header-img {
     width: 30.3rem;
     height: 17.9rem;
   }
 
-  .flexbox {
-    width: 100%;
-    height: 45.1rem;
-    max-width: 76.7rem;
-    padding: 0 3.2rem;
-    background-color: #fe578f;
-    flex-direction: column;
-    flex-flow: wrap;
-    gap: 0;
+  main {
+    max-width: 76.8rem;
+    padding-top: 4rem;
+    padding-bottom: 8rem;
   }
 
-  .flexbox > h2 {
-    max-width: 32.5rem;
-    font-size: 2.4rem;
-    letter-spacing: -0.03rem;
+  section {
     width: 32.5rem;
+    height: max-content;
+    padding: 0;
+    flex-direction: column;
+    flex-flow: wrap;
+  }
+
+  section > h2 {
+    font-size: 2.4rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.03rem;
+    width: 100%;
     order: 1;
   }
 
-  .flexbox > p {
-    max-width: 32.5rem;
+  section > p {
     font-size: 1.5rem;
     font-style: normal;
     font-weight: 500;
@@ -345,18 +327,8 @@ footer {
     order: 3;
   }
 
-  .flexbox > img {
-    width: max-content;
+  .contents-img {
+    width: 100%;
     order: 2;
-    background-color: #68e8f9;
   }
-
-  /* section:nth-child(odd) {
-    background-color: #fe8a8a;
-  }
-
-  section:nth-child(even) {
-    background-color: #fe578f;
-    flex-direction: column-reverse;
-  } */
 }
