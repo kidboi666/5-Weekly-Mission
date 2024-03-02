@@ -34,11 +34,11 @@ togglePassword(confirmPasswordInput, confirmToggleButton);
 
 
  // 비밀번호가 일치하는지 확인하는 기능
- function validatePasswordsMatch(passWrod1, passWrod2) {
-  if(passWrod1 === null) {
+ function validatePasswordsMatch(password, confirmPassword) {
+  if(password === null) {
     return false;
   }
-  return passWrod1.value === passWrod2.value;
+  return password.value === confirmPassword.value;
 }
 
 // 비밀번호 확인 필드에서 focus가 빠져나갈 때마다 비밀번호를 확인하고 에러 메시지를 표시
