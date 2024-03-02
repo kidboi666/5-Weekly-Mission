@@ -1,8 +1,8 @@
 const loginPasswordInput = document.getElementById("login__pw__input"); // login input
 const loginToggleButton = document.querySelector(".login__btn-pw"); // login button
-const signUpPasswordInput = document.getElementById("signup__pw__input"); // join pass1 input
+const signUpPasswordInput = document.getElementById("form__pw"); // join pass1 input
 const signUpToggleButton = document.querySelector(".signup__btn-pw"); // join pass1 button
-const confirmPasswordInput = document.getElementById("signup__pw__input2"); // join pass2 input
+const confirmPasswordInput = document.getElementById("form__pw__confirm"); // join pass2 input
 const confirmToggleButton = document.querySelector(".signup__btn-pw2"); // join pass2 button
 const passWrodError = document.getElementById("error__pw__text");
 const signUpForm = document.querySelector("form");
@@ -17,12 +17,12 @@ function togglePassword(inputField, toggleButton) {
   toggleButton.addEventListener("click", function() {
     if (inputField.type === "password") {
       inputField.type = "text";
-      toggleButton.classList.remove("pw__off");
-      toggleButton.classList.add("pw__on");
+      toggleButton.classList.remove("btn__pw__off");
+      toggleButton.classList.add("btn__pw__on");
     } else {
       inputField.type = "password";
-      toggleButton.classList.remove("pw__on");
-      toggleButton.classList.add("pw__off")
+      toggleButton.classList.remove("btn__pw__on");
+      toggleButton.classList.add("btn__pw__off")
     }
   });
 }

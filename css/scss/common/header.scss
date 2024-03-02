@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+/* 
+2024.02.23 v1
+head css
+*/
+.head {
+  &__main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+  }
+  &__inner {
+    width: calc(100% - 21rem);
+    padding: 1.25rem 2rem;
+    margin: 0 auto;
+    transition: all 0.3s;
+    a {
+      display: block;
+    }
+  }
+  &__login__box {
+    .btn__login {
+      width: 8rem;
+      transition: all 0.3s;
+    }
+  }
+}
+
+
+@media screen and (max-width: 1199px) {
+  .head__inner {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .head{
+    &__inner {
+      padding: 0.813rem 2rem;
+    }
+    &__logo {
+      img {
+        width: auto;
+        height: 1rem;
+        transition: all 0.3s;
+      }
+    }
+    &__login__box {
+      .btn__login {
+        width: 5rem;
+        line-height: 2.313rem;
+        font-size: var(--font-size-sm);
+      }
+    }
+  }
+}

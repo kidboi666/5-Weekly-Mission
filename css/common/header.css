@@ -1,5 +1,3 @@
-@charset "UTF-8";
-
 /* 
 2024.02.23 v1
 head css
@@ -11,41 +9,39 @@ head css
   right: 0;
   z-index: 10;
 }
-
-.head__main>.inner {
-  width: 100%;
+.head__inner {
   width: calc(100% - 21rem);
   padding: 1.25rem 2rem;
   margin: 0 auto;
+  transition: all 0.3s;
 }
-
-.head__main a {
+.head__inner a {
   display: block;
 }
-
 .head__login__box .btn__login {
   width: 8rem;
+  transition: all 0.3s;
 }
 
 @media screen and (max-width: 1199px) {
-  .head__main>.inner {
+  .head__inner {
     width: 100%;
   }
 }
-
 @media screen and (max-width: 767px) {
-  .head__main>.inner {
+  .head__inner {
     padding: 0.813rem 2rem;
   }
-
-  .head__main .head__logo img {
+  .head__logo img {
     width: auto;
     height: 1rem;
+    transition: all 0.3s;
   }
-
   .head__login__box .btn__login {
     width: 5rem;
     line-height: 2.313rem;
     font-size: var(--font-size-sm);
   }
 }
+
+/*# sourceMappingURL=header.css.map */
