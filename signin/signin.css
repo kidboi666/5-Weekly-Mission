@@ -23,6 +23,7 @@ body {
   justify-content: center;
   align-items: center;
   font-family: Pretendard;
+  background-color: var(--gray-F0F6FF);
 }
 
 .title {
