@@ -216,13 +216,15 @@ section:nth-of-type(even){
 
 /* 모바일 */
 @media screen and (min-width: 375px) and (max-width: 767px) {
+
+
   section {
       display: grid;
       justify-content: center;
       column-gap: 16px;
       width: 100%;
       height: auto; 
-      padding: 25px 0; 
+      
       row-gap: 16px; 
       align-items: center;
   }
@@ -260,7 +262,7 @@ section:nth-of-type(even){
   }
 
   .img1 {
-      width: 100%;
+      max-width: 400px;
       height: auto;
   }
 
