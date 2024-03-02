@@ -5,11 +5,11 @@
 }
 
 
-html{
+html {
   height:100%;
 }
 
-body{
+body {
   position:relative;
   width:100%;
   height:100%;
@@ -19,23 +19,23 @@ body{
   flex-direction: column;
 }
 
-.contents{
+.contents {
   display: flex;
   flex-direction: column;
   gap:30px;
 }
 
-.title{
+.title {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.logo{
+.logo {
   height: 38px;
 }
 
-h2{
+h2 {
   color: black;
   font-size: 16px;
   font-family: Pretendard;
@@ -43,14 +43,14 @@ h2{
   line-height: 24px;
 }
 
-h2 a{
+h2 a {
   color: #6D6AFE;
  font-size: 16px;
  font-family: Pretendard;
  font-weight: 600;
 }
 
-h3{
+h3 {
   color: black;
   font-size: 14px;
   font-family: Pretendard;
@@ -58,13 +58,13 @@ h3{
   margin-bottom: 12px;
 }
 
-.input-form{
+.input-form {
   display: flex;
   gap:24px;
   flex-direction: column;
 }
 
-input{
+input {
   width: 400px;
   padding: 18px 15px;
   border-radius: 8px;
@@ -83,7 +83,7 @@ input:focus {
 }
 
 
-button{
+button {
   width: 100%;
   padding: 16px 20px;
   background: linear-gradient(91deg, #6D6AFE 0%, #6AE3FE 100%);
@@ -95,7 +95,7 @@ button{
   font-weight: 600;
 }
 
-.social-login{
+.social-login {
   display: flex;
   width: 100%;
   align-items: center;
@@ -106,19 +106,19 @@ button{
   border: 1px #CCD5E3 solid;
 }
 
-.social-icon{
+.social-icon {
   display: flex;
   gap: 16px
 }
 
-.social-login p{
+.social-login p {
   color: #373740;
   font-size: 14px;
   font-family: Pretendard;
   font-weight: 400;
 }
 
-.social-login .image2{
+.social-login .image2 {
   width:42px;
   height:42px;
   background-color: #FEE500;
@@ -126,7 +126,7 @@ button{
   position: relative;
 }
 
-.social-login .image1{
+.social-login .image1 {
   width:42px;
   height:42px;
   background-color: #FFFFFF;
@@ -136,7 +136,7 @@ button{
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.image2 img{
+.image2 img {
   position: absolute;
   top: 10px;
   bottom: 8px;
@@ -144,7 +144,7 @@ button{
   right: 8px;
 }
 
-.image1 img{
+.image1 img {
   position: absolute;
   top: 10px;
   bottom: 10px;
@@ -152,13 +152,13 @@ button{
   right: 10px;
 }
 
-.pwd-input-check p{
+.pwd-input-check p {
   color: #FF5B56;
   font-size: 14px;
   font-family: Pretendard;
   font-weight: 400;
 }
 
-.pwd-input form{
+.pwd-input form {
   background-image: url(eye-off.svg);
 }
