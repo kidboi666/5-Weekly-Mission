@@ -77,6 +77,10 @@ body {
   line-height: 24px;
 }
 
+.input:focus {
+  border: 1px solid var(--pirmary-6d6afe);
+}
+
 .relative {
   position: relative;
 }

@@ -73,6 +73,10 @@ body {
   font-size: 16px;
 }
 
+.input:focus {
+  border: 1px solid var(--pirmary-6d6afe);
+}
+
 .button {
   width: 400px;
   padding: 16px 20px;
