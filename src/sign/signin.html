@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./sign.css">
+    <title>Linkbrary</title>
+</head>
+<body>
+    <main>
+        <div class="logo_container">
+            <a href="/" class="logo">
+                <img src="../../public/logo.svg" width="210" height="38"/>
+            </a>
+            <p class="question_p">
+                회원이 아니신가요? <a href="signup.html"><span>회원 가입하기</span></a>
+            </p>
+        </div>
+        <div class="input_container">
+            <div class="input_box">
+                <label for="email">이메일</label>
+                <input type="email" id="email" placeholder="이메일을 입력하세요">
+            </div>
+        </div>
+        <div class="input_container">
+            <div class="input_box sign_pw">
+                <label for="password">비밀번호</label>
+                <input type="password" id="password" placeholder="비밀번호를 입력하세요">
+                <button class="eye-button" type="button">
+                    <img src="../../public/eye-off.svg" />
+                </button>
+            </div>
+        </div>
+        <button class="submit_btn" type="submit">로그인</button>
+        <div class="other_div">
+            <p>소셜 로그인</p>
+            <div class="other_icons">
+                <a href="https://www.google.com/">
+                    <div class="other_icon">
+                        <img class="icon_style_back" src="../../public/google2.png" width="44" height="44">
+                        <img class="icon_style_front" src="../../public/google1.png" width="22" height="22">
+                    </div>
+                </a>
+                <a href="https://www.kakaocorp.com/page/">
+                    <div class="other_icon">
+                        <div class="other_icon">
+                            <img class="icon_style_back" src="../../public/kakaologin2.png" width="44" height="44">
+                            <img class="icon_style_front" src="../../public/kakaologin1.png" width="22" height="22">
+                        </div>
+                    </div>
+                </a>                                    
+            </div>
+        </div>
+    </main>
+</body>
+</html>
