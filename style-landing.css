@@ -27,13 +27,13 @@ footer {
 .head,
 .contents,
 .info {
-  /* border: 5px solid red; */
-  width: 100%;
-  max-width: 1920px;
+  border: 5px solid red;
   margin: 0 auto;
 } 
 
 .nav {
+  width: 100%;
+  max-width: 1920px;
   position: fixed;
   top: 0;
   left: 0;
@@ -76,6 +76,7 @@ footer {
 }
 
 .head {
+  max-width: 1050px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
