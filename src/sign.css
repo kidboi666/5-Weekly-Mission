@@ -150,3 +150,12 @@ header {
   padding-top: 0.2rem;
   background-color: #f5e14b;
 }
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  body {
+    padding: 2rem 32px;
+  }
+}
+.sns-box {
+  max-width: 40rem;
+}
