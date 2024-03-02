@@ -1,17 +1,33 @@
 @import "global.css";
 
-header {
-  padding: 20px 150px;
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+nav {
+  /* padding: 20px 150px; */
+  display: flex;
+  justify-content: center;
   position: sticky;
   top: 0;
   left: 0;
   width: 100%;
   background-color: #f0f6ff;
 }
-.header-box {
+
+.nav-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  padding: 20px 150px;
+}
+.nav-box .button {
+  width: 128px;
+}
+.big-sec .button {
+  width: 350px;
 }
 .logo {
   width: 133px;
@@ -38,7 +54,7 @@ header {
   padding: 70px 360px 0;
   background-color: #f0f6ff;
 }
-.l-container {
+.large-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,35 +74,60 @@ header {
   background-image: linear-gradient(91deg, #6d6afe 17.28%, #ff9f9f 74.98%);
 }
 
-.small-sec {
-  padding: 120px 250px 50px;
+.article {
+  padding-top: 120px;
   justify-content: center;
   align-items: center;
 }
-.s-container {
+/* .small-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+} */
+.small-container {
+  display: grid;
+  justify-content: center;
+  column-gap: 130px;
+  row-gap: 10px;
+  width: 100%;
+  height: 550px;
+  padding: 50px 0;
 }
-.word-box {
-  display: flex;
-  width: 291px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
+
+.small-container.odd {
+  grid-template:
+    ". image"
+    "title image"
+    "paragraph image"
+    ". image"
+    /291px 550px;
 }
+
+.small-container.even {
+  grid-template:
+    "image ."
+    "image title"
+    "image paragraph"
+    "image ."
+    /550px 291px;
+}
+
 .small-title {
   font-size: 48px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
   letter-spacing: -0.3px;
+  grid-area: title;
 }
 .paragraph {
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
   line-height: 150%;
+  grid-area: paragraph;
+}
+.content-image {
+  grid-area: image;
+  width: 550px;
+  height: 450px;
 }
 .title1-color {
   background-image: linear-gradient(96deg, #fe8a8a 1.72%, #a4ceff 74.97%);
@@ -117,13 +158,15 @@ header {
   -webkit-text-fill-color: transparent;
 }
 footer {
-  padding: 120px 0 0;
+  padding-top: 120px;
+  width: 100%;
 }
 .footer-box {
   padding: 32px 104px 64px;
   background-color: #111322;
   display: flex;
   justify-content: space-between;
+  font-size: 16px;
 }
 a {
   text-decoration: none;
@@ -133,12 +176,14 @@ a:visited {
 }
 .social {
   display: flex;
-  gap: 12px;
+  column-gap: 15px;
 }
 .help {
   display: flex;
-  gap: 30px;
+  column-gap: 30px;
 }
-
+.social img {
+  height: 100%;
+}
 @media (min-width: 1920px) {
 }
