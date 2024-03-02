@@ -8,7 +8,7 @@ body {
 
 nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     background: var(--background);
     position: fixed;
     top: 0;
@@ -19,7 +19,6 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    align-self: stretch;
     padding: 2rem 20rem;
     width: 100%;
 }
@@ -202,7 +201,67 @@ section:nth-of-type(even){
     font-size: 1.6rem;
   }
 
-  .sns {
+.sns {
     display: flex;
     column-gap: 1.2rem;
+}
+
+/* 반응형 페이지 만들기 */
+/* 태블릿 사이즈 */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .gnb {
+    padding: 2rem 32px; /* Maintain minimum 32px margin on both sides */
+}
+
+}
+
+/* 모바일 */
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  section {
+      display: grid;
+      justify-content: center;
+      column-gap: 16px;
+      width: 100%;
+      height: auto; 
+      padding: 25px 0; 
+      row-gap: 16px; 
+      align-items: center;
   }
+
+  section:nth-of-type(odd),
+  section:nth-of-type(even) {
+      grid-template:
+      "title"
+      "image"
+      "explation";
+  }
+
+  .title, .explation, .content-image {
+      width: calc(100% - 3.2rem);
+      margin: 0 16px;
+  }
+
+  .maintitle {
+      font-size: 3.2rem;
+      line-height: 4rem;
+      
+  }
+
+  .title {
+    font-size: 2.4rem;
+  }
+
+  .title br{
+    display: none;
+  }
+
+  .cta, .cta2 {
+      width: calc(100% - 3.2rem);
+  }
+
+
+  .img1 {
+      width: 100%;
+      height: auto;
+  }
+}
