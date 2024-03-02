@@ -99,7 +99,7 @@
   }
 
   .section__text__box p {
-    padding: 0 0 1.5rem;
+    padding: 0;
   }
 
   .section__text__box p::before {

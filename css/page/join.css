@@ -8,9 +8,7 @@ join css
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
   background-color: var(--color-gray5);
-  overflow: hidden;
 }
 
 .login__body {
@@ -25,6 +23,7 @@ join css
 
 .login__sign {
   padding: 1rem 0;
+  flex-wrap: wrap;
 }
 
 .login__sign span {
@@ -49,7 +48,7 @@ join css
 }
 
 .login__another span {
-  line-height: 4.125rem;
+  line-height: 4rem;
 }
 
 .login__another .login__sns {
@@ -59,4 +58,16 @@ join css
 .login__another .login__sns a {
   width: 2.625rem;
   height: 2.625rem;
+}
+
+@media screen and (max-width: 1199px) {
+  .login__body {
+    padding: 12.5rem 2rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .login__body {
+    padding: 7.5rem 2rem;
+  }
 }
