@@ -2,8 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width= , initial-scale=1.0" />
-    <link rel="stylesheet" href="./style/index.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/web/index.css" />
+    <link rel="stylesheet" href="./style/tablet/index_tablet.css" />
+    <link rel="stylesheet" href="./style/mobile/index_mobile.css" />
+    <meta property="og:title" content="Linkbrary" />
+    <meta property="og:description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요" />
+    <meta property="og:image" content="https://www.freeiconspng.com/uploads/links-icon-30.jpg" />
+    <meta property="og:url" content="https://linkbrary-hyejean.netlify.app" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Linkbrary" />
+    <meta name="twitter:description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요" />
+    <meta name="twitter:image" content="https://www.freeiconspng.com/uploads/links-icon-30.jpg" />
     <title>Linkbrary</title>
   </head>
   <body>
@@ -15,77 +26,68 @@
     </header>
     <main>
       <section class="main">
-        <h1 class="description">
-          <span>세상의 모든 정보를</span><br />
-          쉽게 저장하고 관리해 보세요
-        </h1>
-        <div class="add-link contianer">
-          <a href="/signup" class="add-link">링크 추가하기</a>
-        </div>
-        <img src="img/main.png" alt="mainImg" />
+        <p>
+          <span class="slogunGradient">세상의 모든 정보</span>를<br />
+          쉽게 저장하고<br class="mobileOnly" />
+          관리해 보세요
+        </p>
+        <a href="/signup.html" class="add-link">링크 추가하기</a>
+        <img class="mainImg" src="img/main.png" alt="mainImg" />
       </section>
 
-      <section class="section save">
+      <section class="save">
         <div class="description">
           <h1>
-            <span>원하는 링크</span>를<br />
+            <span>원하는 링크</span>를<br class="mobileNone" />
             저장하세요
           </h1>
           <p>
-            나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br />
-            사고 싶은 옷, 기억하고 싶은 모든 것을<br />
+            나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br class="mobileNone" />
+            사고 싶은 옷, 기억하고 싶은 모든 것을<br class="mobileNone" />
             한 공간에 저장하세요.
           </p>
         </div>
-        <div class="imgs">
-          <img src="img/save-card1.png" />
-          <img src="img/save-card2.png" />
-          <img src="img/save-card3.png" />
-        </div>
+        <img class="img" src="img/saveImg.png" />
       </section>
 
-      <section class="section manage">
-        <div class="card-container">
-          <img src="img/manage-card.png" alt="manage-card" class="card" />
-        </div>
+      <section class="manage">
         <div class="description">
           <h1>
-            링크를 폴더로<br />
+            링크를 폴더로<br class="mobileNone" />
             <span>관리</span>하세요
           </h1>
           <p>
-            나만의 폴더를 무제한으로 만들고<br />
+            나만의 폴더를 무제한으로 만들고<br class="mobileNone" />
             다양하게 활용할 수 있습니다.
           </p>
         </div>
+        <img src="img/manageImg.png" alt="manage-img" class="card" />
       </section>
 
-      <section class="section share">
+      <section class="share">
         <div class="description">
           <h1>
-            저장한 링크를<br />
+            저장한 링크를<br class="mobileNone" />
             <span>공유</span>해 보세요.
           </h1>
           <p>
-            여러 링크를 폴더에 담고 공유할 수 있습니다.<br />
-            가족, 친구, 동료들에게 쉽고 빠르게 링크를<br />
+            여러 링크를 폴더에 담고 공유할 수 있습니다.<br class="mobileNone" />
+            가족, 친구, 동료들에게 쉽고 빠르게 링크를<br class="mobileNone" />
             공유해 보세요.
           </p>
         </div>
-        <div class="img-container">
-          <img class="popup-img" src="img/share-popup.png" alt="share-popup" />
-        </div>
+        <img class="img" src="img/shareImg.png" alt="share-popup" />
       </section>
 
-      <section class="section search">
-        <img class="img-container" src="img/screenshot-codeit.png" alt="screenshot-codeit" />
+      <section class="search">
         <div class="description">
           <h1>
-            저장한 링크를<br />
+            저장한 링크를<br class="mobileNone" />
             <span>검색</span>해 보세요
           </h1>
           <p>중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
         </div>
+        <img class="searchImg" src="img/searchImg.png" alt="screenshot-codeit" />
       </section>
     </main>
     <footer class="footer">

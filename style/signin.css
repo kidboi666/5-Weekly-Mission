@@ -31,7 +31,7 @@ main {
 }
 
 .move-link p {
-  color: var(--black, #000);
+  color: var(--Black);
   font-family: Pretendard;
   font-size: 16px;
   font-style: normal;
@@ -40,7 +40,7 @@ main {
 }
 
 .move-link .signup-link {
-  color: var(--Primary-color);
+  color: var(--Primary-Color);
   font-family: Pretendard;
   font-size: 16px;
   font-style: normal;
@@ -66,7 +66,7 @@ main {
 }
 
 .input-area label {
-  color: var(--black, #000);
+  color: var(--Black);
   font-family: Pretendard;
   font-size: 14px;
   font-weight: 400;
@@ -122,7 +122,7 @@ main {
 }
 
 .social-login p {
-  color: var(--Linkbrary-gray100, #373740);
+  color: var(--Gary7);
   font-family: Pretendard;
   font-size: 14px;
   font-weight: 400;

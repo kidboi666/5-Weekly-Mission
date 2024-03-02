@@ -1,4 +1,4 @@
-@import url("config.css");
+@import url("/style/config.css");
 
 .nav {
   padding: 20px 200px;
@@ -7,7 +7,7 @@
   align-items: center;
   position: sticky;
   top: 0;
-  background: var(--Linkbrary-bg);
+  background: var(--Linkbrary-Bg);
   z-index: 1;
 }
 
@@ -15,14 +15,18 @@
   cursor: pointer;
 }
 
+.mobileOnly {
+  display: none;
+}
+
 .login-btn {
   padding: 16px 20px;
   border-radius: 8px;
-  background: var(--gra-purpleblue-to-skyblue);
   width: 128px;
   text-decoration: none;
   text-align: center;
-  color: var(--Grey-Light, #f5f5f5);
+  color: var(--Grey-Light);
+  background: var(--Gra-Purpleblue-To-Skyblue);
   font-family: Pretendard;
   font-size: 18px;
   font-weight: 600;
@@ -30,60 +34,59 @@
 }
 
 .main {
-  padding: 70px 360px 0;
+  padding: 70px 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: #f0f6ff;
 }
 
-.main .description {
+.main p {
   text-align: center;
   font-family: Pretendard;
-  width: 900px;
+  width: 100%;
   font-size: 64px;
   font-weight: 700;
   line-height: 80px;
-  color: #000;
 }
 
-.main .description span {
+.main .slogunGradient {
   background: linear-gradient(91deg, #6d6afe 17.28%, #ff9f9f 74.98%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.add-link.contianer {
+.add-link {
   margin: 40px 0;
-  background-color: red;
   text-align: center;
-  background: var(--gra-purpleblue-to-skyblue);
+  background: var(--Gra-Purpleblue-To-Skyblue);
   width: 350px;
   cursor: pointer;
-}
-
-.add-link {
   color: var(--Grey-Light);
   padding: 16px 20px;
-  border-radius: 8px;
   border-radius: 8px;
   text-decoration: none;
 }
 
-.section {
-  padding: 50px 14%;
+section:not(.main) {
+  padding: 50px 0 50px;
   display: flex;
   gap: 157px;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
+section:not(.main) img {
+  width: 550px;
+  height: 450px;
+}
 .section.save {
-  padding: 120px 14% 50px;
+  padding: 120px 0 50px;
+  justify-content: center;
 }
 
-.section .description {
+section .description {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -104,38 +107,19 @@
   -webkit-text-fill-color: transparent;
 }
 
-.save .imgs {
-  width: 550px;
-  height: 450px;
-  border-radius: 15px;
-  background: var(--Linkbrary-bg);
-  padding: 88.24px 0;
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.manage .card-container {
+.manage .cardContainer {
   padding: 114px 68px 66px 68px;
   border-radius: 15px;
-  background-color: var(--Linkbrary-bg);
+  background-color: var(--Linkbrary-Bg);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.manage .card {
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .manage .description h1 {
-  color: #000;
   font-family: Pretendard;
   font-size: 48px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
   letter-spacing: -0.3px;
 }
 
@@ -144,12 +128,6 @@
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-family: Pretendard;
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: -0.3px;
 }
 
 .description p {
@@ -178,29 +156,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-.share .img-container {
-  position: relative;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../img/share-background.png");
-  border-radius: 25px;
-  box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
-  width: 570px;
-  height: 469px;
-  flex-shrink: 0;
-}
-
-.share .popup-img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -45%);
-}
-
-.search .img-container {
-  padding: 55px 0 0 60px;
-  border-radius: 15px;
-  background: #f0f6ff;
-}
-
 .search .description h1 {
   color: #000;
   font-family: Pretendard;
@@ -212,7 +167,7 @@
 }
 
 .search .description span {
-  background: var(--Fandom-K-gra-blue-to-pink, linear-gradient(271deg, #fe578f -9.84%, #68e8f9 107.18%));
+  background: var(--Fandom-K-Gra-Blue-To-Pink);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -249,4 +204,30 @@
 .sns {
   display: flex;
   gap: 12px;
+}
+
+/* Table 화면 디자인*/
+@media (max-width: 1199px) {
+  .nav {
+    padding: 20px 32px;
+  }
+
+  .mobileOnly {
+    display: none;
+  }
+
+  .mainImg {
+    width: 650.303px;
+    height: 383.114px;
+  }
+
+  section:not(.main) {
+    padding: 80px 0 50px;
+    gap: 51px;
+  }
+
+  section:not(.main) img {
+    width: 385px;
+    height: 315px;
+  }
 }
