@@ -210,9 +210,8 @@ section:nth-of-type(even){
 /* 태블릿 사이즈 */
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   .gnb {
-    padding: 2rem 32px; /* Maintain minimum 32px margin on both sides */
+    padding: 2rem 32px;
 }
-
 }
 
 /* 모바일 */
@@ -227,6 +226,11 @@ section:nth-of-type(even){
       row-gap: 16px; 
       align-items: center;
   }
+
+  .gnb {
+    padding: 2rem 32px;
+}
+
 
   section:nth-of-type(odd),
   section:nth-of-type(even) {
@@ -255,10 +259,7 @@ section:nth-of-type(even){
     display: none;
   }
 
-  .cta, .cta2 {
-      width: calc(100% - 3.2rem);
-  }
-
+ 
 
   .img1 {
       width: 100%;
