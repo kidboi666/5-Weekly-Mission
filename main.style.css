@@ -165,20 +165,21 @@ h2 {
   height: 160px;
   padding: 32px 104px 64px;
 }
-.footer-section {
+.footer__section {
   display: flex;
   justify-content: space-between;
-  flex-wrap: nowrap;
   white-space: nowrap;
+  /* gap: 30px 60px; */
 }
-.footer-year {
+
+.footer__year {
   color: rgba(103, 103, 103, 1);
 }
-.footer-main {
+.footer__link {
   display: flex;
   gap: 30px;
 }
-.footer-main a {
+.footer__link a {
   color: rgba(207, 207, 207, 1);
 }
 
@@ -284,5 +285,20 @@ h2 {
   .section__content.reverse {
     flex-direction: column-reverse;
     margin-top: 40px;
+  }
+  .footer__section {
+    position: relative;
+    height: 96px;
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  .footer__year {
+    position: absolute;
+    bottom: 0;
+    left: 0;
   }
 }
