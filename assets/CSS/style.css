@@ -1,0 +1,437 @@
+:root {
+  /*이름을 보고 어디서 사용하는 지 알 수 있게 이 페이지에서 필요없는 색이 지우기*/
+  /*색따로 분리*/
+  --black: #000;
+  --linkbrary-white: #FFF;
+  --linkbrary-primary-color: #6D6AFE;
+  --linkbrary-gray20: #CCD5E3;
+  --linkbrary-gray10: #E7EFFB;
+  --linkbrary-gray100: #373740;
+  --linkbrary-bg: #F0F6FF;
+  --grey-light: #F5F5F5;
+  --the-julge-black: #111322;
+  --card-item-text: #6B6B6B;
+  --footer-text: #676767;
+  --footer-link-text: #CFCFCF;
+  --The-julge-black: #111322;
+  --gra-purpleblue-to-skyblue: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+  --header-title: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
+  --card3-line-bg: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+  --card1-title: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 90.97%);
+  --card2-title: linear-gradient(277deg, #6FBAFF 2.22%, #FFD88B 93.66%);
+  --card3-title: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 99.99%);
+  --card4-title: linear-gradient(271deg, #FE578F -100%, #68E8F9 107.18%);
+}
+
+/*<!--네이밍은 형태_의미_상태 순으로 조합하며 3단계를 넘지 않도록 합니다.-->*/
+/*로그인 & 회원가입 분리 어스?이름*/
+/*다 rem으로 바꾸기*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.btn-color {
+  color: var(--grey-light);
+  background: var(--gra-purpleblue-to-skyblue);
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-decoration: none;
+  border-radius: 0.5rem;
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+  width: 100%;
+  background: var(--linkbrary-bg);
+}
+
+.nav__inner {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  flex-grow: 1;
+  padding: 1.25rem 12.5rem;
+  max-width: 120rem;
+  align-items: center;
+}
+
+.nav__inner__logo {
+  display: flex;
+}
+
+.nav__inner__signin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  width: 8rem;
+  padding: 1rem 1.25rem;
+}
+
+.header {
+  width: 100%;
+  margin: 0 auto;
+  background: var(--linkbrary-bg);
+}
+
+.header__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 2.5rem;
+  padding: 4.4rem 0 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.header__title {
+  margin: 0;
+  color: var(--black);
+  font-family: Pretendard;
+  text-align: center;
+  font-size: 4rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 5rem;
+}
+
+.header__title__text {
+  background: var(--header-title);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header__link {
+  display: inline;
+  margin: 0 auto;
+}
+
+.header__link__signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 1.25rem;
+  width: 21.9rem;
+}
+
+.header__bg {
+  display: flex;
+  justify-content: center;
+}
+
+/*contents----------------------------------------*/
+ .card-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* gap: 0 157px; */ /*이미지가 넘어감*/
+} 
+
+.card-item:nth-of-type(2n) {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.item-box {
+  display: grid;
+  gap: 6.25rem;
+  width: 62.4rem;
+  margin: 7.5rem auto;
+}
+
+.card-item__img {
+  margin: 0;
+  padding: 0;
+  width: 34.4rem;
+  height: 28.1rem;
+}
+
+.widthtest { /*수정*/
+  width: 17.1rem;
+}
+
+
+.card-item__title {
+  margin: 0 0 0.625rem 0;
+  color: var(--black);
+  font-family: Pretendard;
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.0187rem;
+  white-space: nowrap;
+}
+
+.card1-item__title__font { 
+  background: var(--card1-title);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card2-item__title__font {
+  background: var(--card2-title);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.0187rem;
+}
+
+.card3-item__title__font {
+  background: var(--card3-title);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card4-item__title__font {
+  background: var(--card4-title);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card-item__text {
+  margin: 0;
+  color: var(--card-item-text);
+  font-family: Abel;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; 
+}
+
+
+/*footer------------------------------------------------------------------*/
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--The-julge-black);
+}
+
+.footer__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 6.5rem 4rem 6.5rem;
+  flex-shrink: 0;
+  align-self: stretch;
+  max-width: 120rem;
+  flex-grow: 1;
+  color: var(--footer-text);
+}
+
+.footer__inner__link {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.9rem;
+  width: 11.32rem;
+  text-decoration: none;
+}
+
+.footer__inner__link__font {
+  color: var(--footer-link-text);
+  font-family: Acme;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: none;
+}
+
+.footer__inner__icon {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+/*줄바꿈 테스트*/
+.modeil { /*이름 변경*/
+  display: none;
+}
+
+
+/*media테스트 Tablet: 768px 이상 ~ 1199px 이하*/
+@media (max-width: 1199px) { /*1199보다 작은 화면에서 (이해하고 삭제하기)*/
+  .header__inner {
+    width: 43.625rem;
+  }
+
+  .testbg {
+    width: 40.625rem;
+  }
+
+  .testtitle {
+    display: block;
+  }
+
+
+
+  .item-box {
+    width: 43.625rem;
+  }
+
+  .card-item__img {
+    width: 24.0625rem;
+    height: 19.6875rem;
+  }
+
+  .widthtest { /*수정*/
+    width: 16.375rem;
+  }
+
+  .card-item__text {
+    white-space:nowrap
+  }
+
+  .card-item {
+    width: 43.625rem;
+    gap: 0 3.1875rem;
+    justify-content: space-around;
+  }
+
+  /*줄바꿈 테스트*/
+  .modeil { /*이름 변경*/
+    display: none;
+  }
+}
+
+/*media테스트 Mobile: 375px 이상 ~ 767px 이하*/
+@media only screen and (max-width: 767px) {  
+  /*작은 로고 추가*/
+
+  /* html, 
+  body{
+  width:100%;
+  overflow-x:hidden;
+  } */
+
+  .nav__inner__signin {
+    width: 5rem;
+    padding: .625rem 1rem;
+  }
+
+  .btn-color {
+    font-size: .875rem;
+  }
+
+  .header__title {
+    text-align: center;
+    font-size: 2rem;
+    line-height: 2.625rem; 
+    margin: 0 auto;
+  }
+
+  .nav__inner {
+    padding: .8125rem 2rem;
+  }
+
+  .header__inner {
+    width: 18.875rem;
+    gap: 1.5rem;
+  }
+
+  .testbg {
+    width: 20.3125rem;
+  }
+
+  .header__link__signup {
+    width: 12.5rem;
+    margin: 0 auto;
+    padding: .625rem 1rem;
+    gap: .625rem;
+  }
+
+
+  .item-box {
+    width: 20.3125rem;
+    flex-direction: row;
+    gap: 5rem;
+  }
+
+  .card-item__img {
+    width: 20.3125rem;
+    height: 16.5625rem;
+  }
+  .widthtest { /*수정*/
+    width: 20.3125rem;
+  }
+
+  .testtitle {
+    display: block;
+  }
+
+  .card-item__title {
+    font-size: 1.5rem;
+  }
+
+  .card-item__text {
+    font-size: .9375rem;
+    width: 18.75rem;
+    white-space:nowrap
+  }
+
+  .card-item {
+    display: flex;
+    flex-direction: column;
+    width: 20.3125rem;
+    gap: 1.5rem 0;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+
+  .card-item:nth-of-type(2n) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gridtest {
+    display: grid;
+    gap: 3.75rem 0;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+      'b'
+      'a';
+  }
+
+  .gridtestname1 {
+    grid-area: a;
+  }
+
+  .gridtestname2 {
+    grid-area: b;
+  }
+  
+  .footer__inner {
+    align-items: unset;
+  }
+
+  .footer__inner {
+    padding: 2rem 2rem 4rem;
+  }
+  
+  /*줄바꿈 테스트*/
+  .pc-message { /*이름 변경*/
+    display: none;
+  }
+
+  .modeil {
+    display: block;
+  }
+}

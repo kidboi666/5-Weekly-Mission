@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/assets/CSS/sign.css">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,18 +11,20 @@
   <title>signin</title>
 </head>
 
+<!--네이밍은 형태_의미_상태 순으로 조합하며 3단계를 넘지 않도록 합니다.-->
+<!--sign말고 비밀번호 페이지와 공통되는 이름으로 재사용가능하게-->
 <body class="sign">
   <div class="sign__inner">
     <div class="sign__inner__logo">
-      <a href="/"><img src="/img/logo.svg" alt="사이트 로고 Linkbrary" class="sign__logo__img"></a>
-      <div class="sign__logo__centerTest">
+      <a href="/"><img src="/assets/images/svg/sign-logo.svg" alt="사이트 로고 Linkbrary" class="sign__logo__img"></a>
+      <div class="sign__logo__centerTest"> <!--이름 형식 똑같게!!!!!!-->
         <p class="sign__logo__not-member">회원이 아니신가요?</p>
         <a href="/signup.html" class="signin__logo__link-signup">회원 가입하기</a>
       </div>
     </div>
 
     <form>
-      <div class="sign-input">
+      <div class="sign-input"> <!--인풋이름으로 적합하지 않음 input은 진짜 입력하는 곳에만-->
         <div class="sign-input__login">
           <label for="email" class="sign-input__login__label">이메일</label>
           <input type="email" class="sign-input__login__input" name="eamil">
@@ -31,9 +33,9 @@
           <label for="pw" class="sign-input__login__label">비밀번호</label>
           <div class="sign-input__pw-eye">
             <input type="password" class="sign-input__login__input" name="pw">
-            <div class="sign-input__pw-eye-off">  
-              <img src="/img/eye-off.svg">
-            </div>
+            <button class="sign-input__pw-eye-off">  <!--눌리는 이벤트를 넣어야 하니까 button으로 -->
+              <img src="/assets/images/svg/eye-off.svg" class="eye-off" alt="비밀번호 감추기">
+            </button>
           </div>
         </div>
       </div>
@@ -41,19 +43,18 @@
     </form>
   </div>
   
-  <div class="other-login">
-    <p class="other-login__title">소셜 로그인</p> 
-    <div class="other-login__inner">
+  <!--소셜로그인이름으로-->
+  <div class="social-sign">
+    <p class="social-sign__title">소셜 로그인</p> 
+    <div class="social-sign__inner">
       <a href="https://www.google.com/">
-        <div class="other-login__inner__icon">
-          <img src="/img/google.png" class="other-login__icon-img">
-          <img src="/img/googleback.svg" alt="google">
+        <div class="social-sign__inner__icon">
+          <img src="/assets/images/svg/social-icon-google.png" class="social-sign__icon-img">
         </div>
       </a>
       <a href="https://www.kakaocorp.com/page/">
-        <div class="other-login__inner__icon">
-          <img src="/img/kakao.svg" class="other-login__icon-img">
-          <img src="/img/kakaoback.svg" alt="kakao">
+        <div class="social-sign__inner__icon">
+          <img src="/assets/images/svg/social-icon-kakao.png" class="social-sign__icon-img">
         </div>
       </a>
     </div>

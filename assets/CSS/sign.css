@@ -1,0 +1,203 @@
+:root {
+  /*이름을 보고 어디서 사용하는 지 알 수 있게 로그인&회원가입에서만 쓰는 것으로 바꾸기*/
+  --black: #000;
+  --linkbrary-white: #FFF;
+  --linkbrary-primary-color: #6D6AFE;
+  --linkbrary-gray20: #CCD5E3;
+  --linkbrary-gray10: #E7EFFB;
+  --linkbrary-gray100: #373740;
+  --linkbrary-bg: #F0F6FF;
+  --grey-light: #F5F5F5;
+  --the-julge-black: #111322;
+  --card-item-text: #6B6B6B;
+  --footer-text: #676767;
+  --footer-link-text: #CFCFCF;
+  --The-julge-black: #111322;
+  --gra-purpleblue-to-skyblue: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+  --header-title: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
+  --card3-line-bg: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+  --card1-title: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 90.97%);
+  --card2-title: linear-gradient(277deg, #6FBAFF 2.22%, #FFD88B 93.66%);
+  --card3-title: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 99.99%);
+  --card4-title: linear-gradient(271deg, #FE578F -100%, #68E8F9 107.18%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.btn-color {
+  color: var(--grey-light);
+  background: var(--gra-purpleblue-to-skyblue);
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.sign {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  padding: 238px 0px 253px 0px;
+  background: var(--linkbrary-bg);
+}
+
+.sign__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.sign__inner__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.sign__logo__img {
+  width: 210.583px;
+  height: 38px;
+}
+
+.sign__logo__centerTest {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.sign__logo__not-member {
+  margin: 0;
+  color: var(--black);
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.signin__logo__link-signup {
+  color: var(--linkbrary-primary-color);
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.sign-input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.sign-input__login {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.sign-input__login__label {
+  color: var(--black);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.sign-input__login__input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  padding: 18px 15px;
+  border: 1px solid var(--linkbrary-gray20);
+  border-radius: 8px;
+  background: var(--linkbrary-white);
+}
+
+.sign-input__login__input:focus {
+  outline: 1px solid var(--linkbrary-primary-color);
+}
+
+
+.sign-input__pw-eye {
+  position: relative;
+}
+
+.sign-input__pw-eye-off {
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  border: 0;
+  background-color: transparent; /*배경 투명*/
+  cursor: pointer;
+}
+
+.sign-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 400px;
+  padding: 16px 20px;
+  margin-top: 30px;
+  border: solid 1px rgba(0,0,0,.15);
+  cursor: pointer;
+}
+
+.social-sign {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+  padding: 12px 24px;
+  margin: 0 auto;
+  border: 1px solid var(--linkbrary-gray20);
+  border-radius: 8px;
+  background: var(--linkbrary-gray10);
+}
+
+
+.social-sign__title {
+  margin: 0;
+  color: var(--linkbrary-gray100);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.social-sign__inner {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 16px;
+  width: 100px;
+  height: 40px;
+}
+
+.social-sign__inner__icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.social-sign__icon-img {
+  position: absolute;
+  /* z-index: 1; */
+}
