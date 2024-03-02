@@ -14,15 +14,22 @@
     --z-above: 100;
 }
 
-html {
-    font-size: 16px;
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    /* 62.5% of 16px browser font size is 10px */
+    /* 16px * 0.625 = 10px */
+    font-size: 62.5%;
+}
+
+body {
     font-family: 'Pretendard';
+    /* 1.6 * 10px = 16px */
+    font-size: 1.6rem;
 }
 
 .cursor-point {
