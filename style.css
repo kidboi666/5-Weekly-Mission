@@ -14,3 +14,10 @@
 * {
   box-sizing: border-box;
 }
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: Pretendard;
+  background-color: var(--gray-F0F6FF);
+}
