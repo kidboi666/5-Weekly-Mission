@@ -36,6 +36,10 @@ header {
   top: 0;
 }
 
+header a{
+  cursor: pointer;
+}
+
 .button-style{
   font-size: 18px;
   padding: 16px 20px;
