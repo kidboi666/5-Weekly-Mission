@@ -179,11 +179,15 @@ header .onclick-signin {
   padding: 114px 68px 66px 68px;  
 }
 
-.service-03 .back {
+.service-03 .images-back {
   position: relative;
   background: rgba(0, 0, 0, 0.40);
   box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.08);
   border-radius: 25px;
+}
+
+.service-03 .images-front {
+  position: absolute;
 }
 
 .service-04 img {
@@ -209,11 +213,21 @@ footer p {
   align-items: flex-start;
 }
 
+.middle {
+  display: flex;
+  gap: 30px;
+}
+
 .middle a {
   color: #CFCFCF;
   font-size: 16px;
   font-family: Acme;
   font-weight: 400;
+}
+
+.left {
+  display: flex;
+  gap:12px;
 }
 
 .left img {
