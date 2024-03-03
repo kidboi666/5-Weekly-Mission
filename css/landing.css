@@ -12,10 +12,11 @@ nav {
   position: sticky;
   top: 0;
   left: 0;
-  width: 100%;
   background-color: #f0f6ff;
 }
-
+header {
+  width: 100%;
+}
 .nav-box {
   display: flex;
   justify-content: space-between;
@@ -54,8 +55,9 @@ nav {
 }
 
 .big-sec {
-  padding: 70px 360px 0;
+  padding-top: 70px;
   background-color: #f0f6ff;
+  width: 100%;
 }
 .large-container {
   display: flex;
@@ -229,8 +231,8 @@ a:visited {
     width: 100%;
   }
   .large-container img {
-    width: 600px;
-    height: 295px;
+    width: 500px;
+    height: 246px;
   }
   .word-box {
     width: 100%;
@@ -286,5 +288,11 @@ a:visited {
   }
   .help a {
     line-height: 30px;
+  }
+  h1.big-title {
+    font-size: 48px;
+  }
+  h2.small-title {
+    font-size: 40px;
   }
 }
