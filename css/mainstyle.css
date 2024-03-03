@@ -1,29 +1,13 @@
 * {
   box-sizing: border-box;
-}
-
-@font-face {
-  font-family: "Pretendard-Regular";
-  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-  weight: 700;
-  font-style: normal;
-}
-
-.acme-regular {
-  font-family: "Acme", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-html {
-  font-family: 'Pretendard-Regular', sans-serif;
-  word-break: keep-all;
+  font-family: Pretendard;
 }
 
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0;
 }
 
 nav {
@@ -64,7 +48,6 @@ nav {
   color: #F5F5F5;
   font-size: 18px;
   font-weight: 600;
-
 }
 
 header {
@@ -124,6 +107,7 @@ header {
 .dim {
   display: flex;
   justify-content: center;
+  padding-top: 50px;
 }
 
 .dim-image {
@@ -219,7 +203,6 @@ section:nth-of-type(even) {
   background-image: linear-gradient(271.36deg, #FE578F -9.84%, #68E8F9 107.18%);
 }
 
-
 footer {
   width: 100%;
   height: 160px;
@@ -276,31 +259,140 @@ footer i {
   color: #FFFFFF;
 }
 
-/*Mobile 반응형 제작*/
+/*태블릿 사이즈*/
+
+@media (max-width: 1199px) {
+
+  /*nav{
+    padding: 0 32px;
+  }*/
+
+  .gnb {
+    margin: 0;
+    padding: 13px auto;
+    min-width: 800px;
+  }
+
+  header {
+    flex-direction: column;
+    column-gap: 40px;
+  }
+
+  .slogan {
+    font-size: 64px;
+    font-weight: 700;
+    width: 472px;
+    height: 240px;
+    line-height: 80px;
+  }
+
+  
+
+  .goto-signup-link {
+    width: 350px;
+    height: auto;
+    padding: 16px 20px;
+    font-size: 18px;
+    line-height: 21.48px;
+  }
+  
+  .dim {
+    padding: 29.07px 32px;
+  }
+
+  .dim-image {
+    width: 650.3px;
+    height: 383.11px;
+  }
+
+  section {
+    justify-content: center;
+    column-gap: 51px;
+    padding: 80px 251px;
+  }
+
+  .title {
+    font-size: 48px;
+    line-height: 57.28px;
+  }
+
+  .section_text_discription {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .section_img-box-image {
+    width: 385px;
+    height: 315px;
+  }
+
+  section:nth-of-type(odd) {
+    grid-template:
+    ". image"
+    "title image"
+    "description image"
+    ". image"
+    /262px 385px;
+  }
+  
+  section:nth-of-type(even) {
+    grid-template:
+      "image ."
+      "image title"
+      "image description"
+      "image ."
+    /385px 262px;
+  }
+
+  .codeitlogo {
+    font-family: "Arial";
+  }
+
+  .info a {
+    font-family: "Arial";
+  }
+
+  .icons {
+    column-gap: 12px;
+  }
+}
+
+
+
+/*Mobile 사이즈*/
 
 @media (max-width: 767px) {
 
   .gnb {
     margin: 0;
     padding: 13px 32px;
+    width: 100%;
+    min-width: 400px;
   }
 
-  .maincontents-heading h2 {
+  header {
+    flex-direction: column;
+    column-gap: 24px;
+  }
+
+  .slogan {
     font-size: 32px;
     font-weight: 700;
-    width: 100%;
+    width: 236px;
+    height: 126px;
     line-height: 42px;
   }
 
   .goto-signup-link {
     width: 200px;
+    height: auto;
     padding: 10px 18px;
     font-size: 14px;
     line-height: 16.71px;
   }
   
   .dim {
-    padding: 0 32px;
+    padding: 13.56px 32px;
   }
 
   .dim-image {
@@ -314,13 +406,14 @@ footer i {
     display: flex;
     flex-direction: column;
     padding: 40px 32px;
-    column-gap: 24px;
   }
 
   .title {
     font-size: 24px;
     line-height: 28.64px;
     display: inline;
+    gap: 10px;
+    margin-bottom: 24px;
   }
 
   .section_text_discription {
@@ -334,7 +427,10 @@ footer i {
   }
 
   footer {
+    width: 100%;
+    height: auto;
     padding: 32px 32px;
+    margin: 0;
   }
 
  .footerbox {
@@ -343,18 +439,21 @@ footer i {
   "footer-info footer-icons"
   "footer-logo .";
   gap: 60px;
+  padding: 32px 32px;
  }
 
   .codeitlogo {
     grid-area: footer-logo;
+    font-family: "Arial";
   }
 
   .info {
+    width: 181.11px;
+  }
+
+  .info a {
     grid-area: footer-info;
-    column-gap: 30px;
-    font-size: 16px;
-    font-weight: 400;
-    color: #CFCFCF;
+    font-family: "Arial";
   }
 
   .icons {
