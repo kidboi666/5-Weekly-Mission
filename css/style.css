@@ -69,7 +69,10 @@ header .onclick-signin {
 }
 
 .main-title span {
-  color: #6D6AFE;
+  background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: 64px;
   font-family: Pretendard;
   font-weight: 700;
@@ -134,8 +137,32 @@ header .onclick-signin {
   overflow: hidden;
 }
 
-.service-01 .center {
-  position: relative;
+.service-01 span{
+  background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.service-02 span{
+  background: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.service-03 span{
+  background: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 52.69%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+}
+
+.service-04 span{
+  background: var(--Fandom-K-gra-blue-to-pink, linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .service-01 .icon {  
@@ -188,3 +215,4 @@ footer p {
 .left img {
   width: 18px;
 }
+
