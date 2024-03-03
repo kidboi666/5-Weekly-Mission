@@ -126,3 +126,17 @@ body {
   display: flex;
   justify-content: space-between;
 }
+
+@media (max-width: 767px) {
+  .form_section_div {
+    width: 325px;
+  }
+
+  .button {
+    width: 325px;
+  }
+
+  .footer {
+    width: 325px;
+  }
+}
