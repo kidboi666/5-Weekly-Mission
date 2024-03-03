@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+    <link rel="stylesheet" href="./assets/css/sign.css" />
+  </head>
+  <body>
+    <header>
+      <a class="logo-link" href="./index.html"
+        ><img src="./assets/images/signin/logo.svg" alt="Linkbrary"
+      /></a>
+      <p class="header-message">
+        회원이 아니신가요?
+        <a class="header-link" href="./signup.html">회원 가입하기</a>
+      </p>
+    </header>
+
+    <div class="sign-box">
+      <form class="sign-form">
+        <div class="sign-inputs">
+          <div class="sign-input-box">
+            <label class="sign-input-label" for="email">이메일</label>
+            <input
+              class="sign-input"
+              type="email"
+              placeholder="codeit@codeit.com"
+            />
+          </div>
+          <div class="sign-input-box sign-password">
+            <label class="sign-input-label" for="password">비밀번호</label>
+            <input
+              class="sign-input"
+              name="password"
+              placeholder="• • • • • • • •"
+              type="password"
+            />
+            <button class="eye-button" type="button">
+              <img
+                src="./assets/images/signin/eye-off.svg"
+                alt="비밀번호 가리기"
+              />
+            </button>
+          </div>
+        </div>
+        <button type="submit" class="btn">로그인</button>
+      </form>
+
+      <div class="sns-box">
+        <span class="sns-text">소셜 로그인</span>
+        <div class="sns-links">
+          <a class="sns-link google-link" href="https://www.google.com"
+            ><img src="./assets/images/signin/google_icon.svg"
+          /></a>
+          <a class="sns-link kakao-link" href="https://www.kakaocorp.com/page/"
+            ><img src="./assets/images/signin/kakao_icon.svg"
+          /></a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
