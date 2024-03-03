@@ -126,3 +126,16 @@ button:hover {
   width: 42px;
   height: 42px;
 }
+
+/* MOBILE */
+@media (max-width: 767px) {
+  body {
+    padding: 0 32px;
+  }
+  header {
+    margin-top: 120px;
+  }
+  main {
+    width: min(100%, 400px);
+  }
+}
