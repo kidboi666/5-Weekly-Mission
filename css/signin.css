@@ -87,7 +87,7 @@ input {
   margin-top: 12px;
 }
 
-input:focus  {
+input:focus {
   border: 1px #6D6AFE solid;
 }
 
