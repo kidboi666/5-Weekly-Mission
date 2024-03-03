@@ -10,45 +10,26 @@
     --Linkbrary-gray10: #E7EFFB;
     --Grey-Light: #F5F5F5;
     --Linkbrary-bg: #F0F6FF;
-}
-
-html {
-    font-size: 16px;
+    --z-top: 1000;
+    --z-above: 100;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    /* 62.5% of 16px browser font size is 10px */
+    /* 16px * 0.625 = 10px */
+    font-size: 62.5%;
+}
+
+body {
     font-family: 'Pretendard';
-}
-
-/* 버튼 */
-.primary-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.625rem; /* 10px; */
-    padding: 1rem 1.25rem; /* 16px 20px; */
-    border-radius: 0.5rem; /* 8px; */
-    background: linear-gradient(91deg, var(--Linkbrary-primary-color) 0.12%, #6AE3FE 101.84%);
-    border: none;
-    color: var(--Grey-Light);
-    font-size: 1.125rem; /* 18px; */
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.primary-btn.sm {
-    width: 8rem; /* 128px; */
-}
-
-.primary-btn.md {
-    width: 21.875rem; /* 350px; */
-}
-
-.primary-btn.lg {
-    width: 25rem; /* 400px; */
+    /* 1.6 * 10px = 16px */
+    font-size: 1.6rem;
 }
 
 .cursor-point {

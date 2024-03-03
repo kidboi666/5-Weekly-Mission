@@ -1,0 +1,37 @@
+
+/* 버튼 */
+.primary-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem; /* 10px; */
+    padding: 1.6rem 2rem; /* 16px 20px; */
+    border-radius: 0.8rem; /* 8px; */
+    background: linear-gradient(91deg, var(--Linkbrary-primary-color) 0.12%, #6AE3FE 101.84%);
+    border: none;
+    color: var(--Grey-Light);
+    font-size: 1.8rem; /* 18px; */
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.primary-btn.sm {
+    width: 12.8rem; /* 128px; */
+}
+
+.primary-btn.md {
+    width: 35rem; /* 350px; */
+}
+
+.primary-btn.lg {
+    width: 40rem; /* 400px; */
+}
+
+@media screen and (max-width: 767px) {
+    .primary-btn {
+        padding: 1rem 1.6rem;
+    }
+    .primary-btn.md {
+        width: 20rem;
+    }
+}
