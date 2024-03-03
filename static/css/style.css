@@ -394,9 +394,13 @@ footer {
         box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
         background: linear-gradient(180deg, rgba(196, 196, 196, 0.00) 67.68%, #F0F6FF 94.76%); 
     }
+
+    .content2, .content3, .content4, .content5 {
+        padding-left : 0;
+        padding-right: 0;;
+    }
+
     .containor2, .containor3, .containor4, .containor5 {
-        padding-left : 251px;
-        padding-right: 250px;
         gap : 51px;
     }
 
