@@ -42,7 +42,6 @@ header .onclick-signin {
   color: #F5F5F5;
   font-family: Pretendard;
   font-weight: 600;
-  word-wrap: break-word;
   width: 128px;
   border-radius: 8px;
   background-image: linear-gradient(90deg,var(--primary),skyblue);
@@ -63,7 +62,6 @@ header .onclick-signin {
   font-family: Pretendard;
   font-weight: 700;
   line-height: 80px;
-  word-wrap: break-word;
   text-align: center;
 }
 
@@ -73,7 +71,6 @@ header .onclick-signin {
   font-family: Pretendard;
   font-weight: 700;
   line-height: 80px;
-  word-wrap: break-word;
 }
 
 .main .onclick-signup {
@@ -84,7 +81,6 @@ header .onclick-signin {
   font-size: 18px;
   font-family: Pretendard;
   font-weight: 600;
-  word-wrap: break-word;
   width: 350px;
   border-radius: 8px;
   background-image: linear-gradient(90deg,var(--primary),skyblue);
@@ -180,7 +176,6 @@ footer p {
   font-size: 16px;
   font-family: Acme;
   font-weight: 400;
-  word-wrap: break-word;
 }
 
 .footer-info {
@@ -194,7 +189,6 @@ footer p {
   font-size: 16px;
   font-family: Acme;
   font-weight: 400;
-  word-wrap: break-word;
 }
 
 .left img {
