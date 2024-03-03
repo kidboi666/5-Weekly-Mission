@@ -1,0 +1,180 @@
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  weight: 700;
+  font-style: normal;
+}
+
+html {
+  font-family: 'Pretendard-Regular', sans-serif;
+  word-break: keep-all;
+}
+
+body {
+  background-color: #F0F6FF;
+  margin-bottom: 100px;
+}
+
+.topbox {
+  position: relative;
+  left: 520px;
+  top: 238px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  height: 491px;
+  gap: 32px;
+}
+
+.signuptop {
+  display: flex;
+  flex-direction: column;
+  width: 210.58px;
+  height: 78px;
+  gap: 16px;
+}
+
+.logo {
+  width: 210.58px;
+  height: 38px;
+}
+
+.gotosignin {
+  width: 204px;
+  height: 24px;
+  gap: 8px;
+  font-size: 16px;
+}
+
+.signinask {
+  width: 123px;
+  height: 24px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #000000;
+}
+
+.signin {
+  font-weight: 600;
+  line-height: 19.09px;
+  color: #6D6AFE;
+}
+
+
+.inputform {
+  position: relative;
+  top: -100px;
+  left: 520px;
+  display: flex;
+  width: 400px;
+  height: 338px;
+  gap: 24px;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+.getemail,
+.getpassword,
+.getpasswordconfirmation {
+  width: 400px;
+  height: 89px;
+  gap: 12px;
+}
+
+.getemail input:focus,
+.getpassword input:focus,
+.getpasswordconfirmation input:focus {
+  outline: 1px solid blue;
+} 
+
+#inputemail,
+#inputpassword,
+#inputpasswordconfirmation {
+  font-size: 14px;
+  font-weight: 400;
+  color: #000000;
+}
+
+#signupemail,
+#signuppassword,
+#passwordconfirmation {
+  width: 400px;
+  height: 60px;
+  padding: 18px 15px 18px 15px;
+  border-radius: 8px;
+  border: 1px solid #CCD5E3;
+}
+
+.passwordbox,
+.passwordconfirmationbox {
+  position: relative;
+}
+
+.eyevector {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 16px;
+  height: 13.82px;
+  background-color: #373740;
+}
+
+.entering {
+  position: relative;
+  top: -50px;
+  left: 520px;
+}
+
+.entersignup {
+  width: 400px;
+  height: 53px;
+  padding: 16px 20px 16px 20px;
+  border-radius: 8px;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #F5F5F5;
+  background-image: linear-gradient(90.99deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+  border: none;
+}
+
+.anothersignup {
+  position: relative;
+  left: 520px;
+  display: flex;
+  width: 400px;
+  height: 66px;
+  border-radius: 8px;
+  border: 1px;
+  padding: 12px 24px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #E7EFFB;
+}
+
+.anothersignupmessage {
+  font-weight: 400;
+  font-size: 14px;
+  color: #373740;
+}
+
+.anothersignupicon {
+  width: 100px;
+  height: 42px;
+  gap: 16px;
+}
+
+.googleicon,
+.kakaoicon {
+  width: 42px;
+  height: 42px;
+}
+
+
+
