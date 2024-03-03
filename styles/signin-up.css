@@ -117,7 +117,7 @@ input {
 }
 
 .sns-wrap {
-  width: 40rem;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -140,4 +140,24 @@ input {
 
 input:focus {
   outline-color: var(--Linkbrary-primary-color);
+}
+
+@media (max-width: 767px) {
+  form {
+    align-items: center;
+    max-width: 39.9rem;
+  }
+
+  .sign-wrap {
+    width: 100%;
+    padding: 0 3.2rem;
+  }
+
+  .sign-input {
+    width: 100%;
+  }
+
+  .sns-wrap {
+    max-width: 39.9rem;
+  }
 }
