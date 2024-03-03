@@ -8,34 +8,41 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
+    <header class="header">
       <a href="index.html"
         ><img src="img/logo.svg" alt="Linkbrary" width="133px" height="24px"
       /></a>
-      <button type="button">로그인</button>
+      <a href="signin/signin.html"
+        ><button class="header_btn" type="button">로그인</button></a
+      >
     </header>
     <main>
-      <section>
-        <h1>
-          <span>세상의 모든 정보</span>를<br />
+      <section class="main_section">
+        <h1 class="main_section_text">
+          <span class="main_section_span">세상의 모든 정보</span>를<br />
           쉽게 저장하고 관리해 보세요
         </h1>
-        <button type="button">링크 추가하기</button>
+        <a href="/signup/signup.html"
+          ><button class="main_section_btn" type="button">
+            링크 추가하기
+          </button></a
+        >
         <img
+          class="main_section_img"
           src="img/image_box1.png"
           alt="서비스 소개"
           width="1118px"
           height="537px"
         />
       </section>
-      <section>
-        <div>
+      <section class="section_boxs">
+        <div class="flex_boxs boxs_margin_top">
           <div>
-            <h2>
-              <span>원하는 링크</span>를<br />
+            <h2 class="flex_box_text">
+              <span class="text_span_first">원하는 링크</span>를<br />
               저장하세요
             </h2>
-            <p>
+            <p class="flex_box_p">
               나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br />
               사고 싶은 옷, 기억하고 싶은 모든 것을<br />
               한 공간에 저장하세요.
@@ -49,7 +56,7 @@
           />
         </div>
 
-        <div>
+        <div class="flex_boxs boxs_margin">
           <img
             src="img/image_box3.png"
             alt="폴더 이름 변경하기"
@@ -57,24 +64,24 @@
             height="270px"
           />
           <div>
-            <h2>
+            <h2 class="flex_box_text">
               링크를 폴더로<br />
-              <span>관리</span>하세요
+              <span class="text_span_second">관리</span>하세요
             </h2>
-            <p>
+            <p class="flex_box_p">
               나만의 폴더를 무제한으로 만들고<br />
               다양하게 활용할 수 있습니다.
             </p>
           </div>
         </div>
 
-        <div>
+        <div class="flex_boxs boxs_margin">
           <div>
-            <h2>
+            <h2 class="flex_box_text">
               저장한 링크를<br />
-              <span>공유</span>해 보세요.
+              <span class="text_span_third">공유</span>해 보세요.
             </h2>
-            <p>
+            <p class="flex_box_p">
               여러 링크를 폴더에 담고 공유할 수 있습니다.<br />
               가족, 친구, 동료들에게 쉽고 빠르게 링크를<br />
               공유해 보세요.
@@ -88,7 +95,7 @@
           />
         </div>
 
-        <div>
+        <div class="flex_boxs boxs_margin">
           <img
             src="img/image_box5.png"
             alt="검색 서비스"
@@ -96,42 +103,48 @@
             height="450px"
           />
           <div>
-            <h2>
+            <h2 class="flex_box_text">
               저장한 링크를<br />
-              <span>검색</span>해 보세요
+              <span class="text_span_fourth">검색</span>해 보세요
             </h2>
-            <p>중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
+            <p class="flex_box_p">중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
           </div>
         </div>
       </section>
     </main>
-    <footer>
-      <p>©codeit - 2023</p>
-      <div>
-        <a href="/privacy">Privacy Policy</a>
-        <a href="/faq">FAQ</a>
-      </div>
-      <div>
-        <a href="https://www.facebook.com/"
-          ><img
-            src="img/facebook.svg"
-            alt="페이스북"
-            width="20px"
-            height="20px"
-        /></a>
-        <a href="https://twitter.com/"
-          ><img src="img/twitter.svg" alt="트위터" width="20px" height="20px"
-        /></a>
-        <a href="https://www.youtube.com/"
-          ><img src="img/youtube.svg" alt="유튜브" width="20px" height="20px"
-        /></a>
-        <a href="https://www.instagram.com/"
-          ><img
-            src="img/instagram.svg"
-            alt="인스타그램"
-            width="20px"
-            height="20px"
-        /></a>
+    <footer class="footer">
+      <div class="footer_div">
+        <p class="footer_p">©codeit - 2023</p>
+        <div class="footer_center_link_div">
+          <a
+            class="footer_center_link"
+            href="privacy_policy/privacy_policy.html"
+            >Privacy Policy</a
+          >
+          <a class="footer_center_link" href="faq/faq.html">FAQ</a>
+        </div>
+        <div class="footer_linkbox">
+          <a href="https://www.facebook.com/" target="_blank"
+            ><img
+              src="img/facebook.svg"
+              alt="페이스북"
+              width="20px"
+              height="20px"
+          /></a>
+          <a href="https://twitter.com/" target="_blank"
+            ><img src="img/twitter.svg" alt="트위터" width="20px" height="20px"
+          /></a>
+          <a href="https://www.youtube.com/" target="_blank"
+            ><img src="img/youtube.svg" alt="유튜브" width="20px" height="20px"
+          /></a>
+          <a href="https://www.instagram.com/" target="_blank"
+            ><img
+              src="img/instagram.svg"
+              alt="인스타그램"
+              width="20px"
+              height="20px"
+          /></a>
+        </div>
       </div>
     </footer>
   </body>

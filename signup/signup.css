@@ -101,6 +101,7 @@ body {
   font-size: 18px;
   font-weight: 600;
   margin-top: 30px;
+  cursor: pointer;
 }
 
 .footer {
