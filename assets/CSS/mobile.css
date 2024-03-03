@@ -18,7 +18,7 @@
     width: 43.625rem;
   }
   
-  .card-item {
+  .card-wrap {
     gap: 0 51px;
   }
 
@@ -31,7 +31,6 @@
     width: 90%;
   }
 
-  /*로그인 & 회원가입*/
   .sign {
     display: flex;
     width: 1199px;
@@ -84,29 +83,8 @@
     max-width: 400px;
   } 
 
-  /* .card-item {
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas:
-      'img' 
-      'title'
-      'text';
-  }
-
-  .card-item__title {
-    grid-area: 'title';
-  }
-
-  .card-item__text {
-    grid-area: 'text';
-  }
-
-  .card-item__img {
-    grid-area: 'img';
-  } */
-
-  .card-item,
-  .card-item:nth-of-type(2n) {
+  .card-wrap,
+  .card-wrap:nth-of-type(2n) {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -139,7 +117,6 @@
     top: 6.875rem;
   }
 
-  /*로그인 & 회원가입*/
   .sign-header-wrap {
     padding: 7.5rem 0px 14.5625rem 0px;
   }

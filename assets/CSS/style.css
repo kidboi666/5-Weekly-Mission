@@ -21,8 +21,6 @@ body {
   display: none;
 }
 
-/*----------------------------------------------------------------------*/
-
 .btn-color {
   color: var(--button-text);
   background: var(--button-background);
@@ -64,8 +62,6 @@ body {
   width: 8rem;
   padding: 1rem 1.25rem;
 }
-
-/*----------------------------------------------------------------------*/
 
 .header-wrap {
   width: 100%;
@@ -116,8 +112,6 @@ body {
   justify-content: center;
 }
 
-/*----------------------------------------------------------------------*/
-
 .content-wrap {
   display: grid;
   gap: 6.25rem;
@@ -125,14 +119,14 @@ body {
   margin: 7.5rem auto;
 }
 
-.card-item {
+.card-wrap {
   display: flex;
   justify-content: space-between;;
   align-items: center;
   gap: 0 9.8125rem;
 }
 
-.card-item:nth-of-type(2n) {
+.card-wrap:nth-of-type(2n) {
   display: flex;
   flex-direction: row-reverse;
 }
@@ -184,8 +178,6 @@ body {
   line-height: 150%; 
   white-space: nowrap;
 }
-
-/*----------------------------------------------------------------------*/
 
 .footer-wrap {
   display: flex;
