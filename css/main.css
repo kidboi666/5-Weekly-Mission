@@ -19,18 +19,13 @@
 }
 
 .main {
-  height: 953px;
-  background: url("../img/main_bg.png"), var(--gray5-color);
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  background-size: 1118px;
+  background-color: var(--gray5-color);
 }
 
 .main__content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
   padding-top: 70px;
 }
 
@@ -49,6 +44,12 @@
 
 .main__link {
   width: 350px;
+  margin-top: 40px;
+}
+
+.main__bg-img {
+  max-width: 100%;
+  margin-top: 20px;
 }
 
 .main-section {
