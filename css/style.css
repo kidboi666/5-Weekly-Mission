@@ -1,15 +1,15 @@
 @import "reset.css";
 
 :root {
-	--primary: #6D6AFD;  /* CSS 전역 변수 선언 */
-  --red:#FF5B56;
+  --primary: #6D6AFD;  /* CSS 전역 변수 선언 */
+  --red: #FF5B56;
   --black: #111322;
   --white: #FFFFFF;
-  --gray01:#3E3E43;
-  --gray02:#9FA6B2;
-  --gray03:#CCD5E3;
-  --gray04:#E7EFFB;
-  --gray05:#F0F6FF;
+  --gray01: #3E3E43;
+  --gray02: #9FA6B2;
+  --gray03: #CCD5E3;
+  --gray04: #E7EFFB;
+  --gray05: #F0F6FF;
 
 }
 
@@ -19,35 +19,35 @@
 
 html {
   background-color: var(--gray);
-  width:100%;
+  width: 100%;
   min-width: 1920px;
 }
 
 body {
-  max-width:1920px;
-  margin:0 auto;
+  max-width: 1920px;
+  margin: 0 auto;
 }
 
 header {
-  margin:0 200px;
+  margin: 0 200px;
   display: flex;
   align-items: center;;
   justify-content: space-between;
-  padding:20px;
+  padding: 20px;
   position: sticky;
-  top:0;
+  top: 0;
 }
 
 header button {
   font-size: 18px;
-  border:none;
+  border: none;
   padding: 16px 20px;
   color: #F5F5F5;
   font-size: 18px;
   font-family: Pretendard;
   font-weight: 600;
   word-wrap: break-word;
-  width:128px;
+  width: 128px;
   border-radius: 8px;
   background-image: linear-gradient(90deg,var(--primary),skyblue);
   cursor: pointer;
@@ -82,38 +82,38 @@ header button {
 
 .main button {
   font-size: 18px;
-  border:none;
+  border: none;
   padding: 16px 20px;
   color: #F5F5F5;
   font-size: 18px;
   font-family: Pretendard;
   font-weight: 600;
   word-wrap: break-word;
-  width:350px;
+  width: 350px;
   border-radius: 8px;
   background-image: linear-gradient(90deg,var(--primary),skyblue);
 }
 
 .main img {
   background: linear-gradient(180deg, rgba(196, 196, 196, 0) 0%, var(--gray05) 100%);
-  width:1200px;
+  width: 1200px;
 }
 
 .service {
   background-color: white;
-  padding:120px 461px;
+  padding: 120px 461px;
 }
 
 .cards {
   display: flex;
-  gap:100px;  
+  gap: 100px;  
   flex-direction: column;
 }
 
 .card {  
   display: flex;
   align-items: center;
-  gap:157px;
+  gap: 157px;
 }
 
 .card h2 {
@@ -154,8 +154,8 @@ header button {
 
 .service-01 .icon {  
   position: absolute;
-  bottom:0;
-  right:0;
+  bottom: 0;
+  right: 0;
 }
 
 .service-02 img {
@@ -202,5 +202,5 @@ footer p {
 }
 
 .left img {
-  width:18px;
+  width: 18px;
 }
