@@ -123,3 +123,17 @@ body {
   top: 43px;
   right: 15px;
 }
+
+@media (max-width: 767px) {
+  .form_section {
+    width: 325px;
+  }
+
+  .button {
+    width: 325px;
+  }
+
+  .footer {
+    width: 325px;
+  }
+}
