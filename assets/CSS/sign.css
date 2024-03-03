@@ -9,8 +9,8 @@ body {
 }
 
 .btn-color {
-  color: var(--grey-light);
-  background: var(--gra-purpleblue-to-skyblue);
+  color: var(--button-text);
+  background: var(--button-background);
   font-family: Pretendard;
   font-size: 1.125rem;
   font-style: normal;
@@ -27,7 +27,7 @@ body {
   align-items: center;
   gap: 2rem;
   padding: 14.875rem 0px 15.8125rem 0px;
-  background: var(--linkbrary-bg);
+  background: var(--wrap-background);
 }
 
 .sign-header-inner {
@@ -66,7 +66,7 @@ body {
 }
 
 .header-logo__link {
-  color: var(--linkbrary-primary-color);
+  color: var(--sign-point);
   font-family: Pretendard;
   font-size: 1rem;
   font-style: normal;
@@ -105,13 +105,13 @@ body {
   align-items: center;
   width: 400px;
   padding: 1.125rem .9375rem;
-  border: 1px solid var(--linkbrary-gray20);
+  border: 1px solid var(--sign-border);
   border-radius: .5rem;
-  background: var(--linkbrary-white);
+  background: var(--sign-input-background);
 }
 
 .sign-input:focus {
-  outline: 1px solid var(--linkbrary-primary-color);
+  outline: 1px solid var(--sign-point);
 }
 
 
@@ -147,15 +147,15 @@ body {
   width: 25rem;
   padding: .75rem 1.5rem;
   margin: 0 auto;
-  border: 1px solid var(--linkbrary-gray20);
+  border: 1px solid var(--sign-border);
   border-radius: .5rem;
-  background: var(--linkbrary-gray10);
+  background: var(--social-sign-background);
 }
 
 
 .social-sign__title {
   margin: 0;
-  color: var(--linkbrary-gray100);
+  color: var(--social-sign-title);
   font-family: Pretendard;
   font-size: .875rem;
   font-style: normal;

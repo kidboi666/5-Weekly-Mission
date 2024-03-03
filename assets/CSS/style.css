@@ -24,8 +24,8 @@ body {
 /*----------------------------------------------------------------------*/
 
 .btn-color {
-  color: var(--grey-light);
-  background: var(--gra-purpleblue-to-skyblue);
+  color: var(--button-text);
+  background: var(--button-background);
   font-family: Pretendard;
   font-size: 1.125rem;
   font-style: normal;
@@ -42,7 +42,7 @@ body {
   justify-content: center;
   z-index: 1;
   width: 100%;
-  background: var(--linkbrary-bg);
+  background: var(--wrap-background);
 }
 
 .nav-inner {
@@ -70,7 +70,7 @@ body {
 .header-wrap {
   width: 100%;
   margin: 0 auto;
-  background: var(--linkbrary-bg);
+  background: var(--wrap-background);
 }
 
 .header-inner {
@@ -95,7 +95,7 @@ body {
 }
 
 .header-title__text {
-  background: var(--header-title);
+  background: var(--header-title-background);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -192,7 +192,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  background: var(--The-julge-black);
+  background: var(--footer-background);
 }
 
 .footer-item {
@@ -204,7 +204,7 @@ body {
   align-self: stretch;
   max-width: 120rem;
   flex-grow: 1;
-  color: var(--footer-text);
+  color: var(--footer-item-text);
 }
 
 .footer-item__link {
