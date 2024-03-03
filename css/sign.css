@@ -1,5 +1,8 @@
 @import "global.css";
 
+body {
+  min-width: 400px;
+}
 .signin {
   display: flex;
   padding: 238px 0px 253px 0px;
@@ -82,7 +85,7 @@ input::placeholder {
 }
 .social-images img {
   width: 42px;
-  height: 42px;
+  height: 100%;
 }
 .signin-form input {
   border: solid 1px #9fa6b2;
@@ -97,4 +100,24 @@ input::placeholder {
   position: absolute;
   top: 20px;
   right: 20px;
+}
+
+@media (max-width: 767px) {
+  .signin-form {
+    width: 100%;
+    max-width: 400px;
+  }
+  .signin {
+    width: 100%;
+    padding: 238px 32px 253px 32px;
+    justify-content: center;
+    align-items: center;
+    background: #f0f6ff;
+  }
+  input {
+    width: 100%;
+  }
+  .signin-but {
+    width: 100%;
+  }
 }
