@@ -42,7 +42,7 @@ footer {
   left: 0;
   right: 0;
   background: transparent;
-  padding: 20px 200px;
+  padding: 20px 168px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -50,10 +50,12 @@ footer {
 
 .nav-logo {
   cursor: pointer;
+  margin-left: 32px;
 }
 
 .nav-button {
   width: 128px;
+  margin-right: 32px;
 }
 
 .nav-button,
