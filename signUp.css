@@ -11,8 +11,7 @@ body {
 .section {
   position: absolute;
   top: 238px;
-  width: 100%;
-  max-width: 400px;
+  width: 400px;
   height: 627px;
   gap: 32px;
   display: flex;
@@ -77,6 +76,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   gap: 16px;
+  width: 100%;
 }
 .input-section {
   width: 100%;
