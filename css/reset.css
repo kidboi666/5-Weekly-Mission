@@ -27,3 +27,7 @@ button {
   background-color: unset;
   cursor: pointer;
 }
+
+main {
+  width: 100%;
+}
