@@ -154,5 +154,12 @@
   gap: 12px;
 }
 
-/* 로그인 */
+@media (max-width: 1199px) {
+  .header {
+    padding: 20px 32px;
+  }
 
+	.header__inner {
+    width: 100%;
+  }
+}
