@@ -1,3 +1,5 @@
+/* @import "reset.css"; */
+
 body {
   margin: 0;
 }
@@ -92,7 +94,7 @@ a {
 }
 .section {
   width: 100%;
-  /* margin: 120px auto 50px; */
+  margin: 120px auto 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,6 +109,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 16px;
 }
 h2 {
   font-family: Pretendard;
@@ -213,7 +216,7 @@ h2 {
     font-family: Pretendard;
     font-size: 36px;
     font-weight: 700;
-    line-height: 57px;
+    line-height: 48px;
     letter-spacing: 0px;
     text-align: left;
   }
