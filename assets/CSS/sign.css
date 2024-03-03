@@ -1,26 +1,4 @@
-:root {
-  /*이름을 보고 어디서 사용하는 지 알 수 있게 로그인&회원가입에서만 쓰는 것으로 바꾸기*/
-  --black: #000;
-  --linkbrary-white: #FFF;
-  --linkbrary-primary-color: #6D6AFE;
-  --linkbrary-gray20: #CCD5E3;
-  --linkbrary-gray10: #E7EFFB;
-  --linkbrary-gray100: #373740;
-  --linkbrary-bg: #F0F6FF;
-  --grey-light: #F5F5F5;
-  --the-julge-black: #111322;
-  --card-item-text: #6B6B6B;
-  --footer-text: #676767;
-  --footer-link-text: #CFCFCF;
-  --The-julge-black: #111322;
-  --gra-purpleblue-to-skyblue: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
-  --header-title: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
-  --card3-line-bg: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
-  --card1-title: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 90.97%);
-  --card2-title: linear-gradient(277deg, #6FBAFF 2.22%, #FFD88B 93.66%);
-  --card3-title: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 99.99%);
-  --card4-title: linear-gradient(271deg, #FE578F -100%, #68E8F9 107.18%);
-}
+@import url("/assets/CSS/color.css");
 
 * {
   box-sizing: border-box;
@@ -34,115 +12,117 @@ body {
   color: var(--grey-light);
   background: var(--gra-purpleblue-to-skyblue);
   font-family: Pretendard;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: .5rem;
 }
 
-.sign {
+.sign-header-wrap {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 32px;
-  padding: 238px 0px 253px 0px;
+  gap: 2rem;
+  padding: 14.875rem 0px 15.8125rem 0px;
   background: var(--linkbrary-bg);
 }
 
-.sign__inner {
+.sign-header-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 1.875rem;
 }
 
-.sign__inner__logo {
+.sign-header-logo {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 1rem;
 }
 
-.sign__logo__img {
-  width: 210.583px;
-  height: 38px;
+.header-logo__image {
+  width: 13.2rem;
+  height: 2.375rem;
 }
 
-.sign__logo__centerTest {
+.header-logo__line {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: .5rem;
 }
 
-.sign__logo__not-member {
+.header-logo__text {
   margin: 0;
   color: var(--black);
   font-family: Pretendard;
-  font-size: 16px;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 24px;
+  line-height: 1.5rem;
 }
 
-.signin__logo__link-signup {
+.header-logo__link {
   color: var(--linkbrary-primary-color);
   font-family: Pretendard;
-  font-size: 16px;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 600;
+  line-height: normal;
+}
+
+/*----------------------------------------------------------------------*/
+
+.sign-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.sign-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .75rem;
+}
+
+.sign-label {
+  color: var(--black);
+  font-family: Pretendard;
+  font-size: .875rem;
+  font-style: normal;
+  font-weight: 400;
   line-height: normal;
 }
 
 .sign-input {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
-}
-
-.sign-input__login {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.sign-input__login__label {
-  color: var(--black);
-  font-family: Pretendard;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-
-.sign-input__login__input {
-  display: flex;
   justify-content: center;
   align-items: center;
   width: 400px;
-  padding: 18px 15px;
+  padding: 1.125rem .9375rem;
   border: 1px solid var(--linkbrary-gray20);
-  border-radius: 8px;
+  border-radius: .5rem;
   background: var(--linkbrary-white);
 }
 
-.sign-input__login__input:focus {
+.sign-input:focus {
   outline: 1px solid var(--linkbrary-primary-color);
 }
 
 
-.sign-input__pw-eye {
+.sign__pw-eye {
   position: relative;
 }
 
-.sign-input__pw-eye-off {
+.sign__pw-eye-off {
   position: absolute;
-  top: 18px;
-  right: 15px;
+  top: 1.125rem;
+  right: .9375rem;
   border: 0;
   background-color: transparent; /*배경 투명*/
   cursor: pointer;
@@ -152,10 +132,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  width: 400px;
-  padding: 16px 20px;
-  margin-top: 30px;
+  gap: .625rem;
+  width: 25rem;
+  padding: 1rem 1.25rem;
+  margin-top: 1.875rem;
   border: solid 1px rgba(0,0,0,.15);
   cursor: pointer;
 }
@@ -164,11 +144,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 400px;
-  padding: 12px 24px;
+  width: 25rem;
+  padding: .75rem 1.5rem;
   margin: 0 auto;
   border: 1px solid var(--linkbrary-gray20);
-  border-radius: 8px;
+  border-radius: .5rem;
   background: var(--linkbrary-gray10);
 }
 
@@ -177,7 +157,7 @@ body {
   margin: 0;
   color: var(--linkbrary-gray100);
   font-family: Pretendard;
-  font-size: 14px;
+  font-size: .875rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -187,12 +167,12 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  gap: 16px;
-  width: 100px;
-  height: 40px;
+  gap: 1rem;
+  width: 6.25rem;
+  height: 2.5rem;
 }
 
-.social-sign__inner__icon {
+.social-sign__icon {
   display: flex;
   justify-content: center;
   align-items: center;

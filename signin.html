@@ -1,40 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/CSS/sign.css">
+  
+  
+
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Abel&family=Acme&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/assets/CSS/sign.css">
+  <link rel="stylesheet" href="/assets/CSS/mobile.css">
   <title>signin</title>
 </head>
 
 <!--네이밍은 형태_의미_상태 순으로 조합하며 3단계를 넘지 않도록 합니다.-->
 <!--sign말고 비밀번호 페이지와 공통되는 이름으로 재사용가능하게-->
-<body class="sign">
-  <div class="sign__inner">
-    <div class="sign__inner__logo">
-      <a href="/"><img src="/assets/images/svg/sign-logo.svg" alt="사이트 로고 Linkbrary" class="sign__logo__img"></a>
-      <div class="sign__logo__centerTest"> <!--이름 형식 똑같게!!!!!!-->
-        <p class="sign__logo__not-member">회원이 아니신가요?</p>
-        <a href="/signup.html" class="signin__logo__link-signup">회원 가입하기</a>
+<body class="sign-header-wrap">
+  <div class="sign-header-inner">
+    <div class="sign-header-logo">
+      <a href="/"><img src="/assets/img/svg/sign-logo.svg" sclass="header-logo__image" alt="사이트 로고 Linkbrary"></a>
+      <div class="header-logo__line">
+        <p class="header-logo__text">회원이 아니신가요?</p>
+        <a href="/signup.html" class="header-logo__link">회원 가입하기</a>
       </div>
     </div>
 
     <form>
-      <div class="sign-input"> <!--인풋이름으로 적합하지 않음 input은 진짜 입력하는 곳에만-->
-        <div class="sign-input__login">
-          <label for="email" class="sign-input__login__label">이메일</label>
-          <input type="email" class="sign-input__login__input" name="eamil">
+      <div class="sign-wrap"> <!--인풋이름으로 적합하지 않음 input은 진짜 입력하는 곳에만-->
+        <div class="sign-inner">
+          <label for="email" class="sign-label">이메일</label>
+          <input type="email" class="sign-input" name="eamil">
         </div>
-        <div class="sign-input__login">
-          <label for="pw" class="sign-input__login__label">비밀번호</label>
-          <div class="sign-input__pw-eye">
-            <input type="password" class="sign-input__login__input" name="pw">
-            <button class="sign-input__pw-eye-off">  <!--눌리는 이벤트를 넣어야 하니까 button으로 -->
-              <img src="/assets/images/svg/eye-off.svg" class="eye-off" alt="비밀번호 감추기">
+        <div class="sign-inner">
+          <label for="pw" class="sign-label">비밀번호</label>
+          <div class="sign__pw-eye">
+            <input type="password" class="sign-input" name="pw">
+            <button class="sign__pw-eye-off">
+              <img src="/assets/img/svg/eye-off.svg" alt="비밀번호 감추기">
             </button>
           </div>
         </div>
@@ -43,18 +48,17 @@
     </form>
   </div>
   
-  <!--소셜로그인이름으로-->
   <div class="social-sign">
     <p class="social-sign__title">소셜 로그인</p> 
     <div class="social-sign__inner">
       <a href="https://www.google.com/">
-        <div class="social-sign__inner__icon">
-          <img src="/assets/images/svg/social-icon-google.png" class="social-sign__icon-img">
+        <div class="social-sign__icon">
+          <img src="/assets/img/svg/social-icon-google.png" class="social-sign__icon-img">
         </div>
       </a>
       <a href="https://www.kakaocorp.com/page/">
-        <div class="social-sign__inner__icon">
-          <img src="/assets/images/svg/social-icon-kakao.png" class="social-sign__icon-img">
+        <div class="social-sign__icon">
+          <img src="/assets/img/svg/social-icon-kakao.png" class="social-sign__icon-img">
         </div>
       </a>
     </div>

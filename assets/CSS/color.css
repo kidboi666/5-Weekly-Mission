@@ -1,0 +1,16 @@
+:root {
+  --linkbrary-white: #FFF;
+  --linkbrary-primary-color: #6D6AFE;
+  --linkbrary-gray20: #CCD5E3;
+  --linkbrary-gray10: #E7EFFB;
+  --linkbrary-gray100: #373740;
+  --linkbrary-bg: #F0F6FF;
+  --grey-light: #F5F5F5;
+  --the-julge-black: #111322;
+  --card-item-text: #6B6B6B;
+  --footer-text: #676767;
+  --footer-link-text: #CFCFCF;
+  --The-julge-black: #111322;
+  --gra-purpleblue-to-skyblue: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+  --header-title: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
+}
