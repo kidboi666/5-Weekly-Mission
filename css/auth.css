@@ -111,3 +111,15 @@
   display: flex;
   gap: 16px;
 }
+
+
+@media (max-width: 767px) {
+  .auth {
+    padding: 120px 32px 0;
+  }
+  .auth__inner {
+    width: 100%;
+    max-width: 400px;
+  }
+
+}

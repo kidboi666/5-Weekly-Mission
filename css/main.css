@@ -166,6 +166,15 @@
 }
 
 @media (max-width: 767px) {
+  html {
+    font-size: 62.5%;
+  }
+
+  .btn {
+    padding: 10px 0;
+    font-size: 1.4rem;
+  }
+
   .header__link-home {
     width: 89px;
   }
