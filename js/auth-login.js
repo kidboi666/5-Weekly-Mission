@@ -1,5 +1,11 @@
 
+import {auth} from "./auth.js"
+
 document.addEventListener("DOMContentLoaded", function () {
+
+	auth.checkEmailFormat();
+	auth.checkPasswordEmpty();
+
 	const emailInput = document.getElementById("emailInput");
 	const passwordInput = document.getElementById("passwordInput");
 	const emailError = document.getElementById("emailError");
@@ -14,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
 		} else {
 
 			// 아이디 비번에 대해 각각 검사 (에러 원인 찾기)
-
 			if (!emailInput.value) {  // 이메일 넣지 않은 경우
 				emailError.textContent = "이메일을 입력해 주세요.";
 				emailInput.classList.remove('auth__input-border--default');

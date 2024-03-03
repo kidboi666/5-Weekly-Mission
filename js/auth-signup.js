@@ -1,6 +1,12 @@
 
+import {auth} from "./auth.js"
+
 // 회원가입 로직(유효성 검사 및 )
 document.addEventListener("DOMContentLoaded", function () {
+
+	auth.checkEmailFormat();
+	auth.checkPasswordEmpty();
+
 	const emailInput = document.getElementById("emailInput");
 	const passwordInput = document.getElementById("passwordInput");
 	const emailError = document.getElementById("emailError");
