@@ -63,6 +63,15 @@ h3 {
   flex-direction: column;
 }
 
+label {
+  color: black;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
 input {
   width: 400px;
   padding: 18px 15px;
@@ -75,6 +84,7 @@ input {
   font-family: Pretendard;
   font-weight: 400;
   line-height: 24px;
+  margin-top: 12px;
 }
 
 input:focus  {
@@ -151,11 +161,24 @@ input:focus  {
   right: 10px;
 }
 
+.pwd-input {
+  margin-top: 24px;
+}
+
+.pwd-input-check {
+  margin-top: 24px;
+}
+
 .pwd-input-check p {
   color: #FF5B56;
   font-size: 14px;
   font-family: Pretendard;
   font-weight: 400;
+  margin-top: 6px;
+}
+
+.pwd-input-check input{
+  border-color: red;
 }
 
 .pwd-input form {

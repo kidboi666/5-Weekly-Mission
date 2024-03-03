@@ -23,25 +23,29 @@
       </h2>
     </div>
     <div class="input-form">
-      <div class="email-input">
-        <h3>이메일</h3>
-        <form>
-          <input type="email">
-        </form>
-      </div>
-      <div class="pwd-input">
-        <h3>비밀번호</h3>
-        <form>
-          <input name="focus" type="password">
-        </form>
-      </div>
-      <div class="pwd-input-check">
-        <h3>비밀번호 확인</h3>
-        <form style="margin-bottom: 12px;">
-          <input name="focus" type="password">
-        </form>
-        <p> 비밀번호와 다릅니다</p>
-      </div>
+      <form>
+        <ol>
+          <li>
+            <label>
+              이메일 <br>
+              <input type="email">
+            </label>
+          </li>
+          <li class="pwd-input">
+            <label>
+              비밀번호 <br>
+              <input name="focus" type="password">       
+            </label>
+          </li>
+            <li class="pwd-input-check">
+              <label>
+                비밀번호 확인 <br>
+                <input name="focus" type="password">       
+              </label>
+              <p> 비밀번호와 다릅니다. </p>
+            </li>
+        </ol>
+      </form>
     </div>
     <button class="button-sign"> 회원가입 </button>
     <div class="social-login">
