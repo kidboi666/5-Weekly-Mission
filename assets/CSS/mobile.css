@@ -87,9 +87,9 @@
   /* .card-item {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas: 
+    grid-template-areas:
+      'img' 
       'title'
-      'img'
       'text';
   }
 
