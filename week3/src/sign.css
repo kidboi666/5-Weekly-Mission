@@ -1,7 +1,7 @@
 @import "./global.css";
 
 body {
-  padding-top: 23.8rem;
+  padding-top: 15rem;
   background-color: var(--background);
   display: flex;
   flex-direction: column;
@@ -42,6 +42,7 @@ header {
 }
 
 .sign-box {
+  padding-bottom: 15em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -151,46 +152,27 @@ header {
   background-color: #f5e14b;
 }
 
-/* Mobile ver */
-@media (min-width: 375px) and (max-width: 767px) {
-  body {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  .sign-box {
-    width: 100%;
-    max-width: 400px; /* 최대 400px */
-  }
-
-  .sns-box {
-    padding: 1.2rem;
-  }
-
-  .sns-link {
-    width: 3.8rem; /* 크기 조절 */
-    height: 3.8rem; /* 크기 조절 */
-  }
-
-  .google-link {
-    background-color: var(--white);
-    border: 0.1rem solid #d3d4dd;
-  }
-
-  .kakao-link {
-    padding-top: 0.2rem;
-    background-color: #f5e14b;
-  }
-}
-
-/* Tablet ver */
-@media (min-width: 768px) and (max-width: 1199px) {
-  
-}
-
 /* PC ver */
 @media (min-width: 1200px) {
 
+}
+
+/* Tablet ver */
+@media (min-width: 768px) {
+  /* Tablet 사이즈에서 디자인은 PC사이즈와 동일합니다 */
+}
+
+/* Mobile ver */
+@media (min-width: 375px) {
+  body {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .sign-box {
+    width: calc(100% - 64px); /* 좌우 여백 32px을 제외한 영역 차지 */
+    max-width: 400px; /* 최대 너비 400px로 제한 */
+  }
 }
 
 

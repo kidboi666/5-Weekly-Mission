@@ -194,78 +194,75 @@ footer {
   height: 2rem;
 }
 
-/* Mobile ver */
-@media (min-width: 375px) and (max-width: 767px) {
+/* PC ver */
+@media (min-width: 1200px) {
   .hero-image {
-    width: calc(100% - 64px); /* 화면 너비에서 좌우 여백 32px씩 제외 */
-    height: auto; /* 가로 세로 비율 유지 */
+    width: 120rem; /* 이미지 크기 고정 */
+    height: 59rem; /* 이미지 크기 고정 */
   }
 
   .content-image {
-    width: calc(100% - 64px); /* 화면 너비에서 좌우 여백 32px씩 제외 */
-    height: auto; /* 가로 세로 비율 유지 */
-  }
-  
-  /* 간격이 커지도록 조절 */
-  .footer-links {
-    column-gap: 6rem; /* 예시로 6rem으로 설정, 필요에 따라 조절 가능 */
-  }
-
-  .sns {
-    column-gap: 2rem; /* 예시로 2rem으로 설정, 필요에 따라 조절 가능 */
+    width: 55rem; /* 이미지 크기 고정 */
+    height: 45rem; /* 이미지 크기 고정 */
   }
 }
 
 /* Tablet ver */
-@media (min-width: 768px) and (max-width: 1199px) {
-  .hero-image {
-    width: 120rem; /* 고정값으로 설정 */
-    height: 59rem; /* 고정값으로 설정 */
-  }
-
-  .content-image {
-    width: 55rem; /* 고정값으로 설정 */
-    height: 45rem; /* 고정값으로 설정 */
-  }
-
+@media (min-width: 768px) {
   .gnb {
-    padding: 0 16px; /* 최소 좌우 여백 조절 */
+    display: flex;
+    justify-content: space-between; /* 간격 유지 */
+    align-items: center;
   }
 
-  .gnb .logo {
-    margin-right: 16px; /* Linkbrary 로고의 오른쪽 여백 16px 유지 */
+  .cta-short {
+    margin-left: 32px; /* 로고 왼쪽 여백 */
+    margin-right: 32px; /* 로그인 버튼 오른쪽 여백 */
   }
 
-  .gnb .login-button {
-    margin-left: 16px; /* 로그인 버튼의 왼쪽 여백 16px 유지 */
-  }
-}
-
-/* Mobile - 이미지 크기 반응형 조정 */
-@media (max-width: 1199px) {
   .hero-image {
-    width: 100%; /* 화면 너비에 맞게 조정 */
-    height: auto; /* 가로 세로 비율 유지 */
+    width: 120rem; /* 이미지 크기 고정 */
+    height: 59rem; /* 이미지 크기 고정 */
   }
 
   .content-image {
-    width: 100%; /* 화면 너비에 맞게 조정 */
-    height: auto; /* 가로 세로 비율 유지 */
-  }
+    width: 55rem; /* 이미지 크기 고정 */
+    height: 45rem; /* 이미지 크기 고정 */
+  } 
 }
 
-/* PC ver */
-@media (min-width: 1200px) {
-  .hero-image {
-    width: 120rem; /* 고정값으로 설정 */
-    height: 59rem; /* 고정값으로 설정 */
+/* Mobile ver */
+@media (min-width: 375px) {
+  body {
+    padding: 0 16px; /* 전체 여백을 조절 */
+  }
+
+  .title, .description, .content-image {
+    width: 100%;
+    margin: 16px 0; /* 각 섹션 내부 요소 간 간격 조절 */
   }
 
   .content-image {
-    width: 55rem; /* 고정값으로 설정 */
-    height: 45rem; /* 고정값으로 설정 */
+    width: 100%;
+    height: auto;
+  }
+
+  .footer-box {
+    padding: 0 10.4rem 2rem; /* 하단 간격 확보 */
+  }
+
+  .sns {
+    margin-top: 2rem; /* SNS 아이콘 간격 확보 */
   }
 }
+
+
+
+
+
+
+
+
 
 
 
