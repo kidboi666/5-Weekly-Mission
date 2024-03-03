@@ -25,14 +25,14 @@
 }
 
 .signin__text {
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 16px;
 }
 
 .signin__link {
   border-bottom: 1px solid var(--primary-color);
   font-weight: 600;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 19px;
   color: var(--primary-color);
 }
@@ -54,7 +54,7 @@
 }
 
 .signin-form__label {
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .signin-form__pw-wp {
@@ -73,7 +73,7 @@
   padding: 18px 15px;
   border: 1px solid var(--gray3-color);
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 24px;
   color: #373740;
@@ -102,7 +102,7 @@
 
 .signin-sns__title {
   font-family: Pretendard;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 400;
   color: #373740;
 }
