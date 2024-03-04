@@ -4,15 +4,20 @@ body {
 }
 
 section {
-  margin: 0 auto;
-  width: 400px;
-  margin-top: 238px;
-  /* border: 2px solid red; */
+  box-sizing: content-box;
+  margin: 200px auto 250px;
+  width: 100%;
+  max-width: 400px;
 }
 
 .logo {
   display: block;
-  margin: 0 auto 4px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.logo > img {
+  width: 210px;
 }
 
 .form {
@@ -107,4 +112,12 @@ input:focus {
   justify-content: space-between;
   gap: 10px;
   align-items: center;
+}
+
+
+@media (min-width: 767px) {
+  section {
+    margin: 120px auto 233px;
+    padding: 0 32px;
+  }
 }
