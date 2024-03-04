@@ -3,148 +3,186 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linkbray</title>
+    <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      as="style"
-      crossorigin
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
+    <!-- css 링크 -->
+    <meta property="og:image" content="/img/coding.jpg" />
+    <meta property="og:title" content="Linkbrary" />
+    <meta
+      property="og:description"
+      content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요"
     />
-    <title>Linkbrary</title>
+    <meta property="og:url" content="https://www.linkbrary.kr" />
+    <!-- 페이스북 meta tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="/img/coding.jpg" />
+    <meta name="twitter:title" content="Linkbrary" />
+    <meta
+      name="twitter:description"
+      content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요"
+    />
+    <!-- 트위터 meta tags-->
   </head>
   <body>
-    <header>
-      <nav>
-        <a href="/"><img src="img/logo.svg" alt="logo" /></a>
-        <button><a href="login/login.html">로그인</a></button>
-      </nav>
+    <header class="header">
+      <div class="header_div">
+        <a href="index.html"
+          ><img src="img/logo.svg" alt="Linkbrary" width="133px" height="24px"
+        /></a>
+        <a href="signin/signin.html"
+          ><button class="header_btn" type="button">로그인</button></a
+        >
+      </div>
     </header>
-
-    <section class="first_section">
-      <div class="first_section_container">
-        <h1>
-          <span>세상의 모든 정보</span>를<br />
-          쉽게 저장하고 관리해 보세요
+    <main>
+      <section class="main_section">
+        <h1 class="main_section_text">
+          <span class="main_section_span">세상의 모든 정보</span>를<br
+            class="desktop_br tablet_br mobile_br"
+          />
+          쉽게 저장하고<br class="tablet_br mobile_br" />
+          관리해 보세요
         </h1>
-        <button class="link_add_button">
-          <a href="/signup/signup.html">링크 추가하기</a>
-        </button>
-
-        <article class="card_box">
+        <a href="/signup/signup.html"
+          ><button class="main_section_btn" type="button">
+            링크 추가하기
+          </button></a
+        >
+        <img
+          class="main_section_img"
+          src="img/image_box1.png"
+          alt="서비스 소개"
+          width="1118px"
+          height="537px"
+        />
+      </section>
+      <section class="section_boxs">
+        <div class="flex_boxs boxs_margin_top">
+          <div>
+            <h2 class="flex_box_text">
+              <span class="text_span_first">원하는 링크</span>를<br
+                class="desktop_br tablet_br"
+              />
+              저장하세요
+            </h2>
+            <p class="flex_box_p">
+              나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br
+                class="desktop_br tablet_br"
+              />
+              사고 싶은 옷,<br class="mobile_br" />
+              기억하고 싶은 모든 것을<br class="desktop_br tablet_br" />
+              한 공간에 저장하세요.
+            </p>
+          </div>
           <img
-            src="img/image_box1.png"
-            alt="이미지가 들어있는 카드박스입니다."
+            class="imgs"
+            src="img/image_box2.png"
+            alt="링크 기능"
+            width="550px"
+            height="450px"
           />
-        </article>
-      </div>
-    </section>
-
-    <section class="second_section">
-      <div class="second_section_container">
-        <div class="second_section_container_left">
-          <h2>
-            <span>원하는 링크</span>를<br />
-            저장하세요
-          </h2>
-          <p>
-            나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br />
-            사고 싶은 옷, 기억하고 싶은 모든 것을<br />
-            한 공간에 저장하세요.
-          </p>
         </div>
-        <div class="second_section_container_right">
+
+        <div class="flex_boxs boxs_margin">
           <img
-            src="/img/image_box2.png"
-            alt="이미지가 들어있는 두번째 카드박스입니다."
+            class="imgs mobile_order"
+            src="img/image_box3.png"
+            alt="폴더 이름 변경하기"
+            width="414px"
+            height="270px"
+          />
+          <div>
+            <h2 class="flex_box_text">
+              링크를 폴더로<br class="desktop_br tablet_br" />
+              <span class="text_span_second">관리</span>하세요
+            </h2>
+            <p class="flex_box_p">
+              나만의 폴더를 무제한으로 만들고<br class="desktop_br tablet_br" />
+              다양하게 활용할 수<br class="mobile_br" />
+              있습니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex_boxs boxs_margin">
+          <div>
+            <h2 class="flex_box_text">
+              저장한 링크를<br class="desktop_br tablet_br" />
+              <span class="text_span_third">공유</span>해 보세요.
+            </h2>
+            <p class="flex_box_p">
+              여러 링크를 폴더에 담고 공유할 수<br class="tablet_br" />
+              있습니다.<br class="desktop_br" />
+              가족,<br class="mobile_br" />
+              친구, 동료들에게 쉽고<br class="tablet_br" />
+              빠르게 링크를<br class="desktop_br" />
+              공유해 보세요.
+            </p>
+          </div>
+          <img
+            class="imgs"
+            src="img/image_box4.png"
+            alt="폴더 공유하기"
+            width="570px"
+            height="469px"
           />
         </div>
-      </div>
-    </section>
 
-    <section class="third_section_container">
-      <div class="third_section_container_left">
-        <img
-          src="img/image_box3.png"
-          alt="이미지가 들어있는 세번째 카드박스입니다."
-        />
-      </div>
-      <div class="third_section_container_right">
-        <h2>
-          링크를 폴더로<br />
-          <span>관리</span>하세요
-        </h2>
-        <p>
-          나만의 폴더를 무제한으로 만들고<br />
-          다양하게 활용할 수 있습니다.
-        </p>
-      </div>
-    </section>
-
-    <section class="fourth_section_container">
-      <div class="fourth_section_container_left">
-        <h2>
-          저장한 링크를<br />
-          <span>공유</span>해 보세요.
-        </h2>
-        <p>
-          여러 링크를 폴더에 담고 공유할 수 있습니다.<br />
-          가족, 친구, 동료들에게 쉽고 빠르게 링크를<br />
-          공유해 보세요.
-        </p>
-      </div>
-      <div class="fourth_section_container_right">
-        <img
-          src="img/image_box4.png"
-          alt="이미지가 들어있는 네번째 카드박스입니다."
-        />
-      </div>
-    </section>
-
-    <section class="fifth_section_container">
-      <div class="fifth_section_container_left">
-        <img
-          src="img/image_box5.png"
-          alt="이미지가 들어있는 다섯번째 카드박스입니다."
-        />
-      </div>
-      <div class="fifth_section_container_right">
-        <h2>
-          저장한 링크를<br />
-          <span>검색</span>해 보세요
-        </h2>
-        <p>중요한 정보들을 검색으로 쉽게 찾아보세요</p>
-      </div>
-    </section>
-
-    <section class="gap"></section>
-
-    <footer class="footer_box">
-      <div class="footer_left">
-        <p>codeit-2023</p>
-      </div>
-      <div class="footer_center">
-        <a href="/privacy">Privacy Policy</a>
-        <a href="/faq">FAQ</a>
-      </div>
-      <div class="footer_right">
-        <a
-          class="facebook_logo"
-          href="https://www.facebook.com/"
-          target="_blank"
-          ><img src="img/facebook.svg" alt="페이스북 홈페이지"
-        /></a>
-        <a class="twitter_logo" href="https://twitter.com/" target="_blank"
-          ><img src="img/twitter.svg" alt="트위터 홈페이지"
-        /></a>
-        <a class="youtube_logo" href="https://www.youtube.com/" target="_blank"
-          ><img src="img/youtube.svg" alt="유튜브 홈페이지"
-        /></a>
-        <a
-          class="instagram_logo"
-          href="https://www.instagram.com/"
-          target="_blank"
-          ><img src="img/instagram.svg" alt="인스타그램 홈페이지"
-        /></a>
+        <div class="flex_boxs boxs_margin">
+          <img
+            class="imgs mobile_order"
+            src="img/image_box5.png"
+            alt="검색 서비스"
+            width="550px"
+            height="450px"
+          />
+          <div>
+            <h2 class="flex_box_text">
+              저장한 링크를<br class="desktop_br tablet_br" />
+              <span class="text_span_fourth">검색</span>해 보세요
+            </h2>
+            <p class="flex_box_p">
+              중요한 정보들을 검색으로 쉽게<br class="tablet_br" />
+              찾아보세요.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer_div">
+        <p class="footer_p">©codeit - 2023</p>
+        <div class="footer_center_link_div">
+          <a
+            class="footer_center_link"
+            href="privacy_policy/privacy_policy.html"
+            >Privacy Policy</a
+          >
+          <a class="footer_center_link" href="faq/faq.html">FAQ</a>
+        </div>
+        <div class="footer_linkbox">
+          <a href="https://www.facebook.com/" target="_blank"
+            ><img
+              src="img/facebook.svg"
+              alt="페이스북"
+              width="20px"
+              height="20px"
+          /></a>
+          <a href="https://twitter.com/" target="_blank"
+            ><img src="img/twitter.svg" alt="트위터" width="20px" height="20px"
+          /></a>
+          <a href="https://www.youtube.com/" target="_blank"
+            ><img src="img/youtube.svg" alt="유튜브" width="20px" height="20px"
+          /></a>
+          <a href="https://www.instagram.com/" target="_blank"
+            ><img
+              src="img/instagram.svg"
+              alt="인스타그램"
+              width="20px"
+              height="20px"
+          /></a>
+        </div>
       </div>
     </footer>
   </body>
