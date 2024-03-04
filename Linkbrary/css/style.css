@@ -41,6 +41,7 @@ button:focus {
   filter: brightness(1.2);
   scale: 1.02;
 }
+
 div {
   display: flex;
 }
