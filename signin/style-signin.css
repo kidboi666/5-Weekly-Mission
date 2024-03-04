@@ -4,15 +4,21 @@ body {
 }
 
 section {
-  margin: 0 auto;
-  width: 400px;
-  margin-top: 238px;
-  /* border: 2px solid red; */
+  box-sizing: content-box;
+  margin: 120px auto 233px;
+  padding: 0 32px;
+  width: 100%;
+  max-width: 400px;
 }
 
 .logo {
   display: block;
-  margin: 0 auto 4px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.logo > img {
+  width: 240px;
 }
 
 .form {
