@@ -1,10 +1,6 @@
 /*Tablet: 768px 이상 ~ 1199px 이하*/
 @media only screen and (max-width: 1199px) { 
-  .pc { 
-    display: none;
-  }
-
-  .tablet {
+  .tablet-br {
     display: inline;
   }
 
@@ -46,6 +42,10 @@
 
 /*Mobile: 375px 이상 ~ 767px 이하*/
 @media only screen and (max-width: 767px) {  
+  .pc-br {
+    display: none;
+  }
+
   .nav-inner {
     padding-left: 2rem;
     padding-right: 2rem;
