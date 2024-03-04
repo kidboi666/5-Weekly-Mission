@@ -185,6 +185,14 @@
   width: 280px;
 }
 
+.feature-description-heading {
+  color: #000;
+  font-size: 3em;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.3px;
+}
+
 .folder-share-link {
   display: flex;
   justify-content: space-between;

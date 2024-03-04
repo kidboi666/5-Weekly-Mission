@@ -58,14 +58,6 @@ footer {
   align-items: center;
 }
 
-h3 {
-  color: #000;
-  font-size: 3em;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: -0.3px;
-}
-
 header {
   width: 100%;
   max-width: 1920px;
