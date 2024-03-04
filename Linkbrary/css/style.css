@@ -58,12 +58,6 @@ footer {
   align-items: center;
 }
 
-h1 {
-  font-size: 0;
-  line-height: 0;
-  color: transparent;
-}
-
 h3 {
   color: #000;
   font-size: 3em;
@@ -108,6 +102,14 @@ section {
 }
 
 /*====================================          CLASS           ==================================*/
+
+.blind {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
 
 .btn {
   background-image: linear-gradient(
