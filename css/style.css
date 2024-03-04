@@ -61,7 +61,7 @@ header .onclick-signin {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap:40px;
+  gap: 40px;
 }
 
 .main-title {
@@ -202,7 +202,7 @@ footer p {
 
 .left {
   display: flex;
-  gap:12px;
+  gap: 12px;
 }
 
 .left img {
@@ -210,7 +210,6 @@ footer p {
 }
 
 /* tablet */
-
 @media (max-width: 1199px) {
 
   header {
@@ -244,7 +243,7 @@ footer p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap:40px;
+    gap: 40px;
   }
   
   .main-title {
@@ -379,7 +378,7 @@ footer p {
   
   .left {
     display: flex;
-    gap:12px;
+    gap: 12px;
   }
   
   .left img {
@@ -424,7 +423,7 @@ footer p {
   .main {
     margin:0;
     padding: 24px 32px 0 32px;
-    gap:24px;
+    gap: 24px;
   }
 
   .main-title {
@@ -558,7 +557,7 @@ footer p {
 
   .left {
     display: flex;
-    gap:12px;
+    gap: 12px;
   }
 
   .left img {
