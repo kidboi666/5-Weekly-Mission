@@ -48,6 +48,9 @@
 
     .feature-description {
       align-items: flex-start;
+      .feature-description-heading {
+        font-size: 24px;
+      }
 
       .description {
         display: none;
