@@ -1,0 +1,28 @@
+header {
+  padding: 13px 32px;
+}
+
+.btn {
+  padding: 10px 16px;
+  font-size: 14px;
+}
+
+.sign-logo {
+  width: 88px;
+}
+
+.header-login {
+  width: 80px;
+}
+
+.footer-bar {
+  display: grid;
+  grid-template-columns: 181px 116px;
+  column-gap: auto;
+  row-gap: 60px;
+  padding: 32px;
+}
+
+.copyright {
+  order: 1;
+}
