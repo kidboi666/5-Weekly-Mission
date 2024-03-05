@@ -1,0 +1,72 @@
+@use "abstracts/mixins" as am;
+@use "abstracts/colors" as ac;
+
+.card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 340/334;
+  flex-shrink: 0;
+  border-radius: 15px;
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
+  @include am.flex(column, flex-start, stretch);
+  overflow: visible;
+}
+
+.card:hover {
+  scale: 1.1;
+}
+
+.card-info {
+  width: 100%;
+  height: 40%;
+  background-color: var(--white-color);
+  @include am.flex(column, flex-start, stretch);
+  padding: 8px 16px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  gap: 4px;
+}
+
+.card-info-bar {
+  width: 100%;
+  @include am.flex(row, space-between, center);
+  align-self: stretch;
+}
+
+.card-info-date {
+  color: #333;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.625em;
+  line-height: normal;
+}
+
+.card-info-text {
+  display: -webkit-box;
+  overflow: hidden;
+  color: #000;
+  margin-top: -0.3125em;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 1em;
+  line-height: 1.25em;
+}
+
+.card-info-time {
+  color: ac.$grey-dark-color;
+  font-size: 0.625em;
+  line-height: normal;
+}
+
+.card-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: fit-content;
+  gap: 1.125em;
+  height: 100%;
+  align-items: center;
+}
+
+.card-selected {
+  border: 3px solid ac.$primary-color;
+}
