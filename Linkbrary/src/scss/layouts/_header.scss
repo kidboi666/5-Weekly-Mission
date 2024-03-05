@@ -8,6 +8,9 @@ header {
   @include a.flex(row, space-between, center);
   background-color: inherit;
   z-index: 2;
+  @media (max-width: 1199px) {
+    padding: 20px 32px;
+  }
 }
 
 .blind {
