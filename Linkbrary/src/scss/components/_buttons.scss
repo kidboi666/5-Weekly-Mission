@@ -26,3 +26,10 @@ button {
   color: a.$grey-light-color;
   text-decoration-line: none;
 }
+
+@media (max-width: 767px) {
+  .btn {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}

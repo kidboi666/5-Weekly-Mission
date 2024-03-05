@@ -26,3 +26,17 @@ header {
   width: 210px;
   height: 38px;
 }
+
+@media (max-width: 767px) {
+  header {
+    padding: 13px 32px;
+  }
+
+  .sign-logo {
+    width: 88px;
+  }
+
+  .header-login {
+    width: 80px;
+  }
+}
