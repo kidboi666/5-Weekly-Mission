@@ -1,6 +1,7 @@
 @use "../abstracts" as a;
 @use "typography" as t;
 @use "../layouts";
+@use "../components";
 body {
   width: 100%;
   height: 100%;

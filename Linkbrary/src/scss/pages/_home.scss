@@ -1,6 +1,7 @@
 @use "../base/global";
 @use "../components";
 @use "../abstracts" as a;
+@use "../themes";
 
 .add-favorite {
   background-color: transparent;
