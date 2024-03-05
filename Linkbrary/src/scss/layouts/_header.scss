@@ -1,0 +1,27 @@
+header {
+  width: 100%;
+  max-width: 1920px;
+  position: sticky;
+  top: 0;
+  padding: 20px 200px;
+  @include a.flex(row, space-between, center);
+  background-color: inherit;
+  z-index: 2;
+}
+
+.blind {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.header-login {
+  width: 128px;
+}
+
+.sign-logo {
+  width: 210px;
+  height: 38px;
+}
