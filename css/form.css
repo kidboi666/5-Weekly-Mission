@@ -1,6 +1,7 @@
 @import url(./reset.css);
 @import url(./color.css);
 @import url(./font.css);
+@import url(./zIndex.css);
 
 .min-width-350 {
     min-width: 21.875rem;
@@ -93,20 +94,17 @@
 
 .input-icon-div .input-icon {
     display: block;
-}
-
-.input-icon-div .input-icon.on img:nth-child(1) {
     position: absolute;
     right: 15px;
     top: 50%;
+}
+
+.input-icon-div .input-icon.on img:nth-child(1) { 
     margin: -6px 0 0;
     display: block;
 }
 
 .input-icon-div .input-icon.off img:nth-child(2) {
-    position: absolute;
-    right: 15px;
-    top: 50%;
     margin: -5px 0 0;
     display: block;
 }
