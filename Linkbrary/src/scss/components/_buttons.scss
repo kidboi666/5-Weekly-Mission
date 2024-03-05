@@ -1,4 +1,4 @@
-@use "abstracts" as a;
+@use "../abstracts" as a;
 
 .button {
   border-radius: 5px;
@@ -15,8 +15,8 @@
 .btn {
   background-image: linear-gradient(
     to right,
-    var(--primary-color),
-    var(--skyblue-color)
+    a.$primary-color,
+    a.$skyblue-color
   );
   padding: 16px;
   border-radius: 8px;

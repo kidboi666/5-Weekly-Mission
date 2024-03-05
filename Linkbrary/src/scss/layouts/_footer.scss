@@ -1,3 +1,4 @@
+@use "../abstracts" as a;
 footer {
   background-color: var(--black-color);
   @include a.flex(column, flex-start, center);
