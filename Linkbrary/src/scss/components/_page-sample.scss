@@ -47,6 +47,19 @@
     height: calc(100% - 120px);
   }
 
+  @media (max-width: 1199px) {
+    padding-top: 40px;
+    .heading-style {
+      width: 84%;
+      display: block;
+      margin: auto;
+    }
+
+    .top-heading {
+      width: 472px;
+    }
+  }
+
   @media (max-width: 767px) {
     padding: 28px 32px 0;
     gap: 24px;
