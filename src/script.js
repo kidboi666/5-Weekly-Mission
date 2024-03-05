@@ -1,70 +1,35 @@
-// 폴더 공유하기 모달
-const shareModal = document.getElementById('shareFolderModal');
-const shareBtn = document.getElementById("shareFolderBtn");
-const shareSpan = document.querySelector("#shareFolderModal .close");
+function handleModalToggle(modalId, openBtnId) {
+    const modal = document.getElementById(modalId);
+    const openBtn = document.getElementById(openBtnId);
+    const closeBtn = document.querySelector(`#${modalId} .close`);
+    const modalContent = modal.querySelector('.modal_container');
 
-shareBtn.onclick = function() {
-    shareModal.classList.add("show-modal");
-}
-
-shareSpan.onclick = function() {
-    shareModal.classList.remove("show-modal");
-}
-
-// 폴더 추가하기 모달
-const addModal = document.getElementById('addFolderModal');
-const addBtn = document.getElementById("addFolderBtn");
-const addSpan = document.querySelector("#addFolderModal .close");
-
-addBtn.onclick = function() {
-    addModal.classList.add("show-modal");
-}
-
-addSpan.onclick = function() {
-    addModal.classList.remove("show-modal");
-}
-
-// 폴더에 추가하기 모달
-const toModal = document.getElementById('toFolderModal');
-const toBtn = document.getElementById("toFolderBtn");
-const toSpan = document.querySelector("#toFolderModal .close");
-
-toBtn.onclick = function() {
-    toModal.classList.add("show-modal");
-}
-
-toSpan.onclick = function() {
-    toModal.classList.remove("show-modal");
-}
-
-// 삭제하기 모달
-const deleteModal = document.getElementById('deleteModal');
-const deleteBtn = document.getElementById("deleteBtn");
-const deleteSpan = document.querySelector("#deleteModal .close");
-
-deleteBtn.onclick = function() {
-    deleteModal.classList.add("show-modal");
-}
-
-deleteSpan.onclick = function() {
-    deleteModal.classList.remove("show-modal");
-}
-
-// 모달 영역 외부 클릭 시 모달 숨기기
-window.onclick = function(event) {
-    if (event.target === shareModal) {
-        shareModal.classList.remove("show-modal");
+    openBtn.onclick = function() {
+        modal.classList.add("show_modal");
     }
-    if (event.target === addModal) {
-        addModal.classList.remove("show-modal");
+
+    closeBtn.onclick = function() {
+        modal.classList.remove("show_modal");
     }
-    if (event.target === toModal) {
-        toModal.classList.remove("show-modal");
+
+    modalContent.onclick = function(event) {
+        event.stopPropagation(); // 모달 내부를 클릭해도 닫히지 않도록 이벤트 전파 차단
     }
-    if (event.target === deleteModal) {
-        deleteModal.classList.remove("show-modal");
-    }
+
+    // 모달 영역 외부 클릭 시 모달 숨기기
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.classList.remove("show_modal");
+        }
+    });
 }
+
+// 각 모달에 대해 이벤트 핸들러 적용
+handleModalToggle('shareFolderModal', "shareFolderBtn"); // 폴더 공유하기 모달
+handleModalToggle('addFolderModal', "addFolderBtn"); // 폴더 추가하기 모달
+handleModalToggle('addToFolderModal', "addToFolderBtn"); // 폴더에 추가하기 모달
+handleModalToggle('deleteFolderModal', "deleteFolderBtn"); // 삭제하기 모달
+
 
 // dot menu
 document.getElementById('dotMenu').addEventListener('click', function (event) {

@@ -37,15 +37,17 @@ header {
     overflow: clip;
 }
   
-.login-button {
+.login_button {
     width: 128px;
     height: 53px;
     border-radius: 8px;
-    padding: 16px 20px;
     border: none;
     background: linear-gradient(to right, #6D6AFE, #6AE3FE);
     color: var(--white);
     font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
 }
 
@@ -233,7 +235,7 @@ input:focus {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-.show-modal {
+.show_modal {
     display: block;
 }
 
