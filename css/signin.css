@@ -4,38 +4,38 @@
   box-sizing: border-box;
 }
 
-
-html{
-  height:100%;
+html {
+  height: 100%;
 }
 
-body{
-  position:relative;
-  width:100%;
-  height:100%;
+body {
+  height: 100%;
+  position: relative;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
-.contents{
+.contents {
   display: flex;
   flex-direction: column;
-  gap:30px;
+  align-items: center;
+  gap: 30px;
 }
 
-.title{
+.title {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.logo{
+.logo {
   height: 38px;
 }
 
-h2{
+h2 {
   color: black;
   font-size: 16px;
   font-family: Pretendard;
@@ -43,14 +43,14 @@ h2{
   line-height: 24px;
 }
 
-h2 a{
+h2 a {
   color: #6D6AFE;
  font-size: 16px;
  font-family: Pretendard;
  font-weight: 600;
 }
 
-h3{
+h3 {
   color: black;
   font-size: 14px;
   font-family: Pretendard;
@@ -58,13 +58,22 @@ h3{
   margin-bottom: 12px;
 }
 
-.input-form{
+.input-form {
   display: flex;
   gap:24px;
   flex-direction: column;
 }
 
-input{
+label {
+  color: black;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+input {
   width: 400px;
   padding: 18px 15px;
   border-radius: 8px;
@@ -76,14 +85,15 @@ input{
   font-family: Pretendard;
   font-weight: 400;
   line-height: 24px;
+  margin-top: 12px;
 }
 
 input:focus {
-  outline: 1px #6D6AFE solid;
+  border: 1px #6D6AFE solid;
 }
 
 
-button{
+.button-sign {
   width: 100%;
   padding: 16px 20px;
   background: linear-gradient(91deg, #6D6AFE 0%, #6AE3FE 100%);
@@ -95,7 +105,7 @@ button{
   font-weight: 600;
 }
 
-.social-login{
+.social-login {
   display: flex;
   width: 100%;
   align-items: center;
@@ -106,29 +116,29 @@ button{
   border: 1px #CCD5E3 solid;
 }
 
-.social-icon{
+.social-icon {
   display: flex;
   gap: 16px
 }
 
-.social-login p{
+.social-login p {
   color: #373740;
   font-size: 14px;
   font-family: Pretendard;
   font-weight: 400;
 }
 
-.social-login .image2{
-  width:42px;
-  height:42px;
+.social-login .image2 {
+  width: 42px;
+  height: 42px;
   background-color: #FEE500;
   border-radius: 37.33px;
   position: relative;
 }
 
-.social-login .image1{
-  width:42px;
-  height:42px;
+.social-login .image1 {
+  width: 42px;
+  height: 42px;
   background-color: #FFFFFF;
   border-radius: 37.33px;
   position: relative;
@@ -136,7 +146,7 @@ button{
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.image2 img{
+.image2 img {
   position: absolute;
   top: 10px;
   bottom: 8px;
@@ -144,7 +154,7 @@ button{
   right: 8px;
 }
 
-.image1 img{
+.image1 img {
   position: absolute;
   top: 10px;
   bottom: 10px;
@@ -152,13 +162,68 @@ button{
   right: 10px;
 }
 
-.pwd-input-check p{
+.pwd-input {
+  margin-top: 24px;
+}
+
+.pwd-input-check {
+  margin-top: 24px;
+}
+
+.pwd-input-check p {
   color: #FF5B56;
   font-size: 14px;
   font-family: Pretendard;
   font-weight: 400;
+  margin-top: 6px;
 }
 
-.pwd-input form{
+.pwd-input-check input{
+  border-color: red;
+}
+
+.pwd-input form {
   background-image: url(eye-off.svg);
+}
+
+@media (max-width: 767px) {
+  body {
+    width: initial;
+    margin: 0 auto;
+  }
+
+  .contents {
+    padding: 120px 32px 233px 32px;
+    width: 100%;
+  }
+
+  input {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .button-sign {
+    width: 100%;
+    max-width: 400px;    
+  }
+  
+  .social-login {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .input-form {
+    width: 100%;
+  }
+
+  ol {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  ol li {
+    width: 100%;
+    max-width: 400px;
+  }
 }

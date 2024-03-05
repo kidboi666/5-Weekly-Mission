@@ -3,6 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Linkbrary</title>
+    <meta property="og:title" content="Linkbrary" key="title" />
+    <meta
+      name="description"
+      property="og:description"
+      content="https://i.pinimg.com/736x/b0/6c/ce/b06cceeafd897e9a3e679544daedda45.jpg"
+      key="description"
+    />
+    <meta
+      property="og:image"
+      content="https://i.pinimg.com/736x/b0/6c/ce/b06cceeafd897e9a3e679544daedda45.jpg"
+      key="image"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@linkbrary" />
+    <meta name="twitter:title" content="Linkbrary" />
+    <meta name="twitter:description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요" />
+    <meta
+      name="twitter:image"
+      content="https://visitbusan.net/uploadImgs/files/cntnts/20211130150754165_wufrotr"
+    />  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,29 +32,30 @@
 </head>
 <body>
   <header>
-    <a style="cursor: pointer;" href="/">
-      <img src="images/logo.svg">
-    </a>
-    <button onclick="location.href='./signin.html'">
+    <h1>
+      <a href="/">
+        <img src="images/logo.svg">
+      </a>
+    </h1>
+    <a class="onclick-signin button-style" href='./signin.html'>
       로그인
-    </button>
+    </a>
   </header>
   <main>
     <section class="main">
-      <h1 class="main-title">
+      <div class="main-title">
         <span>세상에 모든 정보</span>를 <br>
         쉽게 저장하고 관리해 보세요
-      </h1>
-      <button onclick="location.href='signup'">링크 추가하기</button>
-      <img src="images/image25.png">
+      </div>
+      <a class="onclick-signup button-style">링크 추가하기</a>
+      <img src="images/image25.png" alt="서비스 썸네일">
     </section>
-
     <section class="service">
       <div class="cards">
         <div class="service-01 card">
           <div class="card-text">
             <h2>
-              <span class="style-01">원하는 링크</span>를<br>
+              <span>원하는 링크</span>를<br>
               지정하세요<br>
             </h2>
             나중에 읽고 싶은 글, 다시 보고싶은 영상,<br>
@@ -41,20 +63,12 @@
             한 공간에 저장하세요
           </div>
           <div class="images">
-            <img src="images/Card 1.png">
-            <div class="center">
-              <img src="images/Card.png">
-              <div class="icon">
-                <img src="images/Group 20.svg">
-              </div>
-            </div>
-            
-            <img src="images/Card-1.png">
+            <img src="images/_img 1.png" alt="링크 클릭 이미지">
           </div>
         </div>
         <div class="service-02 card">
           <div class="images">
-            <img src="images/디스크립션 없는 팝업 1.png">
+            <img src="images/img 4.png" alt="폴더 이름 변경하기 팝업 이미지">
           </div>
           <div class="card-text">
             <h2>
@@ -66,7 +80,7 @@
           </div>
         </div>
         <div class="service-03 card">
-          <div>
+          <div class="card-text">
             <h2>
               저장한 링크를<br>
               <span>공유</span>해 보세요<br>
@@ -76,22 +90,19 @@
             공유해 보세요
           </div>
           <div class="images">
-            <img class="back" src="images/image 25.png">
-            <img style="position: absolute;"src="images/폴더 공유하기 팝업 1.png">
+            <img src="images/img3 1.png" alt="폴더 공유하기 팝업">
           </div>
         </div>
         <div class="service-04 card">
           <div class="images">
-            <img src="images/스크린샷 2023-03-17 오후 3.22 1.png">
+            <img src="images/_img4 1.png" alt="링크 검색 창 이미지">
           </div>
-          <div>
+          <div class="card-text">
             <h2>
               저장한 링크를<br>
               <span>검색</span>해 보세요<br>
             </h2>
-            <span>
               중요한 정보들을 검색으로 쉽게 찾아보세요
-            </span>
           </div>
         </div>
       </div>
@@ -100,18 +111,17 @@
   <footer>
     <div class="footer-info">
       <p>@codeit-2023</p>
-      <div class="middle" style="display: flex; gap:30px">
+      <div class="middle">
         <a href="/privacy">Privacy Policy</a>
         <a href="/faq">FAQ</a>
       </div>
-      <div class="left" style="display: flex; gap:12px">
+      <div class="left">
         <a href="https://www.facebook.com" target="_blank"><img src="images/akar-icons_facebook-fill.svg"> </a>
         <a href="https://www.twitter.com" target="_blank"><img src="images/akar-icons_twitter-fill.svg"></a>
         <a href="https://www.youtube.com" target="_blank"><img src="images/akar-icons_youtube-fill.svg"></a>
         <a href="https://www.instagram.com" target="_blank"><img src="images/ant-design_instagram-filled.svg"></a>
       </div>
     </div>
-
   </footer>
 </body>
 </html>
