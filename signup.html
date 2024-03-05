@@ -1,55 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style-signup.css" />
+    <link rel="stylesheet" href="./src/signup.css" />
     <title>signup</title>
   </head>
   <body>
-    <form>
-      <div>
-        <a href="./index.html"
-          ><div class="signup-title"><img src="img/logo.png" /></div
-        ></a>
+    <header>
+      <a class="signup-title" href="index.html">
+        <img class="logo" src="./img/logo.svg" />
+      </a>
+      <p class="signup-question">
+        이미 회원이신가요?
+        <a class="signin" href="signin.html">로그인 하기</a>
+      </p>
+    </header>
 
-        <div class="signin-question">
-          <h6 class="member">이미 회원이신가요?</h6>
-          <a class="signin" href="./signin.html">로그인 하기</a>
+    <div class="sign-box">
+      <form class="sign-form">
+        <div class="sign-inputs">
+          <div class="sign-input-box">
+            <label for="email" class="email">이메일</label>
+            <input id="email" name="email" />
+          </div>
+          <div class="sign-input-box box-password">
+            <label for="password" class="password">비밀번호</label>
+            <input id="password" name="password" type="password" />
+            <button class="eye-button" type="button">
+              <img src="./img/eye-off.svg" />
+            </button>
+          </div>
+          <div class="sign-input-box box-password">
+            <label for="password" class="password">비밀번호 확인</label>
+            <input id="password" name="password" type="password" />
+            <button class="eye-button" type="button">
+              <img src="./img/eye-off.svg" />
+            </button>
+          </div>
         </div>
-      </div>
-      <div>
-        <label for="email">이메일</label>
-        <input id="email" name="email" />
-        <label for="password">비밀번호</label>
-        <div class="password-form">
-          <input id="password" name="password" type="password" />
-          <button class="eye-button" type="button">
-            <img class="eye-img" src="img/eye-on.png" />
-          </button>
-        </div>
-        <label for="password-check">비밀번호 확인</label>
-        <div class="password-check-form">
-          <input id="password-check" name="password-ckeck" type="password" />
-          <button class="eye-button" type="button">
-            <img class="eye-img" src="img/eye-on.png" />
-          </button>
-        </div>
-      </div>
-      <div>
-        <button class="buttton-signup" type="submit">회원가입</button>
-      </div>
+        <button class="buttton-login" type="submit">회원가입</button>
+      </form>
       <div class="sns">
-        <div class="signup-sns">다른 방식으로 가입하기</div>
-        <div class="button-icon">
-          <a href="http://www.google.com"
-            ><img src="img/google.png" class="icon-google"
-          /></a>
-          <a href="http://www.kakaocorp.com/page/"
-            ><img src="img/kakao.png" class="icon-kakao"
-          /></a>
+        <span class="login-sns">다른 방식으로 가입하기</span>
+        <div class="button-icons">
+          <a class="icon-google" href="https://www.google.com">
+            <img src="./img/google.png" />
+          </a>
+          <a class="icon-kakao" href="https://www.kakaocorp.com/page/">
+            <img src="./img/kakao.svg" />
+          </a>
         </div>
       </div>
-    </form>
+    </div>
   </body>
 </html>
