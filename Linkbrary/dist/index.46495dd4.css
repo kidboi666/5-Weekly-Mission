@@ -1,0 +1,31 @@
+@media (width <= 767px) {
+  header {
+    padding: 13px 32px;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .sign-logo {
+    width: 88px;
+  }
+
+  .header-login {
+    width: 80px;
+  }
+
+  .footer-bar {
+    column-gap: auto;
+    grid-template-columns: 181px 116px;
+    row-gap: 60px;
+    padding: 32px;
+    display: grid;
+  }
+
+  .copyright {
+    order: 1;
+  }
+}
+/*# sourceMappingURL=index.46495dd4.css.map */

@@ -1,0 +1,1 @@
+{"mappings":"AAAA;EACE","sources":["src/css/tablet.css"],"sourcesContent":["@media (max-width: 1199px) {\r\n  header {\r\n    padding: 20px 32px;\r\n  }\r\n}\r\n"],"names":[],"version":3,"file":"index.8d92bd1a.css.map","sourceRoot":"/__parcel_source_root/"}

@@ -1,0 +1,72 @@
+@media (width <= 767px) {
+  h3 {
+    font-size: 24px;
+  }
+
+  .top-heading {
+    width: 100%;
+    font-size: 2em;
+    line-height: 1.3em;
+  }
+
+  .link-add {
+    width: 60%;
+  }
+
+  .page-sample-section {
+    gap: 24px;
+    padding: 28px 32px 0;
+  }
+
+  .page-sample-content {
+    aspect-ratio: 303 / 179;
+    background-image: url("share-bg-o.207df26c.png");
+    background-size: cover;
+    width: 95.7191%;
+  }
+
+  .page-sample-dim-effect {
+    width: 100%;
+  }
+
+  .search-bar, .link-list {
+    display: none;
+  }
+
+  .page-sample-dim-effect {
+    height: calc(100% - 40px);
+  }
+
+  .feature-description-section {
+    margin-top: -40px;
+    padding: 40px 32px;
+  }
+
+  .container {
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    height: fit-content;
+    position: relative;
+  }
+
+  .feature-description {
+    align-items: flex-start;
+  }
+
+  .feature-example-image {
+    flex-shrink: 1;
+    order: 1;
+    width: 100%;
+  }
+
+  .description {
+    display: none;
+  }
+
+  .mobile-description {
+    order: 2;
+    display: block;
+  }
+}
+/*# sourceMappingURL=index.1dc43388.css.map */

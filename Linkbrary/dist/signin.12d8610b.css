@@ -1,0 +1,141 @@
+main {
+  padding: 238px 0;
+}
+
+.eye-btn {
+  background-color: inherit;
+  position: absolute;
+  top: 15px;
+  right: 10px;
+}
+
+.eye-btn:hover .eye-on {
+  filter: brightness(0);
+}
+
+.eye-on path {
+  background-color: #0000;
+}
+
+.img-border {
+  border: 2px solid var(--d3-gray-color);
+  border-radius: 50%;
+}
+
+.incorrect-password {
+  color: var(--red-color);
+  position: absolute;
+  bottom: -25px;
+}
+
+.input-label {
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+}
+
+.join {
+  gap: 8px;
+  display: flex;
+}
+
+.login {
+  flex-direction: column;
+  gap: 38px;
+  width: 100%;
+  display: flex;
+}
+
+.login-btn {
+  width: 100%;
+  height: 54px;
+  margin: 16px 0;
+  font-size: 18px;
+  position: relative;
+  top: 6px;
+}
+
+.other-id {
+  background-color: var(--d2-gray-color);
+  border: 1px solid var(--Linkbrary-gray20, #ccd5e3);
+  background: var(--Linkbrary-gray10, #e7effb);
+  border-radius: 8px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  display: flex;
+}
+
+.pw-input {
+  position: relative;
+}
+
+.sign {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+}
+
+.sign-input {
+  border: 1px solid var(--Linkbrary-gray20, #ccd5e3);
+  background: var(--Linkbrary-white, #fff);
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 18px 15px;
+  display: flex;
+}
+
+.sign-input:focus {
+  border: 1px solid var(--primary-color);
+}
+
+.sign-form {
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  display: flex;
+}
+
+.signup-btn {
+  margin-top: 0;
+}
+
+.sign-top {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  font-size: 16px;
+  display: flex;
+}
+
+.sign-link {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration-line: underline;
+}
+
+.social-links {
+  gap: 16px;
+  display: flex;
+}
+
+@media (width <= 767px) {
+  main {
+    padding: 120px 32px;
+  }
+}
+/*# sourceMappingURL=signin.12d8610b.css.map */
