@@ -1,0 +1,28 @@
+@use "abstracts" as a;
+
+.button {
+  border-radius: 5px;
+  font-size: 1em;
+  font-weight: 600;
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    filter: brightness(1.1);
+    scale: 1.02;
+  }
+}
+
+.btn {
+  background-image: linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--skyblue-color)
+  );
+  padding: 16px;
+  border-radius: 8px;
+  @include a.flex(row, center, center);
+  font-size: 1.125em;
+  font-weight: 600;
+  color: a.$grey-light-color;
+  text-decoration-line: none;
+}
