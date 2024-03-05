@@ -42,6 +42,47 @@
     display: none;
   }
 
+  @media (max-width: 1199px) {
+    .feature-description div {
+      width: 262px;
+    }
+
+    .folder-change {
+      display: none;
+    }
+
+    .folder-manage-image {
+      background-image: url("../../img/feature_bg1.png");
+      background-size: cover;
+    }
+
+    .folder-share-image {
+      background-image: url("../../img/feature_bg2.png");
+      background-size: cover;
+    }
+
+    .folder-search-image {
+      background-image: url("../../img/feature_bg3.png");
+      background-size: cover;
+    }
+
+    .folder-input {
+      width: 196px;
+    }
+
+    .no-shrink-card {
+      width: 168px;
+    }
+
+    .search-box {
+      display: none;
+    }
+
+    .share-bg {
+      display: none;
+    }
+  }
+
   @media (max-width: 767px) {
     margin-top: -40px;
     padding: 40px 32px;
