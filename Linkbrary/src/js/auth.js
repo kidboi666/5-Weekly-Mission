@@ -1,22 +1,28 @@
-const emailInput = document.querySelector("#user-email");
-const passwordInput = document.querySelector("#password");
+function handleFocusIn(event) {
+  const target = event.target;
+  console.log(target);
+  removeErrorMessage(target);
+}
 
-function checkEmail() {
-  const parent = emailInput.parentElement;
-  const inputValue = emailInput.value;
-  const isEmpty =
-    inputValue === ""
-      ? generateErrorMessage(parent, "이메일을 입력해주세요")
-      : false;
+function handleFocusOut(event) {
+  const parent = event.target.parentElement;
+  const targetId = event.target.id;
 
-  if (!isEmpty && !isValidEmail(inputValue)) {
-    generateErrorMessage(parent, "올바른 이메일 주소가 아닙니다.");
+  switch (targetId) {
+    case "user-email":
+      checkEmail(parent, event.target);
+      break;
   }
 }
 
-function handleFocusIn(event) {
-  const target = event.target;
-  removeErrorMessage(target);
+function checkEmail(parent, emailInput) {
+  const inputValue = emailInput.value;
+
+  inputValue.length === 0
+    ? generateErrorMessage(parent, "이메일을 입력해주세요")
+    : isValidEmail(inputValue)
+    ? {}
+    : generateErrorMessage(parent, "올바른 이메일 주소가 아닙니다.");
 }
 
 function isValidEmail(inputValue) {
@@ -36,12 +42,10 @@ function removeErrorMessage(element) {
   const parent = element.parentElement;
   const errorMessages = document.querySelectorAll(".error-message");
   errorMessages.forEach(function (em) {
-    console.log(em.parentElement);
     if (em.parentElement === parent) {
       parent.removeChild(em);
     }
   });
 }
-
-emailInput.addEventListener("focusout", checkEmail);
-emailInput.addEventListener("focus", handleFocusIn);
+document.addEventListener("focus", handleFocusIn, true);
+document.addEventListener("focusout", handleFocusOut);
