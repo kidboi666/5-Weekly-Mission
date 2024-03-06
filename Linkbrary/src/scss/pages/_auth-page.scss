@@ -66,12 +66,12 @@ main {
               filter: brightness(0);
             }
           }
+        }
 
-          .error-message {
-            position: absolute;
-            color: a.$red-color;
-            bottom: -25px;
-          }
+        .error-message {
+          position: absolute;
+          color: a.$red-color;
+          bottom: -20px;
         }
       }
 
