@@ -87,18 +87,6 @@ header {
   /* min-width: 576px; */
 }
 
-@media (max-width: 500px) {
-  .main-h1 { 
-    font-size: 40px;
-    text-align: center;
-    font-family: Pretendard;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 80px; /* 125% */
-    color: var(--Black); 
-  }
-}
-
 .main-h1-gradient {
   background: linear-gradient(91deg, var(--Primary) 17.28%, #FF9F9F 74.98%);
   background-clip: text;
@@ -260,3 +248,105 @@ footer {
   gap: 12px;
 }
 
+/* Tablet */
+
+@media (max-width: 1199px) {
+  header {
+    display: flex;
+    padding: 20px 32px;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    background: var(--Gray5);
+    position: sticky;
+    top: 0;
+  }
+
+  main .line-break {
+    display: block;
+  }
+
+  main .line-break-tablet-mobile {
+    display: block;
+  }
+
+  .main-img {
+    width: 100%;
+    height: 343px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 767px) {
+  .main {
+    padding: 70px 32px 0 32px;
+    gap: 24px;
+  }
+
+  .main1,
+  .main2,
+  .main3,
+  .main4 {
+    padding: 40px 32px;
+  }
+
+  .main-h1-button {
+    padding: 16px 62px;
+    width: 100%;
+  }
+
+  .main-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+  }
+
+  .main1-contents,
+  .main2-contents,
+  .main3-contents,
+  .main4-contents {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .main1-text,
+  .main2-text,
+  .main3-text,
+  .main4-text {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .main1-img,
+  .main2-img,
+  .main3-img,
+  .main4-img {
+    width: 100%;
+  }
+
+  main .line-break {
+    display: inline;
+  }
+
+  main .line-break-tablet-mobile {
+    display: block;
+  }
+
+  .footer-contents {
+    padding: 32px 32px 108px 32px;
+  }
+
+  /* 심화 요구사항 */
+  .main2-contents .main2-img {
+    order: 2;
+  }
+
+  .main4-contents .main4-img {
+    order: 2;
+  }
+}
