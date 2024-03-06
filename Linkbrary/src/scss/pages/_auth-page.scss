@@ -1,140 +1,115 @@
+@use "../abstracts" as a;
+@use "../base/global";
 main {
   padding: 238px 0;
-}
 
-.eye-btn {
-  background-color: inherit;
-  position: absolute;
-  right: 10px;
-  top: 15px;
-}
+  .sign {
+    width: 100%;
+    max-width: 400px;
+    @include a.flex(column, flex-start, center);
+    gap: 30px;
 
-.eye-btn:hover .eye-on {
-  filter: brightness(0);
-}
+    .sign-top {
+      @include a.flex(column, center, center);
+      gap: 16px;
+      font-size: 16px;
 
-.eye-on path {
-  background-color: transparent;
-}
+      .join {
+        display: flex;
+        gap: 8px;
 
-.img-border {
-  border: 2px solid var(--d3-gray-color);
-  border-radius: 50%;
-}
+        .sign-link {
+          font-weight: 600;
+          color: a.$primary-color;
+          text-decoration-line: underline;
+        }
+      }
+    }
 
-.incorrect-password {
-  position: absolute;
-  color: var(--red-color);
-  bottom: -25px;
-}
+    .sign-form {
+      @include a.flex(column, flex-start, center);
+      gap: 24px;
+      font-size: 14px;
+      width: 100%;
+      flex-grow: 1;
 
-.input-label {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 100%;
-  max-width: 400px;
-}
+      .input-label {
+        @include a.flex(column);
+        gap: 12px;
+        width: 100%;
+        max-width: 400px;
 
-.join {
-  display: flex;
-  gap: 8px;
-}
+        .sign-input {
+          width: 100%;
+          padding: 18px 15px;
+          @include a.flex(row, center, center);
+          border-radius: 8px;
+          border: 1px solid a.$d3-gray-color;
+          background: a.$white-color;
 
-.login {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 38px;
-}
+          &:focus {
+            border: 1px solid a.$primary-color;
+          }
+        }
 
-.login-btn {
-  width: 100%;
-  position: relative;
-  top: 6px;
-  height: 54px;
-  font-size: 18px;
-  margin: 16px 0;
-}
+        .pw-input {
+          position: relative;
 
-.other-id {
-  background-color: var(--d2-gray-color);
-  display: flex;
-  padding: 12px 24px;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 8px;
-  border: 1px solid var(--Linkbrary-gray20, #ccd5e3);
-  background: var(--Linkbrary-gray10, #e7effb);
-}
+          .eye-btn {
+            background-color: inherit;
+            position: absolute;
+            right: 10px;
+            top: 15px;
 
-.pw-input {
-  position: relative;
-}
+            &:hover .eye-on {
+              filter: brightness(0);
+            }
+          }
 
-.sign {
-  width: 100%;
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 30px;
-}
+          .incorrect-password {
+            position: absolute;
+            color: a.$red-color;
+            bottom: -25px;
+          }
+        }
+      }
 
-.sign-input {
-  display: flex;
-  width: 100%;
-  padding: 18px 15px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  border: 1px solid var(--Linkbrary-gray20, #ccd5e3);
-  background: var(--Linkbrary-white, #fff);
-}
+      .login-btn {
+        width: 100%;
+        position: relative;
+        top: 6px;
+        height: 54px;
+        font-size: 18px;
+        margin: 16px 0;
+      }
+    }
 
-.sign-input:focus {
-  border: 1px solid var(--primary-color);
-}
+    .login {
+      width: 100%;
+      @include a.flex(column);
+      gap: 38px;
 
-.sign-form {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  font-size: 14px;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  align-items: center;
-  flex-grow: 1;
-}
+      .other-id {
+        background-color: a.$d2-gray-color;
+        padding: 12px 24px;
+        @include a.flex(row, space-between);
+        align-items: center;
+        border-radius: 8px;
+        border: 1px solid a.$d3-gray-color;
+        background: a.$d2-gray-color;
 
-.signup-btn {
-  margin-top: 0;
-}
-
-.sign-top {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  font-size: 16px;
-}
-
-.sign-link {
-  font-weight: 600;
-  color: var(--primary-color);
-  text-decoration-line: underline;
-}
-
-.social-links {
-  display: flex;
-  gap: 16px;
-}
-
-@media (max-width: 767px) {
-  main {
+        .social-links {
+          display: flex;
+          gap: 16px;
+          .img-border {
+            border: 2px solid a.$d3-gray-color;
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 767px) {
     padding: 120px 32px;
   }
 }
