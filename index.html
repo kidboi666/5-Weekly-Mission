@@ -1,133 +1,195 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-    <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.stye.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Acme&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-    <meta name="robots" content="noindex">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abel&family=Acme&family=Noto+Sans+KR:wght@100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
     <title>Linkbrary</title>
-    
+    <meta property="og:title" content="Linkbrary" key="title" />
+    <meta
+      name="description"
+      property="og:description"
+      content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요"
+      key="description"
+    />
+    <meta
+      property="og:image"
+      content="https://visitbusan.net/uploadImgs/files/cntnts/20211130150754165_wufrotr"
+      key="image"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@linkbrary" />
+    <meta name="twitter:title" content="Linkbrary" />
+    <meta name="twitter:description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요" />
+    <meta
+      name="twitter:image"
+      content="https://visitbusan.net/uploadImgs/files/cntnts/20211130150754165_wufrotr"
+    />
 </head>
+
 <body>
     <header>
-        <a href="/" class="icon">
-            <img src="images/icon.ico">
-        </a>
-        <a href="signin.html" class="to_login"> 
-            <p>로그인</p>
-        </a>
+        <div class="header">
+            <a href="/">
+                <img src="/images/icon.ico" alt="Linkbrary 로고" class="header-logo">
+            </a>
+            <a href="signin.html" class="header-link_to_signin">
+                <p>로그인</p>
+            </a>
+        </div>
     </header>
     <main>
-        <section class="mainsection">
-            <h1><span class="highlight">세상의 모든 정보를</span> <br>
-                 쉽게 저장하고 관리해 보세요
-            </h1>
-            <a href="#" class="plus_link ="> 
-                링크 추가하기
+        <section class="main-first_section">
+            <h1 class="section-text-1"><span class="hilight1">세상의 모든 정보</span>를 <br>
+                쉽게 저장하고 관리해 보세요</h1>
+            <h1 class="section-text-1-tablet"><span class="hilight1">세상의 모든 정보</span>를 <br>
+                쉽게 저장하고<br>관리해 보세요</h1>
+            <a href="signin.html" class="main-pluslink">
+                <p>링크 추가하기</p>
             </a>
-            <div class="landing1">
-                <img src="images/landing1_img.png" class="landing1_img">
-            </div>
 
+            <div class="main-img_container">
+                <img src="images/landing1.png" alt="메인 소개 이미지" class="first_section_img">
+            </div>
         </section>
 
-        <section class="second_section">
+        <section class="main-second_section">
             <div class="section-text">
-                <h1>
-                    <span class="highlight_2">원하는 링크</span>를<br> 저장하세요
-                </h1>
-                <p>
-                    나중에 읽고 싶은 글, 다시 보고 싶은 영상, <br>
-                    사고싶은 옷, 기억하고 싶은 모든 것을<br>
-                    한 공간에 저장하세요.
-                </p>
-            </div>
-            <div>
-                <img src="images/landing2.png" alt="landing2" class="landing2_img">
-            </div>
-        </section>
-        <section class="third_section">
-            <div>
-                <img src="images/landing_3.png" alt="landing3" class="landing3_img">
-            </div>
-            <div class="section-text">
-                <h1>링크를 폴더로 <br>
-                    <span class="highlight_3">관리</span>하세요
-                </h1>
-                <p>
-                    나만의 폴더를 무제한으로 만들고<br> 다양하게 활용할 수 있습니다.
-                </p>
-            </div>
-        </section>
-        <section class="fourth_section">
-            <div class="section-text">
-                <h1>
-                    저장한 링크를 <br>
-                    <span class="highlight_4">공유</span>해 보세요.
-                </h1>
-                <p>
-                    여러 링크를 폴더에 담고 공유할 수 있습니다. 가족, 친구, 동료들에게 쉽고 빠르게 링크를 
-                    공유해 보세요.
-                </p>    
-            </div>
-            <div class="landing4_imgs">
-                <img src="images/landing4.png" alt="landing4" class="landing4_img">
+                <h1 class="section-text-2"><span class="hilight2">원하는 링크</span>를 <br> 저장하세요</h1>
+                <p>나중에 읽고싶은 글, 다시보고싶은 영상, <br>
+                    사고싶은 옷, 기억하고싶은 모든 것을<br> 한 공간에 저장하세요.</p>
             </div>
 
+            <img src="images/landing2.png" alt="링크 저장 소개 이미지" class="second_section_img">
         </section>
 
-        <section class="last_section">
-            <div>
-                <img src="images/landing5.png" alt="landing5"  class="landing5_img">
-            </div>
-            <div class="section-text">
-                <h1>
-                    저장한 링크를<br>
-                    <span class="highlight_5">검색</span>해 보세요.
-                </h1>
-                <p>
-                    중요한 정보들을 검색으로 쉽게 찾아보세요.
-                </p>
+        <section class="main-second_section_mobile">
+            <div class="main-second_section_mobile_container">
+                <h1><span class="hilight2">원하는 링크</span>를 저장하세요</h1>
+                <img src="images/landing2.png" alt="링크 저장 소개 이미지" class="second_section_img_mobile">
+                <p>나중에 읽고싶은 글, 다시 보고싶은 영상, 사고 싶은 옷,<br>
+                    기억하고 싶은 모든 것을 한 공간에 저장하세요.</p>
             </div>
         </section>
 
+        <section class="main-third_section">
+            <img src="images/landing_3.png" alt="링크 관리 소개 이미지" class="third_section_img">
+            <div class="section-text">
+                <h1 class="section-text-3">링크를 폴더로<br><span class="hilight3">관리</span>하세요</h1>
+                <p>나만의 폴더를 무제한으로 만들고<br> 다양하게 활용할 수 있습니다.</p>
+            </div>
+        </section>
+
+        <section class="main-third_section_mobile">
+            <div class="main-third_section_mobile_container">
+                <h1>링크를 폴더로<span class="hilight3"> 관리</span>하세요</h1>
+                <img src="images/landing_3.png" alt="링크 관리 소개 이미지" class="third_section_img_mobile">
+                <p>나만의 폴더를 무제한으로 만들고 다양하게 활용할 수<br>
+                    있습니다.</p>
+            </div>
+        </section>
+
+        <section class="main-fourth_section">
+            <div class="section-text">
+                <h1 class="section-text-4">저장한 링크를<br><span class="hilight4">공유</span>해 보세요.</h1>
+
+                <p class="section-text-4-basic">여러 링크를 폴더에 담고 공유할 수 있습니다.<br>
+                    가족, 친구, 동료들에게 쉽고 빠르게 링크를<br>
+                    공유해보세요.</p>
+                <p class="section-text-4-tablet">여러 링크를 폴더에 담고 공유할 수 <br>있습니다.
+                    가족, 친구, 동료들에게 쉽고<br> 빠르게 링크를 공유해보세요.</p>
+            </div>
+
+            <img src="images/landing4.svg" alt="링크 공유 소개 이미지" class="fourth_section_img">
+        </section>
+
+        <section class="main-fourth_section_mobile">
+            <div class="main-fourth_section_mobile_container">
+                <h1>저장한 링크를<span class="hilight4"> 공유</span>해 보세요</h1>
+                <img src="images/landing4.svg" alt="링크 공유 소개 이미지"  class="fourth_section_img_mobile">
+                <p>여러 링크를 폴더에 담고 공유할 수 있습니다. 가족,<br>
+                    친구, 동료들에게 쉽고 빠르게 링크를 공유해 보세요.</p>
+            </div>
+        </section>
+
+        <section class="main-fifth_section">
+            <img src="images/landing5.png" alt="링크 검색 소개 이미지" class="fifth_section_img">
+            <div class="section-text">
+                <h1 class="section-text-5">저장한 링크를<br><span class="hilight5"> 검색</span>해 보세요</h1>
+                <p class="section-text-5-basic">중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
+                <p class="section-text-5-tablet">중요한 정보들을 검색으로 쉽게<br> 찾아보세요.</p>
+            </div>
+        </section>
+
+        <section class="main-fifth_section_mobile">
+            <div class="main-fifth_section_mobile_container">
+                <h1>저장한 링크를<span class="hilight5"> 검색</span>해 보세요</h1>
+                <img src="images/landing5.png" alt="링크 검색 소개 이미지"  class="fifth_section_img_mobile">
+                <p>중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
+            </div>
+        </section>
     </main>
-
-    <footer>
-        <div>
-            <p>
-                ©codeit - 2023
-            </p>
-        </div>
-            
-        <div class="footer_link">
-            <a href="/privacy.html"> privacy Policy</a>
-            <a href="/faq.html"> FAQ</a>
-        </div>
-
-        <div class="footer_sns-link">
-            <a href="https://www.facebook.com/">
-                <img src="facebook.svg" alt="facebook">
-            </a>
-            <a href="https://www.twitter.com/">
-                <img src="twitter.svg" alt="twitter">
-            </a>
-            <a href="https://www.youtube.com/">
-                <img src="youtube.svg" alt="youtube">
-            </a>
-            <a href="https://www.instagram.com/">
-                <img src="instagram.svg" alt="instagram">
-            </a>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-rights">
+                <p>©codeit - 2023</p>
+            </div>
+            <div class="footer-links">
+                <a href="privacy.html" class="link-to_privacy">Privacy Policy</a>
+                <a href="faq.html" class="link-to_faq">FAQ</a>
+            </div>
+            <div class="footer-sns_link">
+                <a href="https://www.facebook.com">
+                    <img src="images/facebook.svg" alt="페이스북 연결 페이지">
+                </a>
+                <a href="https://www.twitter.com">
+                    <img src="images/twitter.svg" alt="트위터(X) 연결페이지">
+                </a>
+                <a href="https://www.youtube.com">
+                    <img src="images/youtube.svg" alt="유튜브 연결 페이지">
+                </a>
+                <a href="https://www.instagram.com">
+                    <img src="images/instagram.svg" alt="인스타그램 연결 페이지">
+                </a>
+            </div>
         </div>
     </footer>
+
+    <footer class="footer-mobile">
+        <div class="footer-container-mobile">
+            <div class="footer-container-mobile-left">
+                <div class="footer-links">
+                    <a href="privacy.html" class="link-to_privacy">Privacy Policy</a>
+                    <a href="faq.html" class="link-to_faq">FAQ</a>
+                </div>
+                <p>©codeit - 2023</p>
+            </div>
+            <div class="footer-sns_link">
+                <a href="https://www.facebook.com">
+                    <img src="images/facebook.svg" alt="페이스북 연결 페이지">
+                </a>
+                <a href="https://www.twitter.com">
+                    <img src="images/twitter.svg" alt="트위터(X) 연결페이지"> 
+                </a>
+                <a href="https://www.youtube.com">
+                    <img src="images/youtube.svg" alt="유튜브 연결 페이지">
+                </a>
+                <a href="https://www.instagram.com">
+                    <img src="images/instagram.svg" alt="인스타그램 연결 페이지">
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
 </body>
+
 </html>
