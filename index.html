@@ -10,15 +10,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Abel&family=Acme&display=swap" rel="stylesheet">
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="./css/font.css">
   <link rel="stylesheet" href="./css/default.css">
   <link rel="stylesheet" href="./css/main.css">
+  <meta property="og:title" content="Linkbrary" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://linkbrary-oh.netlify.app/" />
+  <meta property="og:image" content="./img/main_bg.png" />
+  <meta property="og:description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요" />
 </head>
 
 <body>
   <header class="header">
     <div class="header__inner">
       <a class="header__link-home" href="/">
-        <img src="./img/logo.png" alt="linkbrary logo">
+        <img class="header__logo" src="./img/logo.svg" alt="linkbrary logo">
       </a>
       <a class="btn header__link-login" href="./signin.html">로그인</a>
     </div>
@@ -27,9 +33,10 @@
     <div class="main__content">
       <h1 class="main__text">
         <span class="main__text--gradient">세상의 모든 정보</span>를 <br>
-        쉽게 저장하고 관리해 보세요
+        쉽게 저장하고 <span class="main__text--mobile-br">관리해 보세요</span>
       </h1>
       <a class="btn main__link" href="./signup.html">링크 추가하기</a>
+      <img class="main__bg-img" src="./img/main_bg.png" alt="메인 홈페이지 사진">
     </div>
   </main>
   <section class="main-section">
@@ -37,12 +44,12 @@
       <article class="main-article">
         <div class="main-article__content">
           <h2 class="main-article__title">
-            <span class="main-article__title--gradient">원하는 링크</span>를 <br>
+            <span class="main-article__title--gradient">원하는 링크</span>를 <br class="pc-br">
             저장하세요
           </h2>
           <p class="main-article__p">
-            나중에 읽고 싶은 글, 다시 보고 싶은 영상, <br>
-            사고 싶은 옷, 기억하고 싶은 모든 것을 <br>
+            나중에 읽고 싶은 글, 다시 보고 싶은 영상, <br class="pc-br">
+            사고 싶은 옷, 기억하고 싶은 모든 것을 <br class="pc-br">
             한 공간에 저장하세요.
           </p>
         </div>
@@ -51,11 +58,11 @@
       <article class="main-article">
         <div class="main-article__content">
           <h2 class="main-article__title">
-            링크를 폴더로 <br>
+            링크를 폴더로 <br class="pc-br">
             <span class="main-article__title--gradient">관리</span>하세요
           </h2>
           <p class="main-article__p">
-            나만의 폴더를 무제한으로 만들고 <br>
+            나만의 폴더를 무제한으로 만들고 <br class="pc-br">
             다양하게 활용할 수 있습니다.
           </p>
         </div>
@@ -64,12 +71,12 @@
       <article class="main-article">
         <div class="main-article__content">
           <h2 class="main-article__title">
-            저장한 링크를 <br>
+            저장한 링크를 <br class="pc-br">
             <span class="main-article__title--gradient">공유</span>해 보세요.
           </h2>
           <p class="main-article__p">
-            여러 링크를 폴더에 담고 공유할 수 있습니다. <br>
-            가족, 친구, 동료들에게 쉽고 빠르게 링크를 <br>
+            여러 링크를 폴더에 담고 공유할 수 있습니다. <br class="pc-br">
+            가족, 친구, 동료들에게 쉽고 빠르게 링크를 <br class="pc-br">
             공유해 보세요.
           </p>
         </div>
@@ -78,11 +85,11 @@
       <article class="main-article">
         <div class="main-article__content">
           <h2 class="main-article__title">
-            저장한 링크를 <br>
+            저장한 링크를 <br class="pc-br">
             <span class="main-article__title--gradient">검색</span>해 보세요
           </h2>
           <p class="main-article__p">
-            중요한 정보들을 검색으로 쉽게 찾아보세요.
+            중요한 정보들을 검색으로 쉽게 <br class="pc-br">찾아보세요.
           </p>
         </div>
         <img class="main-article__img" src="./img/section4.png" alt="저장한 링크를 검색해 보세요">

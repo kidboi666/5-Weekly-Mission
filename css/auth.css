@@ -1,4 +1,4 @@
-.signin {
+.auth {
   display: flex;
   justify-content: center;
   height: 100vh;
@@ -6,89 +6,89 @@
   background-color: var(--gray5-color);
 }
 
-.signin__inner {
+.auth__inner {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 400px;
 }
 
-.signin__logo {
+.auth__logo {
   width: 211px;
 }
 
-.signin__text-wp {
+.auth__text-wp {
   display: flex;
   align-items: end;
   gap: 8px;
   margin-top: 16px;
 }
 
-.signin__text {
-  font-size: 16px;
+.auth__text {
+  font-size: 1rem;
   line-height: 16px;
 }
 
-.signin__link {
+.auth__link {
   border-bottom: 1px solid var(--primary-color);
   font-weight: 600;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 19px;
   color: var(--primary-color);
 }
 
-.signin-form {
+.auth-form {
   width: 100%;
   margin-top: 30px;
 }
 
-.signin-form__input-wp {
+.auth-form__input-wp {
   display: flex;
   flex-direction: column;
   gap: 12px;
   margin-top: 24px;
 }
 
-.signin-form__input-wp:nth-child(1) {
+.auth-form__input-wp:nth-child(1) {
   margin-top: 0;
 }
 
-.signin-form__label {
-  font-size: 14px;
+.auth-form__label {
+  font-size: 0.875rem;
 }
 
-.signin-form__pw-wp {
+.auth-form__pw-wp {
   position: relative;
 }
 
-.signin-form__eye {
+.auth-form__eye {
   position: absolute;
   top: 22px;
   right: 22px;
   cursor: pointer;
 }
 
-.signin-form__input {
+.auth-form__input {
   width: 100%;
   padding: 18px 15px;
   border: 1px solid var(--gray3-color);
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 24px;
   color: #373740;
 }
 
-.signin-form__input:focus {
+.auth-form__input:focus {
   outline: 1px solid #6d6afe;
 }
 
-.signin-form__btn {
+.auth-form__btn {
   width: 100%;
   margin-top: 30px;
 }
 
-.signin-sns {
+.auth-sns {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -100,14 +100,26 @@
   border-radius: 8px;
 }
 
-.signin-sns__title {
+.auth-sns__title {
   font-family: Pretendard;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 400;
   color: #373740;
 }
 
-.signin-sns__ul {
+.auth-sns__ul {
   display: flex;
   gap: 16px;
+}
+
+
+@media (max-width: 767px) {
+  .auth {
+    padding: 120px 32px 0;
+  }
+  .auth__inner {
+    width: 100%;
+    max-width: 400px;
+  }
+
 }

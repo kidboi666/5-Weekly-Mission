@@ -11,44 +11,49 @@
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   <link rel="stylesheet" href="./css/default.css">
-  <link rel="stylesheet" href="./css/signin.css">
+  <link rel="stylesheet" href="./css/auth.css">
+  <meta property="og:title" content="Linkbrary" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://linkbrary-oh.netlify.app/" />
+  <meta property="og:image" content="./img/main_bg.png" />
+  <meta property="og:description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요" />
 </head>
 
 <body>
-  <div class="signin">
-    <div class="signin__inner">
+  <div class="auth">
+    <div class="auth__inner">
       <a href="/">
-        <img class="signin__logo" src="./img/logo_big.png" alt="Linkbrary logo">
+        <img class="auth__logo" src="./img/logo.svg" alt="Linkbrary logo">
       </a>
-      <div class="signin__text-wp">
-        <p class="signin__text">회원이 아니신가요?</p>
-        <a class="signin__link" href="./signup.html">회원 가입하기</a>
+      <div class="auth__text-wp">
+        <p class="auth__text">회원이 아니신가요?</p>
+        <a class="auth__link" href="./signup.html">회원 가입하기</a>
       </div>
-      <form class="signin-form">
-        <div class="signin-form__input-wp">
-          <label class="signin-form__label">이메일</label>
-          <input class="signin-form__input" type="email">
+      <form class="auth-form">
+        <div class="auth-form__input-wp">
+          <label class="auth-form__label">이메일</label>
+          <input class="auth-form__input" type="email">
         </div>
-        <div class="signin-form__input-wp">
-          <label class="signin-form__label">비밀번호</label>
-          <div class="signin-form__pw-wp">
-            <input class="signin-form__input" type="password">
-            <img class="signin-form__eye" src="./img/eye_off.png" alt="eye off">
+        <div class="auth-form__input-wp">
+          <label class="auth-form__label">비밀번호</label>
+          <div class="auth-form__pw-wp">
+            <input class="auth-form__input" type="password">
+            <img class="auth-form__eye" src="./img/eye_off.png" alt="eye off">
           </div>
           </div>
-        <button class="btn signin-form__btn">로그인</button>
+        <button class="btn auth-form__btn">로그인</button>
       </form>
-      <div class="signin-sns">
-        <h2 class="signin-sns__title">소셜 로그인</h2>
-        <ul class="signin-sns__ul">
-          <li class="signin-sns__li">
+      <div class="auth-sns">
+        <h2 class="auth-sns__title">소셜 로그인</h2>
+        <ul class="auth-sns__ul">
+          <li class="auth-sns__li">
             <a href="https://www.google.com/">
-              <img class="signin-form__img" src="./img/login_google.png" alt="구글 로그인">
+              <img class="auth-form__img" src="./img/login_google.png" alt="구글 로그인">
             </a>
           </li>
-          <li class="signin-sns__li">
+          <li class="auth-sns__li">
             <a href="https://www.kakaocorp.com/page/">
-              <img class="signin-form__img" src="./img/login_kakaotalk.png" alt="카카오톡 로그인">
+              <img class="auth-form__img" src="./img/login_kakaotalk.png" alt="카카오톡 로그인">
             </a>
           </li>
         </ul>

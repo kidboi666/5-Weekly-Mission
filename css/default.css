@@ -17,7 +17,7 @@
 }
 
 body {
-  font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard";
 }
 
 a {
@@ -49,5 +49,13 @@ img {
   border-radius: 8px;
   color: var(--white-color);
   font-weight: 600;
-  font-size: 18px;
+  font-size: 1.125rem;
+}
+
+@media (max-width: 767px) {
+ 
+  .pc-br {
+    display: none;
+  }
+
 }
