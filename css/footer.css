@@ -20,12 +20,6 @@
   align-self: stretch;
 }
 
-/* .footer-element-link{
-  display: flex;
-  gap: 30px;
-  align-items: center;
-} */
-
 .footer-text{
   display: flex;
   gap: 30px;
@@ -61,7 +55,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-column-gap: auto; /* 가로 갭을 20px로 설정합니다 */
+    grid-column-gap: auto;
     grid-row-gap: 60px; 
   }
   #codeit-2023{

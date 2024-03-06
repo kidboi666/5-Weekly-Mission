@@ -81,8 +81,7 @@ h6{
   justify-content: center;
   align-items: center;
   cursor: pointer; 
-  width: Fixed (350px);
-  height: Hug (53px);
+  height: 53px;
   padding: 16px 20px;
   border: none;
   border-radius: 8px;
@@ -101,8 +100,7 @@ h6{
   justify-content: center;
   align-items: center;
   cursor: pointer; 
-  width: Fixed (350px);
-  height: Hug (53px);
+  height: 53px;
   border: none;
   border-radius: 8px;
   background: linear-gradient(90.99deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
@@ -120,9 +118,4 @@ a{
 
 .logo{
   cursor: pointer;
-}
-
-@media(max-width: 767px){
-  
-
 }
