@@ -151,6 +151,11 @@ header {
   background-color: #f5e14b;
 }
 
+.error_msg {
+  color: var(--red);
+  font-size: 14px;
+}
+
 /*모바일 환경*/
 
 @media (min-width: 375px) and (max-width: 767px) { 
