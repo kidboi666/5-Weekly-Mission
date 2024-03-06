@@ -1,0 +1,140 @@
+main {
+  padding: 238px 0;
+}
+
+.eye-btn {
+  background-color: inherit;
+  position: absolute;
+  right: 10px;
+  top: 15px;
+}
+
+.eye-btn:hover .eye-on {
+  filter: brightness(0);
+}
+
+.eye-on path {
+  background-color: transparent;
+}
+
+.img-border {
+  border: 2px solid var(--d3-gray-color);
+  border-radius: 50%;
+}
+
+.incorrect-password {
+  position: absolute;
+  color: var(--red-color);
+  bottom: -25px;
+}
+
+.input-label {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.join {
+  display: flex;
+  gap: 8px;
+}
+
+.login {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+}
+
+.login-btn {
+  width: 100%;
+  position: relative;
+  top: 6px;
+  height: 54px;
+  font-size: 18px;
+  margin: 16px 0;
+}
+
+.other-id {
+  background-color: var(--d2-gray-color);
+  display: flex;
+  padding: 12px 24px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--Linkbrary-gray20, #ccd5e3);
+  background: var(--Linkbrary-gray10, #e7effb);
+}
+
+.pw-input {
+  position: relative;
+}
+
+.sign {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+.sign-input {
+  display: flex;
+  width: 100%;
+  padding: 18px 15px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--Linkbrary-gray20, #ccd5e3);
+  background: var(--Linkbrary-white, #fff);
+}
+
+.sign-input:focus {
+  border: 1px solid var(--primary-color);
+}
+
+.sign-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.signup-btn {
+  margin-top: 0;
+}
+
+.sign-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 16px;
+}
+
+.sign-link {
+  font-weight: 600;
+  color: var(--primary-color);
+  text-decoration-line: underline;
+}
+
+.social-links {
+  display: flex;
+  gap: 16px;
+}
+
+@media (max-width: 767px) {
+  main {
+    padding: 120px 32px;
+  }
+}
