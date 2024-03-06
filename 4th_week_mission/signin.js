@@ -57,3 +57,13 @@ function submitSign() {
   }
 }
 
+// eye-button 클리
+const showPassword = document.querySelector("#showPassword");
+const passwordField = document.querySelector("#password");
+showPassword.addEventListener("click", function(){
+
+  this.classList.toggle("eye-button-off");
+  const type = passwordField.getAttribute("type") 
+  === "password" ? "text" : "password" ;
+  passwordField.setAttribute("type", type);
+});
