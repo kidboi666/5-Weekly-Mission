@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #F0F6FF;
+}
+.container {
+  display: flex;
+  padding: 238px 0px 253px 0px;
+  justify-content: center;
+  align-items: center;  
+}
+.container .wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+.container .wrapper .link-brary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+.container .wrapper .link-brary .title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.container .wrapper .link-brary .title .text {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.container .wrapper .link-brary .input-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+.container .wrapper .link-brary .input-form .form-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+.container .wrapper .link-brary .input-form .form-1 .input-1 {
+  display: flex;
+  width: 400px;
+  padding: 18px 15px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid #CCD5E3;
+  background-color: #FFF;
+  outline: none;
+}
+.container .wrapper .link-brary .input-form .form-1 .input-1:focus {
+  border: 1px solid #6D6AFE;
+}
+.container .wrapper .link-brary .input-form .form-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+.container .wrapper .link-brary .input-form .form-2 .input-2 {
+  display: flex;
+  width: 400px;
+  padding: 18px 15px;
+  justify-content: center;
+  align-items: center;border-radius: 8px;
+  border: 1px solid #CCD5E3;
+  background-color: #FFF;
+  outline: none;
+}
+.container .wrapper .link-brary .input-form .form-2 .input-2:focus {
+  border: 1px solid #6D6AFE;
+}
+.join {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.social-log-in {
+  border-radius: 8px;
+  border: 1px solid #CCD5E3;
+  background-color: #E7EFFB;
+  display: flex;
+  width: 400px;
+  padding: 12px 24px;
+  justify-content: space-between;
+  align-items: center;
+}
+.text-11 {
+  color:#373740;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.frame-2 {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
