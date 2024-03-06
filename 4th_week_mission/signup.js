@@ -30,6 +30,19 @@ document.getElementById('password').addEventListener('focusout', function(){
     pwdError.textContent = '   ';
 }
 });
+//비밀번호 확인 검사
+document.getElementById('passwordRepeat').addEventListener('focusout', function(){
+  const password = document.getElementById('password').value.trim();
+  const passwordRepeat = this.value.trim();
+  const pwdCheckerError = document.getElementById('pwdCheckerError');
+  if (passwordRepeat === ''){
+    pwdCheckerError.textContent = '비밀번호를 입력해 주세요.';
+  } else if (password  === passwordRepeat) {
+    pwdCheckerError.textContent = ' ';
+  } else {
+    pwdCheckerError.textContent ='비밀번호가 다릅니다.'
+  }  
+})
 
 // Submit
 document.querySelector('.cta').addEventListener('click', submitSign);
