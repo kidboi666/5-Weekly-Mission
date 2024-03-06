@@ -1,116 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Linkbrary</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./src/landing.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Linkbrary">
+    <meta property="og:description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요">
+    <meta property="og:url" content="https://codeit-linkbrary-sy.netlify.app/">
+    <meta property="og:image" href="./images/preview.png">
 </head>
 <body>
+    <nav>
+        <div class="gnb">
+            <a href="index.html"><img src="./images/logo.svg" alt="Linkbrary 로고"></a>
+            <a class="cta" href="signin.html">로그인</a>
+        </div>
+    </nav>
+
     <header>
-        <div class="nav">
-        <a href="index.html"><img class="logo" src="logo.svg" alt="로고"></a>
-        <a class="login" href="signin.html">로그인</a>
+        <div class="main-description">
+            <h1 class="maintitle">
+                <span  class="maintitle-style">세상의 모든 정보를 </span>
+                <br>쉽게 저장하고 관리해보세요
+            </h1>
+            <a class="cta2" href="signup.html">링크 추가하기</a>
+            <img class="img1" src="./images/hero.png" alt="메인이미지">
         </div>
     </header>
 
-    <section class="contents01">
-        <div class="title01">
-            <span class="txt1">세상의 모든 정보</span><span class="txt2">를<br>쉽게 저장하고 관리해 보세요</span>
-        </div>
-        <a class="add-link" href="signup.html">
-            링크 추가하기
-        </a>
-        <img class="example01" src="img1.png" alt="예시화면">
-    </section>
+    <article>
+        <section>
+            <h2 class="title">
+                <span class="title-style">원하는 링크</span>를 <br>저장하세요
+            </h2>
+            <p class="explation">나중에 읽고 싶은 글, 다시 보고 싶은 영상, <br>
+            사고 싶은 옷, 기억하고 싶은 모든 것을<br>
+            한 공간에 저장하세요.</p>
+            <img src="./images/image1.png" class="content-image" alt="링크기능이 담긴 예시화면">
+        </section>
 
-    <!-- 피그마화면 contents-02 -->
-    <section class="contents02">
-        <div class="frame">
-            <div class="title02">
-                <div class="title02-style">
-                <span class="txt3">원하는 </span><span class="txt4">링크</span><span class="txt5">를 저장하세요</span><br>
-                </div>
-                <div class="txt6">
-                    나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br>
-                    사고 싶은 옷, 기억하고 싶은 모든 것을<br>
-                    한 공간에 저장하세요.
-                </div>
-            </div>
-            <img class="example02" src="img2.png" alt="예시화면2">
-        </div>
-    </section>
+        <section>
+            <img src="./images/image2.png" class="content-image" alt="폴더이름 변경기능이 담긴 사진">
+            <h2 class="title">
+                링크를 폴더로 <br><span class="title-style2">관리</span>하세요
+            </h2>
+            <p class="explation">나만의 폴더를 무제한으로 만들고 <br>다양하게 활용할 수 있습니다.</p>
+        </section>
 
-    <!-- 피그마화면 contents-03 -->
-    <section class="contents03">
-        <div class="frame02">
-            <img class="example03" src="img3.png" alt="예시화면3">
-            <div class="title02">
-                <div class="title02-style">
-                    링크를 폴더로 <span class="txt7">관리</span>하세요
-                </div>
-                <div class="txt6">
-                    나만의 폴더를 무제한으로 만들고 <br> 다양하게 활용할 수 있습니다.
-                </div>
-            </div>
-        </div>
-    </section>
+        <section>
+            <img src="./images/image3.png" class="content-image" alt="링크 공유 기능이 담긴 사진">
+            <h2 class="title">
+                저장한 링크를 <br><span class="title-style3">공유</span>해보세요.
+            </h2>
+            <p class="explation">여러 링크를 폴더에 담고 공유할 수 있습니다.<br>가족, 친구, 동료들에게 쉽고 빠르게 링크를<br>공유해 보세요.</p>
+        </section>
 
-    <!-- 피그마화면 contents-04 -->
-    <section class="contents03">
-        <div class="frame02">
-            <div class="title02">
-                <div class="title02-style">
-                    저장한 링크를 <sapn class="txt8">공유</sapn>해 보세요.
-                </div>
-                    <div class="txt6">
-                        여러 링크를 폴더에 담고 공유할 수 있습니다.<br>
-                        가족, 친구, 동료들에게 쉽고 빠르게 링크를<br>공유해 보세요.
-                    </div>
-            </div>
-            <img class="example04" src="img4.png" alt="예시화면4">
-        </div>
-    </section>
+        <section>
+            <img src="./images/image4.png" class="content-image" alt="링크 검색 기능이 담긴 사진">
+            <h2 class="title">
+                저장한 링크를 <br><span class="title-style4">검색</span>해보세요.
+            </h2>
+            <p class="explation">중요한 정보들을 검색으로 쉽게 찾아보세요.</p>
+        </section>
+    </article>
     
-    <!-- 피그마화면 contents-05 -->
-    <section class="contents03">
-        <div class="frame02">
-            <img class="example02" src="img5.png" alt="예시화면5">
-            <div class="title02">
-                <div class="title02-style">
-                    저장한 링크를 <span class="txt9">검색</span>해 보세요
-                </div>
-                <div class="txt6">
-                    중요한 정보들을 검색으로 쉽게 찾아보세요.
-                </div>
-            </div>
-        </div>
-    </section>
-
     <footer>
-        <div class="frame03">
-            <div class="frame04">
-               <div class="txt10">
-                    ©codeit - 2023
-               </div>
-               <div class="txt11">
-                    <a class="privacy" href="privacy.html">Privacy Policy</a>
-                    <a class="faq" href="faq.html">FAQ</a>
-               </div>
-               <div class="sns">
-                    <a href="https://www.facebook.com/?locale=ko_KR">
-                        <img class="sns-logo" src="facebook.svg" alt="페이스북 이동">
-                    </a>
-                    <a href="https://twitter.com/?lang=ko">
-                        <img class="sns-logo" src="twitter.svg" alt="트위터 이동">
-                    </a>
-                    <a href="https://www.youtube.com/">
-                        <img class="sns-logo" src="youtube.svg" alt="유튜브 이동">
-                    </a>
-                    <a href="https://www.instagram.com/">
-                    <img class="sns-logo" src="instagram.svg" alt="인스타 이동">
-                    </a>    
-               </div>
+        <div class="footer-box">
+            <span class="copyright">©codeit - 2023</span>
+            <div class="footer-links">
+                <a class="footer-link" href="privacy.html">Privacy Policy</a>
+                <a class="footer-link" href="faq.html">FAQ</a>
+            </div>
+            <div class="sns">
+                <a href="https://www.facebook.com/">
+                    <img src="./images/facebook.svg" alt="facebook 홈페이지로 연결된 facebook 로고" />
+                </a>
+                <a href="https://twitter.com/">
+                    <img src="./images/twitter.svg" alt="twitter 홈페이지로 연결된 twitter 로고" />
+                </a>
+                <a href="https://www.youtube.com/">
+                    <img src="./images/youtube.svg" alt="youtube 홈페이지로 연결된 youtube 로고" />
+                </a>
+                <a href="https://www.instagram.com/">
+                    <img src="./images/instagram.svg" alt="instagram 홈페이지로 연결된 instagram 로고" />
+                </a>
             </div>
         </div>
     </footer>
