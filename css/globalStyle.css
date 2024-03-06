@@ -81,8 +81,7 @@ h6{
   justify-content: center;
   align-items: center;
   cursor: pointer; 
-  width: Fixed (350px);
-  height: Hug (53px);
+  height: 53px;
   padding: 16px 20px;
   border: none;
   border-radius: 8px;
@@ -96,26 +95,20 @@ h6{
   color: #F5F5F5;
 }
 
-.btn-small{
+.header-btn{
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-  width: Fixed (300px);
-  height: Hug (37px);
-  padding: 10px, 16px, 10px, 16px;
+  cursor: pointer; 
+  height: 53px;
   border: none;
   border-radius: 8px;
-  text-align: center;
   background: linear-gradient(90.99deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
   font-family: Pretendard;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 17px;
-  letter-spacing: 0em;
   text-align: center;
   color: #F5F5F5;
 }
+
 
 a{
   text-decoration-line: none;
@@ -126,4 +119,3 @@ a{
 .logo{
   cursor: pointer;
 }
-
