@@ -1,125 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta name="" content="">
+  <meta property="og:url" content="https://linkbrary0304.netlify.app/">
+  <meta property="og:title" content="Linkbrary">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/assets/img/png/meta.png">
+  <meta property="og:description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요">
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Abel&family=Acme&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/CSS/style.css">
+  <link rel="stylesheet" href="/assets/CSS/mobile.css">
   <title>Linkbrary</title>
 </head>
-
 <body>
-  <nav class="nav">
-    <div class="nav__inner">
-      <a href="/" class="nav__inner__logo"><img src="/img/header-logo.svg" alt="사이트 로고 Linkbrary"></a>
-      <a href="/signin.html" class="nav__inner__signin btn-color">로그인</a>
+  <nav class="nav-wrap">
+    <div class="nav-inner">
+      <a href="/">
+        <img src="/assets/img/svg/main-logo.svg" alt="홈으로 연결된 사이트 로고 Linkbrary">
+      </a>
+      <a class="nav-link btn-color" href="/signin.html">
+        로그인
+      </a>
     </div>
   </nav>
 
-  <header class="header">
-    <div class="header__inner">
-      <p class="header__title">
-        <span class="header__title__text">세상의 모든 정보</span>를<br>
-        쉽게 저장하고 관리해 보세요
-      </p>
-      <div class="header__link">
-        <a href="/signup.html" class="header__link__signup btn-color">링크 추가하기</a>
-      </div>
-      <div class="header__bg">
-        <img src="/img/mainbg.png" alt="링크 검색 이미지" class="header__bg__in">
-      </div>
+  <header class="header-wrap">
+    <div class="header-inner">
+      <h1 class="header-title">
+        <span class="header-title__text">세상의 모든 정보</span>를
+        <br />
+        쉽게 저장하고<br class="tablet-br"/> 관리해 보세요
+      </h1>
+      <a class="header-link btn-color" href="/signup.html">
+        링크 추가하기
+      </a>
+      <img src="/assets/img/png/mainbg.png" class="header-image" alt="링크 검색 이미지">
     </div>
   </header> 
-  
-  <main>
-    <!-- Card1 -->
-    <div class="card-item card1-wrap">
-      <div>
+
+  <article class="content-wrap">
+    <!-- content1 -->
+    <section class="card-wrap">
+      <div class="card-inner">
         <h2 class="card-item__title">
-          <span class="card1-item__title__font">원하는 링크</span>로<br>
-          저장하세요
+          <span class="title-1-gradient background-clip-text">
+            원하는 링크</span>를
+            <br class="pc-br"/>
+            저장하세요
         </h2>
         <p class="card-item__text">
-          나중에 읽고 싶은 글, 다시 보고 싶은 영상,<br>
-          사고 싶은 옷, 기억하고 싶은 모든 것을<br>
+          나중에 읽고 싶은 글, 다시 보고 싶은 영상,
+          <br />
+          사고 싶은 옷, 기억하고 싶은 모든 것을
+          <br />
           한 공간에 저장하세요.
         </p>
       </div>
-      <img src="/img/card1.png" class="card-item__img" alt="링크 저장 이미지">
-    </div>
+      <img src="/assets/img/png/card1.png" class="card-item__img" alt="링크 저장 이미지">
+    </section>
 
-    <!-- Card2 -->
-    <div class="card-item">
-      <img src="/img/card2.png" class="card-item__img" alt="폴더 관리 팝업창 이미지">
-      <div>
+    <!-- content2 -->
+    <section class="card-wrap">
+      <div class="card-inner">
         <h2 class="card-item__title">
-          링크를 폴더로<br>
-          <span class="card2-item__title__font">관리</span>하세요
+          링크를 폴더로
+          <br class="pc-br"/>
+          <span class="title-2-gradient background-clip-text">관리</span>하세요
         </h2>
         <p class="card-item__text">
-          나만의 폴더를 무제한으로 만들고<br>
+          나만의 폴더를 무제한으로 만들고
+          <br />
           다양하게 활용할 수 있습니다.
         </p>
       </div>
-    </div>
+      <img src="/assets/img/png/card2.png" class="card-item__img" alt="폴더 관리 팝업창 이미지">
+    </section>
 
-    <!-- Card3 -->
-    <div class="card-item">
-      <div>
+    <!-- content3 -->
+    <section class="card-wrap">
+      <div class="card-inner">
         <h2 class="card-item__title">
-          저장된 링크로<br>
-          <span class="card3-item__title__font">공유</span>해 보세요
+          저장된 링크로
+          <br class="pc-br"/>
+          <span class="title-3-gradient background-clip-text">공유</span>해 보세요
         </h2>
         <p class="card-item__text">
-          여러 링크를 폴더에 담고 공유할 수 있습니다.<br>
-          가족, 친구, 동료들에게 쉽고 빠르게 링크를<br> 
+          여러 링크를 폴더에 담고 공유할 수 있습니다.
+          <br />
+          가족, 친구, 동료들에게 쉽고 빠르게 링크를
+          <br /> 
           공유해 보세요.
         </p>
       </div>
-      <div class="card3-line">
-        <img src="/img/Card3.png" alt="폴더 공유 팝업창 이미지">
-      </div>
-    </div>
+      <img src="/assets/img/png/card3.png" class="card-item__img" alt="폴더 공유 팝업창 이미지">
+    </section>
 
-    <!-- Card4 -->
-    <div class="card-item">
-      <div class="card4-line">
-        <img src="/img/Card4-img.png" alt="검색 이미지">
-      </div>
-      <div>
+    <!-- content4 -->
+    <section class="card-wrap">
+      <div class="card-inner">
         <h2 class="card-item__title">
-          저장한 링크로<br>
-          <span class="card4-item__title__font">검색</span>보세요
+          저장한 링크로
+          <br class="pc-br"/>
+          <span class="title-4-gradient background-clip-text">검색</span>보세요
         </h2>
         <p class="card-item__text">
           중요한 정보들을 검색으로 쉽게 찾아보세요.
         </p>
       </div>
-    </div>
-  </main>
+      <img src="/assets/img/png/card4.png" class="card-item__img" alt="검색 이미지">
+    </section>
+  </article>
 
-  <footer class="footer">
-    <div class="footer__inner">
-      <span>©codeit - 2023</span>
-      <div class="footer__inner__link">
-        <a href="/privacy.html" class="footer__inner__link__font">Privacy Policy</a>
-        <a href="/faq.html" class="footer__inner__link__font">FAQ</a>
+  <footer class="footer-wrap">
+    <div class="footer-item">
+      <span class="footer-item__date">
+        ©codeit - 2023
+      </span>
+      <div class="footer-item__link">
+        <a href="/privacy.html" class="footer-item__font">
+          Privacy Policy
+        </a>
+        <a href="/faq.html" class="footer-item__font">
+          FAQ
+        </a>
       </div>
-      <div class="footer__inner__icon">
+      <div class="footer-item__icon">
         <a href="https://www.facebook.com/?locale=ko_KR" target="_blank">
-          <img src="/img/akar-icons_facebook-fill.svg" alt="facebook">
+          <img src="/assets/img/svg/icon-facebook.svg" alt="facebook">
         </a>
         <a href="https://twitter.com/?lang=ko" target="_blank">
-          <img src="/img/akar-icons_twitter-fill.svg" alt="twitter">
+          <img src="/assets/img/svg/icon-twitter.svg" alt="twitter">
         </a>
         <a href="https://www.youtube.com/" target="_blank">
-          <img src="/img/akar-icons_youtube-fill.svg" alt="youtube">
+          <img src="/assets/img/svg/icon-youtube.svg" alt="youtube">
         </a>
         <a href="https://www.instagram.com/" target="_blank">
-          <img src="/img/ant-design_instagram-filled.svg" alt="instagram">
+          <img src="/assets/img/svg/icon-instagram.svg" alt="instagram">
         </a>
       </div>
     </div>

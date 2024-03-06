@@ -1,0 +1,181 @@
+@import url("/assets/CSS/color.css");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.btn-color {
+  color: var(--button-text);
+  background: var(--button-background);
+  font-family: Pretendard;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-decoration: none;
+  border-radius: .5rem;
+}
+
+.sign-header-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 14.875rem 0px 15.8125rem 0px;
+  background: var(--wrap-background);
+}
+
+.sign-header-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.875rem;
+}
+
+.sign-header-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-logo__image {
+  width: 13.2rem;
+  height: 2.375rem;
+}
+
+.header-logo__line {
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+}
+
+.header-logo__text {
+  margin: 0;
+  color: var(--black);
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+.header-logo__link {
+  color: var(--sign-point);
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.sign-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.sign-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .75rem;
+}
+
+.sign-label {
+  color: var(--black);
+  font-family: Pretendard;
+  font-size: .875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.sign-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  padding: 1.125rem .9375rem;
+  border: 1px solid var(--sign-border);
+  border-radius: .5rem;
+  background: var(--sign-input-background);
+}
+
+.sign-input:focus {
+  outline: 1px solid var(--sign-point);
+}
+
+
+.sign__pw-eye {
+  position: relative;
+}
+
+.sign__pw-eye-off {
+  position: absolute;
+  top: 1.125rem;
+  right: .9375rem;
+  border: 0;
+  background-color: transparent; /*배경 투명*/
+  cursor: pointer;
+}
+
+.sign-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .625rem;
+  width: 25rem;
+  padding: 1rem 1.25rem;
+  margin-top: 1.875rem;
+  border: solid 1px rgba(0,0,0,.15);
+  cursor: pointer;
+}
+
+.social-sign {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 25rem;
+  padding: .75rem 1.5rem;
+  margin: 0 auto;
+  border: 1px solid var(--sign-border);
+  border-radius: .5rem;
+  background: var(--social-sign-background);
+}
+
+
+.social-sign__title {
+  margin: 0;
+  color: var(--social-sign-title);
+  font-family: Pretendard;
+  font-size: .875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.social-sign__inner {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  width: 6.25rem;
+  height: 2.5rem;
+}
+
+.social-sign__icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.social-sign__icon-img {
+  position: absolute;
+  /* z-index: 1; */
+}

@@ -1,0 +1,15 @@
+:root {
+  --button-background: linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%);
+  --header-title-background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
+  --button-text: #F5F5F5;
+  --wrap-background: #F0F6FF;
+  --card-item-text: #6B6B6B;
+  --footer-background: #111322;
+  --footer-item-text: #676767;
+  --footer-link-text: #CFCFCF;
+  --sign-input-background: #FFF;
+  --sign-point: #6D6AFE;
+  --sign-border: #CCD5E3;
+  --social-sign-background: #E7EFFB;
+  --social-sign-title: #373740;
+}

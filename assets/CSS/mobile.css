@@ -1,0 +1,131 @@
+/*Tablet: 768px 이상 ~ 1199px 이하*/
+@media only screen and (max-width: 1199px) { 
+  .tablet-br {
+    display: inline;
+  }
+
+  .nav-inner {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: 50rem;
+  }
+  
+  .header-inner {
+    width: 43.625rem;
+  }
+  
+  .card-wrap {
+    gap: 0 51px;
+  }
+
+  .card-item__img {
+    width: 385px;
+    height: 315px;
+  }
+
+  .header__bg {
+    width: 90%;
+  }
+
+  .sign {
+    display: flex;
+    width: 1199px;
+    padding: 200px 399px 291px 400px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sign-header-wrap {
+    padding: 12.5rem 0px 18.1875rem 0px;
+  }
+}
+
+/*Mobile: 375px 이상 ~ 767px 이하*/
+@media only screen and (max-width: 767px) {  
+  .pc-br {
+    display: none;
+  }
+
+  .nav-inner {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .nav-link {
+    width: 5rem;
+    padding: .625rem 1rem;
+  }
+
+  .header-inner {
+    width: 20.3125rem;
+    gap: 1.5rem;
+    padding-top: 1.75rem;
+  }
+
+  .header-title {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 2.625rem;
+  }
+
+  .header-link {
+    width: 12.5rem;
+    padding: .625rem 1rem;
+  }
+
+  .btn-color {
+    font-size: .875rem;
+  }
+
+  .content-wrap {
+    gap: 5rem;
+    margin: 2.5rem 2rem 5rem;
+    max-width: 400px;
+  } 
+
+  .card-wrap,
+  .card-wrap:nth-of-type(2n) {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .card-inner {
+    width: 20.3125rem;
+  }
+
+  .card-item__img {
+    width: 20.3125rem;
+    height: 16.6193rem;
+  }
+
+  .card-item__title {
+    font-size: 1.5rem;
+  }
+
+  .card-item__text {
+    font-size: .9375rem;
+  }
+
+  .footer-item {
+    position: relative;
+    padding: 2rem 2rem 10rem 2rem;
+  }
+
+  .footer-item__date {
+    position: absolute;
+    top: 6.875rem;
+  }
+
+  .sign-header-wrap {
+    padding: 7.5rem 0px 14.5625rem 0px;
+  }
+
+  .sign-wrap,
+  .sign-label,
+  .sign-input,
+  .sign-btn,
+  .social-sign {
+    width: 20.3125rem;
+  }
+}
