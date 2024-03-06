@@ -1,12 +1,3 @@
-*{
-	box-sizing: border-box;
-}
-
-
-
-button{
-	cursor: pointer;
-}
 
 .nav {
 	width: 100%;
@@ -16,9 +7,12 @@ button{
 	position: sticky;
 	top:0;
 	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-.nav-container{
+.nav__contents{
 	width: 100%;
 	max-width: 1520px;
 	height: 53px;
@@ -28,31 +22,42 @@ button{
 }
 
 
-.nav-logo > img{
+.nav__logo > img{
 	max-width: 133px;
 	width: 100%;
 	height: 24px;
 }
 
-.nav-login_button{
+.nav__login-button{
 	max-width: 128px;
 	width: 100%;
 	height: 100%;
 	border-radius: 8px;
 	border-style: none;
 	gap: 10px;
-	background-image: linear-gradient(90deg,#6d6afe, #6ae3fe);
-	
+	background-image: linear-gradient(90deg,#6d6afe, #6ae3fe);	
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	
+	text-decoration-line: none;
 }
 
-.nav-login-label{
-	font-size: min(3vw,18px);
+.nav__login-label{
+	font-size: 18px;
 	font-weight: 600;
 	color: #f5f5f5;
 	font-family: 'Pretendard';
+}
+
+@media(max-width: 1199px){
+	.nav {
+		padding: 20px 32px 20px 32px;
+	}
+	.nav__contents{
+		width: 100%;
+		max-width: 799px;
+	}
 }
 
 @media(max-width: 767px){
@@ -60,12 +65,17 @@ button{
 		height: 63px;
 		padding: 13px 32px 13px 32px;
 	}
-	.nav-container{
+	.nav__contents{
 		height: 37px;
 	}
-	.nav-logo > img{
+	.nav__logo > img{
 		max-width: 89px;
 		width: 100%;
 		height: 24px;
+	}
+
+	.nav__login-button{
+		max-width: 80px;
+		width: 100%;
 	}
 }
