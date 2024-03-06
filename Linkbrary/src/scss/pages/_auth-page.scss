@@ -34,6 +34,7 @@ main {
       flex-grow: 1;
 
       .input-label {
+        position: relative;
         @include a.flex(column);
         gap: 12px;
         width: 100%;
@@ -66,7 +67,7 @@ main {
             }
           }
 
-          .incorrect-password {
+          .error-message {
             position: absolute;
             color: a.$red-color;
             bottom: -25px;
