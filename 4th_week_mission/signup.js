@@ -73,10 +73,20 @@ function submitSign() {
 // eye-button 클릭에 따라 eye-button on/off를 토글하고, password input type을 변경함 
 const showPassword = document.querySelector("#showPassword");
 const passwordField = document.querySelector("#password");
+const showPassword2 = document.querySelector("#showPassword2");
+const passwordRepeatField = document.querySelector("#passwordRepeat");
 
+// 비밀번호 input 이벤트 핸들러
 showPassword.addEventListener("click", function(){
   this.classList.toggle("eye-button-off");
   const type = passwordField.getAttribute("type") 
   === "password" ? "text" : "password" ;
   passwordField.setAttribute("type", type);
+});
+// 비밀번호 확인 input 이벤트 핸들러
+showPassword2.addEventListener("click", function(){
+  this.classList.toggle("eye-button-off");
+  const type = passwordRepeatField.getAttribute("type") 
+  === "password" ? "text" : "password" ;
+  passwordRepeatField.setAttribute("type", type);
 });
