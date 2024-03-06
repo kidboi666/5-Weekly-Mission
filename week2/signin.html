@@ -19,18 +19,26 @@
             <p>회원이 아니신가요? <a href="/signup.html" class="link">회원 가입하기</a></p>
         </header>
         <main>
-            <div class="wrap-input">
-                <p>이메일</p>
-                <input type="text" class="input-txt" placeholder="codeit@codeit.com">
-            </div>
-            <div class="wrap-input">
-                <p>비밀번호</p>
-                <input type="password" class="input-txt" placeholder="ㆍㆍㆍㆍㆍㆍ">
-                <object data="/static/images/auth/eye-off.svg" type="image/svg+xml" class="eye-off">
-                    <img src="/static/images/auth/eye-off.png" alt="비밀번호 표시" class="cursor-point" class="eye-off">
-                </object>
-            </div>
-            <a href="/signin.html" class="primary-btn lg">로그인</a>
+            <form action="/" id="form">
+                <div class="wrap-input">
+                    <label>이메일</label>
+                    <input type="text" class="input-txt" id="email" name="email" placeholder="codeit@codeit.com">
+                    <p class="txt-wrong hide-error-email"></p>
+                </div>
+                <div class="wrap-input">
+                    <label>비밀번호</label>
+                    <input type="password" class="input-txt" id="password" name="password" placeholder="ㆍㆍㆍㆍㆍㆍ">
+                    <object data="/static/images/auth/eye-off.svg" type="image/svg+xml" class="eye eye-off">
+                        <img src="/static/images/auth/eye-off.png" alt="비밀번호 표시" class="cursor-point" class="eye eye-off">
+                    </object>
+                    <object data="/static/images/auth/eye-on.svg" type="image/svg+xml" class="eye eye-on disable">
+                        <img src="/static/images/auth/eye-on.png" alt="비밀번호 표시" class="cursor-point" class="eye eye-on">
+                    </object>
+                    <button type="button" id="passwordHidden"></button>
+                    <p class="txt-wrong hide-error-password"></p>
+                </div>
+                <button type="submit" id="loginBtn" class="primary-btn lg">로그인</button>
+            </form>
         </main>
         <footer>
             <p>소셜로그인</p>
@@ -47,5 +55,7 @@
                 </a>
             </div>
         </footer>
+
+        <script type="text/javascript" src="/static/js/signin.js"></script> 
     </body>
 </html>
