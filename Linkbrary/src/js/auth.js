@@ -1,6 +1,5 @@
 function handleFocusIn(event) {
   const target = event.target;
-  console.log(target);
   removeErrorMessage(target);
 }
 
@@ -11,6 +10,9 @@ function handleFocusOut(event) {
   switch (targetId) {
     case "user-email":
       checkEmail(parent, event.target);
+      break;
+    case "password":
+      checkPassword(parent, event.target);
       break;
   }
 }
@@ -28,6 +30,12 @@ function checkEmail(parent, emailInput) {
 function isValidEmail(inputValue) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(inputValue);
+}
+
+function checkPassword(parent, passwordInput) {
+  const inputValue = passwordInput.value;
+  if (inputValue.length === 0)
+    generateErrorMessage(parent, "비밀번호를 입력해주세요");
 }
 
 function generateErrorMessage(parent, errorText) {
