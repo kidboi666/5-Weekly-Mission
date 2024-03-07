@@ -37,6 +37,13 @@ body {
     margin: 1.875rem 0 0;
 }
 
+.login-caution {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--redColor);
+    margin: 6px 0 0;
+}
+
 @media (max-width: 1199px) { /* 타블렛 */
     .login-body {
         margin: 14.875rem 0;

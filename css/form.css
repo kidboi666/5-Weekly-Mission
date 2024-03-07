@@ -56,7 +56,7 @@
 .input-login-form01 {
     display: flex;
     flex-direction: column;
-    margin: 1.5rem 0 0;
+    margin: 1.125rem 0 0;
 }
 
 .input-login-form01:first-child {
