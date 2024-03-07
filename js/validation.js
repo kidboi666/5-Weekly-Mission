@@ -1,5 +1,5 @@
-const signupFome = document.querySelector('.signup__form');
-const signupFomeInput = signupFome.querySelectorAll('input');
+const signupFomeInput = document.querySelectorAll('.signup__form input');
+const signinFomeInput = document.querySelectorAll('.login__wrap input');
 
 function validateEmpty ( target ) { // input Empty
   const id = target.id;
@@ -8,10 +8,16 @@ function validateEmpty ( target ) { // input Empty
     case 'form__email':
       massage = '이메일을 입력해 주세요.' 
       break;
+    case 'login__email':
+      massage = '이메일을 입력해 주세요.' 
+      break;
     case 'form__pw':
       massage = '비밀번호를 입력해 주세요.' 
       break;
     case 'form__pw__confirm':
+      massage = '비밀번호 확인을 입력해 주세요.' 
+      break;
+    case 'login__pw__input':
       massage = '비밀번호를 입력해 주세요.' 
       break;
     default:
@@ -48,14 +54,11 @@ function validateForm (e) { // form handler
   const errorMsgEmpty = validateEmpty(target);
 
   if(value === ''){ // empty
-    parent.classList.add('error');
-    parent.querySelector('.error__text').innerText = errorMsgEmpty;
+    errorInputAdd(parent, errorMsgEmpty)
     return false;
   }
   errorInputRemove(parent);
  
-  console.log(validateEmail(target))
-
   if(target.id === 'form__email') { //email
     if(validateEmail(target)) {
       errorInputRemove(parent)
@@ -63,7 +66,6 @@ function validateForm (e) { // form handler
       errorInputAdd(parent,'올바른 이메일 주소가 아닙니다.')
     }
   }
-
 
   if(target.id === 'form__pw__confirm') { //password
     if(validatePassWordConfirm(target)){
@@ -75,6 +77,10 @@ function validateForm (e) { // form handler
 }
 
 
-for (const input of signupFomeInput) {
-  input.addEventListener('focusout', validateForm);
+for (const signup of signupFomeInput) { // 회원가입
+  signup.addEventListener('focusout', validateForm);
 }
+
+for (const signin of signinFomeInput) { // 로그인
+  signin.addEventListener('focusout', login);
+};
