@@ -5,7 +5,7 @@ import {
   handlePasswordToggleClick,
 } from "./eventHandler";
 
-const passwordToggleButton = document.querySelector(".eye-btn");
+const passwordToggleButton = document.querySelector(".pw-toggle-btn");
 
 passwordToggleButton.addEventListener("click", handlePasswordToggleClick);
 document.addEventListener("focus", handleFocusIn, true);
