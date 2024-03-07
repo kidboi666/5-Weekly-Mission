@@ -26,4 +26,17 @@ function handleSubmit(event) {
   validateLogin(emailInput, passwordInput);
 }
 
-export { handleFocusIn, handleFocusOut, handleSubmit };
+function handlePasswordToggleClick(event) {
+  event.preventDefault();
+  const passwordInput = event.currentTarget.previousElementSibling;
+  console.log(event.currentTarget);
+  console.log(passwordInput);
+  passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+}
+
+export {
+  handleFocusIn,
+  handleFocusOut,
+  handleSubmit,
+  handlePasswordToggleClick,
+};
