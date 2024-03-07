@@ -22,11 +22,13 @@
         <div class="input">
           <div class="input-section">
             <div class="text">이메일<br /></div>
-            <input class="user-input" type="email" name="email" />
+            <input id="email" class="user-input" type="email" name="email" />
+            <div id="errorText" class="text error">이메일을 입력해주세요.</div>
           </div>
           <div class="input-section">
             <div class="text">비밀번호<br /></div>
             <input class="user-input" type="password" name="password" />
+            <div class="text">비밀번호를 확인해 주세요.</div>
           </div>
         </div>
         <button class="signin">로그인</button>
@@ -43,5 +45,6 @@
         </div>
       </form>
     </div>
+    <script src="input.js"></script>
   </body>
 </html>
