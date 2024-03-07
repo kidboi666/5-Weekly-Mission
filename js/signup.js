@@ -13,11 +13,11 @@ let validateObject = { // 활성화
 
 function validateEmail () { // 이메일
   const regex = new RegExp('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$');
-  if(signupEmail.value !== ''){
-    if(regex.test(signupEmail.value)){
+  if(signupEmail.value !== '') {
+    if(regex.test(signupEmail.value)) {
       validateObject.email = true;
       errorInputRemove(signupEmail);
-    }else{
+    } else {
       validateObject.email = false;
       errorInputAdd(signupEmail, '올바른 이메일 주소가 아닙니다.');
     }
@@ -28,7 +28,7 @@ function validateEmail () { // 이메일
 }
 
 function validatePassword () { // 비밀번호
-  if(signupPassword.value !== ''){
+  if(signupPassword.value !== '') {
     if (signupPasswordConfirm.value !== ''){
       validatePasswordConfirm();
     }
@@ -41,7 +41,7 @@ function validatePassword () { // 비밀번호
 }
 
 function validatePasswordConfirm () { // 비밀번호 확인
-  if(signupPasswordConfirm.value !== ''){
+  if(signupPasswordConfirm.value !== '') {
     if((signupPassword.value === signupPasswordConfirm.value)) {
       validateObject.passwordConfirm = true;
       errorInputRemove(signupPasswordConfirm);
@@ -49,7 +49,7 @@ function validatePasswordConfirm () { // 비밀번호 확인
     }
     validateObject.passwordConfirm = false;
     errorInputAdd(signupPasswordConfirm, '비밀번호가 다릅니다.');  
-  }else{
+  } else {
     validateObject.passwordConfirm = false;
     errorInputAdd(signupPasswordConfirm, '비밀번호 확인을 입력해 주세요.');
   }
@@ -69,15 +69,15 @@ function errorInputRemove (target) { // error massage remove
 
 function focusOutInput (e) {
   const { target } = e;
-  if(target.id === signupEmail.id){
+  if(target.id === signupEmail.id) {
     validateEmail();
   };
 
-  if(target.id === signupPassword.id){
+  if(target.id === signupPassword.id) {
     validatePassword();
   };
 
-  if(target.id === signupPasswordConfirm.id){
+  if(target.id === signupPasswordConfirm.id) {
     validatePasswordConfirm();
   };
   formActiveBtn();
@@ -87,7 +87,7 @@ function formActiveBtn () {
   const inputs = [validateObject.email,validateObject.password,validateObject.passwordConfirm].every(data => data === true);
   if(inputs){
     submitButton.removeAttribute('disabled');
-  }else{
+  } else {
     submitButton.setAttribute('disabled', 'disabled');
   }
 }
