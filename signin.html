@@ -32,8 +32,8 @@
   <link rel="stylesheet" href="css/common/header.css">
   <link rel="stylesheet" href="css/common/footer.css">
   <link rel="stylesheet" href="css/page/join.css">
+  <script defer src="js/signin.js"></script>
   <script defer src="js/password.js"></script>
-  <script defer src="js/validate.js"></script>
 </head>
 
 <body>
@@ -50,23 +50,24 @@
       </div>
       <!-- form 입력 -->
       <form>
-        <div class="form__wrap">
+        <div class="form__wrap login__form">
           <div class="form__box">
             <label for="email" class="text__size__s">이메일</label>
-            <input type="text" id="email">
+            <input type="text" name="email" id="signin_email" autocomplete="off">
             <p class="error__text"></p>
           </div>
           <div class="form__box pw">
             <label for="login__pw__input" class="text__size__s">비밀번호</label>
             <div class="form__relative">
-              <input type="password" id="login__pw__input" autocomplete="off">
+              <input type="password" name="pw" id="login__pw__input" autocomplete="off">
               <button type="button" class="btn__pw login__btn-pw">
                 <img src="img/icon/icon-eye-on.svg" alt="비밀번호 보기" class="icon__on">
                 <img src="img/icon/icon-eye-off.svg" alt="비밀번호 숨기기" class="icon__off">
               </button>
             </div>
+            <p class="error__text"></p>
           </div>
-          <button type="button" class="btn__gradient__lg btn_login">로그인</button>
+          <button class="btn__gradient__lg btn_login">로그인</button>
         </div>
       </form>
       <!-- sns 로그인 -->
