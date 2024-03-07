@@ -19,7 +19,7 @@ function isValidEmail(emailInput) {
     generateErrorMessage(emailInput.parentElement, "이메일을 입력해주세요");
     return false;
   }
-  if (!isEmailForm(inputValue)) {
+  if (!isEmailForm(emailInput.value)) {
     generateErrorMessage(
       emailInput.parentElement,
       "올바른 이메일 주소가 아닙니다."
@@ -37,7 +37,10 @@ function isEmailForm(inputValue) {
 function isValidPassword(passwordInput) {
   const inputValue = passwordInput.value;
   if (inputValue.length === 0) {
-    generateErrorMessage(passwordInput.parent, "비밀번호를 입력해주세요");
+    generateErrorMessage(
+      passwordInput.parentElement,
+      "비밀번호를 입력해주세요"
+    );
     return false;
   }
   return true;
@@ -75,19 +78,19 @@ function validateLogin() {
   }
 
   if (!isCorrectInput(emailInput, passwordInput)) {
-    generateErrorMessage(emailParent, "이메일을 확인해 주세요");
-    generateErrorMessage(passwordParent, "비밀번호를 확인해 주세요");
+    generateErrorMessage(emailInput.parentElement, "이메일을 확인해 주세요");
+    generateErrorMessage(
+      passwordInput.parentElement,
+      "비밀번호를 확인해 주세요"
+    );
     return;
   }
 
-  //TODO: Make a Link to folder.html
+  window.location.href = "../folder.html";
 }
 
 function isValidInput(emailInput, passwordInput) {
-  return (
-    isValidEmail(emailInput.parentElement, emailInput) &&
-    isValidPassword(passwordInput.parentElement, passwordInput)
-  );
+  return isValidEmail(emailInput) && isValidPassword(passwordInput);
 }
 
 function isCorrectInput(emailInput, passwordInput) {
