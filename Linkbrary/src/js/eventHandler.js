@@ -16,6 +16,8 @@ function handleFocusOut(event) {
     case "password":
       isValidPassword(event.target);
       break;
+    default:
+      return;
   }
 }
 
