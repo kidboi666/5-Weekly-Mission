@@ -222,7 +222,7 @@ body {
       color: var(--color-red);
       line-height: 1;
     }
-    .error {
+    &.error {
       .error__text {
         display: block;
       }

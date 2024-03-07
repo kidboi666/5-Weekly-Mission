@@ -9,22 +9,27 @@ join css
   min-height: 100vh;
   background-color: var(--color-gray5);
 }
+
 .login__body {
   padding: 14.875rem 2rem 0;
   width: 100%;
   max-width: 29rem;
   transition: padding 0.3s;
 }
+
 .login__body .title img {
   height: 2.375rem;
 }
+
 .login__sign {
   padding: 1rem 0;
   flex-wrap: wrap;
 }
+
 .login__sign span {
   line-height: 1.5rem;
 }
+
 .login__sign a {
   display: block;
   padding-left: 0.5rem;
@@ -33,6 +38,7 @@ join css
   line-height: 1.5rem;
   font-weight: 600;
 }
+
 .login__another {
   margin-top: 2rem;
   padding: 0 1.5rem;
@@ -40,12 +46,15 @@ join css
   border: 1px solid var(--color-gray3);
   border-radius: 0.5rem;
 }
+
 .login__another span {
   line-height: 4rem;
 }
+
 .login__sns {
   gap: 1rem;
 }
+
 .login__sns a {
   width: 2.625rem;
   height: 2.625rem;
@@ -56,6 +65,7 @@ join css
     padding: 12.5rem 2rem;
   }
 }
+
 @media screen and (max-width: 767px) {
   .login__body {
     padding: 7.5rem 2rem;

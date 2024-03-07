@@ -206,10 +206,10 @@ body {
   color: var(--color-red);
   line-height: 1;
 }
-.form__box .error .error__text {
+.form__box.error .error__text {
   display: block;
 }
-.form__box .error input {
+.form__box.error input {
   border-color: var(--color-red);
 }
 .form__box .pw input {
