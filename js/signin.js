@@ -14,8 +14,8 @@ const users = [
 
 function validateEmail () { // 이메일
   const regex = new RegExp('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$');
-  if(signinEmail.value !== '') {
-    if(regex.test(signinEmail.value)) {
+  if(signinEmail.value.trim() !== '') {
+    if(regex.test(signinEmail.value.trim())) {
       validateObject.email = true;
       errorInputRemove(signinEmail);
     } else {
@@ -29,7 +29,7 @@ function validateEmail () { // 이메일
 }
 
 function validatePassword () { // 비밀번호
-  if(signinPassword.value !== '') {
+  if(signinPassword.value.trim() !== '') {
     validateObject.password = true;
     errorInputRemove(signinPassword);
   } else {
@@ -55,7 +55,7 @@ function validateForm (e) { // form handler
   validateEmail();
   validatePassword();
   formActiveBtn();
-  const user = users.find(data => data.email === signinEmail.value && data.pw === signinPassword.value );
+  const user = users.find(data => data.email === signinEmail.value.trim() && data.pw === signinPassword.value.trim() );
   if(user) {
     window.location.href='/folder.html';
   } else {

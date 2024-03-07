@@ -13,8 +13,8 @@ let validateObject = { // 활성화
 
 function validateEmail () { // 이메일
   const regex = new RegExp('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$');
-  if(signupEmail.value !== '') {
-    if(regex.test(signupEmail.value)) {
+  if(signupEmail.value.trim() !== '') {
+    if(regex.test(signupEmail.value.trim())) {
       validateObject.email = true;
       errorInputRemove(signupEmail);
     } else {
@@ -28,8 +28,8 @@ function validateEmail () { // 이메일
 }
 
 function validatePassword () { // 비밀번호
-  if(signupPassword.value !== '') {
-    if (signupPasswordConfirm.value !== ''){
+  if(signupPassword.value.trim() !== '') {
+    if (signupPasswordConfirm.value.trim() !== ''){
       validatePasswordConfirm();
     }
     validateObject.password = true;
@@ -41,8 +41,8 @@ function validatePassword () { // 비밀번호
 }
 
 function validatePasswordConfirm () { // 비밀번호 확인
-  if(signupPasswordConfirm.value !== '') {
-    if((signupPassword.value === signupPasswordConfirm.value)) {
+  if(signupPasswordConfirm.value.trim() !== '') {
+    if((signupPassword.value.trim() === signupPasswordConfirm.value.trim())) {
       validateObject.passwordConfirm = true;
       errorInputRemove(signupPasswordConfirm);
       return false;
