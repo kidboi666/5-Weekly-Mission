@@ -57,10 +57,23 @@ main {
           position: relative;
 
           .eye-btn {
+            position: relative;
             background-color: inherit;
             position: absolute;
             right: 10px;
             top: 15px;
+            width: 16px;
+            height: 16px;
+            .hidden {
+              opacity: 0;
+            }
+
+            img {
+              position: absolute;
+              transition: opacity 0.5s ease-in-out;
+              top: 0;
+              left: 0;
+            }
 
             &:hover img {
               filter: brightness(0);

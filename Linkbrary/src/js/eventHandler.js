@@ -29,9 +29,13 @@ function handleSubmit(event) {
 function handlePasswordToggleClick(event) {
   event.preventDefault();
   const passwordInput = event.currentTarget.previousElementSibling;
-  console.log(event.currentTarget);
-  console.log(passwordInput);
   passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+  const imgs = event.currentTarget.querySelectorAll("img");
+  imgs.forEach((img) => {
+    img.classList.toggle("hidden");
+    img.style.opacity = img.classList.contains("hidden") ? 0 : 1;
+  });
+  console.log(imgs);
 }
 
 export {
