@@ -184,19 +184,19 @@ body {
 .form__box .btn__pw img {
   display: block;
 }
-.form__box .btn__pw__off {
-  top: calc(50% + 1px);
-}
-.form__box .btn__pw__off .icon__on {
+.form__box .btn__pw .icon__on {
   display: none;
 }
+.form__box .btn__pw .icon__off {
+  display: block;
+}
+.form__box .btn__pw__off {
+  top: calc(50% - 1px);
+}
+.form__box .btn__pw__off .icon__on {
+  display: block;
+}
 .form__box .btn__pw__off .icon__off {
-  display: block;
-}
-.form__box .btn__pw__on .icon__on {
-  display: block;
-}
-.form__box .btn__pw__on .icon__off {
   display: none;
 }
 .form__box .error__text {

@@ -193,18 +193,16 @@ body {
       img {
         display: block;
       }
+      .icon {
+        &__on {
+          display: none;
+        }
+        &__off {
+          display: block;
+        }
+      }
       &__off {
-        top: calc(50% + 1px);
-        .icon {
-          &__on {
-            display: none;
-          }
-          &__off {
-            display: block;
-          }
-        }
-      }
-      &__on {
+        top: calc(50% - 1px);
         .icon {
           &__on {
             display: block;
@@ -214,6 +212,16 @@ body {
           }
         }
       }
+      // &__on {
+      //   .icon {
+      //     &__on {
+      //       display: block;
+      //     }
+      //     &__off {
+      //       display: none;
+      //     }
+      //   }
+      // }
     }
     .error__text {
       display: none;
