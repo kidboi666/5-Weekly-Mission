@@ -1,6 +1,6 @@
-const signinForm = document.querySelector('.login__wrap form');
-const signinEmail = document.querySelector('#login__email');
-const signinPassword = document.querySelector('#login__pw__input');
+const signinForm = document.querySelector('.signin__wrap form');
+const signinEmail = document.querySelector('#signin__email');
+const signinPassword = document.querySelector('#signin__pw__input');
 
 const users = [
   {email:'test@codeit.com', pw:'codeit101'},

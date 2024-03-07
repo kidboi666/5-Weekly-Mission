@@ -4,7 +4,7 @@
 join css
 */
 
-.login {
+.signin {
   &__wrap {
     display: flex;
     flex-direction: column;
@@ -57,13 +57,13 @@ join css
 
 
 @media screen and (max-width: 1199px) {
-  .login__body {
+  .signin__body {
     padding: 12.5rem 2rem;
   }
 }
 
 @media screen and (max-width: 767px) {
-  .login__body {
+  .signin__body {
     padding: 7.5rem 2rem;
   }
 }

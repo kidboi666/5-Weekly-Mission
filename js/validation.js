@@ -1,5 +1,5 @@
 const signupFomeInput = document.querySelectorAll('.signup__form input');
-const signinFomeInput = document.querySelectorAll('.login__wrap input');
+const signinFomeInput = document.querySelectorAll('.signin__wrap input');
 
 function validateEmpty ( target ) { // input Empty
   const id = target.id;
@@ -8,7 +8,7 @@ function validateEmpty ( target ) { // input Empty
     case 'form__email':
       massage = '이메일을 입력해 주세요.' 
       break;
-    case 'login__email':
+    case 'signin__email':
       massage = '이메일을 입력해 주세요.' 
       break;
     case 'form__pw':
@@ -17,7 +17,7 @@ function validateEmpty ( target ) { // input Empty
     case 'form__pw__confirm':
       massage = '비밀번호 확인을 입력해 주세요.' 
       break;
-    case 'login__pw__input':
+    case 'signin__pw__input':
       massage = '비밀번호를 입력해 주세요.' 
       break;
     default:
@@ -59,7 +59,7 @@ function validateForm (e) { // form handler
   }
   errorInputRemove(parent);
  
-  if(target.id === 'form__email') { //email
+  if(target.id === 'signin__email' || target.id === 'form__email') { //email
     if(validateEmail(target)) {
       errorInputRemove(parent)
     }else{
@@ -82,5 +82,5 @@ for (const signup of signupFomeInput) { // 회원가입
 }
 
 for (const signin of signinFomeInput) { // 로그인
-  signin.addEventListener('focusout', login);
+  signin.addEventListener('focusout', validateForm);
 };
