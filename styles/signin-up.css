@@ -32,7 +32,6 @@ header {
   color: var(--Linkbrary-primary-color);
   font-weight: 600;
   line-height: normal;
-  /* text-decoration: underline; */
   border-bottom: 0.1rem solid var(--Linkbrary-primary-color);
 }
 
