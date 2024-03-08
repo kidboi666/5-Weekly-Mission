@@ -1,4 +1,4 @@
-const $iconButton = document.querySelectorAll(".input-icon");
+const $iconButtons = document.querySelectorAll(".input-icon");
 const $inputs = document.querySelectorAll(".input-login-form01 input");
 const $loginButton = document.querySelector(".login-button");
 const $loginForm = document.querySelector(".login-form");
@@ -52,6 +52,7 @@ $inputs.forEach(function (input) {
 // 로그인
 $loginForm.addEventListener("submit", function (e) {
     $loginButton.focus();
+
     if (checkCodeitEmail == true && checkCodeitPassword == true) {
         location.href = "./folder.html";
     }
@@ -59,7 +60,7 @@ $loginForm.addEventListener("submit", function (e) {
 });
 
 // 패스워드 아이콘 보기
-$iconButton.forEach(function (btn) {
+$iconButtons.forEach(function (btn) {
     btn.addEventListener("click", function () {
         if (btn.classList.contains("on")) {
             btn.previousElementSibling.type = "password";
