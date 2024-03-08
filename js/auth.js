@@ -7,11 +7,11 @@ const _auth = {
 	emailError: document.getElementById("emailError"), // 이메일 에러메시지 영역
 	passwordError: document.getElementById("passwordError"), // 패스워드 에러메시지 영역
 
-	loginForm: document.getElementById("loginForm"), // 로그인 시 작성하는 폼 (제출된 입력)
+	loginForm: document.getElementById("loginForm"), // 로그인 시 작성하는 폼 (제출된 입력 다룸)
 
-	passwordCheck: document.getElementById("passwordCheck"),
-	passwordCheckError: document.getElementById("passwordCheckError"),
-	signupForm: document.getElementById("signupForm"),
+	passwordCheck: document.getElementById("passwordCheck"), // 패스워드확인 입력
+	passwordCheckError: document.getElementById("passwordCheckError"), // 패스워드확인 에러메시지 영역
+	signupForm: document.getElementById("signupForm"), // 회원가입 시 작성하는 폼 (제출된 입력 다룸) 
 
 	toggleErr: function (inputField, errField, message) {
 		errField.textContent = message;
@@ -26,11 +26,11 @@ const _auth = {
 
 	isEmpty: function (inputField) {
 		return !inputField.value;
-	},// 빈 영역인지 판단
+	}, // 빈 영역인지 판단
 	notEmail: function () {
 		return !(/\S+@\S+\.\S+/.test(this.emailInput.value));
 	},//이메일 형식이 맞는지 판단
-	
+
 	isEmailWritten: function () {
 		if (this.isEmpty(this.emailInput)) {
 			this.toggleErr(this.emailInput, this.emailError, "이메일을 입력해 주세요.")
@@ -64,24 +64,25 @@ const _auth = {
 				return false
 			}
 			return true
-	} // 패스워드 형식 검사 (회원가입 에만 적용)
+	} // 패스워드 형식 검사 (회원가입에만 적용)
 
 }
 
 export const auth = {
+
 	// focus in, focus out 할 때 이메일 형식 검사
 	emailFocusEvent: function () {
 		const { emailInput, emailError } = _auth;
 		emailInput.addEventListener("focusout", () => {  // focusout시 입력 형식 올바른지 검사
-			if (_auth.isEmailWritten()) {
-				if (_auth.commonEmailForm()) {
-					_auth.toggleDefault(emailInput, emailError);
+			if (_auth.isEmailWritten()) { //이메일이 쓰여져 있을 시 검사 시행
+				if (_auth.commonEmailForm()) {  // 이메일 형식 검사 후 올바를 시 내부 실행
+					_auth.toggleDefault(emailInput, emailError); // 이메일 형식에 문제없음
 				}
 			}
 		});
 		emailInput.addEventListener("focusin", () => {  // focusin시 입력을 아예 안했던 상황이면 에러메시지 제거
-			if (!_auth.isEmailWritten()) {  // 이메일 넣지 않은 경우
-				_auth.toggleDefault(emailInput, emailError);
+			if (!_auth.isEmailWritten()) {  // 이메일 아직 넣지 않은 경우
+				_auth.toggleDefault(emailInput, emailError); // 아직은 문제없음을 표시
 			}
 		});
 	},
@@ -196,8 +197,6 @@ export const auth = {
 			}
 		});
 	}
-
-	
 	
 }
 
