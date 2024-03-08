@@ -76,14 +76,20 @@ form .pw-wrapper {
   position: relative;
 }
 
-form .pw-wrapper img {
+form .pw-wrapper .eyeIcon {
   position: absolute;
+  background-image: url("../Images/eye-off.svg");
   width: 16px;
-  top: 21px;
+  height: 16px;
+  top: 22px;
   right: 20px;
 }
 
-form .pw-wrapper img:hover {
+form .pw-wrapper .eyeIcon.visible {
+  background-image: url("../Images/eye-on.svg");
+}
+
+form .pw-wrapper .eyeIcon:hover {
   cursor: pointer;
 }
 

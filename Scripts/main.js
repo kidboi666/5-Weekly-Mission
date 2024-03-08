@@ -5,6 +5,7 @@ const email = document.querySelector("#email");
 const pw = document.querySelector("#pw");
 const submit = document.querySelector(".form-button");
 const emailFormat = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+const eyeIcon = document.querySelector(".eyeIcon");
 
 // 경고 메세지 추가
 function MakeWarningMsg(_text, pos) {
@@ -57,8 +58,18 @@ function SubmitForm(e) {
   console.log(e.target[0].value);
 }
 
+function Visible(e) {
+  e.target.classList.toggle("visible");
+  if (e.target.classList.contains("visible")) {
+    pw.type = "text";
+  } else {
+    pw.type = "password";
+  }
+}
+
 email.addEventListener("focusout", FormFocusOut);
 email.addEventListener("focusin", RemoveWarningMsg);
 pw.addEventListener("focusout", FormFocusOut);
 pw.addEventListener("focusin", RemoveWarningMsg);
 form.addEventListener("submit", SubmitForm);
+eyeIcon.addEventListener("click", Visible);
