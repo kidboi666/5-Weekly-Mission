@@ -142,8 +142,12 @@ body{
   line-height: normal;
 }
 
+<<<<<<< HEAD
 .auth-form__wrong-password,
 .auth-form__wrong-password.confirm{
+=======
+.auth-form__wrong-password{
+>>>>>>> 678e4c9 (folder 페이지 추가)
   color: var(--Linkbrary-red, #FF5B56);
   font-family: Pretendard;
   font-size: 14px;
