@@ -1,13 +1,13 @@
-const singinForm = document.querySelector(`.singin-form`);
-const inputEmail = document.querySelector(`.email-input-group`);
-const inputPassword = document.querySelector(`.password-input-group`);
+
+const emailInputs = document.querySelector(`.email-input-group`);
+const passwordInputs = document.querySelector(`.password-input-group`);
 const singinBtn = document.querySelector(`#singin-btn`);
 const emailErrorText = document.querySelector('.email-input-message');
 const emailInput = document.querySelector('.email-input');
 const passwordErrorText = document.querySelector('.password-input-message');
 const passwordInput = document.querySelector('.password-input');
 
-inputEmail.addEventListener(`focusout`,(e) => {
+ emailInputs.addEventListener(`focusout`,(e) => {
   emailText = e.target.value;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (emailRegex.test(emailText) === false){
@@ -26,7 +26,7 @@ inputEmail.addEventListener(`focusout`,(e) => {
   }
 });
 
-inputPassword.addEventListener(`focusout`,(e) => {
+passwordInputs.addEventListener(`focusout`,(e) => {
   passwordText = e.target.value;
   if(passwordText === ''){
     passwordErrorText.textContent = '비밀번호를 입력해주세요.';
@@ -41,7 +41,7 @@ inputPassword.addEventListener(`focusout`,(e) => {
 singinBtn.addEventListener('click',(e) => {
   if(emailInput.value === `test@codeit.com` &&
     passwordInput.value === `codeit101`){
-    location.href = "/folder.html";
+    location.href = '/folder.html'
     }
   else{
     emailErrorText.textContent = '이메일을 확인해주세요.';
@@ -52,6 +52,17 @@ singinBtn.addEventListener('click',(e) => {
   }
 });
 
+emailInput.addEventListener(`keyup`,(e) =>{
+  if(e.key === 'Enter'){
+    singinBtn.click()
+  }
+})
+
+passwordInput.addEventListener(`keyup`,(e) =>{
+  if(e.key === 'Enter'){
+    singinBtn.click()
+  }
+})
 
 
 
