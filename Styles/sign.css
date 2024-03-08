@@ -98,6 +98,16 @@ button:hover {
   cursor: pointer;
 }
 
+.warningMsg {
+  font-size: 14px;
+  color: var(--red);
+  margin-top: 6px;
+}
+
+.warningForm {
+  outline: 1px solid var(--red);
+}
+
 /* SNS */
 .sns {
   display: flex;
