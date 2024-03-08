@@ -72,15 +72,26 @@ main {
 }
 
 .content {
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
-  padding: 120px 0 50px;
-  gap: 157px;
+  grid-template: 1fr 1fr 1fr 1fr / auto auto;
+  padding: 50px 0;
+  column-gap: 157px;
+  white-space: nowrap;
+  grid-template-areas:
+    ". img"
+    "title img"
+    "para img"
+    ". img";
 }
 
-.content .description {
-  white-space: nowrap;
+.content:nth-child(even) {
+  grid-template-areas:
+    "img ."
+    "img title"
+    "img para"
+    "img .";
 }
 
 .content h2 {
@@ -88,6 +99,7 @@ main {
   font-weight: 700;
   letter-spacing: -0.3px;
   margin: 0;
+  grid-area: title;
 }
 
 .content p {
@@ -96,6 +108,7 @@ main {
   font-weight: 400;
   line-height: 150%;
   margin: 10px 0 0;
+  grid-area: para;
 }
 
 .content img {
@@ -103,6 +116,7 @@ main {
   height: 450px;
   background-color: var(--bg-color);
   border-radius: 15px;
+  grid-area: img;
 }
 
 /* GRADIENT */
@@ -178,11 +192,10 @@ footer {
 
 /* TABLET */
 @media (max-width: 1199px) {
-  .pc:not(.tablet),
-  .mobile {
+  .pc {
     display: none;
   }
-  .tablet:not(.flex) {
+  .tablet {
     display: block;
   }
   nav {
@@ -195,7 +208,7 @@ footer {
     height: 380px;
   }
   .content {
-    gap: 51px;
+    column-gap: 51px;
   }
   .content img {
     width: 385px;
@@ -205,12 +218,6 @@ footer {
 
 /* MOBILE */
 @media (max-width: 767px) {
-  .tablet:not(.mobile) {
-    display: none;
-  }
-  .mobile {
-    display: block;
-  }
   nav {
     justify-content: space-between;
     gap: 0;
@@ -242,10 +249,26 @@ footer {
     height: auto;
   }
   .content {
-    flex-direction: column;
-    align-items: flex-start;
     padding: 40px 32px 36px;
-    gap: 0;
+    grid-template: auto auto auto / 1fr;
+    grid-template-areas:
+      "title title"
+      "img img"
+      "img img"
+      "para para";
+    white-space: wrap;
+  }
+  .content:nth-child(even) {
+    grid-template: auto auto auto / 1fr;
+    grid-template-areas:
+      "title title"
+      "img img"
+      "img img"
+      "para para";
+    white-space: wrap;
+  }
+  .content br {
+    display: none;
   }
   .content h2 {
     font-size: 24px;
