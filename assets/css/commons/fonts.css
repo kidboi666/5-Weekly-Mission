@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Abel';
+  src: url('/assets/fonts/Abel-Regular.ttf') format('woff');
+}
+
+@font-face {
+  font-family: 'Acme';
+  src: url('/assets/fonts/Acme-Regular.ttf') format('woff');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/assets/fonts/PretendardVariable.ttf') format('woff');
+}
