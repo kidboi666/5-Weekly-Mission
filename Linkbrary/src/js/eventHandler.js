@@ -2,6 +2,7 @@ import { removeErrorMessage } from "./errorMessage";
 import isValidEmail from "./emailValidation";
 import isValidPassword from "./passwordValidation";
 import validateLogin from "./loginValidation";
+import { focusOutFunctions } from "./constants";
 
 function handleFocusIn(event) {
   const target = event.target;
@@ -9,15 +10,9 @@ function handleFocusIn(event) {
 }
 
 function handleFocusOut(event) {
-  switch (event.target.id) {
-    case "user-email":
-      isValidEmail(event.target);
-      break;
-    case "password":
-      isValidPassword(event.target);
-      break;
-    default:
-      return;
+  const focusOutFunction = focusOutFunctions[event.target.id];
+  if (focusOutFunction) {
+    focusOutFunction(event.target);
   }
 }
 
