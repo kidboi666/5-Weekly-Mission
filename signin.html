@@ -22,20 +22,24 @@
           <a href="index.html"><img class="logo" src="img-landing/logo.svg"></a>
           <h4>회원이 아니신가요? <a class="sign-link" href="signup.html">회원 가입하기</a></h4>
         </div>
-        <form>
+        <form class="singin-form">
           <label>
             <h4>이메일</h4>
-            <input type="email">
+            <div class="email-input-group">
+              <input type="email" class="email-input">
+              <h6 class="email-input-message"></h6>
+            </div>
           </label>
           <label>
             <h4>비밀번호</h4>
-            <div class="sign-password-input">
-              <input type="password">
+            <div class="password-input-group">
+              <input type="password" class="password-input">
               <img class="icon-eye" src="icon/eye-off.svg">
+              <h6 class="password-input-message"></h6>
             </div>
           </label>
         </form>
-        <a href="/index.html"><button class="btn-large">로그인</button></a>
+        <a href="/index.html"><button class="btn-large" id="singin-btn">로그인</button></a>
       </div>
       <div class="Social-login">
         <h6>소셜 로그인</h6>
@@ -46,5 +50,6 @@
       </div>
     </div>
   </section>
+  <script src="signin.js"></script>
 </body>
 </html> 

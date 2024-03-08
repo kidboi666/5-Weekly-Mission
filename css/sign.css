@@ -73,7 +73,7 @@ input:focus {
   outline:1px solid var(--Linkbrary-primary-color, #6D6AFE);
 }
 
-.sign-password-input{
+.input-password{
   position: relative;
   display: flex;
   justify-content: center;
@@ -208,4 +208,21 @@ input:focus {
     height: 42px;
   }
 
+}
+
+
+.error-input{
+  border: 1px solid #FF5B56
+}
+
+.email-input-message{
+  text-align: left;
+  color: #FF5B56;
+  margin: 6px 0 0;
+}
+
+.password-input-message{
+  text-align: left;
+  color: #FF5B56;
+  margin: 6px 0 0;
 }
