@@ -4,7 +4,6 @@ const passwordToggleBtn = document.querySelector('.auth-form__password-toggle-bt
 const passwordIcon = document.querySelector('.auth-form__password-icon')
 const emailErrorMessage = document.querySelector('.auth-form__wrong-email');
 const passwordErrorMessage = document.querySelector('.auth-form__wrong-password');
-const confirmPasswordErrorMessage = document.querySelector('.auth-form__wrong-password.confirm');
 const authBtn = document.querySelector('.auth-form__auth-btn')
 
 /* 이메일 에러체크 */
@@ -87,5 +86,4 @@ passwordToggleBtn.addEventListener('click', function(e){
     password.setAttribute('type', 'password');
     passwordIcon.setAttribute('src', '../icons/eye-off.svg');
   };
-
 });
