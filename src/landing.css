@@ -43,7 +43,6 @@ header {
     flex-direction: column;
     justify-content: flex-end;
     text-align: center;
-
     background:var( --background);
     
 }
@@ -215,18 +214,17 @@ section:nth-of-type(even){
 }
 
 /* 모바일 */
-@media screen and (min-width: 375px) and (max-width: 767px) {
+@media screen and (min-width: 360px) and (max-width: 767px) {
 
 
   section {
-      display: grid;
-      justify-content: center;
-      column-gap: 16px;
-      width: 100%;
-      height: auto; 
-      
-      row-gap: 16px; 
-      align-items: center;
+    display: grid;
+    justify-content: center;
+    column-gap: 16px;
+    width: 100%;
+    height: auto; 
+    row-gap: 16px; 
+    align-items: center;
   }
 
   .gnb {
