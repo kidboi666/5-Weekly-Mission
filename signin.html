@@ -21,24 +21,47 @@
       </div>
     </div>
 
-    <form><!-- 종결 하기 <img /> -->
+    <!-- <form> -->
+      <!-- 종결 하기 <img /> -->
       <div class="sign-wrap">
         <div class="sign-inner">
-          <label for="email" class="sign-label">이메일</label>
-          <input type="email" class="sign-input" name="email">
+          <label class="sign-label" for="email">이메일</label>
+          <input id="EMAIL" class="sign-input" type="email" name="email" />
+
+          <!--테스트중-->
+          <div class="errortestNOemail" style="display:none">
+            <div class="error_message">
+              이메일을 입력해 주세요.
+            </div>
+          </div>
+          <div class="errortestemail" style="display:none">
+            <div class="error_message">
+              올바른 이메일 주소가 아닙니다.
+            </div>
+          </div>
+
+
         </div>
+        
+
         <div class="sign-inner">
-          <label for="pw" class="sign-label">비밀번호</label>
+          <label class="sign-label" for="pw">비밀번호</label>
           <div class="sign__pw-eye">
-            <input type="password" class="sign-input" name="pw">
+            <input id="PW" class="sign-input" type="password" name="pw" />
             <button class="sign__pw-eye-off">
-              <img src="/assets/img/svg/eye-off.svg" alt="비밀번호 감추기">
+              <img src="/assets/img/svg/eye-off.svg" alt="비밀번호 감추기" />
             </button>
+          </div>
+          <!--테스트중-->
+          <div class="errortestNOemail" style="display:none">
+            <div class="error_message">
+              비밀번호를 입력해 주세요.
+            </div>
           </div>
         </div>
       </div>
-      <button type="submit" class="sign-btn btn-color">로그인</button>
-    </form>
+      <button class="sign-btn btn-color" type="submit">로그인</button>
+    <!-- </form> -->
   </div>
   
   <div class="social-sign">
@@ -46,17 +69,17 @@
     <div class="social-sign__inner">
       <a href="https://www.google.com/">
         <div class="social-sign__icon">
-          <img src="/assets/img/svg/social-icon-google.png" class="social-sign__icon-img" alt="google로 로그인하기">
+          <img class="social-sign__icon-img" src="/assets/img/svg/social-icon-google.png" alt="google로 로그인하기" />
         </div>
       </a>
       <a href="https://www.kakaocorp.com/page/">
         <div class="social-sign__icon">
-          <img src="/assets/img/svg/social-icon-kakao.png" class="social-sign__icon-img" alt="kakao로 로그인하기">
+          <img class="social-sign__icon-img" src="/assets/img/svg/social-icon-kakao.png" alt="kakao로 로그인하기" />
         </div>
       </a>
     </div>
   </div>
 
-  <script type="mobile" src="/assets/js/login.js"></script>
+  <script src="/assets/js/login.js"></script>
 </body>
 </html>
