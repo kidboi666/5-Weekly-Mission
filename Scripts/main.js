@@ -3,6 +3,7 @@ import * as enums from "./enums.js";
 const form = document.querySelector("form");
 const email = document.querySelector("#email");
 const pw = document.querySelector("#pw");
+const submit = document.querySelector(".form-button");
 const emailFormat = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
 
 // 경고 메세지 추가
@@ -27,20 +28,37 @@ function FormFocusOut(e) {
   // 입력 값이 없을 때
   if (e.target.value === "") {
     if (e.target.name === "email") {
-      MakeWarningMsg(enums.WargingMsg.EMAIL_NULL, e.target);
+      MakeWarningMsg(enums.wargingMsg.EMAIL_NULL, e.target);
     } else {
-      MakeWarningMsg(enums.WargingMsg.PW_NULL, e.target);
+      MakeWarningMsg(enums.wargingMsg.PW_NULL, e.target);
     }
     e.target.classList.add("warningForm");
   }
   // 올바른 이메일 형식이 아닐 때
   else if (emailFormat.test(e.target.value) === false && e.target.name === "email") {
-    MakeWarningMsg(enums.WargingMsg.EMAIL_INVALID, e.target);
+    MakeWarningMsg(enums.wargingMsg.EMAIL_INVALID, e.target);
     e.target.classList.add("warningForm");
   }
+}
+
+function SubmitForm(e) {
+  e.preventDefault();
+  // 올바른 이메일, 비밀번호 입력 시
+  if (e.target[0].value === enums.tempMembers.TEST_EMAIL && e.target[1].value === enums.tempMembers.TEST_PW) {
+    location.href = "../folder.html";
+  }
+  // 아이디 또는 비밀번호 잘못 입력 시
+  else {
+    MakeWarningMsg(enums.wargingMsg.EMAIL_WRONG, email);
+    MakeWarningMsg(enums.wargingMsg.PW_WRONG, pw);
+    email.classList.add("warningForm");
+    pw.classList.add("warningForm");
+  }
+  console.log(e.target[0].value);
 }
 
 email.addEventListener("focusout", FormFocusOut);
 email.addEventListener("focusin", RemoveWarningMsg);
 pw.addEventListener("focusout", FormFocusOut);
 pw.addEventListener("focusin", RemoveWarningMsg);
+form.addEventListener("submit", SubmitForm);
