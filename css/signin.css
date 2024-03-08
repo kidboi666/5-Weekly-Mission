@@ -67,9 +67,9 @@ label {
   color: black;
   font-family: Pretendard;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
-  line-height: normal;
+  /* font-style: normal;
+  line-height: normal; */
 }
 
 input {
