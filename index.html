@@ -8,16 +8,13 @@
   <meta property="og:type" content="website">
   <meta property="og:image" content="/assets/img/png/meta.png">
   <meta property="og:description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요">
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Abel&family=Acme&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/CSS/style.css">
-  <link rel="stylesheet" href="/assets/CSS/mobile.css">
+  <link rel="stylesheet" href="/assets/css/mobile.css">
   <title>Linkbrary</title>
 </head>
 
 <!-- 종결 하기 <img /> -->
+<!--a 태그를 사용해서 외부 링크로 이동하는 경우 rel 속성-->
 <body>
   <nav class="nav-wrap">
     <div class="nav-inner">
@@ -40,7 +37,9 @@
       <a class="header-link btn-color" href="/signup.html">
         링크 추가하기
       </a>
-      <img src="/assets/img/png/mainbg.png" class="header-image" alt="링크 검색 이미지">
+      <div class="headerimgtest"> <!---->
+        <img src="/assets/img/png/mainbg.png" class="header-image" alt="링크 검색 이미지">
+      </div>
     </div>
   </header> 
 
@@ -62,7 +61,9 @@
           한 공간에 저장하세요.
         </p>
       </div>
-      <img src="/assets/img/png/card1.png" class="card-item__img" alt="링크 저장 이미지">
+      <div class="contentimgtest"> <!---->
+        <img src="/assets/img/png/card1.png" class="card-item__img" alt="링크 저장 이미지">
+      </div>
     </section>
 
     <!-- content2 -->
@@ -79,7 +80,9 @@
           다양하게 활용할 수 있습니다.
         </p>
       </div>
-      <img src="/assets/img/png/card2.png" class="card-item__img" alt="폴더 관리 팝업창 이미지">
+      <div class="contentimgtest"> <!---->
+        <img src="/assets/img/png/card2.png" class="card-item__img" alt="폴더 관리 팝업창 이미지">
+      </div>
     </section>
 
     <!-- content3 -->
@@ -98,7 +101,9 @@
           공유해 보세요.
         </p>
       </div>
-      <img src="/assets/img/png/card3.png" class="card-item__img" alt="폴더 공유 팝업창 이미지">
+      <div class="contentimgtest"> <!---->
+        <img src="/assets/img/png/card3.png" class="card-item__img" alt="폴더 공유 팝업창 이미지">
+      </div>
     </section>
 
     <!-- content4 -->
@@ -113,7 +118,9 @@
           중요한 정보들을 검색으로 쉽게 찾아보세요.
         </p>
       </div>
-      <img src="/assets/img/png/card4.png" class="card-item__img" alt="검색 이미지">
+      <div class="contentimgtest"> <!---->
+        <img src="/assets/img/png/card4.png" class="card-item__img" alt="검색 이미지">
+      </div>
     </section>
   </article>
 
@@ -131,16 +138,16 @@
         </a>
       </div>
       <div class="footer-item__icon">
-        <a href="https://www.facebook.com/?locale=ko_KR" target="_blank">
+        <a href="https://www.facebook.com/?locale=ko_KR" target="_blank" rel="noopener noreferrer">
           <img src="/assets/img/svg/icon-facebook.svg" alt="facebook">
         </a>
-        <a href="https://twitter.com/?lang=ko" target="_blank">
+        <a href="https://twitter.com/?lang=ko" target="_blank" rel="noopener noreferrer">
           <img src="/assets/img/svg/icon-twitter.svg" alt="twitter">
         </a>
-        <a href="https://www.youtube.com/" target="_blank">
+        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
           <img src="/assets/img/svg/icon-youtube.svg" alt="youtube">
         </a>
-        <a href="https://www.instagram.com/" target="_blank">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
           <img src="/assets/img/svg/icon-instagram.svg" alt="instagram">
         </a>
       </div>
