@@ -18,6 +18,7 @@ function emailInputFocusOut() {
     const emailChecked = emailCheck(emailInput.value);
     if (emailChecked) {
       emailError.classList.add("error");
+      emailInput.classList.remove("error-input");
     } else {
       emailError.textContent = "올바른 이메일 주소가 아닙니다.";
       emailError.classList.remove("error");
@@ -40,13 +41,16 @@ function pwInputFocusOut() {
     passwordError.textContent = "비밀번호를 입력해 주세요.";
   } else {
     passwordError.classList.add("error");
+    passwordInput.classList.remove("error-input");
   }
 }
 passwordInput.addEventListener("focusout", pwInputFocusOut);
 
-const btn = document.querySelector(".signin");
+const btn = document.querySelector("#loginBtn");
 
-function signIn() {
+function signIn(e) {
+  // e.preventDefault();
+
   const checkedEmail = emailInput.value === "test@codeit.kr";
   const checkedPassword = passwordInput.value === "codeit101";
   console.log(checkedEmail, checkedPassword);
@@ -58,19 +62,17 @@ function signIn() {
       emailError.classList.remove("error");
       passwordInput.classList.add("error-input");
       emailError.textContent = "이메일을 확인해주세요.";
+    } else if (checkedEmail) {
+      emailError.classList.add("error");
     }
     if (!checkedPassword) {
       passwordError.classList.remove("error");
       passwordInput.classList.add("error-input");
       passwordError.textContent = "비밀번호를 확인해주세요.";
+    } else if (checkedEmail) {
+      passwordError.classList.add("error");
     }
     e.preventDefault();
   }
 }
 btn.addEventListener("click", signIn);
-
-//   if (!checkedEmail) {
-//     emailError.textContent = "이메일을 확인해주세요.";
-//   } else if (!checkedPassword) {
-//     passwordError.textContent = "비밀번호를 확인해주세요.";
-//   } else {

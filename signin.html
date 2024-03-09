@@ -9,7 +9,7 @@
   </head>
   <body>
     <main class="section">
-      <form class="content">
+      <div class="content">
         <section class="title">
           <a href="index.html">
             <img class="logo-img" src="img/logo.svg" alt="" />
@@ -19,11 +19,11 @@
             <a class="signupLink" href="signup.html">회원 가입하기</a>
           </div>
         </section>
-        <section class="input">
+        <form class="input">
           <div class="input-section">
             <div class="text">이메일<br /></div>
             <input id="email" class="user-input" type="email" name="email" />
-            <div id="email-errorText" class="text error"></div>
+            <div id="email-errorText" class="errortext error"></div>
           </div>
           <div class="input-section">
             <div class="text">비밀번호<br /></div>
@@ -33,10 +33,10 @@
               type="password"
               name="password"
             />
-            <div id="password-errorText" class="text error"></div>
+            <div id="password-errorText" class="errortext error"></div>
           </div>
-        </section>
-        <button class="signin">로그인</button>
+        </form>
+        <button id="loginBtn" class="signin">로그인</button>
         <div class="social">
           <div class="social-text">소셜 로그인</div>
           <div class="social-link">
@@ -48,7 +48,7 @@
             /></a>
           </div>
         </div>
-      </form>
+      </div>
     </main>
     <script src="input.js"></script>
   </body>

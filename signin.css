@@ -95,15 +95,14 @@ body {
   align-items: flex-start;
   gap: 12px;
 }
-#email-errorText {
-  color: rgba(255, 91, 86, 1);
-  font-size: 14px;
-  font-weight: 400;
+.error {
+  display: none;
 }
-#password-errorText {
+.errortext {
   color: rgba(255, 91, 86, 1);
   font-size: 14px;
   font-weight: 400;
+  line-height: 16px;
 }
 .user-input {
   width: 100%;
