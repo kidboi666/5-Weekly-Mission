@@ -66,6 +66,21 @@ function emailIogout() {
 // ----------------------------------------------------------------
 // 4. 비밀번호 input에서 focus out 할 때, 값이 없을 경우 아래에 “비밀번호를 입력해 주세요.” 에러 메세지를 보입니다.
 // 사용자 pw 포커스 아웃
+function PWIogout() {
+  const testpw = this.value;
+  console.log('pw 포커스 아웃', testpw);
+  addtextPW.innerText = '';
+
+  // 값이 없을 경우
+  if (testpw.length == 0) {
+    // 에러 텍스트 추가
+    addmessage = document.createTextNode('비밀번호를 입력해 주세요.');
+    addtextPW.appendChild(addmessage);
+  
+    // 부모div에 추가
+    errorNOPW.appendChild(addtextPW);
+  }
+}
 
 
 // ----------------------------------------------------------------
