@@ -7,6 +7,7 @@ const currentBalance = document.querySelector(".balance");
 const currentBet = document.querySelector(".current-bet");
 
 const suits = ["♠", "♥", "♦", "♣"];
+//const values = ["10", "A", "A", "A", "A", "A", "A", "A"];
 const values = [
   "2",
   "3",
@@ -62,8 +63,8 @@ document.querySelector("#plus-5").addEventListener("click", plusBet);
 document.querySelector("#plus-50").addEventListener("click", plusBet);
 document.querySelector("#plus-500").addEventListener("click", plusBet);
 document.querySelector("#minus-5").addEventListener("click", minusBet);
-document.querySelector("#minus-5").addEventListener("click", minusBet);
-document.querySelector("#minus-5").addEventListener("click", minusBet);
+document.querySelector("#minus-50").addEventListener("click", minusBet);
+document.querySelector("#minus-500").addEventListener("click", minusBet);
 document
   .querySelector(".restart-button")
   .addEventListener("click", restartGame);
@@ -89,6 +90,7 @@ function bet() {
 }
 
 function startBlackJack() {
+  document.querySelector(".rules").classList.toggle("hidden");
   document.querySelector(".blackjack-start").classList.toggle("hidden");
   document.querySelector(".bet-controller").classList.toggle("hidden");
   document.querySelector(".game-controller").classList.toggle("hidden");
@@ -97,15 +99,16 @@ function startBlackJack() {
 }
 
 function initialCard() {
+  document.querySelector(".dealer-card-display").classList.toggle("hidden");
   if (deck.length < 50) deck = createDeck();
   hitCard(playerCards, playerCardList, playerScore);
-  updateScore(playerScore, playerCards);
+  updateScore(playerScore, playerCardList);
   hitCard(playerCards, playerCardList, playerScore);
-  updateScore(playerScore, playerCards);
+  updateScore(playerScore, playerCardList);
   hitCard(dealerCards, dealerCardList, dealerScore);
-  updateScore(dealerScore, dealerCards);
-  if (checkBlackJack(playerCards)) {
-    setTimeout(playerBlackJack, 500);
+  updateScore(dealerScore, dealerCardList);
+  if (checkBlackJack(playerCardList)) {
+    setTimeout(checkResults(true), 500);
   }
 }
 
@@ -122,19 +125,28 @@ function getCardUI(card) {
   el.appendChild(suit);
   let value = document.createElement("div");
   value.textContent = card.Value;
+  value.className = "value";
   el.appendChild(value);
+  let weight = document.createElement("div");
+  weight.textContent = card.Weight;
+  weight.className = "weight";
+  weight.classList.add("hidden");
+  el.appendChild(weight);
   if (card.Suit === "♦" || card.Suit === "♥") el.classList.add("red-suit");
   return el;
 }
 
 function hitCard(playercards, playerlist, playerScore) {
   let newCard = deck.pop();
-  if (parseInt(newCard.Weight) + parseInt(playerScore.textContent) > 21) {
-    let foundAceCard = playercards.find(
-      (card) => card.Value === "A" && card.Weight === 11
-    );
+  if (parseInt(newCard.Weight) + calculateCardWeight(playerlist) > 21) {
+    let foundAceCard;
+    cards = playerlist.querySelectorAll(".card");
+    for (card of cards) {
+      if (card.querySelector(".weight").textContent == "11")
+        foundAceCard = card;
+    }
     if (foundAceCard) {
-      foundAceCard.Weight = 1;
+      foundAceCard.querySelector(".weight").textContent = 1;
     }
     if (!foundAceCard && newCard.Weight == 11) newCard.Weight = 1;
   }
@@ -142,19 +154,17 @@ function hitCard(playercards, playerlist, playerScore) {
   renderCard(newCard, playerlist);
 }
 
-function updateScore(playerScore, playercards) {
+function updateScore(playerScore, cardList) {
   let score = 0;
-  for (card of playercards) {
-    score += card.Weight;
-  }
+  score = calculateCardWeight(cardList);
   playerScore.textContent = score;
 }
 
 function playerHit() {
   hitCard(playerCards, playerCardList, playerScore);
-  updateScore(playerScore, playerCards);
+  updateScore(playerScore, playerCardList);
   if (parseInt(playerScore.textContent) > 21) {
-    setTimeout(dealerWin, 1000);
+    setTimeout(500, checkResults());
   }
 }
 
@@ -164,37 +174,39 @@ async function dealerTurn() {
       parseInt(dealerScore.textContent) >= 17 ||
       parseInt(playerScore.textContent) > 21
     ) {
-      return;
+      return true;
     }
 
     hitCard(dealerCards, dealerCardList, dealerScore);
-    updateScore(dealerScore, dealerCards);
+    updateScore(dealerScore, dealerCardList);
 
-    // 비동기 함수로 변경
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    // 재귀적으로 호출
     await takeTurn();
   }
 
-  // takeTurn 함수가 완료된 후에 checkResults를 호출
   await takeTurn();
   checkResults();
 }
-function checkResults() {
-  if (parseInt(playerScore.textContent) > 21) setTimeout(dealerWin, 1000);
-  if (
+function checkResults(isBlackJack = false) {
+  document.querySelector(".game-controller").classList.toggle("hidden");
+  if (isBlackJack) {
+    setTimeout(playerBlackJack, 500);
+  } else if (parseInt(playerScore.textContent) > 21) {
+    setTimeout(dealerWin, 500);
+  } else if (
     parseInt(dealerScore.textContent) > 21 ||
     parseInt(dealerScore.textContent) < parseInt(playerScore.textContent)
   ) {
-    setTimeout(playerWin, 100);
-    return;
+    setTimeout(playerWin, 500);
+  } else if (
+    parseInt(dealerScore.textContent) === parseInt(playerScore.textContent)
+  ) {
+    setTimeout(itsAPush, 500);
+  } else {
+    setTimeout(dealerWin, 500);
   }
-  if (parseInt(dealerScore.textContent) === parseInt(playerScore.textContent)) {
-    itsAPush();
-    return;
-  }
-  setTimeout(dealerWin, 100);
+  setTimeout(resetGame, 1000);
 }
 
 function playerWin() {
@@ -203,14 +215,12 @@ function playerWin() {
   let balance = parseInt(currentBalance.textContent);
   balance += prizeMoney * 2;
   currentBalance.textContent = balance;
-  alert("운이 좋군요?");
-  resetGame();
+  alert("YOU WIN!\n운이 좋군요?");
 }
 
 function dealerWin() {
   console.log("dealerwin");
-  alert("블랙잭은 '실력게임' 입니다");
-  resetGame();
+  alert("YOU LOSE\n블랙잭은 '실력게임' 입니다");
 }
 
 function itsAPush() {
@@ -218,13 +228,17 @@ function itsAPush() {
   let balance = parseInt(currentBalance.textContent);
   balance += prizeMoney;
   currentBalance.textContent = balance;
-  alert("놀라셨나요?");
-  resetGame();
+  console.log(dealerCards);
+  console.log(dealerCardList);
+  console.log(playerCards);
+  console.log(playerCardList);
+  alert("PUSH(무승부)\n놀라셨나요?");
 }
 
 function resetGame() {
-  document.querySelector(".game-controller").classList.toggle("hidden");
+  console.log("reset Game");
   document.querySelector(".player-card-display").classList.toggle("hidden");
+  document.querySelector(".dealer-card-display").classList.toggle("hidden");
   document.querySelector(".restart-button").classList.toggle("hidden");
   currentBet.textContent = 0;
   playerScore.textContent = 0;
@@ -245,7 +259,7 @@ function plusBet(event) {
   let plusValue = parseInt(button.textContent.replace("+", ""));
   let betValue = parseInt(currentBet.textContent);
   if (balance < plusValue) {
-    alert("산와 산와 산와머니~");
+    alert("베팅 금액이 부족합니다\n산와 산와 산와머니~");
     return;
   }
 
@@ -293,8 +307,8 @@ function doubleBet() {
   dealerTurn();
 }
 
-function checkBlackJack(playercards) {
-  return playercards[0].Weight + playercards[1].Weight === 21;
+function checkBlackJack(cardList) {
+  return calculateCardWeight(cardList) === 21;
 }
 
 function playerBlackJack() {
@@ -304,12 +318,30 @@ function playerBlackJack() {
   balance += prizeMoney * 2.5;
   currentBalance.textContent = balance;
   alert("NICE BLACKJACK...");
-  resetGame();
 }
 
 function begging() {
   let balance = parseInt(currentBalance.textContent);
   balance += 500;
   currentBalance.textContent = balance;
-  alert("도박중독 전문상담 국번없이 1336");
+  alert("500 더 드렸습니다\n도박중독 전문상담 국번없이 1336");
+}
+
+function sleep(ms) {
+  const wakeUpTime = Date.now() + ms;
+  while (Date.now() < wakeUpTime) {}
+}
+
+function calculateCardWeight(hand) {
+  let cards = hand.getElementsByClassName("card");
+  let totalWeight = 0;
+
+  for (let i = 0; i < cards.length; i++) {
+    let weightElement = cards[i].getElementsByClassName("weight")[0];
+    if (weightElement) {
+      totalWeight += parseInt(weightElement.textContent);
+    }
+  }
+
+  return totalWeight;
 }
