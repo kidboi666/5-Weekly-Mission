@@ -8,14 +8,15 @@ const emailAddMessage = document.createElement('div');
 emailAddMessage.classList.add('error_message');
 const pwAddMessage = document.createElement('div');
 pwAddMessage.classList.add('error_message');
-let messageText = document.createTextNode('');
+let messageText = document.createTextNode("");
 
 const data = [{email: 'test@codeit.com', password: 'codeit101'}];
 
 // email
 function emailCheck() {  
   const emailValue = this.value;
-  emailAddMessage.innerText = '';
+  emailAddMessage.innerText = "";
+  inputEmail.style.borderColor = "";
   
   if (emailValue.length > 0) {
     const emailEx = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
@@ -38,8 +39,8 @@ function emailCheck() {
 // password
 function pwCheck() {
   const pwValue = this.value;
-  console.log('pw 포커스 아웃', pwValue);
-  pwAddMessage.innerText = '';
+  pwAddMessage.innerText = "";
+  inputPassword.style.borderColor = "";
 
   if (pwValue.length == 0) {
     inputPassword.style.borderColor = "#FF5B56";
@@ -51,8 +52,10 @@ function pwCheck() {
 
 // 로그인
 function login() {
-  emailAddMessage.innerText = '';
-  pwAddMessage.innerText = '';
+  emailAddMessage.innerText = "";
+  pwAddMessage.innerText = "";
+  inputEmail.style.borderColor = "";
+  inputPassword.style.borderColor = "";
 
   const userinputEmail = inputEmail.value;
   const userinputPW = inputPassword.value;
@@ -65,11 +68,13 @@ function login() {
   const message = user 
     ? window.location.href = "/folder.html"
     : 
-      emailAddMessage.innerText = '';
+      inputEmail.style.borderColor = "#FF5B56";
+      emailAddMessage.innerText = "";
       messageText = document.createTextNode('이메일을 확인해 주세요.');
       emailAddMessage.appendChild(messageText);
 
-      pwAddMessage.innerText = '';
+      inputPassword.style.borderColor = "#FF5B56";
+      pwAddMessage.innerText = "";
       messageText = document.createTextNode('비밀번호를 확인해 주세요.');
       pwAddMessage.appendChild(messageText);
 
