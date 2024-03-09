@@ -59,9 +59,9 @@ Array.from(eyeButtons).forEach(eyeButton => {
     });
 });
 LoginTest = (Email,PW) => {
-    if (!(Email == 'test@codeit.com'&& PW == 'codeit101')) {
-        errorPassword.textContent = '등록되지 않은 주소이거나 비밀번호가 틀립니다.';
-    } else window.location.href = '/folder';
+    if (Email == 'test@codeit.com'&& PW == 'codeit101') window.location.href = '/folder';
+    else if (Email != 'test@codeit.com')errorEmail.textContent = '이메일을 확인해주세요.'; 
+    else if (PW != 'codeit101') errorPassword.textContent = '비밀번호를 확인해주세요.';
 }
 ctaSignIn.addEventListener('click', (e) => {
     e.preventDefault()
