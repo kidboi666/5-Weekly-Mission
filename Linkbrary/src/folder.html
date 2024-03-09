@@ -11,10 +11,17 @@
 <body>
     <main>
         <h1>LOOKING FOR FOLDER PAGE?</h1>
-        <h2>그런건 없습니다</h2>
+        <h2 style="text-align: center;">그런건 없습니다<br>대신 블랙잭 한판 어떠신가요?</h2>
+        <ul class="rules">
+            <li>6덱 블랙잭입니다, 덱이 50장 미만이면 자동셔플됩니다</li>
+            <li>베팅을 완료하고 GAZUAAAAA 버튼을 눌러주세요</li>
+            <li>룰은 찾아보세요, 스플릿,서렌더등 일부규칙은 구현이 안됐습니다</li>
+            <li>돈이 부족하시다면 밑에 돈 빌리기 버튼을 클릭하십쇼</li>
+        </ul>
         <div class="game-board">
             <div class="dealer board">
-                <div class="dealer-card-display">
+                DEALER
+                <div class="dealer-card-display hidden">
                     DEALER CURRENT TOTAL :<span class="dealer-score">0</span>
                     <div class="dealer-card-list card-list">
 
@@ -71,13 +78,13 @@
 
         <div class="game-controller controller hidden">
             <button id="hit">
-                hit
+                HIT
             </button>
             <button id="stay">
-                stay
+                STAY
             </button>
             <button id="double">
-                double
+                DOUBLEDOWN
             </button>
         </div>
 
