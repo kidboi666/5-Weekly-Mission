@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style/signin.css" />
-    <link rel="stylesheet" href="style/mobile/signin_mobile.css" />
+    <link rel="stylesheet" href="/src/style/signin.css" />
     <title>Linkbrary</title>
   </head>
   <body>
@@ -27,11 +26,14 @@
           <label for="password">비밀번호</label>
           <div class="password">
             <input id="password" type="password" placeholder="" />
-            <img class="eye-off" src="img/eye-off.svg" alt="eye-off" />
+            <button class="eyeBtn">
+              <img class="eyeOn" src="img/eye-on.png" alt="eye-on" />
+              <img class="eye-off none" src="img/eye-off.svg" alt="eye-off" />
+            </button>
           </div>
         </div>
       </div>
-      <a href="index.html" class="login-btn">로그인</a>
+      <button class="loginBtn">로그인</button>
       <div class="social-login">
         <p>소셜 로그인</p>
         <div class="icon">
@@ -44,5 +46,6 @@
         </div>
       </div>
     </main>
+    <script src="src/sign.js"></script>
   </body>
 </html>

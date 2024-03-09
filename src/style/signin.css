@@ -1,7 +1,7 @@
-@import url("config.css");
+@import url("/src/style/config.css");
 
 body {
-  padding: 238px 0 253px;
+  padding: 200px 0 0;
   background: var(--Gray5);
 }
 
@@ -61,6 +61,10 @@ main {
   gap: 12px;
 }
 
+.input-area input.err {
+  border: 1px solid red;
+}
+
 .input:focus {
   border: var(--Primary-color);
 }
@@ -80,34 +84,47 @@ main {
   align-items: center;
 }
 
+.input-area .email p {
+  color: red;
+  font-size: 14px;
+}
+
+.input-area .password p {
+  color: red;
+  font-size: 14px;
+}
+
 .input-area .password {
   position: relative;
 }
 
-.password .eye-off {
+.password .eyeBtn {
   position: absolute;
   width: 16px;
   height: 16px;
   top: 50%;
   right: 15px;
   transform: translate(-0%, -50%);
+  border: none;
   cursor: pointer;
+  background-color: white;
 }
 
-.confirm.password {
-  border-radius: 8px;
-  border: 1px solid var(--Linkbrary-red, #ff5b56);
+.password .eye-off {
+  width: 16px;
+  height: 16px;
 }
 
-.caution {
-  margin-top: 6px;
-  color: var(--Linkbrary-red, #ff5b56);
-  font-family: Pretendard;
-  font-size: 14px;
-  font-weight: 400;
+.password .eyeOn {
+  width: 20px;
+  height: 20px;
 }
 
-.signup-btn {
+.password .none {
+  display: none;
+}
+
+.loginBtn {
   display: flex;
   width: 400px;
   padding: 16px 20px;
@@ -121,6 +138,8 @@ main {
   font-family: Pretendard;
   font-size: 18px;
   font-weight: 600;
+  border: none;
+  cursor: pointer;
 }
 
 .social-login {
@@ -135,7 +154,7 @@ main {
 }
 
 .social-login p {
-  color: var(--Gray7);
+  color: var(--Gary7);
   font-family: Pretendard;
   font-size: 14px;
   font-weight: 400;
@@ -147,7 +166,8 @@ main {
 }
 
 .google {
-  background-image: url("../img/google-icon.svg");
+  /* position: relative; */
+  background-image: url("/img/google-icon.svg");
   width: 42px;
   height: 42px;
   display: flex;
@@ -161,10 +181,33 @@ main {
 }
 
 .kakao {
-  background-image: url("../img/kakao-icon.svg");
+  background-image: url("/img/kakao-icon.svg");
   width: 42px;
   height: 42px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* Mobile 화면 디자인 */
+@media (max-width: 767px) {
+  body {
+    background: var(--Gray5);
+    padding: 120px 32px 0;
+  }
+
+  main {
+    max-width: 400px;
+    width: 100%;
+  }
+
+  .login-btn {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .social-login {
+    width: 100%;
+    max-width: 400px;
+  }
 }

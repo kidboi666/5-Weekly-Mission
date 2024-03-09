@@ -1,7 +1,7 @@
-@import url("config.css");
+@import url("/src/style/config.css");
 
 body {
-  padding: 238px 0 253px;
+  padding: 200px 0 253px;
   background: var(--Gray5);
 }
 
@@ -94,7 +94,20 @@ main {
   cursor: pointer;
 }
 
-.login-btn {
+.confirm.password {
+  border-radius: 8px;
+  border: 1px solid var(--Linkbrary-red, #ff5b56);
+}
+
+.caution {
+  margin-top: 6px;
+  color: var(--Linkbrary-red, #ff5b56);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.signup-btn {
   display: flex;
   width: 400px;
   padding: 16px 20px;
@@ -122,7 +135,7 @@ main {
 }
 
 .social-login p {
-  color: var(--Gary7);
+  color: var(--Gray7);
   font-family: Pretendard;
   font-size: 14px;
   font-weight: 400;
@@ -134,7 +147,6 @@ main {
 }
 
 .google {
-  /* position: relative; */
   background-image: url("../img/google-icon.svg");
   width: 42px;
   height: 42px;
@@ -155,4 +167,27 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* Mobile 화면 디자인 */
+@media (max-width: 767px) {
+  body {
+    background: var(--Gray5);
+    padding: 120px 32px 0;
+  }
+
+  main {
+    max-width: 400px;
+    width: 100%;
+  }
+
+  .signup-btn {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .social-login {
+    width: 100%;
+    max-width: 400px;
+  }
 }
