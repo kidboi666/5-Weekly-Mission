@@ -19,40 +19,42 @@
 </head>
 
 <body>
-  <section>
-    <a class="logo" href="../landing.html" target="_blank">
-      <img alt="logo" src="../images/logo.svg">
-    </a>
-    <h1 class="text">
-      회원이 아니신가요?
-      <a class="text signup" href="../signup/signup.html">회원 가입하기</a>
-    </h1>
-    <form class="form">
-      <label for="username">
-        이메일
-      </label>
-      <input id="username" name="username">
-      <label for="password">
-        비밀번호
-      </label>
-      <div class="password-container">
-        <input name="password" type="password">
-        <img class="eye" alt="show_password" src="../images/eye-on.svg">
-      </div>
+  <div class="wrapper">
+    <div class="content">
+      <a class="logo" href="../landing.html" target="_blank">
+        <img alt="logo" src="../images/logo.svg">
+      </a>
+      <h1 class="text">
+        회원이 아니신가요?
+        <a class="text signup" href="../signup/signup.html">회원 가입하기</a>
+      </h1>
+      <form class="form">
+        <label for="username">
+          이메일
+        </label>
+        <input id="username" name="username">
+        <label for="password">
+          비밀번호
+        </label>
+        <div class="password-container">
+          <input name="password" type="password">
+          <img class="eye" alt="show_password" src="../images/eye-on.svg">
+        </div>
+    
+        <button class="signin_buttons">
+          로그인
+        </button>
+      </form>  
   
-      <button class="signin_buttons">
-        로그인
-      </button>
-    </form>  
-
-    <div class="social">
-      <p>소셜 로그인</p>
-      <div class="social-container">
-        <a href="https://www.google.com/" target="social"><img alt="google_account" src="../images/icon_google.svg" width 42></a>
-        <a href="https://www.kakaocorp.com/" target="social"><img alt="kakao_account" src="../images/icon_kakao.svg" width 42></a>
+      <div class="social">
+        <p>소셜 로그인</p>
+        <div class="icons">
+          <a href="https://www.google.com/" target="social"><img alt="google_account" src="../images/icon_google.svg" width 42></a>
+          <a href="https://www.kakaocorp.com/" target="social"><img alt="kakao_account" src="../images/icon_kakao.svg" width 42></a>
+        </div>
       </div>
     </div>
-
-  </section>
+  </div>
+  
 </body>
 </html>
