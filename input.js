@@ -13,6 +13,7 @@ function emailInputFocusOut() {
   if (emailInput.value == "") {
     emailError.textContent = "이메일을 입력하세요.";
     emailError.classList.remove("error");
+    emailInput.classList.add("error-input");
   } else {
     const emailChecked = emailCheck(emailInput.value);
     if (emailChecked) {
@@ -20,6 +21,7 @@ function emailInputFocusOut() {
     } else {
       emailError.textContent = "올바른 이메일 주소가 아닙니다.";
       emailError.classList.remove("error");
+      emailInput.classList.add("error-input");
     }
   }
 }
@@ -32,10 +34,43 @@ const passwordInput = document.querySelector("#password");
 const passwordError = document.querySelector("#password-errorText");
 
 function pwInputFocusOut() {
-  if (!passwordInput.value == "") {
-    passwordError.classList.add("error");
-  } else {
+  if (passwordInput.value == "") {
     passwordError.classList.remove("error");
+    passwordInput.classList.add("error-input");
+    passwordError.textContent = "비밀번호를 입력해 주세요.";
+  } else {
+    passwordError.classList.add("error");
   }
 }
 passwordInput.addEventListener("focusout", pwInputFocusOut);
+
+const btn = document.querySelector(".signin");
+
+function signIn() {
+  const checkedEmail = emailInput.value === "test@codeit.kr";
+  const checkedPassword = passwordInput.value === "codeit101";
+  console.log(checkedEmail, checkedPassword);
+
+  if (checkedEmail && checkedPassword) {
+    window.location.href = "folder.html";
+  } else {
+    if (!checkedEmail) {
+      emailError.classList.remove("error");
+      passwordInput.classList.add("error-input");
+      emailError.textContent = "이메일을 확인해주세요.";
+    }
+    if (!checkedPassword) {
+      passwordError.classList.remove("error");
+      passwordInput.classList.add("error-input");
+      passwordError.textContent = "비밀번호를 확인해주세요.";
+    }
+    e.preventDefault();
+  }
+}
+btn.addEventListener("click", signIn);
+
+//   if (!checkedEmail) {
+//     emailError.textContent = "이메일을 확인해주세요.";
+//   } else if (!checkedPassword) {
+//     passwordError.textContent = "비밀번호를 확인해주세요.";
+//   } else {

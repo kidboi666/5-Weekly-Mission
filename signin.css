@@ -95,8 +95,15 @@ body {
   align-items: flex-start;
   gap: 12px;
 }
-.error {
-  display: none;
+#email-errorText {
+  color: rgba(255, 91, 86, 1);
+  font-size: 14px;
+  font-weight: 400;
+}
+#password-errorText {
+  color: rgba(255, 91, 86, 1);
+  font-size: 14px;
+  font-weight: 400;
 }
 .user-input {
   width: 100%;
@@ -104,6 +111,9 @@ body {
   border-radius: 8px;
   border: 1px solid rgba(204, 213, 227, 1);
   padding: 18px 15px;
+}
+.user-input.error-input {
+  border: 1px solid rgba(255, 91, 86, 1);
 }
 .user-input:focus {
   border-color: blue;
