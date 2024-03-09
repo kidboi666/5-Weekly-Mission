@@ -90,7 +90,6 @@ function bet() {
 }
 
 function startBlackJack() {
-  document.querySelector(".rules").classList.toggle("hidden");
   document.querySelector(".blackjack-start").classList.toggle("hidden");
   document.querySelector(".bet-controller").classList.toggle("hidden");
   document.querySelector(".game-controller").classList.toggle("hidden");
