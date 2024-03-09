@@ -321,6 +321,7 @@ a.navbar-login {
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    cursor: pointer;
 }
 
 .signin-social-login {
@@ -332,6 +333,18 @@ a.navbar-login {
     border-radius: 8px;
     border: 1px solid var(--Linkbrary-gray20, #CCD5E3);
     background: var(--Linkbrary-gray10, #E7EFFB);
+}
+
+.email-error-msg {
+    margin-top: 10px;
+    font-size: 14px;
+    color: red;
+}
+
+.password-error-msg {
+    margin-top: 10px;
+    font-size: 14px;
+    color: red;
 }
 
 .signin-social-login p {

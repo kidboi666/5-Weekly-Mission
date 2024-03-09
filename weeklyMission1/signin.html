@@ -21,18 +21,20 @@
         </div>
         <div class="signin-email">
             <p>이메일</p>
-            <input type="email" placeholder="codeit@codeit.com">
+            <input class="signin-email-input" type="email" placeholder="codeit@codeit.com">
+            <div class="email-error-msg"></div>
         </div>
         <div class="signin-password">
             <p>비밀번호</p>
-            <input id="signInPw" type="password" placeholder="password">
-            <img src="./img/hidden.svg" alt="closed eye">
+            <input class="signin-password-input" id="signInPw" type="password" placeholder="password">
+            <img src="./img/hidden.svg" class="password-img" alt="closed eye">
+            <div class="password-error-msg"></div>
         </div>
-        <a href="/">
+        <!-- <a href="/"> -->
             <div class="signin-login">
                 로그인
             </div>
-        </a>
+        <!-- </a> -->
         <div class="signin-social-login">
             <p>소셜로그인</p>
             <div class="signin-social-login-icons">
@@ -51,5 +53,7 @@
             </div>
         </div>
     </div>
+
+    <script src="index.js"></script>
 </body>
 </html>
