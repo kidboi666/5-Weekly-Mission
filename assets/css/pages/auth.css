@@ -47,7 +47,6 @@
 .auth-form__input-wp {
   display: flex;
   flex-direction: column;
-  gap: 12px;
   margin-top: 24px;
 }
 
@@ -56,6 +55,7 @@
 }
 
 .auth-form__label {
+  margin-bottom: 12px;
   font-size: 0.875rem;
 }
 
@@ -83,6 +83,11 @@
 
 .auth-form__input:focus {
   outline: 1px solid #6d6afe;
+}
+
+.auth-form__notice-enter-input {
+  margin-top: 6px;
+  color: var(--red-color);
 }
 
 .auth-form__btn {

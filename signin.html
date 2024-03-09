@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Linkbrary</title>
   <link rel="stylesheet" href="/assets/css/pages/auth.css" />
+  <script defer src="/assets/js/auth.js"></script>
 </head>
 
 <body>
@@ -20,17 +21,17 @@
       </div>
       <form class="auth-form">
         <div class="auth-form__input-wp">
-          <label class="auth-form__label">이메일</label>
-          <input class="auth-form__input" type="email" />
+          <label for="email" class="auth-form__label">이메일</label>
+          <input id="email"  class="auth-form__input" type="email" />
         </div>
         <div class="auth-form__input-wp">
-          <label class="auth-form__label">비밀번호</label>
+          <label for="password" class="auth-form__label">비밀번호</label>
           <div class="auth-form__pw-wp">
-            <input class="auth-form__input" type="password" />
+            <input id="password" class="auth-form__input" type="password" />
             <img class="auth-form__eye" src="/assets/img/eye_off.png" alt="eye off" />
           </div>
           </div>
-        <button class="btn auth-form__btn">로그인</button>
+        <button type="submit" class="btn auth-form__btn">로그인</button>
       </form>
       <div class="auth-sns">
         <h2 class="auth-sns__title">소셜 로그인</h2>
