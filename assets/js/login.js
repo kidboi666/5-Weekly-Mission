@@ -22,6 +22,8 @@ addtextPW.classList.add('error_message');
  // 에러 텍스트 추가
 let addmessage = document.createTextNode('');
 
+//-------------------------모듈------------------------
+
 // ----------------------------------------------------------------
 // 사용자 email 포커스 아웃
 function emailIogout() {  

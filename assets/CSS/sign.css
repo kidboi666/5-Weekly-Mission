@@ -177,7 +177,6 @@ body {
 }
 .social-sign__icon-img {
   position: absolute;
-  /* z-index: 1; */
 }
 
 .error_message {
@@ -187,4 +186,8 @@ body {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.addeye {
+  content: url("/assets/img/svg/eye-on.svg");
 }
