@@ -1,7 +1,7 @@
 const email = document.querySelector('#email');
 const password = document.querySelector('#password');
 
-function noticeEnterInput(e) {
+function showMessageToWriteInput(e) {
   if(!e.target.value) {
     if(!e.target.nextElementSibling) {
       const notice = document.createElement('div');
@@ -19,4 +19,28 @@ function noticeEnterInput(e) {
   }
 }
 
-email.addEventListener('focusout', noticeEnterInput);
+function checkEmailFormat(e) {
+  const emailFormat = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+  return emailFormat.test(e.target.value) ? true : false;
+}
+
+function showMessageToWriteInEmailFormat(e) {
+  if(!checkEmailFormat(e)) {
+    if(e.target.nextElementSibling) {
+      e.target.nextElementSibling.textContent = '올바른 이메일 주소가 아닙니다.';
+    } else {
+      const notice = document.createElement('div');
+      notice.classList.add('auth-form__notice-enter-input');
+      notice.textContent = '올바른 이메일 주소가 아닙니다.';
+      e.target.after(notice);
+      e.target.classList.add('input-border--red');
+    }
+  }
+}
+
+function verifyInvalidInput(e) {
+  showMessageToWriteInput(e);
+  e.target.value && showMessageToWriteInEmailFormat(e);
+}
+
+email.addEventListener('focusout', verifyInvalidInput);
