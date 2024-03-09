@@ -18,32 +18,33 @@ function emailCheck() {
   emailAddMessage.innerText = '';
   
   if (emailValue.length > 0) {
-    const emailTEST = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+    const emailEx = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
 
-    if (!emailTEST.test(emailValue)) {
+    if (!emailEx.test(emailValue)) {
+      inputEmail.style.borderColor = "#FF5B56";
       messageText = document.createTextNode('올바른 이메일 주소가 아닙니다.');
       emailAddMessage.appendChild(messageText);
-
       emailErrorMessage.appendChild(emailAddMessage);
+      
     }
   } else {
+    inputEmail.style.borderColor = "#FF5B56";
     messageText = document.createTextNode('이메일을 입력해 주세요.');
     emailAddMessage.appendChild(messageText);
-
     emailErrorMessage.appendChild(emailAddMessage);
   }
 }
 
 // password
 function pwCheck() {
-  const inputPassword = this.value;
-  console.log('pw 포커스 아웃', inputPassword);
+  const pwValue = this.value;
+  console.log('pw 포커스 아웃', pwValue);
   pwAddMessage.innerText = '';
 
-  if (inputPassword.length == 0) {
+  if (pwValue.length == 0) {
+    inputPassword.style.borderColor = "#FF5B56";
     messageText = document.createTextNode('비밀번호를 입력해 주세요.');
     pwAddMessage.appendChild(messageText);
-  
     pwErrorMessage.appendChild(pwAddMessage);
   }
 }
