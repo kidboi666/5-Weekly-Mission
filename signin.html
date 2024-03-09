@@ -14,7 +14,9 @@
 <body class="sign-header-wrap">
   <div class="sign-header-inner">
     <div class="sign-header-logo">
-      <a href="/"><img src="/assets/img/svg/sign-logo.svg" sclass="header-logo__image" alt="사이트 로고 Linkbrary"></a>
+      <a href="/">
+        <img class="header-logo__image" src="/assets/img/svg/sign-logo.svg" alt="사이트 로고 Linkbrary" />
+      </a>
       <div class="header-logo__line">
         <p class="header-logo__text">회원이 아니신가요?</p>
         <a href="/signup.html" class="header-logo__link">회원 가입하기</a>
@@ -22,29 +24,24 @@
     </div>
 
     <!-- <form> -->
-      <!-- 종결 하기 <img /> -->
       <div class="sign-wrap">
         <div class="sign-inner">
           <label class="sign-label" for="email">이메일</label>
-          <input id="EMAIL" class="sign-input" type="email" name="email" />
-
-          <!--테스트중-->
-          <div class="errortestNOemail"></div>
+          <input id="input-email" class="sign-input" type="email" name="email" />
+          <div class="email-error-message"></div>
         </div>
 
         <div class="sign-inner">
           <label class="sign-label" for="pw">비밀번호</label>
-          <div class="sign__pw-eye">
-            <input id="PW" class="sign-input" type="password" name="pw" />
-            <button class="sign__pw-eye-off">
-              <img class="eye-offtest" src="/assets/img/svg/eye-off.svg" alt="비밀번호 감추기" />
+          <div class="sign-pw">
+            <input id="input-pw" class="sign-input" type="password" name="pw" />
+            <button class="sign-pw__eye-btn">
+              <img class="eye-change" src="/assets/img/svg/eye-off.svg" alt="비밀번호 감추기" />
             </button>
-
           </div>
-          <!--테스트중-->
-          <div class="errortestNOPW"></div>
+          <div class="pw-error-message"></div>
         </div>
-      </div> <!--버튼 마진 수정-->
+      </div> 
       <button class="sign-btn btn-color" type="submit">로그인</button>
     <!-- </form> -->
   </div>

@@ -107,7 +107,7 @@ body {
   padding: 1rem 1.25rem;
 }
 
-.headerimgtest { /*------------------------------------------------------------------------*/
+.header-wrap__img { 
   width: 75rem;
 }
 
@@ -137,7 +137,7 @@ body {
   flex-direction: row-reverse;
 }
 
-.contentimgtest { /*------------------------------------------------------------------------*/
+.card-wrap__img { 
   width: 34.375rem;
 }
 

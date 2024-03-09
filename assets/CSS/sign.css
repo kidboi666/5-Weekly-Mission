@@ -113,11 +113,11 @@ body {
 }
 
 
-.sign__pw-eye {
+.sign-pw {
   position: relative;
 }
 
-.sign__pw-eye-off {
+.sign-pw__eye-btn {
   position: absolute;
   top: 1.125rem;
   right: .9375rem;
@@ -133,7 +133,7 @@ body {
   gap: .625rem;
   width: 25rem;
   padding: 1rem 1.25rem;
-  margin-top: 1.875rem;
+  margin-top: .625rem;
   border: solid 1px rgba(0,0,0,.15);
   cursor: pointer;
 }
@@ -175,6 +175,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 .social-sign__icon-img {
   position: absolute;
 }
@@ -188,6 +189,6 @@ body {
   line-height: normal;
 }
 
-.addeye {
+.eye-on {
   content: url("/assets/img/svg/eye-on.svg");
 }
