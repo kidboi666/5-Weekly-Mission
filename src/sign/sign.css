@@ -2,11 +2,10 @@
 @import "../reset.css";
 
 body {
-    overflow: hidden;
     display: flex;
     justify-content: center;
     background-color: var(--gray5);
-    padding-top: 170px;
+    padding-top: 150px;
 }
 
 /* m a i n */
@@ -50,7 +49,6 @@ main {
 .input_container {
     width: 100%;
     display: flex;
-    gap: 24px;
 }
 
 .input_box {
@@ -58,6 +56,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    position: relative; 
 }
 
 .input_box label {
@@ -84,19 +83,32 @@ main {
     border: 1px solid var(--red);
 }
 
-.sign_pw {
+.error_msg {
+    color: var(--red);
+    font-size: 14px;
+}
+
+.input_box input {
     position: relative; 
 }
 
-.eye-button {
+.eye_button {
     position: absolute;
-    bottom: 0.9rem;
-    right: 0.9rem;
-    width: 1.6rem;
-    height: 1.6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15px; 
+    width: 16px;
+    height: 16px;
     background: none;
     border: none;
     cursor: pointer;
+    background-image: url('../../public/eye-off.svg');
+    background-size: cover;
+}
+
+.eye_button.on {
+    background-image: url('../../public/eye-on.svg');
+    background-size: cover;
 }
 
 .submit_btn {

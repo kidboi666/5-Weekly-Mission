@@ -20,7 +20,7 @@
         <a href="/" class="logo">
             <img src="../public/logo.svg" width="133" height="24" alt="logo"/>
         </a>
-        <a href="./src/sign/signin.html" class="login-button">
+        <a href="./src/sign/signin.html" class="login_button">
             로그인
         </a>        
     </header>
@@ -47,9 +47,9 @@
                 <button class="add_folder_btn" id="addFolderBtn">폴더 추가 +</button>
                 <div id="addFolderModal" class="modal">
                     <div class="modal_container">
-                        <div class="close" id="addFolderCloseBtn">
+                        <button class="close" id="addFolderCloseBtn">
                             <img src="../public/close.png" width="24" height="24">                             
-                        </div>
+                        </button>
                         <div class="modal_header">
                             <p class="modal_header_title">폴더 추가</p>
                         </div>
@@ -79,9 +79,9 @@
             </div>                                                 
             <div id="shareFolderModal" class="modal">
                 <div class="modal_container">
-                    <div class="close">
+                    <button class="close">
                         <img src="../public/close.png" width="24" height="24">                                
-                    </div>
+                    </button>
                     <div class="modal_header">
                         <p class="modal_header_title">폴더 공유하기</p>
                         <p class="modal_header_subtitle">폴더명</p>
@@ -120,13 +120,13 @@
                             <img src="../public/dot.svg" id="dotMenu" width="21" height="17" alt="dot"/>
                             <div class="dot_menu" id="menu">
                                 <div class="dot_menu_item" id="deleteBtn">삭제하기</div>
-                                <div class="dot_menu_item" id="toFolderBtn">폴더에 추가</div>                                
+                                <div class="dot_menu_item" id="addToFolderBtn">폴더에 추가</div>                                
                             </div>                             
-                            <div id="toFolderModal" class="modal">
+                            <div id="addToFolderModal" class="modal">
                                 <div class="modal_container">
-                                    <div class="close">
+                                    <button class="close">
                                         <img src="../public/close.png" id="dotMenu" width="24" height="24" alt="close"/>                                
-                                    </div>
+                                    </button>
                                     <div class="modal_header">
                                         <p class="modal_header_title">폴더에 추가</p>
                                         <p class="modal_header_subtitle">링크 주소</p>
@@ -153,9 +153,9 @@
                             </div>
                             <div id="deleteModal" class="modal">
                                 <div class="modal_container">
-                                    <div class="close">
+                                    <button class="close">
                                         <img src="../public/close.png" width="24" height="24">                                
-                                    </div>
+                                    </button>
                                     <div class="modal_header">
                                         <p class="modal_header_title">링크 삭제</p>
                                         <p class="modal_header_subtitle">링크 주소</p>
@@ -184,52 +184,7 @@
                     <div class="card_txt_div">
                         <div class="card_txt_div_top">
                             <p class="left_time_p">10 minutes ago</p>
-                            <img src="../public/dot.svg" id="dotMenu" width="21" height="17" alt="dot"/>
-                            <div class="dot_menu" id="menu">
-                                <div class="dot_menu_item" id="deleteBtn">삭제하기</div>
-                                <div class="dot_menu_item" id="toFolderBtn">폴더에 추가</div>                                
-                            </div>                             
-                            <div id="toFolderModal" class="modal">
-                                <div class="modal_container">
-                                    <div class="close">
-                                        <img src="../public/close.png" id="dotMenu" width="24" height="24" alt="close"/>                                
-                                    </div>
-                                    <div class="modal_header">
-                                        <p class="modal_header_title">폴더에 추가</p>
-                                        <p class="modal_header_subtitle">링크 주소</p>
-                                    </div>
-                                    <div class="modal_content_div">
-                                        <div class="modal_content">
-                                            <p class="modal_folder_name">폴더 이름</p>
-                                            <p class="modal_link_cnt">{링크 개수}</p>
-                                            <img src="../public/check.png" width="14" height="14" alt="check" class="checkmark">                           
-                                        </div>
-                                        <div class="modal_content">
-                                            <p class="modal_folder_name">조혜진</p>
-                                            <p class="modal_link_cnt">{링크 개수}</p>
-                                            <img src="../public/check.png" width="14" height="14" alt="check" class="checkmark">                                      
-                                        </div>
-                                        <div class="modal_content">
-                                            <p class="modal_folder_name">취업 준비</p>
-                                            <p class="modal_link_cnt">{링크 개수}</p>
-                                            <img src="../public/check.png" width="14" height="14" alt="check" class="checkmark">                                      
-                                        </div>
-                                    </div>
-                                    <button class="modal_btn">추가하기</button>
-                                </div>
-                            </div>
-                            <div id="deleteModal" class="modal">
-                                <div class="modal_container">
-                                    <div class="close">
-                                        <img src="../public/close.png" width="24" height="24">                                   
-                                    </div>
-                                    <div class="modal_header">
-                                        <p class="modal_header_title">링크 삭제</p>
-                                        <p class="modal_header_subtitle">링크 주소</p>
-                                    </div>
-                                    <button class="modal_btn">삭제하기</button>
-                                </div>
-                            </div>
+                            <img src="../public/dot.svg" width="21" height="17" alt="dot"/>                             
                         </div>
                         <div class="card_txt_div_body">
                             일본의 캐릭터 개발 회사인 San-X(산엑스)에서 2003년 9월에 출시한 오리지널 캐릭터. 이름은 휴식을 취한다는 뜻의 영단어 릴랙스(Relax)와 곰을 뜻하는 일본어 쿠마(kuma)의 합성어이다. 로마자 표기는 'Rilakkuma'로 초기에는 'Relaxuma'로 쓰이기도 하였으나 2012년 부터 Rilakkuma로 공식적으로 쓰고 있다.일본의 캐릭터 개발 회사인 San-X(산엑스)에서 2003년 9월에 출시한 오리지널 캐릭터. 이름은 휴식을 취한다는 뜻의 영단어 릴랙스(Relax)와 곰을 뜻하는 일본어 쿠마(kuma)의 합성어이다. 로마자 표기는 'Rilakkuma'로 초기에는 'Relaxuma'로 쓰이기도 하였으나 2012년 부터 Rilakkuma로 공식적으로 쓰고 있다.
@@ -249,7 +204,7 @@
                     <div class="card_txt_div">
                         <div class="card_txt_div_top">
                             <p class="left_time_p">10 minutes ago</p>
-                            <img src="../public/dot.svg" id="dotMenu" width="21" height="17" alt="dot"/>                             
+                            <img src="../public/dot.svg" width="21" height="17" alt="dot"/>                             
                         </div>
                         <div class="card_txt_div_body">
                             리락쿠마와 가오루 씨(リラックマとカオルさん) 애니메이션이 2019년 4월 19일에 넷플릭스 오리지널 시리즈로 공개되었다. 스톱 모션을 활용한 퍼펫 애니메이션으로 제작되었다.
@@ -269,13 +224,7 @@
                     <div class="card_txt_div">
                         <div class="card_txt_div_top">
                             <p class="left_time_p">10 minutes ago</p>
-                            <div class="dot_div">
-                                <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="3.5" cy="8.5" r="1.5" fill="#333236"/>
-                                    <circle cx="10.5" cy="8.5" r="1.5" fill="#333236"/>
-                                    <circle cx="17.5" cy="8.5" r="1.5" fill="#333236"/>
-                                </svg>   
-                            </div>                             
+                            <img src="../public/dot.svg" width="21" height="17" alt="dot"/>                            
                         </div>
                         <div class="card_txt_div_body">
                             2020년대부터 산리오와 먼작귀같은 타 일본산 캐릭터들이 한국 내에서 인기를 얻어 한국에서 굿즈 발매와 여러 콜라보를 하게되어 저들과는 대조적으로 리락쿠마는 결국 인지도가 많이 낮아지게 되었고
@@ -295,7 +244,7 @@
                     <div class="card_txt_div">
                         <div class="card_txt_div_top">
                             <p class="left_time_p">10 minutes ago</p>
-                            <img src="../public/dot.svg" id="dotMenu" width="21" height="17" alt="dot"/>                            
+                            <img src="../public/dot.svg" width="21" height="17" alt="dot"/>                            
                         </div>
                         <div class="card_txt_div_body">
                             리락쿠마와 코리락쿠마는 진짜 곰이 아닌 곰인형이다. 리락쿠마의 등 뒤에 달린 지퍼와 코리락쿠마의 목에 있는 빨간 단추가 이들이 진짜 곰이 아님을 말해주고 있다. 다만 챠이로이코구마는 숲속에 살고 있는 진짜 아기 반달가슴곰이다.
