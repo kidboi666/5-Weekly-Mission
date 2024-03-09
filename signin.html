@@ -10,6 +10,7 @@
     />
     <link rel="stylesheet" href="./css/sign.css"/>
     <script src="js/login.js"></script>
+    <script src="js/passwordView.js"></script>
   </head>
 
   <body>
@@ -35,9 +36,10 @@
           <div class="sign-input-box sign-password">
             <label class="sign-input-label">비밀번호</label>
             <input class="sign-input input-border-default" type="password" id="passwordInput"/>
-            <button class="eye-button" type="button">
-              <img src="./image/eye-off.svg"/>
-            </button>
+            
+              <img src="./image/eye-off.svg" id="eye-off">
+              <img src="./image/eye-on.png" id="eye-on" style="display: none">
+            
           <div class="password-message" id="passwordError"></div>
         </div>
         <button class="cta submit">로그인</button>

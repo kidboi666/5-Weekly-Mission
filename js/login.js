@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				emailError.textContent = "올바른 이메일 주소가 아닙니다.";
 				emailInput.classList.remove('input-border-default');
 				emailInput.classList.add('input-border-error');
-			} else if (email !== "test@codeit.com") {  // 이메일 틀림
+			} else if (email !== "test@codeit.com") {  // 이메일이 틀린 경우
 				emailError.textContent = "이메일을 확인해 주세요.";
 				emailInput.classList.remove('input-border-default');
 				emailInput.classList.add('input-border-error');
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				passwordError.textContent = "비밀번호를 입력해 주세요.";
 				passwordInput.classList.remove('input-border-default');
 				passwordInput.classList.add('input-border-error');
-			} else if (password !== "codeit101") {  // 비밀번호 틀림
+			} else if (password !== "codeit101") {  // 비밀번호가 틀린 경우
 				passwordError.textContent = "비밀번호를 확인해 주세요.";
 				passwordInput.classList.remove('input-border-default');
 				passwordInput.classList.add('input-border-error');
