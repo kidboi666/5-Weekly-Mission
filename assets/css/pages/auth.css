@@ -85,7 +85,7 @@
   outline: 1px solid #6d6afe;
 }
 
-.auth-form__notice-enter-input {
+.auth-form__notice {
   margin-top: 6px;
   color: var(--red-color);
 }
