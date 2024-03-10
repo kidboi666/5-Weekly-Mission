@@ -88,6 +88,13 @@ header {
   font-size: 1.4rem;
   font-weight: 400;
 }
+#email.hidden {
+  border: 0.1rem solid var(--red);
+}
+
+.password-input.hidden {
+  border: 0.1rem solid var(--red);
+}
 
 #email,
 .password-input {
@@ -105,10 +112,14 @@ header {
 
 .eye-button {
   position: absolute;
-  bottom: 2.2rem;
+  bottom: 3.7rem;
   right: 1.5rem;
   width: 1.6rem;
   height: 1.6rem;
+}
+
+.hidden-eye-btn {
+  display: none;
 }
 
 .buttton-login {
