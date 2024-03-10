@@ -279,9 +279,6 @@ a:visited {
     height: 30px;
     width: 30px;
   }
-  .help {
-    justify-content: space-between;
-  }
   .help a {
     line-height: 30px;
   }
