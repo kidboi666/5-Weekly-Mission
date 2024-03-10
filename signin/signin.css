@@ -86,7 +86,7 @@ body {
   cursor: pointer;
 }
 
-.footer {
+.div {
   width: 400px;
   display: flex;
   justify-content: space-between;
@@ -98,13 +98,13 @@ body {
   margin-top: 32px;
 }
 
-.footer_span {
+.div_span {
   color: #373740;
   font-size: 14px;
   text-decoration: none;
 }
 
-.footer_link {
+.div_link {
   width: 100px;
   display: flex;
   justify-content: space-between;
@@ -133,7 +133,7 @@ body {
     width: 325px;
   }
 
-  .footer {
+  .div {
     width: 325px;
   }
 }
