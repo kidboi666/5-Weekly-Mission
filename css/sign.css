@@ -40,11 +40,11 @@ body {
 }
 input {
   border-radius: 8px;
-  border: 1px solid #6d6afe;
   padding: 18px 15px;
   width: 400px;
   display: block;
   margin: 12px 0 24px;
+  border: solid 1px #9fa6b2;
 }
 .password input {
   padding-right: 45px;
@@ -88,19 +88,31 @@ input::placeholder {
   width: 42px;
   height: 100%;
 }
-.signin-form input {
-  border: solid 1px #9fa6b2;
-}
+
 .signin-form input:focus {
   border: solid 1px #6d6afe;
 }
 .password {
   position: relative;
 }
+.email {
+  position: relative;
+}
 .password i {
   position: absolute;
   top: 20px;
   right: 20px;
+}
+
+.err-on {
+  color: #ff5b56;
+  position: absolute;
+  top: 59px;
+  left: 3px;
+}
+
+.err-input {
+  border: solid 1px #ff5b56;
 }
 
 @media (max-width: 767px) {

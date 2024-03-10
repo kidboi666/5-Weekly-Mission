@@ -21,17 +21,25 @@
           </div>
         </div>
         <form>
-          <label for="email">이메일</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            placeholder="codeit@codeit.com"
-          />
-          <label for="password">비밀번호</label>
-          <div class="password">
-            <input id="password" name="password" type="password" />
-            <i class="fa-solid fa-eye fa-2x" id="togglePassword"></i>
+          <div class="email-box">
+            <label for="email">이메일</label>
+            <div class="email">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="codeit@codeit.com"
+              />
+              <span class="email-err"></span>
+            </div>
+          </div>
+          <div class="password-box">
+            <label for="password">비밀번호</label>
+            <div class="password">
+              <input id="password" name="password" type="password" />
+              <i class="fa-solid fa-eye fa-2x" id="togglePassword"></i>
+              <span class="password-err"></span>
+            </div>
           </div>
           <button class="signin-but white">로그인</button>
         </form>
@@ -48,26 +56,6 @@
         </div>
       </div>
     </div>
-    <script>
-      const togglePassword = document.getElementById("togglePassword");
-      const passwordInput = document.getElementById("password");
-
-      togglePassword.addEventListener("click", function () {
-        const type =
-          passwordInput.getAttribute("type") === "password"
-            ? "text"
-            : "password";
-        passwordInput.setAttribute("type", type);
-
-        // 아이콘 클래스 토글
-        if (type === "text") {
-          togglePassword.classList.remove("fa-eye");
-          togglePassword.classList.add("fa-eye-slash");
-        } else {
-          togglePassword.classList.remove("fa-eye-slash");
-          togglePassword.classList.add("fa-eye");
-        }
-      });
-    </script>
+    <script type="module" src="index.js"></script>
   </body>
 </html>
