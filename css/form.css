@@ -1,14 +1,7 @@
 @import url(./reset.css);
 @import url(./color.css);
 @import url(./font.css);
-
-.min-width-350 {
-    min-width: 21.875rem;
-}
-
-.min-width-200 {
-    min-width: 12.5rem;
-}
+@import url(./zIndex.css);
 
 .width-full {
     width: 100%;
@@ -25,6 +18,7 @@
 }
 
 .btn-form01 {
+    width: 21.875rem;
     font-size: 1.125rem;
     font-weight: 600;
     line-height: 1.193333333;
@@ -55,10 +49,14 @@
     display: flex;
 }
 
+.login-btn {
+    width: auto;
+}
+
 .input-login-form01 {
     display: flex;
     flex-direction: column;
-    margin: 1.5rem 0 0;
+    margin: 1.125rem 0 0;
 }
 
 .input-login-form01:first-child {
@@ -93,26 +91,27 @@
 
 .input-icon-div .input-icon {
     display: block;
-}
-
-.input-icon-div .input-icon.on img:nth-child(1) {
     position: absolute;
     right: 15px;
     top: 50%;
+}
+
+.input-icon-div .input-icon.on img:nth-child(1) { 
     margin: -6px 0 0;
     display: block;
 }
 
 .input-icon-div .input-icon.off img:nth-child(2) {
-    position: absolute;
-    right: 15px;
-    top: 50%;
     margin: -5px 0 0;
     display: block;
 }
 
 .input-icon-div .input-icon img {
     display: none;
+}
+
+.login-form .login-button {
+    width: 100%;
 }
 
 .social-login {
@@ -151,8 +150,13 @@
 
 @media (max-width: 767px) { /* 모바일 */
     .btn-form01 {
+        width: 12.5rem;
         padding: 0.65625rem 1.375rem;
         font-size: 14px;
         line-height: 1.19357142857;
+    }
+
+    .login-btn {
+        width: auto;
     }
 }
