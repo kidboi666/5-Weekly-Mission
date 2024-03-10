@@ -44,9 +44,9 @@ h2 {
 
 h2 a {
   color: #6D6AFE;
- font-size: 16px;
- font-family: Pretendard;
- font-weight: 600;
+  font-size: 16px;
+  font-family: Pretendard;
+  font-weight: 600;
 }
 
 h3 {
@@ -89,6 +89,19 @@ input:focus {
   border: 1px #6D6AFE solid;
 }
 
+.hide {
+  display: none;
+}
+
+.error-msg {
+  color: red;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.error-border {
+  border-color: red;
+}
 
 .button-sign {
   width: 100%;
@@ -125,7 +138,7 @@ input:focus {
   font-weight: 400;
 }
 
-.social-login .image2 {
+.social-login .kakao-icon {
   width: 42px;
   height: 42px;
   background-color: #FEE500;
@@ -133,7 +146,7 @@ input:focus {
   position: relative;
 }
 
-.social-login .image1 {
+.social-login .google-icon {
   width: 42px;
   height: 42px;
   background-color: #FFFFFF;
@@ -143,7 +156,7 @@ input:focus {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.image2 img {
+.kakao-icon img {
   position: absolute;
   top: 10px;
   bottom: 8px;
@@ -151,7 +164,7 @@ input:focus {
   right: 8px;
 }
 
-.image1 img {
+.google-icon img {
   position: absolute;
   top: 10px;
   bottom: 10px;
@@ -159,8 +172,17 @@ input:focus {
   right: 10px;
 }
 
-.pwd-input {
+.pwd-eye-off {
+  position: absolute;
+  top:50px;
+  right:15px;
+  padding: 0;
+  height: 16px;
+}
+
+.pwd-input-wrapper {
   margin-top: 24px;
+  position: relative;
 }
 
 .pwd-input-check {
@@ -177,10 +199,6 @@ input:focus {
 
 .pwd-input-check input {
   border-color: red;
-}
-
-.pwd-input form {
-  background-image: url(eye-off.svg);
 }
 
 @media (max-width: 767px) {
