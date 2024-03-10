@@ -1,9 +1,11 @@
-const inputEmail = document.querySelector('#input-email');
 export const inputPassword = document.querySelector('#input-pw');
 const loginButton = document.querySelector('.sign-btn');
+const loginForm = document.querySelector(".login-form");
+const inputEmail = document.querySelector('#input-email');
 const emailErrorMessage = document.querySelector('.email-error-message');
 const pwErrorMessage = document.querySelector('.pw-error-message');
 
+// 에러 메시지 div 생성
 const emailAddMessage = document.createElement('div');
 emailAddMessage.classList.add('error_message');
 const pwAddMessage = document.createElement('div');
@@ -12,7 +14,6 @@ let messageText = document.createTextNode("");
 
 const data = [{email: 'test@codeit.com', password: 'codeit101'}];
 
-// email
 function emailCheck() {  
   const emailValue = this.value;
   emailAddMessage.innerText = "";
@@ -26,7 +27,6 @@ function emailCheck() {
       messageText = document.createTextNode('올바른 이메일 주소가 아닙니다.');
       emailAddMessage.appendChild(messageText);
       emailErrorMessage.appendChild(emailAddMessage);
-      
     }
   } else {
     inputEmail.style.borderColor = "#FF5B56";
@@ -36,7 +36,6 @@ function emailCheck() {
   }
 }
 
-// password
 function pwCheck() {
   const pwValue = this.value;
   pwAddMessage.innerText = "";
@@ -50,7 +49,6 @@ function pwCheck() {
   }
 }
 
-// 로그인
 function login() {
   emailAddMessage.innerText = "";
   pwAddMessage.innerText = "";
@@ -60,37 +58,40 @@ function login() {
   const userinputEmail = inputEmail.value;
   const userinputPW = inputPassword.value;
 
-  const user = data.find((d, i) => {
-    console.log(i);
+  const user = data.find((d) => {
     return d.email === userinputEmail && d.password === userinputPW;
   });
 
-  const message = user 
-    ? window.location.href = "/folder.html"
-    : 
-      inputEmail.style.borderColor = "#FF5B56";
-      emailAddMessage.innerText = "";
-      messageText = document.createTextNode('이메일을 확인해 주세요.');
-      emailAddMessage.appendChild(messageText);
+  if (user) {
+    window.location.href = "/folder.html";
+    emailAddMessage.innerText = "";
+    pwAddMessage.innerText = "";
+  } else {
+    inputEmail.style.borderColor = "#FF5B56";
+    emailAddMessage.innerText = "";
+    messageText = document.createTextNode('이메일을 확인해 주세요.');
+    emailAddMessage.appendChild(messageText);
 
-      inputPassword.style.borderColor = "#FF5B56";
-      pwAddMessage.innerText = "";
-      messageText = document.createTextNode('비밀번호를 확인해 주세요.');
-      pwAddMessage.appendChild(messageText);
+    inputPassword.style.borderColor = "#FF5B56";
+    pwAddMessage.innerText = "";
+    messageText = document.createTextNode('비밀번호를 확인해 주세요.');
+    pwAddMessage.appendChild(messageText);
 
-
-      emailErrorMessage.appendChild(emailAddMessage);
-      pwErrorMessage.appendChild(pwAddMessage);
-    ;
-
-  console.log(message);
+    emailErrorMessage.appendChild(emailAddMessage);
+    pwErrorMessage.appendChild(pwAddMessage);
+  }
 }
 
-// 에러 메시지 출력
+// 새로고침 방지
+function offRefresh(e) {
+  e.preventDefault();
+}
+
 inputEmail.addEventListener('blur', emailCheck);
 inputPassword.addEventListener('blur', pwCheck);
 
-//로그인 버튼(enter) 클릭
 loginButton.addEventListener('click', login);
 inputEmail.addEventListener('keypress', (e) => e.code === 'Enter' && login());
 inputPassword.addEventListener('keypress', (e) => e.code === 'Enter' && login());
+
+loginForm.addEventListener("submit", offRefresh);

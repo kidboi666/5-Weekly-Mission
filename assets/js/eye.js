@@ -2,7 +2,7 @@ import { inputPassword } from '/assets/js/login.js';
 const eyeBtn = document.querySelector('.sign-pw__eye-btn');
 const eyeImg = document.querySelector('.eye-change');
 
-function eyeChange () {
+function eyeChange() {
   eyeImg.classList.toggle('eye-on');
   
   if (inputPassword.type === "password") {
