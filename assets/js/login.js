@@ -41,7 +41,7 @@ function pwCheck() {
   pwAddMessage.innerText = "";
   inputPassword.style.borderColor = "";
 
-  if (pwValue.length == 0) {
+  if (pwValue.length === 0) {
     inputPassword.style.borderColor = "#FF5B56";
     messageText = document.createTextNode('비밀번호를 입력해 주세요.');
     pwAddMessage.appendChild(messageText);
