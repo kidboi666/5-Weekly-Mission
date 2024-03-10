@@ -5,7 +5,7 @@
   justify-content: center;
   height: 100vh;
   padding-top: 238px;
-  background-color: var(--gray5-color);
+  background-color: var(--background-color);
 }
 
 .auth__inner {
@@ -77,7 +77,7 @@
 .auth-form__input {
   width: 100%;
   padding: 18px 15px;
-  border: 1px solid var(--gray3-color);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 400;
@@ -86,12 +86,12 @@
 }
 
 .auth-form__input:focus {
-  outline: 1px solid #6d6afe;
+  outline: 1px solid var(--primary-color);
 }
 
 .auth-form__notice {
   margin-top: 6px;
-  color: var(--red-color);
+  color: var(--error-color);
 }
 
 .auth-form__btn {
@@ -106,8 +106,8 @@
   width: 100%;
   margin-top: 32px;
   padding: 12px 24px;
-  background: var(--gray4-color);
-  border: 1px solid var(--gray3-color);
+  background-color: #e7effb;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
 }
 
