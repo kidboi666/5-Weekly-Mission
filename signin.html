@@ -21,17 +21,23 @@
         <div class="input-wrap">
           <div class="sign-input">
             <label class="sign-label" for="email">이메일</label>
-            <input class="input-text" id="email" type="email" />
+            <input
+              class="input-text"
+              id="email"
+              type="email"
+              value=""
+              autocomplete="off"
+            />
+            <span class="error-msg" id="error-email"></span>
           </div>
           <div class="sign-input password">
             <label class="sign-label" for="pwd">비밀번호</label>
-            <input class="input-text" id="pwd" type="password" />
-            <button class="eye-btn" type="button">
-              <img src="img/signin/eye-off.svg" alt="eye-off" />
-            </button>
+            <input class="input-text" id="pwd" type="password" value="" />
+            <span class="error-msg" id="error-pwd"></span>
+            <button class="eye-btn" type="button"></button>
           </div>
         </div>
-        <button class="signin-btn" type="button">로그인</button>
+        <button class="signin-btn" type="submit">로그인</button>
       </form>
       <div class="sns-wrap">
         <p class="sns-text">소셜 로그인</p>
@@ -45,5 +51,6 @@
         </div>
       </div>
     </div>
+    <script src="signin.js"></script>
   </body>
 </html>
