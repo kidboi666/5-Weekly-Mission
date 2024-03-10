@@ -47,6 +47,11 @@ header {
   align-items: center;
   row-gap: 3.2rem;
   width: 40rem;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    max-width: 400px;
+  }
 }
 
 .sign-form {
