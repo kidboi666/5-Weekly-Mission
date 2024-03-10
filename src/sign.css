@@ -90,6 +90,17 @@ header {
   line-height: 150%;
 }
 
+.error {
+  display: none;
+  margin-top: -6px;
+  color: #FF5B56;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
 .sign-input:focus {
   border-color: var(--primary);
 }
