@@ -1,6 +1,10 @@
-const form = document.querySelector("#signinForm");
+const signinForm = document.querySelector("#signinForm");
 const email = document.querySelector("#email");
 const password = document.querySelector("#password");
+const passwordEyeButton = document.querySelector("#passwordEyeButton");
+const passwordConfirmEyeButton = document.querySelector(
+  "#passwordConfirmEyeButton"
+);
 
 function showMessageToWriteInput(e) {
   const checkMessage =
@@ -78,6 +82,22 @@ function login(e) {
   }
 }
 
-email.addEventListener("focusout", verifyInvalidEmail);
-password.addEventListener("focusout", showMessageToWriteInput);
-form && form.addEventListener("submit", login);
+function showPassword(e) {
+  const currentPassword = e.currentTarget.previousElementSibling;
+  if (currentPassword.type === "password") {
+    currentPassword.type = "text";
+    e.currentTarget.innerHTML =
+      '<img class="auth-form__eye eye--on" src="/assets/img/eye_on.png" alt="eye on" />';
+  } else {
+    currentPassword.type = "password";
+    e.currentTarget.innerHTML =
+      '<img class="auth-form__eye eye--off" src="/assets/img/eye_off.png" alt="eye off" />';
+  }
+}
+
+email && email.addEventListener("focusout", verifyInvalidEmail);
+password && password.addEventListener("focusout", showMessageToWriteInput);
+signinForm && signinForm.addEventListener("submit", login);
+passwordEyeButton && passwordEyeButton.addEventListener("click", showPassword);
+passwordConfirmEyeButton &&
+  passwordConfirmEyeButton.addEventListener("click", showPassword);

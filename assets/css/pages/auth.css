@@ -63,11 +63,15 @@
   position: relative;
 }
 
-.auth-form__eye {
+.auth-form__eye-button {
   position: absolute;
   top: 22px;
   right: 22px;
-  cursor: pointer;
+}
+
+.auth-form__eye.eye--off {
+  position: relative;
+  top: 1px;
 }
 
 .auth-form__input {

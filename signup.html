@@ -30,14 +30,18 @@
           <label for="password" class="auth-form__label">비밀번호</label>
           <div class="auth-form__pw-wp">
             <input id="password" class="auth-form__input" type="password" />
-            <img class="auth-form__eye" src="/assets/img/eye_off.png" alt="eye off" />
+            <button type="button" id="passwordEyeButton" class="auth-form__eye-button">
+              <img class="auth-form__eye eye--off" src="/assets/img/eye_off.png" alt="eye off" />
+            </button>
           </div>
         </div>
         <div class="auth-form__input-wp">
           <label for="passwordConfirm" class="auth-form__label">비밀번호 확인</label>
           <div class="auth-form__pw-wp">
-            <input for="passwordConfirm" class="auth-form__input" />
-            <img class="auth-form__eye" src="/assets/img/eye_on.png" alt="eye on" />
+            <input for="passwordConfirm" class="auth-form__input" type="password" />
+            <button type="button" id="passwordEyeButton" class="auth-form__eye-button">
+              <img class="auth-form__eye eye--off" src="/assets/img/eye_off.png" alt="eye off" />
+            </button>
           </div>
         </div>
         <button class="btn auth-form__btn">회원가입</button>
