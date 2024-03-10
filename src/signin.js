@@ -5,19 +5,8 @@ function validateEmail(email){
 
 const email = document.querySelector('#email');
 const password = document.querySelector('#password');
+const emailErrorMessage = document.querySelector('.email-error')
 const passwordErrorMessage = document.querySelector('.password-error')
-
-document.getElementById('email').addEventListener('focusout', function() {
-    const email = document.querySelector('#email');
-    const emailErrorMessage = document.querySelector('.email_error');
-    if (email === '') {
-        emailError.textContent = '이메일을 입력해 주세요.';
-    } else if (!validateEmail(email)) {
-        emailError.textContent = '올바른 이메일 주소가 아닙니다.';
-    } else {
-        emailError.textContent = '   ';
-    }
-  });
 
 const emailErrorEvent = function () {
     if (email === '') {
@@ -59,4 +48,5 @@ document.addEventListener('keydown', function(e){
     if(e.key === 'Enter'){
       signinEvent(e);
     }
-  });
+});
+
