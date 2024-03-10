@@ -18,7 +18,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: Pretendard;
+  font-family: Pretendard, sans-serif;
   background-color: var(--gray-F0F6FF);
 }
 
@@ -74,7 +74,7 @@ body {
 }
 
 .input:focus {
-  border: 1px solid var(--pirmary-6d6afe);
+  outline: 1px solid var(--pirmary-6d6afe);
 }
 
 .relative {
