@@ -1,5 +1,7 @@
 const emailInput = document.querySelector("#emailInput");
 const emailError = document.querySelector("#email-error");
+const pwInput = document.querySelector("#pwInput");
+const pwError = document.querySelector("#pw-error");
 
 // 이메일 input에 값이 없을 경우 + 유효성 검사
 emailInput.addEventListener("focusout", function(){
@@ -12,4 +14,11 @@ emailInput.addEventListener("focusout", function(){
         }
     }
 });
+
+// 비밀번호 input에 값이 없을 경우
+pwInput.addEventListener("focusout", function(){
+    if(pwInput.value.trim() === "") {
+        pwError.textContent = "비밀번호를 입력해주세요";
+    }
+})
 
