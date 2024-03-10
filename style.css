@@ -13,10 +13,6 @@
   --gray-F0F6FF: #f0f6ff;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 body {
   width: 100vw;
   height: 100vh;
@@ -50,6 +46,8 @@ body {
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
+  text-align: center;
+  text-decoration: none;
 }
 
 .main_section {
@@ -85,6 +83,7 @@ body {
   font-weight: 600;
   margin-top: 40px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .main_section_img {
@@ -195,7 +194,7 @@ body {
 .footer_linkbox {
   display: flex;
   height: 20px;
-  gap: 12px;
+  column-gap: 12px;
 }
 
 .tablet_br,
@@ -205,6 +204,10 @@ body {
 
 .desktop_br {
   display: inline;
+}
+
+.img-link img {
+  display: block;
 }
 
 @media (max-width: 1199px) {

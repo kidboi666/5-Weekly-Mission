@@ -11,10 +11,6 @@
   --gray-F0F6FF: #f0f6ff;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 body {
   width: 100vw;
   height: 100vh;
@@ -125,6 +121,10 @@ body {
   width: 100px;
   display: flex;
   justify-content: space-between;
+}
+
+.img-link img {
+  display: block;
 }
 
 @media (max-width: 767px) {
