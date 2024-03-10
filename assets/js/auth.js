@@ -2,7 +2,9 @@ const signinForm = document.querySelector("#signinForm");
 const email = document.querySelector("#email");
 const password = document.querySelector("#password");
 const passwordEyeButton = document.querySelector("#passwordEyeButton");
-const passwordConfirmEyeButton = document.querySelector("#passwordConfirmEyeButton");
+const passwordConfirmEyeButton = document.querySelector(
+  "#passwordConfirmEyeButton"
+);
 
 function createInputError(target, textContent) {
   const notice = document.createElement("div");
@@ -12,23 +14,12 @@ function createInputError(target, textContent) {
   target.classList.add("input-border--red");
 }
 
-function showErrorToWriteInput(e) {
-  const checkNotice =
-    e.target.parentElement.parentElement.childNodes.length !== 5;
-  if (!e.target.value) {
-    if (!checkNotice) {
-      const textContent =
-        e.target.id === "email"
-          ? "이메일을 입력해 주세요."
-          : "비밀번호를 입력해 주세요.";
-      createInputError(e.target, textContent);
-    }
-  } else {
-    if (checkNotice) {
-      e.target.parentElement.nextElementSibling.remove();
-      e.target.classList.remove("input-border--red");
-    }
-  }
+function showErrorToWrite(e) {
+  const textContent =
+    e.target.id === "email"
+      ? "이메일을 입력해 주세요."
+      : "비밀번호를 입력해 주세요.";
+  createInputError(e.target, textContent);
 }
 
 function checkEmailFormat(e) {
@@ -37,22 +28,30 @@ function checkEmailFormat(e) {
 }
 
 function showErrorToWriteInEmailFormat(e) {
-  if (!checkEmailFormat(e)) {
-    const textContent = "올바른 이메일 주소가 아닙니다.";
-    const existNotice = e.target.parentElement.nextElementSibling;
-    if (existNotice) {
-      console.log('있어서 내용만 바꿈');
-      existNotice.textContent = textContent;
-    } else {
-      console.log('새로 만듦')
-      createInputError(e.target, textContent);
-    }
+  const textContent = "올바른 이메일 주소가 아닙니다.";
+  const previousNotice = e.target.parentElement.nextElementSibling;
+  if (previousNotice) {
+    previousNotice.textContent = textContent;
+  } else {
+    createInputError(e.target, textContent);
   }
 }
 
-function verifyInvalidEmail(e) {
-  showErrorToWriteInput(e);
-  e.target.value && showErrorToWriteInEmailFormat(e);
+function checkInvalidInput(e) {
+  const checkPreviousNotice =
+    e.target.parentElement.parentElement.childNodes.length !== 5;
+  if (!e.target.value) {
+    !checkPreviousNotice && showErrorToWrite(e);
+  } else {
+    if (e.target === email && !checkEmailFormat(e)) {
+      showErrorToWriteInEmailFormat(e);
+    } else {
+      if (checkPreviousNotice) {
+        e.target.parentElement.nextElementSibling.remove();
+        e.target.classList.remove("input-border--red");
+      }
+    }
+  }
 }
 
 function login(e) {
@@ -75,7 +74,7 @@ function login(e) {
   }
 }
 
-function showPassword(e) {
+function togglePassword(e) {
   const currentPassword = e.currentTarget.previousElementSibling;
   if (currentPassword.type === "password") {
     currentPassword.type = "text";
@@ -88,8 +87,9 @@ function showPassword(e) {
   }
 }
 
-email && email.addEventListener("focusout", verifyInvalidEmail);
-password && password.addEventListener("focusout", showErrorToWriteInput);
+email && email.addEventListener("focusout", checkInvalidInput);
+password && password.addEventListener("focusout", checkInvalidInput);
 signinForm && signinForm.addEventListener("submit", login);
-passwordEyeButton && passwordEyeButton.addEventListener("click", showPassword);
-passwordConfirmEyeButton && passwordConfirmEyeButton.addEventListener("click", showPassword);
+passwordEyeButton && passwordEyeButton.addEventListener("click", togglePassword);
+passwordConfirmEyeButton &&
+  passwordConfirmEyeButton.addEventListener("click", togglePassword);
