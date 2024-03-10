@@ -3,13 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <title>로그인</title>
+    <meta
+      name="viewport"
+      content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
     <link
       rel="stylesheet"
       type="text/css"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
     <link rel="stylesheet" href="./src/sign.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
     <header>
@@ -25,17 +28,19 @@
         <div class="sign-inputs">
           <div class="sign-input-box">
             <label class="sign-input-label">이메일</label>
-            <input class="sign-input" />
+            <input id ="input-email" class="sign-input" />
+            <p id="email-error-massage"></p>
           </div>
           <div class="sign-input-box sign-password">
             <label class="sign-input-label">비밀번호</label>
-            <input class="sign-input" type="password" />
+            <input id="input-pw" class="sign-input" type="password" />
+            <p id="pw-error-massage"></p>
             <button class="eye-button" type="button">
               <img src="./images/eye-off.svg" />
             </button>
           </div>
         </div>
-        <button class="cta" type="submit">로그인</button>
+        <button class="cta" type="submit" onclick="attemptLogin()">로그인</button>
       </form>
       <div class="sns-box">
         <span class="sns-text">소셜 로그인</span>
@@ -49,5 +54,6 @@
         </div>
       </div>
     </div>
+    <script src="./src/script.js"></script>
   </body>
 </html>
