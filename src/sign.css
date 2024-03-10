@@ -38,7 +38,7 @@ header {
   font-weight: 600;
   line-height: normal;
   color: var(--primary);
-  border-bottom: 0.1rem solid var(--primary);
+  text-decoration: 0.1rem solid var(--primary);
 }
 
 .sign-box {
@@ -83,6 +83,7 @@ header {
   border: 0.1rem solid var(--gray20);
   font-size: 1.6rem;
   line-height: 150%;
+  padding-right: 15px;
 }
 
 .sign-input:focus {
@@ -149,6 +150,20 @@ header {
 .kakao-link {
   padding-top: 0.2rem;
   background-color: #f5e14b;
+}
+
+.email-error {
+  color: var(--red);
+  font-size: 1.4rem;
+}
+
+.password-error {
+  color: var(--red);
+  font-size: 1.4rem;
+}
+
+.sign-input-box .error-on {
+  border-color: var(--red);
 }
 
 @media (min-width: 375px) and (max-width: 767px) {
