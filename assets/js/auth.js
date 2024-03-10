@@ -2,27 +2,29 @@ const signinForm = document.querySelector("#signinForm");
 const email = document.querySelector("#email");
 const password = document.querySelector("#password");
 const passwordEyeButton = document.querySelector("#passwordEyeButton");
-const passwordConfirmEyeButton = document.querySelector(
-  "#passwordConfirmEyeButton"
-);
+const passwordConfirmEyeButton = document.querySelector("#passwordConfirmEyeButton");
 
-function showMessageToWriteInput(e) {
-  const checkMessage =
+function createInputError(target, textContent) {
+  const notice = document.createElement("div");
+  notice.classList.add("auth-form__notice");
+  notice.textContent = textContent;
+  target.parentElement.after(notice);
+  target.classList.add("input-border--red");
+}
+
+function showErrorToWriteInput(e) {
+  const checkNotice =
     e.target.parentElement.parentElement.childNodes.length !== 5;
   if (!e.target.value) {
-    if (!checkMessage) {
-      const notice = document.createElement("div");
+    if (!checkNotice) {
       const textContent =
         e.target.id === "email"
           ? "이메일을 입력해 주세요."
           : "비밀번호를 입력해 주세요.";
-      notice.classList.add("auth-form__notice");
-      notice.textContent = textContent;
-      e.target.parentElement.after(notice);
-      e.target.classList.add("input-border--red");
+      createInputError(e.target, textContent);
     }
   } else {
-    if (checkMessage) {
+    if (checkNotice) {
       e.target.parentElement.nextElementSibling.remove();
       e.target.classList.remove("input-border--red");
     }
@@ -34,24 +36,23 @@ function checkEmailFormat(e) {
   return emailFormat.test(e.target.value) ? true : false;
 }
 
-function showMessageToWriteInEmailFormat(e) {
+function showErrorToWriteInEmailFormat(e) {
   if (!checkEmailFormat(e)) {
     const textContent = "올바른 이메일 주소가 아닙니다.";
-    if (e.target.parentElement.nextElementSibling) {
-      e.target.parentElement.nextElementSibling.textContent = textContent;
+    const existNotice = e.target.parentElement.nextElementSibling;
+    if (existNotice) {
+      console.log('있어서 내용만 바꿈');
+      existNotice.textContent = textContent;
     } else {
-      const notice = document.createElement("div");
-      notice.classList.add("auth-form__notice");
-      notice.textContent = textContent;
-      e.target.parentElement.after(notice);
-      e.target.classList.add("input-border--red");
+      console.log('새로 만듦')
+      createInputError(e.target, textContent);
     }
   }
 }
 
 function verifyInvalidEmail(e) {
-  showMessageToWriteInput(e);
-  e.target.value && showMessageToWriteInEmailFormat(e);
+  showErrorToWriteInput(e);
+  e.target.value && showErrorToWriteInEmailFormat(e);
 }
 
 function login(e) {
@@ -64,20 +65,12 @@ function login(e) {
     location.href = "/folder";
   } else {
     if (!email.parentElement.nextElementSibling) {
-      const noticeEmail = document.createElement("div");
-      const emailTextContent = "이메일을 확인해 주세요.";
-      noticeEmail.classList.add("auth-form__notice");
-      noticeEmail.textContent = emailTextContent;
-      email.parentElement.after(noticeEmail);
-      email.classList.add("input-border--red");
+      const textContent = "이메일을 확인해 주세요.";
+      createInputError(email, textContent);
     }
     if (!password.parentElement.nextElementSibling) {
-      const noticePassword = document.createElement("div");
-      const passwordTextContent = "비밀번호를 확인해 주세요.";
-      noticePassword.classList.add("auth-form__notice");
-      noticePassword.textContent = passwordTextContent;
-      password.parentElement.after(noticePassword);
-      password.classList.add("input-border--red");
+      const textContent = "비밀번호를 확인해 주세요.";
+      createInputError(password, textContent);
     }
   }
 }
@@ -96,8 +89,7 @@ function showPassword(e) {
 }
 
 email && email.addEventListener("focusout", verifyInvalidEmail);
-password && password.addEventListener("focusout", showMessageToWriteInput);
+password && password.addEventListener("focusout", showErrorToWriteInput);
 signinForm && signinForm.addEventListener("submit", login);
 passwordEyeButton && passwordEyeButton.addEventListener("click", showPassword);
-passwordConfirmEyeButton &&
-  passwordConfirmEyeButton.addEventListener("click", showPassword);
+passwordConfirmEyeButton && passwordConfirmEyeButton.addEventListener("click", showPassword);
