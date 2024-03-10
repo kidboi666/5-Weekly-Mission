@@ -1,5 +1,5 @@
 @import "./styles/color.css";
-@import "./styles/comon.css";
+@import "./styles/common.css";
 @import "./styles/ui.css";
 
 /*body {
@@ -25,6 +25,7 @@ nav {
   align-items: center;
   width: 100%;
   height: 94px;
+  margin: 0;
 }
 
 .gnb-logo {
@@ -171,11 +172,9 @@ footer {
 
 .footerbox {
   width: 100%;
-  max-width: 1920px;
   height: fit-content;
   display: flex;
   justify-content: space-between;
-  padding: 0 104px;
 }
 
 .codeitlogo {
@@ -221,6 +220,11 @@ footer i {
 @media (max-width: 1199px) {
 
   nav{
+    padding: 0 32px;
+  }
+
+  .gnb {
+    max-width: 800px;
     padding: 0 32px;
   }
 
@@ -308,7 +312,12 @@ footer i {
 
 /*Mobile 사이즈*/
 
-@media (max-width: 767px) {
+@media (max-width: 769px) {
+
+  .gnb {
+    min-width: 400px;
+    padding: 0 32px;
+  }
 
   header {
     flex-direction: column;
@@ -373,7 +382,7 @@ footer i {
     margin: 0;
   }
 
- .footerbox {
+  .footerbox {
   display: grid;
   grid-template: 
   "footer-info footer-icons"

@@ -1,31 +1,6 @@
 @import "../styles/color.css";
-@import "../styles/comon.css";
+@import "../styles/common.css";
 @import "../styles/ui.css";
-
-/** {
-  box-sizing: border-box;
-}*/
-
-/*@font-face {
-  font-family: 'Pretendard-Regular';
-  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-  weight: 700;
-  font-style: normal;
-}*/
-
-html {
-  font-family: 'Pretendard-Regular', sans-serif;
-  word-break: keep-all;
-}
-
-body {
-  padding-top: 238px;
-  background-color: var(--background);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  row-gap: 30px;
-}
 
 header {
   display: flex;
@@ -70,47 +45,6 @@ header {
   align-items: center;
   width: 400px;
   gap: 32px;
-}
-
-.sign-form {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  width: 100%;
-}
-
-.sign-form-inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.sign-form-inputs-box {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.sign-input-label {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 17px;
-  letter-spacing: 0em;
-  text-align: left;
-  color: #000000;
-}
-
-input {
-  width: 400px;
-  height: 60px;
-  padding: 18px, 15px;
-  border-radius: 8px;
-  border: 1px solid var(--primary);
-  outline: none;
-}
-
-.sign-password {
-  position: relative;
 }
 
 .eye-button {
@@ -162,27 +96,4 @@ input {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-}
-
-.error-message-email,
-.error-message-password {
-  display: block;
-  font-weight: 400;
-  font-size: 14px;
-  color: #FF5B56;
-  line-height: 16.71px;
-}
-
-/*태블릿 사이즈*/
-
-@media (max-width: 1199px) {
-  body {
-    padding-top: 200px;
-  }
-}
-
-@media (max-width: 769px) {
-  body {
-    padding-top: 120px;
-  }
 }

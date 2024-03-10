@@ -1,3 +1,4 @@
+/*landingopage styling*/
 #maincontents-text-purple-to-pink {
   background-clip: text;
   -webkit-background-clip: text;
@@ -34,6 +35,24 @@
 }
 
 /*signpage styling*/
+.sign-input-label {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #000000;
+}
+
+input {
+  width: 400px;
+  height: 60px;
+  padding: 18px, 15px;
+  border-radius: 8px;
+  border: 1px solid var(--primary);
+  outline: none;
+}
+
 input:focus {
   outline: 1px solid blue;
   border: none;
@@ -42,4 +61,13 @@ input:focus {
 .wrongsign {
   border: none;
   outline: 1px solid red;
+}
+
+.error-message-email,
+.error-message-password {
+  display: block;
+  font-weight: 400;
+  font-size: 14px;
+  color: #FF5B56;
+  line-height: 16.71px;
 }
