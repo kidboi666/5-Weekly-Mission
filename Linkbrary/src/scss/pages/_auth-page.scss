@@ -33,7 +33,7 @@ main {
       width: 100%;
       flex-grow: 1;
 
-      .input-label {
+      .input-box {
         position: relative;
         @include a.flex(column);
         gap: 12px;
