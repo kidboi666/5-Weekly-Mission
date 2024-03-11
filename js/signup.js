@@ -1,10 +1,13 @@
+import { checkEmailValue, checkPasswordIcon } from "./authUtils.js";
+
 import {
+    $iconButtons,
+    $emailInput,
     $passwordInput,
-    $passwordCaution,
     $loginForm,
-    checkEmailValue,
+    $passwordCaution,
     testFolder,
-} from "./login.js";
+} from "./authVariables.js";
 
 const $verifyPassword = document.querySelector(".verifypasswordInput");
 const $verifyPasswordCaution = document.querySelector(
@@ -53,5 +56,12 @@ $loginForm.addEventListener("submit", function (e) {
     e.preventDefault();
 });
 
+$iconButtons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+        checkPasswordIcon(btn);
+    });
+});
+
+$emailInput.addEventListener("focusout", checkEmailValue);
 $verifyPassword.addEventListener("focusout", checkVerifyPassword);
 $passwordInput.addEventListener("focusout", checkPasswordLength);
