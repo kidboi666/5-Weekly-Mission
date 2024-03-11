@@ -19,4 +19,4 @@ export function passwordResult (e) {
     passwordFail.classList.add("hide");
     loginPwd.classList.remove("input-err");
   } /* = errorMessagePasswordReset() */
-}
+};

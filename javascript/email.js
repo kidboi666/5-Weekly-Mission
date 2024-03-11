@@ -34,4 +34,4 @@ export function emailResult (e) {
     emailFail.classList.add("hide");
     loginId.classList.remove("input-err");
   } /* = errorMessageEmailReset() */
-}
+};
