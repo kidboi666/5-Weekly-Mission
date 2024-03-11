@@ -11,6 +11,16 @@ export default function isValidEmail(emailInput) {
     );
     return false;
   }
+  if (
+    document.querySelector("#sign-up-form") &&
+    emailInput.value === "test@codeit.com"
+  ) {
+    generateErrorMessage(
+      emailInput.parentElement,
+      "이미 사용중인 이메일입니다"
+    );
+    return false;
+  }
   return true;
 }
 
