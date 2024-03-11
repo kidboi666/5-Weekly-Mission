@@ -1,6 +1,4 @@
 import { removeErrorMessage } from "./errorMessage";
-import isValidEmail from "./emailValidation";
-import isValidPassword from "./passwordValidation";
 import validateLogin from "./loginValidation";
 import { focusOutFunctions } from "./constants";
 

@@ -14,7 +14,7 @@ export default function isValidEmail(emailInput) {
   return true;
 }
 
-export function isEmailForm(inputValue) {
+function isEmailForm(inputValue) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(inputValue);
 }
