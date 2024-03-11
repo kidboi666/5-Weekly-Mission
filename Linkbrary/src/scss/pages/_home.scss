@@ -1,0 +1,242 @@
+@use "../base/global";
+@use "../components";
+@use "../abstracts" as a;
+
+.add-favorite {
+  background-color: transparent;
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  width: 20%;
+
+  img {
+    width: 100%;
+  }
+
+  &:hover {
+    .normal-star {
+      display: none;
+    }
+
+    .purple-star {
+      display: inline-block;
+    }
+  }
+}
+
+.folder-add {
+  color: a.$primary-color;
+}
+
+.folder-btn {
+  width: 100%;
+}
+
+.folder-input {
+  width: 280px;
+  padding: 18px 15px;
+  @include a.flex(row, center, center);
+  border-radius: 8px;
+  border: 1px solid a.$d3-gray-color;
+  background: a.$white-color;
+}
+
+.folder-input::placeholder {
+  color: a.$d4-gray-color;
+  font-size: 1em;
+  line-height: 1.5em;
+}
+
+.folder-change {
+  background-color: a.$white-color;
+  border-radius: 15px;
+  border: 1px solid a.$d3-gray-color;
+  padding: 35px 40px;
+  @include a.flex(column, center, center);
+  gap: 24px;
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
+  z-index: 1;
+}
+
+.folder-name {
+  color: a.$d4-gray-color;
+  text-align: center;
+  font-size: 0.875em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.375em;
+}
+
+.folder-share {
+  @include a.flex(column, flex-start, center);
+  gap: 8px;
+  width: 280px;
+}
+
+.folder-share-link {
+  @include a.flex(row, space-between, stretch);
+  gap: 32px;
+}
+
+.kebab {
+  width: 12px;
+  aspect-ratio: 12/10;
+}
+
+.link-add {
+  width: 350px;
+}
+
+.link-list {
+  @include a.flex(column, flex-start, stretch);
+  gap: 20px;
+}
+
+.link-list-bar {
+  @include a.flex(row, space-between, stretch);
+}
+
+.link-cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.logo {
+  width: 150px;
+  height: 24px;
+}
+
+.no-shrink-card {
+  width: 244px;
+  flex-shrink: 0;
+}
+
+.op-font {
+  color: #373740;
+  font-size: 1.25em;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.purple-star {
+  display: none;
+}
+
+.save-icon {
+  background-color: transparent;
+  position: absolute;
+  bottom: -23px;
+  right: -23px;
+  z-index: 1;
+}
+
+.search-bar {
+  background-color: a.$grey-light-color;
+  border-radius: 10px;
+  padding: 15px 16px;
+}
+
+.search-box {
+  @include a.flex(column, flex-start, stretch);
+  position: absolute;
+  top: 55px;
+  left: 60px;
+  border-radius: 15px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 48.72%,
+    #000 128.17%
+  );
+  background-color: a.$white-color;
+  box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
+  width: 619px;
+  height: 584px;
+  flex-shrink: 0;
+  padding: 60px 40px;
+  gap: 30px;
+}
+
+.search-input {
+  width: 100%;
+  background-image: url("../../img/Search.svg");
+  background-repeat: no-repeat;
+  background-position: left center;
+  font-size: 1em;
+  background-color: inherit;
+  padding: 0 32px;
+  color: a.$grey-dark-color;
+  border: none;
+}
+
+.search-result {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.select-all-btn {
+  background-color: a.$primary-color;
+  color: a.$white-color;
+}
+
+.select-favorite-btn {
+  border: 1px solid a.$primary-color;
+}
+
+.select-folder-btn {
+  border: 1px solid a.$primary-color;
+}
+
+.share-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  filter: brightness(0.5);
+  z-index: 0;
+}
+
+.share-link-btn {
+  @include a.flex(column, flex-start, center);
+  gap: 10px;
+}
+
+.share-link-btn a img {
+  border-radius: 50%;
+}
+
+.share-link-btn a img:hover {
+  box-shadow: 0 0 10px a.$skyblue-color;
+}
+
+.share-link-logo {
+  width: 42px;
+  aspect-ratio: 1/1;
+}
+
+.share-link-name {
+  color: #444;
+  text-align: center;
+  font-family: Inter;
+  font-size: 0.8125em;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 15px;
+}
+
+.thumbnail {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  flex-grow: 1;
+
+  img {
+    border-radius: inherit;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.yellow-star {
+  color: rgb(249, 249, 78);
+}

@@ -1,0 +1,132 @@
+@use "../abstracts" as a;
+@use "../base/global";
+main {
+  padding: 238px 0;
+
+  .sign {
+    width: 100%;
+    max-width: 400px;
+    @include a.flex(column, flex-start, center);
+    gap: 30px;
+
+    .sign-top {
+      @include a.flex(column, center, center);
+      gap: 16px;
+      font-size: 16px;
+
+      .join {
+        display: flex;
+        gap: 8px;
+
+        .sign-link {
+          font-weight: 600;
+          color: a.$primary-color;
+          text-decoration-line: underline;
+        }
+      }
+    }
+
+    .sign-form {
+      @include a.flex(column, flex-start, center);
+      gap: 24px;
+      font-size: 14px;
+      width: 100%;
+      flex-grow: 1;
+
+      .input-label {
+        position: relative;
+        @include a.flex(column);
+        gap: 12px;
+        width: 100%;
+        max-width: 400px;
+
+        .sign-input {
+          width: 100%;
+          padding: 18px 15px;
+          @include a.flex(row, center, center);
+          border-radius: 8px;
+          border: 1px solid a.$d3-gray-color;
+          background: a.$white-color;
+
+          &:focus {
+            border: 1px solid a.$primary-color;
+          }
+        }
+        .wrong-input {
+          border: 1px solid a.$red-color;
+        }
+
+        .pw-input {
+          position: relative;
+
+          .pw-toggle-btn {
+            position: relative;
+            background-color: inherit;
+            position: absolute;
+            right: 10px;
+            top: 15px;
+            width: 16px;
+            height: 16px;
+            .hidden {
+              opacity: 0;
+            }
+
+            img {
+              position: absolute;
+              transition: opacity 0.5s ease-in-out;
+              top: 0;
+              left: 0;
+            }
+
+            &:hover img {
+              filter: brightness(0);
+            }
+          }
+        }
+
+        .error-message {
+          position: absolute;
+          color: a.$red-color;
+          bottom: -20px;
+        }
+      }
+
+      .login-btn {
+        width: 100%;
+        position: relative;
+        top: 6px;
+        height: 54px;
+        font-size: 18px;
+        margin: 16px 0;
+      }
+    }
+
+    .login {
+      width: 100%;
+      @include a.flex(column);
+      gap: 38px;
+
+      .other-id {
+        background-color: a.$d2-gray-color;
+        padding: 12px 24px;
+        @include a.flex(row, space-between);
+        align-items: center;
+        border-radius: 8px;
+        border: 1px solid a.$d3-gray-color;
+        background: a.$d2-gray-color;
+
+        .social-links {
+          display: flex;
+          gap: 16px;
+          .img-border {
+            border: 2px solid a.$d3-gray-color;
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 767px) {
+    padding: 120px 32px;
+  }
+}

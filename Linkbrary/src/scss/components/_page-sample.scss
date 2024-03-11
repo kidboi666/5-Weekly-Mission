@@ -1,0 +1,97 @@
+@use "../abstracts" as a;
+
+.page-sample-section {
+  position: relative;
+  background-color: inherit;
+  padding-top: 70px;
+  overflow: hidden;
+  gap: 40px;
+
+  .top-heading {
+    color: #000;
+    font-size: 4em;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 80px;
+    width: 708px;
+    text-align: center;
+  }
+
+  .page-sample {
+    position: relative;
+    width: 100%;
+    @include a.flex(column, flex-start, center);
+  }
+
+  .page-sample-content {
+    position: relative;
+    padding: 20px 10%;
+    max-width: 1118px;
+    width: 58.2291%;
+    aspect-ratio: 1118/659;
+    border-radius: 25px;
+    border-radius: 25px;
+    background: a.$white-color;
+    z-index: -1;
+    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.08);
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 20px;
+  }
+
+  .page-sample-dim-effect {
+    position: absolute;
+    top: 0;
+    max-width: 1168px;
+    width: 60.83%;
+    height: calc(100% - 120px);
+  }
+
+  @media (max-width: 1199px) {
+    padding-top: 40px;
+    .heading-style {
+      width: 84%;
+      display: block;
+      margin: auto;
+    }
+
+    .top-heading {
+      width: 472px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    padding: 28px 32px 0;
+    gap: 24px;
+
+    .top-heading {
+      width: 100%;
+      font-size: 2em;
+      line-height: 1.3em;
+    }
+
+    .page-sample-content {
+      width: 95.7191%;
+      aspect-ratio: 303/179;
+      background-image: url("../../img/share-bg-o.png");
+      background-size: cover;
+    }
+
+    .page-sample-dim-effect {
+      width: 100%;
+      height: calc(100% - 40px);
+    }
+
+    .link-add {
+      width: 60%;
+    }
+
+    .search-bar {
+      display: none;
+    }
+
+    .link-list {
+      display: none;
+    }
+  }
+}

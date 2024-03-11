@@ -41,6 +41,7 @@ button:focus {
   filter: brightness(1.2);
   scale: 1.02;
 }
+
 div {
   display: flex;
 }
@@ -55,20 +56,6 @@ footer {
   flex-direction: column;
   width: 100vw;
   align-items: center;
-}
-
-h1 {
-  font-size: 0;
-  line-height: 0;
-  color: transparent;
-}
-
-h3 {
-  color: #000;
-  font-size: 3em;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: -0.3px;
 }
 
 header {
@@ -107,6 +94,14 @@ section {
 }
 
 /*====================================          CLASS           ==================================*/
+
+.blind {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
 
 .btn {
   background-image: linear-gradient(

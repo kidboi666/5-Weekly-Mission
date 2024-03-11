@@ -1,0 +1,20 @@
+@use "../abstracts" as a;
+.container {
+  background-color: a.$white-color;
+  display: flex;
+  width: 998px;
+  height: 450px;
+  gap: 157px;
+  @media (max-width: 1199px) {
+    width: 698px;
+    height: 315px;
+    gap: 51px;
+  }
+  @media (max-width: 767px) {
+    position: relative;
+    flex-direction: column;
+    gap: 20px;
+    height: fit-content;
+    width: 100%;
+  }
+}

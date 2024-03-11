@@ -5,10 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Linkbrary</title>
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/sign-page-style.css">
-    <link rel="stylesheet" href="/css/sign-mobile.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="scss/pages/_auth-page.scss">
 </head>
 
 <body>
@@ -16,28 +14,29 @@
         <div class="sign">
             <div class="sign-top">
                 <h1>
-                    <a href="/">
+                    <a href="index.html">
                         <img src="img/logo.svg" alt="Linkbrary" class="sign-logo">
                     </a>
-                    Linkbrary
+                    <span class="blind">Linkbrary</span>
                 </h1>
                 <div class="join">
                     <span>회원이 아니신가요?</span>
-                    <a href="/signup.html" class="sign-link">회원 가입하기</a>
+                    <a href="signup.html" class="sign-link">회원 가입하기</a>
                 </div>
             </div>
-            <form action="/signin.html" method="post" class="sign-form">
+            <form action="signin.html" method="post" class="sign-form">
                 <div class="input-label">
-                    <label for="username">이메일</label>
-                    <input type="email" id="username" name="username" required class="sign-input">
+                    <label for="user-email">이메일</label>
+                    <input type="email" id="user-email" name="user-email" required class="sign-input">
                 </div>
                 <div class="input-label">
                     <label for="password">비밀번호</label>
                     <div class="pw-input">
                         <input type="password" id="password" name="password" required class="sign-input">
-                        <button class="eye-btn">
-                            <img src="img/eye-on.svg" alt="Show Password" class="eye-on">
-                        </button>
+                        <div class="pw-toggle-btn">
+                            <img src="img/eye-on.svg" alt="Show Password">
+                            <img src="img/eye-off.svg" alt="Hide Password" class="hidden">
+                        </div>
                     </div>
                 </div>
                 <button class="btn login-btn">로그인</button>
@@ -46,10 +45,10 @@
                 <div class="other-id">
                     소셜 로그인
                     <div class="social-links">
-                        <a href="https://www.google.com/" target="_blank">
+                        <a href="https://www.google.com/" target="_blank" rel='noreferrer noopener'>
                             <img src="img/google.svg" alt="Google Sign In Link">
                         </a>
-                        <a href="https://www.kakaocorp.com/page/" target="_blank">
+                        <a href="https://www.kakaocorp.com/page/" target="_blank" rel='noreferrer noopener'>
                             <img src="img/kakao.svg" alt="Kakao Sign In Link" class="img-border">
                         </a>
                     </div>
@@ -57,6 +56,7 @@
             </div>
         </div>
     </main>
+    <script type="module" src="js/auth.js"></script>
 </body>
 
 </html>

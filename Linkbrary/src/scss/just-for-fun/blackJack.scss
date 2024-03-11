@@ -1,0 +1,84 @@
+@use "../abstracts" as a;
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #444;
+  color: #fff;
+  @include a.flex(column, flex-start, center);
+}
+
+.red-suit {
+  color: red;
+}
+
+button {
+  padding: 5px;
+  font-size: 20px;
+  background-color: #222;
+  color: rgb(251, 255, 160);
+  @media (max-width: 767px) {
+    padding: 2px;
+    font-size: 15px;
+  }
+}
+
+.card {
+  width: 25%;
+  aspect-ratio: 4/5;
+  background-color: #fff;
+  border: 2px solid #33f;
+  color: #000;
+  @include a.flex(column, center, center);
+}
+.card-list {
+  @include a.flex(row, center, center);
+  width: 100%;
+}
+
+main {
+  max-width: 800px;
+  @include a.flex(column, flex-start, center);
+  width: 100%;
+  .game-board {
+    background-color: #367558;
+    color: #fff;
+    width: 80%;
+    aspect-ratio: 4/3;
+    border-radius: 30px;
+    border: 3px solid #fff;
+    @include a.flex(column, center, center);
+    gap: 5%;
+    .board {
+      width: 90%;
+      height: 40%;
+      border-radius: 30px;
+      border: 3px solid #fff;
+    }
+
+    .dealer {
+      @include a.flex(column, center, center);
+    }
+    .player {
+      @include a.flex(column, center, center);
+    }
+  }
+  .player-status {
+    padding: 5%;
+    width: 70%;
+    @include a.flex(row, space-between);
+    gap: 10%;
+  }
+
+  .controller {
+    width: 80%;
+    aspect-ratio: 4/1;
+
+    border: 3px solid #aaf;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .hidden {
+    display: none;
+  }
+}
