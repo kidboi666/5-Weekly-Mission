@@ -5,13 +5,10 @@ const checkEmail= document.querySelector('.check-email');
 const checkPwd= document.querySelector('.check-pwd');
 const eyeIcon=document.querySelector('.pwd-eye-off');
 
-function emailCheck(email_address){		
+function emailCheck(email_address) {		
     const email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
-    if(!email_regex.test(email_address)) { 
-        return false; 
-    } else{
-        return true;
-    }
+    if (!email_regex.test(email_address)) return false; 
+    else return true;
 }
 
 eyeIcon.addEventListener("click", (e) => {
@@ -29,35 +26,29 @@ function loginCheck() {
     }
 }
 
-emailInput.addEventListener('focusout',(e)=>{
+emailInput.addEventListener('focusout', () => {
     const blankError=document.querySelector('.email-blank-error');
     const typeError=document.querySelector('.email-type-error');
     if (emailInput.value !== '') {
         blankError.classList.add('hide');
-        if(!emailCheck(emailInput.value)) {
-            typeError.classList.remove('hide');
-        } else {
-            typeError.classList.add('hide');
-        }
+        if (!emailCheck(emailInput.value)) typeError.classList.remove('hide');
+        else typeError.classList.add('hide');
     } else {
         blankError.classList.remove('hide');
         typeError.classList.add('hide');
     } 
-    if (blankError.classList.contains('hide') && typeError.classList.contains('hide')) {
-        emailInput.classList.remove('error-border');
-    } else {
-        emailInput.classList.add('error-border');
-    }
+    if (blankError.classList.contains('hide') && typeError.classList.contains('hide')) emailInput.classList.remove('error-border');
+    else emailInput.classList.add('error-border');
 });
 
-emailInput.addEventListener('focusin',(e)=>{
+emailInput.addEventListener('focusin', () => {
     checkEmail.classList.add('hide');
     checkPwd.classList.add('hide');
 });
 
-pwdInput.addEventListener('focusout',(e)=>{
+pwdInput.addEventListener('focusout', () => {
     const blankError=document.querySelector('.pwd-blank-error');
-    if (pwdInput.value !== '') {
+    if(pwdInput.value !== '') {
         blankError.classList.add('hide'); 
         pwdInput.classList.remove('error-border');
     }
@@ -67,26 +58,26 @@ pwdInput.addEventListener('focusout',(e)=>{
     }
 });
 
-pwdInput.addEventListener('focusin',(e)=>{
+pwdInput.addEventListener('focusin', () => {
     checkEmail.classList.add('hide');
     checkPwd.classList.add('hide');
 });
 
-emailInput.addEventListener('keyup',(e)=>{
+emailInput.addEventListener('keyup', (e) => { 
     if (e.keyCode===13) loginCheck();
  });
 
-pwdInput.addEventListener('keyup',(e)=>{
+pwdInput.addEventListener('keyup', (e) => {
     if (e.keyCode===13) loginCheck();
 });
 
-eyeIcon.addEventListener('mousedown',(e)=>{
+eyeIcon.addEventListener('mousedown', () => {
     pwdInput.setAttribute('type','text');
     const eyeOnoff=document.getElementById("eyeOnOff");
     eyeOnoff.setAttribute("src","images/eye-on.svg");
 });
 
-eyeIcon.addEventListener('mouseup',(e)=>{
+eyeIcon.addEventListener('mouseup', () => {
     pwdInput.setAttribute('type','password');
     const eyeOnoff=document.getElementById("eyeOnOff");
     eyeOnoff.setAttribute("src","images/eye-off.svg");
