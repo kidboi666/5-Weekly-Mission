@@ -21,8 +21,8 @@ body {
   align-items: center;
 }
 
-.logo {
-  width: 240px;
+.logo > img {
+  width: 250px;
 }
 
 .form {
@@ -30,7 +30,7 @@ body {
 }
 
 .text {
-  color: var(--black, #000);
+  color: var(--black);
   font-family: Pretendard;
   font-size: 16px;
   font-style: normal;
@@ -40,29 +40,64 @@ body {
   align-items: center;
 }
 
-.text.signup {
-  color: var(--primary); 
+.text-error {
+  position: absolute;
+  bottom: -20px;
+  color: var(--red);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
-label {
+.text.signup {
+  color: var(--primary);
+}
+
+.label {
+  color: var(--black);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
   text-align: left;
   display: block;
-  margin-top: 24px;
+  margin-top: 32px;
   margin-bottom: 12px;
 }
 
-input {
+.input {
   width: 100%;
   padding: 18px 15px;
   border: 1px solid var(--grey-3);
   border-radius: 8px;
   background: var(--white);
+
+  color: var(--grey-5);
+  /* Linkbrary/body1-regular */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
 }
 
-input:focus {
+.input:focus {
   outline-color: var(--primary) ;
 }
 
+.input.error {
+  border: 1px solid var(--red);
+}
+
+.input::placeholder {
+  color: var(--Linkbrary-gray60, #9FA6B2);
+}
+
+.username-container,
 .password-container {
   position: relative;
 }
@@ -74,8 +109,7 @@ input:focus {
   transform: translate(-50%,-50%);
 }
 
-
-.signin_buttons {
+.btn {
   width: 100%;
   padding: 16px 15px;
   /* width: 128px; */
@@ -83,7 +117,7 @@ input:focus {
   background: linear-gradient(91deg, #6d6afe 0.12%, #6AE3FE 101.84%) ;
 
   border: none;
-  margin-top: 30px;
+  margin-top: 32px;
   
   color: var(--off-white);
   font-family: Pretendard;

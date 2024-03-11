@@ -29,21 +29,16 @@
         <a class="text signup" href="../signup/signup.html">회원 가입하기</a>
       </h1>
       <form class="form">
-        <label for="username">
-          이메일
-        </label>
-        <input id="username" name="username">
-        <label for="password">
-          비밀번호
-        </label>
+        <label class="label" for="username">이메일</label>
+        <div class="username-container">
+          <input type="text" id="username" class="input" name="username" placeholder="codeit@codeit.kr">
+        </div>
+        <label class="label" for="password">비밀번호</label>
         <div class="password-container">
-          <input name="password" type="password">
+          <input type="password" id="password" class="input" name="password" placeholder="비밀번호">
           <img class="eye" alt="show_password" src="../images/eye-on.svg">
         </div>
-    
-        <button class="signin_buttons">
-          로그인
-        </button>
+        <input type="button" id="submit" class="btn" value="로그인">
       </form>  
   
       <div class="social">
@@ -55,6 +50,6 @@
       </div>
     </div>
   </div>
-  
+  <script src="index.js"></script>
 </body>
 </html>
