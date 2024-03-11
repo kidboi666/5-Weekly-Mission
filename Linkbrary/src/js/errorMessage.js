@@ -1,4 +1,5 @@
 export default function generateErrorMessage(target, errorText) {
+  removeErrorMessage(target);
   let newP = document.createElement("P");
   newP.textContent = errorText;
   newP.className = "error-message";
@@ -8,12 +9,11 @@ export default function generateErrorMessage(target, errorText) {
 }
 
 export function removeErrorMessage(element) {
-  const parent = element.parentElement;
   const errorMessages = document.querySelectorAll(".error-message");
   errorMessages.forEach(function (em) {
-    if (em.parentElement === parent) {
-      parent.removeChild(em);
+    if (em.parentElement === element) {
+      element.removeChild(em);
     }
   });
-  parent.querySelector(".sign-input").classList.remove("wrong-input");
+  element.querySelector(".sign-input").classList.remove("wrong-input");
 }

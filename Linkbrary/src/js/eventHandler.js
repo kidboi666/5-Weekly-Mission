@@ -3,7 +3,7 @@ import { focusOutFunctions, submitFunctions } from "./constants";
 
 function handleFocusIn(event) {
   const target = event.target;
-  removeErrorMessage(target);
+  removeErrorMessage(target.parentElement);
 }
 
 function handleFocusOut(event) {
