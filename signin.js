@@ -14,6 +14,10 @@ function emailCheck(email_address){
     }
 }
 
+eyeIcon.addEventListener("click", (e) => {
+    e.preventDefault();
+ });
+
 function loginCheck() {
     if ((emailInput.value==='test@codeit.com')&&pwdInput.value==='codeit101') {
         location.href='folder.html';
