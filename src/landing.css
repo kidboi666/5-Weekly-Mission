@@ -198,7 +198,9 @@ footer {
 
 @media (max-width: 1199px) {
   .gnb {
-    padding: 0 3.2rem;
+    height: 9.4rem;
+    max-width: 192rem;
+    padding: 0 20rem;
   }
 
   .slogan {
@@ -237,7 +239,12 @@ footer {
   }
 
   .gnb {
-    height: 6.3rem;
+    height: 9.4rem;
+    max-width: 86.3rem;
+  }
+
+  .logo {
+    height: 2.4rem;
   }
 
   section {
@@ -253,6 +260,7 @@ footer {
     height: 100%;
     margin-top: 1.49rem;
     order: 2;
+    object-fit: cover;
   }
 
   br {

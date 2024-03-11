@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>로그인</title>
     <link
       rel="stylesheet"
@@ -23,15 +24,17 @@
       <form class="sign-form">
         <div class="sign-inputs">
           <div class="sign-input-box">
-            <label class="sign-input-label">이메일</label>
-            <input class="sign-input" />
+            <label for="email" class="sign-input-label">이메일</label>
+            <input id="email" name="email" class="sign-input" />
+            <div class="email-error"></div>
           </div>
           <div class="sign-input-box sign-password">
-            <label class="sign-input-label">비밀번호</label>
-            <input class="sign-input" type="password" />
+            <label for="password" class="sign-input-label">비밀번호</label>
+            <input class="sign-input" name="password" type="password" />
             <button class="eye-button" type="button">
               <img src="./images/eye-off.svg" />
             </button>
+            <div class="password-error"></div>
           </div>
         </div>
         <button class="cta" type="submit">로그인</button>
@@ -48,5 +51,6 @@
         </div>
       </div>
     </div>
+    <script src="src/signin.js"></script>
   </body>
 </html>
