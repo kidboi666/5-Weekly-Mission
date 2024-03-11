@@ -68,8 +68,7 @@ main {
     @include a.flex(row, space-between);
     gap: 10%;
   }
-  .bet-controller {
-  }
+
   .controller {
     width: 80%;
     aspect-ratio: 4/1;

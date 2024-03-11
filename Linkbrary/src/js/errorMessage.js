@@ -3,6 +3,7 @@ export default function generateErrorMessage(target, errorText) {
   newP.textContent = errorText;
   newP.className = "error-message";
   target.appendChild(newP);
+  let t = target.querySelector(".sign-input").classList.add("wrong-input");
   return false;
 }
 
@@ -14,4 +15,5 @@ export function removeErrorMessage(element) {
       parent.removeChild(em);
     }
   });
+  parent.querySelector(".sign-input").classList.remove("wrong-input");
 }
