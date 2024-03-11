@@ -4,15 +4,29 @@ function validateEmail(email) {
     return validate.test(email);
 }
 
+// 이메일 및 비밀번호 검사 함수
+function validateInput(inputValue, errorElement, errorMessage) {
+    const trimmedValue = inputValue.trim();
+    if (!trimmedValue) {
+        errorElement.textContent = errorMessage;
+        return false;
+    }
+    
+    errorElement.textContent = '　';
+    return true;
+}
+
+// 이메일 검사
 document.getElementById('email').addEventListener('focusout', function() {
     const email = this.value.trim();
     const emailError = document.getElementById('email_error');
-    if (email === '') {
-        emailError.textContent = '이메일을 입력해 주세요.';
-    } else if (!validateEmail(email)) {
+    if (!validateInput(email, emailError, '이메일을 입력해 주세요.')) {
+        return;
+    }
+    
+    if (!validateEmail(email)) {
         emailError.textContent = '올바른 이메일 주소가 아닙니다.';
-    } else {
-        emailError.textContent = '　';
+        return;
     }
 });
 
@@ -20,22 +34,14 @@ document.getElementById('email').addEventListener('focusout', function() {
 document.getElementById('password').addEventListener('focusout', function() {
     const password = this.value.trim();
     const passwordError = document.getElementById('password_error');
-    if (password === '') {
-        passwordError.textContent = '비밀번호를 입력해 주세요.';
-    } else {
-        passwordError.textContent = '　';
-    }
+    validateInput(password, passwordError, '비밀번호를 입력해 주세요.');
 });
 
 // 비밀번호 확인 검사
 document.getElementById('passwordCheck').addEventListener('focusout', function() {
     const password = this.value.trim();
-    const passwordCheckError = document.getElementById('passwordCheck_error');
-    if (password === '') {
-        passwordCheckError.textContent = '비밀번호를 다시 입력해 주세요.';
-    } else {
-        passwordCheckError.textContent = '　';
-    }
+    const passwordCheck_error = document.getElementById('passwordCheck_error');
+    validateInput(password, passwordCheck_error, '비밀번호를 입력해 주세요.');
 });
 
 // password eye toggle
