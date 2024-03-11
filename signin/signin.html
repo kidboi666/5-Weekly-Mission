@@ -9,8 +9,8 @@
   </head>
   <body>
     <header class="title">
-      <a href="../index.html"
-        ><img src="../img/logo.svg" alt="Linkbrary" width="210px" height="38px"
+      <a class="img-link" href="../index.html"
+        ><img src="../img/logo.svg" alt="Linkbrary" width="210" height="38"
       /></a>
       <p class="title_p">
         회원이 아니신가요?<a class="title_a" href="../signup/signup.html"
@@ -30,6 +30,7 @@
             placeholder="codeit@codeit.com"
             required
           />
+          <p id="email-error"></p>
         </div>
         <div class="form_section_div div_margin relative">
           <label class="label" for="password">비밀번호</label>
@@ -45,27 +46,25 @@
             class="absolute"
             src="../img/eye_on.svg"
             alt="비밀번호 보호"
-            width="16px"
-            height="16px"
+            width="16"
+            height="16"
           />
+          <p id="password-error"></p>
         </div>
         <button class="button" type="button">로그인</button>
       </form>
-      <footer class="footer">
-        <span class="footer_span">소셜 로그인</span>
-        <div class="footer_link">
+      <div class="div">
+        <span class="div_span">소셜 로그인</span>
+        <div class="div_link">
           <a href="https://www.google.com/" target="_blank"
-            ><img src="../img/google.svg" alt="구글" width="42px" height="42px"
+            ><img src="../img/google.svg" alt="구글" width="42" height="42"
           /></a>
           <a href="https://www.kakaocorp.com/page/" target="_blank"
-            ><img
-              src="../img/kakao.svg"
-              alt="카카오"
-              width="42px"
-              height="42px"
+            ><img src="../img/kakao.svg" alt="카카오" width="42" height="42"
           /></a>
         </div>
-      </footer>
+      </div>
     </section>
+    <script src="signin.js"></script>
   </body>
 </html>
