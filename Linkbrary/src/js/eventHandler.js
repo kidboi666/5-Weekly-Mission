@@ -15,6 +15,10 @@ function handleFocusOut(event) {
 
 function handleSubmit(event) {
   event.preventDefault();
+  const activeElement = document.activeElement;
+  if (activeElement) {
+    activeElement.blur();
+  }
   const submitFunction = submitFunctions[event.target.id];
   submitFunction();
 }
