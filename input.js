@@ -6,7 +6,7 @@ const emailError = document.querySelector("#email-errorText");
 function emailCheck(email) {
   const emailForm =
     /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-  return emailForm.test(email); //이메일 문자열이 해당 정규식과 일치하는지 여부를 확인
+  return emailForm.test(email);
 }
 
 function emailInputFocusOut() {
@@ -49,8 +49,6 @@ passwordInput.addEventListener("focusout", pwInputFocusOut);
 const btn = document.querySelector("#loginBtn");
 
 function signIn(e) {
-  // e.preventDefault();
-
   const checkedEmail = emailInput.value === "test@codeit.kr";
   const checkedPassword = passwordInput.value === "codeit101";
   console.log(checkedEmail, checkedPassword);
@@ -69,10 +67,18 @@ function signIn(e) {
       passwordError.classList.remove("error");
       passwordInput.classList.add("error-input");
       passwordError.textContent = "비밀번호를 확인해주세요.";
-    } else if (checkedEmail) {
+    } else if (checkedPassword) {
       passwordError.classList.add("error");
     }
     e.preventDefault();
   }
 }
 btn.addEventListener("click", signIn);
+
+const form = document.querySelector(".input");
+
+function enterSubmit(e) {
+  e.preventDefault();
+}
+
+form.addEventListener("submit", enterSubmit);
