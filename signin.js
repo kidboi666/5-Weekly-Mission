@@ -80,10 +80,14 @@ pwdInput.addEventListener('keyup',(e)=>{
     if (e.keyCode===13) loginCheck();
 });
 
-eyeIcon.addEventListener('mousedown',()=>{
+eyeIcon.addEventListener('mousedown',(e)=>{
     pwdInput.setAttribute('type','text');
+    const eyeOnoff=document.getElementById("eyeOnOff");
+    eyeOnoff.setAttribute("src","images/eye-on.svg");
 });
 
-eyeIcon.addEventListener('mouseup',()=>{
+eyeIcon.addEventListener('mouseup',(e)=>{
     pwdInput.setAttribute('type','password');
+    const eyeOnoff=document.getElementById("eyeOnOff");
+    eyeOnoff.setAttribute("src","images/eye-off.svg");
 });
