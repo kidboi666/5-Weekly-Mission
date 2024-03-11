@@ -9,11 +9,9 @@ export default function generateErrorMessage(target, errorText) {
 }
 
 export function removeErrorMessage(element) {
-  const errorMessages = document.querySelectorAll(".error-message");
-  errorMessages.forEach(function (em) {
-    if (em.parentElement === element) {
-      element.removeChild(em);
-    }
-  });
+  const errorMessage = element.querySelector(".error-message");
+  if (errorMessage) {
+    element.removeChild(errorMessage);
+  }
   element.querySelector(".sign-input").classList.remove("wrong-input");
 }
