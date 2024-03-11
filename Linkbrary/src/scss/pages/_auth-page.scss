@@ -1,5 +1,6 @@
 @use "../abstracts" as a;
 @use "../base/global";
+@use "../components/input";
 main {
   padding: 238px 0;
 
@@ -42,12 +43,6 @@ main {
 
         .sign-input {
           width: 100%;
-          padding: 18px 15px;
-          @include a.flex(row, center, center);
-          border-radius: 8px;
-          border: 1px solid a.$d3-gray-color;
-          background: a.$white-color;
-
           &:focus {
             border: 1px solid a.$primary-color;
           }

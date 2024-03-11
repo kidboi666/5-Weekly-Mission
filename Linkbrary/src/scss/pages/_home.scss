@@ -34,11 +34,6 @@
 
 .folder-input {
   width: 280px;
-  padding: 18px 15px;
-  @include a.flex(row, center, center);
-  border-radius: 8px;
-  border: 1px solid a.$d3-gray-color;
-  background: a.$white-color;
 }
 
 .folder-input::placeholder {
