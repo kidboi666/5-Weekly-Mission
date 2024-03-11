@@ -1,5 +1,5 @@
 import isValidEmail from "./emailValidation";
-import { signInSubmit, signUpSubmit } from "./eventHandler";
+import { signInSubmit, signUpSubmit } from "./submitFunctions";
 import isValidPassword, { isSamePassword } from "./passwordValidation";
 
 export const focusOutFunctions = {

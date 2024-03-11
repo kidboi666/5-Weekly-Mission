@@ -1,5 +1,6 @@
 import {
   handlePasswordToggleClick,
+  handleSubmit,
   setFocusInOutListenerById,
 } from "./eventHandler";
 
@@ -11,6 +12,9 @@ function initSignUp() {
   setFocusInOutListenerById("#user-email");
   setFocusInOutListenerById("#password");
   setFocusInOutListenerById("#password-check");
+  document
+    .querySelector("#sign-up-form")
+    .addEventListener("submit", handleSubmit);
 }
 
 initSignUp();

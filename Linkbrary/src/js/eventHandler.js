@@ -1,5 +1,4 @@
 import { removeErrorMessage } from "./errorMessage";
-import validateLogin from "./loginValidation";
 import { focusOutFunctions, submitFunctions } from "./constants";
 
 function handleFocusIn(event) {
@@ -40,24 +39,10 @@ function setFocusInOutListenerById(targetId) {
   }
 }
 
-function signInSubmit() {
-  const emailInput = document.querySelector("#user-email");
-  const passwordInput = document.querySelector("#password");
-  validateLogin(emailInput, passwordInput);
-}
-
-function signUpSubmit() {
-  const emailInput = document.querySelector("#user-email");
-  const passwordInput = document.querySelector("#password");
-  const passwordCheck = document.querySelector("#password-check");
-}
-
 export {
   handleFocusIn,
   handleFocusOut,
   handleSubmit,
   handlePasswordToggleClick,
   setFocusInOutListenerById,
-  signInSubmit,
-  signUpSubmit,
 };

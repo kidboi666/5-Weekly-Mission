@@ -1,6 +1,4 @@
 import {
-  handleFocusIn,
-  handleFocusOut,
   handleSubmit,
   handlePasswordToggleClick,
   setFocusInOutListenerById,
