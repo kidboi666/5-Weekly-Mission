@@ -5,10 +5,10 @@ const eyeImg = document.querySelector('.eye-change');
 function eyeChange() {
   eyeImg.classList.toggle('eye-on');
   
-  if (inputPassword.type === "password") {
-    inputPassword.type = "text";
+  if (inputPassword.type === 'password') {
+    inputPassword.type = 'text';
   } else {
-    inputPassword.type = "password";
+    inputPassword.type = 'password';
   }
 }
 
