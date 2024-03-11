@@ -33,9 +33,18 @@ function handlePasswordToggleClick(event) {
   console.log(imgs);
 }
 
+function setFocusInOutListenerById(targetId) {
+  const target = document.querySelector(targetId);
+  if (target) {
+    target.addEventListener("focus", handleFocusIn);
+    target.addEventListener("focusout", handleFocusOut);
+  }
+}
+
 export {
   handleFocusIn,
   handleFocusOut,
   handleSubmit,
   handlePasswordToggleClick,
+  setFocusInOutListenerById,
 };

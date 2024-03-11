@@ -3,15 +3,8 @@ import {
   handleFocusOut,
   handleSubmit,
   handlePasswordToggleClick,
+  setFocusInOutListenerById,
 } from "./eventHandler";
-
-function setFocusInOutListenerById(targetId) {
-  const target = document.querySelector(targetId);
-  if (target) {
-    target.addEventListener("focus", handleFocusIn);
-    target.addEventListener("focusout", handleFocusOut);
-  }
-}
 
 function init() {
   document
