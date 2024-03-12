@@ -2,13 +2,13 @@ import isValidEmail from "./emailValidation";
 import { signInSubmit, signUpSubmit } from "./submitFunctions";
 import isValidPassword, { isSamePassword } from "./passwordValidation";
 
-const FOCUSOUTFUNCTIONS = {
+const FOCUS_OUT_FUNCTIONS = {
   "user-email": isValidEmail,
   "password": isValidPassword,
   "password-check": isSamePassword,
 };
 
-const SUBMITFUNCTIONS = {
+const SUBMIT_FUNCTIONS = {
   "sign-in-form": signInSubmit,
   "sign-up-form": signUpSubmit,
 };
@@ -16,4 +16,4 @@ const SUBMITFUNCTIONS = {
 const EMAIL = "test@codeit.com";
 const PASSWORD = "codeit101";
 
-export { FOCUSOUTFUNCTIONS, SUBMITFUNCTIONS, EMAIL, PASSWORD };
+export { FOCUS_OUT_FUNCTIONS, SUBMIT_FUNCTIONS, EMAIL, PASSWORD };

@@ -1,5 +1,5 @@
 import { removeErrorMessage } from "./errorMessage";
-import { FOCUSOUTFUNCTIONS, SUBMITFUNCTIONS } from "./constants";
+import { FOCUS_OUT_FUNCTIONS, SUBMIT_FUNCTIONS } from "./constants";
 
 function handleFocusIn(event) {
   const target = event.target;
@@ -7,7 +7,7 @@ function handleFocusIn(event) {
 }
 
 function handleFocusOut(event) {
-  const focusOutFunction = FOCUSOUTFUNCTIONS[event.target.id];
+  const focusOutFunction = FOCUS_OUT_FUNCTIONS[event.target.id];
 
   if (focusOutFunction) {
     focusOutFunction(event.target);
@@ -22,7 +22,7 @@ function handleSubmit(event) {
     activeElement.blur();
   }
 
-  const submitFunction = SUBMITFUNCTIONS[event.target.id];
+  const submitFunction = SUBMIT_FUNCTIONS[event.target.id];
   submitFunction();
 }
 
