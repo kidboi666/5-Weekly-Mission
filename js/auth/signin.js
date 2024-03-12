@@ -6,11 +6,11 @@ import {
     $loginForm,
     $passwordCaution,
     checkCodeit,
-} from "./authVariables.js";
+} from "./common/authVariables.js";
 
-import { checkPasswordIcon, checkEmailValue } from "./authUtils.js";
+import { checkPasswordIcon, checkEmailValue } from "./common/authUtils.js";
 
-// 패스워드
+// 비밀번호 - 로그인
 const checkPasswordValue = function () {
     if ($passwordInput && $passwordInput.value === "") {
         $passwordInput.style.border = "1px solid #ff5b56";
@@ -35,7 +35,7 @@ $loginForm.addEventListener("submit", function (e) {
     e.preventDefault();
 });
 
-//이벤트
+// 이벤트
 $iconButtons.forEach(function (btn) {
     btn.addEventListener("click", function () {
         checkPasswordIcon(btn);

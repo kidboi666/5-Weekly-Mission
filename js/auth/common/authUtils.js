@@ -3,6 +3,7 @@ import {
     $passwordInput,
     $loginForm,
     $emailCaution,
+    $verifyPassword,
     testFolder,
     checkCodeit,
 } from "./authVariables.js";
@@ -10,7 +11,7 @@ import {
 const regex = new RegExp(
     "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])"
 );
-// 이메일
+// 이메일 - 공통
 const checkEmailValue = function () {
     if ($emailInput.value === "") {
         $emailInput.style.border = "1px solid #ff5b56";
@@ -38,17 +39,23 @@ const checkEmailValue = function () {
     }
 };
 
-// 패스워드 아이콘 보기
+// 패스워드 아이콘 보기 - 공통
 const checkPasswordIcon = function (btn) {
     const isPasswordVisible = btn.classList.contains("on");
-    $passwordInput.type = isPasswordVisible ? "password" : "text";
+    const iconSrc = isPasswordVisible ? "eye-off.png" : "eye-on.png";
 
-    if ($passwordInput.type === "password") {
-        btn.innerHTML =
-            '<img src="../images/icon/eye-off.png" alt="비밀번호 보이기">';
-    } else if ($passwordInput.type === "text") {
-        btn.innerHTML =
-            '<img src="../images/icon/eye-on.png" alt="비밀번호 숨기기">';
+    if (btn.classList.contains("passwordIcon")) {
+        $passwordInput.type = isPasswordVisible ? "password" : "text";
+
+        btn.innerHTML = `<img src="../images/icon/${iconSrc}" alt="비밀번호 ${
+            isPasswordVisible ? "숨기기" : "보이기"
+        }">`;
+    } else if (btn.classList.contains("verifyPasswordIcon")) {
+        $verifyPassword.type = isPasswordVisible ? "password" : "text";
+
+        btn.innerHTML = `<img src="../images/icon/${iconSrc}" alt="비밀번호 ${
+            isPasswordVisible ? "숨기기" : "보이기"
+        }">`;
     }
 
     btn.classList.toggle("on");
