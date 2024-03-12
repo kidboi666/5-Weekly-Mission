@@ -47,6 +47,7 @@ main {
             border: 1px solid a.$primary-color;
           }
         }
+
         .wrong-input {
           border: 1px solid a.$red-color;
         }
@@ -62,6 +63,7 @@ main {
             top: 15px;
             width: 16px;
             height: 16px;
+
             .hidden {
               opacity: 0;
             }
@@ -113,6 +115,7 @@ main {
         .social-links {
           display: flex;
           gap: 16px;
+
           .img-border {
             border: 2px solid a.$d3-gray-color;
             border-radius: 50%;

@@ -1,4 +1,5 @@
 import generateErrorMessage from "./errorMessage.js";
+
 export default function isValidPassword(passwordInput) {
   const inputValue = passwordInput.value;
   if (inputValue.length === 0) {

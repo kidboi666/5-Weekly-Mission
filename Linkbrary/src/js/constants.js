@@ -14,7 +14,6 @@ const SUBMITFUNCTIONS = {
 };
 
 const EMAIL = "test@codeit.com";
-
 const PASSWORD = "codeit101";
 
 export { FOCUSOUTFUNCTIONS, SUBMITFUNCTIONS, EMAIL, PASSWORD };

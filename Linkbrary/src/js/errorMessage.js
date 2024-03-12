@@ -1,11 +1,10 @@
 export default function generateErrorMessage(target, errorText) {
   removeErrorMessage(target);
-  let newP = document.createElement("P");
+  const newP = document.createElement("P");
   newP.textContent = errorText;
   newP.className = "error-message";
   target.appendChild(newP);
-  let t = target.querySelector(".sign-input").classList.add("wrong-input");
-  return false;
+  target.querySelector(".sign-input").classList.add("wrong-input");
 }
 
 export function removeErrorMessage(element) {
