@@ -43,19 +43,14 @@ const checkEmailValue = function () {
 const checkPasswordIcon = function (btn) {
     const isPasswordVisible = btn.classList.contains("on");
     const iconSrc = isPasswordVisible ? "eye-off.png" : "eye-on.png";
+    const iconAlt = isPasswordVisible ? "숨기기" : "보이기";
 
     if (btn.classList.contains("passwordIcon")) {
         $passwordInput.type = isPasswordVisible ? "password" : "text";
-
-        btn.innerHTML = `<img src="../images/icon/${iconSrc}" alt="비밀번호 ${
-            isPasswordVisible ? "숨기기" : "보이기"
-        }">`;
+        btn.innerHTML = `<img src="../images/icon/${iconSrc}" alt="비밀번호 ${iconAlt}">`;
     } else if (btn.classList.contains("verifyPasswordIcon")) {
         $verifyPassword.type = isPasswordVisible ? "password" : "text";
-
-        btn.innerHTML = `<img src="../images/icon/${iconSrc}" alt="비밀번호 ${
-            isPasswordVisible ? "숨기기" : "보이기"
-        }">`;
+        btn.innerHTML = `<img src="../images/icon/${iconSrc}" alt="비밀번호 ${iconAlt}">`;
     }
 
     btn.classList.toggle("on");
