@@ -1,3 +1,4 @@
+import { EMAIL } from "./constants.js";
 import generateErrorMessage from "./errorMessage.js";
 export default function isValidEmail(emailInput) {
   if (emailInput.value.length === 0) {
@@ -11,10 +12,7 @@ export default function isValidEmail(emailInput) {
     );
     return false;
   }
-  if (
-    document.querySelector("#sign-up-form") &&
-    emailInput.value === "test@codeit.com"
-  ) {
+  if (document.querySelector("#sign-up-form") && emailInput.value === EMAIL) {
     generateErrorMessage(
       emailInput.parentElement,
       "이미 사용중인 이메일입니다"
