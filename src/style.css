@@ -304,7 +304,7 @@ footer {
     display: inline;
     margin-bottom: 1rem;
     font-size: 3.2rem;
-    letter-spacing: -0.7rem;
+    white-space: nowrap;
   }
 
   .description {
