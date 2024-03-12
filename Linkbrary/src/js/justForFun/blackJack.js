@@ -113,7 +113,6 @@ function initialCard() {
 }
 
 function renderCard(card, hand) {
-  console.log("rendercard");
   hand.appendChild(getCardUI(card));
 }
 
@@ -210,7 +209,6 @@ function checkResults(isBlackJack = false) {
 }
 
 function playerWin() {
-  console.log("playerwin");
   let prizeMoney = parseInt(currentBet.textContent);
   let balance = parseInt(currentBalance.textContent);
   balance += prizeMoney * 2;
@@ -219,7 +217,6 @@ function playerWin() {
 }
 
 function dealerWin() {
-  console.log("dealerwin");
   alert("YOU LOSE\n블랙잭은 '실력게임' 입니다");
 }
 
@@ -228,15 +225,10 @@ function itsAPush() {
   let balance = parseInt(currentBalance.textContent);
   balance += prizeMoney;
   currentBalance.textContent = balance;
-  console.log(dealerCards);
-  console.log(dealerCardList);
-  console.log(playerCards);
-  console.log(playerCardList);
   alert("PUSH(무승부)\n놀라셨나요?");
 }
 
 function resetGame() {
-  console.log("reset Game");
   document.querySelector(".player-card-display").classList.toggle("hidden");
   document.querySelector(".dealer-card-display").classList.toggle("hidden");
   document.querySelector(".restart-button").classList.toggle("hidden");
@@ -312,7 +304,6 @@ function checkBlackJack(cardList) {
 }
 
 function playerBlackJack() {
-  console.log("playerblack");
   let prizeMoney = parseInt(currentBet.textContent);
   let balance = parseInt(currentBalance.textContent);
   balance += prizeMoney * 2.5;

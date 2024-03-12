@@ -32,7 +32,6 @@ function handlePasswordToggleClick(event) {
     img.classList.toggle("hidden");
     img.style.opacity = img.classList.contains("hidden") ? 0 : 1;
   });
-  console.log(imgs);
 }
 
 function setFocusInOutListenerById(targetId) {
