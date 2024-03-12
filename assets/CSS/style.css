@@ -1,4 +1,4 @@
-@import url("/assets/CSS/color.css");
+@import url("/assets/css/globals.css");
 
 * {
   box-sizing: border-box;
@@ -53,7 +53,6 @@ body {
   max-width: 120rem;
 }
 
-
 .nav-link {
   display: flex;
   justify-content: center;
@@ -73,6 +72,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  align-items: center;
   gap: 2.5rem;
   padding: 4.375rem 0 0;
   margin: 0 auto;
@@ -107,8 +107,14 @@ body {
   padding: 1rem 1.25rem;
 }
 
+.header-wrap__img { 
+  width: 75rem;
+}
+
+
 .header-image {
   display: flex;
+  width: 100%;
   justify-content: center;
 }
 
@@ -131,10 +137,13 @@ body {
   flex-direction: row-reverse;
 }
 
+.card-wrap__img { 
+  width: 34.375rem;
+}
+
 .card-item__img {
   margin: 0;
-  width: 34.375rem;
-  height: 28.125rem;
+  width: 100%;
 }
 
 .card-item__title {
@@ -197,6 +206,15 @@ body {
   max-width: 120rem;
   flex-grow: 1;
   color: var(--footer-item-text);
+}
+
+.footer-item__date {
+  color: #676767;
+  font-family: Acme;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .footer-item__link {

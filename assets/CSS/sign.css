@@ -1,4 +1,4 @@
-@import url("/assets/CSS/color.css");
+@import url("/assets/css/globals.css");
 
 * {
   box-sizing: border-box;
@@ -112,12 +112,11 @@ body {
   outline: 1px solid var(--sign-point);
 }
 
-
-.sign__pw-eye {
+.sign-pw {
   position: relative;
 }
 
-.sign__pw-eye-off {
+.sign-pw__eye-btn {
   position: absolute;
   top: 1.125rem;
   right: .9375rem;
@@ -175,7 +174,20 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 .social-sign__icon-img {
   position: absolute;
-  /* z-index: 1; */
+}
+
+.error_message {
+  color: var(--Linkbrary-red, #FF5B56);
+  font-family: Pretendard;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.eye-on {
+  content: url("/assets/img/svg/eye-on.svg");
 }
