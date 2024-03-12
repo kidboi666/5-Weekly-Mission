@@ -1,9 +1,13 @@
 /* sign */
 
+html {
+  font-size: 10px;
+}
+
 body {
   display: flex;
   flex-direction: column;
-  padding: 238px 0px 233px 0px;
+  padding: 23.8rem 0px 23.3rem 0px;
   justify-content: center;
   align-items: center;
   background: var(--gray5);
@@ -20,74 +24,67 @@ header {
 }
 
 .header-logo {
-  width: 220px;
-  height: 38px;
+  width: 22rem;
+  height: 3.8rem;
 }
 
 .signup-check-box {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
-  margin-top: 16px;
+  gap: 0.8rem;
+  margin-top: 1.6rem;
+  font-size: 1.6rem;
 }
 
 .signup-check-text {
   color: var(--black);
-  font-size: 16px;
   font-weight: 400;
-  line-height: 24px;
+  line-height: 2.4rem;
 }
 
 .signup-link {
   color: var(--primary);
-  font-size: 16px;
   font-weight: 600;
 }
 
 .signup-box {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 400px;
-}
-
-.singup-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .signup-input-boxs {
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
-  gap: 24px;
+  align-items: center;
+  margin-top: 3rem;
+  gap: 2.4rem;
 }
 
 .signup-input-box {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 12px;
+  gap: 1.2rem;
 }
 
-.signup-label {
+label {
   color: var(--black);
-  font-size: 14px;
+  font-size: 1.4rem;
 }
 
-.signup-input {
+input {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 18px 15px;
-  width: 400px;
+  padding: 1.6rem 1.5rem;
+  width: 40rem;
   border: 1px solid var(--gray3);
   border-radius: 8px;
   background: var(--white);
   color: var(--black);
-  font-size: 16px;
+  font-size: 1.6rem;
   line-height: 150%;
 }
 
@@ -99,22 +96,32 @@ header {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 12px;
+  gap: 1.2rem;
 }
 
-.signup-password {
+.signup-input-password-box {
   position: relative;
 }
 
 .password-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  right: 15px;
-  top: 24px;
-  width: 16px;
-  height: 16px;
+  right: 1.5rem;
+  top: 2.4rem;
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
-.CTA {
+/*
+.eye-on,
+.eye-off {
+  
+} 기본으로 보일 수 있게 하는 법...?
+*/ 
+
+.cta {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -122,74 +129,74 @@ header {
   background-image: linear-gradient(91deg, var(--primary) 0%, #6AE3FE 101%);
   border-radius: 8px;
   color: #f5f5f5;
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 600;
   width: 100%;
-  padding: 16px 20px;
+  padding: 1.6rem 2rem;
   text-decoration: none;
-  margin-top: 30px;
+  margin-top: 0.6rem;
 }
 
 .other-signup {
   display: flex;
-  width: 400px;
-  padding: 12px 24px;
+  width: 88%;
+  padding: 1.2rem 2.4rem;
   justify-content: space-between;
   align-items: center;
   border-radius: 8px;
   border: 1px solid var(--gray3);
   background: var(--gray4);
-  margin-top: 32px;
+  margin-top: 3.2rem;
 }
 
 .other-signup-text {
   color: var(--gray1);
-  font-size: 14px;
+  font-size: 1.4rem;
 }
 
 .icon {
   display: flex;
   align-items: flex-start;
-  gap: 16px;
+  gap: 1.6rem;
 }
 
-.google {
+.icon-box {
   position: relative;
-  width: 42px;
-  height: 42px;
+  width: 4.2rem;
+  height: 4.2rem;
 }
 
-.in-google {
+.box-in-icon {
   position: absolute;
-  inset: 10px;
+  inset: 1rem;
   display: flex;
-  width: 22px;
-  height: 22px;
+  width: 2.2rem;
+  height: 2.2rem;
   justify-content: center;
   align-items: center;
 }
 
-.kakao {
-  position: relative;
-  width: 42px;
-  height: 42px;
-  background-position: center;
+/* 에러 */
+.err-font {
+  color: var(--red);
+  font-size: 1.4rem;;
+  font-weight: 400;
 }
 
-.in-kakao {
-  position: absolute;
-  inset: 10px;
-  display: flex;
-  width: 22px;
-  height: 22px;
-  justify-content: center;
-  align-items: center;
+.hide {
+  display: none;
+}
+
+.input-err {
+  border-radius: 8px;
+  border: 1px solid var(--red);
+  background: var(--white);
 }
 
 /* mobile */
 
 @media (max-width: 768px) {
   body {
-    padding: 120px 32px 233px;
+    padding: 12rem 3.2rem 23.3rem;
   }
 }
