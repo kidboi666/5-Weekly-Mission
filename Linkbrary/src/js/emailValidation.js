@@ -5,6 +5,7 @@ export default function isValidEmail(emailInput) {
     generateErrorMessage(emailInput.parentElement, "이메일을 입력해주세요");
     return false;
   }
+
   if (!isEmailForm(emailInput.value)) {
     generateErrorMessage(
       emailInput.parentElement,
@@ -12,6 +13,7 @@ export default function isValidEmail(emailInput) {
     );
     return false;
   }
+
   if (document.querySelector("#sign-up-form") && emailInput.value === EMAIL) {
     generateErrorMessage(
       emailInput.parentElement,
@@ -19,6 +21,7 @@ export default function isValidEmail(emailInput) {
     );
     return false;
   }
+
   return true;
 }
 

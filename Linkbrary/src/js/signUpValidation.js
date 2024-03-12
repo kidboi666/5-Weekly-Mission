@@ -9,11 +9,14 @@ export default function validateSignUp(
   if (!isValidEmail(emailInput)) {
     return;
   }
+
   if (!isValidPassword(passwordInput)) {
     return;
   }
+
   if (!isSamePassword(passwordCheck)) {
     return;
   }
+
   window.location.href = "../folder.html";
 }

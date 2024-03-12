@@ -9,8 +9,10 @@ export default function generateErrorMessage(target, errorText) {
 
 export function removeErrorMessage(element) {
   const errorMessage = element.querySelector(".error-message");
+
   if (errorMessage) {
     element.removeChild(errorMessage);
   }
+
   element.querySelector(".sign-input").classList.remove("wrong-input");
 }
