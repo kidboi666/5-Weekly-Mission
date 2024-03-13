@@ -41,6 +41,7 @@ body {
 }
 
 .text-error {
+  display: none;
   position: absolute;
   bottom: -20px;
   color: var(--red);
@@ -128,7 +129,7 @@ body {
   background: linear-gradient(91deg, #6d6afe 0.12%, #6AE3FE 101.84%) ;
 
   border: none;
-  margin-top: 32px;
+  margin-top: 46px;
   
   color: var(--off-white);
   font-family: Pretendard;
