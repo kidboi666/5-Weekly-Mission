@@ -79,6 +79,7 @@
   padding: 18px 15px;
   border: 1px solid var(--border-color);
   border-radius: 8px;
+  outline: none;
   font-size: 1rem;
   font-weight: 400;
   line-height: 24px;
@@ -86,7 +87,11 @@
 }
 
 .auth-form__input:focus {
-  outline: 1px solid var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.auth-form__input.input-border--red {
+  border: 1px solid var(--error-color);
 }
 
 .auth-form__notice {
