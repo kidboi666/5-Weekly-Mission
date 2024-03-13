@@ -4,6 +4,8 @@ const emailErrorMsg = document.querySelector('.email-error-msg');
 const passwordErrorMsg = document.querySelector('.password-error-msg');
 const signInLogin = document.querySelector('.signin-login');
 const passwordImg = document.querySelector('.password-img');
+const MEMBER_ID = "test@codeit.com";
+const MEMBER_PASSWORD = "codeit101";
 
 function checkEmailBlank() {
     const signInEmailInputValue = signInEmailInput.value;
@@ -50,10 +52,8 @@ function checkPasswordBlank() {
 function checkMember() {
     const signInEmailInputValue = signInEmailInput.value;
     const signInPasswordInputValue = signInPasswordInput.value;
-    const memberId = "test@codeit.com";
-    const memberPassword = "codeit101";
 
-    if (signInEmailInputValue === memberId && signInPasswordInputValue === memberPassword) {
+    if (signInEmailInputValue === MEMBER_ID && signInPasswordInputValue === MEMBER_PASSWORD) {
         window.location.href = '/folder';
     } else {
         emailErrorMsg.textContent = "이메일을 확인해주세요.";
