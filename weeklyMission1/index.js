@@ -1,4 +1,5 @@
 const signInEmailInput = document.querySelector('.signin-email-input');
+const signUpEmailInput = document.querySelector('.signup-email-input');
 const signInPasswordInput = document.querySelector('.signin-password-input');
 const emailErrorMsg = document.querySelector('.email-error-msg');
 const passwordErrorMsg = document.querySelector('.password-error-msg');
@@ -25,17 +26,18 @@ function checkEmail(emailInput) {
     }
 }
 
+function checkEmailDuplicate() {
+    const signUpEmailInputValue = signUpEmailInput.value;
+
+    if (signUpEmailInputValue === MEMBER_ID) {
+        emailErrorMsg.textContent = "이미 사용 중인 이메일입니다."
+        signInEmailInput.style.border = "1px solid red";
+    }
+}
+
 function checkEmailValid() {
     const signInEmailInputValue = signInEmailInput.value;
     const isCheckEmail = checkEmail(signInEmailInputValue);
-
-    // if (!checkEmail(signInEmailInputValue)) {
-    //     emailErrorMsg.textContent = "올바른 이메일 주소가 아닙니다.";
-    //     signInEmailInput.style.border = "1px solid red";
-    // } else {
-    //     emailErrorMsg.textContent = "";
-    //     signInEmailInput.style.border = "1px solid #9fa6b2";
-    // }
 
     emailErrorMsg.textContent = isCheckEmail ? '' : "올바른 이메일 주소가 아닙니다.";
     signInEmailInput.style.border = `1px solid ${isCheckEmail ? "#9fa6b2" : "red"}`;
@@ -43,14 +45,6 @@ function checkEmailValid() {
 
 function checkPasswordBlank() {
     const signInPasswordInputValue = signInPasswordInput.value;
-
-    // if (!signInPasswordInputValue) {
-    //     passwordErrorMsg.textContent = "비밀번호를 입력해주세요.";
-    //     signInPasswordInput.style.border = "1px solid red";
-    // } else {
-    //     passwordErrorMsg.textContent = "";
-    //     signInPasswordInput.style.border = "1px solid #9fa6b2";
-    // }
 
     passwordErrorMsg.textContent  = signInPasswordInputValue ? "" : "비밀번호를 입력해주세요.";
     signInPasswordInput.style.border = `1px solid ${signInPasswordInputValue ? "#9fa6b2" : "red"}`;
@@ -91,6 +85,9 @@ signInEmailInput.addEventListener('input', checkEmailValid);
 signInEmailInput.addEventListener('blur', checkEmailBlank);
 signInEmailInput.addEventListener('input', checkEmailBlank);
 signInEmailInput.addEventListener('keydown', pressEnterToLogin);
+
+signUpEmailInput.addEventListener('blur', checkEmailDuplicate);
+signUpEmailInput.addEventListener('input', checkEmailDuplicate);
 
 signInPasswordInput.addEventListener('blur', checkPasswordBlank);
 signInPasswordInput.addEventListener('input', checkPasswordBlank);
