@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linkbrary</title>
+    <link rel="stylesheet" href="styles/signin-up.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html">
+        <img src="img/signin/signin-logo.svg" alt="Linkbrary-logo" />
+      </a>
+      <div class="header-message">
+        <p>이미 회원이신가요?</p>
+        <a href="signin.html">로그인 하기</a>
+      </div>
+    </header>
+    <div class="sign-wrap">
+      <form>
+        <div class="input-wrap">
+          <div class="sign-input">
+            <label class="sign-label" for="email">이메일</label>
+            <input class="input-text" id="email" type="email" />
+          </div>
+          <div class="sign-input password">
+            <label class="sign-label" for="pwd">비밀번호</label>
+            <input class="input-text" id="pwd" type="password" />
+            <button class="eye-btn" type="button">
+              <img src="img/signin/eye-off.svg" alt="eye-off" />
+            </button>
+          </div>
+          <div class="sign-input password">
+            <label class="sign-label" for="pwd">비밀번호 확인</label>
+            <input class="input-text" id="pwd" type="password" />
+            <button class="eye-btn" type="button">
+              <img src="img/signin/eye-off.svg" alt="eye-off" />
+            </button>
+          </div>
+        </div>
+        <button class="signin-btn" type="button">회원가입</button>
+      </form>
+      <div class="sns-wrap">
+        <p class="sns-text">다른 방식으로 가입하기</p>
+        <div class="sns-link">
+          <a href="https://www.google.co.kr/?hl=ko">
+            <img src="img/signin/google.png" alt="google-logo" />
+          </a>
+          <a href="https://www.kakaocorp.com/page/service/service/KakaoTalk">
+            <img src="img/signin/kakao.png" alt="kakako-logo" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
