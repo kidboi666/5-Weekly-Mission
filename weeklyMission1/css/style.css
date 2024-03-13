@@ -347,6 +347,12 @@ a.navbar-login {
     color: red;
 }
 
+.password-check-error-msg {
+    margin-top: 10px;
+    font-size: 14px;
+    color: red;
+}
+
 .signin-social-login p {
     color: var(--Linkbrary-gray100, #373740);
     font-family: Pretendard;
