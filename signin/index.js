@@ -65,7 +65,12 @@ pwd.addEventListener('focusin', removePwd);
 
 // click, keypress : 로그인 정보 전송
 function submit() {
-  if (id.value==='test@codeit.com' && pwd.value === 'codeit101') {
+  const adminAccount = {
+    id: 'test@codeit.com',
+    pwd: 'codeit101'
+  };
+
+  if (adminAccount[id] === id.value && adminAccount[pwd] === pwd.value) {
     window.location.href = '/folder'
   }
   id.value=''
@@ -83,7 +88,7 @@ btn.addEventListener('click', submit)
 form.addEventListener('keypress', submitByEnter);
 
 
-// clikc : 눈 아이콘 토글 시 비밀번호 숨기기 & 보이기 기능 추가
+// click : 눈 아이콘 토글 시 비밀번호 숨기기 & 보이기 기능 추가
 function togglePassword() {
   if (pwd.getAttribute('type') ==='password') {
     pwd.setAttribute('type', 'text');
