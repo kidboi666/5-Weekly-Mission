@@ -47,6 +47,11 @@ header {
   align-items: center;
   row-gap: 3.2rem;
   width: 40rem;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    max-width: 400px;
+  }
 }
 
 .sign-form {
@@ -83,6 +88,17 @@ header {
   border: 0.1rem solid var(--gray20);
   font-size: 1.6rem;
   line-height: 150%;
+}
+
+.error {
+  display: none;
+  margin-top: -6px;
+  color: #FF5B56;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .sign-input:focus {

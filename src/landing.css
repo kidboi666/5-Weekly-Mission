@@ -112,7 +112,7 @@ section:nth-of-type(odd) {
     "title image"
     "description image"
     ". image"
-    /291px 55rem;
+    ;
 }
 
 section:nth-of-type(even) {
@@ -205,15 +205,27 @@ footer {
   .slogan-new-line {
     display: block;
   }
+
+  .hero-image {
+    width: 69.8rem;
+    height: 34.3rem;
+  }
+
+  .content-image {
+    width: 38.5rem;
+    height: 31.5rem;
+  }
   .gnb {
     padding: 0;
     gap: 538px;
     justify-content: center;
   }
+
   a.logo {
     margin-left: 32px;
     
   }
+
   a.login-btn {
     margin-right: 32px;
   }
