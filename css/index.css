@@ -127,7 +127,6 @@
 	font-weight: 700;
 	font-family: 'Pretendard';
 	padding: 0;
-	letter-spacing: -5px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -177,8 +176,6 @@
 	font-family: 'Pretendard';
 	line-height: 57px;
 	text-align: left;
-	letter-spacing: -4px;
-	word-spacing: -4px;
 	height: 116px;
 }
 .landing-section__text--small {
@@ -189,7 +186,6 @@
 	font-family: 'Abel';
 	line-height: 24px;
 	color: #6B6B6B;
-	letter-spacing: -1px;
 
 }
 
@@ -360,10 +356,9 @@
 		line-height: 42px;
 		font-size: 32px;
 		padding: 0;
-		letter-spacing: -3px;
 	}
 	.landing-section__text--main >.second-line {
-		width: 210px;
+		width: 200px;
 	}
 
 	.landing-section__text-area--small{
@@ -394,8 +389,6 @@
 		width: 100%;
 		font-size: 24px;
 		line-height: 28.6px;
-		letter-spacing: -3px;
-		word-spacing: 0;
 		height: 29px;
 	}
 	.landing-section__text--small {
@@ -404,9 +397,6 @@
 		line-height: 22.5px;
 		font-weight: 520;
 		font-family: 'Pretendard';
-		letter-spacing: -1.5px;
-		word-spacing: -1.5px;
-
 	}
 	/* End of: 텍스트 설정 */
 
