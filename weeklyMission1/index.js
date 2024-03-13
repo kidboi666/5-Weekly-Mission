@@ -44,13 +44,16 @@ function checkEmailValid() {
 function checkPasswordBlank() {
     const signInPasswordInputValue = signInPasswordInput.value;
 
-    if (!signInPasswordInputValue) {
-        passwordErrorMsg.textContent = "비밀번호를 입력해주세요.";
-        signInPasswordInput.style.border = "1px solid red";
-    } else {
-        passwordErrorMsg.textContent = "";
-        signInPasswordInput.style.border = "1px solid #9fa6b2";
-    }
+    // if (!signInPasswordInputValue) {
+    //     passwordErrorMsg.textContent = "비밀번호를 입력해주세요.";
+    //     signInPasswordInput.style.border = "1px solid red";
+    // } else {
+    //     passwordErrorMsg.textContent = "";
+    //     signInPasswordInput.style.border = "1px solid #9fa6b2";
+    // }
+
+    passwordErrorMsg.textContent  = signInPasswordInputValue ? "" : "비밀번호를 입력해주세요.";
+    signInPasswordInput.style.border = `1px solid ${signInPasswordInputValue ? "#9fa6b2" : "red"}`;
 }
 
 function checkMember() {
