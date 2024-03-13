@@ -41,6 +41,10 @@ header {
   border-bottom: 0.1rem solid var(--primary);
 }
 
+.hide {
+  display: none;
+}
+
 .sign-box {
   display: flex;
   flex-direction: column;
@@ -77,7 +81,8 @@ header {
   font-weight: 400;
 }
 
-.sign-input {
+.sign-input,
+.sign-input-password {
   padding: 1.8rem 1.5rem;
   border-radius: 0.8rem;
   border: 0.1rem solid var(--gray20);
@@ -85,7 +90,8 @@ header {
   line-height: 150%;
 }
 
-.sign-input:focus {
+.sign-input:focus,
+.sign-input-password:focus {
   border-color: var(--primary);
 }
 
@@ -163,4 +169,19 @@ header {
   body {
     padding: auto 32px;
   }
+}
+
+.failure-message,
+.failure-message2,
+.failure-message3,
+.failure-password-message,
+.failure-password-message2 {
+  text-align: left;
+  font-weight: 400;
+  font-size: 14px;
+  color: rgb(255, 91, 86);
+}
+
+.error-border {
+  border: 0.1rem solid rgb(255, 91, 86);
 }
