@@ -87,7 +87,6 @@ function login() {
   }
 }
 
-// 새로고침 방지
 function offRefresh(e) {
   e.preventDefault();
 }
