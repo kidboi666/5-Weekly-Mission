@@ -15,39 +15,39 @@
       <a href="/">
         <img class="auth__logo" src="/assets/img/logo.svg" alt="Linkbrary logo" />
       </a>
-      <div class="auth__text-wp">
+      <div class="auth__text-wrap">
         <p class="auth__text">회원이 아니신가요?</p>
         <a class="auth__link" href="/signup.html">회원 가입하기</a>
       </div>
-      <form id="signinForm" class="auth-form">
-        <div class="auth-form__input-wp">
-          <label for="email" class="auth-form__label">이메일</label>
+      <form id="signinForm" class="form">
+        <div class="form__field">
+          <label for="email" class="form__label">이메일</label>
           <div>
-            <input id="email" class="auth-form__input" type="email" />
+            <input id="email" class="form__input" type="email" />
           </div>
         </div>
-        <div class="auth-form__input-wp">
-          <label for="password" class="auth-form__label">비밀번호</label>
-          <div class="auth-form__pw-wp">
-            <input id="password" class="auth-form__input" type="password" />
-            <button type="button" id="passwordEyeButton" class="auth-form__eye-button">
-              <img class="auth-form__eye eye--off" src="/assets/img/eye_off.png" alt="eye off" />
+        <div class="form__field">
+          <label for="password" class="form__label">비밀번호</label>
+          <div class="form__pw-wp">
+            <input id="password" class="form__input" type="password" />
+            <button type="button" id="passwordEyeButton" class="form__eye-button">
+              <img class="form__eye off" src="/assets/img/eye_off.svg" alt="eye off" />
             </button>
           </div>
         </div>
-        <button type="submit" class="btn auth-form__btn">로그인</button>
+        <button type="submit" class="btn form__btn">로그인</button>
       </form>
       <div class="auth-sns">
         <h2 class="auth-sns__title">소셜 로그인</h2>
         <ul class="auth-sns__ul">
           <li class="auth-sns__li">
             <a href="https://www.google.com/">
-              <img class="auth-form__img" src="/assets/img/login_google.png" alt="구글 로그인" />
+              <img class="form__img" src="/assets/img/login_google.png" alt="구글 로그인" />
             </a>
           </li>
           <li class="auth-sns__li">
             <a href="https://www.kakaocorp.com/page/">
-              <img class="auth-form__img" src="/assets/img/login_kakaotalk.png" alt="카카오톡 로그인" />
+              <img class="form__img" src="/assets/img/login_kakaotalk.png" alt="카카오톡 로그인" />
             </a>
           </li>
         </ul>

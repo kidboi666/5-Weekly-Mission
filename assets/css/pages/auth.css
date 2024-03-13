@@ -19,7 +19,7 @@
   width: 211px;
 }
 
-.auth__text-wp {
+.auth__text-wrap {
   display: flex;
   align-items: end;
   gap: 8px;
@@ -39,42 +39,42 @@
   color: var(--primary-color);
 }
 
-.auth-form {
+.form {
   width: 100%;
   margin-top: 30px;
 }
 
-.auth-form__input-wp {
+.form__field {
   display: flex;
   flex-direction: column;
   margin-top: 24px;
 }
 
-.auth-form__input-wp:nth-child(1) {
+.form__field:nth-child(1) {
   margin-top: 0;
 }
 
-.auth-form__label {
+.form__label {
   margin-bottom: 12px;
   font-size: 0.875rem;
 }
 
-.auth-form__pw-wp {
+.form__pw-wp {
   position: relative;
 }
 
-.auth-form__eye-button {
+.form__eye-button {
   position: absolute;
   top: 22px;
   right: 22px;
 }
 
-.auth-form__eye.eye--off {
+.form__eye.off {
   position: relative;
   top: 1px;
 }
 
-.auth-form__input {
+.form__input {
   width: 100%;
   padding: 18px 15px;
   border: 1px solid var(--border-color);
@@ -86,20 +86,20 @@
   color: #373740;
 }
 
-.auth-form__input:focus {
+.form__input:focus {
   border: 1px solid var(--primary-color);
 }
 
-.auth-form__input.input-border--red {
+.form__input.input-border--red {
   border: 1px solid var(--error-color);
 }
 
-.auth-form__notice {
+.error-message {
   margin-top: 6px;
   color: var(--error-color);
 }
 
-.auth-form__btn {
+.form__btn {
   width: 100%;
   margin-top: 30px;
 }
