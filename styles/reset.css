@@ -24,3 +24,7 @@ button {
   background-color: unset;
   cursor: pointer;
 }
+
+input:focus {
+  outline: none;
+}
