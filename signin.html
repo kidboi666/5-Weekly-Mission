@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="sign-in.style.css" />
+    <link rel="stylesheet" href="/css/sign-in.style.css" />
     <link
       rel="stylesheet"
       type="text/css"
@@ -25,7 +25,7 @@
         <a href="/">
           <img
             class="header-logo"
-            src="/images/signin/logo.svg"
+            src="/logos/logo-text.svg"
             alt="Linkbrary-logo"
           />
         </a>
@@ -35,8 +35,10 @@
         </div>
       </header>
       <section class="contents">
-        <form action="http://localhost/login/php" method="POST">
+        <form>
+        <!-- <form action="http://localhost/login/php" method="POST"> -->
           <section class="input">
+
             <section class="input-email">
               <label class="label" for="이메일">이메일</label>
               <input
@@ -45,31 +47,36 @@
                 placeholder="codeit@gmail.com"
               />
             </section>
+
             <section class="input-password">
               <label class="label" for="비밀번호">비밀번호</label>
               <div class="input-binder">
                 <input class="password" type="password" />
-                <!-- <img src="/images/eye-off.png" alt="eye-off"> -->
                 <i class="fas fa-eye" style="color: #4a4a4a"></i>
               </div>
             </section>
+
           </section>
-          <p class="login">
-            <input class="button" type="submit" value="로그인" />
+
+          <!-- 버튼 윗부분 마진과 버튼을 분리하고자 p 태그로 한번 더 감싸줌 -->
+          <p class="login"> 
+            <input class="button" type="button" value="로그인" />
           </p>
         </form>
+
         <div class="social-login">
           <span>소셜 로그인</span>
           <div class="social-icons">
             <a href="https://www.google.co.kr/" target="_blank">
-              <img src="/images/signup/Component 2.svg" alt="google-logo"
+              <img src="/icons/icon_social-login-goolgle.svg" alt="google-logo"
             /></a>
             <a href="https://www.kakaocorp.com/page/" target="_blank">
-              <img src="/images/signin/Component 3.svg" alt="kakao-logo"
+              <img src="/icons/icon_social-login-kakao.svg" alt="kakao-logo"
             /></a>
           </div>
         </div>
       </section>
     </main>
+    <script src="js/sign.js"></script>
   </body>
 </html>
