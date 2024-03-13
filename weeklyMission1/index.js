@@ -27,14 +27,18 @@ function checkEmail(emailInput) {
 
 function checkEmailValid() {
     const signInEmailInputValue = signInEmailInput.value;
+    const isCheckEmail = checkEmail(signInEmailInputValue);
 
-    if (!checkEmail(signInEmailInputValue)) {
-        emailErrorMsg.textContent = "올바른 이메일 주소가 아닙니다.";
-        signInEmailInput.style.border = "1px solid red";
-    } else {
-        emailErrorMsg.textContent = "";
-        signInEmailInput.style.border = "1px solid #9fa6b2";
-    }
+    // if (!checkEmail(signInEmailInputValue)) {
+    //     emailErrorMsg.textContent = "올바른 이메일 주소가 아닙니다.";
+    //     signInEmailInput.style.border = "1px solid red";
+    // } else {
+    //     emailErrorMsg.textContent = "";
+    //     signInEmailInput.style.border = "1px solid #9fa6b2";
+    // }
+
+    emailErrorMsg.textContent = isCheckEmail ? '' : "올바른 이메일 주소가 아닙니다.";
+    signInEmailInput.style.border = `1px solid ${isCheckEmail ? "#9fa6b2" : "red"}`;
 }
 
 function checkPasswordBlank() {
