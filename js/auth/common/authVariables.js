@@ -9,9 +9,7 @@ const $passwordCaution = document.querySelector(".password-caution");
 
 // 회원가입
 const $verifyPassword = document.querySelector(".verifypasswordInput");
-const $verifyPasswordCaution = document.querySelector(
-    ".verifyPassword-caution"
-);
+const $verifyPasswordCaution = document.querySelector(".verifyPassword-caution");
 
 const testFolder = {
     email: false,

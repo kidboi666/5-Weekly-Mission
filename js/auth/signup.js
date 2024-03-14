@@ -9,19 +9,17 @@ import {
     testFolder,
 } from "./common/authVariables.js";
 
-import { checkEmailValue, checkPasswordIcon } from "./common/authUtils.js";
+import { checkEmailValue, checkPasswordIcon, setInputStyle } from "./common/authUtils.js";
 
 const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,16}$/;
 
 // 비밀번호 - 회원가입
 const checkPasswordLength = function () {
     if (!passwordRegex.test($passwordInput.value)) {
-        $passwordCaution.textContent =
-            "비밀번호는 영문, 숫자 조합 8자 이상 16자 이하로 입력해 주세요.";
-        $passwordInput.style.border = "1px solid #ff5b56";
+        setInputStyle($passwordInput, false, $passwordCaution, "비밀번호는 영문, 숫자 조합 8자 이상 16자 이하로 입력해 주세요.");
     } else {
-        $passwordCaution.textContent = "";
-        $passwordInput.style.border = "1px solid #ccd5e3";
+        setInputStyle($passwordInput, true, $passwordCaution, "");
+
         testFolder.password = true;
     }
 };
@@ -29,11 +27,9 @@ const checkPasswordLength = function () {
 // 비밀번호 확인 - 회원가입
 const checkVerifyPassword = function () {
     if ($passwordInput.value !== $verifyPassword.value) {
-        $verifyPasswordCaution.textContent = "비밀번호가 일치하지 않아요.";
-        $verifyPassword.style.border = "1px solid #ff5b56";
+        setInputStyle($verifyPassword, false, $verifyPasswordCaution, "비밀번호가 일치하지 않아요.");
     } else {
-        $verifyPasswordCaution.textContent = "";
-        $verifyPassword.style.border = "1px solid #ccd5e3";
+        setInputStyle($verifyPassword, true, $verifyPasswordCaution, "");
         testFolder.verifypassword = true;
     }
 };

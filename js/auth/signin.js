@@ -8,17 +8,15 @@ import {
     checkCodeit,
 } from "./common/authVariables.js";
 
-import { checkPasswordIcon, checkEmailValue } from "./common/authUtils.js";
+import { checkPasswordIcon, checkEmailValue, setInputStyle } from "./common/authUtils.js";
 
 // 비밀번호 - 로그인
 const checkPasswordValue = function () {
     if ($passwordInput && $passwordInput.value === "") {
-        $passwordInput.style.border = "1px solid #ff5b56";
-        $passwordCaution.textContent = "비밀번호를 입력해 주세요.";
+        setInputStyle($passwordInput, false, $passwordCaution, "비밀번호를 입력해 주세요.");
         return;
     } else {
-        $passwordInput.style.border = "1px solid #ccd5e3";
-        $passwordCaution.textContent = "";
+        setInputStyle($passwordInput, true, $passwordCaution, "");
         if ($passwordInput.value == "codeit101") {
             checkCodeit.password = true;
         }
