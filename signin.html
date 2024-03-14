@@ -32,6 +32,10 @@
   <link rel="stylesheet" href="css/common/header.css">
   <link rel="stylesheet" href="css/common/footer.css">
   <link rel="stylesheet" href="css/page/join.css">
+  <script defer src="js/module/join/addErrorMessage.js"></script>
+  <script defer src="js/module/join/removeErrorMassage.js"></script>
+  <script defer src="js/module/join/validation.js"></script>
+  <script defer src="js/module/join/join.js"></script>
   <script defer src="js/signin.js"></script>
   <script defer src="js/password_toggle.js"></script>
 </head>
@@ -53,13 +57,13 @@
         <div class="form__wrap signin__form">
           <div class="form__box">
             <label for="email" class="text__size__s">이메일</label>
-            <input type="text" name="email" id="signin__email" autocomplete="off">
+            <input type="text" name="email" id="signin__email" autocomplete="on">
             <p class="error__text"></p>
           </div>
           <div class="form__box pw">
             <label for="signin__pw__input" class="text__size__s">비밀번호</label>
             <div class="form__relative">
-              <input type="password" name="pw" id="signin__pw__input" autocomplete="off">
+              <input type="password" name="pw" id="signin__pw__input" autocomplete="on">
               <button type="button" class="btn__pw signin__btn-pw">
                 <img src="img/icon/icon-eye-on.svg" alt="비밀번호 보기" class="icon__on">
                 <img src="img/icon/icon-eye-off.svg" alt="비밀번호 숨기기" class="icon__off">
