@@ -109,7 +109,7 @@ header {
   background-image: url('../images/eye-off.svg');
 }
 
-.cta {
+.sign-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -163,7 +163,7 @@ header {
   background-color: #f5e14b;
 }
 
-.error_msg {
+.error-msg {
   color: var(--red);
   font-size: 14px;
 }
