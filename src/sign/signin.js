@@ -1,3 +1,8 @@
+const TEST_USER = {
+    email: "test@codeit.com",
+    password: "codeit101",
+};
+
 // 이메일 검사
 function validateEmail(email) {
     const validate = /\S+@\S+\.\S+/;
@@ -12,7 +17,7 @@ function validateInput(inputValue, errorElement, errorMessage) {
         return false;
     }
     
-    errorElement.textContent = '　';
+    errorElement.textContent = '';
     return true;
 }
 
@@ -46,15 +51,12 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-const TEST_EMAIL = 'test@codeit.com'
-const TEST_PWD = 'codeit101'
-
 function submitUser() {
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value.trim();
 
     // 이메일 및 비밀번호 유효성 검사
-    if (email === TEST_EMAIL && password === TEST_PWD) {
+    if (email === TEST_USER.email && password === TEST_USER.password) {
         window.location.href = '/folder'; // 로그인 성공 시 이동
     } else {
         // 로그인 실패 시 에러 메시지 표시

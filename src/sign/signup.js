@@ -1,3 +1,8 @@
+const TEST_USER = {
+    email: "test@codeit.com",
+    password: "codeit101",
+};
+
 // 이메일 검사
 function validateEmail(email) {
     const validate = /\S+@\S+\.\S+/;
@@ -12,7 +17,7 @@ function validateInput(inputValue, errorElement, errorMessage) {
         return false;
     }
     
-    errorElement.textContent = '　';
+    errorElement.textContent = '';
     return true;
 }
 
@@ -31,46 +36,79 @@ document.getElementById('email').addEventListener('focusout', function() {
 });
 
 // 비밀번호 검사
+function validatePassword(password){
+    const validate = /^.*(?=.{8,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
+    return validate.test(password);
+}
+
+// 비밀번호 검사
 document.getElementById('password').addEventListener('focusout', function() {
     const password = this.value.trim();
-    const passwordError = document.getElementById('password_error');
-    validateInput(password, passwordError, '비밀번호를 입력해 주세요.');
+    const password_error = document.getElementById('password_error');
+    if(!validateInput(password, password_error, '비밀번호를 입력해 주세요.')) {
+        return;
+    }
+
+    if(!validatePassword(password)) {
+        password_error.textContent = '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.';
+        return;
+    }
+
 });
 
 // 비밀번호 확인 검사
 document.getElementById('passwordCheck').addEventListener('focusout', function() {
-    const password = this.value.trim();
+    const passwordCheck = this.value.trim();
+    const password = document.getElementById('password').trim();
     const passwordCheck_error = document.getElementById('passwordCheck_error');
-    validateInput(password, passwordCheck_error, '비밀번호를 입력해 주세요.');
+    if(!validateInput(passwordCheck, passwordCheck_error, '비밀번호를 확인해 주세요.')){
+        return;
+    }
+    if(passwordCheck !== password) {
+        passwordCheck_error.textContent = '비밀번호가 다릅니다.';
+        return;
+    }
 });
 
 // password eye toggle
-const eyeToggle = document.getElementById('eye_toggle');
-const passwordInput = document.getElementById('password');
+const inputs = [
+    { inputId: 'password', toggleId: 'eye_toggle' },
+    { inputId: 'passwordCheck', toggleId: 'eye_toggle2' }
+];
 
-eyeToggle.addEventListener('click', function() {
-    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-    passwordInput.setAttribute('type', type);
+inputs.forEach(input => {
+    const eyeToggle = document.getElementById(input.toggleId);
+    const passwordInput = document.getElementById(input.inputId);
 
-    if (type === 'text') {
-        eyeToggle.classList.add('on');
-    } else {
-        eyeToggle.classList.remove('on');
+    eyeToggle.addEventListener('click', function() {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+
+        if (type === 'text') {
+            eyeToggle.classList.add('on');
+        } else {
+            eyeToggle.classList.remove('on');
+        }
+    });
+});
+
+// submit
+document.querySelector('.submit_btn').addEventListener('click', submitUser);
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        submitUser();
     }
 });
 
-// password check eye toggle
-const eyeToggle2 = document.getElementById('eye_toggle2');
-const passwordCheckInput = document.getElementById('passwordCheck');
+function submitUser() {
+    const email = document.getElementById('email').value.trim();
+    const emailError = document.getElementById('email_error');
 
-eyeToggle2.addEventListener('click', function() {
-    const type = passwordCheckInput.getAttribute('type') === 'password' ? 'text' : 'password';
-    passwordCheckInput.setAttribute('type', type);
-
-    if (type === 'text') {
-        eyeToggle2.classList.add('on');
-    } else {
-        eyeToggle2.classList.remove('on');
-    }
-});
-
+    // 이메일 및 비밀번호 유효성 검사
+    if (email === TEST_USER.email) {
+        emailError.textContent = '이미 사용 중인 이메일입니다.';
+        return;
+    } 
+    window.location.href = '/folder'; // 회원가입 성공 시 이동    
+}
