@@ -11,6 +11,10 @@ let validateObject = { // 활성화
   passwordConfirm:false,
 }; 
 
+const users = [
+  { email:'test@codeit.com', pw:'codeit101' },
+]
+
 function emailErrorMessage () { // 이메일 에러 메세지
   switch (validateEmail()) {
     case 'emailEmpty':
@@ -18,6 +22,9 @@ function emailErrorMessage () { // 이메일 에러 메세지
       break;
     case 'emailError':
       addInputMessage(signupEmail, '올바른 이메일 주소가 아닙니다.');
+      break;
+    case 'emailSameName':
+      addInputMessage(signupEmail, '이미 사용 중인 이메일입니다.');
       break;
     default:
       removeInputMessage(signupEmail);
@@ -30,6 +37,9 @@ function passwordErrorMessage () { // 비밀번호 에러 메세지
     case 'pwEmpty':
       addInputMessage(signupPassword, '비밀번호를 입력해 주세요.');
       break;
+    case 'pwLenError':
+      addInputMessage(signupPassword, '비밀번호는 영어, 숫자 8자 이상 입력해 주세요.');
+      break;
     default:
       removeInputMessage(signupPassword);
       break;
@@ -40,6 +50,9 @@ function passwordConfirmErrorMessage () {
   switch (validatePasswordConfirm()) {
     case 'pwConfirmEmpty':
       addInputMessage(signupPasswordConfirm, '비밀번호 확인을 입력해 주세요.');
+      break;
+    case 'pwConfirmLenError':
+      addInputMessage(signupPasswordConfirm, '비밀번호는 영어, 숫자 8자 이상 입력해 주세요.');
       break;
     case 'pwConfirmError':
       addInputMessage(signupPasswordConfirm, '비밀번호가 다릅니다.');  
@@ -52,22 +65,30 @@ function passwordConfirmErrorMessage () {
 
 function validateEmail () { // 이메일
   const regex = new RegExp('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$');
+  const user = users.find(data => data.email === signupEmail.value.trim()) ?? '';
   if (signupEmail.value.trim() === '') {
     validateObject.email = false;
     return 'emailEmpty'
-  } else if (regex.test(signupEmail.value.trim())) {
-      validateObject.email = true;
-      return ''
-  } else {
+  } else if (!regex.test(signupEmail.value.trim())) {
     validateObject.email = false;
     return 'emailError'
+  } else if (user.email === signupEmail.value.trim()) {
+    validateObject.email = false;
+    return 'emailSameName'
+  } else {
+    validateObject.email = true;
+    return ''
   }
 }
 
 function validatePassword () { // 비밀번호
+  const regex = new RegExp('^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$');
   if (signupPassword.value.trim() === '') {
     validateObject.password = false;
     return 'pwEmpty'
+  } else if (!regex.test(signupPassword.value.trim())) {
+    validateObject.password = false;
+    return 'pwLenError'
   } else {
     validateObject.password = true;
     return ''
@@ -75,12 +96,16 @@ function validatePassword () { // 비밀번호
 }
 
 function validatePasswordConfirm () { // 비밀번호 확인
+  const regex = new RegExp('^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$');
   if (signupPasswordConfirm.value.trim() === '') {
     validateObject.passwordConfirm = false;
     return 'pwConfirmEmpty'
   } else if (signupPassword.value.trim() !== signupPasswordConfirm.value.trim()) {
     validateObject.passwordConfirm = false;
     return 'pwConfirmError'
+  } else if (!regex.test(signupPassword.value.trim())) {
+    validateObject.passwordConfirm = false;
+    return 'pwConfirmLenError'
   } else {
     validateObject.passwordConfirm = true;
     return ''
