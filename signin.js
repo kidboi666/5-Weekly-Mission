@@ -15,11 +15,8 @@ function InputEmailFunc(e) {
     inputEmail.classList.add("error-input-text");
     return;
   }
-  if (emailValidation.test(e.target.value)) {
-    emailErrorMsg.textContent = "";
-    inputEmail.classList.remove("error-input-text");
-    return;
-  }
+  emailErrorMsg.textContent = "";
+  inputEmail.classList.remove("error-input-text");
 }
 
 // password validation
@@ -35,24 +32,30 @@ function InputPasswordFunc() {
     styleBtn.classList.add("fix-eye-btn");
     return;
   }
-
-  if (inputPassword.type === "password") {
-    pwdErrorMsg.textContent = "";
-    inputPassword.classList.remove("error-input-text");
-    styleBtn.classList.remove("fix-eye-btn");
-    return;
-  }
+  pwdErrorMsg.textContent = "";
+  inputPassword.classList.remove("error-input-text");
+  styleBtn.classList.remove("fix-eye-btn");
 }
 
 // toggle eye-icon
-const eyeBtn = document.querySelector(".eye-btn");
+const passwordToggleButton = document.querySelector("#pwd-toggle");
+passwordToggleButton.addEventListener("click", () =>
+  eyeToggleButton(inputPassword, passwordToggleButton)
+);
 
-function toggleEvent() {
-  eyeBtn.classList.toggle("eye-btn-on");
-  inputPassword.type === "password" ? "password" : "text";
+function eyeToggleButton(input, toggleBtn) {
+  if (input.getAttribute("type") === "password") {
+    input.setAttribute("type", "text");
+    toggleBtn
+      .getElementsByTagName("img")[0]
+      .setAttribute("src", "./img/signin/eye-on.svg");
+    return;
+  }
+  input.setAttribute("type", "password");
+  toggleBtn
+    .getElementsByTagName("img")[0]
+    .setAttribute("src", "./img/signin/eye-off.svg");
 }
-
-eyeBtn.addEventListener("click", toggleEvent);
 
 // submit event
 const loginForm = document.querySelector("form");
