@@ -341,6 +341,18 @@ a.navbar-login {
     color: red;
 }
 
+.signup-email-error-msg {
+    margin-top: 10px;
+    font-size: 14px;
+    color: red;
+}
+
+.signup-password-error-msg {
+    margin-top: 10px;
+    font-size: 14px;
+    color: red;
+}
+
 .password-error-msg {
     margin-top: 10px;
     font-size: 14px;
