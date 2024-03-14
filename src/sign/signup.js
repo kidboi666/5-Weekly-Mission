@@ -24,13 +24,13 @@ function validateInput(inputValue, errorElement, errorMessage) {
 // 이메일 검사
 document.getElementById('email').addEventListener('focusout', function() {
     const email = this.value.trim();
-    const emailError = document.getElementById('email_error');
-    if (!validateInput(email, emailError, '이메일을 입력해 주세요.')) {
+    const email_error = document.getElementById('email_error');
+    if (!validateInput(email, email_error, '이메일을 입력해 주세요.')) {        
         return;
     }
     
     if (!validateEmail(email)) {
-        emailError.textContent = '올바른 이메일 주소가 아닙니다.';
+        email_error.textContent = '올바른 이메일 주소가 아닙니다.';
         return;
     }
 });
@@ -53,7 +53,6 @@ document.getElementById('password').addEventListener('focusout', function() {
         password_error.textContent = '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.';
         return;
     }
-
 });
 
 // 비밀번호 확인 검사
@@ -77,17 +76,17 @@ const inputs = [
 ];
 
 inputs.forEach(input => {
-    const eyeToggle = document.getElementById(input.toggleId);
-    const passwordInput = document.getElementById(input.inputId);
+    const eye_toggle = document.getElementById(input.toggleId);
+    const password_input = document.getElementById(input.inputId);
 
     eyeToggle.addEventListener('click', function() {
-        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordInput.setAttribute('type', type);
+        const type = password_input.getAttribute('type') === 'password' ? 'text' : 'password';
+        password_input.setAttribute('type', type);
 
         if (type === 'text') {
-            eyeToggle.classList.add('on');
+            eye_toggle.classList.add('on');
         } else {
-            eyeToggle.classList.remove('on');
+            eye_toggle.classList.remove('on');
         }
     });
 });
@@ -103,12 +102,30 @@ document.addEventListener('keydown', function(event) {
 
 function submitUser() {
     const email = document.getElementById('email').value.trim();
-    const emailError = document.getElementById('email_error');
+    const email_error = document.getElementById('email_error');
 
     // 이메일 및 비밀번호 유효성 검사
-    if (email === TEST_USER.email) {
-        emailError.textContent = '이미 사용 중인 이메일입니다.';
+    if (!validateEmail(email)) {
+        email_error.textContent = '올바른 이메일 주소가 아닙니다.';
+        return; 
+    } else if (email === TEST_USER.email) {
+        email_error.textContent = '이미 사용 중인 이메일입니다.';
         return;
     } 
+    
+    const password = document.getElementById('password').value.trim();
+    const password_error = document.getElementById('password_error');
+    if (!validatePassword(password)) {
+        password_error.textContent = '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.';
+        return;
+    }
+
+    const passwordCheck = document.getElementById('passwordCheck').value.trim();
+    const passwordCheck_error = document.getElementById('passwordCheck_error');
+    if (passwordCheck !== password) {
+        passwordCheck_error.textContent = '비밀번호가 다릅니다.';
+        return; 
+    }
+
     window.location.href = '/folder'; // 회원가입 성공 시 이동    
 }
