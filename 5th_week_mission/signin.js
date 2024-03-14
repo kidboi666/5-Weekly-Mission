@@ -11,23 +11,31 @@ function validateEmail(email){
 document.getElementById('email').addEventListener('focusout', function() {
   const email = this.value.trim();
   const emailError = document.getElementById('email_error');
+
   if (email === '') {
       emailError.textContent = '이메일을 입력해 주세요.';
+      this.classList.add("emailErrorLine")
   } else if (!validateEmail(email)) {
       emailError.textContent = '올바른 이메일 주소가 아닙니다.';
+      this.classList.add("emailErrorLine")
   } else {
-      emailError.textContent = '   ';
+      emailError.textContent = '';
+      this.classList.remove("emailErrorLine")
   }
 });
-
+const pwdError = document.getElementById('pwd_error');
 //비밀번호 검사
 document.getElementById('password').addEventListener('focusout', function(){
   const password = this.value.trim();
-  const pwdError = document.getElementById('pwd_error');
+  
+
   if (password === '') {
     pwdError.textContent = '비밀번호를 입력해 주세요.';
+    this.classList.add("pwdErrorLine")
+    
 } else {
-    pwdError.textContent = '   ';
+    pwdError.textContent = '';
+    this.classList.remove("pwdErrorLine")
 }
 });
 
@@ -51,9 +59,13 @@ function submitSign() {
     // 입력된 이메일과 비밀번호가 다를 시에, 오류 메세지 출력
     const emailError = document.getElementById('email_error');
     const passwordError = document.getElementById('pwd_error');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
 
     emailError.textContent = "이메일을 확인해 주세요."
+    email.classList.add("emailErrorLine")
     passwordError.textContent = "비밀번호를 확인해 주세요."
+    password.classList.add('pwdErrorLine')
   }
 }
 
