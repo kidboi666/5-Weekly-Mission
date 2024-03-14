@@ -57,28 +57,26 @@ function eyeToggleButton(input, toggleBtn) {
     .setAttribute("src", "./img/signin/eye-off.svg");
 }
 
-// submit event
-const loginForm = document.querySelector("form");
-const signinBtn = document.querySelector(".signin-btn");
+const TEST_USER = {
+  email: "test@codeit.com",
+  password: "codeit101",
+};
 
-function sendMyForm(e) {
-  const emailSend = document.querySelector("#email").value.trim();
-  const passwordSend = document.querySelector("#pwd").value.trim();
-  const emailError = document.querySelector("#email-error-msg");
-  const passwordError = document.querySelector("#pwd-error-msg");
-  const styleBtn = document.querySelector(".eye-btn");
-  signinBtn.focus();
+const signForm = document.querySelector("#form");
 
-  if (emailSend === "test@codeit.com" && passwordSend === "codeit101") {
-    location.href = "./folder.html";
-  } else {
-    emailError.textContent = "이메일을 확인해주세요.";
-    passwordError.textContent = "비밀번호를 확인해주세요.";
-    inputEmail.classList.add("error-input-text");
-    inputPassword.classList.add("error-input-text");
-    styleBtn.classList.add("fix-eye-btn");
-  }
+signForm.addEventListener("submit", submitForm);
+function submitForm(e) {
   e.preventDefault();
-}
 
-loginForm.addEventListener("submit", sendMyForm);
+  const isTestUser =
+    inputEmail.value === TEST_USER.email &&
+    inputPassword.value === TEST_USER.password;
+
+  if (isTestUser) {
+    location.href = "./folder.html";
+    return;
+  }
+  emailErrorMsg.textContent = "이메일을 확인해주세요.";
+  pwdErrorMsg.textContent = "비밀번호를 확인해주세요.";
+  styleBtn.classList.add("fix-eye-btn");
+}
