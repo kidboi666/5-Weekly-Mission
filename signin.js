@@ -1,38 +1,48 @@
 // email validation
 const inputEmail = document.querySelector("#email");
 const emailValidation = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+/;
+const emailErrorMsg = document.querySelector("#email-error-msg");
 
-inputEmail.addEventListener("focusout", (e) => {
-  if (e.target.type === "email" && e.target.value === "") {
-    e.target.nextElementSibling.textContent = "이메일을 입력해 주세요.";
+inputEmail.addEventListener("focusout", InputEmailFunc);
+function InputEmailFunc(e) {
+  if (inputEmail.value === "") {
+    emailErrorMsg.textContent = "이메일을 입력해 주세요.";
     inputEmail.classList.add("error-input-text");
-  } else if (
-    e.target.type === "email" &&
-    emailValidation.test(e.target.value) === false
-  ) {
-    e.target.nextElementSibling.textContent = "올바른 이메일 주소가 아닙니다.";
-  } else if (e.target.type === "email") {
-    e.target.nextElementSibling.textContent = "";
-    inputEmail.classList.remove("error-input-text");
+    return;
   }
-});
+  if (!emailValidation.test(e.target.value)) {
+    emailErrorMsg.textContent = "올바른 이메일 주소가 아닙니다.";
+    inputEmail.classList.add("error-input-text");
+    return;
+  }
+  if (emailValidation.test(e.target.value)) {
+    emailErrorMsg.textContent = "";
+    inputEmail.classList.remove("error-input-text");
+    return;
+  }
+}
 
 // password validation
 const inputPassword = document.querySelector("#pwd");
+const pwdErrorMsg = document.querySelector("#pwd-error-msg");
+const styleBtn = document.querySelector(".eye-btn");
 
-inputPassword.addEventListener("focusout", (e) => {
-  const styleBtn = document.querySelector(".eye-btn");
-
-  if (e.target.type === "password" && e.target.value === "") {
-    e.target.nextElementSibling.textContent = "비밀번호를 입력해 주세요.";
+inputPassword.addEventListener("focusout", InputPasswordFunc);
+function InputPasswordFunc() {
+  if (inputPassword.value === "") {
+    pwdErrorMsg.textContent = "비밀번호를 입력해 주세요.";
     inputPassword.classList.add("error-input-text");
     styleBtn.classList.add("fix-eye-btn");
-  } else if (e.target.type === "password") {
-    e.target.nextElementSibling.textContent = "";
+    return;
+  }
+
+  if (inputPassword.type === "password") {
+    pwdErrorMsg.textContent = "";
     inputPassword.classList.remove("error-input-text");
     styleBtn.classList.remove("fix-eye-btn");
+    return;
   }
-});
+}
 
 // toggle eye-icon
 const eyeBtn = document.querySelector(".eye-btn");
@@ -51,8 +61,8 @@ const signinBtn = document.querySelector(".signin-btn");
 function sendMyForm(e) {
   const emailSend = document.querySelector("#email").value.trim();
   const passwordSend = document.querySelector("#pwd").value.trim();
-  const emailError = document.querySelector("#error-email");
-  const passwordError = document.querySelector("#error-pwd");
+  const emailError = document.querySelector("#email-error-msg");
+  const passwordError = document.querySelector("#pwd-error-msg");
   const styleBtn = document.querySelector(".eye-btn");
   signinBtn.focus();
 
