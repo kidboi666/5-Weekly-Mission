@@ -1,9 +1,8 @@
-const btnTypeChange = document.querySelectorAll(".form__box.pw button"); // join pass2 button
+const btnTypeChange = document.querySelectorAll(".btn__pw"); // join pass2 button
 
 function changeInputType (e) {
   const btn = e.currentTarget;
-  const parant = e.target.closest('.form__box')
-  let inputType = parant.querySelector('input');
+  let inputType = e.target.closest('.form__box').querySelector('input');
 
   if(inputType.type === 'password') {
     inputType.type = 'text';
