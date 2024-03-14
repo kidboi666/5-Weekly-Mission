@@ -110,6 +110,12 @@ header {
   border-color: var(--primary);
 }
 
+.error-email,
+.error-password {
+  color: var(--red);
+  font-size: 1.2rem;
+  font-weight: 300;
+}
 .eye-button {
   position: absolute;
   bottom: 3.7rem;
