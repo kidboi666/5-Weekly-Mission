@@ -68,7 +68,7 @@ pwdInput.addEventListener('focusin', () => {
 
 emailInput.addEventListener('keyup', (e) => { 
     if (e.keyCode===13) loginCheck();
- });
+});
 
 pwdInput.addEventListener('keyup', (e) => {
     if (e.keyCode===13) loginCheck();
@@ -84,4 +84,8 @@ eyeIcon.addEventListener('mouseup', () => {
     pwdInput.setAttribute('type','password');
     const eyeOnoff=document.getElementById("eyeOnOff");
     eyeOnoff.setAttribute("src","images/eye-off.svg");
+});
+
+loginButton.addEventListener("click", () => {
+    loginCheck();
 });
