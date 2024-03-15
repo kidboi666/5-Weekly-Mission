@@ -96,18 +96,14 @@
     top: 50%;
 }
 
-.input-icon-div .input-icon.on img:nth-child(1) { 
-    margin: -6px 0 0;
+.input-icon-div .input-icon.on img { 
+    margin: -4px 0 0;
     display: block;
 }
 
-.input-icon-div .input-icon.off img:nth-child(2) {
+.input-icon-div .input-icon.off img {
     margin: -5px 0 0;
     display: block;
-}
-
-.input-icon-div .input-icon img {
-    display: none;
 }
 
 .login-form .login-button {

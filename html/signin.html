@@ -22,19 +22,18 @@
                 <form action="" class="login-form">
                     <div class="login-div input-login-form01">
                         <label for="email">이메일</label>
-                        <input id="email" name="email" type="email" placeholder="codeit@codeit.com" value="">
-                        <div class="login-caution"></div>
+                        <input id="email" name="email" type="email" placeholder="codeit@codeit.com" class="emailInput">
+                        <div class="login-caution email-caution"></div>
                     </div>
                     <div class="login-div input-login-form01">
                         <label for="password">비밀번호</label>
                         <div class="input-icon-div">
-                            <input id="password" name="password" type="password" value="">
+                            <input id="password" name="password" type="password" class="passwordInput">
                             <button type="button" class="input-icon off">
                                 <img src="../images/icon/eye-off.png" alt="비밀번호 보이기">
-                                <img src="../images/icon/eye-on.png" alt="비밀번호 보이기">
                             </button>
                         </div>
-                        <div class="login-caution"></div>
+                        <div class="login-caution password-caution"></div>
                     </div>
                     <button class="login-button btn-form01 width-full" type="submit">로그인</button>
                     <div class="social-login flex-box">
@@ -56,6 +55,6 @@
             </article>
         </div>
     </div>
-    <script src="../js/login.js"></script>
+    <script src="../js/auth/signin.js" type="module"></script>
 </body>
 </html>
