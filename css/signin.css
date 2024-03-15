@@ -106,7 +106,7 @@ input:focus {
 
 .social-login {
   display: flex;
-  width:100%;
+  width: 100%;
   align-items: center;
   justify-content: space-between;
   padding: 12px 24px;
@@ -163,8 +163,8 @@ input:focus {
 
 .pwd-eye-off {
   position: absolute;
-  top:50px;
-  right:15px;
+  top: 50px;
+  right: 15px;
   padding: 0;
   height: 16px;
 }
