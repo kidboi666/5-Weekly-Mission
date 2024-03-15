@@ -60,11 +60,11 @@ function submitSign() {
   }else {
     // 입력된 이메일과 비밀번호가 다를 시에, 오류 메세지 출력
     const emailError = document.getElementById('email-error');
-    const passwordError = document.getElementById('pwd_-rror');
+    const pwdError = document.getElementById('pwd-error');
   
     emailError.textContent = "이메일을 확인해 주세요."
     email.classList.add("emailErrorLine")
-    passwordError.textContent = "비밀번호를 확인해 주세요."
+    pwdError.textContent = "비밀번호를 확인해 주세요."
     password.classList.add('pwdErrorLine')
   }
 };
