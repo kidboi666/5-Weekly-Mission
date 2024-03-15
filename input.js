@@ -35,7 +35,7 @@ const passwordInput = document.querySelector("#password");
 const passwordError = document.querySelector("#password-errorText");
 
 function pwInputFocusOut() {
-  if (passwordInput.value == "") {
+  if (!passwordInput.value) {
     passwordError.classList.remove("error");
     passwordInput.classList.add("error-input");
     passwordError.textContent = "비밀번호를 입력해 주세요.";
@@ -46,12 +46,11 @@ function pwInputFocusOut() {
 }
 passwordInput.addEventListener("focusout", pwInputFocusOut);
 
-const btn = document.querySelector("#loginBtn");
+const btn = document.querySelector("#login-btn");
 
 function signIn(e) {
   const checkedEmail = emailInput.value === "test@codeit.kr";
   const checkedPassword = passwordInput.value === "codeit101";
-  console.log(checkedEmail, checkedPassword);
 
   if (checkedEmail && checkedPassword) {
     window.location.href = "folder.html";
