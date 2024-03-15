@@ -25,9 +25,11 @@
           </div>
           <div class="sign-input-box sign-password">
             <label class="sign-input-label">비밀번호</label>
-            <input class="sign-input" type = "password" name="password" id="password"/>
+            <div class="eye-button-container">
+              <input class="sign-input" type = "password" name="password" id="password" />
+              <button class="eye-button" type="button" id="showPassword"></button>
+            </div>
             <p class="error-msg" id="pwd-error"></p>
-            <button class="eye-button" type="button" id="showPassword"></button>
           </div>
         </div>
         <button class="sign-button" type="button">로그인</button>

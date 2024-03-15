@@ -83,6 +83,7 @@ header {
   border: 0.1rem solid var(--gray20);
   font-size: 1.6rem;
   line-height: 150%;
+  width: 100%;
 }
 
 .sign-input:focus {
@@ -101,7 +102,7 @@ header {
   right: 1.5rem;
   width: 1.6rem;
   height: 1.6rem;
-  top: 50%;
+  top: 2.3rem;
   background-image: url('../images/eye-on.svg');
 }
 
@@ -168,6 +169,11 @@ header {
   font-size: 14px;
 }
 
+.eye-button-container {
+  width: 100%;
+  position: relative;
+
+}
 /*모바일 환경*/
 
 @media (min-width: 375px) and (max-width: 767px) { 
