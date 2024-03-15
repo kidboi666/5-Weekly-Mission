@@ -4,14 +4,14 @@ const passwordInputs = document.querySelector(`.password-input-group`);
 const singinBtn = document.querySelector('#singin-btn');
 const emailErrorText = document.querySelector('.email-input-message');
 const emailInput = document.querySelector('.email-input');
-const passwordErrorText = document.querySelector('.password-input-message');
+const passwordErrorText = document.querySelector('.password-message');
 const passwordInput = document.querySelector('.password-input');
 const emptyEmailErrorMessage = '이메일을 입력해주세요.';
 const invalidEmailErrorMessage = '올바른 이메일 형식이 아닙니다.';
 const emptyPasswordErrorMessage =  '비밀번호를 입력해주세요.';
 const checkEmailErrorMessage =  '이메일을 확인해주세요.';
 const checkPasswordErrorMessage = '비밀번호를 확인해주세요.';
-const iconEye = document.querySelector('.icon-eye')
+const iconEye = document.querySelector('.password-eye')
 
  emailInputs.addEventListener(`focusout`,(e) => {
   const emailText = e.target.value;
