@@ -7,13 +7,13 @@ const emailError = document.querySelector('.email-error');
 const pwdError = document.querySelector('.pwd-error');
 
 
-function emailCheck(email_address) {		
+function emailCheck(emailAddress) {		
     const email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
-    if (!email_regex.test(email_address)) return false; 
+    if (!email_regex.test(emailAddress)) return false; 
     else return true;
 }
 
-eyeIcon.addEventListener("click", (e) => {
+eyeIcon.addEventListener('click', (e) => {
     e.preventDefault();
 });
 
@@ -85,6 +85,6 @@ eyeIcon.addEventListener('mouseup', () => {
     eyeOnoff.setAttribute("src","images/eye-off.svg");
 });
 
-loginButton.addEventListener("click", () => {
+loginButton.addEventListener('click', () => {
     loginCheck();
 });
