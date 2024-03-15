@@ -6,22 +6,23 @@ const emailErrorText = document.querySelector('.email-input-message');
 const emailInput = document.querySelector('.email-input');
 const passwordErrorText = document.querySelector('.password-input-message');
 const passwordInput = document.querySelector('.password-input');
-const EmptyEmailErrorMessage = '이메일을 입력해주세요.';
-const InvalidEmailErrorMessage = '올바른 이메일 형식이 아닙니다.';
-const EmptyPasswordErrorMessage =  '비밀번호를 입력해주세요.';
-const CheckEmailErrorMessage =  '이메일을 확인해주세요.';
-const CheckPasswordErrorMessage = '비밀번호를 확인해주세요.';
+const emptyEmailErrorMessage = '이메일을 입력해주세요.';
+const invalidEmailErrorMessage = '올바른 이메일 형식이 아닙니다.';
+const emptyPasswordErrorMessage =  '비밀번호를 입력해주세요.';
+const checkEmailErrorMessage =  '이메일을 확인해주세요.';
+const checkPasswordErrorMessage = '비밀번호를 확인해주세요.';
+const iconEye = document.querySelector('.icon-eye')
 
  emailInputs.addEventListener(`focusout`,(e) => {
   const emailText = e.target.value;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (emailRegex.test(emailText) === false){
     if(emailText === ''){
-      emailErrorText.textContent = EmptyEmailErrorMessage;
+      emailErrorText.textContent = emptyEmailErrorMessage;
       emailInput.classList.add('error-input');
     }
     else{
-      emailErrorText.textContent = InvalidEmailErrorMessage;
+      emailErrorText.textContent = invalidEmailErrorMessage;
       emailInput.classList.add('error-input');
     }
   }
@@ -34,7 +35,7 @@ const CheckPasswordErrorMessage = '비밀번호를 확인해주세요.';
 passwordInputs.addEventListener(`focusout`,(e) => {
   passwordText = e.target.value;
   if(passwordText === ''){
-    passwordErrorText.textContent = EmptyPasswordErrorMessage;
+    passwordErrorText.textContent = emptyPasswordErrorMessage;
     passwordInput.classList.add('error-input');
   }
   else{
@@ -52,24 +53,33 @@ singinBtn.addEventListener('click',(e) => {
     }
   else{
     e.preventDefault();
-    emailErrorText.textContent = CheckEmailErrorMessage;
+    emailErrorText.textContent = checkEmailErrorMessage;
     emailInput.classList.add('error-input');
-    passwordErrorText.textContent = CheckPasswordErrorMessage;
+    passwordErrorText.textContent = checkPasswordErrorMessage;
     passwordInput.classList.add('error-input');
   }
 });
 
-emailInput.addEventListener(`keyup`,(e) =>{
+emailInput.addEventListener(`keyup`,(e) => {
   if(e.key === 'Enter'){
     singinBtn.click()
   }
 })
 
-passwordInput.addEventListener(`keyup`,(e) =>{
+passwordInput.addEventListener(`keyup`,(e) => {
   if(e.key === 'Enter'){
     singinBtn.click()
   }
 })
 
-
+iconEye.addEventListener('click', (e) => {
+  const passwordType = passwordInput.getAttribute('type');
+  if ( passwordType === 'password' ) {
+    passwordInput.setAttribute('type', 'text')
+    iconEye.src = 'icon/eye-on.svg'
+  } else {
+    passwordInput.setAttribute('type', 'password')
+    iconEye.src = 'icon/eye-off.svg'
+  }
+})
 
