@@ -73,9 +73,9 @@ input:focus {
   outline:1px solid var(--Linkbrary-primary-color, #6D6AFE);
 }
 
-.password-input{
+.password-wrappe{
+  position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
