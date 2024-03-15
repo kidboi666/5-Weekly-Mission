@@ -24,12 +24,12 @@
         <label for="pw" class="pw">비밀번호</label>
         <div class="pw-wrapper">
           <input type="password" id="pw" name="password" />
-          <img src="./Images/eye-off.svg" alt="비밀번호 표시" />
+          <div class="eyeIcon invisible"></div>
         </div>
         <label for="pw-check" class="pw">비밀번호 확인</label>
         <div class="pw-wrapper">
-          <input type="password" id="pw-check" name="password" />
-          <img src="./Images/eye-off.svg" alt="비밀번호 표시" />
+          <input type="password" id="pw-check" name="passwordCheck" />
+          <div class="eyeIcon invisible"></div>
         </div>
       </form>
       <button form="signupForm" class="button-grad form-button">회원가입</button>
@@ -45,5 +45,6 @@
         </div>
       </div>
     </main>
+    <script type="module" src="./Scripts/signup.js"></script>
   </body>
 </html>

@@ -19,12 +19,41 @@ export function removeWarningMsg(e) {
   }
 }
 
+// 이메일 형식이 올바른 지 확인
+export function isProperEmail(e) {
+  const targetValue = e.target.value;
+  // 입력 값이 없을 때
+  if (targetValue === "") {
+    makeWarningMsg(enums.warningMsg.EMAIL_NULL, e.target);
+    e.target.classList.add("warningForm");
+    return false;
+  }
+  // 올바른 형식이 아닐 때
+  else if (regex.emailFormat.test(targetValue) === false) {
+    makeWarningMsg(enums.warningMsg.EMAIL_INVALID, e.target);
+    e.target.classList.add("warningForm");
+    return false;
+  }
+  return true;
+}
+
+// 비밀번호 입력이 없는 지 확인
+export function isPasswordNull(e) {
+  const targetValue = e.target.value;
+  if (targetValue === "") {
+    makeWarningMsg(enums.warningMsg.PW_NULL, e.target);
+    e.target.classList.add("warningForm");
+    return true;
+  }
+  return false;
+}
+
 // 눈 모양 아이콘 클릭 시
 export function visible(e) {
   e.target.classList.toggle("visible");
   if (e.target.classList.contains("visible")) {
-    pw.type = "text";
+    e.target.parentNode.firstElementChild.type = "text";
   } else {
-    pw.type = "password";
+    e.target.parentNode.firstElementChild.type = "password";
   }
 }
