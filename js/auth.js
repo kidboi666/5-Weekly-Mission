@@ -1,22 +1,24 @@
+import {isEmail} from './util.js';
+
 const email = document.querySelector('#email');
 const password = document.querySelector('#password');
 const passwordToggleBtn = document.querySelector('.auth-form__password-toggle-btn');
 const passwordIcon = document.querySelector('.auth-form__password-icon')
-const emailErrorMessage = document.querySelector('.auth-form__wrong-email');
-const passwordErrorMessage = document.querySelector('.auth-form__wrong-password');
-const authBtn = document.querySelector('.auth-form__auth-btn')
+const emailErrorMessage = document.querySelector('#auth-form__wrong-email');
+const passwordErrorMessage = document.querySelector('#auth-form__wrong-password');
+const authForm = document.querySelector('.auth-form');
 
 /* 이메일 에러체크 */
 
 const emailErrorEvent = function(){
   if (!email.value) {
-    email.classList.add('auth-form__error-sign');
+    email.classList.add('auth-form__input--invalid');
     emailErrorMessage.textContent = "이메일을 입력해주세요.";
   }else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)){
-    email.classList.add('auth-form__error-sign');
+    email.classList.add('auth-form__input--invalid');
     emailErrorMessage.textContent = "올바른 이메일 주소가 아닙니다.";
   }else{
-  email.classList.remove('auth-form__error-sign');
+  email.classList.remove('auth-form__input--invalid');
   emailErrorMessage.textContent = "";
   }
 };
@@ -25,19 +27,19 @@ const emailErrorEvent = function(){
 
 const passwordErrorEvent = function(){
   if (!password.value) {
-    password.classList.add('auth-form__error-sign');
+    password.classList.add('auth-form__input--invalid');
     passwordErrorMessage.textContent = "비밀번호를 입력해주세요.";
   } else{
-    password.classList.remove('auth-form__error-sign')
+    password.classList.remove('auth-form__input--invalid')
     passwordErrorMessage.textContent = "";
   }
 };
 
 const confirmPasswordErrorEvent = function(){
   if (!confirmPassword.value) {
-    confirmPassword.classList.add('auth-form__error-sign');
+    confirmPassword.classList.add('auth-form__input--invalid');
   } else{
-    confirmPassword.classList.remove('auth-form__error-sign')
+    confirmPassword.classList.remove('auth-form__input--invalid')
   }
 };
 
@@ -48,8 +50,8 @@ const loginEvent = function(e){
   if(email.value === "test@codeit.com" && password.value === "codeit101"){
     window.location.href = "folder.html";
   } else{
-    email.classList.add('auth-form__error-sign');
-    password.classList.add('auth-form__error-sign');
+    email.classList.add('auth-form__input--invalid');
+    password.classList.add('auth-form__input--invalid');
     emailErrorMessage.textContent = "이메일을 확인해 주세요.";
     passwordErrorMessage.textContent = "비밀번호를 확인해 주세요.";
   }
@@ -65,7 +67,7 @@ password.addEventListener('mouseout', passwordErrorEvent);
 
 password.addEventListener('keyup', passwordErrorEvent);
 
-authBtn.addEventListener('click', loginEvent);
+authForm.addEventListener('submit', loginEvent);
 
 document.addEventListener('keydown', function(e){
   if(e.key === 'Enter'){
