@@ -9,8 +9,7 @@ const pwdError = document.querySelector('.pwd-error');
 
 function emailCheck(emailAddress) {		
     const email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
-    if (!email_regex.test(emailAddress)) return false; 
-    else return true;
+    return email_regex.test(emailAddress);
 }
 
 eyeIcon.addEventListener('click', (e) => {
