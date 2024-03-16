@@ -1,7 +1,11 @@
 // 이메일에이메일 input에서 focus out 할 때, 값이 없을 경우
 // 아래에 “이메일을 입력해 주세요.” 에러 메세지를 보입니다.
-const emailInput = document.querySelector("#email");
-const emailError = document.querySelector("#email-errorText");
+export const emailInput = document.querySelector("#email");
+export const emailError = document.querySelector("#email-errorText");
+export const passwordInput = document.querySelector("#password");
+export const passwordError = document.querySelector("#password-errorText");
+const btn = document.querySelector("#btn");
+const form = document.querySelector(".input");
 
 function emailCheck(email) {
   const emailForm =
@@ -10,7 +14,7 @@ function emailCheck(email) {
 }
 
 function emailInputFocusOut() {
-  if (emailInput.value == "") {
+  if (!emailInput.value) {
     emailError.textContent = "이메일을 입력하세요.";
     emailError.classList.remove("error");
     emailInput.classList.add("error-input");
@@ -26,14 +30,10 @@ function emailInputFocusOut() {
     }
   }
 }
-
 emailInput.addEventListener("focusout", emailInputFocusOut);
 
 // 비밀번호 input에서 focus out 할 때, 값이 없을 경우
 // 아래에 “비밀번호를 입력해 주세요.” 에러 메세지를 보입니다.
-const passwordInput = document.querySelector("#password");
-const passwordError = document.querySelector("#password-errorText");
-
 function pwInputFocusOut() {
   if (!passwordInput.value) {
     passwordError.classList.remove("error");
@@ -45,8 +45,6 @@ function pwInputFocusOut() {
   }
 }
 passwordInput.addEventListener("focusout", pwInputFocusOut);
-
-const btn = document.querySelector("#login-btn");
 
 function signIn(e) {
   const checkedEmail = emailInput.value === "test@codeit.kr";
@@ -73,8 +71,6 @@ function signIn(e) {
   }
 }
 btn.addEventListener("click", signIn);
-
-const form = document.querySelector(".input");
 
 function enterSubmit(e) {
   e.preventDefault();

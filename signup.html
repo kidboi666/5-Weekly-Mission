@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>signUp</title>
-    <link rel="stylesheet" href="signup.css" />
+    <link rel="stylesheet" href="signup.style.css" />
     <link rel="stylesheet" href="global.css" />
   </head>
   <body>
-    <div class="section">
+    <section class="section">
       <form class="content">
         <div class="title">
-          <a href="index.html">
+          <a href="main.html">
             <img class="logo-img" src="img/logo.svg" alt="" />
           </a>
           <div class="question">
@@ -20,22 +20,33 @@
           </div>
         </div>
         <div class="input">
-          <div class="input-section">
-            <div class="text">이메일</div>
-            <input class="user-input" type="email" name="email" />
+          <div class="input__section">
+            <label class="text">이메일</label>
+            <input id="email" class="user-input" type="email" name="email" />
+            <div id="email-errorText" class="errortext error"></div>
           </div>
-          <div class="input-section">
-            <div class="text">비밀번호</div>
-            <input class="user-input" type="password" name="password" />
+          <div class="input__section">
+            <label class="text">비밀번호</label>
+            <input
+              id="password"
+              class="user-input"
+              type="password"
+              name="password"
+            />
+            <div id="password-errorText" class="errortext error"></div>
           </div>
-          <div class="input-section">
-            <div class="text">비밀번호 확인</div>
-
-            <input class="user-input" type="password" name="verifyPassword" />
+          <div class="input__section">
+            <label class="text">비밀번호 확인</label>
+            <input
+              id="password-confirm"
+              class="user-input"
+              type="password"
+              name="verifyPassword"
+            />
+            <div id="password-confirm-errorText" class="errortext error"></div>
           </div>
         </div>
-
-        <button class="signup">회원가입</button>
+        <button id="btn" class="signup">회원가입</button>
       </form>
       <div class="social">
         <div class="social-text">다른 방식으로 가입하기</div>
@@ -48,6 +59,7 @@
           /></a>
         </div>
       </div>
-    </div>
+    </section>
+    <script src="signup.js"></script>
   </body>
 </html>
