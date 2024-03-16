@@ -26,7 +26,7 @@ emailInputEl.addEventListener('focusout', () => {
   }
 });
 
-emailInputEl.addEventListener('focus', removeErrorMessage);
+emailInputEl.addEventListener('focus', () => removeErrorMessage('.error-message-email'));
 
 // 비밀번호 유효성 검사
 function validatePassword() {
@@ -46,7 +46,7 @@ function validatePassword() {
 
 const passwordInputEl = document.querySelector('.password-input');
 passwordInputEl.addEventListener('focusout', validatePassword);
-passwordInputEl.addEventListener('focus', removeErrorMessage);
+passwordInputEl.addEventListener('focus', () => removeErrorMessage('.error-message-password'));
 
 // 비밀번호 확인 유효성 검사
 function validatePasswordConfirmation() {
