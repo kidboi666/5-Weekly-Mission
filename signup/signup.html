@@ -21,46 +21,47 @@
 <body>
   <div class="wrapper">
     <div class="content">
-      <a href="../landing.html" target="_blank">
-        <img class="logo" alt="logo" src="../images/logo.svg" width=240>
+      <a class="logo" href="../landing.html" target="_blank">
+        <img alt="logo" src="../images/logo.svg">
       </a>
       <h1 class="text">
         이미 회원이신가요?
-        <a class="text signup" href="../signin/signin.html">로그인하기</a>
+        <a class="text signin" href="../signin/signin.html">로그인하기</a>
       </h1>
       <form class="form">
-        <label for="username">
-          이메일
-        </label>
-        <input id="username" name="username">
-        <label for="password">
-          비밀번호
-        </label>
+        <label class="label" for="username">이메일</label>
+        <div class="username-container">
+          <input type="text" id="username" class="input" name="username" placeholder="codeit@codeit.kr">
+        <div class="text-error">이메일을 입력해주세요</div>
+        </div>
+        <label class="label" for="password">비밀번호</label>
         <div class="password-container">
-          <input name="password" type="password">
-          <img class="eye" alt="show_password" src="../images/eye-on.svg">
+          <input type="password" id="password" class="input" name="password" placeholder="비밀번호">
+          <div class="password-toggle eye-slash"></div>
+          <div class="text-error">비밀번호를 입력해주세요</div>
         </div>
-        <label for="password_repeat">
-          비밀번호 확인
-        </label>
+        <label class="label" for="password_repeat">비밀번호 확인</label>
         <div class="repeat-container">
-          <input name="password_repeat" type="password">
-          <img class="eye" alt="show_password" src="../images/eye-on.svg">
+          <input type="password" id="password_repeat" class="input" name="password_repeat" placeholder="비밀번호 확인">
+          <div class="repeat-toggle eye-slash"></div>
+          <div class="text-error">비밀번호를 입력해주세요</div>
         </div>
-    
-        <button class="signup_button">
-          회원가입
-        </button>
+        <input type="button" id="submit" class="btn" value="회원가입">
       </form>  
 
       <div class="social">
         <p>다른 방식으로 가입하기</p>
-        <div class="social-container">
-          <a href="https://www.google.com/" target="social"><img alt="google_account" src="../images/icon_google.svg" width 42></a>
-          <a href="https://www.kakaocorp.com/" target="social"><img alt="kakao_account" src="../images/icon_kakao.svg" width 42></a>
+        <div class="icons">
+          <a href="https://www.google.com/" target="social">
+            <img alt="google_account" src="../images/icon_google.svg" width 42>
+          </a>
+          <a href="https://www.kakaocorp.com/" target="social">
+            <img alt="kakao_account" src="../images/icon_kakao.svg" width 42>
+          </a>
         </div>
       </div>
     </div>
   </div>
+  <script src="index.js"></script>
 </body>
 </html>
