@@ -1,13 +1,5 @@
-const signInEmailInput = document.querySelector('.signin-email-input');
-const signInPasswordInput = document.querySelector('.signin-password-input');
-const emailErrorMsg = document.querySelector('.email-error-msg');
-const signUpPasswordCheckInput = document.querySelector('.signup-password-check-input');
-const passwordCheckErrorMsg = document.querySelector('.password-check-error-msg');
-const passwordErrorMsg = document.querySelector('.password-error-msg');
-const signInLogin = document.querySelector('.signin-login');
-const passwordImg = document.querySelector('.password-img');
-const MEMBER_ID = "test@codeit.com";
-const MEMBER_PASSWORD = "codeit101";
+import { MEMBER_ID, MEMBER_PASSWORD } from "./member.js";
+import { signInEmailInput, signInPasswordInput, emailErrorMsg, passwordErrorMsg, signInLogin, passwordImg } from "./tags.js";
 
 function checkEmailBlank() {
     const signInEmailInputValue = signInEmailInput.value;
@@ -52,7 +44,7 @@ function checkPasswordBlank() {
     }
 }
 
-function checkMember() {
+function checkMember(e) {
     const signInEmailInputValue = signInEmailInput.value;
     const signInPasswordInputValue = signInPasswordInput.value;
 

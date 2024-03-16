@@ -1,14 +1,6 @@
-const signUpEmailInput = document.querySelector('.signup-email-input');
-const signUpEmailErrorMsg = document.querySelector('.signup-email-error-msg');
-const signUpPasswordInput = document.querySelector('.signup-password-input');
-const signUpPasswordCheckInput = document.querySelector('.signup-password-check-input');
-const signUpPasswordErrorMsg = document.querySelector('.signup-password-error-msg');
-const passwordCheckErrorMsg = document.querySelector('.password-check-error-msg');
-const passwordImg = document.querySelector('.password-img');
-const passwordImgCheck = document.querySelector('.password-img-check');
-
-const MEMBER_ID = "test@codeit.com";
-const MEMBER_PASSWORD = "codeit101";
+import { MEMBER_ID } from "./member.js";
+import { signUpEmailInput, signUpEmailErrorMsg, signUpPasswordInput, signUpPasswordCheckInput, signUpPasswordErrorMsg, 
+    passwordCheckErrorMsg, passwordImg, passwordImgCheck, signUpBtn } from "./tags.js";
 
 function signUpCheckEmailBlank() {
     const signUpEmailInputValue = signUpEmailInput.value;
@@ -152,20 +144,11 @@ function passwordToggleCheck() {
     }
 }
 
-// 유효한 비밀번호인지 확인하는 조건들
-// 이메일이 빈칸인 경우 => O
-// 이메일이 중복인 경우 => O
-// 이메일이 유효하지 않은 경우 => O
-// 비밀번호가 빈칸인 경우 => O
-// 비밀번호가 유효하지 않은 경우 => O
-// 비밀번호 확인이 빈칸인 경우 => O
-// 비밀번호 확인이 일치하지 않은 경우 => O
-
 function checkMemberValid() {
     if (signUpCheckEmailBlank() === true) {
         signUpEmailErrorMsg.textContent = "이메일을 입력해주세요.";
         signUpEmailInput.style.border = "1px solid red";
-        
+
         return
     }
 
@@ -193,7 +176,7 @@ function checkMemberValid() {
     if (checkPasswordValid() === false) {
         signUpPasswordErrorMsg.textContent = "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.";
         signUpPasswordInput.style.border = "1px solid red";
-        console.log('checkpasswordvalid');
+        
         return
     }
 
@@ -211,7 +194,7 @@ function pressEnterToSignUp(e) {
     if (e.key === 'Enter') {
         checkMemberValid();
     }
-}
+} 
 
 signUpEmailInput.addEventListener('blur', signUpCheckEmailValid);
 signUpEmailInput.addEventListener('input', signUpCheckEmailValid);
@@ -232,3 +215,5 @@ signUpPasswordCheckInput.addEventListener('keydown', pressEnterToSignUp);
 
 passwordImg.addEventListener('click', passwordToggle);
 passwordImgCheck.addEventListener('click', passwordToggleCheck);
+
+signUpBtn.addEventListener('click', checkMemberValid);
