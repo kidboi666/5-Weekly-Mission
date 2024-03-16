@@ -180,7 +180,8 @@ body {
 }
 
 .email-error-message,
-.pw-error-message {
+.pw-error-message,
+.pw-confirm-error-message {
   color: var(--Linkbrary-red, #FF5B56);
   font-family: Pretendard;
   font-size: 0.875rem;
