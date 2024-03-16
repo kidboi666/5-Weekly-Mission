@@ -2,30 +2,30 @@
 2024.02.23 v1
 join css
 */
-.login__wrap {
+.signin__wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
   background-color: var(--color-gray5);
 }
-.login__body {
+.signin__body {
   padding: 14.875rem 2rem 0;
   width: 100%;
   max-width: 29rem;
   transition: padding 0.3s;
 }
-.login__body .title img {
+.signin__body .title img {
   height: 2.375rem;
 }
-.login__sign {
+.signin__sign {
   padding: 1rem 0;
   flex-wrap: wrap;
 }
-.login__sign span {
+.signin__sign span {
   line-height: 1.5rem;
 }
-.login__sign a {
+.signin__sign a {
   display: block;
   padding-left: 0.5rem;
   color: var(--color-primary);
@@ -33,31 +33,31 @@ join css
   line-height: 1.5rem;
   font-weight: 600;
 }
-.login__another {
+.signin__another {
   margin-top: 2rem;
   padding: 0 1.5rem;
   background-color: var(--color-gray4);
   border: 1px solid var(--color-gray3);
   border-radius: 0.5rem;
 }
-.login__another span {
+.signin__another span {
   line-height: 4rem;
 }
-.login__sns {
+.signin__sns {
   gap: 1rem;
 }
-.login__sns a {
+.signin__sns a {
   width: 2.625rem;
   height: 2.625rem;
 }
 
 @media screen and (max-width: 1199px) {
-  .login__body {
+  .signin__body {
     padding: 12.5rem 2rem;
   }
 }
 @media screen and (max-width: 767px) {
-  .login__body {
+  .signin__body {
     padding: 7.5rem 2rem;
   }
 }

@@ -32,56 +32,59 @@
   <link rel="stylesheet" href="css/common/header.css">
   <link rel="stylesheet" href="css/common/footer.css">
   <link rel="stylesheet" href="css/page/join.css">
-  <script defer src="js/password.js"></script>
+  <script defer src="js/signup.js"></script>
+  <script defer src="js/password_toggle.js"></script>
 </head>
 
 <body>
-  <div class="login__wrap">
-    <main class="login__body">
+  <div class="signin__wrap signup__wrap">
+    <main class="signin__body">
       <h1 class="title">
         <a href="/">
           <img src="img/logo/logo.svg" alt="linkbrary">
         </a>
       </h1>
-      <div class="login__sign d__flex__center">
+      <div class="signin__sign d__flex__center">
         <span>이미 회원이신가요?</span>
         <a href="/signin.html">로그인 하기</a>
       </div>
       <!-- form 입력 -->
       <form>
-        <div class="form__wrap">
+        <div class="form__wrap signup__form">
           <div class="form__box">
-            <label for="email" class="text__size__s">이메일</label>
-            <input type="text" id="email">
+            <label for="form__email" class="text__size__s">이메일</label>
+            <input type="text" id="form__email">
+            <p class="error__text"></p>
           </div>
           <div class="form__box pw">
             <label for="form__pw" class="text__size__s">비밀번호</label>
             <div class="form__relative">
               <input type="password" id="form__pw" autocomplete="off">
-              <button type="button" class="btn__pw btn__pw__off signup__btn-pw">
+              <button type="button" class="btn__pw signup__btn-pw">
                 <img src="img/icon/icon-eye-on.svg" alt="비밀번호 보기" class="icon__on">
                 <img src="img/icon/icon-eye-off.svg" alt="비밀번호 숨기기" class="icon__off">
               </button>
             </div>
+            <p class="error__text"></p>
           </div>
           <div class="form__box pw">
             <label for="form__pw__confirm" class="text__size__s">비밀번호 확인</label>
             <div class="form__relative">
               <input type="password" id="form__pw__confirm" autocomplete="off">
-              <button type="button" class="btn__pw btn__pw__off signup__btn-pw2">
+              <button type="button" class="btn__pw signup__btn-pw2">
                 <img src="img/icon/icon-eye-on.svg" alt="비밀번호 보기" class="icon__on">
                 <img src="img/icon/icon-eye-off.svg" alt="비밀번호 숨기기" class="icon__off">
               </button>
             </div>
-            <p id="error__pw__text" class="error__text">비밀번호가 틀렸습니다.</p>
+            <p class="error__text">asdf</p>
           </div>
-          <button type="button" class="btn_sign btn__gradient__lg">회원가입</button>
+          <button class="btn_signup btn__gradient__lg" disabled>회원가입</button>
         </div>
       </form>
       <!-- sns 가입하기 -->
-      <div class="d__flex__btw login__another">
+      <div class="d__flex__btw signin__another">
         <span class="text__size__s">다른 방식으로 가입하기</span>
-        <div class="d__flex login__sns">
+        <div class="d__flex signin__sns">
           <a href="https://www.google.co.kr/?hl=ko" target="_blank" class="d__flex__center">
             <img src="img/icon/icon_google.png" alt="구글로그인">
           </a>

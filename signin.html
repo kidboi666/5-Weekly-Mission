@@ -32,46 +32,48 @@
   <link rel="stylesheet" href="css/common/header.css">
   <link rel="stylesheet" href="css/common/footer.css">
   <link rel="stylesheet" href="css/page/join.css">
-  <script defer src="js/password.js"></script>
+  <script defer src="js/signin.js"></script>
+  <script defer src="js/password_toggle.js"></script>
 </head>
 
 <body>
-  <div class="login__wrap">
-    <main class="login__body">
+  <div class="signin__wrap">
+    <main class="signin__body">
       <h1 class="title">
         <a href="/">
           <img src="img/logo/logo.svg" alt="linkbrary">
         </a>
       </h1>
-      <div class="login__sign d__flex__center">
+      <div class="signin__sign d__flex__center">
         <span>회원이 아니신가요?</span>
         <a href="/signup.html">회원 가입하기</a>
       </div>
       <!-- form 입력 -->
       <form>
-        <div class="form__wrap">
+        <div class="form__wrap signin__form">
           <div class="form__box">
             <label for="email" class="text__size__s">이메일</label>
-            <input type="text" id="email">
+            <input type="text" name="email" id="signin__email" autocomplete="off">
             <p class="error__text"></p>
           </div>
           <div class="form__box pw">
-            <label for="login__pw__input" class="text__size__s">비밀번호</label>
+            <label for="signin__pw__input" class="text__size__s">비밀번호</label>
             <div class="form__relative">
-              <input type="password" id="login__pw__input" autocomplete="off">
-              <button type="button" class="btn__pw btn__pw__off login__btn-pw">
+              <input type="password" name="pw" id="signin__pw__input" autocomplete="off">
+              <button type="button" class="btn__pw signin__btn-pw">
                 <img src="img/icon/icon-eye-on.svg" alt="비밀번호 보기" class="icon__on">
                 <img src="img/icon/icon-eye-off.svg" alt="비밀번호 숨기기" class="icon__off">
               </button>
             </div>
+            <p class="error__text"></p>
           </div>
-          <button type="button" class="btn__gradient__lg btn_login">로그인</button>
+          <button class="btn_signin btn__gradient__lg" disabled>로그인</button>
         </div>
       </form>
       <!-- sns 로그인 -->
-      <div class="d__flex__btw login__another">
+      <div class="d__flex__btw signin__another">
         <span class="text__size__s">소셜 로그인</span>
-        <div class="d__flex login__sns ">
+        <div class="d__flex signin__sns ">
           <a href="https://www.google.co.kr/?hl=ko" target="_blank" class="d__flex__center">
             <img src="img/icon/icon_google.png" alt="구글로그인">
           </a>
