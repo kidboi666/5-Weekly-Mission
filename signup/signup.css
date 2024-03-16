@@ -91,7 +91,8 @@ header {
 }
 
 .form-group__email,
-.form-group__password {
+.form-group__password,
+.form-group__password-confirm {
   padding: 1.8rem 1.5rem;
   border-radius: 0.8rem;
   border: 0.1rem solid var(--gray20);
@@ -100,11 +101,14 @@ header {
 }
 
 .form-group__email:focus,
-.form-group__password:focus {
+.form-group__password:focus,
+.form-group__password-confirm:focus {
   border-color: var(--primary);
 }
+
 .form-group__error-message--email,
-.form-group__error-message--password {
+.form-group__error-message--password,
+.form-group__error-message--password-confirm {
   color: var(--red);
   font-size: 1.3rem;
 }
@@ -116,6 +120,7 @@ header {
   width: 1.6rem;
   height: 1.6rem;
 }
+
 .form-group__eye-button > img {
   position: relative;
 }

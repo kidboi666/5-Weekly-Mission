@@ -20,6 +20,7 @@ const passwordInput = document.querySelector('.form-group__password');
 const passwordErrorMessage = document.querySelector(
   '.form-group__error-message--password'
 );
+
 const passwordConfirmInput = document.querySelector(
   '.form-group__password-confirm'
 );
@@ -39,14 +40,17 @@ class EmailValidate {
       this.showErrorMessage('이메일을 입력해주세요');
       return;
     }
+
     if (!this.emailFormat(email)) {
       this.showErrorMessage('올바른 이메일 주소가 아닙니다');
       return;
     }
+
     if (this.useAlready(email)) {
       this.showErrorMessage('이미 사용중인 이메일 입니다');
       return;
     }
+
     this.clearErrorMessage();
   }
 
@@ -57,12 +61,15 @@ class EmailValidate {
   emailFormat(email) {
     return email.indexOf('@') !== -1;
   }
+
   useAlready(email) {
     return email === 'test@codeit.com';
   }
+
   showErrorMessage(message) {
     this.errorMessageContianer.textContent = message;
   }
+
   clearErrorMessage() {
     this.errorMessageContianer.textContent = '';
   }
@@ -81,34 +88,41 @@ class PasswordValidate {
       this.showErrorMessage('비밀번호를 입력해주세요');
       return;
     }
+
     if (!this.isLengthValid(password) || !this.mixedPattern(password)) {
       this.showErrorMessage(
         '비밀번호는 8자 이상 숫자, 문자 조합으로 입력해주세요'
       );
       return;
     }
+
     this.clearErrorMessage();
   }
 
   empty(password) {
     return password === '';
   }
+
   isLengthValid(password) {
     return password.length >= 8;
   }
+
   mixedPattern(password) {
     return /^(?=.*[a-zA-Z])(?=.*\d).+$/.test(password);
   }
 
-  static passwordMatch(password, passwordConfirm) {
-    if (password !== passwordConfirm) {
-      this.showErrorMessage('비밀번호가 일치하지 않아요');
+  static passwordMatch(a, b) {
+    if (a.passwordInput.value !== b.passwordInput.value) {
+      b.errorMessageContainer.textContent = '비밀번호가 일치하지 않아요';
+      return;
     }
+    b.errorMessageContainer.textContent = '';
   }
 
   showErrorMessage(message) {
     this.errorMessageContainer.textContent = message;
   }
+
   clearErrorMessage() {
     this.errorMessageContainer.textContent = '';
   }
@@ -128,6 +142,7 @@ const passwordConfirmValidate = new PasswordValidate(
 emailInput.addEventListener('input', () => {
   emailValidate.validate();
 });
+
 passwordInput.addEventListener('input', () => {
   passwordValidate.validate();
 });
