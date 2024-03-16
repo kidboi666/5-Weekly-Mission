@@ -73,6 +73,7 @@ signform.addEventListener('keydown', (event) => {
   });
 
 /*눈 모양 아이콘*/
+const passwordInput = document.querySelector('.password-input');
+const passwordToggleBtn = document.querySelector('.password-eye-button');
 
-const eyeButtonEl = document.querySelector('.eye-button');
-eyeButtonEl.addEventListener('click', togglePasswordVisibility);
+passwordToggleBtn.addEventListener('click', () => togglePasswordVisibility(passwordInput, passwordToggleBtn));

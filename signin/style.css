@@ -47,7 +47,8 @@ header {
   gap: 32px;
 }
 
-.eye-button {
+.password-eye-button,
+.confirm-password-eye-button {
   position: absolute;
   top: 45px;
   right: 30px;

@@ -14,19 +14,13 @@ function removeErrorMessage() {
 }
 
 /*눈 모양 아이콘 함수*/
-function togglePasswordVisibility() {
-  const passwordInputEls = document.querySelectorAll('.password-input, .password-confirm-input');
-  const eyeButtonEls = document.querySelectorAll('.eye-button');
 
-  passwordInputEls.forEach((passwordInputEl, index) => {
-    const eyeButtonEl = eyeButtonEls[index];
-
-    if (passwordInputEl.type === "password") {
-      passwordInputEl.type = "text";
-      eyeButtonEl.innerHTML = '<img src="../image/eye-on.jpg" />';
-    } else {
-      passwordInputEl.type = "password";
-      eyeButtonEl.innerHTML = '<img src="../image/eye-off.jpg" />';
-    }
-  });
+function togglePasswordVisibility(inputField, toggleBtn) {
+  if (inputField.type === "password") {
+    inputField.type = "text";
+    toggleBtn.innerHTML = '<img src="../image/eye-on.jpg" />';
+  } else {
+    inputField.type = "password";
+    toggleBtn.innerHTML = '<img src="../image/eye-off.jpg" />';
+  }
 }
