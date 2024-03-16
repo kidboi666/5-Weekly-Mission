@@ -1,11 +1,12 @@
 import {
-  removeErrorMessage, 
   validateEmail, 
   users, 
+} from '../js/auth.js';
+
+import {
+  removeErrorMessage,
   togglePasswordVisibility
-} from '../common.js';
-
-
+} from '../js/uicontroller.js';
 
 /*email 유효성 검증*/
 
@@ -13,11 +14,10 @@ const emailInputEl = document.querySelector('.email-input');
 emailInputEl.addEventListener('focusout', validateEmail);
 emailInputEl.addEventListener('focus', removeErrorMessage);
 
-
 /*password 유효성 검증*/
 
-function validatePassword(event) {
-  const passwordInputEl = event.target;
+function validatePassword() {
+  const passwordInputEl = document.querySelector('.password-input');
   const passwordValue = passwordInputEl.value;
 
   const errorMessageEl = document.querySelector('.error-message-password');
@@ -34,13 +34,14 @@ const passwordInputEl = document.querySelector('.password-input');
 passwordInputEl.addEventListener('focusout', validatePassword);
 passwordInputEl.addEventListener('focus', removeErrorMessage);
 
-
-
 /*이메일: test@codeit.com 비밀번호: codeit101로 로그인 시, /folder 페이지로 이동
 이외의 로그인 시도의 경우, 에러 메세지 출력*/
 
 function handleFormSubmit(event) {
   event.preventDefault();
+
+  const emailInputEl = event.target;
+  const passwordInputEl = event.target;
 
   const emailValue = emailInputEl.value;
   const passwordValue = passwordInputEl.value;
@@ -50,10 +51,12 @@ function handleFormSubmit(event) {
 
   const user = users.find(user => user.email === emailValue && user.password === passwordValue);
 
-  errorMessageEl_email.textContent = user ? "" : "이메일 또는 비밀번호를 확인해주세요";
-  errorMessageEl_password.textContent = user ? "" : "이메일 또는 비밀번호를 확인해주세요";
+  errorMessageEl_email.textContent = user ? "" : "이메일을 확인해주세요";
+  errorMessageEl_password.textContent = user ? "" : "비밀번호를 확인해주세요";
 
-  if(useremail && userpassword) {
+  if(emailValue && passwordValue) {
+    errorMessageEl_email.textContent = "";
+    errorMessageEl_password.textContent = "";
     location.href = "./folder.html";
   }
 }
