@@ -12,7 +12,7 @@ import {
 
 const emailInputEl = document.querySelector('.email-input');
 emailInputEl.addEventListener('focusout', validateEmail);
-emailInputEl.addEventListener('focus', removeErrorMessage);
+emailInputEl.addEventListener('focus', () => removeErrorMessage('.error-message-email'));
 
 
 /*password 유효성 검증*/
@@ -34,7 +34,7 @@ function validatePassword() {
 
 const passwordInputEl = document.querySelector('.password-input');
 passwordInputEl.addEventListener('focusout', validatePassword);
-passwordInputEl.addEventListener('focus', removeErrorMessage);
+passwordInputEl.addEventListener('focus', () => removeErrorMessage('.error-message-password'));
 
 /*이메일: test@codeit.com 비밀번호: codeit101로 로그인 시, /folder 페이지로 이동
 이외의 로그인 시도의 경우, 에러 메세지 출력*/
