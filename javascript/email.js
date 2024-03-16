@@ -1,37 +1,39 @@
-export const loginId = document.querySelector('.signin-email')
-export const emailNone = document.querySelector('.email-content-none')
-export const emailCheck = document.querySelector('.email-content-check')
-export const emailFail = document.querySelector('.email-content-fail')
+export const loginId = document.querySelector('.signin-email');
+export const emailErr = document.querySelector('.email-err');
 
-/*
-export function errorMessageEmailReset() {
-  emailNone.classList.add("hide");
-  emailFail.classList.add("hide");
-  emailCheck.classList.add("hide");
-  loginId.classList.remove("input-err");
-} */
-
-
-export function emailResult (e) {
+export function emailSignIn (e) {
   if (loginId.value === "") {
-    emailNone.classList.remove("hide");
-    emailCheck.classList.add("hide");
-    emailFail.classList.add("hide");
+    emailErr.textContent = '이메일을 입력해 주세요.'
+    emailErr.classList.remove("hide");
     loginId.classList.add("input-err");
   } else if (loginId.value === "test@codeit.com") {
-    emailNone.classList.add("hide");
-    emailCheck.classList.add("hide");
-    emailFail.classList.add("hide");
+    emailErr.classList.add("hide");
     loginId.classList.remove("input-err");
   } else if (loginId.value.indexOf('@') == -1) {
-    emailNone.classList.add("hide");
-    emailCheck.classList.remove("hide");
-    emailFail.classList.add("hide");
+    emailErr.textContent = '올바른 이메일 주소가 아닙니다.'
+    emailErr.classList.remove("hide");
     loginId.classList.add("input-err");
   } else {
-    emailNone.classList.add("hide");
-    emailCheck.classList.add("hide");
-    emailFail.classList.add("hide");
+    emailErr.classList.add("hide");
     loginId.classList.remove("input-err");
-  } /* = errorMessageEmailReset() */
+  }
+};
+
+export function emailSignUp (e) {
+  if (loginId.value === "") {
+    emailErr.textContent = '이메일을 입력해 주세요.'
+    emailErr.classList.remove("hide");
+    loginId.classList.add("input-err");
+  } else if (loginId.value === "test@codeit.com") {
+    emailErr.textContent = '이미 사용 중인 이메일입니다.'
+    emailErr.classList.remove("hide");
+    loginId.classList.add("input-err");
+  } else if (loginId.value.indexOf('@') == -1) {
+    emailErr.textContent = '올바른 이메일 주소가 아닙니다.'
+    emailErr.classList.remove("hide");
+    loginId.classList.add("input-err");
+  } else {
+    emailErr.classList.add("hide");
+    loginId.classList.remove("input-err");
+  }
 };

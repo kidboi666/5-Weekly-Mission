@@ -1,22 +1,27 @@
-export const loginPwd = document.querySelector('.signin-password')
-export const passwordNone = document.querySelector('.password-content-none')
-export const passwordFail = document.querySelector('.password-content-fail')
+export const loginPwd = document.querySelector('.signin-password');
+export const loginPwdCheck = document.querySelector('.signin-password-check');
+export const passwordErrSignIn = document.querySelector('.password-err');
+export const passwordErrSignUp = document.querySelector('.password-signup-err');
+export const passwordErrSignUpCheck = document.querySelector('password-signup-fail');
 
-/*
-export function errorMessagePasswordReset() {
-  passwordNone.classList.add("hide");
-  passwordFail.classList.add("hide");
-  loginPwd.classList.remove("input-err");
-} */
-
-export function passwordResult (e) {
+export function passwordSignIn (e) {
   if (loginPwd.value === "") {
-    passwordNone.classList.remove("hide");
-    passwordFail.classList.add("hide");
+    passwordErrSignIn.textContent = '비밀번호를 입력해 주세요.';
+    passwordErrSignIn.classList.remove("hide");
     loginPwd.classList.add("input-err");
   } else {
-    passwordNone.classList.add("hide");
-    passwordFail.classList.add("hide");
+    passwordErrSignIn.classList.add("hide");
     loginPwd.classList.remove("input-err");
-  } /* = errorMessagePasswordReset() */
+  }
+};
+
+export function passwordSignUp (e) {
+  if (loginPwd.value === "" || /^\d+$/.test(loginPwd.value) || /^[a-zA-Z]+$/.test(loginPwd.value) || loginPwd.value.length < 8) {
+    passwordErrSignUp.textContent = '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.';
+    passwordErrSignUp.classList.remove("hide");
+    loginPwd.classList.add("input-err");
+  } else {
+    passwordErrSignUp.classList.add("hide");
+    loginPwd.classList.remove("input-err");
+  }
 };
