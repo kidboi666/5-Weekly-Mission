@@ -32,7 +32,11 @@ function loginCheck() {
 };
 
 emailInput.addEventListener('focusout', () => {
-    if (emailInput.value !== '') {
+    if (emailInput.value === '') {
+        emailError.innerText = '이메일을 입력해주세요';
+        emailInput.classList.add('error-border');
+    } 
+    else {
         emailInput.classList.remove('error-border');
         emailError.classList.add('hide');
         if (!emailCheck(emailInput.value)) {
@@ -40,9 +44,6 @@ emailInput.addEventListener('focusout', () => {
             emailError.classList.remove('hide');
             emailError.innerText = '이메일을 형식을 확인해주세요';
         }
-    } else {
-        emailError.innerText = '이메일을 입력해주세요';
-        emailInput.classList.add('error-border');
     }
 });
 
