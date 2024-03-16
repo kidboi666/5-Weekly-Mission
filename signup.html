@@ -25,20 +25,29 @@
         <form>
           <label>
             <h4>이메일</h4>
-            <input type="email">
+            <div class="email-input-group">
+              <input type="email" class="email-input">
+              <h6 class="email-input-message"></h6>
+            </div>
           </label>
           <label>
             <h4>비밀번호</h4>
-            <div class="sign-password-input">
-              <input type="password">
-              <img class="icon-eye" src="icon/eye-off.svg">
+            <div class="password-input-group">
+              <div class="password-wrappe">
+                <input type="password" class="password-input">
+                <img class="icon-eye password-eye" src="icon/eye-off.svg">
+              </div>
+              <h6 class="password-input-message password-message"></h6>
             </div>
           </label>
           <label>
             <h4>비밀번호 확인</h4>
-            <div class="sign-password-input">
-              <input type="password">
-              <img class="icon-eye" src="icon/eye-off.svg">
+            <div class="confirm-password">
+              <div class="password-wrappe">
+                <input type="password" class="confirm-password-input">
+                <img class="icon-eye confirm-eye" src="icon/eye-off.svg">
+              </div>
+              <h6 class="password-input-message confirm-password-message"></h6>
             </div>
           </label>
         </form>
@@ -53,5 +62,6 @@
       </div>
     </div>
   </section>
+  <script src="signup.js"></script>
 </body>
 </html> 
