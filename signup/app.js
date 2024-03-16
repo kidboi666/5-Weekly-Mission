@@ -11,9 +11,7 @@ import {
 /* 이메일 유효성 검사*/
 const emailInputEl = document.querySelector('.email-input');
 
-emailInputEl.addEventListener('focusout', (event) => {
-  validateEmail(); 
-
+emailInputEl.addEventListener('focusout', () => {
   const errorMessageEl = document.querySelector('.error-message-email');
   const emailValue = emailInputEl.value;
   const useremail = users.find(user => user.email === emailValue);
@@ -23,6 +21,7 @@ emailInputEl.addEventListener('focusout', (event) => {
     emailInputEl.classList.add('wrongsign');
     return false;
   } else {
+    validateEmail(); // 다른 유효성 검사 수행
     return true;
   }
 });
@@ -104,4 +103,4 @@ const passwordToggleBtn = document.querySelector('.password-eye-button');
 const confirmPasswordToggleBtn = document.querySelector('.confirm-password-eye-button');
 
 passwordToggleBtn.addEventListener('click', () => togglePasswordVisibility(passwordInput, passwordToggleBtn));
-confirmPasswordToggleBtn.addEventListener('click', () => togglePasswordVisibility(confirmPasswordInput, confirmPasswordToggleBtn));
+confirmPasswordToggleBtn.addEventListener('click', () => togglePasswordVisibility(confirmPasswordInput, confirmPasswordToggleBtn)); 

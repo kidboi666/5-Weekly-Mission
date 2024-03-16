@@ -1,6 +1,6 @@
 import {
   validateEmail, 
-  users, 
+  users
 } from '../js/auth.js';
 
 import {
@@ -14,19 +14,21 @@ const emailInputEl = document.querySelector('.email-input');
 emailInputEl.addEventListener('focusout', validateEmail);
 emailInputEl.addEventListener('focus', removeErrorMessage);
 
+
 /*password 유효성 검증*/
 
 function validatePassword() {
   const passwordInputEl = document.querySelector('.password-input');
   const passwordValue = passwordInputEl.value;
-
   const errorMessageEl = document.querySelector('.error-message-password');
 
   if(passwordValue === '') {
-    errorMessageEl.textContent = "비밀번호를 입력해주세요";
+    errorMessageEl.textContent = "비밀번호를 입력해주세요.";
     passwordInputEl.classList.add('wrongsign');
+    return false;
   } else {
     passwordInputEl.classList.remove('wrongsign');
+    return true;
   }
 }
 
@@ -40,8 +42,8 @@ passwordInputEl.addEventListener('focus', removeErrorMessage);
 function handleFormSubmit(event) {
   event.preventDefault();
 
-  const emailInputEl = event.target;
-  const passwordInputEl = event.target;
+  const emailInputEl = document.querySelector('.email-input');
+  const passwordInputEl = document.querySelector('.password-input');
 
   const emailValue = emailInputEl.value;
   const passwordValue = passwordInputEl.value;
@@ -54,7 +56,7 @@ function handleFormSubmit(event) {
   errorMessageEl_email.textContent = user ? "" : "이메일을 확인해주세요";
   errorMessageEl_password.textContent = user ? "" : "비밀번호를 확인해주세요";
 
-  if(emailValue && passwordValue) {
+  if(emailValue && passwordValue && user) {
     errorMessageEl_email.textContent = "";
     errorMessageEl_password.textContent = "";
     location.href = "./folder.html";
