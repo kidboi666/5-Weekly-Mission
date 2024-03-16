@@ -37,6 +37,7 @@
           <div class="form-group">
             <label class="form-group__label">이메일</label>
             <input class="form-group__email" type="email" />
+            <p class="form-group__error-message--email"></p>
           </div>
           <div class="form-group password-container">
             <label class="form-group__label">비밀번호</label>
@@ -44,13 +45,16 @@
             <button class="form-group__eye-button" type="button">
               <img src="../assets/images/eye-off.svg" />
             </button>
+            <p class="form-group__error-message--password"></p>
           </div>
           <div class="form-group password-container">
             <label class="form-group__label">비밀번호 확인</label>
-            <input class="form-group__password" type="password" />
+            <input class="form-group__password-confirm" type="password" />
             <button class="form-group__eye-button" type="button">
               <img src="../assets/images/eye-off.svg" />
             </button>
+            <!-- TODO : CSS 클래스이름 바꿔서 CSS,자바스크립트도 만들어야 함 -->
+            <p class="form-group__error-message--password-confirm"></p>
           </div>
         </div>
         <button class="form-group__signup-button" type="submit">
@@ -69,5 +73,6 @@
         </div>
       </div>
     </div>
+    <script src="./signup.js"></script>
   </body>
 </html>
