@@ -119,8 +119,9 @@ body{
   border: .125rem solid var(--Linkbrary-red, #FF5B56);
 }
 
-#auth-form__wrong-email,
-#auth-form__wrong-password{
+#auth-form__email-error,
+#auth-form__password-error,
+#auth-form__password-confirm-error{
   color: var(--Linkbrary-red, #FF5B56);
   font-family: Pretendard;
   font-size: .875rem;
@@ -129,7 +130,8 @@ body{
   line-height: normal;
   }
 
-.auth-form__submit-btn{
+  #auth-form__signin-btn,
+  #auth-form__signup-btn{
   display: flex;
   width: 25rem;
   padding: 1rem 1.25rem;
