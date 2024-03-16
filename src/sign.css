@@ -108,7 +108,9 @@ header {
 
 
 .error-message {
-  font-size: 1.4rem; 
+  display: none;
+  margin-top: -0.4rem;
+  font-size: 1.4rem;
   font-weight: 400;
   color: var(--red);
 }
