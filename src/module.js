@@ -1,6 +1,8 @@
 const INPUT_ERROR_CLASSNAME = "sign-input-error";
 const ERROR_MASSAGE_CLASSNAME = "error-message";
 const EMAIL_PATTERN = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+const PW_LETTER = /[a-zA-Z]/;
+const PW_NUM = /\d/;
 
 export function inputError(el, msg) {
     el.input.className += `${INPUT_ERROR_CLASSNAME}`;
@@ -15,7 +17,15 @@ export function removeInputError(el) {
 }
 
 export function emailPattern(email) {
-    return new RegExp(EMAIL_PATTERN).text(email);
+    return new RegExp(EMAIL_PATTERN).test(email);
+}
+
+export function pwLetter(pw) {
+    return PW_LETTER.test(pw);
+}
+
+export function pwNum(pw) {
+    return PW_NUM.test(pw)
 }
 
 export const USER_INFO = {

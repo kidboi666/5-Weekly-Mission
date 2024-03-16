@@ -33,9 +33,18 @@ function validatePw(password) {
     removeInputError({input:pwInput, errorMsg: pwErrorMsg});
 }
 
-//로그인 시도
-const userInfo = emailInput === USER_INFO.email && pwInput === USER_INFO.password
-if(userInfo) {
-    location.href = "/foler";
+const signForm = document.querySelector("#sign-form");
+signForm.addEventListener("submit", submitForm);
+function submitForm(event) {
+  event.preventDefault();
+
+  const testUser =
+    emailInput.value === USER_INFO.email && pwInput.value === USER_INFO.password;
+
+  if (testUser) {
+    location.href = "/folder";
     return;
+  }
+  inputError({ input: emailInput, errorMsg: emailErrorMsg }, "이메일을 확인해주세요.");
+  inputError({ input: passwordInput, errorMsg: pwErrorMsg }, "비밀번호를 확인해주세요.");
 }
