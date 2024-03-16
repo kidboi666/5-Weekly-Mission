@@ -63,7 +63,9 @@ body {
 
 .input {
   margin-top: 12px;
-  padding: 18px 15px;
+  padding: 18px 0;
+  padding-left: 15px;
+  padding-right: 40px;
   border: 1px solid var(--gray-CCD5E3);
   border-radius: 8px;
   background-color: var(--white-FFF);
@@ -131,6 +133,14 @@ body {
   color: #ff5b56;
   font-size: 14px;
   line-height: normal;
+}
+
+#eye-on {
+  display: inline;
+}
+
+#eye-off {
+  display: none;
 }
 
 @media (max-width: 767px) {
