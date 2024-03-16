@@ -5,6 +5,8 @@ const checkPwd = document.querySelector('.check-pwd');
 const eyeIcon = document.querySelector('.pwd-eye-off');
 const emailError = document.querySelector('.email-error');
 const pwdError = document.querySelector('.pwd-error');
+const VALID_EMAIL = 'test@codeit.com';
+const VALID_PASSWORD = 'codeit101';
 
 
 function emailCheck(emailAddress) {		
@@ -17,7 +19,7 @@ eyeIcon.addEventListener('click', (e) => {
 });
 
 function loginCheck() {
-    if (emailInput.value === 'test@codeit.com' && pwdInput.value === 'codeit101') {
+    if (emailInput.value === VALID_EMAIL && pwdInput.value === VALID_PASSWORD) {
         location.href = 'folder.html';
     } else {
         emailError.classList.remove('hide');
