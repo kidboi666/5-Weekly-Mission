@@ -174,8 +174,9 @@ input:focus {
   position: relative;
 }
 
-.pwd-input-check {
+.pwd-input-check-wrapper {
   margin-top: 24px;
+  position: relative;
 }
 
 .pwd-input-check p {

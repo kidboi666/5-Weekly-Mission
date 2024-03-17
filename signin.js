@@ -5,6 +5,7 @@ const checkPwd = document.querySelector('.check-pwd');
 const eyeIcon = document.querySelector('.pwd-eye-off');
 const emailError = document.querySelector('.email-error');
 const pwdError = document.querySelector('.pwd-error');
+const eyeOnoff = document.getElementById("eyeOnOff");
 const VALID_EMAIL = 'test@codeit.com';
 const VALID_PASSWORD = 'codeit101';
 
@@ -13,10 +14,6 @@ function emailCheck(emailAddress) {
     const email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
     return email_regex.test(emailAddress);
 }
-
-eyeIcon.addEventListener('click', (e) => {
-    e.preventDefault();
-});
 
 function loginCheck() {
     if (emailInput.value === VALID_EMAIL && pwdInput.value === VALID_PASSWORD) {
@@ -35,6 +32,7 @@ emailInput.addEventListener('focusout', () => {
     if (emailInput.value === '') {
         emailError.innerText = '이메일을 입력해주세요';
         emailInput.classList.add('error-border');
+        emailError.classList.remove('hide');
     } 
     else {
         emailInput.classList.remove('error-border');
@@ -47,20 +45,20 @@ emailInput.addEventListener('focusout', () => {
     }
 });
 
-emailInput.addEventListener('focusin', () => {
-    emailError.classList.add('hide');
-});
-
 pwdInput.addEventListener('focusout', () => {
-    if(pwdInput.value !== '') {
-        pwdError.classList.add('hide'); 
-        pwdInput.classList.remove('error-border');
-    }
-    else {
+    if(pwdInput.value === '') {
         pwdError.classList.remove('hide'); 
         pwdInput.classList.add('error-border');
         pwdError.innerText = '비밀번호를 입력해주세요';
     }
+    else {
+        pwdError.classList.add('hide'); 
+        pwdInput.classList.remove('error-border');
+    }
+});
+
+emailInput.addEventListener('focusin', () => {
+    emailError.classList.add('hide');
 });
 
 pwdInput.addEventListener('focusin', () => {
@@ -77,14 +75,16 @@ pwdInput.addEventListener('keyup', (e) => {
 
 eyeIcon.addEventListener('mousedown', () => {
     pwdInput.setAttribute('type','text');
-    const eyeOnoff = document.getElementById("eyeOnOff");
     eyeOnoff.setAttribute("src","images/eye-on.svg");
 });
 
 eyeIcon.addEventListener('mouseup', () => {
     pwdInput.setAttribute('type','password');
-    const eyeOnoff = document.getElementById("eyeOnOff");
     eyeOnoff.setAttribute("src","images/eye-off.svg");
+});
+
+eyeIcon.addEventListener('click', (e) => {
+    e.preventDefault();
 });
 
 loginButton.addEventListener('click', () => {
