@@ -1,4 +1,5 @@
 //필요한 함수 및 변수 정의(임포트 하지 않고 내부적인 사용만 할 것)
+
 const _auth = {
   // 다루게 될 DOM 객체들
   emailInput: document.getElementById("emailInput"), // 이메일 입력
@@ -26,8 +27,8 @@ const _auth = {
   isEmpty: function (inputField) {
     return !inputField.value;
   }, // 빈 영역인지 판단
-  notEmail: function () {
-    return !/\S+@\S+\.\S+/.test(this.emailInput.value);
+  isEmail: function () {
+    return /\S+@\S+\.\S+/.test(this.emailInput.value);
   }, //이메일 형식이 맞는지 판단
 
   isEmailWritten: function () {
@@ -42,7 +43,7 @@ const _auth = {
     return true;
   }, //이메일 작성했는지 검사
   commonEmailForm: function () {
-    if (this.notEmail()) {
+    if (!this.isEmail()) {
       // 이메일 형식에 맞지 않은 경우
       this.toggleErr(
         this.emailInput,
