@@ -1,173 +1,214 @@
 <!DOCTYPE html>
 
 <html lang="ko">
+  <head>
+    <title>Linkbrary</title>
+    <link href="css/reset.css" rel="stylesheet" />
 
-<head>
-	<title>Linkbrary</title>
-	<link href="css/reset.css" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
 
-	<link rel="stylesheet" as="style" crossorigin
-        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link href="css/nav.css" rel="stylesheet" />
+    <link href="css/global.css" rel="stylesheet" />
 
-	<link href="css/nav.css" rel="stylesheet">
-	<link href="css/global.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요."
+    />
+    <meta name="keywords" content="도서관, 책, 정보, 데이터베이스" />
+    <meta name="author" content="SeungRyeolBaek" />
+    <meta property="og:title" content="Linkbrary" />
+    <meta
+      property="og:description"
+      content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요."
+    />
+    <meta
+      property="og:image"
+      content="https://seungryeolbaek-sprint-weekly.netlify.app/images/library.png"
+    />
+    <meta
+      property="og:url"
+      content="https://seungryeolbaek-sprint-weekly.netlify.app/"
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Linkbrary" />
+    <meta
+      name="twitter:description"
+      content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요."
+    />
+    <meta
+      name="twitter:image"
+      content="https://seungryeolbaek-sprint-weekly.netlify.app/images/library.png"
+    />
+    <meta
+      property="twitter:url"
+      content="https://seungryeolbaek-sprint-weekly.netlify.app/"
+    />
+  </head>
 
-	<meta name="description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요.">
-	<meta name="keywords" content="도서관, 책, 정보, 데이터베이스">
-	<meta name="author" content="SeungRyeolBaek">
-	<meta property="og:title" content="Linkbrary" />
-	<meta property="og:description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요." />
-	<meta property="og:image" content="https://seungryeolbaek-sprint-weekly.netlify.app/images/library.png" />
-	<meta property="og:url" content="https://seungryeolbaek-sprint-weekly.netlify.app/" />
-	<meta property="og:type" content="website" />
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="Linkbrary">
-	<meta name="twitter:description" content="세상의 모든 정보를 쉽게 저장하고 관리해 보세요.">
-	<meta name="twitter:image" content="https://seungryeolbaek-sprint-weekly.netlify.app/images/library.png">
-	<meta property="twitter:url" content="https://seungryeolbaek-sprint-weekly.netlify.app/" />
-</head>
+  <link href="css/nav.css" rel="stylesheet" />
 
-<link href="css/nav.css" rel="stylesheet">
+  <body>
+    <nav class="nav">
+      <div class="nav__contents">
+        <a class="nav__logo" href="/">
+          <img src="images/Linkbrary.svg" />
+        </a>
+        <a class="nav__login-button" href="login.html">
+          <p class="nav__login-label">로그인</p>
+        </a>
+      </div>
+    </nav>
 
-<body>
-	<nav class="nav">
-		<div class="nav__contents">
-			<a class="nav__logo" href="/">
-				<img src="images/Linkbrary.svg">
-			</a>
-			<a class="nav__login-button" href='login.html'>
-				<p class="nav__login-label">로그인</p>
-			</a>
-		</div>
-	</nav>
+    <!-- contents-01 -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Abel"
+      rel="stylesheet"
+    />
+    <link href="css/index.css" rel="stylesheet" />
+    <main class="landing-section--main">
+      <div class="landing-section__text--main">
+        <p class="first-line">
+          <span class="colored-text-1">세상의 모든 정보</span>를
+        </p>
+        <p class="second-line">쉽게 저장하고 관리해 보세요</p>
+      </div>
+      <a class="landing-section__button--main" href="signup.html">
+        <p>링크 추가하기</p>
+      </a>
+      <div class="landing-section__image--main">
+        <img src="images/image_25.png" />
+      </div>
+    </main>
 
+    <!-- contents-02 -->
+    <section class="landing-section--first">
+      <div class="landing-section__contents--first">
+        <div class="landing-section__text-area--large">
+          <div class="landing-section__text--large">
+            <span class="colored-text-2">원하는 링크</span>를 저장하세요
+          </div>
+          <div class="landing-section__text--small">
+            나중에 읽고 싶은 글, 다시 보고 싶은 영상,
+            <div class="enter-tablet enter-pc"></div>
+            사고 싶은 옷,
+            <div class="enter-mobile"></div>
+            기억하고 싶은 모든 것을
+            <div class="enter-tablet enter-pc"></div>
+            한 공간에 저장하세요.
+          </div>
+        </div>
+        <div class="landing-section__image">
+          <img src="images/_img1_landing.svg" />
+        </div>
+      </div>
+    </section>
 
-	<!-- contents-01 -->
-	<link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'>
-	<link href="css/index.css" rel="stylesheet">
-	<main class="landing-section--main">
-		<div class="landing-section__text--main">
-			<p class="first-line"><span class="colored-text-1">세상의 모든 정보</span>를</p>
-			<p class="second-line">쉽게 저장하고 관리해 보세요</p>
-		</div>
-		<a class="landing-section__button--main" href = 'signup.html'>
-			<p>링크 추가하기</p>
-		</a>
-		<div class="landing-section__image--main">
-			<img src="images/image_25.png">
-		</div>
-	</main>
+    <!-- contents-03 -->
+    <section class="landing-section">
+      <div class="landing-section__contents arrange-4-mobile">
+        <div class="landing-section__image">
+          <img src="images/_img2_landing.svg" />
+        </div>
+        <div class="landing-section__text-area--medium">
+          <div class="landing-section__text--large">
+            링크를 폴더로 <span class="colored-text-3">관리</span>하세요
+          </div>
+          <div class="landing-section__text--small">
+            나만의 폴더를 무제한으로 만들고
+            <div class="enter-tablet enter-pc"></div>
+            다양하게 활용할 수
+            <div class="enter-mobile"></div>
+            있습니다.
+            <div class="enter-tablet enter-pc"></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-	<!-- contents-02 -->
-	<section class="landing-section--first">
-		<div class="landing-section__contents--first">
-			<div class="landing-section__text-area--large">
-				<div class="landing-section__text--large">
-					<span class="colored-text-2">원하는 링크</span>를 저장하세요
-				</div>
-				<div class="landing-section__text--small">
-					나중에 읽고 싶은 글, 다시 보고 싶은 영상,<div class="enter-tablet enter-pc"></div>
-					사고 싶은 옷,<div class="enter-mobile"></div> 기억하고 싶은 모든 것을<div class="enter-tablet enter-pc"></div>
-					한 공간에 저장하세요.
-				</div>
-			</div>
-			<div class="landing-section__image">
-				<img src="images/_img1_landing.svg">
-			</div>
-		</div>
-	</section>
+    <!-- contents-04 -->
+    <section class="landing-section">
+      <div class="landing-section__contents">
+        <div class="landing-section__text-area--large">
+          <div class="landing-section__text--large">
+            저장한 링크를 <span class="colored-text-4">공유</span>해 보세요
+          </div>
+          <div class="landing-section__text--small">
+            여러 링크를 폴더에 담고 공유할 수
+            <div class="enter-tablet"></div>
+            있습니다.
+            <div class="enter-pc"></div>
+            가족,
+            <div class="enter-mobile"></div>
+            친구, 동료들에게 쉽고
+            <div class="enter-tablet"></div>
+            빠르게 링크를
+            <div class="enter-pc"></div>
+            공유해 보세요.
+          </div>
+        </div>
+        <div class="landing-section__image">
+          <img src="images/_img3_landing.svg" />
+        </div>
+      </div>
+    </section>
 
-	<!-- contents-03 -->
-	<section class="landing-section">
-		<div class="landing-section__contents arrange-4-mobile">
-			<div class="landing-section__image">
-				<img src="images/_img2_landing.svg">
-			</div>
-			<div class="landing-section__text-area--medium">
-				<div class="landing-section__text--large">
-					링크를 폴더로 <span class="colored-text-3">관리</span>하세요
-				</div>
-				<div class="landing-section__text--small">
-					나만의 폴더를 무제한으로 만들고<div class="enter-tablet enter-pc"></div>
-					다양하게 활용할 수<div class="enter-mobile"></div> 있습니다.<div class="enter-tablet enter-pc"></div>
-				</div>
-			</div>
-		</div>
-	</section>
+    <!-- contents-05 -->
+    <section class="landing-section">
+      <div class="landing-section__contents arrange-4-mobile">
+        <div class="landing-section__image">
+          <img src="images/_img4_landing.svg" />
+        </div>
+        <div class="landing-section__text-area--small">
+          <div class="landing-section__text--large">
+            저장한 링크를 <span class="colored-text-5">검색</span>해 보세요
+          </div>
+          <div class="landing-section__text--small">
+            중요한 정보들을 검색으로 쉽게
+            <div class="enter-tablet"></div>
+            찾아보세요.
+          </div>
+        </div>
+      </div>
+    </section>
 
-	<!-- contents-04 -->
-	<section class="landing-section">
-		<div class="landing-section__contents">
-			<div class="landing-section__text-area--large">
-				<div class="landing-section__text--large">
-					저장한 링크를 <span class="colored-text-4">공유</span>해 보세요
-				</div>
-				<div class="landing-section__text--small">
-					여러 링크를 폴더에 담고 공유할 수 <div class="enter-tablet"></div>있습니다.<div class="enter-pc"></div>
-					가족,<div class="enter-mobile"></div> 친구, 동료들에게 쉽고<div class="enter-tablet"></div> 빠르게 링크를<div
-						class="enter-pc"></div>
-					공유해 보세요.
-				</div>
-			</div>
-			<div class="landing-section__image">
-				<img src="images/_img3_landing.svg">
-			</div>
-		</div>
-	</section>
+    <link href="css/footer.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Acme"
+      rel="stylesheet"
+    />
 
-	<!-- contents-05 -->
-	<section class="landing-section">
-		<div class="landing-section__contents arrange-4-mobile">
-			<div class="landing-section__image">
-				<img src="images/_img4_landing.svg">
-			</div>
-			<div class="landing-section__text-area--small">
-				<div class="landing-section__text--large">
-					저장한 링크를 <span class="colored-text-5">검색</span>해 보세요
-				</div>
-				<div class="landing-section__text--small">
-					중요한 정보들을 검색으로 쉽게<div class="enter-tablet"></div> 찾아보세요.
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-	<link href="css/footer.css" rel="stylesheet">
-	<link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
-
-	<footer class="footer">
-		<div class="footer__frame">
-			<div class="footer__contents">
-
-				<a class="footer__codeit">©codeit - 2023</a>
-				<div class="footer__linkbox">
-					<a href="policy.html" class="footer__policy">
-						Privacy Policy
-					</a>
-					<a href="faq.html" class="footer__FAQ">
-						FAQ
-					</a>
-				</div>
-				<div class="footer__icon-box">
-					<a href="https://www.facebook.com/" target="_blank">
-						<img src="images/facebook_logo.svg">
-					</a>
-					<a href="https://twitter.com/?lang=ko" target="_blank">
-						<img src="images/twitter_logo.svg">
-					</a>
-					<a href="https://www.youtube.com/" target="_blank">
-						<img src="images/youtube_logo.svg">
-					</a>
-					<a href="https://www.instagram.com/" target="_blank">
-						<img src="images/instagram_logo.svg">
-					</a>
-				</div>
-			</div>
-		</div>
-	</footer>
-</body>
-
+    <footer class="footer">
+      <div class="footer__frame">
+        <div class="footer__contents">
+          <a class="footer__codeit">©codeit - 2023</a>
+          <div class="footer__linkbox">
+            <a href="policy.html" class="footer__policy"> Privacy Policy </a>
+            <a href="faq.html" class="footer__FAQ"> FAQ </a>
+          </div>
+          <div class="footer__icon-box">
+            <a href="https://www.facebook.com/" target="_blank">
+              <img src="images/facebook_logo.svg" />
+            </a>
+            <a href="https://twitter.com/?lang=ko" target="_blank">
+              <img src="images/twitter_logo.svg" />
+            </a>
+            <a href="https://www.youtube.com/" target="_blank">
+              <img src="images/youtube_logo.svg" />
+            </a>
+            <a href="https://www.instagram.com/" target="_blank">
+              <img src="images/instagram_logo.svg" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
