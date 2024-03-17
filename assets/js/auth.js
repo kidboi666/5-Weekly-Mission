@@ -22,52 +22,47 @@ function removeError(target) {
   error.textContent = "";
 }
 
-function validateEmail($email) {
-  const email = $email.value;
-  const isSignup = $email.closest("#signupForm");
+function validate({ $email, $password, $passwordConfirm }) {
   const result = { ok: true };
-  if (email === "") {
-    result.ok = false;
-    result.email = "이메일을 입력해 주세요.";
-    return result;
-  }
-  if (!checkEmailPattern(email)) {
-    result.ok = false;
-    result.email = "올바른 이메일 주소가 아닙니다.";
-    return result;
-  }
-  if (isSignup && email === "test@codeit.com") {
-    result.ok = false;
-    result.email = "이미 사용 중인 이메일입니다.";
-    return result;
-  }
-  result.ok = true;
-  result.email && delete result.email;
-  return result;
-}
+  const email = $email && $email.value;
+  const password = $password && $password.value;
+  const passwordConfirm = $passwordConfirm && $passwordConfirm.value;
+  const isSignup = document.querySelector("#signupForm");
 
-function validatePassword($password) {
-  const password = $password.value;
-  const isSignup = $password.closest("#signupForm");
-  const result = { ok: true };
-  if (password === "") {
-    result.ok = false;
-    result.password = "비밀번호를 입력해 주세요.";
-    return result;
+  if ($email) {
+    if (email === "") {
+      result.ok = false;
+      result.email = "이메일을 입력해 주세요.";
+    } else if (!checkEmailPattern(email)) {
+      result.ok = false;
+      result.email = "올바른 이메일 주소가 아닙니다.";
+    } else if (isSignup && email === "test@codeit.com") {
+      result.ok = false;
+      result.email = "이미 사용 중인 이메일입니다.";
+    }
   }
-  if (isSignup && !checkPasswordPattern(password)) {
-    result.ok = false;
-    result.password = "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.";
-    return result;
+
+  if ($password) {
+    if (password === "") {
+      result.ok = false;
+      result.password = "비밀번호를 입력해 주세요.";
+    } else if (isSignup && !checkPasswordPattern(password)) {
+      result.ok = false;
+      result.password = "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.";
+    }
   }
-  result.ok = true;
-  result.password && delete result.password;
+
+  if ($passwordConfirm && passwordConfirm !== password) {
+    result.ok = false;
+    result.passwordConfirm = "비밀번호가 일치하지 않아요.";
+  }
+
   return result;
 }
 
 function handleEmail(event) {
   const $email = event.target;
-  const validated = validateEmail($email);
+  const validated = validate({ $email });
   if (!validated.ok) {
     createError($email, validated.email);
   } else {
@@ -77,7 +72,7 @@ function handleEmail(event) {
 
 function handlePassword(event) {
   const $password = event.target;
-  const validated = validatePassword($password);
+  const validated = validate({ $password });
   if (!validated.ok) {
     createError($password, validated.password);
   } else {
@@ -103,12 +98,16 @@ function handleLogin(event) {
   const adminPassword = "codeit101";
   const $email = event.target.email;
   const $password = event.target.password;
-  if ($email.value === adminId && $password.value === adminPassword) {
+  const validated = validate({ $email, $password });
+  if (!validated.ok) {
+    validated.email && createError($email, validated.email);
+    validated.password && createError($password, validated.password);
+  } else if ($email.value === adminId && $password.value === adminPassword) {
     location.assign("/folder");
-    return;
+  } else {
+    createError($email, "이메일을 확인해 주세요.");
+    createError($password, "비밀번호를 확인해 주세요.");
   }
-  createError($email, "이메일을 확인해 주세요.");
-  createError($password, "비밀번호를 확인해 주세요.");
 }
 
 function handleSignup(event) {
@@ -116,22 +115,12 @@ function handleSignup(event) {
   const $email = event.target.email;
   const $password = event.target.password;
   const $passwordConfirm = event.target.passwordConfirm;
-  const validatedEmail = validateEmail($email);
-  const validatedPassword = validatePassword($password);
-  if (!validatedEmail.ok) {
-    createError($email, validatedEmail.email);
-  }
-  if (!validatedPassword.ok) {
-    createError($password, validatedPassword.password);
-  }
-  if ($passwordConfirm.value !== $password.value) {
-    createError($passwordConfirm, "비밀번호가 일치하지 않아요.");
-  }
-  if (
-    validatedEmail.ok &&
-    validatedPassword.ok &&
-    $passwordConfirm.value === $password.value
-  ) {
+  const validated = validate({ $email, $password, $passwordConfirm });
+  if (!validated.ok) {
+    validated.email && createError($email, validated.email);
+    validated.password && createError($password, validated.password);
+    validated.passwordConfirm && createError($passwordConfirm, validated.passwordConfirm);
+  } else {
     location.assign("/folder");
   }
 }
