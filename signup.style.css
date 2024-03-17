@@ -87,6 +87,9 @@ body {
   align-items: flex-start;
   gap: 12px;
 }
+.password-section {
+  position: relative;
+}
 .error {
   display: none;
 }
@@ -102,6 +105,12 @@ body {
   border-radius: 8px;
   border: 1px solid rgba(204, 213, 227, 1);
   padding: 18px 15px;
+}
+i {
+  position: absolute;
+  left: 90%;
+  top: 45%;
+  z-index: 1;
 }
 .user-input.error-input {
   border: 1px solid rgba(255, 91, 86, 1);

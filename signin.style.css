@@ -95,7 +95,7 @@ body {
   align-items: flex-start;
   gap: 12px;
 }
-#password-section {
+.password-section {
   position: relative;
 }
 .error {

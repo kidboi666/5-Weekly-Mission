@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $("#password-section i").on("click", function () {
+  $(".password-section i").on("click", function () {
     $("input").toggleClass("active");
     if ($("input").hasClass("active")) {
       $(this)
