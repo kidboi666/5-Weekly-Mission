@@ -23,19 +23,32 @@
           <div class="sign-input-box">
             <label for="email" class="email">이메일</label>
             <input id="email" name="email" />
+            <div class="error-email"></div>
           </div>
           <div class="sign-input-box box-password">
             <label for="password" class="password">비밀번호</label>
-            <input class="password-input" name="password" type="password" />
+            <input
+              class="password-input password-first"
+              name="password"
+              type="password"
+            />
+            <div class="error-password"></div>
             <button class="eye-button" type="button">
-              <img src="./img/eye-off.svg" />
+              <img src="./img/eye-off.svg" class="eye-off" />
+              <img src="./img/eye-on.svg" class="eye-on hidden-eye-btn" />
             </button>
           </div>
           <div class="sign-input-box box-password">
             <label for="password" class="password">비밀번호 확인</label>
-            <input class="password-input" name="password" type="password" />
-            <button class="eye-button" type="button">
-              <img src="./img/eye-off.svg" />
+            <input
+              class="password-input password-check"
+              name="password"
+              type="password"
+            />
+            <div class="error-password-check"></div>
+            <button class="eye-button-check" type="button">
+              <img src="./img/eye-off.svg" class="eye-off" />
+              <img src="./img/eye-on.svg" class="eye-on hidden-eye-btn" />
             </button>
           </div>
         </div>
@@ -53,5 +66,6 @@
         </div>
       </div>
     </div>
+    <script src="./js/signup.js"></script>
   </body>
 </html>
