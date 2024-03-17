@@ -139,10 +139,12 @@ repeatToggle.addEventListener('click', toggleRepeat)
 // click
 function submit() {
   // id, pwd 가 유효한 경우 '/folder' 로 이동
-    window.location.href = '/folder';
-    id.value='';
-    pwd.value='';
-    repeat.value='';
+    if (id.value !== '' && id.value !== adminAccount.id && emailRegExp.test(id.value) === true && pwd.value !== '' && passwordRegExp.test(pwd.value) === true && pwd.value === repeat.value) {
+      window.location.href = '/folder';
+      id.value='';
+      pwd.value='';
+      repeat.value='';
+    }
 }
 
 // keypress
