@@ -1,9 +1,5 @@
-const signInEmailInput = document.querySelector('.signin-email-input');
-const signInPasswordInput = document.querySelector('.signin-password-input');
-const emailErrorMsg = document.querySelector('.email-error-msg');
-const passwordErrorMsg = document.querySelector('.password-error-msg');
-const signInLogin = document.querySelector('.signin-login');
-const passwordImg = document.querySelector('.password-img');
+import { MEMBER_ID, MEMBER_PASSWORD } from "./member.js";
+import { signInEmailInput, signInPasswordInput, emailErrorMsg, passwordErrorMsg, signInLogin, passwordImg } from "./tags.js";
 
 function checkEmailBlank() {
     const signInEmailInputValue = signInEmailInput.value;
@@ -11,11 +7,12 @@ function checkEmailBlank() {
     if (!signInEmailInputValue) {
         emailErrorMsg.textContent = "이메일을 입력해주세요.";
         signInEmailInput.style.border = "1px solid red";
-    }
+    } 
 }
 
 function checkEmail(emailInput) {
     const emailRegex = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+    
     if (!emailRegex.test(emailInput)) {
         return false;
     } else {
@@ -47,13 +44,11 @@ function checkPasswordBlank() {
     }
 }
 
-function checkMember() {
+function checkMember(e) {
     const signInEmailInputValue = signInEmailInput.value;
     const signInPasswordInputValue = signInPasswordInput.value;
-    const memberId = "test@codeit.com";
-    const memberPassword = "codeit101";
 
-    if (signInEmailInputValue === memberId && signInPasswordInputValue === memberPassword) {
+    if (signInEmailInputValue === MEMBER_ID && signInPasswordInputValue === MEMBER_PASSWORD) {
         window.location.href = '/folder';
     } else {
         emailErrorMsg.textContent = "이메일을 확인해주세요.";
@@ -64,10 +59,12 @@ function checkMember() {
 }
 
 function passwordToggle() {
-    if (passwordImg.getAttribute('src') === "./img/hidden.svg") {
+    if (passwordImg.getAttribute('alt') === "closed-eye") {
+        passwordImg.setAttribute('alt', "opened-eye");
         passwordImg.setAttribute('src', "./img/unhidden.svg");
         signInPasswordInput.setAttribute('type', 'text');
-    } else {
+    } else if (passwordImg.getAttribute('alt') === "opened-eye") {
+        passwordImg.setAttribute('alt', "closed-eye");
         passwordImg.setAttribute('src', "./img/hidden.svg");
         signInPasswordInput.setAttribute('type', 'password');
     }

@@ -323,6 +323,21 @@ a.navbar-login {
     line-height: normal;
     cursor: pointer;
 }
+.signup-btn {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    padding: 16px 20px;
+    border-radius: 8px;
+    background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
+    color: var(--Grey-Light, #F5F5F5);
+    font-family: Pretendard;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    cursor: pointer;
+}
 
 .signin-social-login {
     padding: 12px 24px;
@@ -341,7 +356,25 @@ a.navbar-login {
     color: red;
 }
 
+.signup-email-error-msg {
+    margin-top: 10px;
+    font-size: 14px;
+    color: red;
+}
+
+.signup-password-error-msg {
+    margin-top: 10px;
+    font-size: 14px;
+    color: red;
+}
+
 .password-error-msg {
+    margin-top: 10px;
+    font-size: 14px;
+    color: red;
+}
+
+.password-check-error-msg {
     margin-top: 10px;
     font-size: 14px;
     color: red;

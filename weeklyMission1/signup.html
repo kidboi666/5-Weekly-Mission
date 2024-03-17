@@ -21,25 +21,26 @@
         </div>
         <div class="signin-email">
             <p>이메일</p>
-            <input type="email" placeholder="codeit@codeit.com">
-            <div class="error-msg"></div>
+            <input class="signup-email-input" type="email" placeholder="codeit@codeit.com">
+            <div class="signup-email-error-msg"></div>
         </div>
         <div class="signin-password">
             <p>비밀번호</p>
-            <input id="signInPw" type="password" placeholder="password">
-            <img src="./img/unhidden.svg" alt="opened eye">
-            <div class="error-msg"></div>
+            <input class="signup-password-input" id="signInPw" type="password" placeholder="password">
+            <img src="./img/hidden.svg" class="password-img" alt="closed-eye">
+            <div class="signup-password-error-msg"></div>
         </div>
         <div class="signin-password">
             <p>비밀번호확인</p>
-            <input id="signInPw" type="password" placeholder="password">
-            <img src="./img/unhidden.svg" alt="opened eye">
+            <input class="signup-password-check-input" id="signInPw" type="password" placeholder="password">
+            <img src="./img/hidden.svg" class="password-img-check" alt="closed-eye-second">
+            <div class="password-check-error-msg"></div>
         </div>
-        <a href="/">
-            <div class="signin-login">
+        <!-- <a href="/"> -->
+            <div class="signup-btn">
                 회원가입
             </div>
-        </a>
+        <!-- </a> -->
         <div class="signin-social-login">
             <p>다른 방식으로 가입하기</p>
             <div class="signin-social-login-icons">
@@ -58,5 +59,7 @@
             </div>
         </div>
     </div>
+
+    <script type="module" src="signup.js"></script>
 </body>
 </html>
