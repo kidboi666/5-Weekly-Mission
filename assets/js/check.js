@@ -1,4 +1,9 @@
-import { pwErrorMessage, inputEmail, emailErrorMessage, inputPassword } from '/assets/js/login.js';
+import { 
+  pwErrorMessage, 
+  inputEmail, 
+  emailErrorMessage, 
+  inputPassword 
+} from '/assets/js/login.js';
 export {
   textCheck,
   textCheckPw,

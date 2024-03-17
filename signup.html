@@ -42,8 +42,8 @@
           <label class="sign-label" for="input-pw-confirm">비밀번호 확인</label>
           <div class="sign-pw">
             <input id="input-pw-confirm" class="sign-input" type="password" name="passwordConfirm" />
-            <button class="sign-pw__eye-btn" type="button">  
-              <img class="eye-change" src="/assets/img/svg/eye-off.svg" alt="비밀번호 감추기 버튼" />
+            <button id="confirm-btn" class="sign-pw__eye-btn" type="button">  
+              <img id="confirm-eye-change" class="eye-change" src="/assets/img/svg/eye-off.svg" alt="비밀번호 감추기 버튼" />
             </button>
           </div>
           <div class="pw-confirm-error-message"></div>
@@ -70,7 +70,7 @@
   </div>
 
   <script type="module" src="/assets/js/join.js"></script>
-  <!-- <script type="module" src="/assets/js/check.js"></script> -->
   <script type="module" src="/assets/js/joinCheck.js"></script>
+  <script type="module" src="/assets/js/eye.js"></script>
 </body>
 </html> 
