@@ -19,15 +19,15 @@
         <div class="input_container">
             <div class="input_box">
                 <label for="email">이메일</label>
-                <input type="email" id="email" placeholder="이메일을 입력하세요">
-                <p class="error_msg" id="email_error">이메일을 입력해 주세요.</p>
+                <input type="email" id="email" placeholder="이메일을 입력하세요" autofocus>
+                <p class="error_msg" id="email_error"></p>
             </div>
         </div>
         <div class="input_container">
             <div class="input_box">
                 <label for="password">비밀번호</label>
                 <input type="password" id="password" placeholder="비밀번호를 입력하세요">
-                <p class="error_msg" id="password_error">비밀번호를 입력해 주세요.</p>
+                <p class="error_msg" id="password_error"></p>
                 <button class="eye_button" id="eye_toggle" type="button"></button>
             </div>
         </div>
@@ -35,7 +35,7 @@
             <div class="input_box">
                 <label for="password">비밀번호 확인</label>
                 <input type="password" id="passwordCheck" placeholder="비밀번호를 입력하세요">
-                <p class="error_msg" id="passwordCheck_error">비밀번호를 다시 입력해 주세요.</p>
+                <p class="error_msg" id="passwordCheck_error"></p>
                 <button class="eye_button" id="eye_toggle2" type="button"></button>
             </div>
         </div>
@@ -60,6 +60,6 @@
             </div>
         </div>
     </main>
-    <script src="signup.js"></script>
+    <script type="module" src="signup.js"></script>
 </body>
 </html>
