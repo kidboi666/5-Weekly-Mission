@@ -84,19 +84,56 @@ main {
   position: relative;
 }
 
-.password .eye-off {
+.nonEmail,
+.invalidEmail,
+.isEmail,
+.invalidPassword,
+.invalidConfirmPassword {
+  color: var(--Linkbrary-red);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.invalidConfirmPassword {
+  margin-top: 10px;
+}
+
+.errNone {
+  display: none;
+}
+
+input.err {
+  border: 1px solid var(--Linkbrary-red);
+}
+
+.password .eyeBtn {
   position: absolute;
   width: 16px;
   height: 16px;
   top: 50%;
   right: 15px;
   transform: translate(-0%, -50%);
+  border: none;
   cursor: pointer;
+  background-color: white;
+}
+
+.password .eye-off {
+  width: 16px;
+  height: 16px;
+}
+
+.password .eyeOn {
+  width: 20px;
+  height: 20px;
+}
+
+.password .none {
+  display: none;
 }
 
 .confirm.password {
   border-radius: 8px;
-  border: 1px solid var(--Linkbrary-red, #ff5b56);
 }
 
 .caution {
@@ -109,6 +146,7 @@ main {
 
 .signup-btn {
   display: flex;
+  border: none;
   width: 400px;
   padding: 16px 20px;
   justify-content: center;
@@ -147,7 +185,7 @@ main {
 }
 
 .google {
-  background-image: url("../img/google-icon.svg");
+  background-image: url("../../img/google-icon.svg");
   width: 42px;
   height: 42px;
   display: flex;
@@ -161,7 +199,7 @@ main {
 }
 
 .kakao {
-  background-image: url("../img/kakao-icon.svg");
+  background-image: url("../../img/kakao-icon.svg");
   width: 42px;
   height: 42px;
   display: flex;

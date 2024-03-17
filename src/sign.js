@@ -7,6 +7,10 @@ const eyeOn = document.querySelector(".eyeOn");
 const eyeOff = document.querySelector(".eye-off");
 const eyeBtn = document.querySelector(".eyeBtn");
 
+// Test 계정
+const TEST_EMAIL = "test@codeit.com";
+const TEST_PASSWORD = "codeit101";
+
 // 에러 메세지 생성 후 추가 함수
 const createErrMsg = (element, message) => {
   const lastElement = element.lastElementChild;
@@ -63,7 +67,7 @@ const passwordValidator = ({ target }) => {
 const submitLogin = () => {
   const emailValue = document.querySelector("#email").value;
   const passwordValue = document.querySelector("#password").value;
-  if (emailValue === "test@codeit.com" && passwordValue === "codeit101") {
+  if (emailValue === TEST_EMAIL && passwordValue === TEST_PASSWORD) {
     location.href = "/folder.html";
   } else {
     createErrMsg(email, "이메일을 확인해 주세요.");

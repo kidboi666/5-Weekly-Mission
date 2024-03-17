@@ -166,7 +166,6 @@ main {
 }
 
 .google {
-  /* position: relative; */
   background-image: url("/img/google-icon.svg");
   width: 42px;
   height: 42px;

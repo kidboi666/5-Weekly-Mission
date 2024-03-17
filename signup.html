@@ -21,25 +21,35 @@
       <div class="input-area">
         <div class="email input">
           <label for="email">이메일</label>
-          <input id="email" type="text" placeholder="codeit@codeit.com" />
+          <input id="email" class="err" type="text" placeholder="codeit@codeit.com" />
+          <p class="nonEmail errNone">이메일을 입력해주세요.</p>
+          <p class="invalidEmail errNone">올바른 이메일 주소가 아닙니다.</p>
+          <p class="isEmail errNone">이미 사용중인 이메일입니다.</p>
         </div>
         <div class="password input">
           <label for="password">비밀번호</label>
           <div class="password">
-            <input id="password" type="password" placeholder="" />
-            <img class="eye-off" src="img/eye-off.svg" alt="eye-off" />
+            <input id="password" class="err" type="password" placeholder="" />
+            <button class="eyeBtn password">
+              <img class="eyeOn password none" src="img/eye-on.png" alt="eye-on" />
+              <img class="eyeOff password" src="img/eye-off.svg" alt="eye-off" />
+            </button>
           </div>
+          <p class="invalidPassword errNone">비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.</p>
         </div>
         <div>
           <label for="confirm-password">비밀번호 확인</label>
           <div class="confirm password">
-            <input id="confirm-password" type="password" placeholder="" />
-            <img class="eye-off" src="img/eye-off.svg" alt="eye-off" />
+            <input id="confirmPassword" class="err" type="password" placeholder="" />
+            <button class="eyeBtn confirm">
+              <img class="eyeOn confirm none" src="img/eye-on.png" alt="eye-on" />
+              <img class="eyeOff confirm" src="img/eye-off.svg" alt="eye-off" />
+            </button>
           </div>
-          <p class="caution">비밀번호가 다릅니다</p>
+          <p class="invalidConfirmPassword errNone">비밀번호가 일치하지 않아요.</p>
         </div>
       </div>
-      <a href="index.html" class="signup-btn">로그인</a>
+      <button href="index.html" class="signup-btn">회원가입</button>
       <div class="social-login">
         <p>다른 방식으로 가입하기</p>
         <div class="icon">
@@ -52,5 +62,6 @@
         </div>
       </div>
     </main>
+    <script src="/src/signup.js"></script>
   </body>
 </html>
