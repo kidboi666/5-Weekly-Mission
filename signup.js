@@ -10,11 +10,7 @@ const passwordInput = document.querySelector("#password");
 const passwordError = document.querySelector("#password-errorText");
 const pwConfirmInput = document.querySelector("#password-confirm");
 const pwConfirmError = document.querySelector("#password-confirm-errorText");
-<<<<<<< HEAD
 const btn = document.querySelector(".signup");
-=======
-const btn = document.querySelector("#btn");
->>>>>>> f6ecdf04fa0878537830f236538186ba9ebc3a9e
 
 function emailCheck(email) {
   const emailForm =
@@ -84,7 +80,6 @@ function checkPassword() {
     pwConfirmInput.classList.add("error-input");
   }
 }
-<<<<<<< HEAD
 pwConfirmInput.addEventListener("focusout", checkPassword);
 
 function signUp(e) {
@@ -110,27 +105,11 @@ function signUp(e) {
     pwConfirmError.classList.remove("error");
     pwConfirmError.textContent = "비밀번호가 다릅니다.";
     pwConfirmInput.classList.add("error-input");
-=======
-pwConfirmInput.addEventListener("input", checkPassword);
-
-function signUp(e) {
-  const emailChecked = emailCheck(emailInput.value);
-  const validPassword = isValidPassword(passwordInput.value);
-  const passwordsMatch = passwordInput.value === pwConfirmInput.value;
-
-  if (emailChecked && validPassword && passwordsMatch) {
-    window.location.href = "./folder.html";
-  } else {
-    e.preventDefault();
->>>>>>> f6ecdf04fa0878537830f236538186ba9ebc3a9e
   }
 }
 
 btn.addEventListener("click", signUp);
-<<<<<<< HEAD
 
 const emailChecked = emailCheck(emailInput.value);
 const validPassword = isValidPassword(passwordInput.value);
 const passwordsMatch = passwordInput.value === pwConfirmInput.value;
-=======
->>>>>>> f6ecdf04fa0878537830f236538186ba9ebc3a9e
