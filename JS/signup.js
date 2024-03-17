@@ -1,35 +1,8 @@
-const emailInput = document.querySelector("#email");
-const emailError = document.querySelector("#email-errorText");
-const passwordInput = document.querySelector("#password");
-const passwordError = document.querySelector("#password-errorText");
+import { emailInput, emailError, emailCheck } from "./email.js";
+import { passwordInput, passwordError } from "./password.js";
 const pwConfirmInput = document.querySelector("#password-confirm");
 const pwConfirmError = document.querySelector("#password-confirm-errorText");
 const btn = document.querySelector(".signup");
-
-function emailCheck(email) {
-  const emailForm =
-    /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-  return emailForm.test(email);
-}
-
-function emailInputFocusOut() {
-  if (!emailInput.value) {
-    emailError.textContent = "이메일을 입력하세요.";
-    emailError.classList.remove("error");
-    emailInput.classList.add("error-input");
-  } else {
-    const emailChecked = emailCheck(emailInput.value);
-    if (emailChecked) {
-      emailError.classList.add("error");
-      emailInput.classList.remove("error-input");
-    } else {
-      emailError.textContent = "올바른 이메일 주소가 아닙니다.";
-      emailError.classList.remove("error");
-      emailInput.classList.add("error-input");
-    }
-  }
-}
-emailInput.addEventListener("focusout", emailInputFocusOut);
 
 function isEmailAlreadyUse() {
   if (emailInput.value == "test@codeit.kr") {
@@ -103,7 +76,3 @@ function signUp(e) {
 }
 
 btn.addEventListener("click", signUp);
-
-const emailChecked = emailCheck(emailInput.value);
-const validPassword = isValidPassword(passwordInput.value);
-const passwordsMatch = passwordInput.value === pwConfirmInput.value;

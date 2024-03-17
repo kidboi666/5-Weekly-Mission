@@ -1,7 +1,7 @@
 export const emailInput = document.querySelector("#email");
 export const emailError = document.querySelector("#email-errorText");
 
-function emailCheck(email) {
+export function emailCheck(email) {
   const emailForm =
     /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
   return emailForm.test(email);
