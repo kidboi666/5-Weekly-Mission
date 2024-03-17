@@ -1,9 +1,3 @@
-// import {
-//   emailInput,
-//   emailError,
-//   passwordInput,
-//   passwordError,
-// } from "./input.js";
 const emailInput = document.querySelector("#email");
 const emailError = document.querySelector("#email-errorText");
 const passwordInput = document.querySelector("#password");
