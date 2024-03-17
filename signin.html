@@ -22,18 +22,16 @@
       <form id="signinForm" class="form">
         <div class="form__field">
           <label for="email" class="form__label">이메일</label>
-          <div>
-            <input id="email" class="form__input" type="email" />
-          </div>
+          <input id="email" class="form__input" type="text" />
+          <p class="error-message"></p>
         </div>
         <div class="form__field">
           <label for="password" class="form__label">비밀번호</label>
           <div class="form__pw-wp">
             <input id="password" class="form__input" type="password" />
-            <button type="button" id="passwordEyeButton" class="form__eye-button">
-              <img class="form__eye off" src="/assets/img/eye_off.svg" alt="eye off" />
-            </button>
+            <button type="button" id="passwordEyeButton" class="form__eye-button off"></button>
           </div>
+          <p class="error-message"></p>
         </div>
         <button type="submit" class="btn form__btn">로그인</button>
       </form>

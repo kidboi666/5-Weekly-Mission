@@ -67,11 +67,13 @@
   position: absolute;
   top: 22px;
   right: 22px;
+  width: 16px;
+  height: 16px;
+  background: url('/assets/img/eye_on.svg') no-repeat center / contain;
 }
 
-.form__eye.off {
-  position: relative;
-  top: 1px;
+.form__eye-button.off {
+  background: url('/assets/img/eye_off.svg') no-repeat center 1px / contain;
 }
 
 .form__input {
@@ -90,7 +92,7 @@
   border: 1px solid var(--primary-color);
 }
 
-.form__input.input-border--red {
+.form__input.error {
   border: 1px solid var(--error-color);
 }
 

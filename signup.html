@@ -19,30 +19,27 @@
         <p class="auth__text">이미 회원이신가요?</p>
         <a class="auth__link" href="/signin.html">로그인 하기</a>
       </div>
-      <form class="form">
+      <form id="signupForm" class="form">
         <div class="form__field">
           <label for="email" class="form__label">이메일</label>
-          <div>
-            <input id="email" class="form__input" type="email" />
-          </div>
+          <input id="email" class="form__input" type="email" />
+          <p class="error-message"></p>
         </div>
         <div class="form__field">
           <label for="password" class="form__label">비밀번호</label>
           <div class="form__pw-wp">
             <input id="password" class="form__input" type="password" />
-            <button type="button" id="passwordEyeButton" class="form__eye-button">
-              <img class="form__eye off" src="/assets/img/eye_off.svg" alt="eye off" />
-            </button>
+            <button type="button" id="passwordEyeButton" class="form__eye-button off"></button>
           </div>
+          <p class="error-message"></p>
         </div>
         <div class="form__field">
           <label for="passwordConfirm" class="form__label">비밀번호 확인</label>
           <div class="form__pw-wp">
-            <input for="passwordConfirm" class="form__input" type="password" />
-            <button type="button" id="passwordConfirmEyeButton" class="form__eye-button">
-              <img class="form__eye off" src="/assets/img/eye_off.svg" alt="eye off" />
-            </button>
+            <input id="passwordConfirm" class="form__input" type="password" />
+            <button type="button" id="passwordConfirmEyeButton" class="form__eye-button off"></button>
           </div>
+          <p class="error-message"></p>
         </div>
         <button class="btn form__btn">회원가입</button>
       </form>
