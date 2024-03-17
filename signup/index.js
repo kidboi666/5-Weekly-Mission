@@ -6,51 +6,68 @@ const btn = document.querySelector('.btn');
 const idCtr = document.querySelector('.username-container');
 const pwdCtr = document.querySelector('.password-container');
 const repeatCtr = document.querySelector('.repeat-container')
-const emailTest = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+/;
+const emailRegExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+/;
+const passwordRegExp = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
 const pwdToggle = document.querySelector('.password-toggle');
 const repeatToggle = document.querySelector('.repeat-toggle');
+const adminAccount = {
+  id: 'test@codeit.com',
+  pwd: 'codeit101'
+};
 
 
 
-// focusout : 공란이거나 잘못된 이메일 형식 입력하면 에러메세지
+// focusout : 이메일, 비밀번호, 비밀번호 확인 유효성 검사
 function checkId() {
-  if (id.value==='') {
-    // 메세지 보이게
+  // 공란
+  if (id.value==='') {  
     const showMsg = idCtr.lastElementChild;
     showMsg.style.display = 'block';
-    // 이메일 박스 빨간테두리 추가
     id.classList.toggle('error');
-
-  } else if (emailTest.test(id.value) === false) {
-    // 메세지 보이게
+  // 이메일 형식
+  } else if (emailRegExp.test(id.value) === false) {
     const showMsg = idCtr.lastElementChild;
     showMsg.style.display = 'block';
-    // 메세지 내용 바꿈
     showMsg.innerHTML = '올바른 이메일 주소가 아닙니다';
-    // 이메일 박스 빨간테두리
+    id.classList.toggle('error');
+  // test@codeit.com 중복
+  } else if (adminAccount.id === id.value) {
+    const showMsg = idCtr.lastElementChild;
+    showMsg.style.display = 'block';
+    showMsg.innerHTML = '이미 사용 중인 이메일입니다.';
     id.classList.toggle('error');
   }
 }
 
+
 function checkPwd() {
+  // 공란
   if (pwd.value==='') {
-    // 메세지 보이게
     const showMsg = pwdCtr.lastElementChild;
     showMsg.style.display = 'block';
-    // 이메일 박스 빨간테두리
+    pwd.classList.toggle('error');
+  // 비밀번호 8자 이상, 숫자영문 조합 
+  } else if (passwordRegExp.test(pwd.value) === false) {
+    const showMsg = pwdCtr.lastElementChild;
+    showMsg.style.display = 'block';
+    showMsg.innerHTML = '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.'
     pwd.classList.toggle('error');
   }
 }
 
 
 function checkRepeat() {
+  // 공란
   if (repeat.value==='') {
-    // 메세지 보이게
     const showMsg = repeatCtr.lastElementChild;
     showMsg.style.display = 'block';
-    // 이메일 박스 빨간테두리
     repeat.classList.toggle('error');
-
+  // 비밀번호, 비밀번호 재입력 값 다를 경우
+  } else if (pwd.value !== repeat.value) {
+    const showMsg = repeatCtr.lastElementChild;
+    showMsg.style.display = 'block';
+    showMsg.innerHTML = '비밀번호가 일치하지 않아요.'
+    repeat.classList.toggle('error');
   }
 }
 
@@ -62,65 +79,33 @@ repeat.addEventListener('focusout', checkRepeat);
 
 // focusin : 에러메세지 초기화
 function resetId() {
-  // 메세지 안보이게
   const resetMsg = idCtr.lastElementChild
   resetMsg.style.display = 'none'
-  // 메세지 내용 원상복구
   resetMsg.innerHTML = '이메일을 입력해주세요.';
-  // 이메일 박스 테두리 원상복구
   id.classList.remove('error')
 }
 
-
 function resetPwd() {
-  // 메세지 안보이게
   const resetMsg = pwdCtr.lastElementChild
   resetMsg.style.display = 'none'
-  // 이메일 박스 테두리 원상복구
   pwd.classList.remove('error')
 }
 
 function resetRepeat() {
-  // 메세지 안보이게
   const resetMsg = repeatCtr.lastElementChild
   resetMsg.style.display = 'none'
-  // 이메일 박스 테두리 원상복구
   repeat.classList.remove('error')
 }
-
 
 id.addEventListener('focusin', resetId);
 pwd.addEventListener('focusin', resetPwd);
 repeat.addEventListener('focusin', resetRepeat)
 
 
-// click, keypress : 로그인 정보 전송
-function submit() {
-  const adminAccount = {
-    id: 'test@codeit.com',
-    pwd: 'codeit101'
-  };
-
-  if (adminAccount[id] === id.value && adminAccount[pwd] === pwd.value) {
-    window.location.href = '/folder';
-  }
-  id.value='';
-  pwd.value='';
-  repeat.value='';
-}
-
-
-function submitByEnter(e) {
-  if (e.key === 'Enter') {
-    submit();
-  }
-}
-
-btn.addEventListener('click', submit);
-form.addEventListener('keypress', submitByEnter);
 
 
 // click : 눈 아이콘 토글 시 비밀번호 숨기기 & 보이기 기능 추가
+// 비밀번호 input
 function togglePassword() {
   if (pwd.getAttribute('type') ==='password') {
     pwd.setAttribute('type', 'text');
@@ -133,6 +118,7 @@ function togglePassword() {
   }
 }
 
+// 비밀번호 재입력 input 
 function toggleRepeat() {
   if (repeat.getAttribute('type') ==='password') {
     repeat.setAttribute('type', 'text');
@@ -148,3 +134,23 @@ function toggleRepeat() {
 pwdToggle.addEventListener('click', togglePassword)
 repeatToggle.addEventListener('click', toggleRepeat)
 
+
+// click, keypress : 로그인 정보 전송
+// click
+function submit() {
+  // id, pwd 가 유효한 경우 '/folder' 로 이동
+    window.location.href = '/folder';
+    id.value='';
+    pwd.value='';
+    repeat.value='';
+}
+
+// keypress
+function submitByEnter(e) {
+  if (e.key === 'Enter') {
+    submit();
+  }
+}
+
+btn.addEventListener('click', submit);
+form.addEventListener('keypress', submitByEnter);
