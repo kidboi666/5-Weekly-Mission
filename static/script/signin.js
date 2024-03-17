@@ -15,6 +15,7 @@ function idFocusOut(e) {
     let emailNotice = document.querySelector('.email-notice');
 
     if(emailNotice) {
+        email.style.borderColor = 'gray';
         emailNotice.remove();
     }
 
@@ -23,10 +24,12 @@ function idFocusOut(e) {
     emailInput.style.color = 'red';
 
     if(e.target.value == '') {
+        email.style.borderColor = 'red';
         emailInput.textContent = '이메일을 입력해주세요.';
         emailTag.append(emailInput);
     } else if (!emailCheck.test(e.target.value)) {
-        emailInput.textContent = '이메일 형식이 아닙니다.';
+        email.style.borderColor = 'red';
+        emailInput.textContent = '올바른 이메일 주소가 아닙니다.';
         emailTag.append(emailInput);
     }
 }
@@ -40,10 +43,11 @@ function passwordFocusOut(e) {
             passwordInput.className = 'password-notice';
             passwordInput.textContent = '비밀번호를 입력해주세요.';
             passwordInput.style.color = 'red';
+            pw.style.borderColor = 'red';
             passwordTag.append(passwordInput);
         }
-    }
-    else {
+    } else {
+        pw.style.borderColor = 'gray';
         pwNotice.remove();
     }
 }
@@ -55,13 +59,12 @@ function login(e) {
 
     if (email.value == testId && pw.value == testPassword) {
         location.href='../folder.html';
-    }
-    else {
+    } else {
         const loginCheck = document.querySelector('.login-check');
 
         if(!loginCheck){
             const notEmail = document.createElement('p');
-            const notPassword = document.createElement('p'); 
+            const notPassword = document.createElement('p');
     
             notEmail.className = 'login-check';
             notEmail.style.color = 'red';
@@ -88,8 +91,7 @@ function showPassword(e) {
     if(eyesToggle.getAttribute('src') == '/static/img/noeyes.svg') {
         eyesToggle.setAttribute('src', '/static/img/eyes.svg');
         pw.setAttribute('type', 'text')
-    }
-    else {
+    } else {
         eyesToggle.setAttribute('src', '/static/img/noeyes.svg'); 
         pw.setAttribute('type', 'password')
     }

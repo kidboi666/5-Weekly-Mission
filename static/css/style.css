@@ -284,6 +284,10 @@ font-family: Pretendard;
     letter-spacing: -0.3px;
 }
 
+.content2Title, .content3Title, .content4Title, .content5Title {
+    white-space: nowrap;
+}
+
 .highlight5 {
     background: var(--Fandom-K-gra-blue-to-pink, linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%));
     background-clip: text;
