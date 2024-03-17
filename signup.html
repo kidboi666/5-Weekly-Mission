@@ -17,28 +17,42 @@
       </div>
     </header>
     <div class="sign-wrap">
-      <form>
+      <form id="form">
         <div class="input-wrap">
           <div class="sign-input">
             <label class="sign-label" for="email">이메일</label>
-            <input class="input-text" id="email" type="email" />
+            <input
+              class="input-text"
+              id="email"
+              type="email"
+              value=""
+              autocomplete="off"
+            />
+            <span class="error-msg" id="email-error-msg"></span>
           </div>
           <div class="sign-input password">
             <label class="sign-label" for="pwd">비밀번호</label>
-            <input class="input-text" id="pwd" type="password" />
-            <button class="eye-btn" type="button">
+            <input class="input-text" id="pwd" type="password" value="" />
+            <span class="error-msg" id="pwd-error-msg"></span>
+            <button class="eye-btn" id="pwd-toggle" type="button">
               <img src="img/signin/eye-off.svg" alt="eye-off" />
             </button>
           </div>
           <div class="sign-input password">
-            <label class="sign-label" for="pwd">비밀번호 확인</label>
-            <input class="input-text" id="pwd" type="password" />
-            <button class="eye-btn" type="button">
+            <label class="sign-label" for="pwd-verify">비밀번호 확인</label>
+            <input
+              class="input-text"
+              id="pwd-verify"
+              type="password"
+              value=""
+            />
+            <span class="error-msg" id="pwd-verify-error-msg"></span>
+            <button class="eye-btn" id="pwd-verify-toggle" type="button">
               <img src="img/signin/eye-off.svg" alt="eye-off" />
             </button>
           </div>
         </div>
-        <button class="signin-btn" type="button">회원가입</button>
+        <button class="signin-btn" type="submit">회원가입</button>
       </form>
       <div class="sns-wrap">
         <p class="sns-text">다른 방식으로 가입하기</p>
@@ -52,5 +66,6 @@
         </div>
       </div>
     </div>
+    <script type="module" src="./src/signup.js"></script>
   </body>
 </html>
