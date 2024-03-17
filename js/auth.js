@@ -1,36 +1,91 @@
-//필요한 함수 및 변수 정의(임포트 하지 않고 내부적인 사용만 할 것)
+/**
+ * @description auth에 필요한 함수와 변수를 객체 형태로 관리합니다.
+ */
 
 const _auth = {
   // 다루게 될 DOM 객체들
-  emailInput: document.getElementById("emailInput"), // 이메일 입력
-  passwordInput: document.getElementById("passwordInput"), // 패스워드 입력
-  emailError: document.getElementById("emailError"), // 이메일 에러메시지 영역
-  passwordError: document.getElementById("passwordError"), // 패스워드 에러메시지 영역
+  /**
+   * @description 이메일 입력
+   */
+  emailInput: document.getElementById("emailInput"),
 
-  loginForm: document.getElementById("loginForm"), // 로그인 시 작성하는 폼 (제출된 입력 다룸)
+  /**
+   * @description 패스워드 입력
+   */
+  passwordInput: document.getElementById("passwordInput"),
 
-  passwordCheck: document.getElementById("passwordCheck"), // 패스워드확인 입력
-  passwordCheckError: document.getElementById("passwordCheckError"), // 패스워드확인 에러메시지 영역
-  signupForm: document.getElementById("signupForm"), // 회원가입 시 작성하는 폼 (제출된 입력 다룸)
+  /**
+   * @description 이메일 에러메시지 영역
+   */
+  emailError: document.getElementById("emailError"),
 
+  /**
+   * @description 패스워드 에러메시지 영역
+   */
+  passwordError: document.getElementById("passwordError"),
+
+  /**
+   * @description 로그인 시 작성하는 폼 (제출된 입력 다룸)
+   */
+  loginForm: document.getElementById("loginForm"),
+
+  /**
+   * @description 패스워드확인 입력
+   */
+  passwordCheck: document.getElementById("passwordCheck"),
+
+  /**
+   * @description 패스워드확인 에러메시지 영역
+   */
+  passwordCheckError: document.getElementById("passwordCheckError"),
+
+  /**
+   * @description 회원가입 시 작성하는 폼 (제출된 입력 다룸)
+   */
+  signupForm: document.getElementById("signupForm"),
+
+  /**
+   * @description 에러메시지 띄움
+   * @param {*} inputField 사용자가 입력한 입력필드
+   * @param {*} errField 에러메시지 띄울 곳
+   * @param {*} message 에러메시지
+   */
   toggleErr: function (inputField, errField, message) {
     errField.textContent = message;
     inputField.classList.remove("auth__input-border--default");
     inputField.classList.add("auth__input-border--error");
-  }, //에러메시지 띄움
+  },
+
+  /**
+   * @description 에러메시지 삭제
+   * @param {*} inputField 사용자가 입력한 입력필드
+   * @param {*} errField 에러메시지 없앨 곳
+   */
   toggleDefault: function (inputField, errField) {
     errField.textContent = "";
     inputField.classList.remove("auth__input-border--error");
     inputField.classList.add("auth__input-border--default");
-  }, //에러메시지 삭제
+  },
 
+  /**
+   * @param {*} inputField 사용자가 입력한 입력필드
+   * @returns 빈 영역인지 판단
+   */
   isEmpty: function (inputField) {
     return !inputField.value;
-  }, // 빈 영역인지 판단
+  },
+
+  /**
+   * @returns 이메일 형식 판단 (부르면 자동으로 이메일 입력의 형식 검사)
+   */
   isEmail: function () {
     return /\S+@\S+\.\S+/.test(this.emailInput.value);
   }, //이메일 형식이 맞는지 판단
 
+  /**
+   * @description 이메일 영역이 비었을 시 에러메시지 띄움.
+   * @returns 이메일 영역 작성 여부
+   */
   isEmailWritten: function () {
     if (this.isEmpty(this.emailInput)) {
       this.toggleErr(
@@ -41,7 +96,12 @@ const _auth = {
       return false;
     }
     return true;
-  }, //이메일 작성했는지 검사
+  },
+
+  /**
+   * @description 이메일 형식이 맞는지 검사 (~~~@~~.~~). 형식에 맞지 않으면 에러메시지 띄움
+   * @returns 이메일 형식이 올바른지에 대한 여부
+   */
   commonEmailForm: function () {
     if (!this.isEmail()) {
       // 이메일 형식에 맞지 않은 경우
@@ -53,8 +113,12 @@ const _auth = {
       return false;
     }
     return true;
-  }, //이메일 형식이 맞는지 검사 (~~~@~~.~~)
+  },
 
+  /**
+   * @description 패스워드 작성했는지 검사 (argument는 signupForm에서 passwordCheck에 대해 재사용하기 위함)
+   * @returns 패스워드 형식이 올바른지에 대한 여부
+   */
   isPasswordWritten: function (
     passwordInput = this.passwordInput,
     passwordError = this.passwordError
@@ -64,7 +128,12 @@ const _auth = {
       return false;
     }
     return true;
-  }, //패스워드 작성했는지 검사 (argument는 signupForm에서 passwordCheck에 대해 재사용하기 위함)
+  },
+
+  /**
+   * @description 패스워드 형식 검사 (회원가입에만 적용)
+   * @returns 패스워드 형식이 올바른지에 대한 여부 (회원가입에만 적용)
+   */
   commonPasswordForm: function () {
     const hasLetters = /[a-zA-Z]/.test(this.passwordInput.value); // 문자열이 없을 경우(영문이 조합에 없음) -> 숫자만 있다
     const hasNumbers = /\d/.test(this.passwordInput.value); // 숫자가 없을 경우(숫자가 조합에 없음) -> 문자열만 있다
@@ -83,11 +152,13 @@ const _auth = {
       return false;
     }
     return true;
-  }, // 패스워드 형식 검사 (회원가입에만 적용)
+  },
 };
 
 export const auth = {
-  // focus in, focus out 할 때 이메일 형식 검사
+  /**
+   * @description 이메일 입력 필드에 대해 focus out, focus in시 입력의 유효성 판단 관련 이벤트 처리
+   */
   emailFocusEvent: function () {
     const { emailInput, emailError } = _auth;
     emailInput.addEventListener("focusout", () => {
@@ -108,7 +179,10 @@ export const auth = {
       }
     });
   },
-  // focus in, focus out 할 때 패스워드 형식 검사
+
+  /**
+   * @description 비밀번호 입력 필드에 대해 focus out, focus in시 입력의 유효성 판단 관련 이벤트 처리
+   */
   passwordFocusEvent: function () {
     const { passwordInput, passwordError } = _auth;
     passwordInput.addEventListener("focusout", () => {
@@ -124,7 +198,10 @@ export const auth = {
       }
     });
   },
-  // 로그인 폼 제출 시 입력 검사
+
+  /**
+   * @description 로그인 폼에서 제출된 입력에 대한 유효성 검사
+   */
   loginSubmissionChecker: function () {
     const { loginForm, emailInput, emailError, passwordInput, passwordError } =
       _auth;
@@ -167,7 +244,10 @@ export const auth = {
       }
     });
   },
-  // focus in, focus out 할 때 비밀번호 확인 형식 검사
+
+  /**
+   * @description 비밀번호 확인 필드에 대해 focus out, focus in시 입력의 유효성 판단 관련 이벤트 처리
+   */
   passwordCheckFocusEvent: function () {
     const { passwordCheck: passwordInput, passwordCheckError: passwordError } =
       _auth;
@@ -184,13 +264,19 @@ export const auth = {
       }
     });
   },
-  // 등록하려는 비밀번호가 올바른 형식인지 검사
+
+  /**
+   * @description 등록하려는 비밀번호가 올바른 형식인지 검사
+   */
   passwordFormatChecker: function () {
     passwordInput.addEventListener("focusout", function () {
       _auth.commonPasswordForm();
     });
   },
-  // 등록된 이메일인지 검사
+
+  /**
+   * @description 등록된 이메일인지 검사
+   */
   IsDefaultAccount: function () {
     const { emailInput, emailError } = _auth;
     emailInput.addEventListener("focusout", function () {
@@ -201,7 +287,10 @@ export const auth = {
       }
     });
   },
-  // 회원가입 폼에서 제출된 입력에 대한 유효성 검사
+
+  /**
+   * @description 회원가입 폼에서 제출된 입력에 대한 유효성 검사
+   */
   signupSubmissionChecker: function () {
     const {
       signupForm,
