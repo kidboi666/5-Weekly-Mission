@@ -1,13 +1,13 @@
 // 이메일 input
 const email = document.querySelector('.id');
-const emailTag = document.querySelector('.emailTag')
+const emailTag = document.querySelector('.emailTag');
 // 비밀번호 input
 const pw = document.querySelector('.password');
-const passwordTag = document.querySelector('.passwordTag')
+const passwordTag = document.querySelector('.passwordTag');
 // 로그인 button
-const loginBtn = document.querySelector('.loginBtn')
+const loginBtn = document.querySelector('.loginBtn');
 // 비밀번호 눈 아이콘
-const eyesToggle = document.querySelector('.eyes')
+const eyesToggle = document.querySelector('.eyes');
 
 //emailInput focus-out시 이벤트 함수
 function idFocusOut(e) {
