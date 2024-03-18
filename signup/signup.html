@@ -30,6 +30,7 @@
             placeholder="codeit@codeit.com"
             required
           />
+          <p id="email-error"></p>
         </div>
         <div class="form_section_div div_margin relative">
           <label class="label" for="password">비밀번호</label>
@@ -42,12 +43,14 @@
             required
           />
           <img
+            id="password-eye-on"
             class="absolute"
             src="../img/eye_on.svg"
             alt="비밀번호 보호"
             width="16"
             height="16"
           />
+          <p id="password-error"></p>
         </div>
         <div class="form_section_div div_margin relative">
           <label class="label" for="password_check">비밀번호 확인</label>
@@ -60,14 +63,16 @@
             required
           />
           <img
+            id="password-check-eye-on"
             class="absolute"
             src="../img/eye_on.svg"
             alt="비밀번호 보호"
             width="16"
             height="16"
           />
+          <p id="password-check-error"></p>
         </div>
-        <button class="button" type="button">회원가입</button>
+        <button id="button" class="button" type="button">회원가입</button>
       </form>
     </section>
     <div class="div">
@@ -81,5 +86,6 @@
         /></a>
       </div>
     </div>
+    <script src="signup.js"></script>
   </body>
 </html>
