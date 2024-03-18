@@ -24,19 +24,19 @@
                     <a href="signup.html" class="sign-link">회원 가입하기</a>
                 </div>
             </div>
-            <form action="signin.html" method="post" class="sign-form">
-                <div class="input-label">
+            <form action="signin.html" method="post" class="sign-form" id="sign-in-form">
+                <div class="input-box">
                     <label for="user-email">이메일</label>
-                    <input type="email" id="user-email" name="user-email" required class="sign-input">
+                    <input type="email" id="user-email" name="user-email" required class="sign-input text-input">
                 </div>
-                <div class="input-label">
+                <div class="input-box">
                     <label for="password">비밀번호</label>
                     <div class="pw-input">
-                        <input type="password" id="password" name="password" required class="sign-input">
-                        <div class="pw-toggle-btn">
-                            <img src="img/eye-on.svg" alt="Show Password">
-                            <img src="img/eye-off.svg" alt="Hide Password" class="hidden">
-                        </div>
+                        <input type="password" id="password" name="password" required class="sign-input text-input">
+                        <button type="button" class="pw-toggle-btn">
+                            <img src="img/eye-on.svg" alt="Show Password" class="hidden">
+                            <img src="img/eye-off.svg" alt="Hide Password">
+                        </button>
                     </div>
                 </div>
                 <button class="btn login-btn">로그인</button>
@@ -56,7 +56,7 @@
             </div>
         </div>
     </main>
-    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/signIn.js"></script>
 </body>
 
 </html>

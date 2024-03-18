@@ -34,11 +34,6 @@
 
 .folder-input {
   width: 280px;
-  padding: 18px 15px;
-  @include a.flex(row, center, center);
-  border-radius: 8px;
-  border: 1px solid a.$d3-gray-color;
-  background: a.$white-color;
 }
 
 .folder-input::placeholder {
@@ -62,7 +57,6 @@
   color: a.$d4-gray-color;
   text-align: center;
   font-size: 0.875em;
-  font-style: normal;
   font-weight: 400;
   line-height: 1.375em;
 }
@@ -78,7 +72,7 @@
   gap: 32px;
 }
 
-.kebab {
+.more-info-btn {
   width: 12px;
   aspect-ratio: 12/10;
 }
@@ -90,10 +84,23 @@
 .link-list {
   @include a.flex(column, flex-start, stretch);
   gap: 20px;
-}
 
-.link-list-bar {
-  @include a.flex(row, space-between, stretch);
+  .link-list-bar {
+    @include a.flex(row, space-between, stretch);
+
+    .select-all-btn {
+      background-color: a.$primary-color;
+      color: a.$white-color;
+    }
+
+    .select-favorite-btn {
+      border: 1px solid a.$primary-color;
+    }
+
+    .select-folder-btn {
+      border: 1px solid a.$primary-color;
+    }
+  }
 }
 
 .link-cards {
@@ -136,6 +143,18 @@
   background-color: a.$grey-light-color;
   border-radius: 10px;
   padding: 15px 16px;
+
+  .search-input {
+    width: 100%;
+    background-image: url("../../img/Search.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    font-size: 1em;
+    background-color: inherit;
+    padding: 0 32px;
+    color: a.$grey-dark-color;
+    border: none;
+  }
 }
 
 .search-box {
@@ -158,34 +177,9 @@
   gap: 30px;
 }
 
-.search-input {
-  width: 100%;
-  background-image: url("../../img/Search.svg");
-  background-repeat: no-repeat;
-  background-position: left center;
-  font-size: 1em;
-  background-color: inherit;
-  padding: 0 32px;
-  color: a.$grey-dark-color;
-  border: none;
-}
-
 .search-result {
   font-size: 2em;
   margin-bottom: 10px;
-}
-
-.select-all-btn {
-  background-color: a.$primary-color;
-  color: a.$white-color;
-}
-
-.select-favorite-btn {
-  border: 1px solid a.$primary-color;
-}
-
-.select-folder-btn {
-  border: 1px solid a.$primary-color;
 }
 
 .share-bg {
@@ -199,29 +193,26 @@
 .share-link-btn {
   @include a.flex(column, flex-start, center);
   gap: 10px;
-}
 
-.share-link-btn a img {
-  border-radius: 50%;
-}
+  a {
+    .share-link-logo {
+      width: 42px;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      &:hover {
+        box-shadow: 0 0 10px a.$skyblue-color;
+      }
+    }
+  }
 
-.share-link-btn a img:hover {
-  box-shadow: 0 0 10px a.$skyblue-color;
-}
-
-.share-link-logo {
-  width: 42px;
-  aspect-ratio: 1/1;
-}
-
-.share-link-name {
-  color: #444;
-  text-align: center;
-  font-family: Inter;
-  font-size: 0.8125em;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 15px;
+  .share-link-name {
+    color: #444;
+    text-align: center;
+    font-family: Inter;
+    font-size: 0.8125em;
+    font-weight: 600;
+    line-height: 15px;
+  }
 }
 
 .thumbnail {

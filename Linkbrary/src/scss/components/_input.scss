@@ -1,0 +1,8 @@
+@use "../abstracts" as a;
+.text-input {
+  padding: 18px 15px;
+  @include a.flex(row, center, center);
+  border-radius: 8px;
+  border: 1px solid a.$d3-gray-color;
+  background: a.$white-color;
+}
