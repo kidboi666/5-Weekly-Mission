@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>signin</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/signin.css">
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>signin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/signin.css">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="contents">
     <div class="title">
-      <div class="logo">
+      <div>
         <a href="/"> 
-          <img src="images/logo.svg" alt="로고">
+          <img class="logo" src="images/logo.svg" alt="로고">
         </a>
       </div>
       <h2>
@@ -24,35 +24,41 @@
       </h2>
     </div>
     <div class="input-form">
-      <div class="email-input">
-        <form>
-          <ol>
-            <li>
-              <label>
-                이메일 <br>
-                <input type="email">
-              </label>
-            </li>
-            <li class="pwd-input">
-              <label>
-                비밀번호 <br>
-                <input name="focus" type="password">       
-              </label>
-            </li>
-          </ol>
-        </form>
-      </div>
+      <form>
+        <ol>
+          <li class="email-input-wrapper">
+            <label>
+              이메일<br>
+              <input class="email-input error-border" value="" type="email">
+            </label>
+            <p class="error-msg email-blank-error">이메일을 입력해주세요</p>
+            <p class="error-msg email-type-error hide">올바른 이메일 주소가 아닙니다.</p>
+            <p class="error-msg check-email hide">이메일을 확인해주세요</p>
+          </li>
+          <li class="pwd-input-wrapper">
+            <label>
+              비밀번호<br>
+              <input class="pwd-input error-border" value="" type="password">       
+            </label>
+            <button class="pwd-eye-off">
+              <img id="eyeOnOff" src="images/eye-off.svg" alt="eye-off">
+            </button>
+            <p class="error-msg pwd-blank-error">비밀번호를 입력해주세요</p>
+            <p class="error-msg check-pwd hide">비밀번호를 확인해주세요</p>
+          </li>
+        </ol>
+      </form>
     </div>
-    <button class="button-sign"> 로그인 </button>
+    <button class="button-sign" onclick="loginCheck()"> 로그인 </button>
     <div class="social-login">
       <p>소셜 로그인</p>
       <div class="social-icon">
-        <div class="image1">
+        <div class="google-icon">
           <a href="http://www.google.com">
             <img src="images/google.png" alt="구글 아이콘">
           </a>
         </div>
-        <div class="image2">
+        <div class="kakao-icon">
           <a href="http://www.kakao.com">
             <img src="images/99FE484C5C3451F218 1.svg" alt="카카오 아이콘">
           </a>
@@ -60,4 +66,5 @@
       </div>
     </div>
   </div>
+  <script src="signin.js"></script>
 </body>

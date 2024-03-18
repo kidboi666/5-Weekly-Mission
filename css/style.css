@@ -200,7 +200,7 @@ footer p {
   font-weight: 400;
 }
 
-.left {
+.social-wrapper {
   display: flex;
   gap: 12px;
 }
