@@ -4,11 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>회원가입</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
-    />
     <link rel="stylesheet" href="./src/sign.css" />
   </head>
   <body>
@@ -26,22 +21,26 @@
           <div class="sign-input-box">
             <label class="sign-input-label">이메일</label>
             <input class="sign-input" name="email" id="email" />
-            <p class="error_msg" id="email_error"></p>
+            <p class="error-msg" id="email-error"></p>
           </div>
           <div class="sign-input-box sign-password">
             <label class="sign-input-label">비밀번호</label>
-            <input class="sign-input" type = "password" name="password" id="password" />
-            <p class="error_msg" id="pwd_error"></p>
-            <button class="eye-button" type="button" id="showPassword"></button>
+            <div class="eye-button-container">
+              <input class="sign-input" type = "password" name="password" id="password" />
+              <button class="eye-button" type="button" id="showPassword"></button>
+            </div>
+            <p class="error-msg" id="pwd-error"></p>
           </div>
           <div class="sign-input-box sign-password">
             <label class="sign-input-label">비밀번호 확인</label>
-            <input class="sign-input" type = "password" name="passwordRepeat" id="passwordRepeat" />
-            <p class="error_msg" id="pwdCheckerError"></p>
-            <button class="eye-button" type="button" id="showPassword2"></button>
+            <div class="eye-button-container">
+              <input class="sign-input" type = "password" name="passwordCheck" id="passwordCheck" />
+              <button class="eye-button" type="button" id="showPasswordCheck"></button>
+            </div>
+            <p class="error-msg" id="pwdCheckerError"></p>
           </div>
         </div>
-        <button class="cta" type="button">회원가입</button>
+        <button class="sign-button" type="button">회원가입</button>
       </form>
       <div class="sns-box">
         <span class="sns-text">다른 방식으로 가입하기</span>
@@ -55,6 +54,6 @@
         </div>
       </div>
     </div>
-    <script src="signup.js"></script>
+    <script type="module" src="./signup.js"></script>
   </body>
 </html>
