@@ -1,6 +1,6 @@
 import { requestAuthorization } from './api/signinAPI';
-import validateLogin from './loginValidation';
-import validateSignUp from './signUpValidation';
+import { requestSignUp } from './api/signupAPI';
+
 export function signInSubmit() {
   requestAuthorization(
     document.querySelector('#user-email'),
@@ -9,7 +9,7 @@ export function signInSubmit() {
 }
 
 export function signUpSubmit() {
-  validateSignUp(
+  requestSignUp(
     document.querySelector('#user-email'),
     document.querySelector('#password'),
     document.querySelector('#password-check')
