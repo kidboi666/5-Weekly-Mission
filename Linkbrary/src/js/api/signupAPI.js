@@ -27,6 +27,7 @@ export async function requestSignUp(emailInput, passwordInput, passwordCheck) {
       throw new Error('Bad request');
     }
   } catch (e) {
+    console.log(e);
     generateErrorMessage(
       emailInput.parentElement,
       '이미 사용중인 이메일입니다'
