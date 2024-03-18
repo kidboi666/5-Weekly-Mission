@@ -1,6 +1,6 @@
-@use "../base/global";
-@use "../components";
-@use "../abstracts" as a;
+@use '../base/global';
+@use '../components';
+@use '../abstracts' as a;
 
 .add-favorite {
   background-color: transparent;
@@ -146,7 +146,7 @@
 
   .search-input {
     width: 100%;
-    background-image: url("../../img/Search.svg");
+    background-image: url('/src/assets/img/Search.svg');
     background-repeat: no-repeat;
     background-position: left center;
     font-size: 1em;
