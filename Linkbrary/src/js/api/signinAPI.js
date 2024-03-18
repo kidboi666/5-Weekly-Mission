@@ -8,11 +8,13 @@ export async function requestAuthorization(emailInput, passwordInput) {
     return;
   }
   const postData = makePostData(emailInput.value, passwordInput.value);
-  console.log(postData);
   const requestOptions = makeRequestOptions(postData);
 
   try {
     const response = await fetch(url, requestOptions);
+    if (!response.ok) {
+      throw new Error('Bad request');
+    }
     const responseData = await response.json();
     handleLoginResponse(responseData);
   } catch (e) {
@@ -45,12 +47,12 @@ function makeRequestOptions(postData) {
 }
 
 function handleLoginResponse(responseData) {
-  console.log(responseData);
   const accessToken = responseData.accessToken;
   saveAccessTokenToLocalStorage(accessToken);
   window.location.href = '/folder.html';
+  return Promise.resolve();
 }
 
 function saveAccessTokenToLocalStorage(accessToken) {
-  localStorage.setItem('acessToken', accessToken);
+  localStorage.setItem('accessToken', accessToken);
 }
