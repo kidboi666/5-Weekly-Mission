@@ -2,7 +2,7 @@ import {
   handleSubmit,
   handlePasswordToggleClick,
   setFocusInOutListenerById,
-} from '/src/js/eventHandler';
+} from '../../js/eventHandler';
 
 function init() {
   console.log(localStorage.getItem('accessToken'));

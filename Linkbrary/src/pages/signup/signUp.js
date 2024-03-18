@@ -2,7 +2,7 @@ import {
   handlePasswordToggleClick,
   handleSubmit,
   setFocusInOutListenerById,
-} from '/src/js/eventHandler';
+} from '../../js/eventHandler';
 
 function init() {
   const pwToggleBtns = document.querySelectorAll('.pw-toggle-btn');
