@@ -9,7 +9,6 @@ const pwdWrapper = document.querySelector(".pwd-input-wrapper");
 const pwdCheckWrapper = document.querySelector(".pwd-input-check-wrapper");
 const input = document.querySelectorAll('input');
 const VALID_EMAIL = 'test@codeit.com';
-const VALID_PASSWORD = 'codeit101';
 
 function checkEmailValid(emailAddress) {		
     const email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
@@ -49,7 +48,7 @@ emailInput.addEventListener('focusout', () => {
 });
 
 pwdInput.addEventListener('focusout', () => {
-    if(pwdInput.value === '') {
+    if (pwdInput.value === '') {
         pwdError.classList.remove('hide'); 
         pwdInput.classList.add('error-border');
         pwdError.innerText = '비밀번호를 입력해주세요';
@@ -57,7 +56,7 @@ pwdInput.addEventListener('focusout', () => {
     else {
         pwdError.classList.add('hide'); 
         pwdInput.classList.remove('error-border');
-        if(!checkPwdValid(pwdInput.value)) {
+        if (!checkPwdValid(pwdInput.value)) {
             pwdError.innerText = '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.';
             pwdError.classList.remove('hide'); 
             pwdInput.classList.add('error-border');
@@ -101,7 +100,6 @@ input.forEach(element => {
                 pwdCheckError.classList.add('hide'); 
                 pwdCheckInput.classList.remove('error-border');
             }
-        
             if (!checkError()) {
                 location.href = 'folder.html';
             }
@@ -156,7 +154,6 @@ signUpButton.addEventListener('click', () => {
         pwdCheckError.classList.add('hide'); 
         pwdCheckInput.classList.remove('error-border');
     }
-
     if (!checkError()) {
         location.href = 'folder.html';
     }
