@@ -1,5 +1,5 @@
-import { removeErrorMessage } from "./errorMessage";
-import { FOCUS_OUT_FUNCTIONS, SUBMIT_FUNCTIONS } from "./constants";
+import { removeErrorMessage } from './errorMessage';
+import { FOCUS_OUT_FUNCTIONS, SUBMIT_FUNCTIONS } from './constants';
 
 function handleFocusIn(event) {
   const target = event.target;
@@ -29,12 +29,11 @@ function handleSubmit(event) {
 function handlePasswordToggleClick(event) {
   event.preventDefault();
   const passwordInput = event.currentTarget.previousElementSibling;
-  passwordInput.type = passwordInput.type === "password" ? "text" : "password";
-  const imgs = event.currentTarget.querySelectorAll("img");
+  passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+  const imgs = event.currentTarget.querySelectorAll('img');
 
   imgs.forEach((img) => {
-    img.classList.toggle("hidden");
-    img.style.opacity = img.classList.contains("hidden") ? 0 : 1;
+    img.classList.toggle('hidden');
   });
 }
 
@@ -42,8 +41,8 @@ function setFocusInOutListenerById(targetId) {
   const target = document.querySelector(targetId);
 
   if (target) {
-    target.addEventListener("focus", handleFocusIn);
-    target.addEventListener("focusout", handleFocusOut);
+    target.addEventListener('focus', handleFocusIn);
+    target.addEventListener('focusout', handleFocusOut);
   }
 }
 
