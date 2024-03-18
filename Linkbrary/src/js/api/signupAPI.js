@@ -1,6 +1,7 @@
 import isValidEmail from '../emailValidation';
 import generateErrorMessage from '../errorMessage';
 import isValidPassword, { isSamePassword } from '../passwordValidation';
+import { makeRequestOptions, handleLoginResponse } from './apiUtils';
 
 const checkURL = 'https://bootcamp-api.codeit.kr/api/check-email';
 const signUpURL = 'https://bootcamp-api.codeit.kr/api/sign-up';
@@ -50,26 +51,4 @@ export async function requestSignUp(emailInput, passwordInput, passwordCheck) {
     alert('회원가입 제출 형식이 잘못되었습니다!');
     return;
   }
-}
-
-function makeRequestOptions(postData) {
-  const requestOptions = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(postData),
-  };
-  return requestOptions;
-}
-
-function handleLoginResponse(responseData) {
-  const accessToken = responseData.accessToken;
-  saveAccessTokenToLocalStorage(accessToken);
-  window.location.href = '/folder.html';
-  return Promise.resolve();
-}
-
-function saveAccessTokenToLocalStorage(accessToken) {
-  localStorage.setItem('accessToken', accessToken);
 }

@@ -1,5 +1,6 @@
 import generateErrorMessage from '../errorMessage';
 import { isValidInput } from '../formValidation';
+import { makeRequestOptions, handleLoginResponse } from './apiUtils';
 
 const url = 'https://bootcamp-api.codeit.kr/api/sign-in';
 
@@ -33,26 +34,4 @@ function makePostData(email, password) {
     'password': password,
   };
   return postData;
-}
-
-function makeRequestOptions(postData) {
-  const requestOptions = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(postData),
-  };
-  return requestOptions;
-}
-
-function handleLoginResponse(responseData) {
-  const accessToken = responseData.accessToken;
-  saveAccessTokenToLocalStorage(accessToken);
-  window.location.href = '/folder.html';
-  return Promise.resolve();
-}
-
-function saveAccessTokenToLocalStorage(accessToken) {
-  localStorage.setItem('accessToken', accessToken);
 }
