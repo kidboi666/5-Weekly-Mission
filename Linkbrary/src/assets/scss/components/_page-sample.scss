@@ -1,4 +1,4 @@
-@use "../abstracts" as a;
+@use '../abstracts' as a;
 
 .page-sample-section {
   position: relative;
@@ -73,7 +73,7 @@
     .page-sample-content {
       width: 95.7191%;
       aspect-ratio: 303/179;
-      background-image: url("../../img/share-bg-o.png");
+      background-image: url('/src/assets/img/share-bg-o.png');
       background-size: cover;
     }
 
