@@ -113,4 +113,4 @@ loginButton.addEventListener('click', () => {
     loginCheck();
 });
 
-export {addEmailErrorSign, addPwdErrorSign, removeEmailErrorSign, removePwdErrorSign} ;
+export {checkEmailValid, addEmailErrorSign, addPwdErrorSign, removeEmailErrorSign, removePwdErrorSign} ;
