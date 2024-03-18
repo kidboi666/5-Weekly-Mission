@@ -5,6 +5,11 @@ import {
 } from '../../js/eventHandler';
 
 function init() {
+  if (localStorage.getItem('accessToken')) {
+    window.location.href = '/folder';
+    return;
+  }
+
   const pwToggleBtns = document.querySelectorAll('.pw-toggle-btn');
 
   for (const btn of pwToggleBtns) {
