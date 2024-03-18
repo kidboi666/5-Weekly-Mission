@@ -2,8 +2,11 @@
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>회원가입</title>
+    <meta
+      name="viewport"
+      content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
     <link
       rel="stylesheet"
       type="text/css"
@@ -25,19 +28,22 @@
         <div class="sign-inputs">
           <div class="sign-input-box">
             <label class="sign-input-label">이메일</label>
-            <input class="sign-input" />
+            <input class="sign-input" id="email"/>
+            <p id="email-error-message" class="error-message"></p>
           </div>
           <div class="sign-input-box sign-password">
             <label class="sign-input-label">비밀번호</label>
-            <input class="sign-input" type="password" />
-            <button class="eye-button" type="button">
+            <input class="sign-input" type="password" id="password"/>
+            <p id="password-error-message" class="error-message"></p>
+            <button id="password-toggle" class="eye-button" type="button">
               <img src="./images/eye-off.svg" />
             </button>
           </div>
           <div class="sign-input-box sign-password">
             <label class="sign-input-label">비밀번호 확인</label>
-            <input class="sign-input" type="password" />
-            <button class="eye-button" type="button">
+            <input class="sign-input" type="password" id="checkpw"/>
+            <p id="checkpw-error-message" class="error-message"></p>
+            <button id="checkpw-toggle" class="eye-button" type="button">
               <img src="./images/eye-off.svg" />
             </button>
           </div>
@@ -56,5 +62,6 @@
         </div>
       </div>
     </div>
+    <script type="module" src="src/signup.js"></script>
   </body>
 </html>
