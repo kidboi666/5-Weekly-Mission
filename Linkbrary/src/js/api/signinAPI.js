@@ -1,5 +1,5 @@
 import generateErrorMessage from '../errorMessage';
-import { isValidInput } from '../formValidation';
+import { isValidInput } from '../inputValidation';
 import { makeRequestOptions, handleLoginResponse } from './apiUtils';
 
 const url = 'https://bootcamp-api.codeit.kr/api/sign-in';
