@@ -26,7 +26,7 @@ function checkId() {
     showMsg.innerHTML = '올바른 이메일 주소가 아닙니다.';
     // 이메일 박스 빨간테두리 추가
     id.classList.toggle('error');
-  } 
+  }
 }
 
 function checkPwd() {
@@ -52,7 +52,6 @@ function resetId() {
   resetMsg.innerHTML = '이메일을 입력해주세요.';
   // 이메일 박스 테두리 원상복구
   id.classList.remove('error')
-
 }
 
 
