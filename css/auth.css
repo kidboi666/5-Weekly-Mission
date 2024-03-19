@@ -79,8 +79,9 @@ header {
   border: 1px solid var(--red) !important;
 }
 
-.emailErrorMessage,
-.pwErrorMessage {
+#email-error-message,
+#pw-error-message,
+#pw-confirm-message {
   color: var(--red);
   font-size: 1.4rem;
 }
@@ -106,7 +107,8 @@ header {
   border-color: var(--primary);
 }
 
-.eye-button {
+.eye-button,
+.confirm-eye-button {
   position: absolute;
   bottom: 2.2rem;
   right: 1.5rem;
