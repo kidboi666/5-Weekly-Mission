@@ -1,84 +1,116 @@
-const emailInput= document.querySelector('.email-input');
-const pwdInput=document.querySelector('.pwd-input');
-const loginButton=document.querySelector('.button-sign');
-const checkEmail= document.querySelector('.check-email');
-const checkPwd= document.querySelector('.check-pwd');
-const eyeIcon=document.querySelector('.pwd-eye-off');
+const emailInput = document.querySelector('.email-input');
+const pwdInput = document.querySelector('.pwd-input');
+const loginButton = document.querySelector('.button-sign');
+const checkPwd = document.querySelector('.check-pwd');
+const eyeIcon = document.querySelector('.pwd-eye-off');
+const emailError = document.querySelector('.email-error');
+const pwdError = document.querySelector('.pwd-error');
+const eyeOnoff = document.getElementById("eyeOnOff");
+const input = document.querySelectorAll('input');
+const VALID_EMAIL = 'test@codeit.com';
+const VALID_PASSWORD = 'codeit101';
 
-function emailCheck(email_address) {		
+function checkEmailValid(emailAddress) {		
     const email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
-    if (!email_regex.test(email_address)) return false; 
-    else return true;
+    return email_regex.test(emailAddress);
 }
 
-eyeIcon.addEventListener("click", (e) => {
-    e.preventDefault();
- });
+function addEmailErrorSign() {
+    emailError.classList.remove('hide');
+    emailInput.classList.add('error-border');
+}
+
+function removeEmailErrorSign() {
+    emailError.classList.add('hide');
+    emailInput.classList.remove('error-border');
+}
+
+function addPwdErrorSign() {
+    pwdError.classList.remove('hide');
+    pwdInput.classList.add('error-border');
+}
+
+function removePwdErrorSign() {
+    pwdError.classList.add('hide');
+    pwdInput.classList.remove('error-border');
+}
 
 function loginCheck() {
-    if ((emailInput.value==='test@codeit.com')&&pwdInput.value==='codeit101') {
-        location.href='folder.html';
+    if (emailInput.value === VALID_EMAIL && pwdInput.value === VALID_PASSWORD) {
+        location.href = 'folder.html';
     } else {
-        checkEmail.classList.remove('hide');
-        emailInput.classList.add('error-border');
-        checkPwd.classList.remove('hide');
-        pwdInput.classList.add('error-border');
+        addEmailErrorSign();
+        emailError.innerText = '이메일을 확인해주세요';
+        addPwdErrorSign();
+        pwdError.innerText = '비밀번호를 확인해주세요';
     }
-}
+};
 
 emailInput.addEventListener('focusout', () => {
-    const blankError=document.querySelector('.email-blank-error');
-    const typeError=document.querySelector('.email-type-error');
-    if (emailInput.value !== '') {
-        blankError.classList.add('hide');
-        if (!emailCheck(emailInput.value)) typeError.classList.remove('hide');
-        else typeError.classList.add('hide');
-    } else {
-        blankError.classList.remove('hide');
-        typeError.classList.add('hide');
+    if (emailInput.value === '') {
+        emailError.innerText = '이메일을 입력해주세요';
+        addEmailErrorSign();
     } 
-    if (blankError.classList.contains('hide') && typeError.classList.contains('hide')) emailInput.classList.remove('error-border');
-    else emailInput.classList.add('error-border');
-});
-
-emailInput.addEventListener('focusin', () => {
-    checkEmail.classList.add('hide');
-    checkPwd.classList.add('hide');
+    else {
+        removeEmailErrorSign();
+        if (!checkEmailValid(emailInput.value)) {
+            addEmailErrorSign();
+            emailError.innerText = '이메일을 형식을 확인해주세요';
+        }
+    }
 });
 
 pwdInput.addEventListener('focusout', () => {
-    const blankError=document.querySelector('.pwd-blank-error');
-    if(pwdInput.value !== '') {
-        blankError.classList.add('hide'); 
-        pwdInput.classList.remove('error-border');
+    if(pwdInput.value === '') {
+        addPwdErrorSign();
+        pwdError.innerText = '비밀번호를 입력해주세요';
     }
     else {
-        blankError.classList.remove('hide'); 
-        pwdInput.classList.add('error-border');
+        removePwdErrorSign();
     }
+});
+
+emailInput.addEventListener('focusin', () => {
+    removeEmailErrorSign();
 });
 
 pwdInput.addEventListener('focusin', () => {
-    checkEmail.classList.add('hide');
-    checkPwd.classList.add('hide');
+    removePwdErrorSign();
 });
 
-emailInput.addEventListener('keyup', (e) => { 
-    if (e.keyCode===13) loginCheck();
- });
-
-pwdInput.addEventListener('keyup', (e) => {
-    if (e.keyCode===13) loginCheck();
+input.forEach(element => {
+    element.addEventListener('keyup', (e) => { 
+        if (e.keyCode === 13) {
+            if (emailInput.value === '') {
+                emailError.innerText = '이메일을 입력해주세요';
+                addEmailErrorSign();
+            } 
+            else loginCheck();
+            if (pwdInput.value === '') {
+                pwdError.innerText = '비밀번호를 입력해주세요';
+                addPwdErrorSign();
+            }
+            else loginCheck();
+        }
+    });
 });
 
 eyeIcon.addEventListener('mousedown', () => {
     pwdInput.setAttribute('type','text');
-    const eyeOnoff=document.getElementById("eyeOnOff");
     eyeOnoff.setAttribute("src","images/eye-on.svg");
 });
 
 eyeIcon.addEventListener('mouseup', () => {
     pwdInput.setAttribute('type','password');
-    const eyeOnoff=document.getElementById("eyeOnOff");
     eyeOnoff.setAttribute("src","images/eye-off.svg");
 });
+
+eyeIcon.addEventListener('click', (e) => {
+    e.preventDefault();
+});
+
+loginButton.addEventListener('click', () => {
+    loginCheck();
+});
+
+export {checkEmailValid, addEmailErrorSign, addPwdErrorSign, removeEmailErrorSign, removePwdErrorSign} ;

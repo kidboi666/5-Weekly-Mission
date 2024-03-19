@@ -1,57 +1,64 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>signin</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/signin.css">
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>signup</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/signin.css">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="contents">
     <div class="title">
-      <div>
+      <h1>
         <a href="/"> 
           <img class="logo" src="images/logo.svg" alt="로고">
         </a>
-      </div>
+      </h1>
       <h2>
-        회원이 아니신가요?
-        <a href="./signup.html">회원가입하기</a>
+        이미 회원이신가요?
+        <a href="./signup.html">로그인하기</a>
       </h2>
     </div>
     <div class="input-form">
       <form>
         <ol>
-          <li class="email-input-wrapper">
+          <li>
             <label>
-              이메일 <br>
-              <input class="email-input error-border" value="" type="email">
+              이메일<br>
+              <input class="email-input" type="email">
             </label>
-            <p class="error-msg email-blank-error">이메일을 입력해주세요</p>
-            <p class="error-msg email-type-error hide">올바른 이메일 주소가 아닙니다.</p>
-            <p class="error-msg check-email hide">이메일을 확인해주세요</p>
+            <p class="error-msg email-error hide"></p>
           </li>
           <li class="pwd-input-wrapper">
             <label>
-              비밀번호 <br>
-              <input class="pwd-input error-border" value="" type="password">       
+              비밀번호<br>
+              <input class="pwd-input" type="password">       
             </label>
-            <button class="pwd-eye-off">
-              <img id="eyeOnOff" src="images/eye-off.svg" alt="eye-off">
+            <button type="button" class="pwd-eye-off">
+              <img class="eyeOnOff" src="images/eye-off.svg" alt="eye-off">
             </button>
-            <p class="error-msg pwd-blank-error">비밀번호를 입력해주세요</p>
-            <p class="error-msg check-pwd hide">비밀번호를 확인해주세요</p>
+            <p class="error-msg pwd-error hide"></p>
+          </li>
+          <li class="pwd-input-check-wrapper">
+            <label>
+              비밀번호 확인<br>
+              <input class="pwd-input-check" type="password">       
+            </label>
+            <button type="button" class="pwd-eye-off">
+              <img class="eyeOnOff" src="images/eye-off.svg" alt="eye-off">
+            </button>
+            <p class="error-msg pwd-check-error hide"></p>
           </li>
         </ol>
       </form>
     </div>
-    <button class="button-sign" onclick="loginCheck()"> 로그인 </button>
+    <button class="button-sign">회원가입</button>
     <div class="social-login">
-      <p>소셜 로그인</p>
+      <p>다른 방식으로 가입하기</p>
       <div class="social-icon">
         <div class="google-icon">
           <a href="http://www.google.com">
@@ -66,5 +73,5 @@
       </div>
     </div>
   </div>
-  <script src="signin.js"></script>
+  <script type="module" src="signup.js"></script>
 </body>
