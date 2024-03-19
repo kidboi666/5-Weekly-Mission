@@ -13,7 +13,8 @@
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
 
-    <link rel="stylesheet" href="../login/signin.css" />
+    <link rel="stylesheet" href="./signup.css" />
+
     <link rel="stylesheet" href="../styles/global.css" />
   </head>
   <body>
@@ -37,6 +38,8 @@
           <div class="form-group">
             <label class="form-group__label">이메일</label>
             <input class="form-group__email" type="email" />
+            <p class="form-group__error-message--email"></p>
+
           </div>
           <div class="form-group password-container">
             <label class="form-group__label">비밀번호</label>
@@ -44,16 +47,21 @@
             <button class="form-group__eye-button" type="button">
               <img src="../assets/images/eye-off.svg" />
             </button>
+            <p class="form-group__error-message--password"></p>
           </div>
           <div class="form-group password-container">
             <label class="form-group__label">비밀번호 확인</label>
-            <input class="form-group__password" type="password" />
+            <input class="form-group__password-confirm" type="password" />
             <button class="form-group__eye-button" type="button">
               <img src="../assets/images/eye-off.svg" />
             </button>
+            <p class="form-group__error-message--password-confirm"></p>
           </div>
         </div>
-        <button class="cta" type="submit">회원가입</button>
+        <button class="form-group__signup-button" type="submit">
+          회원가입
+        </button>
+
       </form>
       <div class="sns-box">
         <span class="sns-text">다른 방식으로 가입하기</span>
@@ -67,5 +75,7 @@
         </div>
       </div>
     </div>
+    <script src="./signup.js"></script>
+
   </body>
 </html>
