@@ -1,6 +1,6 @@
 @import "../globals.css";
 
-header{
+.linkbrary-header{
   position: fixed;
   width: 100%;
   background-color: var(--Linkbrary-bg, #F0F6FF);
@@ -8,7 +8,7 @@ header{
 }
 
 .linkbrary-nav{
-  padding: 20px 200px;
+  padding: 1.25rem 12.5rem;
 }
 
 .linkbrary-nav ul{
@@ -23,17 +23,17 @@ header{
 }
 
 .linkbrary-nav__logo{
-  width: 193px;
-  height: 24px;
+  width: 12.0625rem;
+  height: 1.5rem;
 }
 
 .linkbrary-nav__signin-btn{
   display: flex;
-  width: 128px;
-  padding: 16px 20px;
+  width: 8rem;
+  padding: 1rem 1.25rem;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: .625rem;
   border-radius: 8px;
   background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
   border-style: none;
@@ -47,7 +47,7 @@ header{
 }
 
 main{
-  padding-top: 93px;
+  padding-top: 5.8125rem;
 }
 
 .main-header{
@@ -59,11 +59,11 @@ main{
 .main-header__card{
   display: flex;
   width: 100%;
-  padding: 70px 360px 0px 360px;
+  padding: 4.375rem 22.5rem 0rem 22.5rem;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  gap: 40px;
+  gap: 2.5rem;
   z-index: 0;
 }
 
@@ -73,9 +73,9 @@ main{
   font-size: 4rem;
   font-style: normal;
   font-weight: 700;
-  line-height: 80px; /* 125% */
-  width: 708px;
-  height: 160px;
+  line-height: 5rem; /* 125% */
+  width: 44.25rem;
+  height: 10rem;
 }
 
 .main-header__line-break{
@@ -91,11 +91,11 @@ main{
 
 .main-header__signup-btn{
   display: flex;
-  width: 350px;
-  padding: 16px 20px;
+  width: 21.875rem;
+  padding: 1rem 1.25rem;
   justify-content: center;
   align-items: center;
-  gap: 10px;border-radius: 8px;
+  gap: .625rem;border-radius: 8px;
   background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg, #6D6AFE 0.12%, #6AE3FE 101.84%));
   color: var(--Grey-Light, #F5F5F5);
   font-family: Pretendard;
@@ -108,7 +108,7 @@ main{
 
 .main-header__preview-img{
   position: relative;
-  width: 1118px;
+  width: 69.875rem;
   flex-shrink: 0;
 }
 
@@ -118,7 +118,7 @@ section{
 
 .section__wrap{
   display: flex;
-  padding: 50px 461px 50px 461px;
+  padding: 3.125rem 28.8125rem 3.125rem 28.8125rem;
   justify-content: center;
   align-items: center;
 }
@@ -130,15 +130,15 @@ section{
 .section__card{
   display: flex;
   align-items: center;
-  gap: 157px;
+  gap: 9.8125rem;
 }
 
 .section__frame{
   display: flex;
-  width: 291px;
+  width: 18.1875rem;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
+  gap: .625rem;
 }
 
 .section__title{
@@ -155,7 +155,7 @@ section{
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 150%; /* 24px */
+  line-height: 150%; /* 1.5rem */
 }
 
 .section__gradation-orange-to-blue{
@@ -166,10 +166,10 @@ section{
 }
 
 .section__img{
-  width: 550px;
-  height: 450px;
+  width: 34.375rem;
+  height: 28.125rem;
   flex-shrink: 0;
-  border-radius: 25px;
+  border-radius: 1.5625rem;
 }
 
 .section__gradation-yellow-to-blue{
@@ -181,7 +181,7 @@ section{
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  letter-spacing: -0.2992px;
+  letter-spacing: -0.0187rem;
 }
 
 .section__gradation-blue{
@@ -208,24 +208,24 @@ section{
 
 
 /* 태블릿 사이즈 */
-@media (max-width : 1199px) {
+@media (max-width : 74.9375rem) {
   .linkbrary-nav{
     margin: auto;
-    max-width: 800px;
-    padding: 20px 32px;
+    max-width: 50rem;
+    padding: 1.25rem 2rem;
   }
 
   .main-header__card{
     display: flex;
-    padding: 40px 250px 0px 251px;
+    padding: 2.5rem 15.625rem 0rem 15.6875rem;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 2.5rem;
   }
 
   .main-header__title{
-    width: 472px;
-    height: 240px;
+    width: 29.5rem;
+    height: 15rem;
   }
 
   .main-header__line-break{
@@ -233,39 +233,39 @@ section{
   }
 
   .main-header__preview-img{
-    width: 650.3024px;
+    width: 40.6439rem;
     flex-shrink: 0;
   }
 
   .section{
-    padding-top: 20px;
+    padding-top: 1.25rem;
   }
 
   .section__wrap{
     display: flex;
-    padding: 50px 250px 50px 251px;
+    padding: 3.125rem 15.625rem 3.125rem 15.6875rem;
     justify-content: center;
     align-items: center;
   }
 
   .section__card{
-    gap: 51px;
+    gap: 3.1875rem;
   }
 
   .section__img{
-    width: 385px;
-    height: 315px;
+    width: 24.0625rem;
+    height: 19.6875rem;
     flex-shrink: 0;
-    border-radius: 25px;
+    border-radius: 1.5625rem;
   }
 }
 
 /* 모바일 사이즈 */
 
-@media (max-width : 767px) {  
+@media (max-width : 47.9375rem) {  
 
   .main-header__card{
-    padding: 28px 32px 0px 33px;
+    padding: 1.75rem 2rem 0rem 2.0625rem;
   }
 
   .main-header__title,
@@ -280,7 +280,7 @@ section{
   }
 
   .section__wrap{
-    padding: 40px 32px 36.0912px 33px;
+    padding: 2.5rem 2rem 2.2557rem 2.0625rem;
   }
 
   .section__wrap .section__card{
@@ -294,7 +294,7 @@ section{
   }
 
   .section__img{
-    padding-top: 24px;
+    padding-top: 1.5rem;
   }
 
   .section__frame,
@@ -305,7 +305,7 @@ section{
 
   .main-header__title{
     font-size: 2rem;
-    line-height: 42px; /* 131.25% */
+    line-height: 2.625rem; /* 131.25% */
   }
 
   .section__title{
