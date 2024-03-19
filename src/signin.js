@@ -1,9 +1,18 @@
-// email validation
+import { eyeToggleButton, TEST_USER } from "./utils.js";
+
+// form
+const signForm = document.querySelector("#form");
+// email
 const inputEmail = document.querySelector("#email");
 const emailValidation = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+/;
 const emailErrorMsg = document.querySelector("#email-error-msg");
+// password
+const inputPassword = document.querySelector("#pwd");
+const pwdErrorMsg = document.querySelector("#pwd-error-msg");
+const styleBtn = document.querySelector(".eye-btn");
+const passwordToggleButton = document.querySelector("#pwd-toggle");
 
-inputEmail.addEventListener("focusout", InputEmailFunc);
+// event handler
 function InputEmailFunc(e) {
   if (inputEmail.value === "") {
     emailErrorMsg.textContent = "이메일을 입력해 주세요.";
@@ -19,12 +28,6 @@ function InputEmailFunc(e) {
   inputEmail.classList.remove("error-input-text");
 }
 
-// password validation
-const inputPassword = document.querySelector("#pwd");
-const pwdErrorMsg = document.querySelector("#pwd-error-msg");
-const styleBtn = document.querySelector(".eye-btn");
-
-inputPassword.addEventListener("focusout", InputPasswordFunc);
 function InputPasswordFunc() {
   if (inputPassword.value === "") {
     pwdErrorMsg.textContent = "비밀번호를 입력해 주세요.";
@@ -37,34 +40,6 @@ function InputPasswordFunc() {
   styleBtn.classList.remove("fix-eye-btn");
 }
 
-// toggle eye-icon
-const passwordToggleButton = document.querySelector("#pwd-toggle");
-passwordToggleButton.addEventListener("click", () =>
-  eyeToggleButton(inputPassword, passwordToggleButton)
-);
-
-function eyeToggleButton(input, toggleBtn) {
-  if (input.getAttribute("type") === "password") {
-    input.setAttribute("type", "text");
-    toggleBtn
-      .getElementsByTagName("img")[0]
-      .setAttribute("src", "./img/signin/eye-on.svg");
-    return;
-  }
-  input.setAttribute("type", "password");
-  toggleBtn
-    .getElementsByTagName("img")[0]
-    .setAttribute("src", "./img/signin/eye-off.svg");
-}
-
-const TEST_USER = {
-  email: "test@codeit.com",
-  password: "codeit101",
-};
-
-const signForm = document.querySelector("#form");
-
-signForm.addEventListener("submit", submitForm);
 function submitForm(e) {
   e.preventDefault();
 
@@ -80,3 +55,11 @@ function submitForm(e) {
   pwdErrorMsg.textContent = "비밀번호를 확인해주세요.";
   styleBtn.classList.add("fix-eye-btn");
 }
+
+// event handling
+inputEmail.addEventListener("focusout", InputEmailFunc);
+inputPassword.addEventListener("focusout", InputPasswordFunc);
+passwordToggleButton.addEventListener("click", () =>
+  eyeToggleButton(inputPassword, passwordToggleButton)
+);
+signForm.addEventListener("submit", submitForm);
