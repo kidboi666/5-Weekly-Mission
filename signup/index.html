@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../styles/common_login-signUp.css">
   <link rel="stylesheet" href="../styles/common.css">
   <link rel="stylesheet" href="../styles/ui.css">
+  <!-- <link rel="stylesheet" href="css/signup.css"><link rel="preconnect" href="https://fonts.googleapis.com"> -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link
@@ -16,7 +17,6 @@
 >
 </head>
 <body>
-  <script type="module" src="./index.js"></script>
   <main>
     <div class="login-signUp-form">
       <div class="login-signUp-form__header">
@@ -24,26 +24,17 @@
         이미 회원이신가요? <a class="btn-goTo-login-signUp" href="../login/index.html">로그인 하기</a>
       </div>
       <div class="login-signUp-form__body">
-        <form id="form">
+        <form>
           <label name="email">이메일<br>
-            <input class="input-email" type="email" name="email" id="email">
-            <p class="error-message err-email"></p>
+            <input class="input-email" type="email" name="email" id="email"><br>
           </label>
-          <label name="password" class="login-signUp-form__body__password-label"> 비밀번호<br>
+          <label name="password"> 비밀번호<br>
             <input class="input-password" type="password" name="password" id="password">
-            <p class="error-message err-password"></p>
-            <button id="password-toggle" class="eye-button eyeBtnSignUp" type="button">
-              <img src="../assets/images/eye-off.svg" />
-            </button>
           </label>
-          <label name="password" class="login-signUp-form__body__password-label"> 비밀번호 확인<br>
-            <input class="input-password-check" type="password" name="password">
-            <p class="error-message err-password-check"></p>
-            <button id="password-check-toggle" class="eye-button eyeBtnSignUp2" type="button">
-              <img src="../assets/images/eye-off.svg" />
-            </button>
+          <label name="password"> 비밀번호 확인<br>
+            <input class="input-password" type="password" name="password">
           </label>
-          <button type="submit" class="btn btn-login-signUp signUp">회원 가입</button>
+          <button class="btn btn-login-signUp signUp" style="cursor: pointer;">회원 가입</button>
         </form>
       </div>
       <div class="signUp-form__social">
