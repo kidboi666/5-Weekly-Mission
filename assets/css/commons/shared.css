@@ -10,10 +10,6 @@
   font-size: 1.125rem;
 }
 
-.auth-form__input.input-border--red {
-  border: 1px solid var(--error-color);
-}
-
 @media (max-width: 767px) {
  
   .pc-br {
