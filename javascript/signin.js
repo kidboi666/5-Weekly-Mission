@@ -1,73 +1,52 @@
 import { 
   loginId,
-  emailNone,
-  emailFail,
-  emailCheck,
-  emailResult,
-  /* errorMessageEmailReset, */
+  emailErr,
+  emailSignIn,
 } from "./email.js"
 
 import { 
   loginPwd,
-  passwordNone,
-  passwordFail,
-  passwordResult,
-  /* errorMessagePasswordReset, */
+  passwordErrSignIn,
+  passwordSignIn,
 } from "./password.js"
 
-const loginBtn = document.querySelector('.cta');
-const eyeBtn = document.querySelector('.password-button')
-const eyeOn = document.querySelector('.eye-on')
-const eyeOff = document.querySelector('.eye-off')
+const CORRECT_EMAIL = "test@codeit.com"
+const CORRECT_PASSWORD = "codeit101"
 
-loginId.addEventListener('focusout', emailResult);
-loginPwd.addEventListener('focusout', passwordResult);
+const form = document.querySelector('#form');
+const eyeBtn = document.querySelector('.password-button');
+const eyeOn = document.querySelector('.eye-on');
+const eyeOff = document.querySelector('.eye-off');
 
-loginId.addEventListener('keyup', function(e) {
-  if (e.keyCode === 13) {
-    if (loginId.value === "test@codeit.com" && loginPwd.value === 'codeit101') {
-      location.href = "./folder.html";
-    } else {
-      emailNone.classList.add("hide");
-      emailCheck.classList.add("hide");
-      emailFail.classList.remove("hide");
-      loginId.classList.add("input-err");
-      passwordNone.classList.add("hide");
-      passwordFail.classList.remove("hide");
-      loginPwd.classList.add("input-err");
-    }
-  }
-}); /* 합칠 수 있나? */
+loginId.addEventListener('focusout', emailSignIn);
+loginPwd.addEventListener('focusout', passwordSignIn);
 
-loginPwd.addEventListener('keyup', function(e) {
-  if (e.keyCode === 13) {
-    if (loginId.value === "test@codeit.com" && loginPwd.value === 'codeit101') {
-      location.href = "./folder.html";
-    } else {
-      emailNone.classList.add("hide");
-      emailCheck.classList.add("hide");
-      emailFail.classList.remove("hide");
-      loginId.classList.add("input-err");
-      passwordNone.classList.add("hide");
-      passwordFail.classList.remove("hide");
-      loginPwd.classList.add("input-err");
-    }
-  }
-}); /* 합칠 수 있나? */
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
 
-loginBtn.addEventListener('click', function() {
-  if (loginId.value === "test@codeit.com" && loginPwd.value === 'codeit101') {
+  if (loginId.value === CORRECT_EMAIL && loginPwd.value === CORRECT_PASSWORD) {
     location.href = "./folder.html";
-  } else {
-    emailNone.classList.add("hide");
-    emailCheck.classList.add("hide");
-    emailFail.classList.remove("hide");
+  } else if (loginId.value === CORRECT_EMAIL && loginPwd.value !== CORRECT_PASSWORD) {
+    emailErr.classList.add("hide");
+    loginId.classList.remove("input-err");
+    passwordErrSignIn.textContent = '비밀번호를 확인해 주세요.';
+    passwordErrSignIn.classList.remove("hide");
+    loginPwd.classList.add("input-err");
+  } else if (loginId.value !== CORRECT_EMAIL && loginPwd.value === CORRECT_PASSWORD) {
+    emailErr.textContent = '이메일을 확인해 주세요.';
+    emailErr.classList.remove("hide");
     loginId.classList.add("input-err");
-    passwordNone.classList.add("hide");
-    passwordFail.classList.remove("hide");
+    passwordErrSignIn.classList.add("hide");
+    loginPwd.classList.remove("input-err");
+  } else {
+    emailErr.textContent = '이메일을 확인해 주세요.';
+    emailErr.classList.remove("hide");
+    loginId.classList.add("input-err");
+    passwordErrSignIn.textContent = '비밀번호를 확인해 주세요.';
+    passwordErrSignIn.classList.remove("hide");
     loginPwd.classList.add("input-err");
   }
-}); /* 합칠 수 있나? */
+});
 
 eyeBtn.addEventListener('click', function() {
   if (loginPwd.type === 'password') {

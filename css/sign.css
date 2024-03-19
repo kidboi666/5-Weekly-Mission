@@ -179,7 +179,7 @@ input {
 /* 에러 */
 .err-font {
   color: var(--red);
-  font-size: 1.4rem;;
+  font-size: 1.4rem;
   font-weight: 400;
 }
 

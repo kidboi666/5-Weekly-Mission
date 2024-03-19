@@ -10,37 +10,37 @@
   </head>
   <body>
     <header>
-      <a class="logo-link" href="index.html">
-        <img class="header-logo" src="./images/logo.svg" alt="홈으로 돌아가는 로고 이미지">
-      </a>
+      <h1>
+        <a class="logo-link" href="index.html">
+          <img class="header-logo" src="./images/logo.svg" alt=" 로고 이미지">
+        </a>
+      </h1>
       <div class="signup-check-box">
         <span class="signup-check-text">회원이 아니신가요?</span>
         <a class="signiup-link" href="signup.html">회원가입하기</a>
       </div>
     </header>
     <div class="signup-box">
-      <div class="signup-input-boxs">
-        <div class="signup-input-box">
-          <label for="signup-email">이메일</label>
-          <input id="signup-email" class="signin-email" name="signup-email" type="email">
-          <div class="email-content-none hide err-font">이메일을 입력해주세요.</div>
-          <div class="email-content-check hide err-font">올바른 이메일 주소가 아닙니다.</div>
-          <div class="email-content-fail hide err-font">이메일을 확인해 주세요.</div>
-        </div>
-        <div class="signup-input-box">
-          <label for="signup-password">비밀번호</label>
-          <div class="signup-input-password-box">
-            <input id="signup-password" class="signin-password" name="signup-password" type="password">
-            <button class="password-button" type="button">
-              <img class="eye-on hide" src="./images/eye-on.svg" alt="패스워드 눈 뜬 모양 이미지">
-              <img class="eye-off hide" src="./images/eye-off.svg" alt="패스워드 눈 감은 모양 이미지">
-            </button>
+      <form id="form">
+        <div class="signup-input-boxs">
+          <div class="signup-input-box">
+            <label for="signup-email">이메일</label>
+            <input id="signup-email" class="signin-email" name="signup-email" type="email">
+            <div class="email-err hide err-font">이메일을 입력해주세요.</div>
+          <div class="signup-input-box">
+            <label for="signup-password">비밀번호</label>
+            <div class="signup-input-password-box">
+              <input id="signup-password" class="signin-password" name="signup-password" type="password">
+              <button class="password-button" type="button">
+                <img class="eye-on hide" src="./images/eye-on.svg" alt="패스워드 눈 뜬 모양 이미지">
+                <img class="eye-off" src="./images/eye-off.svg" alt="패스워드 눈 감은 모양 이미지">
+              </button>
+            </div>
+            <div class="password-err hide err-font">비밀번호를 입력해 주세요.</div>
           </div>
-          <div class="password-content-none hide err-font">비밀번호를 입력해 주세요.</div>
-          <div class="password-content-fail hide err-font">비밀번호를 확인해 주세요.</div>
+          <button type='submit' class="cta">로그인</button>
         </div>
-        <button class="cta">로그인</button>
-      </div>
+      </form>
       <div class="other-signup">
         <span class="other-signup-text">소셜 로그인</span>
         <div class="icon">
