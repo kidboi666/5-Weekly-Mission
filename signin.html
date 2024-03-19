@@ -19,26 +19,26 @@
       </div>
     </div>
 
-    <form class="login-form">
+    <form id="form__inputForm">
       <div class="sign-wrap">
         <div class="sign-inner">
-          <label class="sign-label" for="email">이메일</label>
+          <label class="sign-label" for="input-email">이메일</label>
           <input id="input-email" class="sign-input" type="email" name="email" />
           <div class="email-error-message"></div>
         </div>
-
+        
         <div class="sign-inner">
-          <label class="sign-label" for="pw">비밀번호</label>
+          <label class="sign-label" for="input-pw">비밀번호</label>
           <div class="sign-pw">
-            <input id="input-pw" class="sign-input" type="password" name="pw" />
+            <input id="input-pw" class="sign-input" type="password" name="password" />
             <button class="sign-pw__eye-btn" type="button">
-              <img class="eye-change" src="/assets/img/svg/eye-off.svg" alt="비밀번호 감추기" />
+              <img class="eye-change" src="/assets/img/svg/eye-off.svg" alt="비밀번호 감추기 버튼" />
             </button>
           </div>
           <div class="pw-error-message"></div>
         </div>
       </div> 
-      <button class="sign-btn btn-color" type="button" type="submit">로그인</button>
+      <button class="sign-btn btn-color" type="submit">로그인</button>
     </form>
   </div>
   
@@ -59,6 +59,7 @@
   </div>
 
   <script type="module" src="/assets/js/login.js"></script>
+  <script type="module" src="/assets/js/check.js"></script>
   <script type="module" src="/assets/js/eye.js"></script>
 </body>
 </html>

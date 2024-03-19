@@ -179,13 +179,19 @@ body {
   position: absolute;
 }
 
-.error_message {
+.email-error-message,
+.pw-error-message,
+.pw-confirm-error-message {
   color: var(--Linkbrary-red, #FF5B56);
   font-family: Pretendard;
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.error-border {
+  border-color: #FF5B56;
 }
 
 .eye-on {
