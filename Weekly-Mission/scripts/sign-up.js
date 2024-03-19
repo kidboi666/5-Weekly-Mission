@@ -5,7 +5,6 @@ document.getElementById('email').addEventListener('focusout', function () {
   let errorElement = document.getElementById('email-error');
   const emailField = document.getElementById('email');
 
-
   if (emailInput === '') {
     emailField.style.border = '1px solid red';
     if (!errorElement) {
@@ -72,7 +71,6 @@ document.getElementById('current-password').addEventListener('focusout', functio
   const passwordinput = this.value.trim();
   let errorElement = document.getElementById('password-error');
   const passwordField = document.getElementById('current-password');
-
 
   if (passwordinput === '') {
     passwordField.style.border = '1px solid red';
