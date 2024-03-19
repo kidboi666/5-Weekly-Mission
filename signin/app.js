@@ -1,39 +1,40 @@
 import {
-  removeErrorMessage, 
   validateEmail, 
-  users, 
+  users
+} from '../js/auth.js';
+
+import {
+  removeErrorMessage,
   togglePasswordVisibility
-} from '../common.js';
+} from '../js/uicontroller.js';
 
 /*email 유효성 검증*/
 
 const emailInputEl = document.querySelector('.email-input');
 emailInputEl.addEventListener('focusout', validateEmail);
-emailInputEl.addEventListener('focus', removeErrorMessage);
+emailInputEl.addEventListener('focus', () => removeErrorMessage('.error-message-email'));
 
 
 /*password 유효성 검증*/
 
-function validatePassword(event) {
-  const passwordInputEl = event.target;
+function validatePassword() {
+  const passwordInputEl = document.querySelector('.password-input');
   const passwordValue = passwordInputEl.value;
-
   const errorMessageEl = document.querySelector('.error-message-password');
 
   if(passwordValue === '') {
-    errorMessageEl.textContent = "비밀번호를 입력해주세요";
+    errorMessageEl.textContent = "비밀번호를 입력해주세요.";
     passwordInputEl.classList.add('wrongsign');
-  }
-
+    return false;
+  } else {
     passwordInputEl.classList.remove('wrongsign');
-
+    return true;
+  }
 }
 
 const passwordInputEl = document.querySelector('.password-input');
 passwordInputEl.addEventListener('focusout', validatePassword);
-passwordInputEl.addEventListener('focus', removeErrorMessage);
-
-
+passwordInputEl.addEventListener('focus', () => removeErrorMessage('.error-message-password'));
 
 /*이메일: test@codeit.com 비밀번호: codeit101로 로그인 시, /folder 페이지로 이동
 이외의 로그인 시도의 경우, 에러 메세지 출력*/
@@ -41,28 +42,23 @@ passwordInputEl.addEventListener('focus', removeErrorMessage);
 function handleFormSubmit(event) {
   event.preventDefault();
 
+  const emailInputEl = document.querySelector('.email-input');
+  const passwordInputEl = document.querySelector('.password-input');
+
   const emailValue = emailInputEl.value;
   const passwordValue = passwordInputEl.value;
 
   const errorMessageEl_email = document.querySelector('.error-message-email');
   const errorMessageEl_password = document.querySelector('.error-message-password');
 
-  const useremail = users.find(user => user.email === emailValue);
-  const userpassword = users.find(user => user.password === passwordValue);
-  
-  if(!useremail) {
-    errorMessageEl_email.textContent = "이메일을 확인해주세요";
-  } else {
-    errorMessageEl_email.textContent = "";
-  }
-  
-  if(!userpassword) {
-    errorMessageEl_password.textContent = "비밀번호를 확인해주세요";
-  } else {
-    errorMessageEl_password.textContent = "";
-  }
+  const user = users.find(user => user.email === emailValue && user.password === passwordValue);
 
-  if(useremail && userpassword) {
+  errorMessageEl_email.textContent = user ? "" : "이메일을 확인해주세요";
+  errorMessageEl_password.textContent = user ? "" : "비밀번호를 확인해주세요";
+
+  if(emailValue && passwordValue && user) {
+    errorMessageEl_email.textContent = "";
+    errorMessageEl_password.textContent = "";
     location.href = "./folder.html";
   }
 }
@@ -74,11 +70,12 @@ signform.addEventListener('submit', handleFormSubmit);
 
 signform.addEventListener('keydown', (event) => {
     if(event.key === "Enter") {
-      handleFormSubmit.submit();
+      handleFormSubmit(event);
     }
   });
 
 /*눈 모양 아이콘*/
+const passwordInput = document.querySelector('.password-input');
+const passwordToggleBtn = document.querySelector('.password-eye-button');
 
-const eyeButtonEl = document.querySelector('.eye-button');
-eyeButtonEl.addEventListener('click', togglePasswordVisibility);
+passwordToggleBtn.addEventListener('click', () => togglePasswordVisibility(passwordInput, passwordToggleBtn));
