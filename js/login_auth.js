@@ -8,10 +8,10 @@ const pwErrorMessage = document.createElement('p');  //비밀번호 입력 오�
 
 const login_button = document.querySelector('.login_button'); //로그인 버튼
 
-const Manage_ID = "test@codeit.com";
-const Manage_PW = "codeit101"; 
+const MANAGE_ID = "test@codeit.com";
+const MANAGE_PW = "codeit101"; 
 
-function check_email_focusout() {
+function check_email_focusout() { //이메일 유효성 검사
     if (Emailinput.value === '') {
         emailErrorMessage.textContent = '이메일을 입력해주세요.';
         Emailinput.classList.add('input_error');
@@ -35,14 +35,14 @@ function check_email_focusin() {
     emailErrorMessage.textContent = '';
 }
 
-function check_pw_focusout() {
+function check_pw_focusout() { //비밀번호 유효성 검사
     if (PWinput.value === '') {
         pwErrorMessage.textContent = '비밀번호를 입력해주세요.';
         PWinput.classList.add('input_error');
         PwForm.lastElementChild.append(pwErrorMessage);
     }
     else {
-        PWinputinput.classList.remove('input_error');
+        PWinput.classList.remove('input_error');
     }
 }
 function check_pw_focusin() {
@@ -52,7 +52,8 @@ function check_pw_focusin() {
 
 function check_to_login(event) {
     // 이메일과 비밀번호 입력 확인
-    if (Emailinput.value === '' || PWinput.value === '') {
+    event.preventDefault();
+    if (Emailinput.value === '' && PWinput.value === '') {
         // 이메일 또는 비밀번호가 입력되지 않은 경우
         emailErrorMessage.textContent = '이메일을 입력해주세요.';
         pwErrorMessage.textContent = '비밀번호를 입력해주세요.';
@@ -60,7 +61,18 @@ function check_to_login(event) {
         EmailForm.lastElementChild.append(emailErrorMessage);
         PWinput.classList.add('input_error');
         PwForm.lastElementChild.append(pwErrorMessage);
-        event.preventDefault();
+        return;
+    }
+    else if(Emailinput.value === '') {
+        emailErrorMessage.textContent = '이메일을 입력해주세요.';
+        Emailinput.classList.add('input_error');
+        EmailForm.lastElementChild.append(emailErrorMessage);
+        return;
+    }
+    else if (PWinput.value === '') {
+        pwErrorMessage.textContent = '비밀번호를 입력해주세요.';
+        PWinput.classList.add('input_error');
+        PasswordForm.lastElementChild.append(pwErrorMessage);
         return;
     }
 
@@ -68,12 +80,11 @@ function check_to_login(event) {
     let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
     if (!emailRegex.test(Emailinput.value)) {
         //올바른 이메일 형식이 아닌 경우
-        event.preventDefault();
         return;
     }
 
     // 아이디와 비밀번호 확인
-    if (Emailinput.value !== Manage_ID || PWinput.value !== Manage_PW) {
+    if (Emailinput.value !== MANAGE_ID || PWinput.value !== MANAGE_PW) {
         // 아이디 또는 비밀번호가 일치하지 않는 경우
         emailErrorMessage.textContent = '이메일을 확인해주세요.';
         pwErrorMessage.textContent = '비밀번호를 확인해주세요.';
@@ -81,12 +92,11 @@ function check_to_login(event) {
         EmailForm.lastElementChild.append(emailErrorMessage);
         PWinput.classList.add('input_error');
         PwForm.lastElementChild.append(pwErrorMessage);
-        event.preventDefault();
         return;
     }
 
     // 로그인 성공 시 페이지 이동 또는 기타 작업 수행
-    window.location.href = "./folder.html";
+    window.location.href = "folder.html";
 }
 
 

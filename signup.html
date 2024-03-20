@@ -21,42 +21,49 @@
 <body class="signup_body">
     <div class="signup_main">
         <form class="signup_form">
-            <div>
-                <a href="index.html" class="to_home">
-                    <img src="images/icon.ico" alt="Linkbrary 아이콘">
-                </a>
+            <div class="siginup_form__container">
+                <div>
+                    <a href="index.html" class="to_home">
+                        <img src="images/icon.ico" alt="Linkbrary 아이콘">
+                    </a>
 
-                <div class="ask_signin">
-                    <span class="to_signin">이미 회원이신가요? </span><a href="signin.html"> 로그인 하기</a>
-                </div>
-            </div>
-            <div class="inputforms">
-                <div>
-                    <label>
-                        이메일
-                    </label>
-                    <input name="email" type="email">
-                </div>
-                <div>
-                    <label>
-                        비밀번호
-                    </label>
-                    <div class="main">
-                        <input name="password" type="password">
-                        <i class="fa fa-eye fa-lg"></i>
+                    <div class="ask_signin">
+                        <span class="to_signin">이미 회원이신가요? </span><a href="signin.html"> 로그인 하기</a>
                     </div>
                 </div>
-                <div>
-                    <label>
-                        비밀번호
-                    </label>
-                    <div class="main">
-                        <input name="password" type="password">
-                        <i class="fa fa-eye fa-lg"></i>
+                <div class="inputforms">
+                    <div>
+                        <div class="loginform">
+                            <label>
+                                이메일
+                            </label>
+                            <input name="email" type="email" autocomplete="off" class="email">
+                            <div class="Emailerrormessage"></div>
+                        </div>
+                        <div class="passwordform">
+                            <label>
+                                비밀번호
+                            </label>
+                            <div class="main">
+                                <input name="password" type="password" class="password">
+                                <i class="fa fa-eye fa-lg"></i>
+                            </div>
+                            <div class="PWerrormesage"></div>
+                        </div>
+                        <div class="check-passwordform">
+                            <label>
+                                비밀번호 확인
+                            </label>
+                            <div class="main">
+                                <input name="password" type="password" class="checkPassword">
+                                <i class="fa fa-eye fa-lg"></i>
+                            </div>
+                            <div class="PWerrormesage"></div>
+                        </div>
                     </div>
+                    <button class="signup-button"> 회원가입 </button>
                 </div>
             </div>
-            <button class="button"> 회원가입 </button>
         </form>
 
         <div class="sns_login">
@@ -72,6 +79,7 @@
         </div>
     </div>
     <script src="js/sign.js"></script>
+    <script src="js/signup_auth.js"></script>
 </body>
 
 </html>
