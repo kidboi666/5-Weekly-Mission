@@ -9,8 +9,8 @@ export function errChecked(type, typeMsg, text) {
   typeMsg.classList.remove("err-on");
   typeMsg.textContent = text;
 }
-
 export function validEmail() {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email.value);
 }
+
