@@ -20,7 +20,7 @@
             <a href="signup.html" class="primary">회원 가입하기</a>
           </div>
         </div>
-        <form>
+        <form id="login-form">
           <div class="email-box">
             <label for="email">이메일</label>
             <div class="email">
@@ -30,7 +30,7 @@
                 type="email"
                 placeholder="codeit@codeit.com"
               />
-              <span class="email-err"></span>
+              <span id="email-error" class="email-err"></span>
             </div>
           </div>
           <div class="password-box">
@@ -38,10 +38,12 @@
             <div class="password">
               <input id="password" name="password" type="password" />
               <i class="fa-solid fa-eye fa-2x" id="togglePassword"></i>
-              <span class="password-err"></span>
+              <span id="password-error" class="password-err"></span>
             </div>
           </div>
-          <button class="signin-but white">로그인</button>
+          <button id="signin-button" class="signin-but white" type="submit">
+            로그인
+          </button>
         </form>
         <div class="social-login gray-4">
           <span>소셜 로그인</span>
@@ -56,6 +58,6 @@
         </div>
       </div>
     </div>
-    <script type="module" src="index.js"></script>
+    <script type="module" src="signin.js"></script>
   </body>
 </html>
