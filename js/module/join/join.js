@@ -1,12 +1,12 @@
 function emailErrorMessage (email) { // 이메일 에러 메세지
   switch (validateEmail(email)) {
-    case 'emailEmpty':
+    case 'empty':
       addInputMessage(email, '이메일을 입력해 주세요.');
       break;
-    case 'emailError':
+    case 'error':
       addInputMessage(email, '올바른 이메일 주소가 아닙니다.');
       break;
-    case 'emailSameName':
+    case 'duplicated':
       addInputMessage(email, '이미 사용 중인 이메일입니다.');
       break;
     case 'submitError':
@@ -19,7 +19,7 @@ function emailErrorMessage (email) { // 이메일 에러 메세지
 }
 
 function passwordErrorMessage (password) { // 비밀번호 에러 메세지
-  if(password === undefined) {
+  if(!password) {
     return  false;
   }
   switch (validatePassword(password)) {

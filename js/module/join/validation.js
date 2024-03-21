@@ -3,25 +3,23 @@ const users = [
 ]
 
 function validateEmail (email) { // 이메일
-  if(email === undefined) {
-    return ;
-  }
+  if(!email) return ;
   const regex = new RegExp('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$');
   const user = users.find(data => data.email === email.value.trim()) ?? '';
 
   if (email.value.trim() === '') {
     validateObject.email = false;
-    return 'emailEmpty'
+    return 'empty'
   } else if (!regex.test(email.value.trim())) {
     validateObject.email = false;
-    return 'emailError'
+    return 'error'
   } else if (user.email === email.value.trim()) {
     if (email.id === 'signin__email') {
       validateObject.email = true;
       return ''
     } else {
       validateObject.email = false;
-      return 'emailSameName'
+      return 'duplicated'
     }
   } else {
     validateObject.email = true;
@@ -30,9 +28,7 @@ function validateEmail (email) { // 이메일
 }
 
 function validatePassword (passwrod) { // 비밀번호
-  if(passwrod === undefined) {
-    return ;
-  }
+  if(!passwrod === undefined) return ;
   const regex = new RegExp('^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$');
   if (passwrod.value.trim() === '') {
     validateObject.password = false;
@@ -47,9 +43,7 @@ function validatePassword (passwrod) { // 비밀번호
 }
 
 function validatePasswordConfirm (passwrod, passwordConfirm) { // 비밀번호 확인
-  if(passwrod === undefined) {
-    return ;
-  }
+  if(!passwrod) return ;
   const regex = new RegExp('^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$');
   if (passwordConfirm.value.trim() === '') {
     validateObject.passwordConfirm = false;
