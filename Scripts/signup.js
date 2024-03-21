@@ -15,28 +15,46 @@ function formFocusOut(e) {
   const targetValue = e.target.value;
   // 이메일
   if (targetName === "email") {
-    if (sign.isProperEmail(e) === true) {
-      // 이미 사용 중인 이메일일 때
-      if (targetValue === enums.tempMembers.TEST_EMAIL) {
-        sign.makeWarningMsg(enums.warningMsg.EMAIL_DUPLICATE, e.target);
-        e.target.classList.add("warningForm");
-      }
+    // 입력 값이 없을 때
+    if (targetValue === "") {
+      sign.makeWarningMsg(enums.warningMsg.EMAIL_NULL, e.target);
+      e.target.classList.add("warningForm");
     }
-  } else if (targetName === "password") {
-    if (sign.isPasswordNull(e) === false) {
-      // 올바른 형식이 아닐 때
-      if (regex.pwFormat.test(targetValue) === false) {
-        sign.makeWarningMsg(enums.warningMsg.PW_INVALID, e.target);
-        e.target.classList.add("warningForm");
-      }
+    // 올바른 형식이 아닐 때
+    else if (regex.emailFormat.test(targetValue) === false) {
+      sign.makeWarningMsg(enums.warningMsg.EMAIL_INVALID, e.target);
+      e.target.classList.add("warningForm");
     }
-  } else {
-    if (sign.isPasswordNull(e) === false) {
-      // 비밀번호에 입력한 값이랑 다른지 체크
-      if (targetValue !== pw.value) {
-        sign.makeWarningMsg(enums.warningMsg.PW_NOT_MATCH, e.target);
-        e.target.classList.add("warningForm");
-      }
+    // 이미 사용 중인 이메일일 때
+    else if (targetValue === enums.tempMembers.TEST_EMAIL) {
+      sign.makeWarningMsg(enums.warningMsg.EMAIL_DUPLICATE, e.target);
+      e.target.classList.add("warningForm");
+    }
+  }
+  // 비밀번호
+  else if (targetName === "password") {
+    // 입력 값이 없을 때
+    if (targetValue === "") {
+      sign.makeWarningMsg(enums.warningMsg.PW_NULL, e.target);
+      e.target.classList.add("warningForm");
+    }
+    // 올바른 형식이 아닐 때
+    else if (regex.pwFormat.test(targetValue) === false) {
+      sign.makeWarningMsg(enums.warningMsg.PW_INVALID, e.target);
+      e.target.classList.add("warningForm");
+    }
+  }
+  // 비밀번호 확인
+  else {
+    // 입력 값이 없을 때
+    if (targetValue === "") {
+      sign.makeWarningMsg(enums.warningMsg.PW_NULL, e.target);
+      e.target.classList.add("warningForm");
+    }
+    // 비밀번호에 입력한 값이랑 다른지 체크
+    else if (targetValue !== pw.value) {
+      sign.makeWarningMsg(enums.warningMsg.PW_NOT_MATCH, e.target);
+      e.target.classList.add("warningForm");
     }
   }
 }
@@ -57,6 +75,7 @@ function pressEnter(e) {
     email.dispatchEvent(new Event("focusout"));
     pw.dispatchEvent(new Event("focusout"));
     pwCheck.dispatchEvent(new Event("focusout"));
+    form.dispatchEvent(new Event("submit"));
   }
 }
 

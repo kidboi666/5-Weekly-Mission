@@ -1,5 +1,6 @@
 import * as enums from "./enums.js";
 import * as sign from "./sign.js";
+import * as regex from "./regex.js";
 
 const email = document.querySelector("#email");
 const pw = document.querySelector("#pw");
@@ -9,12 +10,27 @@ const form = document.querySelector("form");
 // Input focusout 시
 function formFocusOut(e) {
   const targetName = e.target.name;
+  const targetValue = e.target.value;
+  // 이메일
   if (targetName === "email") {
-    // 이메일 형식이 올바른 지 확인
-    sign.isProperEmail(e);
-  } else {
-    // 비밀번호 입력이 없는 지 확인
-    sign.isPasswordNull(e);
+    // 입력 값이 없을 때
+    if (targetValue === "") {
+      sign.makeWarningMsg(enums.warningMsg.EMAIL_NULL, e.target);
+      e.target.classList.add("warningForm");
+    }
+    // 올바른 형식이 아닐 때
+    else if (regex.emailFormat.test(targetValue) === false) {
+      sign.makeWarningMsg(enums.warningMsg.EMAIL_INVALID, e.target);
+      e.target.classList.add("warningForm");
+    }
+  }
+  // 비밀번호
+  else {
+    // 입력 값이 없을 때
+    if (targetValue === "") {
+      sign.makeWarningMsg(enums.warningMsg.PW_NULL, e.target);
+      e.target.classList.add("warningForm");
+    }
   }
 }
 
