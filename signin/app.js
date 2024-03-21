@@ -1,81 +1,100 @@
-import {
-  validateEmail, 
-  users
-} from '../js/auth.js';
+import { validateEmail, validatePassword, users } from "../js/auth.js";
 
 import {
+  showError,
   removeErrorMessage,
-  togglePasswordVisibility
-} from '../js/uicontroller.js';
+  togglePasswordVisibility,
+} from "../js/uicontroller.js";
+
+const emailInputEl = document.querySelector(".email-input");
+const passwordInputEl = document.querySelector(".password-input");
+
+const signform = document.querySelector(".sign-form");
+
+const passwordInput = document.querySelector(".password-input");
+const passwordToggleBtn = document.querySelector(".password-eye-button img");
 
 /*email 유효성 검증*/
 
-const emailInputEl = document.querySelector('.email-input');
-emailInputEl.addEventListener('focusout', validateEmail);
-emailInputEl.addEventListener('focus', () => removeErrorMessage('.error-message-email'));
+emailInputEl.addEventListener("focusout", () => {
+  const email = emailInputEl.value;
+  const validation = validateEmail(email);
 
+  if (!validation.success) {
+    showError(".error-message-email", validation.error);
+  }
+});
+
+emailInputEl.addEventListener("focus", () =>
+  removeErrorMessage(".error-message-email")
+);
 
 /*password 유효성 검증*/
 
-function validatePassword() {
-  const passwordInputEl = document.querySelector('.password-input');
-  const passwordValue = passwordInputEl.value;
-  const errorMessageEl = document.querySelector('.error-message-password');
+passwordInputEl.addEventListener("focusout", () => {
+  const password = passwordInputEl.value;
+  const validation = validatePassword(password);
 
-  if(passwordValue === '') {
-    errorMessageEl.textContent = "비밀번호를 입력해주세요.";
-    passwordInputEl.classList.add('wrongsign');
-    return false;
-  } else {
-    passwordInputEl.classList.remove('wrongsign');
-    return true;
+  if (!validation.success) {
+    showError(".error-message-password", validation.error);
   }
-}
+});
 
-const passwordInputEl = document.querySelector('.password-input');
-passwordInputEl.addEventListener('focusout', validatePassword);
-passwordInputEl.addEventListener('focus', () => removeErrorMessage('.error-message-password'));
+passwordInputEl.addEventListener("focus", () =>
+  removeErrorMessage(".error-message-password")
+);
 
 /*이메일: test@codeit.com 비밀번호: codeit101로 로그인 시, /folder 페이지로 이동
 이외의 로그인 시도의 경우, 에러 메세지 출력*/
 
-function handleFormSubmit(event) {
-  event.preventDefault();
+function login(authInfo) {
+  const { email, password } = authInfo;
 
-  const emailInputEl = document.querySelector('.email-input');
-  const passwordInputEl = document.querySelector('.password-input');
+  const isValidEmail = validateEmail(email);
+  const isValidPassword = validatePassword(password);
 
-  const emailValue = emailInputEl.value;
-  const passwordValue = passwordInputEl.value;
-
-  const errorMessageEl_email = document.querySelector('.error-message-email');
-  const errorMessageEl_password = document.querySelector('.error-message-password');
-
-  const user = users.find(user => user.email === emailValue && user.password === passwordValue);
-
-  errorMessageEl_email.textContent = user ? "" : "이메일을 확인해주세요";
-  errorMessageEl_password.textContent = user ? "" : "비밀번호를 확인해주세요";
-
-  if(emailValue && passwordValue && user) {
-    errorMessageEl_email.textContent = "";
-    errorMessageEl_password.textContent = "";
-    location.href = "./folder.html";
+  if (isValidEmail.error) {
+    const errorMessage = isValidEmail.error;
+    return showError(".error-message-email", errorMessage);
   }
+
+  if (isValidPassword.error) {
+    const errorMessage = isValidPassword.error;
+    return showError(".error-message-password", errorMessage);
+  }
+
+  const user = users.find(
+    (user) => user.email === email && user.password === password
+  );
+
+  if (!user) {
+    showError(".error-message-email", "이메일 또는 비밀번호를 확인해주세요");
+    showError(".error-message-password", "이메일 또는 비밀번호를 확인해주세요");
+    return;
+  }
+
+  location.href = "./folder.html";
 }
 
-const signform = document.querySelector('.sign-form');
-signform.addEventListener('submit', handleFormSubmit);
+signform.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const email = signform.querySelector(".email-input").value;
+  const password = signform.querySelector(".password-input").value;
+
+  login({ email, password });
+});
 
 /*Enter키를 눌러도 로그인이 되도록 추가*/
 
-signform.addEventListener('keydown', (event) => {
-    if(event.key === "Enter") {
-      handleFormSubmit(event);
-    }
-  });
+signform.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    login(event);
+  }
+});
 
 /*눈 모양 아이콘*/
-const passwordInput = document.querySelector('.password-input');
-const passwordToggleBtn = document.querySelector('.password-eye-button');
 
-passwordToggleBtn.addEventListener('click', () => togglePasswordVisibility(passwordInput, passwordToggleBtn));
+passwordToggleBtn.addEventListener("click", () =>
+  togglePasswordVisibility(passwordInput, passwordToggleBtn)
+);
