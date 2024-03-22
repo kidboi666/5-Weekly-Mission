@@ -28,7 +28,7 @@ header {
   height: 3.8rem;
 }
 
-.signup-check-box {
+.sign-check-box {
   display: flex;
   align-items: flex-start;
   gap: 0.8rem;
@@ -36,25 +36,25 @@ header {
   font-size: 1.6rem;
 }
 
-.signup-check-text {
+.sign-check-text {
   color: var(--black);
   font-weight: 400;
   line-height: 2.4rem;
 }
 
-.signup-link {
+.sign-link {
   color: var(--primary);
   font-weight: 600;
 }
 
-.signup-box {
+.sign-box {
   display: flex;
   flex-direction: column;
   margin-right: auto;
   margin-left: auto;
 }
 
-.signup-input-boxs {
+.sign-input-boxs {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,7 +62,7 @@ header {
   gap: 2.4rem;
 }
 
-.signup-input-box {
+.sign-input-box {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -88,18 +88,18 @@ input {
   line-height: 150%;
 }
 
-.signup-input:focus {
+.sign-input:focus {
   border: solid blue;
 }
 
-.signup-input-password {
+.sign-input-password {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1.2rem;
 }
 
-.signup-input-password-box {
+.sign-input-password-box {
   position: relative;
 }
 
@@ -119,14 +119,14 @@ input {
 .eye-off {
   
 } 기본으로 보일 수 있게 하는 법...?
-*/ 
+*/
 
 .cta {
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  background-image: linear-gradient(91deg, var(--primary) 0%, #6AE3FE 101%);
+  background-image: linear-gradient(91deg, var(--primary) 0%, #6ae3fe 101%);
   border-radius: 8px;
   color: #f5f5f5;
   font-size: 1.8rem;
@@ -137,7 +137,7 @@ input {
   margin-top: 0.6rem;
 }
 
-.other-signup {
+.other-sign {
   display: flex;
   width: 88%;
   padding: 1.2rem 2.4rem;
@@ -149,7 +149,7 @@ input {
   margin-top: 3.2rem;
 }
 
-.other-signup-text {
+.other-sign-text {
   color: var(--gray1);
   font-size: 1.4rem;
 }
