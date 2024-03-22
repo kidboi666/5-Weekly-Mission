@@ -1,4 +1,5 @@
 import { validateEmail, togglePassword, testUser } from "./utils.js";
+import { API_URL } from "./Api.js";
 
 const email = document.getElementById("email");
 const password = document.getElementById("password");
@@ -59,41 +60,100 @@ passwordCheck.addEventListener("focusout", function () {
   }
 });
 
-document.querySelector(".sign-button").addEventListener("click", submitSign);
+document.querySelector(".sign-button").addEventListener("click", isAuthSignup);
 document.addEventListener("keydown", function submitByEnter(e) {
   if (e.key === "Enter") {
-    submitSign();
+    isAuthSignup();
   }
 });
 
-function submitSign() {
+// function submitSign() {
+//   const emailInput = email.value.trim();
+//   const passwordInput = password.value.trim();
+//   const passwordCheckInput = passwordCheck.value.trim();
+//   const num = passwordInput.search(/[0-9]/g);
+//   const eng = passwordInput.search(/[a-z]/gi);
+//   const pwdError = document.getElementById("pwd-error");
+//   const emailError = document.getElementById("email-error");
+//   const pwdCheckerError = document.getElementById("pwdCheckerError");
+
+//   // 입력된 이메일과 비밀번호가, 요구된 사항과 같은지 검사
+//   if (
+//     (emailInput !== testUser.email &&
+//       validateEmail(email) &&
+//       passwordCheckInput === passwordInput &&
+//       !passwordInput.length < 8) ||
+//     !num < 0 ||
+//     !eng < 0
+//   ) {
+//     location.href = "/folder.html";
+//   } else {
+//     emailError.textContent = "이메일을 확인해 주세요.";
+//     email.classList.add("emailErrorLine");
+//     pwdError.textContent = "비밀번호를 확인해 주세요.";
+//     password.classList.add("pwdErrorLine");
+//     pwdCheckerError.textContent = "비밀번호를 확인해 주세요.";
+//     passwordCheck.classList.add("pwdErrorLine");
+//   }
+// }
+
+async function CheckSingupEmail() {
+  const emailInput = email.value.trim();
+  const emailError = document.getElementById("email-error");
+  try {
+    const response = await fetch(`${API_URL}/check-email`, {
+      method: "POST",
+      body: JSON.stringify({
+        email: `${emailInput}`,
+      }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+    if (!response.ok) {
+      throw new Error("이메일 체크에 실패했습니다.");
+    }
+    return;
+  } catch (error) {
+    emailError.textContent = "이미 사용 중인 이메일입니다.";
+    email.classList.add("emailErrorLine");
+  }
+}
+
+async function isAuthSignup() {
   const emailInput = email.value.trim();
   const passwordInput = password.value.trim();
   const passwordCheckInput = passwordCheck.value.trim();
-  const num = passwordInput.search(/[0-9]/g);
-  const eng = passwordInput.search(/[a-z]/gi);
-  const pwdError = document.getElementById("pwd-error");
-  const emailError = document.getElementById("email-error");
-  const pwdCheckerError = document.getElementById("pwdCheckerError");
-
-  // 입력된 이메일과 비밀번호가, 요구된 사항과 같은지 검사
   if (
-    (emailInput !== testUser.email &&
-      validateEmail(email) &&
+    (CheckSingupEmail() &&
       passwordCheckInput === passwordInput &&
       !passwordInput.length < 8) ||
     !num < 0 ||
     !eng < 0
-  ) {
-    location.href = "/folder.html";
-  } else {
-    emailError.textContent = "이메일을 확인해 주세요.";
-    email.classList.add("emailErrorLine");
-    pwdError.textContent = "비밀번호를 확인해 주세요.";
-    password.classList.add("pwdErrorLine");
-    pwdCheckerError.textContent = "비밀번호를 확인해 주세요.";
-    passwordCheck.classList.add("pwdErrorLine");
-  }
+  )
+    try {
+      const response = await fetch(`${API_URL}/sign-up`, {
+        method: "POST",
+        body: JSON.stringify({
+          email: `${emailInput}`,
+          password: `${passwordInput}`,
+        }),
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+      if (!response.ok) {
+        throw new Error("회원가입 에러가 발생했습니다.");
+      }
+      location.href = "./folder";
+    } catch (error) {
+      const emailError = document.getElementById("email-error");
+      const pwdError = document.getElementById("pwd-error");
+      emailError.textContent = "이메일을 확인해 주세요.";
+      email.classList.add("emailErrorLine");
+      pwdError.textContent = "비밀번호를 확인해 주세요.";
+      password.classList.add("pwdErrorLine");
+    }
 }
 
 // 비밀번호 input 이벤트 핸들러
