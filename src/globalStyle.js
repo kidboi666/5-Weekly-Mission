@@ -4,6 +4,7 @@ import { createGlobalStyle } from "styled-components";
  *@description Global Style
 */
 const GlobalStyle = createGlobalStyle`
+
 * {
   box-sizing: border-box;
 }
