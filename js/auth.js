@@ -27,7 +27,10 @@ function validatePassword(password) {
 
 /*이메일: test@codeit.com 비밀번호: codeit101의 사용자 등록*/
 
-const users = [{ email: "test@codeit.com", password: "codeit101" }];
+const users = [
+  { email: "test@codeit.com", password: "codeit101" },
+  { email: "test@codeit.com", password: "sprint101" },
+];
 
 function getUserByEmail(email) {
   return users.filter((user) => user.email === email)[0];

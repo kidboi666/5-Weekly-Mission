@@ -115,10 +115,15 @@ function handleSubmit(e) {
   const email = emailInputEl.value;
   const password = passwordInputEl.value;
 
-  const emailValidationResult = validateEmail(email);
-  if (!emailValidationResult.success) {
-    showError(".error-message-email", emailValidationResult.error);
-    return; // 유효하지 않은 이메일 때 함수 종료
+  const emailValidation = validateEmail(email);
+  const userValidation = isExistUser(email);
+
+  if (!emailValidation.success) {
+    showError(".error-message-email", emailValidation.error);
+    return; // 유효하지 않은 이메일일 때 함수 종료
+  } else if (!userValidation.success) {
+    showError(".error-message-email", userValidation.error);
+    return; // 이미 존재하는 이메일일 때 함수 종료
   }
 
   const passwordValidationResult = validatePassword(password);
@@ -126,6 +131,7 @@ function handleSubmit(e) {
     showError(".error-message-password", passwordValidationResult.error);
     return; // 유효하지 않은 비밀번호일 때 함수 종료
   }
+
   location.href = "../signin/folder.html";
 }
 
@@ -146,3 +152,5 @@ passwordToggleBtn.addEventListener("click", () =>
 confirmPasswordToggleBtn.addEventListener("click", () =>
   togglePasswordVisibility(confirmPasswordInput, confirmPasswordToggleBtn)
 );
+
+export { isExistUser };
