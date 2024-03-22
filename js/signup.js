@@ -1,50 +1,129 @@
+// signup.js
 const signupForm = document.querySelector('.signup__wrap form');
-const signupFormInputs = document.querySelectorAll('.signup__form input');
-const signupEmail = document.querySelector('#form__email');
-const signupPassword = document.querySelector('#form__pw');
-const signupPasswordConfirm = document.querySelector('#form__pw__confirm');
-const submitButton = document.querySelector('.signup__wrap .btn_signup');
+const signupEmailInput = document.querySelector('#form__email');
+const signupPasswordInput = document.querySelector('#form__pw');
+const signupPasswordConfirmInput = document.querySelector('#form__pw__confirm');
+const signupButton = document.querySelector('.signup__wrap .btn_signup');
 
+// 이메일 중복 확인 함수
+async function checkEmailAvailability(email) {
+    try {
+        const response = await fetch('https://bootcamp-api.codeit.kr/api/check-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email
+            })
+        });
 
-function focusOutInput(e) {
-  const { target } = e;
-
-  if (target.id === signupEmail.id) {
-    emailErrorMessage(signupEmail);
-  }
-
-  if (target.id === signupPassword.id) {
-    passwordErrorMessage(signupPassword);
-  }
-
-  if (target.id === signupPasswordConfirm.id) {
-    passwordConfirmErrorMessage(signupPassword, signupPasswordConfirm);
-  }
-
-  formActiveBtn();
+      return response
+    } catch (error) {
+        console.error('Error:', error);
+        return false;
+    }
 }
 
-function formActiveBtn() {
-  const inputs = [validateEmail(signupEmail) === '', validatePassword(signupPassword) === '', validatePasswordConfirm(signupPassword, signupPasswordConfirm) === ''].every(data => data === true);
+// 입력값 검증 함수
+function validateInput(input) {
+    const inputValue = input.value.trim();
 
-  if (inputs) {
-    submitButton.removeAttribute('disabled');
-  } else {
-    submitButton.setAttribute('disabled', 'disabled');
-  }
+    switch (input.id) {
+        case 'form__email':
+            if (inputValue === '') {
+                addInputMessage(input, '이메일을 입력해주세요.');
+                return false;
+            } else if (!validateEmail(inputValue)) {
+                addInputMessage(input, '올바른 이메일 주소가 아닙니다.');
+                return false;
+            } else {
+                removeInputMessage(input);
+                return true;
+            }
+        case 'form__pw':
+            if (inputValue === '') {
+                addInputMessage(input, '비밀번호를 입력해주세요.');
+                return false;
+            } else if (!validatePassword(inputValue)) {
+                addInputMessage(input, '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.');
+                return false;
+            } else {
+                removeInputMessage(input);
+                return true;
+            }
+        case 'form__pw__confirm':
+            const password = signupPasswordInput.value.trim();
+            if (inputValue === '') {
+                addInputMessage(input, '비밀번호를 다시 입력해주세요.');
+                return false;
+            } else if (inputValue !== password) {
+                addInputMessage(input, '비밀번호가 일치하지 않아요.');
+                return false;
+            } else {
+                removeInputMessage(input);
+                return true;
+            }
+        default:
+            return true;
+    }
 }
 
-function validateForm(e) { // form handler
-  e.preventDefault();
-  formActiveBtn();
-  if (!submitButton.hasAttribute('disabled')) {
-    alert('회원가입을 하였습니다.');
-    window.location.href = '/signin.html';
-  }
-}
+// 입력값 변화 및 포커스 아웃 이벤트 핸들러 등록
+signupEmailInput.addEventListener('blur', async () => {
+    if (!validateInput(signupEmailInput)) return;
 
-for (const input of signupFormInputs) {
-  input.addEventListener('focusout', focusOutInput);
-}
+    const emailAvailable = await checkEmailAvailability(signupEmailInput.value);
+    if (!emailAvailable.ok) {
+        addInputMessage(signupEmailInput, '이미 사용 중인 이메일입니다.');
+    }
+});
 
-signupForm.addEventListener('submit', validateForm);
+signupPasswordInput.addEventListener('blur', () => {
+  console.log('signupPasswordInput',validateInput(signupPasswordInput))
+    validateInput(signupPasswordInput);
+});
+
+signupPasswordConfirmInput.addEventListener('blur', () => {
+  console.log('signupPasswordConfirmInput', validateInput(signupPasswordConfirmInput))
+    validateInput(signupPasswordConfirmInput);
+});
+
+// 폼 제출 이벤트 핸들러
+signupForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (!validateInput(signupEmailInput) || !validateInput(signupPasswordInput) || !validateInput(signupPasswordConfirmInput)) {
+        return;
+    }
+
+    const emailAvailable = await checkEmailAvailability(signupEmailInput.value);
+    if (!emailAvailable.ok) {
+        addInputMessage(signupEmailInput, '이미 사용 중인 이메일입니다.');
+        return;
+    }
+
+    try {
+        const response = await fetch('https://bootcamp-api.codeit.kr/api/sign-up', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: signupEmailInput.value,
+                password: signupPasswordInput.value
+            })
+        });
+        console.log(response.accessToken)
+        if (response.ok) {
+          const data = await response.json();
+          localStorage.setItem('accessToken', data.accessToken);
+          window.location.href = '/folder.html';
+            
+        } else {
+            alert('회원가입에 실패했습니다.');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+});
