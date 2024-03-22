@@ -13,3 +13,7 @@ export const tempMembers = {
   TEST_EMAIL: "test@codeit.com",
   TEST_PW: "codeit101",
 };
+
+export const urls = {
+  BASE_URL: "https://bootcamp-api.codeit.kr/api",
+};

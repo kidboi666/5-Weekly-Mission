@@ -43,14 +43,35 @@ function submitForm(e) {
   if (e.target[0].value === enums.tempMembers.TEST_EMAIL && e.target[1].value === enums.tempMembers.TEST_PW) {
     location.href = "../folder.html";
   }
-  // 아이디 또는 비밀번호 잘못 입력 시
+  // 아이디 또는 비밀번호 잘못 입력했는지 확인
   else {
+    checkUser();
+  }
+}
+
+const checkUser = async function () {
+  try {
+    const response = await fetch(`${enums.urls.BASE_URL}/sign-in`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: `${email.value}`,
+        password: `${pw.value}`,
+      }),
+    });
+    if (!response.ok) {
+      throw new Error("존재하지 않는 계정입니다.");
+    }
+  } catch (error) {
+    console.log(error);
     sign.makeWarningMsg(enums.warningMsg.EMAIL_WRONG, email);
     sign.makeWarningMsg(enums.warningMsg.PW_WRONG, pw);
     email.classList.add("warningForm");
     pw.classList.add("warningForm");
   }
-}
+};
 
 email.addEventListener("focusout", formFocusOut);
 email.addEventListener("focusin", sign.removeWarningMsg);

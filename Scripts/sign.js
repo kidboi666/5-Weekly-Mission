@@ -1,5 +1,8 @@
 // 경고 메세지 추가
 export function makeWarningMsg(_text, pos) {
+  if (pos.nextElementSibling.classList.contains("warningMsg")) {
+    pos.nextElementSibling.remove();
+  }
   const msg = document.createElement("p");
   msg.classList.add("warningMsg");
   msg.textContent = _text;

@@ -25,10 +25,9 @@ function formFocusOut(e) {
       sign.makeWarningMsg(enums.warningMsg.EMAIL_INVALID, e.target);
       e.target.classList.add("warningForm");
     }
-    // 이미 사용 중인 이메일일 때
-    else if (targetValue === enums.tempMembers.TEST_EMAIL) {
-      sign.makeWarningMsg(enums.warningMsg.EMAIL_DUPLICATE, e.target);
-      e.target.classList.add("warningForm");
+    // 이미 사용 중인 이메일인지 확인
+    else {
+      checkEmail(e);
     }
   }
   // 비밀번호
@@ -71,19 +70,39 @@ function checkForm() {
 // Enter 입력 시
 function pressEnter(e) {
   if (e.keyCode === 13) {
-    e.preventDefault();
-    email.dispatchEvent(new Event("focusout"));
-    pw.dispatchEvent(new Event("focusout"));
-    pwCheck.dispatchEvent(new Event("focusout"));
-    form.dispatchEvent(new Event("submit"));
+    submitForm(e);
   }
 }
 
 // Form 제출 시
 function submitForm(e) {
   e.preventDefault();
+  email.dispatchEvent(new Event("focusout"));
+  pw.dispatchEvent(new Event("focusout"));
+  pwCheck.dispatchEvent(new Event("focusout"));
   checkForm();
 }
+
+const checkEmail = async function (e) {
+  try {
+    const response = await fetch(`${enums.urls.BASE_URL}/check-email`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: `${email.value}`,
+      }),
+    });
+    if (!response.ok) {
+      throw new Error("중복된 이메일입니다.");
+    }
+  } catch (error) {
+    console.log(error);
+    sign.makeWarningMsg(enums.warningMsg.EMAIL_DUPLICATE, e.target);
+    e.target.classList.add("warningForm");
+  }
+};
 
 email.addEventListener("focusout", formFocusOut);
 email.addEventListener("focusin", sign.removeWarningMsg);
