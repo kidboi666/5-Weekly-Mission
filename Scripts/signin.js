@@ -39,14 +39,8 @@ function submitForm(e) {
   e.preventDefault();
   email.dispatchEvent(new Event("focusin"));
   pw.dispatchEvent(new Event("focusin"));
-  // 올바른 이메일, 비밀번호 입력 시
-  if (e.target[0].value === enums.tempMembers.TEST_EMAIL && e.target[1].value === enums.tempMembers.TEST_PW) {
-    location.href = "../folder.html";
-  }
-  // 아이디 또는 비밀번호 잘못 입력했는지 확인
-  else {
-    checkUser();
-  }
+  // 올바른 이메일, 비밀번호 입력했는지 확인
+  checkUser();
 }
 
 const checkUser = async function () {
@@ -64,6 +58,10 @@ const checkUser = async function () {
     if (!response.ok) {
       throw new Error("존재하지 않는 계정입니다.");
     }
+    const result = await response.json();
+    const signinToken = result.data.accessToken;
+    localStorage.setItem("signinToken", signinToken);
+    location.href = "../folder.html";
   } catch (error) {
     console.log(error);
     sign.makeWarningMsg(enums.warningMsg.EMAIL_WRONG, email);
@@ -73,6 +71,14 @@ const checkUser = async function () {
   }
 };
 
+function checkSigninToken() {
+  const token = localStorage.getItem("signinToken");
+  if (token) {
+    location.href = "../folder.html";
+  }
+}
+
+checkSigninToken();
 email.addEventListener("focusout", formFocusOut);
 email.addEventListener("focusin", sign.removeWarningMsg);
 pw.addEventListener("focusout", formFocusOut);

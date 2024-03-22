@@ -63,7 +63,7 @@ function checkForm() {
   if (email.classList.contains("warningForm") || pw.classList.contains("warningForm") || pwCheck.classList.contains("warningForm")) {
     // 제출 불가
   } else {
-    location.href = "../folder.html";
+    checkUser();
   }
 }
 
@@ -104,6 +104,42 @@ const checkEmail = async function (e) {
   }
 };
 
+const checkUser = async function () {
+  try {
+    const response = await fetch(`${enums.urls.BASE_URL}/sign-up`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: `${email.value}`,
+        password: `${pw.value}`,
+      }),
+    });
+    if (!response.ok) {
+      throw new Error("올바르지 않은 형식입니다.");
+    }
+    const result = await response.json();
+    const signupToken = result.data.accessToken;
+    localStorage.setItem("signupToken", signupToken);
+    location.href = "../folder.html";
+  } catch (error) {
+    console.log(error);
+    sign.makeWarningMsg(enums.warningMsg.EMAIL_WRONG, email);
+    sign.makeWarningMsg(enums.warningMsg.PW_WRONG, pw);
+    email.classList.add("warningForm");
+    pw.classList.add("warningForm");
+  }
+};
+
+function checkSignupToken() {
+  const token = localStorage.getItem("signupToken");
+  if (token) {
+    location.href = "../folder.html";
+  }
+}
+
+checkSignupToken();
 email.addEventListener("focusout", formFocusOut);
 email.addEventListener("focusin", sign.removeWarningMsg);
 pw.addEventListener("focusout", formFocusOut);
