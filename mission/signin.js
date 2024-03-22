@@ -6,6 +6,13 @@ const password = document.getElementById("password");
 const showPassword = document.getElementById("showPassword");
 const passwordField = document.getElementById("password");
 
+const checkSignInToken = function () {
+  const searchToken = localStorage.getItem("signin-token");
+  if (searchToken) {
+    location.href = "./folder";
+  }
+};
+
 //입력칸이 빈칸이거나, 올바른 이메일 형식이 아닐때 에러문구 출력기능
 email.addEventListener("focusout", function () {
   const emailInput = email.value;
@@ -82,6 +89,10 @@ async function isAuthSignin() {
     if (!response.ok) {
       throw new Error("로그인 에러가 발생했습니다.");
     }
+    const result = response.json();
+    const SigninToken = result.ACESS_TOKEN;
+    localStorage.setItem("signin-token", SigninToken);
+
     location.href = "./folder";
   } catch (error) {
     const emailError = document.getElementById("email-error");
@@ -98,3 +109,5 @@ async function isAuthSignin() {
 showPassword.addEventListener("click", () =>
   togglePassword(showPassword, passwordField)
 );
+
+checkSignInToken();
