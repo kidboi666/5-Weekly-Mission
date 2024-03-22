@@ -18,6 +18,12 @@ const Nav = function () {
   );
 };
 
+const ContentsFrame = styled.div``
+const Logo = styled(Link)``
+const LoginButton = styled(Link)``
+const Image = styled.img``
+const Label = styled.p``
+
 const NavTemplate = styled.nav`
   width: 100%;
   height: 93px;
@@ -97,10 +103,6 @@ const NavTemplate = styled.nav`
   }
 `;
 
-const ContentsFrame = styled.div``
-const Logo = styled(Link)``
-const LoginButton = styled(Link)``
-const Image = styled.img``
-const Label = styled.p``
+
 
 export default Nav;
