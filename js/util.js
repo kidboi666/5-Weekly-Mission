@@ -1,11 +1,11 @@
 export const loginInfo = {
   email: "test@codeit.com",
   password: "codeit101",
-}
+};
 
 export function isEmail(value) {
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  
+
   return emailRegex.test(value);
 }
 
@@ -20,20 +20,24 @@ export const errorMessages = {
   confirmPassword: "비밀번호를 확인해주세요.",
 };
 
-  /* 비밀번호 보이기/숨기기 기능 구현 */
+/* 비밀번호 보이기/숨기기 기능 구현 */
 
-export function toggleTypeBtn(e){
+export function togglePasswordVisibility(e) {
   e.preventDefault();
 
-  const target = e.target;
-  const passwordInput = target.parentElement.previousElementSibling;
-  const passwordType = passwordInput.getAttribute('type');
+  const container = e.target.closest(".auth-form__password-input");
+  const passwordInput = container.querySelector(
+    ".auth-form__password-input input"
+  );
+  const toggleButton = container.querySelector(
+    ".auth-form__password-toggle-btn"
+  );
 
-  if(passwordType === 'password'){
-    passwordInput.setAttribute('type', 'text');
-    target.setAttribute('src', '../icons/eye-on.svg');
-  } else{
-    passwordInput.setAttribute('type', 'password');
-    target.setAttribute('src', '../icons/eye-off.svg');
-  };
-};
+  if (passwordInput.type === "password") {
+    passwordInput.setAttribute("type", "text");
+    toggleButton.classList.add("eye-on");
+  } else {
+    passwordInput.setAttribute("type", "password");
+    toggleButton.classList.remove("eye-on");
+  }
+}
