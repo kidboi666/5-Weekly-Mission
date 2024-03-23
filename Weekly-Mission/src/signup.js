@@ -132,11 +132,4 @@ const register = async function (e) {
   }
 };
 
-export function checkAccessToken() {
-  const accessToken = localStorage.getItem('accessToken');
-  if (accessToken) {
-    location.href = './folder.html';
-  }
-}
-
 checkAccessToken();
