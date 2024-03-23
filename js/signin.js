@@ -16,6 +16,34 @@ const passwordErrorMessage = document.querySelector(
 );
 const authForm = document.querySelector(".auth-form");
 
+/* 로그인 에러체크 */
+
+const loginCheck = async function () {
+  try {
+    const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: `${email.value}`,
+        password: `${password.value}`,
+      }),
+    });
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error("로그인에러!");
+    } else {
+      window.location.href = "folder.html";
+    }
+  } catch (error) {
+    email.classList.add("auth-form__input--invalid");
+    emailErrorMessage.textContent = errorMessages.confirmEmail;
+    password.classList.add("auth-form__input--invalid");
+    passwordErrorMessage.textContent = errorMessages.confirmPassword;
+  }
+};
+
 /* 이메일 에러체크 */
 
 function emailErrorEvent() {
@@ -43,24 +71,6 @@ function passwordErrorEvent() {
   }
 }
 
-/* 로그인 에러체크 */
-
-function loginEvent(e) {
-  e.preventDefault();
-
-  if (
-    email.value === loginInfo["email"] &&
-    password.value === loginInfo["password"]
-  ) {
-    window.location.href = "folder.html";
-  } else {
-    email.classList.add("auth-form__input--invalid");
-    emailErrorMessage.textContent = errorMessages.confirmEmail;
-    password.classList.add("auth-form__input--invalid");
-    passwordErrorMessage.textContent = errorMessages.confirmPassword;
-  }
-}
-
 /* 이벤트 리스너 추가 */
 
 email.addEventListener("mouseout", emailErrorEvent);
@@ -71,12 +81,9 @@ password.addEventListener("mouseout", passwordErrorEvent);
 
 password.addEventListener("keyup", passwordErrorEvent);
 
-authForm.addEventListener("submit", loginEvent);
-
-authForm.addEventListener("keydown", function (e) {
-  if (e.key === "Enter") {
-    loginEvent(e);
-  }
-});
-
 passwordToggleBtn.addEventListener("click", togglePasswordVisibility);
+
+authForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  loginCheck();
+});

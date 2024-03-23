@@ -23,28 +23,53 @@ const passwordConfirmErrorMessage = document.querySelector(
 );
 const authForm = document.querySelector(".auth-form");
 
-export const signupCheck = {
-  email: false,
-  password: false,
-  passwordConfirm: false,
+// export const signupCheck = {
+//   email: false,
+//   password: false,
+//   passwordConfirm: false,
+// };
+
+/** 이메일 중복체크 */
+const checkEmail = async function () {
+  const response = await fetch(
+    "https://bootcamp-api.codeit.kr/api/check-email",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: `${email.value}`,
+      }),
+    }
+  );
+  return response;
 };
 
-/* 이메일 에러체크 */
-
-function emailErrorEvent() {
+/** 이메일 에러체크 */
+async function emailErrorEvent() {
   if (!email.value) {
     email.classList.add("auth-form__input--invalid");
     emailErrorMessage.textContent = errorMessages.emptyEmail;
+    return false;
   } else if (!isEmail(email.value)) {
     email.classList.add("auth-form__input--invalid");
     emailErrorMessage.textContent = errorMessages.invalidEmail;
-  } else if (email.value === loginInfo.email) {
+    return false;
+  }
+  try {
+    const response = await checkEmail();
+    if (!response.ok) {
+      throw new Error("이메일 중복!");
+    } else {
+      email.classList.remove("auth-form__input--invalid");
+      emailErrorMessage.textContent = "";
+      return true;
+    }
+  } catch (error) {
     email.classList.add("auth-form__input--invalid");
     emailErrorMessage.textContent = errorMessages.duplicateEmail;
-  } else if (isEmail(email.value)) {
-    email.classList.remove("auth-form__input--invalid");
-    emailErrorMessage.textContent = "";
-    signupCheck.email = true;
+    return false;
   }
 }
 
@@ -54,6 +79,7 @@ function passwordErrorEvent() {
   if (!password.value) {
     password.classList.add("auth-form__input--invalid");
     passwordErrorMessage.textContent = errorMessages.emptyPassword;
+    return false;
   } else if (
     password.value.length < 8 ||
     !/[A-Za-z]/.test(password.value) ||
@@ -61,6 +87,7 @@ function passwordErrorEvent() {
   ) {
     password.classList.add("auth-form__input--invalid");
     passwordErrorMessage.textContent = errorMessages.invalidPassword;
+    return false;
   } else if (
     password.value.length >= 8 &&
     /[A-Za-z]/.test(password.value) &&
@@ -68,35 +95,62 @@ function passwordErrorEvent() {
   ) {
     password.classList.remove("auth-form__input--invalid");
     passwordErrorMessage.textContent = "";
-    signupCheck.password = true;
+    return true;
   }
 }
 
 /* 비밀번호 확인 에러체크 */
 
 function passwordConfirmErrorEvent() {
-  if (!passwordConfirm.value) {
-    passwordConfirm.classList.add("auth-form__input--invalid");
-    passwordConfirmErrorMessage.textContent = errorMessages.emptyPassword;
-  } else if (password.value !== passwordConfirm.value) {
+  if (password.value !== passwordConfirm.value) {
     passwordConfirm.classList.add("auth-form__input--invalid");
     passwordConfirmErrorMessage.textContent = errorMessages.mismatchPassword;
+    return false;
   } else if (password.value === passwordConfirm.value) {
     passwordConfirm.classList.remove("auth-form__input--invalid");
     passwordConfirmErrorMessage.textContent = "";
-    signupCheck.passwordConfirm = true;
+    return true;
   }
 }
 
+/** 회원가입 폼 제출 */
+
+const submitSignUpForm = async function () {
+  try {
+    const response = await fetch(
+      "https://bootcamp-api.codeit.kr/api/check-email",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: `${email.value}`,
+          password: `${password.value}`,
+        }),
+      }
+    );
+    if (!response.ok) {
+      throw new Error("회원가입 오류!");
+    } else {
+      window.location.href = "folder.html";
+    }
+  } catch (e) {
+    emailErrorEvent();
+    passwordErrorEvent();
+    passwordConfirmErrorEvent();
+  }
+};
+
 /* 회원가입 에러체크 */
 
-function signupEvent(e) {
-  e.preventDefault();
+function signupEvent() {
+  const emailResult = emailErrorEvent();
+  const passwordResult = passwordErrorEvent();
+  const passwordConfirmResult = passwordConfirmErrorEvent();
 
-  const { email, password, passwordConfirm } = signupCheck;
-
-  if (email && password && passwordConfirm) {
-    window.location.href = "folder.html";
+  if (emailResult && passwordResult && passwordConfirmResult) {
+    submitSignUpForm();
   } else {
     emailErrorEvent();
     passwordErrorEvent();
@@ -118,14 +172,11 @@ passwordConfirm.addEventListener("mouseout", passwordConfirmErrorEvent);
 
 passwordConfirm.addEventListener("keyup", passwordConfirmErrorEvent);
 
-authForm.addEventListener("submit", signupEvent);
-
-authForm.addEventListener("keydown", function (e) {
-  if (e.key === "Enter") {
-    signupEvent(e);
-  }
-});
-
 passwordToggleBtn.addEventListener("click", togglePasswordVisibility);
 
 passwordToggleBtnConfirm.addEventListener("click", togglePasswordVisibility);
+
+authForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  signupEvent();
+});
