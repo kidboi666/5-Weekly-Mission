@@ -30,21 +30,6 @@ const checkPasswordValue = function () {
     }
 };
 
-// 로그인
-$loginForm.addEventListener("submit", function (e) {
-    $loginButton.focus();
-    retrieveData();
-
-    e.preventDefault();
-});
-
-// 이벤트
-$iconButtons.forEach(function (btn) {
-    btn.addEventListener("click", function () {
-        checkPasswordIcon(btn);
-    });
-});
-
 // 로그인 - fetch
 const retrieveData = async () => {
     try {
@@ -52,7 +37,6 @@ const retrieveData = async () => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: localStorage.getItem("access-token"),
             },
             body: JSON.stringify({
                 email: `${$emailInput.value}`,
@@ -83,6 +67,21 @@ const retrieveData = async () => {
         alert(error.message);
     }
 };
+
+// 로그인
+$loginForm.addEventListener("submit", function (e) {
+    $loginButton.focus();
+    retrieveData();
+
+    e.preventDefault();
+});
+
+// 이벤트
+$iconButtons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+        checkPasswordIcon(btn);
+    });
+});
 
 $emailInput.addEventListener("focusout", checkEmailValue);
 $passwordInput.addEventListener("focusout", checkPasswordValue);

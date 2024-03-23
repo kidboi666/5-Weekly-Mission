@@ -45,16 +45,6 @@ const checkVerifyPassword = function () {
     }
 };
 
-// 회원가입
-$loginForm.addEventListener("submit", function (e) {
-    checkEmailValue();
-    checkVerifyPassword();
-    checkPasswordLength();
-    confirmEmailWithFetch();
-
-    e.preventDefault();
-});
-
 // 회원가입 - fetch
 const confirmEmailWithFetch = async () => {
     try {
@@ -112,6 +102,16 @@ const confirmEmailAndPasswordWithFetch = async () => {
         alert(error.message);
     }
 };
+
+// 회원가입
+$loginForm.addEventListener("submit", function (e) {
+    checkEmailValue();
+    checkVerifyPassword();
+    checkPasswordLength();
+    confirmEmailWithFetch();
+
+    e.preventDefault();
+});
 
 // 이벤트
 $iconButtons.forEach(function (btn) {
