@@ -10,6 +10,29 @@ import {
   eyeButton,
 } from "./reset.js";
 
+// test 400
+const request = async ({ email, password }) => {
+  try {
+    const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    });
+    // .then((response) => response.json())
+    // .then((result) => console.log(result));
+    if (response.ok) {
+      window.location.href = "/folder.html";
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // 로그인 클릭했을 때 에러 메시지
 function validate({ email, password }) {
   const userExists = data.find((user) => {
@@ -19,16 +42,8 @@ function validate({ email, password }) {
   if (userExists) {
     // 로그인
     // 문제가 전혀 없을 경우
-    // fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     email: email,
-    //     password: password,
-    //   }),
-    // })
-    //   .then((response) => response.json())
-    //   .then((result) => console.log(result));
-    window.location.href = "/folder.html";
+    // window.location.href = "/folder.html";
+    request({ email, password });
   }
 
   if (!userExists) {
