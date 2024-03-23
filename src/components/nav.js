@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import LogoImgSrc from "./images/Linkbrary.svg";
+import {Button, ButtonLabel} from "./button";
 
 const Nav = function () {
   return (
@@ -11,7 +12,7 @@ const Nav = function () {
           <Image src={LogoImgSrc} />
         </Logo>
         <LoginButton href="/" as="a">
-            <Label>로그인</Label>
+          <ButtonLabel>로그인</ButtonLabel>
         </LoginButton>
       </ContentsFrame>
     </NavTemplate>
@@ -20,9 +21,8 @@ const Nav = function () {
 
 const ContentsFrame = styled.div``;
 const Logo = styled(Link)``;
-const LoginButton = styled(Link)``;
+const LoginButton = styled(Button)``;
 const Image = styled.img``;
-const Label = styled.p``;
 
 const NavTemplate = styled.nav`
   width: 100%;
@@ -79,26 +79,14 @@ const NavTemplate = styled.nav`
       max-width: 128px;
       width: 100%;
       height: 100%;
-      border-radius: 8px;
-      border-style: none;
+
       gap: 10px;
-      background-image: linear-gradient(90deg, #6d6afe, #6ae3fe);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration-line: none;
 
       @media (max-width: 767px) {
         max-width: 80px;
         width: 100%;
       }
 
-      ${Label} {
-        font-size: 18px;
-        font-weight: 600;
-        color: #f5f5f5;
-        font-family: "Pretendard";
-      }
     }
   }
 `;

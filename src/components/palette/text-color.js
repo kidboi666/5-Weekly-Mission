@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-const textColor = {
+const TextColor = {
   gradient: {
-    purpleRed: styled.span`
+    PurpleRed: styled.span`
       background-image: linear-gradient(90deg, #6d6afe, #ff9f9f);
       color: transparent;
       -webkit-background-clip: text;
@@ -12,12 +12,12 @@ const textColor = {
       color: transparent;
       -webkit-background-clip: text;
     `,
-    yellowBlue: styled.span`
+    YellowBlue: styled.span`
       background-image: linear-gradient(90deg, #ffd88b, #6fbaff);
       color: transparent;
       -webkit-background-clip: text;
     `,
-    blueWhite: styled.span`
+    BlueWhite: styled.span`
       background-image: linear-gradient(
         90deg,
         #6d7ccd 20%,
@@ -26,7 +26,7 @@ const textColor = {
       color: transparent;
       -webkit-background-clip: text;
     `,
-    blueRed: styled.span`
+    BlueRed: styled.span`
       background-image: linear-gradient(
         270deg,
         rgba(254, 87, 143, 0.3),
@@ -38,4 +38,4 @@ const textColor = {
   },
 };
 
-export default textColor;
+export default TextColor;

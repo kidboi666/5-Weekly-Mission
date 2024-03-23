@@ -5,6 +5,7 @@ import ResetStyle from "./style-initialization/reset-style";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "./components/nav";
 import Footer from "./components/footer"
+import LandingPage from "./components/landing-page";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -14,7 +15,7 @@ root.render(
     <GlobalStyle />
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Footer/>}></Route>
+        <Route path="/" element={<LandingPage/>}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
