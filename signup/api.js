@@ -15,11 +15,6 @@ async function checkEmailDuplicate(email) {
       }
     );
 
-    // 서버 응답 확인
-    if (!response.ok) {
-      throw new Error("이메일 중복 확인에 실패했습니다.");
-    }
-
     // 서버로부터의 응답 데이터 받기
     const data = await response.json();
 
@@ -54,7 +49,12 @@ async function signUp(email, password) {
 
     if (response.ok) {
       console.log("Sign-up successful");
-      return { success: true };
+      const data = await response.json();
+      localStorage.setItem("accessToken", data.accessToken);
+
+      const accessToken = data.accessToken;
+
+      return { success: true, accessToken: accessToken };
     } else {
       // 서버에서 받은 오류 메시지 출력
       const errorMessage = await response.text();

@@ -133,7 +133,8 @@ async function handleSubmit(e) {
   // 회원가입 요청
   const signUpResult = await signUp(email, password);
   if (signUpResult.success) {
-    location.href = "../signin/folder.html"; // 회원가입 성공 시 폴더 페이지로 이동
+    localStorage.setItem("accessToken", signUpResult.accessToken);
+    location.href = "../signin/folder.html";
   } else {
     showError(".error-message-email", signUpResult.error);
   }
