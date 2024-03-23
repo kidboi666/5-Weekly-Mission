@@ -11,6 +11,8 @@ import {
   togglePasswordVisibility,
 } from "../js/uicontroller.js";
 
+import { checkEmailDuplicate, signUp } from "./api.js";
+
 const emailInputEl = document.querySelector(".email-input");
 const passwordInputEl = document.querySelector(".password-input");
 const confirmPasswordInputEl = document.querySelector(
@@ -37,17 +39,17 @@ function isExistUser(email) {
   return { success: true, error: null };
 }
 
-emailInputEl.addEventListener("focusout", () => {
+emailInputEl.addEventListener("focusout", async () => {
   const email = emailInputEl.value;
   const validation = validateEmail(email);
 
   if (!validation.success) {
     showError(".error-message-email", validation.error);
   } else {
-    const userExistsValidation = isExistUser(email);
+    const isDuplicate = await checkEmailDuplicate(email);
 
-    if (!userExistsValidation.success) {
-      showError(".error-message-email", userExistsValidation.error);
+    if (!isDuplicate) {
+      showError(".error-message-email", "이미 존재하는 이메일입니다.");
     }
   }
 });
@@ -109,21 +111,17 @@ confirmPasswordInputEl.addEventListener("keyup", () => {
 });
 
 /*폼 제출 동작*/
-function handleSubmit(e) {
+
+async function handleSubmit(e) {
   e.preventDefault();
 
   const email = emailInputEl.value;
   const password = passwordInputEl.value;
 
   const emailValidation = validateEmail(email);
-  const userValidation = isExistUser(email);
-
   if (!emailValidation.success) {
     showError(".error-message-email", emailValidation.error);
     return; // 유효하지 않은 이메일일 때 함수 종료
-  } else if (!userValidation.success) {
-    showError(".error-message-email", userValidation.error);
-    return; // 이미 존재하는 이메일일 때 함수 종료
   }
 
   const passwordValidationResult = validatePassword(password);
@@ -132,7 +130,13 @@ function handleSubmit(e) {
     return; // 유효하지 않은 비밀번호일 때 함수 종료
   }
 
-  location.href = "../signin/folder.html";
+  // 회원가입 요청
+  const signUpResult = await signUp(email, password);
+  if (signUpResult.success) {
+    location.href = "../signin/folder.html"; // 회원가입 성공 시 폴더 페이지로 이동
+  } else {
+    showError(".error-message-email", signUpResult.error);
+  }
 }
 
 signform.addEventListener("submit", handleSubmit);

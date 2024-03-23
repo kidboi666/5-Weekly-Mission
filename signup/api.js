@@ -1,13 +1,9 @@
 /*이메일 중복 에러 확인 요청*/
-import { isExistUser } from "./app.js";
 import { showError } from "../js/uicontroller.js";
 
-const signform = document.querySelector(".sign-form");
-
 async function checkEmailDuplicate(email) {
-  const userExistsValidation = isExistUser(email);
-
   try {
+    // 서버로 이메일 중복 확인 요청 보내기
     const response = await fetch(
       "https://bootcamp-api.codeit.kr/api/check-email",
       {
@@ -19,12 +15,24 @@ async function checkEmailDuplicate(email) {
       }
     );
 
+    // 서버 응답 확인
     if (!response.ok) {
       throw new Error("이메일 중복 확인에 실패했습니다.");
     }
-    return isExistUser();
+
+    // 서버로부터의 응답 데이터 받기
+    const data = await response.json();
+
+    // 중복 여부에 따라 처리
+    if (data.exists) {
+      showError(".error-message-email", "이미 존재하는 이메일입니다.");
+      return false;
+    } else {
+      return true;
+    }
   } catch (error) {
-    showError(".error-message-email", userExistsValidation.error);
+    console.error("Error occurred:", error);
+    showError(".error-message-email", "서버와의 통신 중 오류가 발생했습니다.");
     return false;
   }
 }
@@ -46,36 +54,17 @@ async function signUp(email, password) {
 
     if (response.ok) {
       console.log("Sign-up successful");
-      location.href = "./folder.html"; // 회원가입 성공 시 이동할 URL
+      return { success: true };
     } else {
       // 서버에서 받은 오류 메시지 출력
       const errorMessage = await response.text();
       console.error("Sign-up failed:", errorMessage);
+      return { success: false, error: errorMessage };
     }
   } catch (error) {
     console.error("Error occurred:", error);
+    return { success: false, error: "서버와의 통신 중 오류가 발생했습니다." };
   }
 }
 
-// 제출 버튼을 클릭하거나 엔터 키를 눌렀을 때 이메일 중복 확인 함수 호출
-signform.addEventListener("submit", async function (event) {
-  event.preventDefault(); // 기본 제출 동작 방지
-
-  const email = signform.querySelector(".email-input").value;
-  const password = signform.querySelector(".password-input").value;
-
-  // 이메일 중복 확인
-  const isEmailValid = await checkEmailDuplicate(email);
-
-  // 유효한 이메일일 경우에만 회원가입 진행
-  if (isEmailValid) {
-    signUp(email, password);
-  }
-});
-
-signform.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
-    const email = signform.querySelector(".email-input").value;
-    checkEmailDuplicate(email);
-  }
-});
+export { checkEmailDuplicate, signUp };

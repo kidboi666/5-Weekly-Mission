@@ -6,6 +6,8 @@ import {
   togglePasswordVisibility,
 } from "../js/uicontroller.js";
 
+import { signIn } from "./api.js";
+
 const emailInputEl = document.querySelector(".email-input");
 const passwordInputEl = document.querySelector(".password-input");
 
@@ -47,7 +49,7 @@ passwordInputEl.addEventListener("focus", () =>
 /*이메일: test@codeit.com 비밀번호: codeit101로 로그인 시, /folder 페이지로 이동
 이외의 로그인 시도의 경우, 에러 메세지 출력*/
 
-function login(authInfo) {
+/*function login(authInfo) {
   const { email, password } = authInfo;
 
   const isValidEmail = validateEmail(email);
@@ -83,6 +85,47 @@ signform.addEventListener("submit", function (event) {
   const password = signform.querySelector(".password-input").value;
 
   login({ email, password });
+});*/
+
+function login(authInfo) {
+  const { email, password } = authInfo;
+
+  const isValidEmail = validateEmail(email);
+  const isValidPassword = validatePassword(password);
+
+  if (isValidEmail.error) {
+    const errorMessage = isValidEmail.error;
+    return showError(".error-message-email", errorMessage);
+  }
+
+  if (isValidPassword.error) {
+    const errorMessage = isValidPassword.error;
+    return showError(".error-message-password", errorMessage);
+  }
+
+  const user = users.find(
+    (user) => user.email === email && user.password === password
+  );
+
+  if (!user) {
+    showError(".error-message-email", "이메일 또는 비밀번호를 확인해주세요");
+    showError(".error-message-password", "이메일 또는 비밀번호를 확인해주세요");
+    return;
+  }
+  location.href = "./folder.html";
+}
+
+signform.addEventListener("submit", async function (event) {
+  event.preventDefault();
+
+  const email = signform.querySelector(".email-input").value;
+  const password = signform.querySelector(".password-input").value;
+
+  const signInResult = await signIn(email, password);
+
+  if (signInResult.success) {
+    login({ email, password });
+  }
 });
 
 /*Enter키를 눌러도 로그인이 되도록 추가*/
