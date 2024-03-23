@@ -35,3 +35,4 @@ function togglePasswordVisibility(inputField, eyeIcon) {
 }
 
 export { showError, removeErrorMessage, togglePasswordVisibility };
+

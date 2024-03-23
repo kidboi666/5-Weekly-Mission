@@ -104,3 +104,4 @@ signform.addEventListener("keydown", (event) => {
 passwordToggleBtn.addEventListener("click", () =>
   togglePasswordVisibility(passwordInput, passwordToggleBtn)
 );
+
