@@ -19,11 +19,11 @@
             <p>회원이 아니신가요? <a href="/signup.html" class="link">회원 가입하기</a></p>
         </header>
         <main>
-            <form action="/" id="form">
+            <form action="/" id="loginForm">
                 <div class="wrap-input">
                     <label>이메일</label>
                     <input type="text" class="input-txt" id="email" name="email" placeholder="codeit@codeit.com">
-                    <p class="txt-wrong hide-error-email"></p>
+                    <p id="emailErrorText" class="txt-wrong"></p>
                 </div>
                 <div class="wrap-input">
                     <label>비밀번호</label>
@@ -35,7 +35,7 @@
                         <img src="/static/images/auth/eye-on.png" alt="비밀번호 표시" class="cursor-point" class="eye eye-on">
                     </object>
                     <button type="button" id="passwordHidden"></button>
-                    <p class="txt-wrong hide-error-password"></p>
+                    <p id="passwordErrorText" class="txt-wrong"></p>
                 </div>
                 <button type="submit" id="loginBtn" class="primary-btn lg">로그인</button>
             </form>
