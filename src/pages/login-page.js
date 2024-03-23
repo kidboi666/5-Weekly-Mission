@@ -75,10 +75,29 @@ const LoginPage = function () {
     }
   };
 
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault(); // 폼 제출 기본 동작 방지
+
+    validateEmail(); // 이메일 유효성 검사
+    validatePassword(); // 비밀번호 유효성 검사
+
+    // 이메일과 비밀번호가 모두 유효한 경우
+    if (email === "test@codeit.com" && password === "codeit101") {
+      navigate("/folder"); // 페이지 리디렉션
+    } else if(emailError === "" && passwordError === "") {
+      // 이메일 또는 비밀번호가 유효하지 않은 경우, 에러 메시지 설정
+      if (email !== "test@codeit.com") setEmailError("이메일을 확인해 주세요.");
+      if (password !== "codeit101") setPasswordError("비밀번호를 확인해 주세요.");
+    }
+  };
+
+
   return (
     <Auth.Template>
       <LoginContent>
-        <LoginForm id="loginForm">
+        <LoginForm id="loginForm"  onSubmit={handleLogin}>
           <Auth.LinkArea>
             <ToSignup>
               <div>회원이 아니신가요?</div>

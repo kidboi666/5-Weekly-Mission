@@ -18,6 +18,7 @@ root.render(
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/signup" element={<SignupPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
+		<Route path="/folder" element={<LandingPage />}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
