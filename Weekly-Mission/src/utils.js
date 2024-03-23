@@ -38,16 +38,3 @@ export const TEST_USER = {
   email: 'test@codeit.com',
   password: 'codeit101',
 };
-
-export function checkAccountStatus(email, password) {
-  fetch('https://bootcamp-api.codeit.kr/docs/api/sign-in')
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.email === email && data.password === password) {
-        location.href = '/folder';
-        return;
-      }
-      setInputError({ input: emailInput, errorMessage: emailErrorMessage }, '이메일을 확인해주세요.');
-      setInputError({ input: passwordInput, errorMessage: passwordErrorMessage }, '비밀번호를 확인해주세요.');
-    });
-}
