@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import FacebookLogo from './Images/facebook_logo.svg'
-import TwitterLogo from './Images/twitter_logo.svg'
-import YoutubeLogo from './Images/youtube_logo.svg'
-import InstagramLogo from './Images/instagram_logo.svg'
+import FacebookLogo from './images/facebook_logo.svg'
+import TwitterLogo from './images/twitter_logo.svg'
+import YoutubeLogo from './images/youtube_logo.svg'
+import InstagramLogo from './images/instagram_logo.svg'
+
 const FooterFrame = styled.div``;
 const ContentsFrame = styled.div``;
 const Codeit = styled(Link)``;
@@ -24,16 +25,16 @@ const Footer = function () {
 		  </Linkbox>
           <Iconbox>
             <Link href="https://www.facebook.com/" target="_blank">
-              <img src={FacebookLogo} />
+              <img src={FacebookLogo} alt="Facebook Logo"/>
             </Link>
             <Link href="https://twitter.com/?lang=ko" target="_blank">
-              <img src={TwitterLogo} />
+              <img src={TwitterLogo} alt="Twitter Logo"/>
             </Link>
             <Link href="https://www.youtube.com/" target="_blank">
-              <img src={YoutubeLogo} />
+              <img src={YoutubeLogo} alt="Youtube Logo"/>
             </Link>
             <Link href="https://www.instagram.com/" target="_blank">
-              <img src={InstagramLogo} />
+              <img src={InstagramLogo} alt="Instagram Logo"/>
             </Link>
           </Iconbox>
         </ContentsFrame>
