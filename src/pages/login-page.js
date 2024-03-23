@@ -86,18 +86,18 @@ const LoginPage = function () {
     // 이메일과 비밀번호가 모두 유효한 경우
     if (email === "test@codeit.com" && password === "codeit101") {
       navigate("/folder"); // 페이지 리디렉션
-    } else if(emailError === "" && passwordError === "") {
+    } else if (email && password && /\S+@\S+\.\S+/.test(email)) {
       // 이메일 또는 비밀번호가 유효하지 않은 경우, 에러 메시지 설정
       if (email !== "test@codeit.com") setEmailError("이메일을 확인해 주세요.");
-      if (password !== "codeit101") setPasswordError("비밀번호를 확인해 주세요.");
+      if (password !== "codeit101")
+        setPasswordError("비밀번호를 확인해 주세요.");
     }
   };
-
 
   return (
     <Auth.Template>
       <LoginContent>
-        <LoginForm id="loginForm"  onSubmit={handleLogin}>
+        <LoginForm id="loginForm" onSubmit={handleLogin}>
           <Auth.LinkArea>
             <ToSignup>
               <div>회원이 아니신가요?</div>

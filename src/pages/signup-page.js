@@ -3,6 +3,7 @@ import styled from "styled-components";
 import * as Auth from "../components/auth";
 import { ButtonLabel } from "../components/button";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SignupContent = styled(Auth.Content)`
   height: 627px;
@@ -106,10 +107,41 @@ const SignupPage = function () {
     }
   };
 
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // 폼 기본 제출 동작 방지
+
+    // 모든 입력 필드의 유효성 검사를 수행합니다.
+    validateEmail();
+    validatePassword();
+    validatePasswordCheck();
+
+    const hasLetters = /[a-zA-Z]/.test(password);
+    const hasNumbers = /\d/.test(password);
+    const isLongEnough = password.length >= 8;
+    // 모든 유효성 검사가 통과되었는지 확인합니다.
+    if (
+      password &&
+      passwordCheck &&
+      email &&
+      /\S+@\S+\.\S+/.test(email) &&
+      !(email === "test@codeit.com") &&
+      isLongEnough &&
+      hasLetters &&
+      hasNumbers &&
+      password === passwordCheck
+    ) {
+      // 유효한 회원가입 시도: "/folder"로 리디렉션합니다.
+      navigate("/folder");
+    }
+    // 유효성 검사에 실패한 경우, 에러 메시지가 각 입력 필드 아래에 이미 설정되었습니다.
+  };
+
   return (
     <Auth.Template>
       <SignupContent>
-        <SignupForm id="signupForm">
+        <SignupForm id="signupForm" onSubmit={handleSubmit}>
           <Auth.LinkArea>
             <ToLogin>
               <div>이미 회원이신가요?</div>
