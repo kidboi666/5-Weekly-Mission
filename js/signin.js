@@ -1,9 +1,5 @@
-import {
-  isEmail,
-  togglePasswordVisibility,
-  loginInfo,
-  errorMessages,
-} from "./util.js";
+import { isEmail, togglePasswordVisibility, accessTokenCheck } from "./util.js";
+import { errorMessages } from "./authConfig.js";
 
 const email = document.querySelector("#email");
 const password = document.querySelector("#password");
@@ -35,6 +31,7 @@ const loginCheck = async function () {
       throw new Error("로그인에러!");
     } else {
       window.location.href = "folder.html";
+      localStorage.setItem("accessToken", result.data.accessToken);
     }
   } catch (error) {
     email.classList.add("auth-form__input--invalid");
@@ -73,6 +70,8 @@ function passwordErrorEvent() {
 
 /* 이벤트 리스너 추가 */
 
+accessTokenCheck();
+
 email.addEventListener("mouseout", emailErrorEvent);
 
 email.addEventListener("keyup", emailErrorEvent);
@@ -83,7 +82,7 @@ password.addEventListener("keyup", passwordErrorEvent);
 
 passwordToggleBtn.addEventListener("click", togglePasswordVisibility);
 
-authForm.addEventListener("submit", function (event) {
-  event.preventDefault();
+authForm.addEventListener("submit", function (e) {
+  e.preventDefault();
   loginCheck();
 });

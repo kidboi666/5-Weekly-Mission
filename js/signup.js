@@ -1,9 +1,5 @@
-import {
-  isEmail,
-  togglePasswordVisibility,
-  loginInfo,
-  errorMessages,
-} from "./util.js";
+import { isEmail, togglePasswordVisibility, accessTokenCheck } from "./util.js";
+import { url, errorMessages } from "./authConfig.js";
 
 const email = document.querySelector("#email");
 const password = document.querySelector("#password");
@@ -22,12 +18,6 @@ const passwordConfirmErrorMessage = document.querySelector(
   "#auth-form__password-confirm-error"
 );
 const authForm = document.querySelector(".auth-form");
-
-// export const signupCheck = {
-//   email: false,
-//   password: false,
-//   passwordConfirm: false,
-// };
 
 /** 이메일 중복체크 */
 const checkEmail = async function () {
@@ -117,23 +107,22 @@ function passwordConfirmErrorEvent() {
 
 const submitSignUpForm = async function () {
   try {
-    const response = await fetch(
-      "https://bootcamp-api.codeit.kr/api/check-email",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: `${email.value}`,
-          password: `${password.value}`,
-        }),
-      }
-    );
+    const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-up", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: `${email.value}`,
+        password: `${password.value}`,
+      }),
+    });
+    const result = await response.json();
     if (!response.ok) {
       throw new Error("회원가입 오류!");
     } else {
-      window.location.href = "folder.html";
+      // window.location.href = "folder.html";
+      localStorage.setItem("accessToken", result.data.accessToken);
     }
   } catch (e) {
     emailErrorEvent();
@@ -159,6 +148,8 @@ function signupEvent() {
 }
 
 /* 이벤트 리스너 추가 */
+
+accessTokenCheck();
 
 email.addEventListener("mouseout", emailErrorEvent);
 
