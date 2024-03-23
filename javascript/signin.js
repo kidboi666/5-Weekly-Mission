@@ -1,19 +1,19 @@
-import { loginId, emailErr, emailSignIn } from "./email.js";
+import { loginId, emailErr, signInEmailErr } from "./email.js";
+import { loginPwd, passwordErr, signInPasswordErr } from "./password.js";
 
-import { loginPwd, passwordErrSignIn, passwordSignIn } from "./password.js";
+/* 필요한 기능 가져오기 */
+import {
+  CORRECT_EMAIL,
+  CORRECT_PASSWORD,
+  form,
+  eyeBtn,
+  eyeOn,
+  eyeOff,
+  valueVerify,
+  valueRight,
+} from "./apply.js";
 
-const CORRECT_EMAIL = "test@codeit.com";
-const CORRECT_PASSWORD = "codeit101";
-
-const form = document.querySelector("#form");
-const eyeBtn = document.querySelector(".password-button");
-const eyeOn = document.querySelector(".eye-on");
-const eyeOff = document.querySelector(".eye-off");
-
-loginId.addEventListener("focusout", emailSignIn);
-loginPwd.addEventListener("focusout", passwordSignIn);
-
-form.addEventListener("submit", function (e) {
+const mainSignInFunction = (e) => {
   e.preventDefault();
 
   if (loginId.value === CORRECT_EMAIL && loginPwd.value === CORRECT_PASSWORD) {
@@ -22,31 +22,21 @@ form.addEventListener("submit", function (e) {
     loginId.value === CORRECT_EMAIL &&
     loginPwd.value !== CORRECT_PASSWORD
   ) {
-    emailErr.classList.add("hide");
-    loginId.classList.remove("input-err");
-    passwordErrSignIn.textContent = "비밀번호를 확인해 주세요.";
-    passwordErrSignIn.classList.remove("hide");
-    loginPwd.classList.add("input-err");
+    valueRight(emailErr, loginId);
+    valueVerify(passwordErr, loginPwd, "비밀번호를 확인해 주세요.");
   } else if (
     loginId.value !== CORRECT_EMAIL &&
     loginPwd.value === CORRECT_PASSWORD
   ) {
-    emailErr.textContent = "이메일을 확인해 주세요.";
-    emailErr.classList.remove("hide");
-    loginId.classList.add("input-err");
-    passwordErrSignIn.classList.add("hide");
-    loginPwd.classList.remove("input-err");
+    valueVerify(emailErr, loginId, "이메일을 확인해 주세요.");
+    valueRight(passwordErr, loginPwd);
   } else {
-    emailErr.textContent = "이메일을 확인해 주세요.";
-    emailErr.classList.remove("hide");
-    loginId.classList.add("input-err");
-    passwordErrSignIn.textContent = "비밀번호를 확인해 주세요.";
-    passwordErrSignIn.classList.remove("hide");
-    loginPwd.classList.add("input-err");
+    valueVerify(emailErr, loginId, "이메일을 확인해 주세요.");
+    valueVerify(passwordErr, loginPwd, "비밀번호를 확인해 주세요.");
   }
-});
+};
 
-eyeBtn.addEventListener("click", function () {
+const eyeBtnFunction = () => {
   if (loginPwd.type === "password") {
     loginPwd.type = "text";
     eyeOn.classList.remove("hide");
@@ -56,4 +46,9 @@ eyeBtn.addEventListener("click", function () {
     eyeOn.classList.add("hide");
     eyeOff.classList.remove("hide");
   }
-});
+};
+
+loginId.addEventListener("focusout", signInEmailErr);
+loginPwd.addEventListener("focusout", signInPasswordErr);
+form.addEventListener("submit", mainSignInFunction);
+eyeBtn.addEventListener("click", eyeBtnFunction);

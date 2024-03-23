@@ -1,39 +1,28 @@
 export const loginId = document.querySelector(".sign-email");
 export const emailErr = document.querySelector(".email-err");
 
-export function emailSignIn(e) {
+import { valueVerify, valueRight, CORRECT_EMAIL } from "./apply.js";
+
+/* 로그인 이메일 검증 함수 */
+export function signInEmailErr() {
   if (loginId.value === "") {
-    emailErr.textContent = "이메일을 입력해 주세요.";
-    emailErr.classList.remove("hide");
-    loginId.classList.add("input-err");
-  } else if (loginId.value === "test@codeit.com") {
-    emailErr.classList.add("hide");
-    loginId.classList.remove("input-err");
+    valueVerify(emailErr, loginId, "이메일을 입력해주세요.");
   } else if (loginId.value.indexOf("@") == -1) {
-    emailErr.textContent = "올바른 이메일 주소가 아닙니다.";
-    emailErr.classList.remove("hide");
-    loginId.classList.add("input-err");
+    valueVerify(emailErr, loginId, "올바른 이메일 주소가 아닙니다.");
   } else {
-    emailErr.classList.add("hide");
-    loginId.classList.remove("input-err");
+    valueRight(emailErr, loginId);
   }
 }
 
-export function emailSignUp(e) {
+/* 회원가입 이메일 검증 함수 */
+export function signUpEmailErr() {
   if (loginId.value === "") {
-    emailErr.textContent = "이메일을 입력해 주세요.";
-    emailErr.classList.remove("hide");
-    loginId.classList.add("input-err");
-  } else if (loginId.value === "test@codeit.com") {
-    emailErr.textContent = "이미 사용 중인 이메일입니다.";
-    emailErr.classList.remove("hide");
-    loginId.classList.add("input-err");
+    valueVerify(emailErr, loginId, "이메일을 입력해주세요.");
+  } else if (loginId.value === CORRECT_EMAIL) {
+    valueVerify(emailErr, loginId, "이미 사용 중인 이메일입니다.");
   } else if (loginId.value.indexOf("@") == -1) {
-    emailErr.textContent = "올바른 이메일 주소가 아닙니다.";
-    emailErr.classList.remove("hide");
-    loginId.classList.add("input-err");
+    valueVerify(emailErr, loginId, "올바른 이메일 주소가 아닙니다.");
   } else {
-    emailErr.classList.add("hide");
-    loginId.classList.remove("input-err");
+    valueRight(emailErr, loginId);
   }
 }

@@ -103,7 +103,8 @@ input {
   position: relative;
 }
 
-.password-button {
+.password-button,
+.password-check-button {
   display: flex;
   justify-content: center;
   align-items: center;
