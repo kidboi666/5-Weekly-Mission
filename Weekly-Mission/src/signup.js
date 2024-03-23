@@ -92,10 +92,33 @@ const redundancyEmails = async (e) => {
     if (!response.ok) {
       throw new Error('실패');
     }
-    return true;
+    register(e);
   } catch (error) {
     setInputError({ input: emailInput, errorMessage: emailErrorMessage }, '이미 사용중인 이메일입니다.');
     console.error('Error:', error);
     return false;
+  }
+};
+
+const register = async function (e) {
+  e.preventDefault();
+
+  try {
+    const response = await fetch('https://bootcamp-api.codeit.kr/api/sign-up', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: emailInput.value,
+        password: passwordInput.value,
+      }),
+    });
+    if (!response.ok) {
+      throw new Error('실패');
+    }
+    location.href = './folder.html';
+  } catch (error) {
+    console.error('Error:', error);
   }
 };
