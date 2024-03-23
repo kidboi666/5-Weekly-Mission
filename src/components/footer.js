@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import FacebookLogo from './images/facebook_logo.svg'
-import TwitterLogo from './images/twitter_logo.svg'
-import YoutubeLogo from './images/youtube_logo.svg'
-import InstagramLogo from './images/instagram_logo.svg'
+import FacebookLogo from '../images/facebook_logo.svg'
+import TwitterLogo from '../images/twitter_logo.svg'
+import YoutubeLogo from '../images/youtube_logo.svg'
+import InstagramLogo from '../images/instagram_logo.svg'
 
 const FooterFrame = styled.div``;
 const ContentsFrame = styled.div``;

@@ -1,15 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import MainImg from "./images/img_landing_main.png";
-import FirstImg from "./images/img1_landing.svg";
-import SecondImg from "./images/img2_landing.svg";
-import ThirdImg from "./images/img3_landing.svg";
-import FourthImg from "./images/img4_landing.svg";
-import { Button, ButtonLabel } from "./button";
-import TextColor from "./palette/text-color";
-import Nav from "./nav";
-import Footer from "./footer";
+
+import MainImg from "../images/img_landing_main.png";
+import FirstImg from "../images/img1_landing.svg";
+import SecondImg from "../images/img2_landing.svg";
+import ThirdImg from "../images/img3_landing.svg";
+import FourthImg from "../images/img4_landing.svg";
+import { Button, ButtonLabel } from "../components/button";
+import TextColor from "../palette/text-color";
+import Nav from "../components/nav";
+import Footer from "../components/footer";
 
 const ContentsFrame = styled.div``;
 const TextArea = styled.div``;
@@ -84,12 +84,12 @@ const SectionTemplate = styled.section`
 
     ${TextArea} {
       width: 300px;
-	  height: ${(Props) =>
-      Props.textAreaSize === "small"
-        ? "148px"
-        : Props.textAreaSize === "medium"
-        ? "172px"
-        : "198px"};
+      height: ${(Props) =>
+        Props.textAreaSize === "small"
+          ? "148px"
+          : Props.textAreaSize === "medium"
+          ? "172px"
+          : "198px"};
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -323,7 +323,7 @@ const MainSection = function () {
         </FirstLine>
         <SecondLine>쉽게 저장하고 관리해 보세요</SecondLine>
       </TextArea>
-      <Button href="/" as="a">
+      <Button href="/signup" as="a">
         <ButtonLabel>링크 추가하기</ButtonLabel>
       </Button>
       <ImageArea>
@@ -380,7 +380,7 @@ const Section = function ({
 const LandingPage = function () {
   return (
     <>
-	  <Nav/>
+      <Nav />
       <MainSection />
       <FirstSection />
       <Section imgSrc={SecondImg} reversed={true} $textAreaSize={"medium"}>
@@ -395,7 +395,7 @@ const LandingPage = function () {
           <EnterTablet />
           {"다양하게 활용할 수 "}
           <EnterMobile />
-           있습니다.
+          있습니다.
           <EnterPC />
           <EnterTablet />
         </SmallText>
@@ -435,7 +435,7 @@ const LandingPage = function () {
         </SmallText>
       </Section>
 
-	  <Footer/>
+      <Footer />
     </>
   );
 };

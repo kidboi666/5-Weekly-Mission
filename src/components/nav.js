@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import LogoImgSrc from "./images/Linkbrary.svg";
+import LogoImgSrc from "../images/Linkbrary.svg";
 import {Button, ButtonLabel} from "./button";
 
 const Nav = function () {
@@ -11,7 +11,7 @@ const Nav = function () {
         <Logo href="/">
           <Image src={LogoImgSrc} />
         </Logo>
-        <LoginButton href="/" as="a">
+        <LoginButton href="/login" as="a">
           <ButtonLabel>로그인</ButtonLabel>
         </LoginButton>
       </ContentsFrame>
