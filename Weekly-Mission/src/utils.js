@@ -33,8 +33,3 @@ export function togglePassword(input, toggleButton) {
   input.setAttribute('type', 'password');
   toggleButton.getElementsByTagName('img')[0].setAttribute('src', './images/eye-off.svg');
 }
-
-export const TEST_USER = {
-  email: 'test@codeit.com',
-  password: 'codeit101',
-};

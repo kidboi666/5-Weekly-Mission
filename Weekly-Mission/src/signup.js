@@ -1,4 +1,4 @@
-import { setInputError, removeInputError, isEmailValid, isPasswordValid, togglePassword, TEST_USER } from './utils.js';
+import { setInputError, removeInputError, isEmailValid, isPasswordValid, togglePassword } from './utils.js';
 
 const emailInput = document.querySelector('#email');
 const emailErrorMessage = document.querySelector('#email-error-message');
@@ -10,10 +10,6 @@ function validateEmailInput(email) {
   }
   if (!isEmailValid(email)) {
     setInputError({ input: emailInput, errorMessage: emailErrorMessage }, '올바른 이메일 주소가 아닙니다.');
-    return false;
-  }
-  if (email === TEST_USER.email) {
-    setInputError({ input: emailInput, errorMessage: emailErrorMessage }, '이미 사용 중인 이메일입니다.');
     return false;
   }
   removeInputError({ input: emailInput, errorMessage: emailErrorMessage });
@@ -68,41 +64,38 @@ confirmPasswordToggleButton.addEventListener('click', () =>
 
 const signForm = document.querySelector('#form');
 signForm.addEventListener('submit', submitForm);
-function submitForm(event) {
+async function submitForm(event) {
   event.preventDefault();
 
   const isEmailInputValid = validateEmailInput(emailInput.value);
   const isPasswordInputValid = validatePasswordInput(passwordInput.value);
   const isConfirmPasswordInputValid = validateConfirmPasswordInput(confirmPasswordInput.value);
-
-  if (isEmailInputValid && isPasswordInputValid && isConfirmPasswordInputValid) {
-    location.href = '/folder';
+  const isRedundancyEmail = await redundancyEmails(event);
+  if (isEmailInputValid && isPasswordInputValid && isConfirmPasswordInputValid && isRedundancyEmail) {
+    location.href = './folder.html';
   }
 }
 
-signForm.addEventListener('submit', async function (e) {
+const redundancyEmails = async (e) => {
   e.preventDefault();
-  const email = emailInput.value;
-  const password = passwordInput.value;
 
   try {
-    const response = await fetch('https://bootcamp-api.codeit.kr/api/sign-in', {
+    const response = await fetch('https://bootcamp-api.codeit.kr/api/check-email', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        email: email,
-        password: password,
+        email: emailInput.value,
       }),
     });
     if (!response.ok) {
       throw new Error('실패');
     }
-    location.href = './folder.html';
+    return true;
   } catch (error) {
-    setInputError({ input: emailInput, errorMessage: emailErrorMessage }, '이메일을 확인해주세요.');
-    setInputError({ input: passwordInput, errorMessage: passwordErrorMessage }, '비밀번호를 확인해주세요.');
+    setInputError({ input: emailInput, errorMessage: emailErrorMessage }, '이미 사용중인 이메일입니다.');
     console.error('Error:', error);
+    return false;
   }
-});
+};

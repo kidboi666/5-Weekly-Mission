@@ -30,7 +30,6 @@ const passwordToggleButton = document.querySelector('#password-toggle');
 passwordToggleButton.addEventListener('click', () => togglePassword(passwordInput, passwordToggleButton));
 
 const signForm = document.querySelector('#form');
-
 signForm.addEventListener('submit', async function (e) {
   e.preventDefault();
   const email = emailInput.value;
