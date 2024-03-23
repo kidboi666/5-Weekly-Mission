@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 const textColor = {
@@ -8,7 +7,7 @@ const textColor = {
       color: transparent;
       -webkit-background-clip: text;
     `,
-    redBlue: styled.span`
+    RedBlue: styled.span`
       background-image: linear-gradient(90deg, #fe8a8a, #a4ceff);
       color: transparent;
       -webkit-background-clip: text;
@@ -27,7 +26,7 @@ const textColor = {
       color: transparent;
       -webkit-background-clip: text;
     `,
-    skyPink: styled.span`
+    blueRed: styled.span`
       background-image: linear-gradient(
         270deg,
         rgba(254, 87, 143, 0.3),
@@ -39,4 +38,4 @@ const textColor = {
   },
 };
 
-export default textColor
+export default textColor;

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import LogoImgSrc from './images/Linkbrary.svg'
+import LogoImgSrc from "./images/Linkbrary.svg";
 
 const Nav = function () {
   return (
@@ -11,18 +11,18 @@ const Nav = function () {
           <Image src={LogoImgSrc} />
         </Logo>
         <LoginButton href="/" as="a">
-          <Label>로그인</Label>
+            <Label>로그인</Label>
         </LoginButton>
       </ContentsFrame>
     </NavTemplate>
   );
 };
 
-const ContentsFrame = styled.div``
-const Logo = styled(Link)``
-const LoginButton = styled(Link)``
-const Image = styled.img``
-const Label = styled.p``
+const ContentsFrame = styled.div``;
+const Logo = styled(Link)``;
+const LoginButton = styled(Link)``;
+const Image = styled.img``;
+const Label = styled.p``;
 
 const NavTemplate = styled.nav`
   width: 100%;
@@ -102,7 +102,5 @@ const NavTemplate = styled.nav`
     }
   }
 `;
-
-
 
 export default Nav;
