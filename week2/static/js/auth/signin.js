@@ -4,12 +4,12 @@ import {
     $password,
     $passwordError,
     $passWordIconBtn,
-    $loginForm,
-    $loginEmail,
-    $loginPassword
+    $loginForm
 } from "/static/js/auth/common/authVariable.js";
 
 import { validateEmail, validatedEmail, showPasswordValue } from "/static/js/auth/common/authCommon.js";
+
+import { submitSignIn } from "/static/api/auth/signinApi.js";
 
 
 
@@ -45,18 +45,30 @@ $password.addEventListener('focusin', (event) => {
  * 로그인 버튼 클릭 또는 Enter키 입력으로 로그인 실행돼야 합니다.
  */
 
-$loginForm.addEventListener('submit', (event) => {
+$loginForm.addEventListener('submit', async function (event) {
     event.preventDefault();
 
-    if ($email.value === $loginEmail && $password.value === $loginPassword) {
-        location.href="/folder.html";
-    }else {
-        $emailError.textContent = "이메일을 확인해 주세요."
-        $passwordError.textContent = "비밀번호를 확인해 주세요."
+    const resultSingIn = await submitSignIn($email.value, $password.value);
+
+    if(resultSingIn.success) {
+        localStorage.setItem("access-token", resultSingIn.token);
+        location.href = "./folder.html";
+    }else{
+        if(resultSingIn.status === 400){
+            $emailError.textContent = "이메일을 확인해 주세요."
+            $email.classList.add("wrong");
+            $passwordError.textContent = "비밀번호를 확인해 주세요."
+            $password.classList.add("wrong");
+        }else{
+            alert(resultSingIn.message);
+        }
     }
 });
 
 
+/**
+ * 공통
+ */
 $passWordIconBtn.forEach(function (btn) {
     btn.addEventListener("click", function () {
         showPasswordValue(btn);

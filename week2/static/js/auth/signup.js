@@ -11,6 +11,8 @@ import {
 
 import { validateEmail, validatedEmail, showPasswordValue } from "/static/js/auth/common/authCommon.js";
 
+import { submitSignUp } from "/static/api/auth/signupApi.js";
+
 /**
  * 비밀번호 input에서 focus out 할 때, 값이 8자 미만으로 있거나 문자열만 있거나 숫자만 있는 경우, “비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.” 에러 메세지를 보입니다.
  */
@@ -75,16 +77,23 @@ $passwordCheck.addEventListener('focusin', (event) => {
  * 이외의 유효한 회원가입 시도의 경우, “/folder”로 이동합니다.
  * 회원가입 버튼 클릭 또는 Enter키 입력으로 회원가입 실행돼야 합니다.
  */
-$joinForm.addEventListener('submit', (event) => {
+$joinForm.addEventListener('submit', async function (event) {
     event.preventDefault();
 
     validateEmail();
     validatePassword();
     validatePasswordCheck();
 
-    console.log(checkJoinData);
     if (checkJoinData.email && checkJoinData.password && checkJoinData.passwordCheck) {
-        location.href="/folder.html";
+        const resultSingUp = await submitSignUp($email.value, $password.value);
+
+        if(resultSingUp.success) {
+            localStorage.setItem("access-token", resultSingUp.token);
+            location.href = "./folder.html";
+        }else{
+            alert(resultSingUp.message);
+           
+        }
     }
 });
 
