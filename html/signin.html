@@ -1,60 +1,82 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linkbrary</title>
-    <link rel="stylesheet" href="../css/form.css">
-    <link rel="stylesheet" href="../css/pages/login/login.css">
-</head>
-<body>
-    <div class="login-body">
-        <div class="login-con">
-            <div class="login-header">
-                <h2 class="login-logo">
-                    <a href="../">
-                        <img src="../images/svg/Linkbrary.svg" alt="Linkbrary">
-                    </a>
-                </h2>
-                <p>회원이 아니신가요? <a href="./signup.html" class="underline">회원 가입하기</a></p>
-            </div>
-            <article class="con-article">
-                <form action="" class="login-form">
-                    <div class="login-div input-login-form01">
-                        <label for="email">이메일</label>
-                        <input id="email" name="email" type="email" placeholder="codeit@codeit.com" class="emailInput">
-                        <div class="login-caution email-caution"></div>
-                    </div>
-                    <div class="login-div input-login-form01">
-                        <label for="password">비밀번호</label>
-                        <div class="input-icon-div">
-                            <input id="password" name="password" type="password" class="passwordInput">
-                            <button type="button" class="input-icon off">
-                                <img src="../images/icon/eye-off.png" alt="비밀번호 보이기">
-                            </button>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Linkbrary</title>
+        <link rel="stylesheet" href="../css/form.css" />
+        <link rel="stylesheet" href="../css/pages/login/login.css" />
+    </head>
+    <body>
+        <div class="login-body">
+            <div class="login-con">
+                <div class="login-header">
+                    <h2 class="login-logo">
+                        <a href="../">
+                            <img src="../images/svg/Linkbrary.svg" alt="Linkbrary" />
+                        </a>
+                    </h2>
+                    <p>
+                        회원이 아니신가요?
+                        <a href="./signup.html" class="underline">회원 가입하기</a>
+                    </p>
+                </div>
+                <article class="con-article">
+                    <form action="" class="login-form">
+                        <div class="login-div input-login-form01">
+                            <label for="email">이메일</label>
+                            <input
+                                id="email"
+                                name="email"
+                                type="email"
+                                placeholder="codeit@codeit.com"
+                                class="emailInput"
+                            />
+                            <div class="login-caution email-caution"></div>
                         </div>
-                        <div class="login-caution password-caution"></div>
-                    </div>
-                    <button class="login-button btn-form01 width-full" type="submit">로그인</button>
-                    <div class="social-login flex-box">
-                        <span>소셜 로그인</span>
-                        <ul class="flex-box social-con-wrap">
-                            <li class="google-login social-con">
-                                <a href="https://www.google.com/">
-                                    <img src="../images/icon/google.png" alt="구글 로그인 하기">
-                                </a>
-                            </li>
-                            <li class="kakao-login social-con">
-                                <a href="https://www.kakaocorp.com/page/">
-                                    <img src="../images/icon/kakao.png" alt="카카오 로그인 하기">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </form>
-            </article>
+                        <div class="login-div input-login-form01">
+                            <label for="password">비밀번호</label>
+                            <div class="input-icon-div">
+                                <input
+                                    id="password"
+                                    name="password"
+                                    type="password"
+                                    class="passwordInput"
+                                />
+                                <button type="button" class="input-icon off">
+                                    <img src="../images/icon/eye-off.png" alt="비밀번호 보이기" />
+                                </button>
+                            </div>
+                            <div class="login-caution password-caution"></div>
+                        </div>
+                        <button class="login-button btn-form01 width-full" type="submit">
+                            로그인
+                        </button>
+                        <div class="social-login flex-box">
+                            <span>소셜 로그인</span>
+                            <ul class="flex-box social-con-wrap">
+                                <li class="google-login social-con">
+                                    <a href="https://www.google.com/">
+                                        <img
+                                            src="../images/icon/google.png"
+                                            alt="구글 로그인 하기"
+                                        />
+                                    </a>
+                                </li>
+                                <li class="kakao-login social-con">
+                                    <a href="https://www.kakaocorp.com/page/">
+                                        <img
+                                            src="../images/icon/kakao.png"
+                                            alt="카카오 로그인 하기"
+                                        />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </article>
+            </div>
         </div>
-    </div>
-    <script src="../js/auth/signin.js" type="module"></script>
-</body>
+        <script src="../js/auth/signin.js" type="module"></script>
+    </body>
 </html>

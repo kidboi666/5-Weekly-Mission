@@ -9,18 +9,7 @@ const $passwordCaution = document.querySelector(".password-caution");
 
 // 회원가입
 const $verifyPassword = document.querySelector(".verifypasswordInput");
-const $verifyPasswordCaution = document.querySelector(".verifyPassword-caution");
-
-const testFolder = {
-    email: false,
-    password: false,
-    verifypassword: false,
-};
-
-const checkCodeit = {
-    email: false,
-    password: false,
-};
+const $verifyPasswordCaution = document.querySelector(".verify-password-caution");
 
 export {
     $iconButtons,
@@ -30,8 +19,6 @@ export {
     $loginForm,
     $emailCaution,
     $passwordCaution,
-    testFolder,
-    checkCodeit,
     $verifyPassword,
     $verifyPasswordCaution,
 };

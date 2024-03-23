@@ -4,17 +4,20 @@ import {
     $loginForm,
     $emailCaution,
     $verifyPassword,
-    testFolder,
-    checkCodeit,
 } from "./authVariables.js";
 
 const regex = new RegExp(
     "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])"
 );
 
+// 로컬스토리지 확인
+if (localStorage.getItem("access-token")) {
+    location.href = "./folder.html";
+}
+
 // 인풋 스타일 변경 - 공통
-const setInputStyle = function (input, gray, errMsg, msg) {
-    input.style.border = gray ? "1px solid #ccd5e3" : "1px solid #ff5b56";
+const setInputStyle = function (input, isGray, errMsg, msg) {
+    input.style.border = isGray ? "1px solid #ccd5e3" : "1px solid #ff5b56";
     errMsg.textContent = msg;
 };
 
@@ -29,12 +32,11 @@ const checkEmailValue = function () {
         return;
     } else {
         setInputStyle($emailInput, true, $emailCaution, "");
-        testFolder.email = true;
-        if ($emailInput.value === "test@codeit.com" && $loginForm.classList.contains("signup-form")) {
+        if (
+            $emailInput.value === "test@codeit.com" &&
+            $loginForm.classList.contains("signup-form")
+        ) {
             setInputStyle($emailInput, false, $emailCaution, "이미 사용 중인 이메일입니다.");
-        }
-        if ($emailInput.value === "test@codeit.com") {
-            checkCodeit.email = true;
         }
     }
 };
