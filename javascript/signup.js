@@ -26,7 +26,7 @@ import {
   valueRight,
 } from "./apply.js";
 
-/* 전체 동작 함수 */
+/* form submit 시 동작 함수 */
 const mainSignUpFunction = (e) => {
   e.preventDefault();
 
@@ -65,6 +65,59 @@ const eyeBtnFunctionCheck = () => {
     eyeClose(eyeOnCheck, eyeOffCheck, loginPwdCheck);
   }
 };
+
+/* 회원가입 api 함수 */
+async function signUpApi(email, password) {
+  try {
+    /* 이메일 중복 확인 */
+    const response = await fetch(
+      "https://bootcamp-api.codeit.kr/api/check-email",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: email }),
+      }
+    );
+    const emailResult = await response.json();
+    if (emailResult.exists) {
+      throw new Error("이미 존재하는 이메일입니다.");
+    }
+
+    /* 회원가입 부분 */
+    const signUpResult = await fetch(
+      "https://bootcamp-api.codeit.kr/api/sign-up",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: email, password: password }),
+      }
+    );
+    if (!signUpResult.ok) {
+      throw new Error("회원가입에 실패하였습니다.");
+    }
+    const result = await signUpResult.json();
+    localStorage.setItem("signUpToken", result.data.accessToken);
+    location.href = "../folder.html";
+
+    if (signUpResult.ok) {
+      /* accessToken 확인 함수 */
+      checkAccessToken("signUpToken");
+    }
+    return true;
+  } catch (error) {
+    console.error(error);
+    valueVerify(emailErr, loginId, "이메일 문제");
+    valueVerify(passwordErr, loginPwd, "패스워드 문제");
+    valueVerify(passwordErrCheck, loginPwdCheck, "패스워드 확인 문제");
+    return false;
+  }
+}
+
+signUpApi(loginId, loginPwd);
 
 /* 이벤트 할당 */
 loginId.addEventListener("focusout", signUpEmailErr);

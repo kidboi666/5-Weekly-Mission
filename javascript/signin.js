@@ -9,11 +9,14 @@ import {
   eyeBtn,
   eyeOn,
   eyeOff,
+  eyeOpen,
+  eyeClose,
   valueVerify,
   valueRight,
+  checkAccessToken,
 } from "./apply.js";
 
-/* 전체 동작 함수 */
+/* form submit 시 동작 함수 */
 const mainSignInFunction = (e) => {
   e.preventDefault();
 
@@ -37,21 +40,52 @@ const mainSignInFunction = (e) => {
   }
 };
 
-/* 실제 눈 모양 버튼 동작 함수 */
+/* 실제 눈 모양 버튼 동작 함수 패스워드 부분 */
 const eyeBtnFunction = () => {
   if (loginPwd.type === "password") {
-    loginPwd.type = "text";
-    eyeOn.classList.remove("hide");
-    eyeOff.classList.add("hide");
+    eyeOpen(eyeOn, eyeOff, loginPwd);
   } else {
-    loginPwd.type = "password";
-    eyeOn.classList.add("hide");
-    eyeOff.classList.remove("hide");
+    eyeClose(eyeOn, eyeOff, loginPwd);
   }
 };
+
+/* 로그인 api 함수 */
+const signInApi = async (email, password) => {
+  try {
+    const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    });
+    if (!response.ok) {
+      throw new Error("로그인 실패");
+    }
+    const result = await response.json();
+    localStorage.setItem("signInToken", result.data.accessToken);
+    location.href = "../folder.html";
+
+    /* accessToken 확인 함수 */
+    checkAccessToken("signInToken");
+    return true;
+  } catch (error) {
+    console.log(error);
+    valueVerify(emailErr, loginId, "이메일을 확인해 주세요.");
+    valueVerify(passwordErr, loginPwd, "비밀번호를 확인해 주세요.");
+    return false;
+  }
+};
+
+signInApi(loginId.value, loginPwd.value);
 
 /* 이벤트 할당 */
 loginId.addEventListener("focusout", signInEmailErr);
 loginPwd.addEventListener("focusout", signInPasswordErr);
 form.addEventListener("submit", mainSignInFunction);
-eyeBtn.addEventListener("click", eyeBtnFunction);
+eyeBtn.forEach((btn) => {
+  btn.addEventListener("click", eyeBtnFunction);
+});

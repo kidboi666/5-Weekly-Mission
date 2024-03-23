@@ -36,3 +36,11 @@ export const eyeClose = (stateOn, stateOff, inputSection) => {
   stateOn.forEach((element) => element.classList.add("hide"));
   stateOff.forEach((element) => element.classList.remove("hide"));
 };
+
+/* accessToken 확인 함수 */
+export const checkAccessToken = (accessName) => {
+  const accessToken = localStorage.getItem(accessName);
+  if (accessToken) {
+    location.href = "../folder.html";
+  }
+};
