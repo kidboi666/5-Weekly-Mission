@@ -50,8 +50,7 @@ emailInput.addEventListener('focusout', () => {
     if (emailInput.value === '') {
         emailError.innerText = '이메일을 입력해주세요';
         addEmailErrorSign();
-    } 
-    else {
+    } else {
         removeEmailErrorSign();
         if (!checkEmailValid(emailInput.value)) {
             addEmailErrorSign();
@@ -64,8 +63,7 @@ pwdInput.addEventListener('focusout', () => {
     if(pwdInput.value === '') {
         addPwdErrorSign();
         pwdError.innerText = '비밀번호를 입력해주세요';
-    }
-    else {
+    } else {
         removePwdErrorSign();
     }
 });
@@ -84,13 +82,11 @@ input.forEach(element => {
             if (emailInput.value === '') {
                 emailError.innerText = '이메일을 입력해주세요';
                 addEmailErrorSign();
-            } 
-            else loginCheck();
+            } else loginCheck();
             if (pwdInput.value === '') {
                 pwdError.innerText = '비밀번호를 입력해주세요';
                 addPwdErrorSign();
-            }
-            else loginCheck();
+            } else loginCheck();
         }
     });
 });

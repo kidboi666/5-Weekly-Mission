@@ -35,8 +35,7 @@ emailInput.addEventListener('focusout', () => {
     if (emailInput.value === '') {
         emailError.innerText = '이메일을 입력해주세요';
         addEmailErrorSign();
-    } 
-    else {
+    } else {
         removeEmailErrorSign();
         if (!checkEmailValid(emailInput.value)) {
             addEmailErrorSign();
@@ -53,8 +52,7 @@ pwdInput.addEventListener('focusout', () => {
     if (pwdInput.value === '') {
         addPwdErrorSign();
         pwdError.innerText = '비밀번호를 입력해주세요';
-    }
-    else {
+    } else {
         removePwdErrorSign();
         if (!checkPwdValid(pwdInput.value)) {
             pwdError.innerText = '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.';
