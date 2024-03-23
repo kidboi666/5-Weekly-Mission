@@ -49,44 +49,6 @@ passwordInputEl.addEventListener("focus", () =>
 /*이메일: test@codeit.com 비밀번호: codeit101로 로그인 시, /folder 페이지로 이동
 이외의 로그인 시도의 경우, 에러 메세지 출력*/
 
-/*function login(authInfo) {
-  const { email, password } = authInfo;
-
-  const isValidEmail = validateEmail(email);
-  const isValidPassword = validatePassword(password);
-
-  if (isValidEmail.error) {
-    const errorMessage = isValidEmail.error;
-    return showError(".error-message-email", errorMessage);
-  }
-
-  if (isValidPassword.error) {
-    const errorMessage = isValidPassword.error;
-    return showError(".error-message-password", errorMessage);
-  }
-
-  const user = users.find(
-    (user) => user.email === email && user.password === password
-  );
-
-  if (!user) {
-    showError(".error-message-email", "이메일 또는 비밀번호를 확인해주세요");
-    showError(".error-message-password", "이메일 또는 비밀번호를 확인해주세요");
-    return;
-  }
-
-  location.href = "./folder.html";
-}
-
-signform.addEventListener("submit", function (event) {
-  event.preventDefault();
-
-  const email = signform.querySelector(".email-input").value;
-  const password = signform.querySelector(".password-input").value;
-
-  login({ email, password });
-});*/
-
 function login(authInfo) {
   const { email, password } = authInfo;
 
@@ -112,6 +74,7 @@ function login(authInfo) {
     showError(".error-message-password", "이메일 또는 비밀번호를 확인해주세요");
     return;
   }
+
   location.href = "./folder.html";
 }
 
@@ -124,11 +87,11 @@ signform.addEventListener("submit", async function (event) {
   const signInResult = await signIn(email, password);
 
   if (signInResult.success) {
-    login({ email, password });
+    // 로그인 성공 시 accessToken을 localStorage에 저장
+    localStorage.setItem("accessToken", signInResult.accessToken);
+    location.href = "./folder.html"; // 폴더 페이지로 리다이렉트
   }
 });
-
-/*Enter키를 눌러도 로그인이 되도록 추가*/
 
 signform.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {

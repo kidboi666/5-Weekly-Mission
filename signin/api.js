@@ -1,5 +1,5 @@
 /*POST 요청*/
-import { showError } from "../js/uicontroller.js";
+//import { showError } from "../js/uicontroller.js";
 
 async function signIn(email, password) {
   const user = {
@@ -18,7 +18,13 @@ async function signIn(email, password) {
 
     if (response.ok) {
       console.log("Sign-in successful");
-      return { success: true };
+
+      const data = await response.json();
+      localStorage.setItem("accessToken", data.accessToken);
+
+      const accessToken = data.accessToken;
+
+      return { success: true, accessToken: accessToken };
     } else {
       // 서버에서 받은 오류 메시지 출력
       const errorMessage = await response.text();
