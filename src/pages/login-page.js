@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import * as Auth from "../components/auth";
 import { ButtonLabel } from "../components/button";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 const LoginContent = styled(Auth.Content)`
@@ -77,20 +77,54 @@ const LoginPage = function () {
 
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
+      navigate("/folder");
+    }
+  }, [navigate]);
+
+  const handleLogin = async (e) => {
     e.preventDefault(); // 폼 제출 기본 동작 방지
 
     validateEmail(); // 이메일 유효성 검사
     validatePassword(); // 비밀번호 유효성 검사
 
     // 이메일과 비밀번호가 모두 유효한 경우
-    if (email === "test@codeit.com" && password === "codeit101") {
-      navigate("/folder"); // 페이지 리디렉션
-    } else if (email && password && /\S+@\S+\.\S+/.test(email)) {
-      // 이메일 또는 비밀번호가 유효하지 않은 경우, 에러 메시지 설정
-      if (email !== "test@codeit.com") setEmailError("이메일을 확인해 주세요.");
-      if (password !== "codeit101")
-        setPasswordError("비밀번호를 확인해 주세요.");
+    // if (email === "test@codeit.com" && password === "codeit101") {
+    //   navigate("/folder"); // 페이지 리디렉션
+    // } else if (email && password && /\S+@\S+\.\S+/.test(email)) {
+    //   // 이메일 또는 비밀번호가 유효하지 않은 경우, 에러 메시지 설정
+    //   if (email !== "test@codeit.com") setEmailError("이메일을 확인해 주세요.");
+    //   if (password !== "codeit101")
+    //     setPasswordError("비밀번호를 확인해 주세요.");
+    // }
+
+    if (email && password && /\S+@\S+\.\S+/.test(email)) {
+      try {
+        const response = await fetch(
+          "https://bootcamp-api.codeit.kr/api/sign-in",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+          }
+        );
+
+        if (response.ok) {
+          const { accessToken } = await response.json();
+          localStorage.setItem("accessToken", accessToken);
+          navigate("/folder");
+        } else {
+          // 400 오류(로그인 오류) 처리
+          setEmailError("이메일을 확인해 주세요.");
+          setPasswordError("비밀번호를 확인해 주세요.");
+        }
+      } catch (error) {
+        console.error("로그인 요청 실패:", error);
+      }
     }
   };
 
