@@ -1,14 +1,10 @@
 import {
     $emailInput,
     $passwordInput,
-    $loginForm,
     $emailCaution,
     $verifyPassword,
+    emailRegex,
 } from "./authVariables.js";
-
-const regex = new RegExp(
-    "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])"
-);
 
 // 로컬스토리지 확인
 if (localStorage.getItem("access-token")) {
@@ -16,7 +12,7 @@ if (localStorage.getItem("access-token")) {
 }
 
 // 인풋 스타일 변경 - 공통
-const setInputStyle = function (input, isGray, errMsg, msg) {
+const setInputStyle = function ({ input, isGray, errMsg, msg }) {
     input.style.border = isGray ? "1px solid #ccd5e3" : "1px solid #ff5b56";
     errMsg.textContent = msg;
 };
@@ -24,21 +20,24 @@ const setInputStyle = function (input, isGray, errMsg, msg) {
 // 이메일 - 공통
 const checkEmailValue = function () {
     if ($emailInput.value === "") {
-        setInputStyle($emailInput, false, $emailCaution, "이메일을 입력해 주세요.");
+        setInputStyle({
+            input: $emailInput,
+            isGray: false,
+            errMsg: $emailCaution,
+            msg: "이메일을 입력해 주세요.",
+        });
         return;
     }
-    if (!regex.test($emailInput.value)) {
-        setInputStyle($emailInput, false, $emailCaution, "올바른 이메일 주소가 아닙니다.");
+    if (!emailRegex.test($emailInput.value)) {
+        setInputStyle({
+            input: $emailInput,
+            isGray: false,
+            errMsg: $emailCaution,
+            msg: "올바른 이메일 주소가 아닙니다.",
+        });
         return;
-    } else {
-        setInputStyle($emailInput, true, $emailCaution, "");
-        if (
-            $emailInput.value === "test@codeit.com" &&
-            $loginForm.classList.contains("signup-form")
-        ) {
-            setInputStyle($emailInput, false, $emailCaution, "이미 사용 중인 이메일입니다.");
-        }
     }
+    setInputStyle({ input: $emailInput, isGray: true, errMsg: $emailCaution, msg: "" });
 };
 
 // 패스워드 아이콘 보기 - 공통

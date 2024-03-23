@@ -8,8 +8,14 @@ const $emailCaution = document.querySelector(".email-caution");
 const $passwordCaution = document.querySelector(".password-caution");
 
 // 회원가입
-const $verifyPassword = document.querySelector(".verifypasswordInput");
+const $verifyPassword = document.querySelector(".verify-password-input");
 const $verifyPasswordCaution = document.querySelector(".verify-password-caution");
+
+// 정규표현식
+const emailRegex = new RegExp(
+    "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])"
+);
+const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,16}$/;
 
 export {
     $iconButtons,
@@ -21,4 +27,6 @@ export {
     $passwordCaution,
     $verifyPassword,
     $verifyPasswordCaution,
+    emailRegex,
+    passwordRegex,
 };

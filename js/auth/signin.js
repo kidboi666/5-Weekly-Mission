@@ -13,10 +13,20 @@ import { checkPasswordIcon, checkEmailValue, setInputStyle } from "./common/auth
 // 비밀번호 - 로그인
 const checkPasswordValue = function () {
     if ($passwordInput && $passwordInput.value === "") {
-        setInputStyle($passwordInput, false, $passwordCaution, "비밀번호를 입력해 주세요.");
+        setInputStyle({
+            input: $passwordInput,
+            isGray: false,
+            errMsg: $passwordCaution,
+            msg: "비밀번호를 입력해 주세요.",
+        });
         return;
     } else {
-        setInputStyle($passwordInput, true, $passwordCaution, "");
+        setInputStyle({
+            input: $passwordInput,
+            isGray: true,
+            errMsg: $passwordCaution,
+            msg: "",
+        });
     }
 };
 
@@ -37,20 +47,18 @@ $iconButtons.forEach(function (btn) {
 
 // 로그인 - fetch
 const retrieveData = async () => {
-    const post = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: localStorage.getItem("access-token"),
-        },
-        body: JSON.stringify({
-            email: `${$emailInput.value}`,
-            password: `${$passwordInput.value}`,
-        }),
-    };
-
     try {
-        const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", post);
+        const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: localStorage.getItem("access-token"),
+            },
+            body: JSON.stringify({
+                email: `${$emailInput.value}`,
+                password: `${$passwordInput.value}`,
+            }),
+        });
 
         if (response.ok) {
             const data = await response.json();
@@ -59,9 +67,20 @@ const retrieveData = async () => {
         } else {
             throw new Error("에러가 발생 했습니다.");
         }
-    } catch (e) {
-        setInputStyle($emailInput, false, $emailCaution, "이메일 주소를 확인해주세요.");
-        setInputStyle($passwordInput, false, $passwordCaution, "패스워드를 확인해주세요.");
+    } catch (error) {
+        setInputStyle({
+            input: $emailInput,
+            isGray: false,
+            errMsg: $emailCaution,
+            msg: "이메일 주소를 확인해주세요.",
+        });
+        setInputStyle({
+            input: $passwordInput,
+            isGray: false,
+            errMsg: $passwordCaution,
+            msg: "패스워드를 확인해주세요.",
+        });
+        alert(error.message);
     }
 };
 
