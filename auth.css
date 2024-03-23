@@ -7,14 +7,7 @@
   border-color: #ff5b56;
 }
 .auth__input-field:focus {
-  border-color: #6d6afe;
-  outline: none;
-}
 
-.password-visible {
-  position: absolute;
-  left: 90%;
-  top: 40%;
 }
 /* End of: 사용자 입력 */
 

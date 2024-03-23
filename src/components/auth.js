@@ -6,7 +6,6 @@ import KakaoLogo from "../images/kakao_logo.svg";
 import { Link } from "react-router-dom";
 import { Button } from "./button";
 
-
 export const Content = styled.div`
   position: absolute;
   top: 238px;
@@ -35,7 +34,6 @@ export const Template = styled.div`
   flex-direction: column;
   align-items: center;
 `;
-
 export const LinkArea = function ({ children }) {
   return (
     <LinkFrame>
@@ -65,7 +63,6 @@ const Link2Home = styled(Link)`
     height: 38px;
   }
 `;
-
 export const To = styled.div`
   max-width: 220px;
   width: 100%;
@@ -99,7 +96,6 @@ export const To = styled.div`
     word-spacing: -1px;
   }
 `;
-
 const SocialTemplate = styled.div`
   width: 100%;
   height: 66px;
@@ -124,7 +120,6 @@ const SocialLink = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
-
 export const Social = function ({ children }) {
   return (
     <SocialTemplate>
@@ -140,7 +135,6 @@ export const Social = function ({ children }) {
     </SocialTemplate>
   );
 };
-
 export const InputFrame = styled.div`
   max-width: 400px;
   width: 100%;
@@ -149,7 +143,6 @@ export const InputFrame = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
-
 export const SubmitButton = styled(Button)`
   max-width: 400px;
   width: 100%;
@@ -186,10 +179,10 @@ const InputBinder = styled.div`
   height: 60px;
   position: relative;
 
-  i{
-	position: absolute;
-	left: 90%;
-	top: 40%;
+  i {
+    position: absolute;
+    left: 90%;
+    top: 40%;
   }
 `;
 const InputField = styled.input`
@@ -201,8 +194,13 @@ const InputField = styled.input`
   font-weight: 400;
   line-height: 24px;
   padding: 18px 15px 18px 15px;
+  border-color: ${(props) =>
+    props.border === "Error" ? "#ff5b56" : "#ccd5e3"};
+  &:focus {
+    border-color: #6d6afe;
+    outline: none;
+  }
 `;
-
 const ErrorMessage = styled.div`
   color: #ff5b56;
   font-size: 14px;
@@ -211,16 +209,39 @@ const ErrorMessage = styled.div`
   height: 17px;
 `;
 
-export const Input = function ({ type, label, children }) {
+export const Input = function ({
+  type,
+  label,
+  value,
+  onChange,
+  onBlur,
+  onFocus,
+  errorMessage,
+  children,
+}) {
+  let border = "";
+  if (errorMessage === "") {
+    border = "Default";
+  } else {
+    border = "Error";
+  }
   return (
     <InputEntry>
       <InputLabel>{label}</InputLabel>
       <InputWrapper>
         <InputBinder>
-          <InputField type={type} placeholder={label}></InputField>
-		  {children}
+          <InputField
+            type={type}
+            value={value}
+            onChange={onChange}
+            onBlur={onBlur}
+			onFocus={onFocus}
+            placeholder={label}
+            border={border}
+          ></InputField>
+          {children}
         </InputBinder>
-		<ErrorMessage>에러메시지</ErrorMessage>
+        <ErrorMessage>{errorMessage}</ErrorMessage>
       </InputWrapper>
     </InputEntry>
   );
