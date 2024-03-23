@@ -60,7 +60,7 @@ emailInput.addEventListener('focusout', () => {
 });
 
 pwdInput.addEventListener('focusout', () => {
-    if(pwdInput.value === '') {
+    if (pwdInput.value === '') {
         addPwdErrorSign();
         pwdError.innerText = '비밀번호를 입력해주세요';
     } else {
@@ -109,4 +109,4 @@ loginButton.addEventListener('click', () => {
     loginCheck();
 });
 
-export {checkEmailValid, addEmailErrorSign, addPwdErrorSign, removeEmailErrorSign, removePwdErrorSign} ;
+export { checkEmailValid, addEmailErrorSign, addPwdErrorSign, removeEmailErrorSign, removePwdErrorSign } ;

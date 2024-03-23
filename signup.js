@@ -9,7 +9,7 @@ const pwdWrapper = document.querySelector(".pwd-input-wrapper");
 const pwdCheckWrapper = document.querySelector(".pwd-input-check-wrapper");
 const input = document.querySelectorAll('input');
 const VALID_EMAIL = 'test@codeit.com';
-import {checkEmailValid, addEmailErrorSign, addPwdErrorSign, removeEmailErrorSign, removePwdErrorSign} from './signin.js';
+import { checkEmailValid, addEmailErrorSign, addPwdErrorSign, removeEmailErrorSign, removePwdErrorSign } from './signin.js';
 
 function checkPwdValid(pwdValue) {	
     const pwd_regex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/i;
