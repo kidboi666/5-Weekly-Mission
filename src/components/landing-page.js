@@ -8,6 +8,8 @@ import ThirdImg from "./images/img3_landing.svg";
 import FourthImg from "./images/img4_landing.svg";
 import { Button, ButtonLabel } from "./button";
 import TextColor from "./palette/text-color";
+import Nav from "./nav";
+import Footer from "./footer";
 
 const ContentsFrame = styled.div``;
 const TextArea = styled.div``;
@@ -378,9 +380,9 @@ const Section = function ({
 const LandingPage = function () {
   return (
     <>
+	  <Nav/>
       <MainSection />
       <FirstSection />
-
       <Section imgSrc={SecondImg} reversed={true} $textAreaSize={"medium"}>
         <LargeText>
           링크를 폴더로
@@ -432,6 +434,8 @@ const LandingPage = function () {
           찾아보세요.
         </SmallText>
       </Section>
+
+	  <Footer/>
     </>
   );
 };
