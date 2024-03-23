@@ -6,6 +6,7 @@ export const passwordErrCheck = document.querySelector(".password-err-check");
 /* 값이 8자 미만이로 있거나 문자열만 있는 경우 정규 표현식*/
 export const regex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 
+/* 필요한 기능 가져오기 */
 import { valueVerify, valueRight } from "./apply.js";
 
 /* 로그인 비밀번호 검증 함수 */

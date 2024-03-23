@@ -1,6 +1,7 @@
 export const loginId = document.querySelector(".sign-email");
 export const emailErr = document.querySelector(".email-err");
 
+/* 필요한 기능 가져오기 */
 import { valueVerify, valueRight, CORRECT_EMAIL } from "./apply.js";
 
 /* 로그인 이메일 검증 함수 */

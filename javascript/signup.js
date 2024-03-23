@@ -26,22 +26,7 @@ import {
   valueRight,
 } from "./apply.js";
 
-const eyeBtnFunction = () => {
-  if (loginPwd.type === "password") {
-    eyeOpen(eyeOn, eyeOff, loginPwd);
-  } else {
-    eyeClose(eyeOn, eyeOff, loginPwd);
-  }
-};
-
-const eyeBtnFunctionCheck = () => {
-  if (loginPwdCheck.type === "password") {
-    eyeOpen(eyeOnCheck, eyeOffCheck, loginPwdCheck);
-  } else {
-    eyeClose(eyeOnCheck, eyeOffCheck, loginPwdCheck);
-  }
-};
-
+/* 전체 동작 함수 */
 const mainSignUpFunction = (e) => {
   e.preventDefault();
 
@@ -63,6 +48,25 @@ const mainSignUpFunction = (e) => {
   }
 };
 
+/* 실제 눈 모양 버튼 동작 함수 패스워드 부분 */
+const eyeBtnFunction = () => {
+  if (loginPwd.type === "password") {
+    eyeOpen(eyeOn, eyeOff, loginPwd);
+  } else {
+    eyeClose(eyeOn, eyeOff, loginPwd);
+  }
+};
+
+/* 실제 눈 모양 버튼 동작 함수 패스워드 체크 부분 */
+const eyeBtnFunctionCheck = () => {
+  if (loginPwdCheck.type === "password") {
+    eyeOpen(eyeOnCheck, eyeOffCheck, loginPwdCheck);
+  } else {
+    eyeClose(eyeOnCheck, eyeOffCheck, loginPwdCheck);
+  }
+};
+
+/* 이벤트 할당 */
 loginId.addEventListener("focusout", signUpEmailErr);
 loginPwd.addEventListener("focusout", signUpPasswordErr);
 loginPwdCheck.addEventListener("focusout", signUpPasswordCheckErr);

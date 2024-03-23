@@ -13,6 +13,7 @@ import {
   valueRight,
 } from "./apply.js";
 
+/* 전체 동작 함수 */
 const mainSignInFunction = (e) => {
   e.preventDefault();
 
@@ -36,6 +37,7 @@ const mainSignInFunction = (e) => {
   }
 };
 
+/* 실제 눈 모양 버튼 동작 함수 */
 const eyeBtnFunction = () => {
   if (loginPwd.type === "password") {
     loginPwd.type = "text";
@@ -48,6 +50,7 @@ const eyeBtnFunction = () => {
   }
 };
 
+/* 이벤트 할당 */
 loginId.addEventListener("focusout", signInEmailErr);
 loginPwd.addEventListener("focusout", signInPasswordErr);
 form.addEventListener("submit", mainSignInFunction);
