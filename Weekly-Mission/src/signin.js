@@ -1,4 +1,4 @@
-import { setInputError, removeInputError, isEmailValid, togglePassword } from './utils.js';
+import { setInputError, removeInputError, isEmailValid, togglePassword, checkAccessToken } from './utils.js';
 
 const emailInput = document.querySelector('#email');
 const emailErrorMessage = document.querySelector('#email-error-message');
@@ -49,6 +49,8 @@ signForm.addEventListener('submit', async function (e) {
     if (!response.ok) {
       throw new Error('실패');
     }
+    const data = await response.json();
+    localStorage.setItem('accessToken', data.accessToken);
     location.href = './folder.html';
   } catch (error) {
     setInputError({ input: emailInput, errorMessage: emailErrorMessage }, '이메일을 확인해주세요.');
@@ -56,3 +58,5 @@ signForm.addEventListener('submit', async function (e) {
     console.error('Error:', error);
   }
 });
+
+checkAccessToken();

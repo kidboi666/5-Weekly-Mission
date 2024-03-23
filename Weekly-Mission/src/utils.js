@@ -33,3 +33,10 @@ export function togglePassword(input, toggleButton) {
   input.setAttribute('type', 'password');
   toggleButton.getElementsByTagName('img')[0].setAttribute('src', './images/eye-off.svg');
 }
+
+export function checkAccessToken() {
+  const accessToken = localStorage.getItem('accessToken');
+  if (accessToken) {
+    location.href = './folder.html';
+  }
+}

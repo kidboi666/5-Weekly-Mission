@@ -1,4 +1,11 @@
-import { setInputError, removeInputError, isEmailValid, isPasswordValid, togglePassword } from './utils.js';
+import {
+  setInputError,
+  removeInputError,
+  isEmailValid,
+  isPasswordValid,
+  togglePassword,
+  checkAccessToken,
+} from './utils.js';
 
 const emailInput = document.querySelector('#email');
 const emailErrorMessage = document.querySelector('#email-error-message');
@@ -117,8 +124,19 @@ const register = async function (e) {
     if (!response.ok) {
       throw new Error('실패');
     }
+    const data = await response.json();
+    localStorage.setItem('accessToken', data.accessToken);
     location.href = './folder.html';
   } catch (error) {
     console.error('Error:', error);
   }
 };
+
+export function checkAccessToken() {
+  const accessToken = localStorage.getItem('accessToken');
+  if (accessToken) {
+    location.href = './folder.html';
+  }
+}
+
+checkAccessToken();
