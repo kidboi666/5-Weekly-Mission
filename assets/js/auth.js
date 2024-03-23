@@ -89,7 +89,7 @@ function handlePasswordConfirm(event) {
 function handleLogin(event) {
   event.preventDefault();
   const adminId = "test@codeit.com";
-  const adminPassword = "codeit101";
+  const adminPassword = "sprint101";
   const $email = event.target.email;
   const $password = event.target.password;
   const validated = validate({ $email, $password });
@@ -102,7 +102,15 @@ function handleLogin(event) {
 
   const isAdmin = $email.value === adminId && $password.value === adminPassword;
   if (isAdmin) {
-    location.assign("/folder");
+    const bodyObject = { email: adminId, password: adminPassword };
+    fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+      method: "POST",
+      body: JSON.stringify(bodyObject),
+    })
+      .then(() => {
+        location.assign("/folder");
+      })
+      .catch((error) => console.error(error));
     return;
   }
 
