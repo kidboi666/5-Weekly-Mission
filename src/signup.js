@@ -62,7 +62,7 @@ input3.addEventListener("focusout", function (e) {
   }
 });
 
-form.addEventListener("submit", function (e) {
+form.addEventListener("submit", async function (e) {
   e.preventDefault();
 
   if (
@@ -70,7 +70,19 @@ form.addEventListener("submit", function (e) {
     pwError.innerHTML === "" &&
     pwCheckError.innerHTML === ""
   ) {
-    window.location.href = "/folder.html";
+    const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-up", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: input.value,
+        password: input2.value,
+      }),
+    });
+    if (response.status === 200) {
+      window.location.href = "/folder.html";
+    }
   }
 });
 
