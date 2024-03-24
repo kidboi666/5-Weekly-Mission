@@ -3,15 +3,20 @@ import {
   removeInputError,
   isEmailValid,
   togglePassword,
-  TEST_USER,
+  checkAccessToken,
 } from "./utils.js";
 
 const emailInput = document.querySelector("#email");
 const emailErrorMessage = document.querySelector("#email-error-message");
-emailInput.addEventListener("focusout", (event) => validateEmailInput(event.target.value));
+emailInput.addEventListener("focusout", (event) =>
+  validateEmailInput(event.target.value)
+);
 function validateEmailInput(email) {
   if (email === "") {
-    setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이메일을 입력해주세요.");
+    setInputError(
+      { input: emailInput, errorMessage: emailErrorMessage },
+      "이메일을 입력해주세요."
+    );
     return;
   }
   if (!isEmailValid(email)) {
@@ -26,7 +31,9 @@ function validateEmailInput(email) {
 
 const passwordInput = document.querySelector("#password");
 const passwordErrorMessage = document.querySelector("#password-error-message");
-passwordInput.addEventListener("focusout", (event) => validatePasswordInput(event.target.value));
+passwordInput.addEventListener("focusout", (event) =>
+  validatePasswordInput(event.target.value)
+);
 function validatePasswordInput(password) {
   if (password === "") {
     setInputError(
@@ -35,7 +42,10 @@ function validatePasswordInput(password) {
     );
     return;
   }
-  removeInputError({ input: passwordInput, errorMessage: passwordErrorMessage });
+  removeInputError({
+    input: passwordInput,
+    errorMessage: passwordErrorMessage,
+  });
 }
 
 const passwordToggleButton = document.querySelector("#password-toggle");
@@ -44,20 +54,39 @@ passwordToggleButton.addEventListener("click", () =>
 );
 
 const signForm = document.querySelector("#form");
-signForm.addEventListener("submit", submitForm);
-function submitForm(event) {
-  event.preventDefault();
+signForm.addEventListener("submit", async function (e) {
+  e.preventDefault();
+  const email = emailInput.value;
+  const password = passwordInput.value;
 
-  const isTestUser =
-    emailInput.value === TEST_USER.email && passwordInput.value === TEST_USER.password;
-
-  if (isTestUser) {
-    location.href = "/folder";
-    return;
+  try {
+    const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    });
+    if (!response.ok) {
+      throw new Error("실패");
+    }
+    const data = await response.json();
+    localStorage.setItem("accessToken", data.accessToken);
+    location.href = "./folder.html";
+  } catch (error) {
+    setInputError(
+      { input: emailInput, errorMessage: emailErrorMessage },
+      "이메일을 확인해주세요."
+    );
+    setInputError(
+      { input: passwordInput, errorMessage: passwordErrorMessage },
+      "비밀번호를 확인해주세요."
+    );
+    console.error("Error:", error);
   }
-  setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이메일을 확인해주세요.");
-  setInputError(
-    { input: passwordInput, errorMessage: passwordErrorMessage },
-    "비밀번호를 확인해주세요."
-  );
-}
+});
+
+checkAccessToken();
