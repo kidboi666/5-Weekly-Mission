@@ -28,21 +28,21 @@ function validate({ $email, $password, $passwordConfirm }) {
 
   if ($email) {
     const email = $email.value;
-    const adminEmail = "test@codeit.com";
     result.ok = false;
     if (!email) result.email = "이메일을 입력해 주세요.";
     else if (!checkEmail(email))
       result.email = "올바른 이메일 주소가 아닙니다.";
-    else if (isSignup && email === adminEmail) {
-      const bodyObject = { email: adminEmail };
+    else if (isSignup) {
       fetch("https://bootcamp-api.codeit.kr/api/check-email", {
         method: "POST",
-        body: JSON.stringify(bodyObject),
+        body: JSON.stringify({ email }),
       })
         .then(() => {
           result.ok = true;
         })
-        .catch(() => {
+        .catch((error) => {
+          // test email : test@codeit.com
+          console.log(error);
           result.email = "이미 사용 중인 이메일입니다.";
         });
     } else result.ok = true;
