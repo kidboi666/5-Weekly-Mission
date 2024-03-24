@@ -11,36 +11,23 @@ import {
 } from "./commons/reset.js";
 import { requestTest } from "./api/api.js";
 
-export function test() {
-  //input 테두리 색 변경
-  inputEmail.classList.add("error-border");
-  inputPassword.classList.add("error-border");
-
-  emailErrorMessage.innerHTML = "이메일을 확인해 주세요.";
-  pwErrorMessage.innerHTML = "비밀번호를 확인해 주세요.";
-}
-
 // 로그인 클릭했을 때 에러 메시지
 function validate({ email, password }) {
-  const userExists = data.find((user) => {
-    return user.email === email && user.password === password;
-  });
+  // const userExists = data.find((user) => {
+  //   return user.email === email && user.password === password;
+  // });
 
   if (requestTest(email, password)) {
     // 로그인
     // 문제가 전혀 없을 경우
     // window.location.href = "/folder.html";
-    console.log("test");
+  } else {
+    //input 테두리 색 변경
+    inputEmail.classList.add("error-border");
+    inputPassword.classList.add("error-border");
+    emailErrorMessage.innerHTML = "이메일을 확인해 주세요.";
+    pwErrorMessage.innerHTML = "비밀번호를 확인해 주세요.";
   }
-
-  // if (!requestTest(email, password)) {
-  //   //input 테두리 색 변경
-  //   inputEmail.classList.add("error-border");
-  //   inputPassword.classList.add("error-border");
-
-  //   emailErrorMessage.innerHTML = "이메일을 확인해 주세요.";
-  //   pwErrorMessage.innerHTML = "비밀번호를 확인해 주세요.";
-  // }
 }
 
 // form에서 로그인 클릭했을 때

@@ -1,5 +1,3 @@
-import { test } from "../signin";
-
 const api = "https://bootcamp-api.codeit.kr/api";
 
 export const requestTest = async (email, password) => {
@@ -20,14 +18,12 @@ export const requestTest = async (email, password) => {
       window.location.href = "/folder.html";
     }
 
-    if (!response.ok) {
-      test();
-      return false;
-    }
-  } catch (error) {
-    test();
-    alert(`에러가 발생했습니다`);
-  }
+    // if (!response.ok) {
+    //   console.log(response.status);
+    //   const test = response.status;
+    //   return test;
+    // }
+  } catch (error) {}
 };
 
 // 이메일 중복 확인 409
@@ -44,7 +40,6 @@ export const emailTest = async (email) => {
     });
 
     if (response.ok) {
-      console.log(200);
       window.location.href = "/folder.html";
     }
 
