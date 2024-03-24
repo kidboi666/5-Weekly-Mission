@@ -6,10 +6,10 @@ const pwdMsg = document.querySelector("#password-error");
 const password = document.querySelector("#password");
 const togglePassword = document.querySelector("#togglePassword");
 const form = document.querySelector("#login-form");
-const mockUser = {
-  email: "test@codeit.com",
-  pw: "codeit101",
-};
+// const mockUser = {
+//   email: "test@codeit.com",
+//   pw: "codeit101",
+// };
 
 // 이메일 체크
 function emailCheck() {
@@ -39,15 +39,46 @@ function passwordCheck() {
 }
 
 // 로그인 체크
-function loginCheck(e) {
+// function loginCheck(e) {
+//   e.preventDefault();
+//   if (email.value === mockUser.email && password.value === mockUser.pw) {
+//     location.href = "folder.html";
+//     return;
+//   }
+//   inputErr(email, emailMsg, "이메일을 확인해 주세요.");
+//   inputErr(password, pwdMsg, "비밀번호를 확인해 주세요.");
+// }
+async function loginCheck(e) {
   e.preventDefault();
-  if (email.value === mockUser.email && password.value === mockUser.pw) {
-    location.href = "folder.html";
-  } else {
-    inputErr(email, emailMsg, "이메일을 확인해 주세요.");
-    inputErr(password, pwdMsg, "비밀번호를 확인해 주세요.");
+
+  const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: email.value,
+      password: password.value,
+    }),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    localStorage.setItem("accessToken", data.accessToken);
+    location.href = "./folder.html";
+    return;
   }
+  inputErr(email, emailMsg, "이메일을 확인해 주세요.");
+  inputErr(password, pwdMsg, "비밀번호를 확인해 주세요.");
 }
+
+// 로그인 페이지에 접근할 때 로컬 저장소에 acessToken이 있는지 확인
+window.addEventListener("DOMContentLoaded", () => {
+  const accessToken = localStorage.getItem("accessToken");
+  if (accessToken) {
+    location.href = "./folder.html";
+  }
+});
 
 // 눈 아이콘 토글
 function eyeToggle(e) {
@@ -66,10 +97,6 @@ function eyeToggle(e) {
 // 이벤트 추가
 email.addEventListener("focusout", emailCheck);
 password.addEventListener("focusout", passwordCheck);
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  console.log("submit");
-  loginCheck(e);
-});
+form.addEventListener("submit", loginCheck);
 
 togglePassword.addEventListener("click", eyeToggle);
