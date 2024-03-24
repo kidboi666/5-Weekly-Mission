@@ -116,6 +116,30 @@ const testUser = {
   password: 'sprint101',
 };
 
+// 이메일 중복 POST 요청
+// async function emailCheck(email) {
+//   if (testUser.email === $email.value) {
+//     try {
+//       const response = await fetch(`${url}/api/check-email`, {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({ email }),
+//       });
+
+//       if (response.ok) {
+//         const result = await response.json();
+//         return result.data.exists;
+//       } else {
+//         throw new Error();
+//       }
+//     } catch (error) {
+//       $errorEmail.textContent = '중복된 이메일이 존재합니다.';
+//     }
+//   }
+// }
+
 const $form = document.querySelector('.sign-form');
 $form.addEventListener('submit', submitForm);
 const url = 'https://bootcamp-api.codeit.kr';
