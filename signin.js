@@ -89,5 +89,12 @@ pwdWrapper.addEventListener('mousedown', setEyeOn);
 pwdWrapper.addEventListener('mouseup', setEyeOff) ;
 
 loginButton.addEventListener('click', () => {
-    postIdPwd();
+    if (emailInput.value === '') {
+        emailError.innerText = '이메일을 입력해주세요';
+        addErrorSign(emailInput, emailError);
+    } else postIdPwd();
+    if (pwdInput.value === '') {
+        pwdError.innerText = '비밀번호를 입력해주세요';
+        addErrorSign(pwdInput, pwdError);
+    } else postIdPwd();
 });

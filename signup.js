@@ -3,11 +3,12 @@ import {
     removeErrorSign,
     checkEmailValid,
     checkPwdValid,
-    VALID_EMAIL,
     checkError,
     setEyeOff,
     setEyeOn
 } from "./utils.js";
+
+import { signUpUrl, checkEmailUrl } from "./api.js"
 
 const emailInput = document.querySelector('.email-input');
 const pwdInput = document.querySelector('.pwd-input');
@@ -21,6 +22,7 @@ const pwdCheckWrapper = document.querySelector(".pwd-input-check-wrapper");
 const input = document.querySelectorAll('input');
 
 function checkSignUpValid() {
+    checkEmailDuplicated();
     if (emailInput.value === '') {
         emailError.innerText = '이메일을 입력해주세요';
         addErrorSign(emailInput,emailError);
@@ -37,32 +39,44 @@ function checkSignUpValid() {
         removeErrorSign(pwdCheckInput,pwdCheckError);
     }
     if (!checkError()) {
-        location.href = 'folder.html';
+        postIdPwd();
     }
 }
 
-async function postIdPwd() {  
+async function checkEmailDuplicated() {  
     try {
-        const res = await fetch(signInUrl, {
+        const res = await fetch(checkEmailUrl, {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
             },
             body: JSON.stringify({
                 "email": emailInput.value,
-                "password": pwdInput.value,
             })
         });
         if (!res.ok) {
-            throw new Error('bad request');
-        } else location.href = 'folder.html';
+            throw new Error('Email already exists');
+        } 
     } catch {
         addErrorSign(emailInput, emailError);
-        emailError.innerText = '이메일 확인 부탁!'
-        addErrorSign(pwdInput, pwdError);
-        pwdError.innerText = '비밀번호 확인 부탁!'
+        emailError.innerText = '중복된 이메일입니다.'
     }
 }
+
+async function postIdPwd() {  
+    const res = await fetch(signUpUrl, {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+            "email": emailInput.value,
+            "password": pwdInput.value,
+        })
+    });
+    location.href = 'folder.html';
+}
+
 
 emailInput.addEventListener('focusout', () => {
     if (emailInput.value === '') {
@@ -73,10 +87,6 @@ emailInput.addEventListener('focusout', () => {
         if (!checkEmailValid(emailInput.value)) {
             addErrorSign(emailInput, emailError);
             emailError.innerText = '이메일을 형식을 확인해주세요';
-        }
-        if (emailInput.value === VALID_EMAIL) {
-            emailError.innerText = '이미 사용중인 이메일입니다';
-            addErrorSign(emailInput, emailError);
         }
     }
 });
