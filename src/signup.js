@@ -6,7 +6,9 @@ const input3 = document.querySelector(".sign-input-password-check");
 const pwCheckError = document.querySelector(".pw-check-error");
 const form = document.querySelector(".sign-form");
 
-input.addEventListener("focusout", function (e) {
+input.addEventListener("focusout", async function (e) {
+  const isDuplicate = await emailDuplicateCheck();
+
   if (!e.target.value) {
     emailError.innerHTML = "이메일을 입력해주세요.";
     emailError.style.display = "block";
@@ -15,7 +17,7 @@ input.addEventListener("focusout", function (e) {
     emailError.innerHTML = "올바른 이메일 주소가 아닙니다.";
     emailError.style.display = "block";
     e.target.style.border = "1px solid #FF5B56";
-  } else if (e.target.value === "test@codeit.com") {
+  } else if (isDuplicate) {
     emailError.innerHTML = "이미 사용 중인 이메일입니다.";
     emailError.style.display = "block";
     e.target.style.border = "1px solid #FF5B56";
@@ -71,3 +73,20 @@ form.addEventListener("submit", function (e) {
     window.location.href = "/folder.html";
   }
 });
+
+async function emailDuplicateCheck() {
+  const response = await fetch(
+    "https://bootcamp-api.codeit.kr/api/check-email",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: input.value,
+      }),
+    }
+  );
+
+  return response.status === 200 ? false : true;
+}
