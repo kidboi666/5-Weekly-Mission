@@ -1,7 +1,6 @@
 import { eyeToggle, confirmEyeToggle } from "./commons/utils.js";
 import { textCheck, textCheckPw, textCheckPwConfirm } from "./signupCheck.js";
 import {
-  reset,
   $form,
   inputEmail,
   inputPassword,
@@ -9,7 +8,6 @@ import {
   emailErrorMessage,
   pwErrorMessage,
   pwConfirmErrorMessage,
-  data,
   passwordPattern,
   eyeButton,
   confirmEyeButton,

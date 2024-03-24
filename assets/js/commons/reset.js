@@ -14,12 +14,12 @@ const eyeButton = document.querySelector(".sign-pw__eye-btn");
 const confirmEyeButton = document.querySelector("#confirm-btn");
 
 // 테스트 데이터
-const data = [
-  {
-    email: "test@codeit.com",
-    password: "codeit101",
-  },
-];
+// const data = [
+//   {
+//     email: "test@codeit.com",
+//     password: "codeit101",
+//   },
+// ];
 // 비밀번호 형식
 const passwordPattern = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,20}$/;
 // 이메일 형식
@@ -43,7 +43,6 @@ export {
   emailErrorMessage,
   pwErrorMessage,
   pwConfirmErrorMessage,
-  data,
   passwordPattern,
   emailPattern,
   eyeButton,

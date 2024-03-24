@@ -18,11 +18,18 @@ export const requestTest = async (email, password) => {
       window.location.href = "/folder.html";
     }
 
-    // if (!response.ok) {
-    //   console.log(response.status);
-    //   const test = response.status;
-    //   return test;
-    // }
+    if (!response.ok) {
+      // 수정 필요
+      const emailErrorMessage = document.querySelector(".email-error-message");
+      const pwErrorMessage = document.querySelector(".pw-error-message");
+      const inputEmail = document.querySelector("#input-email");
+      const inputPassword = document.querySelector("#input-pw");
+
+      inputEmail.classList.add("error-border");
+      inputPassword.classList.add("error-border");
+      emailErrorMessage.innerHTML = "이메일을 확인해 주세요.";
+      pwErrorMessage.innerHTML = "비밀번호를 확인해 주세요.";
+    }
   } catch (error) {}
 };
 
