@@ -1,0 +1,365 @@
+@import "./global.css";
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #edf7ff;
+}
+
+.gnb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 9.4rem;
+  max-width: 192rem;
+  padding: 0 20rem;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: #edf7ff;
+}
+
+.hero-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 4rem;
+  padding-top: 7rem;
+}
+
+.sign-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5.4rem;
+  cursor: pointer;
+  background-image: linear-gradient(135deg, var(--primary) 0%, #6ae3fe 100%);
+  border-radius: 0.8rem;
+  color: #f5f5f5;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.sign-button-short {
+  width: 12.8rem;
+}
+
+.sign-button-long {
+  width: 35rem;
+}
+
+.slogan {
+  text-align: center;
+  font-size: 6.4rem;
+  font-weight: 700;
+  line-height: 8rem;
+}
+
+.slogan-gradient {
+  background-image: linear-gradient(119deg, var(--primary) 0%, #ff9f9f 100%);
+}
+
+.background-clip-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero-image {
+  width: 120rem;
+  height: 59rem;
+}
+
+article {
+  padding-top: 7rem;
+  padding-bottom: 12rem;
+}
+
+section {
+  display: grid;
+  justify-content: center;
+  column-gap: 15.7rem;
+  row-gap: 1rem;
+  width: 100%;
+  height: 55rem;
+  padding: 50px 0;
+}
+
+section:nth-of-type(odd) {
+  grid-template:
+    ". image"
+    "title image"
+    "description image"
+    ". image"
+    /291px 55rem;
+}
+
+section:nth-of-type(even) {
+  grid-template:
+    "image ."
+    "image title"
+    "image description"
+    "image ."
+    /550px 29.1rem;
+}
+
+.title {
+  grid-area: title;
+  font-size: 4.8rem;
+  font-weight: 700;
+  line-height: 5.8rem;
+  letter-spacing: -0.03rem;
+}
+
+.title-1-gradient {
+  background-image: linear-gradient(117deg, #fe8a8a 2.29%, #a4ceff 100%);
+}
+.title-2-gradient {
+  background-image: linear-gradient(304deg, #6fbaff 0%, #ffd88b 100%);
+}
+.title-3-gradient {
+  background-image: linear-gradient(133deg, #2945c7 0%, #dbe1f8 100%);
+}
+.title-4-gradient {
+  background-image: linear-gradient(310deg, #fe578f 0%, #68e8f9 100%);
+}
+
+.description {
+  grid-area: description;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #6b6b6b;
+  line-height: 150%;
+}
+
+.content-image {
+  grid-area: image;
+  width: 55rem;
+  height: 45rem;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 16rem;
+  padding-top: 3.2rem;
+  background-color: var(--black);
+}
+
+.footer-box {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 192rem;
+  height: fit-content;
+  padding: 0 10.4rem;
+}
+
+.copyright {
+  color: #676767;
+  font-family: Arial;
+  font-size: 1.6rem;
+}
+
+.footer-links {
+  display: flex;
+  column-gap: 3rem;
+  padding-right: 1.8rem;
+}
+
+.footer-link {
+  color: #cfcfcf;
+  font-family: Arial;
+  font-size: 1.6rem;
+}
+
+.sns {
+  display: flex;
+  column-gap: 1.2rem;
+  height: 2rem;
+}
+
+/*테블릿 환경*/
+
+@media (max-width: 1199px) {
+  .gnb {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 9.4rem;
+    max-width: 192rem;
+    padding: 0 3.2rem;
+  }
+
+  .slogan {
+    text-align: center;
+    width: max-content;
+    max-width: 47.2rem;
+    font-size: 6.4rem; 
+    font-weight: 700;
+    line-height: 8rem;
+    word-break: keep-all;
+  }
+
+  .hero-image {
+    width: 69.8rem;
+    height: 34.3rem;
+  }
+
+  .content-image {
+    grid-area: image;
+    width: 38.5rem;
+    height: 31.5rem;
+  }
+  
+  section {
+    display: grid;
+    justify-content: center;
+    column-gap: 5.1rem;
+    row-gap: 1rem;
+    width: 100%;
+    height: 41.5rem;
+    padding: 50px 0;
+  }
+
+  section:nth-of-type(odd) {
+    grid-template:
+      ". iamge"
+      "title image"
+      "description image";
+    grid-template-rows: 59.5px 114px 72px 59.5px ; 
+    grid-template-columns: 313px 38.5rem;
+  }
+  
+  section:nth-of-type(even) {
+    grid-template:
+      "image ."
+      "image title"
+      "image description";
+      grid-template-rows:  59.5px 114px 72px 59.5px ; 
+      grid-template-columns: 38.5rem 313px ;
+  }
+}
+
+/*모바일 환경*/
+
+@media (max-width: 767px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: content-box;
+  }
+
+  .gnb {
+    height: 6.3rem;
+  }
+
+  article {
+    padding: 0 3.2rem 8rem;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 1.6rem;
+    width: 100%;
+    height: fit-content;
+    margin: 4rem 0; 
+  }
+
+  .content-image {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    margin-top:1.4rem;
+    order: 2;
+  }
+
+  .title {
+    font-size: 2.4rem;
+    line-height: 2.9rem;
+  }
+
+  .description {
+    font-size: 1.5rem;
+    order: 3;
+  }
+
+  .slogan {
+    text-align: center;
+    width: max-content;
+    max-width: 23.6rem;
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 4.2rem;
+    word-break: keep-all;
+  }
+
+  .cta {
+    height: 3.7rem;
+    font-size: 1.4rem;
+  }
+
+  br {
+    display: none;;
+  }
+
+  .cta-short {
+    width: 8.0rem;
+  }
+  
+  .cta-long {
+    width: 20rem;
+  }
+
+  .gnb img {
+    width: 8.867rem;
+    height: 1.6rem;
+  }
+
+  .hero-header {
+    row-gap: 2.4rem;
+    padding-top: 2.8rem;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+
+  .footer-box {
+    width: 100%;
+    max-width: 192rem;
+    height: fit-content;
+    padding: 0 3.2rem;
+  }
+
+  footer {
+    position: relative;
+  }
+
+  .copyright{
+    position: absolute;
+    bottom: 3.2rem;
+    left: 3.2rem;
+  }
+}
