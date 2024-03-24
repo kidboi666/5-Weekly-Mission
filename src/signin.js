@@ -1,4 +1,4 @@
-import { eyeToggleButton, TEST_USER } from "./utils.js";
+import { eyeToggleButton } from "./utils.js";
 
 // form
 const signForm = document.querySelector("#form");
@@ -40,20 +40,33 @@ function InputPasswordFunc() {
   styleBtn.classList.remove("fix-eye-btn");
 }
 
-function submitForm(e) {
+async function submitForm(e) {
   e.preventDefault();
 
-  const isTestUser =
-    inputEmail.value === TEST_USER.email &&
-    inputPassword.value === TEST_USER.password;
+  try {
+    const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: inputEmail.value,
+        password: inputPassword.value,
+      }),
+    });
+    const { data } = await response.json();
 
-  if (isTestUser) {
-    location.href = "./folder.html";
-    return;
+    if (response.ok) {
+      localStorage.setItem("accessToken", data.accessToken);
+      location.href = "/folder.html";
+    } else {
+      emailErrorMsg.textContent = "이메일을 확인해주세요.";
+      pwdErrorMsg.textContent = "비밀번호를 확인해주세요.";
+      styleBtn.classList.add("fix-eye-btn");
+    }
+  } catch (error) {
+    console.error(error);
   }
-  emailErrorMsg.textContent = "이메일을 확인해주세요.";
-  pwdErrorMsg.textContent = "비밀번호를 확인해주세요.";
-  styleBtn.classList.add("fix-eye-btn");
 }
 
 // event handling
