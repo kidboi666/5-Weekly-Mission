@@ -135,13 +135,22 @@ async function submitForm(event) {
         password: $password.value,
       }),
     });
-    if (isTestUser && response.ok) {
-      location.href = '../folder.html';
-    } else if (!response.ok) {
+    if (!response.ok && !isTestUser) {
       throw new Error();
     }
+    const result = await response.json();
+    const signinToken = result.data.accessToken;
+    localStorage.setItem('signinToken', signinToken);
+    location.href = '../folder.html';
   } catch (error) {
     $errorEmail.textContent = '이메일을 확인해주세요.';
     $errorPwd.textContent = '비밀번호를 확인해주세요.';
+  }
+}
+
+function signinTokenCheck() {
+  const accessToken = localStorage.getItem('signinToken');
+  if (accessToken) {
+    location.href = '../folder.html';
   }
 }
