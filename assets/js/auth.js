@@ -137,7 +137,17 @@ function handleSignup(event) {
   const $passwordConfirm = event.target.passwordConfirm;
   const validated = validate({ $email, $password, $passwordConfirm });
   if (validated.ok) {
-    location.assign("/folder");
+    fetch("https://bootcamp-api.codeit.kr/api/sign-up", {
+      method: "POST",
+      body: JSON.stringify({
+        email: $email.value,
+        password: $password.value,
+      }),
+    })
+      .then(() => {
+        location.assign("/folder");
+      })
+      .catch((error) => console.error(error));
     return;
   }
   validated.email && createError($email, validated.email);
