@@ -8,7 +8,7 @@ import {
   data,
   passwordPattern,
   emailPattern,
-} from "./reset.js";
+} from "./commons/reset.js";
 
 // 회원가입용 형식 검증
 // 이메일

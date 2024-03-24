@@ -1,4 +1,4 @@
-import { eyeToggle } from "./utils.js";
+import { eyeToggle } from "./commons/utils.js";
 import { textCheck, textCheckPw } from "./signinCheck.js";
 import {
   $form,
@@ -8,30 +8,17 @@ import {
   pwErrorMessage,
   data,
   eyeButton,
-} from "./reset.js";
+} from "./commons/reset.js";
+import { requestTest } from "./api/api.js";
 
-// test 400
-const request = async ({ email, password }) => {
-  try {
-    const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    });
-    // .then((response) => response.json())
-    // .then((result) => console.log(result));
-    if (response.ok) {
-      window.location.href = "/folder.html";
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
+export function test() {
+  //input 테두리 색 변경
+  inputEmail.classList.add("error-border");
+  inputPassword.classList.add("error-border");
+
+  emailErrorMessage.innerHTML = "이메일을 확인해 주세요.";
+  pwErrorMessage.innerHTML = "비밀번호를 확인해 주세요.";
+}
 
 // 로그인 클릭했을 때 에러 메시지
 function validate({ email, password }) {
@@ -39,21 +26,21 @@ function validate({ email, password }) {
     return user.email === email && user.password === password;
   });
 
-  if (userExists) {
+  if (requestTest(email, password)) {
     // 로그인
     // 문제가 전혀 없을 경우
     // window.location.href = "/folder.html";
-    request({ email, password });
+    console.log("test");
   }
 
-  if (!userExists) {
-    //input 테두리 색 변경
-    inputEmail.classList.add("error-border");
-    inputPassword.classList.add("error-border");
+  // if (!requestTest(email, password)) {
+  //   //input 테두리 색 변경
+  //   inputEmail.classList.add("error-border");
+  //   inputPassword.classList.add("error-border");
 
-    emailErrorMessage.innerHTML = "이메일을 확인해 주세요.";
-    pwErrorMessage.innerHTML = "비밀번호를 확인해 주세요.";
-  }
+  //   emailErrorMessage.innerHTML = "이메일을 확인해 주세요.";
+  //   pwErrorMessage.innerHTML = "비밀번호를 확인해 주세요.";
+  // }
 }
 
 // form에서 로그인 클릭했을 때

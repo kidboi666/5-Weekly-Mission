@@ -4,7 +4,7 @@ import {
   emailErrorMessage,
   pwErrorMessage,
   emailPattern,
-} from "./reset.js";
+} from "./commons/reset.js";
 
 // 형식 검증
 export function textCheck() {

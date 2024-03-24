@@ -1,4 +1,4 @@
-import { eyeToggle, confirmEyeToggle } from "./utils.js";
+import { eyeToggle, confirmEyeToggle } from "./commons/utils.js";
 import { textCheck, textCheckPw, textCheckPwConfirm } from "./signupCheck.js";
 import {
   reset,
@@ -13,19 +13,21 @@ import {
   passwordPattern,
   eyeButton,
   confirmEyeButton,
-} from "./reset.js";
+} from "./commons/reset.js";
+import { emailTest, joinTest } from "./api/api.js";
 
 function validate({ email, password, passwordConfirm }) {
   // reset();
 
-  const userExists = data.find((user) => {
-    return user.email === email;
-  });
+  // const userExists = data.find((user) => {
+  //   return user.email === email;
+  // });
+
   const passwordCheck = password === passwordConfirm;
   const emailLength = email.length === 0;
   const isPasswordValid = passwordPattern.test(password);
 
-  if (userExists) {
+  if (emailTest(email)) {
     inputEmail.classList.add("error-border");
     emailErrorMessage.innerHTML = "이미 사용 중인 이메일입니다.";
   }
@@ -50,7 +52,8 @@ function validate({ email, password, passwordConfirm }) {
 
   if (!userExists && email.length > 0 && passwordCheck && isPasswordValid) {
     // 모든 조건에 적합한 경우
-    window.location.href = "/folder.html";
+    joinTest(email, password, passwordConfirm);
+    // window.location.href = "/folder.html";
   }
 }
 
