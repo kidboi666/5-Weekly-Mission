@@ -1,22 +1,32 @@
-
+import { signinRequest } from './signApi.js';
 const emailInputs = document.querySelector(`.email-input-group`);
 const passwordInputs = document.querySelector(`.password-input-group`);
-const singinBtn = document.querySelector(`#singin-btn`);
+const singinBtn = document.querySelector('#singin-btn');
 const emailErrorText = document.querySelector('.email-input-message');
 const emailInput = document.querySelector('.email-input');
-const passwordErrorText = document.querySelector('.password-input-message');
+const passwordErrorText = document.querySelector('.password-message');
 const passwordInput = document.querySelector('.password-input');
+const emptyEmailErrorMessage = '이메일을 입력해주세요.';
+const invalidEmailErrorMessage = '올바른 이메일 형식이 아닙니다.';
+const emptyPasswordErrorMessage =  '비밀번호를 입력해주세요.';
+const checkEmailErrorMessage =  '이메일을 확인해주세요.';
+const checkPasswordErrorMessage = '비밀번호를 확인해주세요.';
+const iconEye = document.querySelector('.password-eye')
+
+if(localStorage.getItem("accessToken") !== null) {
+  location.href = '/folder.html'
+};
 
  emailInputs.addEventListener(`focusout`,(e) => {
-  emailText = e.target.value;
+  const emailText = e.target.value;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (emailRegex.test(emailText) === false){
     if(emailText === ''){
-      emailErrorText.textContent = '이메일을 입력해주세요.';
+      emailErrorText.textContent = emptyEmailErrorMessage;
       emailInput.classList.add('error-input');
     }
     else{
-      emailErrorText.textContent = '올바른 이메일 형식이 아닙니다.';
+      emailErrorText.textContent = invalidEmailErrorMessage;
       emailInput.classList.add('error-input');
     }
   }
@@ -27,9 +37,9 @@ const passwordInput = document.querySelector('.password-input');
 });
 
 passwordInputs.addEventListener(`focusout`,(e) => {
-  passwordText = e.target.value;
+  const passwordText = e.target.value;
   if(passwordText === ''){
-    passwordErrorText.textContent = '비밀번호를 입력해주세요.';
+    passwordErrorText.textContent = emptyPasswordErrorMessage;
     passwordInput.classList.add('error-input');
   }
   else{
@@ -38,31 +48,51 @@ passwordInputs.addEventListener(`focusout`,(e) => {
   }
 });
 
-singinBtn.addEventListener('click',(e) => {
-  if(emailInput.value === `test@codeit.com` &&
-    passwordInput.value === `codeit101`){
-    location.href = '/folder.html'
+// const user = { email : 'test@codeit.com', password : 'sprint101'}
+
+singinBtn.addEventListener('click', async (e) => {
+  const userData = {
+    email: emailInput.value,
+    password: passwordInput.value
+  } 
+  try{
+    const response = await signinRequest(userData)
+    if(response.httpCode === 200 ){
+      location.href = '/folder.html'
+      localStorage.setItem('accessToken', response.resData.data.accessToken)
+      }
+    else{
+      e.preventDefault();
+      emailErrorText.textContent = checkEmailErrorMessage;
+      emailInput.classList.add('error-input');
+      passwordErrorText.textContent = checkPasswordErrorMessage;
+      passwordInput.classList.add('error-input');
     }
-  else{
-    emailErrorText.textContent = '이메일을 확인해주세요.';
-    emailInput.classList.add('error-input');
-    passwordErrorText.textContent = '비밀번호를 확인해주세요.';
-    passwordInput.classList.add('error-input');
-    e.preventDefault();
+  } catch (error) {
+    console.error('Sign-in request failed:', error);
   }
 });
 
-emailInput.addEventListener(`keyup`,(e) =>{
+emailInput.addEventListener(`keyup`,(e) => {
   if(e.key === 'Enter'){
     singinBtn.click()
   }
 })
 
-passwordInput.addEventListener(`keyup`,(e) =>{
+passwordInput.addEventListener(`keyup`,(e) => {
   if(e.key === 'Enter'){
     singinBtn.click()
   }
 })
 
-
+iconEye.addEventListener('click', (e) => {
+  const passwordType = passwordInput.getAttribute('type');
+  if ( passwordType === 'password' ) {
+    passwordInput.setAttribute('type', 'text')
+    iconEye.src = 'icon/eye-on.svg'
+  } else {
+    passwordInput.setAttribute('type', 'password')
+    iconEye.src = 'icon/eye-off.svg'
+  }
+})
 
