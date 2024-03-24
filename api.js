@@ -1,0 +1,1 @@
+export const signInUrl = `https://bootcamp-api.codeit.kr/api/sign-in`;

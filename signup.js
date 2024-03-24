@@ -41,6 +41,29 @@ function checkSignUpValid() {
     }
 }
 
+async function postIdPwd() {  
+    try {
+        const res = await fetch(signInUrl, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                "email": emailInput.value,
+                "password": pwdInput.value,
+            })
+        });
+        if (!res.ok) {
+            throw new Error('bad request');
+        } else location.href = 'folder.html';
+    } catch {
+        addErrorSign(emailInput, emailError);
+        emailError.innerText = '이메일 확인 부탁!'
+        addErrorSign(pwdInput, pwdError);
+        pwdError.innerText = '비밀번호 확인 부탁!'
+    }
+}
+
 emailInput.addEventListener('focusout', () => {
     if (emailInput.value === '') {
         emailError.innerText = '이메일을 입력해주세요';

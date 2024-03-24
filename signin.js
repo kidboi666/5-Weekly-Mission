@@ -2,11 +2,11 @@ import {
     addErrorSign,
     removeErrorSign,
     checkEmailValid,
-    VALID_PASSWORD,
-    VALID_EMAIL,
     setEyeOff,
-    setEyeOn
+    setEyeOn,
 } from "./utils.js";
+
+import { signInUrl } from "./api.js";
 
 const emailInput = document.querySelector('.email-input');
 const pwdInput = document.querySelector('.pwd-input');
@@ -16,16 +16,28 @@ const pwdError = document.querySelector('.pwd-error');
 const input = document.querySelectorAll('input');
 const pwdWrapper = document.querySelector(".pwd-input-wrapper");
 
-function loginCheck() {
-    if (emailInput.value === VALID_EMAIL && pwdInput.value === VALID_PASSWORD) {
-        location.href = 'folder.html';
-    } else {
+async function postIdPwd() {  
+    try {
+        const res = await fetch(signInUrl, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                "email": emailInput.value,
+                "password": pwdInput.value,
+            })
+        });
+        if (!res.ok) {
+            throw new Error('bad request');
+        } else location.href = 'folder.html';
+    } catch {
         addErrorSign(emailInput, emailError);
-        emailError.innerText = '이메일을 확인해주세요';
+        emailError.innerText = '이메일 확인 부탁!'
         addErrorSign(pwdInput, pwdError);
-        pwdError.innerText = '비밀번호를 확인해주세요';
+        pwdError.innerText = '비밀번호 확인 부탁!'
     }
-};
+}
 
 emailInput.addEventListener('focusout', () => {
     if (emailInput.value === '') {
@@ -63,11 +75,11 @@ input.forEach(element => {
             if (emailInput.value === '') {
                 emailError.innerText = '이메일을 입력해주세요';
                 addErrorSign(emailInput, emailError);
-            } else loginCheck();
+            } else postIdPwd();
             if (pwdInput.value === '') {
                 pwdError.innerText = '비밀번호를 입력해주세요';
                 addErrorSign(pwdInput, pwdError);
-            } else loginCheck();
+            } else postIdPwd();
         }
     });
 });
@@ -77,5 +89,5 @@ pwdWrapper.addEventListener('mousedown', setEyeOn);
 pwdWrapper.addEventListener('mouseup', setEyeOff) ;
 
 loginButton.addEventListener('click', () => {
-    loginCheck();
+    postIdPwd();
 });
