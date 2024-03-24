@@ -3,6 +3,7 @@ import {
   removeInputError,
   isEmailValid,
   togglePassword,
+  isPasswordValid,
   TEST_USER,
 } from "./utils.js";
 
@@ -46,6 +47,14 @@ function validatePasswordInput(password) {
     return;
   }
 
+  if (!isPasswordValid(password)) { 
+    // 비밀번호가 유효하지 않을 때 처리
+    setInputError(
+      { input: passwordInput, errorMessage: passwordErrorMessage },
+      "비밀번호는 최소 8자 이상이어야 하고, 숫자와 문자를 모두 포함해야 합니다."
+    );
+    return;
+  }  
   // 비밀번호 입력이 올바르면 오류 메세지 제거
   removeInputError({ input: passwordInput, errorMessage: passwordErrorMessage });
 }
@@ -62,11 +71,8 @@ signForm.addEventListener("submit", submitForm);
 
 function submitForm(event) {
   event.preventDefault();
-  // 이메일과 비밀번호를 객체로 묶기
-  let inputEmailPW = {
-    email: emailInput.value,
-    password: passwordInput.value,
-  };
+
+  const { email, password } = TEST_USER;
 
   // 서버로 POST 요청
   fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
@@ -74,7 +80,7 @@ function submitForm(event) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(inputEmailPW),
+    body: JSON.stringify({ email, password }),
   })
 
     .then((response) => {

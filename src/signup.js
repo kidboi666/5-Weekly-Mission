@@ -4,33 +4,32 @@ import {
   isEmailValid,
   isPasswordValid,
   togglePassword,
-  TEST_USER,
 } from "./utils.js";
 
 const emailInput = document.querySelector("#email");
 const emailErrorMessage = document.querySelector("#email-error-message");
+const passwordInput = document.querySelector("#password");
+const passwordErrorMessage = document.querySelector("#password-error-message");
 
 emailInput.addEventListener("focusout", (event) => validateEmailInput(event.target.value));
+passwordInput.addEventListener("focusout", (event) => validatePasswordInput(event.target.value));
 
 function validateEmailInput(email) {
-  // 이메일이 비어있는지 확인하고 오류 메세지 표시
   if (email === "") {
     setInputError(
       { input: emailInput, errorMessage: emailErrorMessage },
       "이메일을 입력해주세요."
     );
-    return;
+    return false;
   }
 
-  // 서버로부터 이메일 중복 여부 확인
   fetch("https://bootcamp-api.codeit.kr/api/check-email", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({email: email }),
+    body: JSON.stringify({ email: email }),
   })
-
   .then((response) => response.json())
   .then((data) => {
     if (data.isAvailable) {
@@ -45,7 +44,6 @@ function validateEmailInput(email) {
       );
     }
   })
-  
   .catch((error) => {
     console.error("Error checking email:", error);
     setInputError(
@@ -54,10 +52,6 @@ function validateEmailInput(email) {
     );
   });
 }
-
-passwordInput.addEventListener("focusout", (event) =>
-  validatePasswordInput(event.target.value)
-);
 
 function validatePasswordInput(password) {
   if (password === "" || !isPasswordValid(password)) {
@@ -113,13 +107,11 @@ signForm.addEventListener("submit", submitForm);
 function submitForm(event) {
   event.preventDefault();
 
-  // 유효성 검사를 통과한 경우에만 서버로 요청 보냄
-  const isEmailInputValid = validateEmailInput(emailInput.value);
-  const isPasswordInputValid = validatePasswordInput(passwordInput.value);
-  const isConfirmPasswordInputValid = validateConfirmPasswordInput(confirmPasswordInput.value);
+  const isEmailValid = validateEmailInput(emailInput.value);
+  const isPasswordValid = validatePasswordInput(passwordInput.value);
+  const isConfirmPasswordValid = validateConfirmPasswordInput(confirmPasswordInput.value);
 
-  if (isEmailInputValid && isPasswordInputValid && isConfirmPasswordInputValid) {
-    // 서버로 회원가입 요청
+  if (isEmailValid && isPasswordValid && isConfirmPasswordValid) {
     fetch("https://bootcamp-api.codeit.kr/api/sign-up", {
       method: "POST",
       headers: {
@@ -130,23 +122,19 @@ function submitForm(event) {
         password: passwordInput.value,
       }),
     })
-    
     .then((response) => {
       if (response.ok) {
-        // 회원가입 성공 시 폴더 페이지로 이동
         window.location.href = "/folder";
       } else {
         throw new Error("Server responded with an error!");
       }
     })
-
     .catch((error) => {
       console.error(error);
-      setInputError (
+      setInputError(
         { input: emailInput, errorMessage: emailErrorMessage },
-        "오류가 발생했습니다. 다시 시도해주세요."
+        "회원가입 중 오류가 발생했습니다. 다시 시도해주세요."
       );
     });
   }
-  location.href = "/folder";
 }
