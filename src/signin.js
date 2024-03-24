@@ -1,3 +1,5 @@
+const loginButton = document.querySelector(".cta");
+
 const emailInputForm = document.querySelector(".input-email");
 const passwordInputForm = document.querySelector(".input-pw");
 
@@ -30,16 +32,27 @@ passwordInputForm.addEventListener("focusout", ({ target }) => {
   }
 });
 
-function login(e) {
-  e.preventDefault();
+async function requestLogin() {
+  const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: emailInputForm.value,
+      password: passwordInputForm.value,
+    }),
+  });
+  const result = await response.json();
 
-  if (successLoginEmail !== emailInputForm.value) {
+  if (response.status === 200) {
+    window.location.href = "/folder.html";
+  } else {
     emailErrorMessage.innerHTML = "이메일을 확인해 주세요.";
     emailErrorMessage.style.display = "block";
-  } else if (successLoginPassword !== passwordInputForm.value) {
-    pwErrorMessage.innerHTML = "비밀번호를 입력해주세요";
+    pwErrorMessage.innerHTML = "비밀번호를 확인해 주세요.";
     pwErrorMessage.style.display = "block";
-  } else {
-    window.location.href = "/folder.html";
   }
 }
+
+loginButton.addEventListener("click", requestLogin);
