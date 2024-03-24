@@ -14,10 +14,12 @@
     <div class="sign-container">
       <header>
         <a class="logo-link" href="../index.html">
-          <img class="header-logo" src="../image/Linkbrary.svg"/>
+          <img class="header-logo" src="../image/Linkbrary.svg" />
         </a>
         <p class="header-message">
-          이미 회원이신가요?<a class="header-link" href="../signin/index.html">로그인 하기</a>
+          이미 회원이신가요?<a class="header-link" href="../signin/index.html"
+            >로그인 하기</a
+          >
         </p>
       </header>
       <div class="sign-box">
@@ -33,7 +35,8 @@
               <input class="password-input" type="password" />
               <div class="error-message-password"></div>
               <button class="password-eye-button" type="button">
-                <img src="../image/eye-off.jpg" />
+
+                <img id="eye-icon" src="../image/eye-off.jpg" />
               </button>
             </div>
             <div class="sign-form-inputs-box sign-password">
@@ -41,7 +44,7 @@
               <input class="confirm-password-input" type="password" />
               <div class="error-message-password-confirm"></div>
               <button class="confirm-password-eye-button" type="button">
-                <img src="../image/eye-off.jpg" />
+                <img id="eye-icon" src="../image/eye-off.jpg" />
               </button>
             </div>
           </div>
@@ -50,10 +53,16 @@
         <div class="social-login_group">
           <span class="social-login-text">다른 방식으로 가입하기</span>
           <div class="social-login-buttons">
-            <a class="social-login-button google-link" href="https://www.google.com/">
+            <a
+              class="social-login-button google-link"
+              href="https://www.google.com/"
+            >
               <img src="../image/google icon.png" />
             </a>
-            <a class="social-login-button kakao-link" href="https://www.kakaocorp.com/page/">
+            <a
+              class="social-login-button kakao-link"
+              href="https://www.kakaocorp.com/page/"
+            >
               <img src="../image/kakao icon.png" />
             </a>
           </div>
@@ -64,5 +73,6 @@
     <script type="module" src="../js/auth.js"></script>
     <script type="module" src="../js/uicontroller.js"></script>
     <script type="module" src="./app.js"></script>
+    <script type="module" src="./api.js"></script>
   </body>
 </html>

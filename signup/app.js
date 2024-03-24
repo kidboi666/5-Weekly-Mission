@@ -1,106 +1,161 @@
 import {
-  validateEmail, 
-  users, 
-} from '../js/auth.js';
+  regexPatterns,
+  validateEmail,
+  validatePassword as PasswordValidator,
+  getUserByEmail,
+} from "../js/auth.js";
 
 import {
+  showError,
   removeErrorMessage,
-  togglePasswordVisibility
-} from '../js/uicontroller.js';
+  togglePasswordVisibility,
+} from "../js/uicontroller.js";
+
+import { checkEmailDuplicate, signUp } from "./api.js";
+
+const emailInputEl = document.querySelector(".email-input");
+const passwordInputEl = document.querySelector(".password-input");
+const confirmPasswordInputEl = document.querySelector(
+  ".confirm-password-input"
+);
+
+const passwordInput = document.querySelector(".password-input");
+const confirmPasswordInput = document.querySelector(".confirm-password-input");
+const passwordToggleBtn = document.querySelector(".password-eye-button img");
+const confirmPasswordToggleBtn = document.querySelector(
+  ".confirm-password-eye-button img"
+);
+
+const signform = document.querySelector(".sign-form");
 
 /* 이메일 유효성 검사*/
-const emailInputEl = document.querySelector('.email-input');
 
-emailInputEl.addEventListener('focusout', () => {
-  const errorMessageEl = document.querySelector('.error-message-email');
-  const emailValue = emailInputEl.value;
-  const useremail = users.find(user => user.email === emailValue);
+function isExistUser(email) {
+  const existingUser = getUserByEmail(email);
+  if (existingUser) {
+    return { success: false, error: "이미 존재하는 이메일입니다" };
+  }
 
-  if (useremail) {
-    errorMessageEl.textContent = "이미 사용중인 이메일입니다.";
-    emailInputEl.classList.add('wrongsign');
-    return false;
+  return { success: true, error: null };
+}
+
+emailInputEl.addEventListener("focusout", async () => {
+  const email = emailInputEl.value;
+  const validation = validateEmail(email);
+
+  if (!validation.success) {
+    showError(".error-message-email", validation.error);
   } else {
-    validateEmail(); // 다른 유효성 검사 수행
-    return true;
+    const isDuplicate = await checkEmailDuplicate(email);
+
+    if (!isDuplicate) {
+      showError(".error-message-email", "이미 존재하는 이메일입니다.");
+    }
   }
 });
 
-emailInputEl.addEventListener('focus', () => removeErrorMessage('.error-message-email'));
+emailInputEl.addEventListener("focus", () =>
+  removeErrorMessage(".error-message-email")
+);
 
-// 비밀번호 유효성 검사
-function validatePassword() {
-  const passwordInputEl = document.querySelector('.password-input');
-  const passwordValue = passwordInputEl.value;
-  const errorMessageEl = document.querySelector('.error-message-password');
+/* 비밀번호 유효성 검사*/
 
-  if(!/^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/.test(passwordValue)) {
-    errorMessageEl.textContent = "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.";
-    passwordInputEl.classList.add('wrongsign');
-    return false;
-  } else {
-    passwordInputEl.classList.remove('wrongsign');
-    return true;
+function validatePassword(password) {
+  if (!regexPatterns.password.test(password)) {
+    return {
+      success: false,
+      error: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요",
+    };
   }
+  return { success: true, error: null };
 }
 
-const passwordInputEl = document.querySelector('.password-input');
-passwordInputEl.addEventListener('focusout', validatePassword);
-passwordInputEl.addEventListener('focus', () => removeErrorMessage('.error-message-password'));
+passwordInputEl.addEventListener("focusout", () => {
+  const password = passwordInputEl.value;
+  const passwordValidation = PasswordValidator(password);
+  const regexValidation = validatePassword(password);
 
-// 비밀번호 확인 유효성 검사
+  if (!passwordValidation.success) {
+    showError(".error-message-password", passwordValidation.error);
+  } else if (!regexValidation.success) {
+    showError(".error-message-password", regexValidation.error);
+  }
+});
+
+passwordInputEl.addEventListener("focus", () =>
+  removeErrorMessage(".error-message-password")
+);
+
+/* 비밀번호 확인 유효성 검사 */
+
 function validatePasswordConfirmation() {
-  const passwordInputEl = document.querySelector('.password-input');
   const passwordValue = passwordInputEl.value;
-
   const confirmPasswordValue = confirmPasswordInputEl.value;
-
-  const errorMessageEl = document.querySelector('.error-message-password-confirm');
-
-  if(confirmPasswordValue !== passwordValue) {
-    errorMessageEl.textContent = "비밀번호가 일치하지 않아요.";
-    confirmPasswordInputEl.classList.add('wrongsign');
-    return false;
-  } else {
-    errorMessageEl.textContent = "";
-    confirmPasswordInputEl.classList.remove('wrongsign');
-    return true;
+  if (confirmPasswordValue !== passwordValue) {
+    return {
+      success: false,
+      error: "비밀번호가 일치하지 않습니다",
+    };
   }
+  return { success: true, error: null };
 }
 
-const confirmPasswordInputEl = document.querySelector('.confirm-password-input');
-confirmPasswordInputEl.addEventListener('keyup', validatePasswordConfirmation);
+confirmPasswordInputEl.addEventListener("keyup", () => {
+  const validation = validatePasswordConfirmation();
+
+  if (!validation.success) {
+    showError(".error-message-password-confirm", validation.error);
+  } else {
+    removeErrorMessage(".error-message-password-confirm");
+  }
+});
 
 /*폼 제출 동작*/
-const signform = document.querySelector('.sign-form');
-signform.addEventListener('submit', function(event) {
-  event.preventDefault(); // 폼 제출 동작 취소
-  
-  if (handleFormSubmit()) {
-    location.href = '../signin/folder.html'; // '/folder' 페이지로 이동
-  }
-});
 
-function handleFormSubmit() {
-  const isEmailValid = validateEmail();
-  const isPasswordValid = validatePassword();
-  const isPasswordConfirmationValid = validatePasswordConfirmation();
-  
-  return isEmailValid && isPasswordValid && isPasswordConfirmationValid;
+async function handleSubmit(e) {
+  e.preventDefault();
+
+  const email = emailInputEl.value;
+  const password = passwordInputEl.value;
+
+  const emailValidation = validateEmail(email);
+  if (!emailValidation.success) {
+    showError(".error-message-email", emailValidation.error);
+    return; // 유효하지 않은 이메일일 때 함수 종료
+  }
+
+  const passwordValidationResult = validatePassword(password);
+  if (!passwordValidationResult.success) {
+    showError(".error-message-password", passwordValidationResult.error);
+    return; // 유효하지 않은 비밀번호일 때 함수 종료
+  }
+
+  // 회원가입 요청
+  const signUpResult = await signUp(email, password);
+  if (signUpResult.success) {
+    localStorage.setItem("accessToken", signUpResult.accessToken);
+    location.href = "../signin/folder.html";
+  } else {
+    showError(".error-message-email", signUpResult.error);
+  }
 }
 
+signform.addEventListener("submit", handleSubmit);
+
 /*Enter키를 눌러도 로그인이 되도록 추가*/
-signform.addEventListener('keydown', (event) => {
-  if(event.key === "Enter") {
-    handleFormSubmit(event);
+signform.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    handleSubmit(event);
   }
 });
 
 /*눈 모양 아이콘*/
-const passwordInput = document.querySelector('.password-input');
-const confirmPasswordInput = document.querySelector('.confirm-password-input');
-const passwordToggleBtn = document.querySelector('.password-eye-button');
-const confirmPasswordToggleBtn = document.querySelector('.confirm-password-eye-button');
 
-passwordToggleBtn.addEventListener('click', () => togglePasswordVisibility(passwordInput, passwordToggleBtn));
-confirmPasswordToggleBtn.addEventListener('click', () => togglePasswordVisibility(confirmPasswordInput, confirmPasswordToggleBtn)); 
+passwordToggleBtn.addEventListener("click", () =>
+  togglePasswordVisibility(passwordInput, passwordToggleBtn)
+);
+confirmPasswordToggleBtn.addEventListener("click", () =>
+  togglePasswordVisibility(confirmPasswordInput, confirmPasswordToggleBtn)
+);
+
+export { isExistUser };
