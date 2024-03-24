@@ -28,13 +28,24 @@ function validate({ $email, $password, $passwordConfirm }) {
 
   if ($email) {
     const email = $email.value;
+    const adminEmail = "test@codeit.com";
     result.ok = false;
     if (!email) result.email = "이메일을 입력해 주세요.";
     else if (!checkEmail(email))
       result.email = "올바른 이메일 주소가 아닙니다.";
-    else if (isSignup && email === "test@codeit.com")
-      result.email = "이미 사용 중인 이메일입니다.";
-    else result.ok = true;
+    else if (isSignup && email === adminEmail) {
+      const bodyObject = { email: adminEmail };
+      fetch("https://bootcamp-api.codeit.kr/api/check-email", {
+        method: "POST",
+        body: JSON.stringify(bodyObject),
+      })
+        .then(() => {
+          result.ok = true;
+        })
+        .catch(() => {
+          result.email = "이미 사용 중인 이메일입니다.";
+        });
+    } else result.ok = true;
   }
 
   if ($password) {
@@ -88,7 +99,7 @@ function handlePasswordConfirm(event) {
 
 function handleLogin(event) {
   event.preventDefault();
-  const adminId = "test@codeit.com";
+  const adminEmail = "test@codeit.com";
   const adminPassword = "sprint101";
   const $email = event.target.email;
   const $password = event.target.password;
@@ -100,9 +111,10 @@ function handleLogin(event) {
     return;
   }
 
-  const isAdmin = $email.value === adminId && $password.value === adminPassword;
+  const isAdmin =
+    $email.value === adminEmail && $password.value === adminPassword;
   if (isAdmin) {
-    const bodyObject = { email: adminId, password: adminPassword };
+    const bodyObject = { email: adminEmail, password: adminPassword };
     fetch("https://bootcamp-api.codeit.kr/api/sign-in", {
       method: "POST",
       body: JSON.stringify(bodyObject),
