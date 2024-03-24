@@ -63,8 +63,8 @@ const login = async (e) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            email: 'test@codeit.com',
-            password: 'sprint101',
+            email: email.value,
+            password: pw.value,
         }),
     });
 
