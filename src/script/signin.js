@@ -5,11 +5,19 @@ const loginBtn = document.querySelector('.loginBtn');
 // 비밀번호 눈 아이콘
 const passwordEyes = document.querySelector('.password-eyes');
 
+//윈도우 로드시에 localStroge에 accessToken이 있을 때 folder페이지로 이동
+window.onload = function () {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+        location.href = './folder.html';
+    }
+};
+
 //emailInput focus-out시 이벤트 함수
 function idFocusOut(e) {
     let emailNotice = document.querySelector('.email-notice');
 
-    if(emailNotice) {
+    if (emailNotice) {
         email.style.borderColor = 'gray';
         emailNotice.remove();
     }
@@ -18,7 +26,7 @@ function idFocusOut(e) {
     emailInput.className = 'email-notice';
     emailInput.style.color = 'red';
 
-    if(e.target.value == '') {
+    if (e.target.value == '') {
         email.style.borderColor = 'red';
         emailInput.textContent = '이메일을 입력해주세요.';
         emailTag.append(emailInput);
@@ -32,12 +40,12 @@ function idFocusOut(e) {
 // passwordInput focus-out시 이벤트 함수
 function passwordFocusOut(e) {
     let pwNotice = document.querySelector('.password-notice');
-    if(pwNotice) {
+    if (pwNotice) {
         pw.style.borderColor = 'gray';
         pwNotice.remove();
     }
 
-    if (e.target.value=='') {
+    if (e.target.value == '') {
         const passwordInput = document.createElement('p');
         passwordInput.className = 'password-notice';
         passwordInput.textContent = '비밀번호를 입력해주세요.';
@@ -48,44 +56,57 @@ function passwordFocusOut(e) {
 }
 
 // 로그인 함수
-function login(e) {
-    if (email.value == testId && pw.value == testPassword) {
-        location.href='../folder.html';
+const login = async (e) => {
+    const response = await fetch('https://bootcamp-api.codeit.kr/api/sign-in', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            email: 'test@codeit.com',
+            password: 'sprint101',
+        }),
+    });
+
+    const data = await response.json();
+    localStorage.setItem('accessToken', data.data.accessToken);
+
+    if (response.status == 200) {
+        location.href = '../folder.html';
     } else {
         const loginCheck = document.querySelector('.login-check');
-
-        if(!loginCheck){
+        if (!loginCheck) {
             const notEmail = document.createElement('p');
             const notPassword = document.createElement('p');
-    
             notEmail.className = 'login-check';
             notEmail.style.color = 'red';
             notEmail.textContent = '이메일을 확인해주세요.';
+            email.style.borderColor = 'red';
             emailTag.append(notEmail);
-    
             notPassword.className = 'login-check';
             notPassword.style.color = 'red';
             notPassword.textContent = '비밀번호를 확인해주세요.';
+            pw.style.borderColor = 'red';
             passwordTag.append(notPassword);
         }
     }
-}
+};
 
 //로그인 버튼 Enter키 적용
-function enterLogin (e) {
+function enterLogin(e) {
     if (e.key === 'Enter') {
-      login();
+        login();
     }
 }
-  
+
 //눈 아이콘 눌렀을 때 비밀번호 보이기
 function showPassword(e) {
-    if(e.target.getAttribute('src') == '/static/img/noeyes.svg') {
-        e.target.setAttribute('src', '/static/img/eyes.svg');
-        pw.setAttribute('type', 'text')
+    if (pw.type == 'password') {
+        pw.type = 'text';
+        passwordEyes.setAttribute('src', '/src/img/eyes.svg');
     } else {
-        e.target.setAttribute('src', '/static/img/noeyes.svg'); 
-        pw.setAttribute('type', 'password')
+        pw.type = 'password';
+        passwordEyes.setAttribute('src', '/src/img/noeyes.svg');
     }
 }
 
@@ -99,4 +120,4 @@ loginBtn.addEventListener('click', login);
 email.addEventListener('keypress', enterLogin);
 pw.addEventListener('keypress', enterLogin);
 // 눈 아이콘 클릭 시 password 보이게 만드는 이벤트 함수 적용
-passwordEyes.addEventListener('click', showPassword)
+passwordEyes.addEventListener('click', showPassword);
