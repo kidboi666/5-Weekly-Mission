@@ -20,21 +20,28 @@ export function isEmailValid(email) {
 
 export function isPasswordValid(password) {
   const isEightLettersOrMore = password.length >= 8;
-  const hasNumberAndCharacter = password.match(/[0-9]/g) && password.match(/[a-zA-Z]/gi);
+  const hasNumberAndCharacter =
+    password.match(/[0-9]/g) && password.match(/[a-zA-Z]/gi);
   return isEightLettersOrMore && hasNumberAndCharacter;
 }
 
 export function togglePassword(input, toggleButton) {
   if (input.getAttribute("type") === "password") {
     input.setAttribute("type", "text");
-    toggleButton.getElementsByTagName("img")[0].setAttribute("src", "./image/eye-on.png");
+    toggleButton
+      .getElementsByTagName("img")[0]
+      .setAttribute("src", "./image/eye-on.png");
     return;
   }
   input.setAttribute("type", "password");
-  toggleButton.getElementsByTagName("img")[0].setAttribute("src", "./image/eye-off.svg");
+  toggleButton
+    .getElementsByTagName("img")[0]
+    .setAttribute("src", "./image/eye-off.svg");
 }
 
-export const TEST_USER = {
-  email: "test@codeit.com",
-  password: "codeit101",
-};
+export function checkAccessToken() {
+  const accessToken = localStorage.getItem("accessToken");
+  if (accessToken) {
+    location.href = "./folder.html";
+  }
+}

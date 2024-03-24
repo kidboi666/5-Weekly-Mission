@@ -4,15 +4,20 @@ import {
   isEmailValid,
   isPasswordValid,
   togglePassword,
-  TEST_USER,
+  checkAccessToken,
 } from "./utils.js";
 
 const emailInput = document.querySelector("#email");
 const emailErrorMessage = document.querySelector("#email-error-message");
-emailInput.addEventListener("focusout", (event) => validateEmailInput(event.target.value));
+emailInput.addEventListener("focusout", (event) =>
+  validateEmailInput(event.target.value)
+);
 function validateEmailInput(email) {
   if (email === "") {
-    setInputError({ input: emailInput, errorMessage: emailErrorMessage }, "이메일을 입력해주세요.");
+    setInputError(
+      { input: emailInput, errorMessage: emailErrorMessage },
+      "이메일을 입력해주세요."
+    );
     return false;
   }
   if (!isEmailValid(email)) {
@@ -22,20 +27,15 @@ function validateEmailInput(email) {
     );
     return false;
   }
-  if (email === TEST_USER.email) {
-    setInputError(
-      { input: emailInput, errorMessage: emailErrorMessage },
-      "이미 사용 중인 이메일입니다."
-    );
-    return false;
-  }
   removeInputError({ input: emailInput, errorMessage: emailErrorMessage });
   return true;
 }
 
 const passwordInput = document.querySelector("#password");
 const passwordErrorMessage = document.querySelector("#password-error-message");
-passwordInput.addEventListener("focusout", (event) => validatePasswordInput(event.target.value));
+passwordInput.addEventListener("focusout", (event) =>
+  validatePasswordInput(event.target.value)
+);
 
 function validatePasswordInput(password) {
   if (password === "" || !isPasswordValid(password)) {
@@ -45,31 +45,45 @@ function validatePasswordInput(password) {
     );
     return false;
   }
-  removeInputError({ input: passwordInput, errorMessage: passwordErrorMessage });
+  removeInputError({
+    input: passwordInput,
+    errorMessage: passwordErrorMessage,
+  });
   return true;
 }
 
 const confirmPasswordInput = document.querySelector("#confirm-password");
-const confirmPasswordErrorMessage = document.querySelector("#confirm-password-error-message");
+const confirmPasswordErrorMessage = document.querySelector(
+  "#confirm-password-error-message"
+);
 confirmPasswordInput.addEventListener("focusout", (event) =>
   validateConfirmPasswordInput(event.target.value)
 );
 function validateConfirmPasswordInput(confirmPassword) {
   if (confirmPassword === "" || !isPasswordValid(confirmPassword)) {
     setInputError(
-      { input: confirmPasswordInput, errorMessage: confirmPasswordErrorMessage },
+      {
+        input: confirmPasswordInput,
+        errorMessage: confirmPasswordErrorMessage,
+      },
       "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요."
     );
     return false;
   }
   if (passwordInput.value !== confirmPassword) {
     setInputError(
-      { input: confirmPasswordInput, errorMessage: confirmPasswordErrorMessage },
+      {
+        input: confirmPasswordInput,
+        errorMessage: confirmPasswordErrorMessage,
+      },
       "비밀번호가 일치하지 않아요."
     );
     return false;
   }
-  removeInputError({ input: confirmPasswordInput, errorMessage: confirmPasswordErrorMessage });
+  removeInputError({
+    input: confirmPasswordInput,
+    errorMessage: confirmPasswordErrorMessage,
+  });
   return true;
 }
 
@@ -78,21 +92,87 @@ passwordToggleButton.addEventListener("click", () =>
   togglePassword(passwordInput, passwordToggleButton)
 );
 
-const confirmPasswordToggleButton = document.querySelector("#confirm-password-toggle");
+const confirmPasswordToggleButton = document.querySelector(
+  "#confirm-password-toggle"
+);
 confirmPasswordToggleButton.addEventListener("click", () =>
   togglePassword(confirmPasswordInput, confirmPasswordToggleButton)
 );
 
 const signForm = document.querySelector("#form");
 signForm.addEventListener("submit", submitForm);
-function submitForm(event) {
+async function submitForm(event) {
   event.preventDefault();
 
   const isEmailInputValid = validateEmailInput(emailInput.value);
   const isPasswordInputValid = validatePasswordInput(passwordInput.value);
-  const isConfirmPasswordInputValid = validateConfirmPasswordInput(confirmPasswordInput.value);
-
-  if (isEmailInputValid && isPasswordInputValid && isConfirmPasswordInputValid) {
-    location.href = "/folder";
+  const isConfirmPasswordInputValid = validateConfirmPasswordInput(
+    confirmPasswordInput.value
+  );
+  const isRedundancyEmail = await redundancyEmails(event);
+  if (
+    isEmailInputValid &&
+    isPasswordInputValid &&
+    isConfirmPasswordInputValid &&
+    isRedundancyEmail
+  ) {
+    location.href = "./folder.html";
   }
 }
+
+const redundancyEmails = async (e) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch(
+      "https://bootcamp-api.codeit.kr/api/check-email",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: emailInput.value,
+        }),
+      }
+    );
+    if (!response.ok) {
+      throw new Error("실패");
+    }
+    register(e);
+  } catch (error) {
+    setInputError(
+      { input: emailInput, errorMessage: emailErrorMessage },
+      "이미 사용중인 이메일입니다."
+    );
+    console.error("Error:", error);
+    return false;
+  }
+};
+
+const register = async function (e) {
+  e.preventDefault();
+
+  try {
+    const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-up", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: emailInput.value,
+        password: passwordInput.value,
+      }),
+    });
+    if (!response.ok) {
+      throw new Error("실패");
+    }
+    const data = await response.json();
+    localStorage.setItem("accessToken", data.accessToken);
+    location.href = "./folder.html";
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+checkAccessToken();
