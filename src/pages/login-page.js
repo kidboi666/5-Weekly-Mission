@@ -15,15 +15,12 @@ const LoginContent = styled(Auth.Content)`
     width: 325px;
   }
 `;
-
 const LoginForm = styled(Auth.Form)`
   height: 393px;
 `;
-
 const LoginInputFrame = styled(Auth.InputFrame)`
   height: 225px;
 `;
-
 const ToSignup = styled(Auth.To)``;
 
 const LoginPage = function () {
@@ -36,11 +33,9 @@ const LoginPage = function () {
   const togglePasswordVisibility = () => {
     setPasswordShown(!passwordShown);
   };
-
   const handleEmailChange = (e) => {
     setEmail(e.target.value || "");
   };
-
   const handlePasswordChange = (e) => {
     setPassword(e.target.value || "");
   };
@@ -89,16 +84,6 @@ const LoginPage = function () {
 
     validateEmail(); // 이메일 유효성 검사
     validatePassword(); // 비밀번호 유효성 검사
-
-    // 이메일과 비밀번호가 모두 유효한 경우
-    // if (email === "test@codeit.com" && password === "codeit101") {
-    //   navigate("/folder"); // 페이지 리디렉션
-    // } else if (email && password && /\S+@\S+\.\S+/.test(email)) {
-    //   // 이메일 또는 비밀번호가 유효하지 않은 경우, 에러 메시지 설정
-    //   if (email !== "test@codeit.com") setEmailError("이메일을 확인해 주세요.");
-    //   if (password !== "codeit101")
-    //     setPasswordError("비밀번호를 확인해 주세요.");
-    // }
 
     if (email && password && /\S+@\S+\.\S+/.test(email)) {
       try {

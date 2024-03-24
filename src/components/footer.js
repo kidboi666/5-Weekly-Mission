@@ -20,8 +20,8 @@ const Footer = function () {
         <ContentsFrame>
           <Codeit>©codeit - 2023</Codeit>
           <Linkbox>
-		    <StyledLink href="/" class="footer__policy"> Privacy Policy </StyledLink>
-            <StyledLink href="/" class="footer__FAQ"> FAQ </StyledLink>
+		    <StyledLink href="/"> Privacy Policy </StyledLink>
+            <StyledLink href="/"> FAQ </StyledLink>
 		  </Linkbox>
           <Iconbox>
             <Link href="https://www.facebook.com/" target="_blank">

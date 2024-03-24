@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import * as Auth from "../components/auth";
 import { ButtonLabel } from "../components/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SignupContent = styled(Auth.Content)`
@@ -15,11 +15,9 @@ const SignupContent = styled(Auth.Content)`
     width: 325px;
   }
 `;
-
 const SignupForm = styled(Auth.Form)`
   height: 529px;
 `;
-
 const SignupInputFrame = styled(Auth.InputFrame)`
   height: 338px;
 `;
@@ -41,15 +39,12 @@ const SignupPage = function () {
   const toggleCheckVisibility = () => {
     setPasswordCheckShown(!passwordCheckShown);
   };
-
   const handleEmailChange = (e) => {
     setEmail(e.target.value || "");
   };
-
   const handlePasswordChange = (e) => {
     setPassword(e.target.value || "");
   };
-
   const handlePasswordCheckChange = (e) => {
     setPasswordCheck(e.target.value || "");
   };
@@ -65,7 +60,6 @@ const SignupPage = function () {
       setEmailError("");
     }
   };
-
   const validatePassword = () => {
     const hasLetters = /[a-zA-Z]/.test(password);
     const hasNumbers = /\d/.test(password);
@@ -78,7 +72,6 @@ const SignupPage = function () {
       setPasswordError("");
     }
   };
-
   const validatePasswordCheck = () => {
     if (!passwordCheck) {
       setPasswordCheckError("비밀번호를 입력해 주세요.");
@@ -94,13 +87,11 @@ const SignupPage = function () {
       setEmailError("");
     }
   };
-
   const cancelPasswordError = () => {
     if (!email) {
       setPasswordError("");
     }
   };
-
   const cancelPasswordCheckError = () => {
     if (!email) {
       setPasswordCheckError("");
@@ -109,33 +100,53 @@ const SignupPage = function () {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // 폼 기본 제출 동작 방지
-
-    // 모든 입력 필드의 유효성 검사를 수행합니다.
-    validateEmail();
-    validatePassword();
-    validatePasswordCheck();
-
-    const hasLetters = /[a-zA-Z]/.test(password);
-    const hasNumbers = /\d/.test(password);
-    const isLongEnough = password.length >= 8;
-    // 모든 유효성 검사가 통과되었는지 확인합니다.
-    if (
-      password &&
-      passwordCheck &&
-      email &&
-      /\S+@\S+\.\S+/.test(email) &&
-      !(email === "test@codeit.com") &&
-      isLongEnough &&
-      hasLetters &&
-      hasNumbers &&
-      password === passwordCheck
-    ) {
-      // 유효한 회원가입 시도: "/folder"로 리디렉션합니다.
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
       navigate("/folder");
     }
-    // 유효성 검사에 실패한 경우, 에러 메시지가 각 입력 필드 아래에 이미 설정되었습니다.
+  }, [navigate]);
+
+  const handleSubmit = async (e) => {
+	e.preventDefault(); // 폼 기본 제출 동작 방지
+	await validateEmail(); // 비동기 이메일 유효성 검사 및 중복 검사
+	validatePassword();
+	validatePasswordCheck();
+
+	const hasLetters = /[a-zA-Z]/.test(password);
+    const hasNumbers = /\d/.test(password);
+    const isLongEnough = password.length >= 8;
+
+	// 유효성 검사가 모두 통과되었는지 확인합니다.
+	if (password &&
+		passwordCheck &&
+		email &&
+		/\S+@\S+\.\S+/.test(email) &&
+		isLongEnough &&
+		hasLetters &&
+		hasNumbers &&
+		password === passwordCheck) {
+	  try {
+		const response = await fetch("https://bootcamp-api.codeit.kr/api/sign-up", {
+		  method: "POST",
+		  headers: {
+			"Content-Type": "application/json",
+		  },
+		  body: JSON.stringify({ email, password }),
+		});
+  
+		if (response.ok) {
+		  const { accessToken } = await response.json();
+		  localStorage.setItem("accessToken", accessToken);
+		  navigate("/folder");
+		} else {
+		  console.error("회원가입 실패");
+		  // 여기에 회원가입 실패시 처리 로직을 추가할 수 있습니다.
+		}
+	  } catch (error) {
+		console.error("회원가입 요청 실패:", error);
+	  }
+	}
   };
 
   return (
