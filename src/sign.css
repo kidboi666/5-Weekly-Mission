@@ -46,7 +46,7 @@ header {
   font-weight: 600;
   line-height: normal;
   color: var(--primary);
-  text-decoration: 0.1rem solid var(--primary);
+  border-bottom: 0.1rem solid var(--primary);
 }
 
 .sign-box {
