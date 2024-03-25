@@ -20,12 +20,10 @@ export function textCheck() {
 
   checkEmailRequest(email);
 
-  if (emailLength) {
-    if (!isEmailValid) {
-      inputEmail.classList.remove("sign-focus");
-      inputEmail.classList.add("error-border");
-      emailErrorMessage.innerHTML = "올바른 이메일 주소가 아닙니다.";
-    }
+  if (!isEmailValid) {
+    inputEmail.classList.remove("sign-focus");
+    inputEmail.classList.add("error-border");
+    emailErrorMessage.innerHTML = "올바른 이메일 주소가 아닙니다.";
   }
 
   if (!emailLength) {
