@@ -10,4 +10,4 @@ const testPassword = 'codeit101';
 //이메일 유효성 검사
 const emailCheck = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+$/;
 
-export {email, emailTag, pw, passwordTag, testId, testPassword, emailCheck}
+export { email, emailTag, pw, passwordTag, testId, testPassword, emailCheck };
