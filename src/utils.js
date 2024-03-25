@@ -11,8 +11,3 @@ export function eyeToggleButton(input, toggleBtn) {
     .getElementsByTagName("img")[0]
     .setAttribute("src", "./img/signin/eye-off.svg");
 }
-
-export const TEST_USER = {
-  email: "test@codeit.com",
-  password: "codeit101",
-};

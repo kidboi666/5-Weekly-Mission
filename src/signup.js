@@ -1,4 +1,4 @@
-import { TEST_USER, eyeToggleButton } from "./utils.js";
+import { eyeToggleButton } from "./utils.js";
 
 // form
 const signForm = document.querySelector("#form");
@@ -64,22 +64,37 @@ function InputPasswordVerifyFunc(e) {
   styleVerifyBtn.classList.remove("fix-eye-btn");
 }
 
-function submitForm(e) {
+async function submitForm(e) {
   e.preventDefault();
 
-  const isUserValidation =
-    inputEmail.value !== TEST_USER.email &&
-    emailValidation.test(inputEmail.value) &&
-    pwdValidation.test(inputPassword.value && inputPasswordVerify.value);
+  try {
+    const response = await fetch(
+      "https://bootcamp-api.codeit.kr/api/check-email",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: inputEmail.value,
+        }),
+      }
+    );
+    const { data } = await response.json();
 
-  if (isUserValidation) {
-    location.href = "./folder.html";
-    return;
+    if (response.ok) {
+      localStorage.setItem("accessToken", data.accessToken);
+      location.href = "/folder.html";
+      return;
+    }
+    if (!response.ok) {
+      emailErrorMsg.textContent = "이메일을 확인해주세요.";
+      styleBtn.classList.add("fix-eye-btn");
+      return;
+    }
+  } catch (error) {
+    console.error(error);
   }
-  emailErrorMsg.textContent = "이메일을 다시 확인해주세요.";
-  pwdErrorMsg.textContent = "비밀번호를 다시 확인해주세요.";
-  pwdVerifyErrorMsg.textContent = "비밀번호 확인란을 다시 확인해주세요.";
-  styleVerifyBtn.classList.add("fix-eye-btn");
 }
 
 // event handling
