@@ -9,29 +9,29 @@
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
     <link rel="stylesheet" href="./src/sign.css" />
-    
   </head>
   <body>
     <header>
       <a class="logo-link" href="index.html">
-        <img class="header-logo" src="./images/logo.svg" alt="홈으로 연결된 Linkbrary 로고" />
+        <img
+          class="header-logo"
+          src="./images/logo.svg"
+          alt="홈으로 연결된 Linkbrary 로고"
+        />
       </a>
       <p class="header-message">
-        회원이 아니신가요?<a class="header-link" href="signup.html">회원 가입하기</a>
+        회원이 아니신가요?<a class="header-link" href="signup.html"
+          >회원 가입하기</a
+        >
       </p>
     </header>
     <div class="sign-box">
-      <form class="sign-form" onsubmit="login(event);">
+      <div class="sign-form">
         <div class="sign-inputs">
           <div class="sign-input-box">
             <label class="sign-input-label">이메일</label>
             <input class="sign-input input-email" />
             <p class="error error-email"></p>
-            <!-- <div class="error-box">
-              <p class="error email-empty">이메일을 입력해주세요.</p>
-              <p class="error email-check">올바른 이메일 주소가 아닙니다.</p>
-              <p class="error email-fail">이메일을 확인해 주세요.</p>
-            </div>        -->
           </div>
           <div class="sign-input-box sign-password">
             <label class="sign-input-label">비밀번호</label>
@@ -40,14 +40,10 @@
               <img src="./images/eye-off.svg" />
             </button>
             <p class="error error-pw"></p>
-            <!-- <div class="error-box">
-              <p class="error pw-empty">비밀번호를 입력해주세요.</p>
-              <p class="error fail">비밀번호를 확인해 주세요.</p>
-            </div>    -->
           </div>
         </div>
-        <button class="cta" type="submit">로그인</button>
-      </form>
+        <button class="cta">로그인</button>
+      </div>
       <div class="sns-box">
         <span class="sns-text">소셜 로그인</span>
         <div class="sns-links">
@@ -63,4 +59,3 @@
     <script type="text/javascript" src="./src/signin.js"></script>
   </body>
 </html>
-
