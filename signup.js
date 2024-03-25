@@ -1,3 +1,15 @@
+import {
+    addErrorSign,
+    removeErrorSign,
+    checkEmailValid,
+    checkPwdValid,
+    checkError,
+    setEyeOff,
+    setEyeOn
+} from "./utils.js";
+
+import { signUpUrl, checkEmailUrl } from "./api.js"
+
 const emailInput = document.querySelector('.email-input');
 const pwdInput = document.querySelector('.pwd-input');
 const pwdCheckInput = document.querySelector('.pwd-input-check');
@@ -8,141 +20,125 @@ const signUpButton = document.querySelector('.button-sign');
 const pwdWrapper = document.querySelector(".pwd-input-wrapper");
 const pwdCheckWrapper = document.querySelector(".pwd-input-check-wrapper");
 const input = document.querySelectorAll('input');
-const VALID_EMAIL = 'test@codeit.com';
-import {checkEmailValid, addEmailErrorSign, addPwdErrorSign, removeEmailErrorSign, removePwdErrorSign} from './signin.js';
 
-function checkPwdValid(pwdValue) {	
-    const pwd_regex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/i;
-    return pwd_regex.test(pwdValue);
+function checkSignUpValid() {
+    checkEmailDuplicated();
+    if (emailInput.value === '') {
+        emailError.innerText = '이메일을 입력해주세요';
+        addErrorSign(emailInput,emailError);
+    }
+    if (pwdInput.value === '') {
+        pwdError.innerText = '이메일을 입력해주세요';
+        addErrorSign(pwdInput,pwdError);
+    }
+    if (pwdCheckInput.value !== pwdInput.value) {
+        pwdCheckError.classList.remove('hide'); 
+        addErrorSign(pwdCheckInput,pwdCheckError);
+        pwdCheckError.innerText = '비밀번호가 맞지 않습니다.';
+    } else {
+        removeErrorSign(pwdCheckInput,pwdCheckError);
+    }
+    if (!checkError()) {
+        postIdPwd();
+    }
 }
 
-function checkError() {
-    if (document.querySelector('.error-border')) return true;
-    else return false;
+async function checkEmailDuplicated() {  
+    try {
+        const res = await fetch(checkEmailUrl, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                "email": emailInput.value,
+            })
+        });
+        if (!res.ok) {
+            throw new Error('Email already exists');
+        } 
+    } catch {
+        addErrorSign(emailInput, emailError);
+        emailError.innerText = '중복된 이메일입니다.'
+    }
 }
 
-function addPwdCheckErrorSign() {
-    pwdCheckError.classList.remove('hide');
-    pwdCheckInput.classList.add('error-border');
+async function postIdPwd() {  
+    const res = await fetch(signUpUrl, {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+            "email": emailInput.value,
+            "password": pwdInput.value,
+        })
+    });
+    const result = await res.json();
+    const signUpToken = result.data.accessToken;
+    localStorage.setItem('signUpToken',signUpToken);
+    location.href = 'folder.html';
 }
 
-function removePwdCheckErrorSign() {
-    pwdCheckError.classList.add('hide');
-    pwdCheckInput.classList.remove('error-border');
-}
+function checkToken() {
+    const token = localStorage.getItem('signUpToken');
+    if (token) {
+        location.href = 'folder.html';
+    }
+};
+
+checkToken();
 
 emailInput.addEventListener('focusout', () => {
     if (emailInput.value === '') {
         emailError.innerText = '이메일을 입력해주세요';
-        addEmailErrorSign();
-    } 
-    else {
-        removeEmailErrorSign();
+        addErrorSign(emailInput, emailError);
+    } else {
+        removeErrorSign(emailInput, emailError);
         if (!checkEmailValid(emailInput.value)) {
-            addEmailErrorSign();
+            addErrorSign(emailInput, emailError);
             emailError.innerText = '이메일을 형식을 확인해주세요';
-        }
-        if (emailInput.value === VALID_EMAIL) {
-            emailError.innerText = '이미 사용중인 이메일입니다';
-            addEmailErrorSign();
         }
     }
 });
 
 pwdInput.addEventListener('focusout', () => {
     if (pwdInput.value === '') {
-        addPwdErrorSign();
+        addErrorSign(pwdInput, pwdError);
         pwdError.innerText = '비밀번호를 입력해주세요';
-    }
-    else {
-        removePwdErrorSign();
+    } else {
+        removeErrorSign(pwdInput, pwdError);
         if (!checkPwdValid(pwdInput.value)) {
             pwdError.innerText = '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.';
-            addPwdErrorSign();
+            addErrorSign(pwdInput, pwdError);
         }
     }
 });
 
 emailInput.addEventListener('focusin', () => {
-    removeEmailErrorSign();
+    removeErrorSign(emailInput, emailError);
 });
 
 pwdInput.addEventListener('focusin', () => {
-    removePwdErrorSign();
+    removeErrorSign(pwdInput, pwdError);
 });
 
 pwdCheckInput.addEventListener('focusin', () => {
-    removePwdCheckErrorSign();
+    removeErrorSign(pwdCheckInput, pwdCheckError);
 });
 
 input.forEach(element => {
     element.addEventListener('keyup', (e) => { 
-        if (e.keyCode === 13){
-            if (emailInput.value === '') {
-                emailError.innerText = '이메일을 입력해주세요';
-                addEmailErrorSign();
-            }
-            if (pwdInput.value === '') {
-                pwdError.innerText = '비밀번호를 입력해주세요';
-                addPwdErrorSign
-            }
-            if (pwdCheckInput.value === pwdInput.value) {
-                removePwdCheckErrorSign();
-            } else {
-                addPwdCheckErrorSign();
-                pwdCheckError.innerText = '비밀번호가 일치하지 않아요';
-            }
-            if (!checkError()) {
-                location.href = 'folder.html';
-            }
-        }
+        if (e.keyCode === 13) checkSignUpValid();
     });
 });
 
-pwdWrapper.addEventListener('mousedown', (e) => {
-    if (e.target.classList.contains('eyeOnOff')) {
-        pwdInput.setAttribute('type','text');
-        e.target.setAttribute("src","images/eye-on.svg");
-    }
-});
+signUpButton.addEventListener('click', checkSignUpValid);
 
-pwdWrapper.addEventListener('mouseup', (e) => {
-    if (e.target.classList.contains('eyeOnOff')) {
-        pwdInput.setAttribute('type','password');
-        e.target.setAttribute("src","images/eye-off.svg");
-    }
-});
+pwdWrapper.addEventListener('mousedown', setEyeOn);
 
-pwdCheckWrapper.addEventListener('mousedown', (e) => {
-    if (e.target.classList.contains('eyeOnOff')) {
-        pwdCheckInput.setAttribute('type','text');
-        e.target.setAttribute("src","images/eye-on.svg");
-    }
-});
+pwdWrapper.addEventListener('mouseup', setEyeOff) ;
 
-pwdCheckWrapper.addEventListener('mouseup', (e) => {
-    if (e.target.classList.contains('eyeOnOff')) {
-        pwdCheckInput.setAttribute('type','password');
-        e.target.setAttribute("src","images/eye-off.svg");
-    }
-});
+pwdCheckWrapper.addEventListener('mousedown', setEyeOn);
 
-signUpButton.addEventListener('click', () => {
-    if (emailInput.value === '') {
-        emailError.innerText = '이메일을 입력해주세요';
-        addEmailErrorSign();
-    }
-    if (pwdInput.value === '') {
-        pwdError.innerText = '이메일을 입력해주세요';
-        addPwdErrorSign();
-    }
-    if (pwdCheckInput.value !== pwdInput.value) {
-        pwdCheckError.classList.remove('hide'); 
-        addPwdCheckErrorSign();
-    } else {
-        removePwdCheckErrorSign();
-    }
-    if (!checkError()) {
-        location.href = 'folder.html';
-    }
-});
+pwdCheckWrapper.addEventListener('mouseup', setEyeOff) ;
