@@ -1,5 +1,8 @@
+import { testSignin, testEmail } from "../commons/reset.js";
+
 const URL = "https://bootcamp-api.codeit.kr/api";
 
+// 로그인
 export const signinRequest = async (email, password) => {
   try {
     const response = await fetch(`${URL}/sign-in`, {
@@ -14,22 +17,11 @@ export const signinRequest = async (email, password) => {
     });
 
     if (response.ok) {
-      console.log(200);
       window.location.href = "/folder.html";
     }
 
     if (!response.ok) {
-      // 수정 필요
-      const emailErrorMessage = document.querySelector(".email-error-message");
-      const pwErrorMessage = document.querySelector(".pw-error-message");
-      const inputEmail = document.querySelector("#input-email");
-      const inputPassword = document.querySelector("#input-pw");
-
-      inputEmail.classList.add("error-border");
-      inputPassword.classList.add("error-border");
-      emailErrorMessage.innerHTML = "이메일을 확인해 주세요.";
-      pwErrorMessage.innerHTML = "비밀번호를 확인해 주세요.";
-
+      testSignin();
       throw new Error("이메일 및 비밀번호를 확인해주세요.");
     }
   } catch (error) {
@@ -51,6 +43,7 @@ export const checkEmailRequest = async (email) => {
     });
 
     if (response.status === 409) {
+      testEmail();
       throw new Error("이미 사용 중인 이메일입니다.");
     }
   } catch (error) {
@@ -73,7 +66,7 @@ export const signupRequest = async (email, password, passwordConfirm) => {
       }),
     });
 
-    if (!response.status === 409) {
+    if (response.ok) {
       window.location.href = "/folder.html";
     }
   } catch (error) {

@@ -1,4 +1,4 @@
-import { togglePassword } from "./commons/utils.js";
+import { togglePassword, confirmEyeToggle } from "./commons/utils.js";
 import { textCheck, textCheckPw, textCheckPwConfirm } from "./signupCheck.js";
 import {
   $form,
@@ -22,20 +22,19 @@ function validate({ email, password, passwordConfirm }) {
   reset();
 
   // 수정
-  if (checkEmailRequest(email)) {
-    inputEmail.classList.add("error-border");
-    emailErrorMessage.innerHTML = "이미 사용 중인 이메일입니다.";
-  }
+  checkEmailRequest(email);
 
   if (emailLength) {
     inputEmail.classList.add("error-border");
     emailErrorMessage.innerHTML = "이메일을 입력해 주세요.";
+    return;
   }
 
   if (!passwordCheck) {
     inputPassword.classList.add("error-border");
     inputPasswordConfirm.classList.add("error-border");
     pwConfirmErrorMessage.innerHTML = "비밀번호가 일치하지 않아요.";
+    return;
   }
 
   if (!isPasswordValid) {
@@ -43,6 +42,7 @@ function validate({ email, password, passwordConfirm }) {
     inputPasswordConfirm.classList.add("error-border");
     pwErrorMessage.innerHTML =
       "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.";
+    return;
   }
 
   // 모든 조건에 적합한 경우
@@ -68,8 +68,7 @@ function handleSubmit(event) {
 $form.addEventListener("submit", handleSubmit);
 
 eyeButton.addEventListener("click", togglePassword);
-confirmEyeButton.addEventListener("click", togglePassword);
-// confirmEyeButton.addEventListener("click", confirmEyeToggle);
+confirmEyeButton.addEventListener("click", confirmEyeToggle);
 
 // 이메일, 비밀번호 형식 확인
 inputEmail.addEventListener("blur", textCheck);

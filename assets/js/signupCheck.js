@@ -23,8 +23,6 @@ export function textCheck() {
   reset();
 
   if (checkEmailRequest(email)) {
-    inputEmail.classList.add("error-border");
-    emailErrorMessage.innerHTML = "이미 사용 중인 이메일입니다.";
   }
   if (emailLength) {
     if (!isEmailValid) {

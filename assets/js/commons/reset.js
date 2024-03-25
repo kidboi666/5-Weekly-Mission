@@ -31,6 +31,18 @@ export function reset() {
   pwConfirmErrorMessage.innerHTML = "";
 }
 
+export function testSignin() {
+  inputEmail.classList.add("error-border");
+  inputPassword.classList.add("error-border");
+  emailErrorMessage.innerHTML = "이메일을 확인해 주세요.";
+  pwErrorMessage.innerHTML = "비밀번호를 확인해 주세요.";
+}
+
+export function testEmail() {
+  inputEmail.classList.add("error-border");
+  emailErrorMessage.innerHTML = "이미 사용 중인 이메일입니다.";
+}
+
 export {
   $form,
   inputEmail,

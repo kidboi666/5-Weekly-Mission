@@ -16,14 +16,6 @@ function validate({ email, password }) {
     // 문제가 전혀 없을 경우
     // window.location.href = "/folder.html";
   }
-
-  // if (){
-  //   //input 테두리 색 변경
-  //   inputEmail.classList.add("error-border");
-  //   inputPassword.classList.add("error-border");
-  //   emailErrorMessage.innerHTML = "이메일을 확인해 주세요.";
-  //   pwErrorMessage.innerHTML = "비밀번호를 확인해 주세요.";
-  // }
 }
 
 // form에서 로그인 클릭했을 때
