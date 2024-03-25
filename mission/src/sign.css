@@ -90,9 +90,9 @@ header {
   border-color: var(--primary);
 }
 
-.pwdErrorLine,
-.emailErrorLine,
-.pwdCheckErrorLine {
+.pwd-error-line,
+.email-error-line,
+.pwd-check-error-line {
   border-color: var(--red);
 }
 

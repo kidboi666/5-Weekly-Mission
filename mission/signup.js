@@ -3,11 +3,11 @@ import { API_URL } from "./Api.js";
 
 const email = document.getElementById("email");
 const password = document.getElementById("password");
-const passwordCheck = document.getElementById("passwordCheck");
-const showPassword = document.getElementById("showPassword");
+const passwordCheck = document.getElementById("password-check");
+const showPassword = document.getElementById("show-password");
 const passwordField = document.getElementById("password");
-const showPasswordCheck = document.getElementById("showPasswordCheck");
-const passwordCheckField = document.getElementById("passwordCheck");
+const showPasswordCheck = document.getElementById("show-password-check");
+const passwordCheckField = document.getElementById("password-check");
 
 //입력칸이 빈칸이거나, 올바른 이메일 형식이 아니거나 이미 사용 중인 이메일을 입력 할 때, 에러문구 출력기능
 email.addEventListener("focusout", function () {
@@ -16,16 +16,16 @@ email.addEventListener("focusout", function () {
 
   if (emailInput === "") {
     emailError.textContent = "이메일을 입력해 주세요.";
-    this.classList.add("emailErrorLine");
+    this.classList.add("email-error-line");
   } else if (!validateEmail(emailInput)) {
     emailError.textContent = "올바른 이메일 주소가 아닙니다.";
-    this.classList.add("emailErrorLine");
+    this.classList.add("email-error-line");
   } else if (emailInput === testUser.email) {
     emailError.textContent = "이미 사용 중인 이메일입니다.";
-    this.classList.add("emailErrorLine");
+    this.classList.add("email-error-line");
   } else {
     emailError.textContent = "";
-    this.classList.remove("emailErrorLine");
+    this.classList.remove("email-error-line");
   }
 });
 
@@ -38,10 +38,10 @@ password.addEventListener("focusout", function () {
 
   if (passwordInput.length < 8 || num < 0 || eng < 0) {
     pwdError.textContent = "비밀번호는 영문,숫자 조합 8자 이상 입력해 주세요.";
-    this.classList.add("pwdErrorLine");
+    this.classList.add("pwd-error-line");
   } else {
     pwdError.textContent = "";
-    this.classList.remove("pwdErrorLine");
+    this.classList.remove("pwd-error-line");
   }
 });
 
@@ -49,14 +49,14 @@ password.addEventListener("focusout", function () {
 passwordCheck.addEventListener("focusout", function () {
   const passwordInput = password.value.trim();
   const passwordCheckInput = passwordCheck.value.trim();
-  const pwdCheckerError = document.getElementById("pwdCheckerError");
+  const pwdCheckerError = document.getElementById("pwd-checker-error");
 
   if (passwordInput === passwordCheckInput) {
     pwdCheckerError.textContent = "";
-    this.classList.remove("pwdErrorLine");
+    this.classList.remove("pwd-error-line");
   } else {
     pwdCheckerError.textContent = "비밀번호가 일치하지 않아요.";
-    this.classList.add("pwdErrorLine");
+    this.classList.add("pwd-error-line");
   }
 });
 
@@ -75,7 +75,7 @@ document.addEventListener("keydown", function submitByEnter(e) {
 //   const eng = passwordInput.search(/[a-z]/gi);
 //   const pwdError = document.getElementById("pwd-error");
 //   const emailError = document.getElementById("email-error");
-//   const pwdCheckerError = document.getElementById("pwdCheckerError");
+//   const pwdCheckerError = document.getElementById("pwd-checker-error");
 
 //   // 입력된 이메일과 비밀번호가, 요구된 사항과 같은지 검사
 //   if (
@@ -116,7 +116,7 @@ async function CheckSingupEmail() {
     return;
   } catch (error) {
     emailError.textContent = "이미 사용 중인 이메일입니다.";
-    email.classList.add("emailErrorLine");
+    email.classList.add("email-error-line");
   }
 }
 
@@ -150,9 +150,9 @@ async function isAuthSignup() {
       const emailError = document.getElementById("email-error");
       const pwdError = document.getElementById("pwd-error");
       emailError.textContent = "이메일을 확인해 주세요.";
-      email.classList.add("emailErrorLine");
+      email.classList.add("email-error-line");
       pwdError.textContent = "비밀번호를 확인해 주세요.";
-      password.classList.add("pwdErrorLine");
+      password.classList.add("pwd-error-line");
     }
 }
 

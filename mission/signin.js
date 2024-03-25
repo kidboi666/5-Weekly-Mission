@@ -3,7 +3,7 @@ import { API_URL } from "./Api.js";
 
 const email = document.getElementById("email");
 const password = document.getElementById("password");
-const showPassword = document.getElementById("showPassword");
+const showPassword = document.getElementById("show-password");
 const passwordField = document.getElementById("password");
 
 const checkSignInToken = function () {
@@ -20,13 +20,13 @@ email.addEventListener("focusout", function () {
 
   if (emailInput === "") {
     emailError.textContent = "이메일을 입력해 주세요.";
-    email.classList.add("emailErrorLine");
+    email.classList.add("email-error-line");
   } else if (!validateEmail(emailInput)) {
     emailError.textContent = "올바른 이메일 주소가 아닙니다.";
-    email.classList.add("emailErrorLine");
+    email.classList.add("email-errorline");
   } else {
     emailError.textContent = "";
-    email.classList.remove("emailErrorLine");
+    email.classList.remove("email-error-line");
   }
 });
 
@@ -37,10 +37,10 @@ password.addEventListener("focusout", function () {
 
   if (passwordInput === "") {
     pwdError.textContent = "비밀번호를 입력해 주세요.";
-    this.classList.add("pwdErrorLine");
+    this.classList.add("pwd-error-line");
   } else {
     pwdError.textContent = "";
-    this.classList.remove("pwdErrorLine");
+    this.classList.remove("pwd-error-line");
   }
 });
 
@@ -98,9 +98,9 @@ async function isAuthSignin() {
     const emailError = document.getElementById("email-error");
     const pwdError = document.getElementById("pwd-error");
     emailError.textContent = "이메일을 확인해 주세요.";
-    email.classList.add("emailErrorLine");
+    email.classList.add("email-error-line");
     pwdError.textContent = "비밀번호를 확인해 주세요.";
-    password.classList.add("pwdErrorLine");
+    password.classList.add("pwd-error-line");
   }
 }
 
