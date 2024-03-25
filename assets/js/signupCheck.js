@@ -1,4 +1,5 @@
 import {
+  reset,
   inputEmail,
   inputPassword,
   inputPasswordConfirm,
@@ -8,6 +9,7 @@ import {
   passwordPattern,
   emailPattern,
 } from "./commons/reset.js";
+import { checkEmailRequest } from "./api/api.js";
 
 // 회원가입용 형식 검증
 // 이메일
@@ -18,10 +20,9 @@ export function textCheck() {
   // });
   const emailLength = email.length > 0;
   const isEmailValid = emailPattern.test(email);
-  inputEmail.classList.remove("error-border");
-  emailErrorMessage.innerHTML = "";
+  reset();
 
-  if (emailTest(email)) {
+  if (checkEmailRequest(email)) {
     inputEmail.classList.add("error-border");
     emailErrorMessage.innerHTML = "이미 사용 중인 이메일입니다.";
   }

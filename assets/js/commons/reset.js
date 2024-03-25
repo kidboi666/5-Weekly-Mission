@@ -1,25 +1,21 @@
 const $form = document.querySelector("#form__inputForm");
 
+// 에러 메시지
 const emailErrorMessage = document.querySelector(".email-error-message");
 const pwErrorMessage = document.querySelector(".pw-error-message");
 const pwConfirmErrorMessage = document.querySelector(
   ".pw-confirm-error-message"
 );
 
+// 사용자 입력
 const inputEmail = document.querySelector("#input-email");
 const inputPassword = document.querySelector("#input-pw");
 const inputPasswordConfirm = document.querySelector("#input-pw-confirm");
 
+// 버튼
 const eyeButton = document.querySelector(".sign-pw__eye-btn");
 const confirmEyeButton = document.querySelector("#confirm-btn");
 
-// 테스트 데이터
-// const data = [
-//   {
-//     email: "test@codeit.com",
-//     password: "codeit101",
-//   },
-// ];
 // 비밀번호 형식
 const passwordPattern = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,20}$/;
 // 이메일 형식

@@ -1,4 +1,4 @@
-import { eyeToggle } from "./commons/utils.js";
+import { togglePassword } from "./commons/utils.js";
 import { textCheck, textCheckPw } from "./signinCheck.js";
 import {
   $form,
@@ -8,15 +8,11 @@ import {
   pwErrorMessage,
   eyeButton,
 } from "./commons/reset.js";
-import { requestTest } from "./api/api.js";
+import { signinRequest } from "./api/api.js";
 
 // 로그인 클릭했을 때 에러 메시지
 function validate({ email, password }) {
-  // const userExists = data.find((user) => {
-  //   return user.email === email && user.password === password;
-  // });
-
-  if (requestTest(email, password)) {
+  if (signinRequest(email, password)) {
     // 문제가 전혀 없을 경우
     // window.location.href = "/folder.html";
   }
@@ -47,7 +43,7 @@ export function handleSubmit(event) {
 
 $form.addEventListener("submit", handleSubmit);
 
-eyeButton.addEventListener("click", eyeToggle);
+eyeButton.addEventListener("click", togglePassword);
 
 inputEmail.addEventListener("blur", textCheck);
 inputPassword.addEventListener("blur", textCheckPw);
