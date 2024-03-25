@@ -4,18 +4,13 @@ import {
   $form,
   inputEmail,
   inputPassword,
-  emailErrorMessage,
-  pwErrorMessage,
   eyeButton,
 } from "./commons/reset.js";
 import { signinRequest } from "./api/api.js";
 
 // 로그인 클릭했을 때 에러 메시지
 function validate({ email, password }) {
-  if (signinRequest(email, password)) {
-    // 문제가 전혀 없을 경우
-    // window.location.href = "/folder.html";
-  }
+  signinRequest(email, password);
 }
 
 // form에서 로그인 클릭했을 때

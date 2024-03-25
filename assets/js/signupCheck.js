@@ -11,19 +11,15 @@ import {
 } from "./commons/reset.js";
 import { checkEmailRequest } from "./api/api.js";
 
-// 회원가입용 형식 검증
 // 이메일
 export function textCheck() {
   const email = inputEmail.value;
-  // const user = data.find((d) => {
-  //   return d.email === email;
-  // });
   const emailLength = email.length > 0;
   const isEmailValid = emailPattern.test(email);
   reset();
 
-  if (checkEmailRequest(email)) {
-  }
+  checkEmailRequest(email);
+
   if (emailLength) {
     if (!isEmailValid) {
       inputEmail.classList.remove("sign-focus");

@@ -32,7 +32,7 @@ export const signinRequest = async (email, password) => {
   }
 };
 
-// 이메일 중복 확인 409
+// 이메일 중복 확인
 export const checkEmailRequest = async (email) => {
   try {
     const response = await fetch(`${URL}/check-email`, {
