@@ -28,9 +28,14 @@ async function postIdPwd() {
                 "password": pwdInput.value,
             })
         });
+        console.log(res);
+        const result = await res.json();
+        const signInToken = result.data.accessToken;
+        localStorage.setItem('signInToken',signInToken);
         if (!res.ok) {
             throw new Error('bad request');
-        } else location.href = 'folder.html';
+        }
+        location.href = 'folder.html';
     } catch {
         addErrorSign(emailInput, emailError);
         emailError.innerText = '이메일 확인 부탁!'
@@ -38,6 +43,15 @@ async function postIdPwd() {
         pwdError.innerText = '비밀번호 확인 부탁!'
     }
 }
+
+function checkToken() {
+    const token = localStorage.getItem('signInToken');
+    if (token) {
+        location.href = 'folder.html';
+    }
+};
+
+checkToken();
 
 emailInput.addEventListener('focusout', () => {
     if (emailInput.value === '') {

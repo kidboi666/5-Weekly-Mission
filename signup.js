@@ -74,9 +74,20 @@ async function postIdPwd() {
             "password": pwdInput.value,
         })
     });
+    const result = await res.json();
+    const signUpToken = result.data.accessToken;
+    localStorage.setItem('signUpToken',signUpToken);
     location.href = 'folder.html';
 }
 
+function checkToken() {
+    const token = localStorage.getItem('signUpToken');
+    if (token) {
+        location.href = 'folder.html';
+    }
+};
+
+checkToken();
 
 emailInput.addEventListener('focusout', () => {
     if (emailInput.value === '') {
