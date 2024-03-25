@@ -21,7 +21,6 @@ function validate({ email, password, passwordConfirm }) {
   const isPasswordValid = passwordPattern.test(password);
   reset();
 
-  // 수정
   checkEmailRequest(email);
 
   if (emailLength) {

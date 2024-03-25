@@ -1,4 +1,7 @@
-import { testSignin, testEmail } from "../commons/reset.js";
+import {
+  signinErrorMessage,
+  emailCheckErrorMessage,
+} from "../commons/reset.js";
 
 const URL = "https://bootcamp-api.codeit.kr/api";
 
@@ -21,7 +24,7 @@ export const signinRequest = async (email, password) => {
     }
 
     if (!response.ok) {
-      testSignin();
+      signinErrorMessage();
       throw new Error("이메일 및 비밀번호를 확인해주세요.");
     }
   } catch (error) {
@@ -43,7 +46,7 @@ export const checkEmailRequest = async (email) => {
     });
 
     if (response.status === 409) {
-      testEmail();
+      emailCheckErrorMessage();
       throw new Error("이미 사용 중인 이메일입니다.");
     }
   } catch (error) {
