@@ -1,484 +1,368 @@
-* {
-  font-family: Pretendard,"Abel", "Acme",sans-serif;
-  word-break: keep-all;
-}
-
+@import "global.css";
 
 body {
-  color: var(--black);
-  margin: 0;
-}
-
-header {
-  background-color: var(--grey-1);
-}
-
-main {
-  background-color: var(--white);
-  position: relative;
-  z-index: 1;
-}
-
-footer {
-  background-color: var(--black);  
-}
-
-.nav,
-.head,
-.contents,
-.info {
-  margin: 0 auto;
-} 
-
-.nav {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: transparent;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-logo {
-  cursor: pointer;
-  background-image: url('./images/logo.svg');
-  background-position: center;
-  background-size: cover;
-}
-
-
-.nav-button,
-.head-button {
-  /* width: 128px; */
-  border-radius: 8px;
-  background: linear-gradient(91deg, #6d6afe 0.12%, #6AE3FE 101.84%) ;
-   
-  color: var(--off-white);
-  font-family: Pretendard;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  
-  text-decoration: none;
-
-  text-align: center;
-  align-items: center;
-
-  cursor: pointer;
-}
-
-.head {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   align-items: center;
-  gap: 40px;
 }
 
-.head-text {
-  text-align: center;
-  font-family: Pretendard;
-  font-size: 64px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 80px; /* 131.25% */
-  margin: 0;
-}
+/* nav ---------------------------------------------------- */
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-.head-text-gradiant {
-  background: linear-gradient(91deg, #6D6AFE 17.28%, #FF9F9F 74.98%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+  position: sticky;
+  top: 0;
 
-.head-image {
   width: 100%;
-  border-radius: 25px;
-  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
+
+  background-color: var(--color-grey1);
 }
 
-.contents {
-  width: 100%;
+.gnb {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  height: 6.3rem;
+  padding: 0 3.2rem;
+
+  @media (min-width: 768px) {
+    height: 9.4rem;
+    max-width: 86.3rem;
+  }
+
+  @media (min-width: 1200px) {
+    height: 9.4rem;
+    max-width: 192rem;
+    padding: 0 20rem;
+  }
 }
 
-.contents-image {
-  background-repeat: no-repeat;
-  background-size: 105%;
-  background-position: center;
+.logo {
+  height: 1.6rem;
+
+  @media (min-width: 768px) {
+    height: 2.4rem;
+  }
+
 }
 
-.contents-text-title {
-  font-family: Pretendard;
-  font-style: normal;
+.cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  height: 3.7rem;
+  background: linear-gradient(135deg, var(--color-primary) 0.0%, var(--color-sky) 100%) ;
+  color: var(--color-white-off);
+  border-radius: 0.8rem;
+
+  color: var(--color-white-off);
+  font-size: 1.4rem;
+  font-weight: 600;
+  
+  @media (min-width: 768px) {
+    height: 5.4rem;
+    border-radius: 0.8rem;
+    font-size: 1.8rem;
+  }
+}
+
+.cta-short { /* 로그인 버튼 */
+  width: 8rem;
+
+  @media (min-width: 768px) {
+    width: 12.8rem;
+  }
+}
+
+.cta-long { /* 링크 추가하기 버튼 */
+  width: 20rem;
+
+  @media (min-width: 768px) {
+    width: 35rem;
+  }
+}
+
+
+/* header ---------------------------------------------------- */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+
+  background-color: var(--color-grey1);
+}
+
+.header-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  row-gap: 2.4rem;
+  padding: 2.8rem 3.2rem 0;
+
+  @media (min-width: 768px) {
+    padding: 3.9rem 0 0;
+    row-gap: 4rem;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 7rem 0 0;
+  }
+}
+
+.slogan {
+  width: 24rem;
+  text-align: center;
+  font-size: 3.2rem;
+  line-height: 131.25%;
   font-weight: 700;
-  line-height: normal;
-  letter-spacing: -3px;
-  margin-bottom: 10px;
-  white-space: nowrap;
+
+  @media (min-width: 768px) {
+    width: 48rem;
+    font-size: 6.4rem;
+    line-height: 125%;
+  }
+
+  @media (min-width: 1200px) {
+    width: 80rem;
+  }
 }
 
-.contents-text-gradient {
-  background-clip: text;
+.slogan-gradiant {
+  background-image: linear-gradient(119deg, var(--color-primary) 0%, #ff9f9f 100%);
 }
 
-.contents-text-gradient.first {
-  background: linear-gradient(96deg, #FE8A8A 1.72%, #A4CEFF 74.97%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.contents-text-gradient.second {
-  background: linear-gradient(277deg, #6FBAFF 59.22%, #FFD88B 93.66%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.contents-text-gradient.third {
-  background: linear-gradient(99deg, #6D7CCD 19.76%, rgba(82, 136, 133, 0.22) 52.69%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.contents-text-gradient.fourth {
-  background: var(--Fandom-K-gra-blue-to-pink, linear-gradient(271deg, #FE578F -9.84%, #68E8F9 107.18%));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* 텍스트에 그래디언트 적용하기 위해 텍스트를 투명하게 만듦 */
+.background-clip-text { 
+  background-clip: text;  /* 웹킷 기반이 아닌 웹브라우저용 */
+  -webkit-background-clip: text; /* 텍스트만큼 배경 보여주기 */
+  -webkit-text-fill-color: transparent; /* 텍스트 투명하게 */
 }
 
 
-.contents-text-small {
-  color: var(--grey-5);
-  font-family: Abel;
-  font-style: normal;
+.hero-image {
+  width: 100%;
+  height: fit-content; /* 모바일 버전 : 창 크기에 동적으로 반응 */
+
+  @media (min-width: 768px) {
+    width: 69.8rem;
+    height: 34.3rem;
+  }
+
+  @media (min-width: 1200px) {
+    width: 120rem;
+    height: 59rem;
+  }
+}
+
+/* article ---------------------------------------------------- */
+article {
+  padding-bottom: 4rem;
+
+  @media (min-width: 768px) {
+    padding-top: 3rem;
+    padding-bottom: 12rem;
+  }
+
+  @media (min-width: 1200px) {
+    padding-top: 7rem;
+  }
+}
+
+
+section {
+  display: grid;
+  justify-content: center;
+  row-gap: 1.6rem;
+  width: 100%;
+  height: fit-content; /* 모바일 버전 : 창 크기에 동적으로 반응 */
+  padding: 4rem 3.2rem;
+
+  @media (min-width: 768px) {
+    height: 41.5rem;
+    column-gap: 5.1rem;
+    row-gap: 1rem;
+    padding: 5rem 0;
+  }
+
+  @media (min-width: 1200px) {
+    height: 55rem;
+    column-gap: 15.7rem;
+  }
+}
+
+section:nth-of-type(odd) {
+  grid-template-areas: 
+  "title"
+  "image"
+  "description";
+
+  @media (min-width: 768px) {
+    grid-template-areas: 
+    ". image"
+    "title image"
+    "description image"
+    ". image";
+    grid-template-columns: 26.2rem 38.5rem;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: 29.1rem 55rem;
+  }
+}
+
+section:nth-of-type(even) {
+  grid-template-areas: 
+  "title"
+  "image"
+  "description";
+
+  @media (min-width: 768px) {
+    grid-template-areas: 
+    "image ."
+    "image title"
+    "image description"
+    "image .";
+    grid-template-columns: 26.2rem 38.5rem;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: 55rem 29.1rem;
+  }
+}
+
+.title {
+  grid-area: title;
+  font-weight: 700;
+  letter-spacing: -0.03rem;
+  font-size: 2.4rem;
+
+  @media (min-width: 768px) {
+    font-size: 4.8rem;
+    line-height: 5.8rem;
+  }
+}
+
+.title-1-gradient {
+  background-image: linear-gradient(117deg, #fe8a8a 2.29%, #a4ceff 100%);
+}
+.title-2-gradient {
+  background-image: linear-gradient(304deg, #6fbaff 0%, #ffd88b 100%);
+}
+.title-3-gradient {
+  background-image: linear-gradient(133deg, #2945c7 0%, #dbe1f8 100%);
+}
+.title-4-gradient {
+  background-image: linear-gradient(310deg, #fe578f 0%, #68e8f9 100%);
+}
+
+.description {
+  grid-area: description;
+  font-size: 1.5rem;
   font-weight: 500;
-  line-height: 150%; /* 24px */
-  margin: 0;
-}
+  color: #6b6b6b;
+  line-height: 150%;
 
-.info-author {
-  color: var(--grey-5);
-  text-align: center;
-  font-family: Acme;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-
-.info-description {
-  display: flex;
-  justify-content: space-between;
-  gap: 30px;
-}
-
-.info-description a{
-  color: var(--white);
-  text-decoration: none;
-}
-
-.info-sns {
-  display: flex;
-  gap: 12px;
-  justify-content: space-between;
-}
-
-
-@media (min-width: 1200px) {
-  main {
-    margin-top: -120px;
-  }
-
-  .nav {
-    max-width: 1920px;
-    padding: 20px 168px;
-  }
-
-  .nav-logo {
-    width: 133px;
-    height: 24px;
-  }
-
-  .head {
-    max-width: 1200px;
-    padding-top: 100px;
-  }
-
-  .nav-button,
-  .head-button {
-    font-size: 18px;
-    padding: 16px 20px;
-  }
-
-  .head-button {
-    width: 350px;
-  }
-
-  .nav-button {
-    width: 128px;
-  }
-
-  .head-image {
-    width: 1118px;
-    padding-top: 659px;
-    background: linear-gradient(180deg, rgba(196, 196, 196, 0.00) 67.68%, #f0f6ff 94.76%),
-    url('./images/img-main.svg');
-    background-repeat: no-repeat;
-    background-size: 105%;
-    background-position-x: 50%;
-    background-position-y: -15px;
-    margin: 50px 40px 0;
-  }
-
-  .contents {
-    max-width: 1000px;
-    align-items: center;
-    padding: 120px 0 50px;
-    gap: 20px;
-  }
-
-  .contents-image {
-    width: 550px;
-    height: 450px;
-   }
-
-  .contents-text-title {
-    font-size: 48px;
-  }
-
-  .contents-text-small {
-    font-size: 16px;
-    white-space: nowrap;
-  }
-
-  footer {
-    margin-top: 120px;
-    padding: 32px 104px 64px;
-  }
-
-  .info {
-    display: flex;
-    height: 64px;
-    align-items: flex-start;
-    justify-content: space-between;
-  }
-
-  .info-box {
-    display: contents; /* !!! 부모 영역을 없애주는 속성값*/
-  }
-
-  .break-mobile {
-    display: none;
-  }
-  
-  .break-not-mobile {
-    display: inline;
+  @media (min-width: 768px) {
+    font-size: 1.6rem;
   }
 }
 
-@media (min-width: 768px) and (max-width: 1199px) {
-  main {
-    margin-top: -80px;
+.content-image {
+  grid-area: image;
+  width: 100%;
+  padding-top: 0.4rem;
+
+  @media (min-width: 768px) {
+    width: 38.5rem;
+    height: 31.5rem;
+    padding-top: 0;
   }
 
-  .nav {
-    max-width: 864px;
-    padding: 20px;
-  }
-  
-  .nav-logo {
-    width: 133px;
-    height: 24px;
-  }
-
-  .head {
-    max-width: 700px;
-    padding-top: 140px;
-    gap: 40px;
-  }
-
-  .nav-button,
-  .head-button {
-    font-size: 18px;
-    padding: 16px 20px;
-  }
-  
-  .head-button {
-    width: 350px;
-  }
-
-  .nav-button {
-    width: 128px;
-  }
-  
-  .head-image {
-    width: 650px;
-    height: 383px;
-    background: linear-gradient(180deg, rgba(196, 196, 196, 0.00) 67.68%, #F0F6FF 125.4%),
-    url('./images/img-main.svg');
-    background-repeat: no-repeat;
-    background-size: 105%;
-    background-position-x: 50%;
-    background-position-y: -15px;
-    margin: 30px 24px 0;
-  }
-
-  .contents {
-    max-width: 700px;
-    align-items: center;
-    padding: 80px 0 50px;
-    gap: 51px;
-  }
-
-  .contents-image {
-    width: 385px;
-    height: 315px;
-  }
-   
-  .contents-text-title {
-    font-size: 48px;
-  }
-
-  .contents-text-small {
-    font-size: 16px;
-    white-space: nowrap;
-  }
-
-  footer {
-    margin-top: 120px;
-    padding: 32px 104px 64px;
-  }
-
-  .info {
-    display: flex;
-    height: 64px;
-    align-items: flex-start;
-    justify-content: space-between;
-  }
-
-  .info-box {
-    display: contents; /* !!! 부모 영역을 없애주는 속성값*/
-  }
-
-  .break-mobile {
-    display: inline;
-  }
-  
-  .break-not-mobile {
-    display: inline;
+  @media (min-width: 1200px) {
+    width: 55rem;
+    height: 45rem;
   }
 }
 
-@media (max-width: 767px) {
-  main {
-    margin-top: -40px;
-  }
 
-  .nav {
-    max-width: 100%;
-    padding: 13px 32px;
-  }
+.line-break-mobile {
+  display: inline;
 
-  .nav-logo {
-    width: 88.667px;
-    height: 16px;
-  }
-
-  .nav-button,
-  .head-button {
-    font-size: 14px;
-    padding: 16px 10px;
-  }
-
-  .head-button {
-    width: 200px;
-  }
-
-  .nav-button {
-    width: 80px;
-  }
-
-  .head {
-    padding: 91px 32px 0;
-  }
-
-  .head-text {
-    font-size: 32px;
-    line-height: 42px;
-  }
-
-  .head-image {
-    width: 100%;
-    aspect-ratio: 1 / 0.55;
-    background: linear-gradient(180deg, rgba(196, 196, 196, 0.00) 67.68%, #f0f6ff 125.4%),
-    url('./images/img-main.svg');
-    background-repeat: no-repeat;
-    background-size: 105%;
-    background-position-x: 50%;
-    background-position-y: -20%;
-    margin: 14px 11px 0;
-  }
-
-  .contents {
-    flex-direction: column; 
-    gap: 24px;
-    padding: 40px 32px 36px;
-  }
-
-  .contents-textbox {
-    display: contents;
-  }
-
-  .contents-text-title {
-    font-size: 24px;
-    order: 1;
-    margin: 0;
-  }
-
-  .contents-text-small {
-    font-size: 15px;
-    order: 3;
-  }
-
-  .contents-image {
-    width: 100%;
-    padding-top: 81.8%;
-    order: 2;
-  }
-
-
-  footer {
-    margin-top: 120px;
-    padding: 32px;
-  }
-
-  .info {
-    display: flex;
-    /* height: 96px; */
-    align-items: flex-start;
-    justify-content: space-between;
-  }
-  
-  .info-box {
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: flex-start;
-    gap: 60px;
-  }
-  
-  .break-mobile {
-    display: inline;
-  }
-  
-  .break-not-mobile {
+  @media (min-width: 768px) {
     display: none;
   }
 }
 
+.line-break-pc-tablet {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: inline;
+  }
+}
+
+/* footer ---------------------------------------------------- */
+
+footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 16rem;
+  background-color: var(--color-black);
+}
+
+.footer-box {
+  display: grid;
+  justify-content: space-between;
+  grid-template:
+    "footer-links sns"
+    ". ." 1fr /* 이걸로 나머지 공간을 꽉 채우고 싶을 때! */
+    "copyright .";
+  width: 100%;
+  padding: 3.2rem;
+
+  @media (min-width: 768px) {
+    display: flex;
+    grid-template: "copyright footer-links sns";
+    height: fit-content;
+    max-width: 192rem;
+    padding: 3.2rem 10.4rem 0;
+  }
+}
+
+.copyright {
+  grid-area: copyright;
+  color: #676767;
+  font-family: Arial;
+  font-size: 1.6rem;
+}
+
+.footer-links {
+  grid-area: footer-links;
+  display: flex;
+  column-gap: 3rem;
+  padding-right: 1.8rem;
+}
+
+.footer-link {
+  color: #cfcfcf;
+  font-family: Arial;
+  font-size: 1.6rem;
+}
+
+.sns {
+  grid-area: sns;
+  display: flex;
+  column-gap: 1.2rem;
+  height: 2rem;
+}
