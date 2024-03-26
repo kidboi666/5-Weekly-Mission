@@ -6,7 +6,6 @@ export default function FolderInfo({
   folderName,
   profileImgSource,
 }) {
-  console.log(ownerName);
   return (
     <div className='folder-info'>
       <div className='owner-profile'>
