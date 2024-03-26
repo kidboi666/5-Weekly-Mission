@@ -61,6 +61,10 @@ main {
   gap: 12px;
 }
 
+.errNone {
+  display: none;
+}
+
 .input-area input.err {
   border: 1px solid red;
 }
