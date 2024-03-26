@@ -1,3 +1,4 @@
+import { signupRequest } from './signApi.js';
 const emailInputs = document.querySelector(`.email-input-group`);
 const passwordInputs = document.querySelector(`.password-input-group`);
 const singupBtn = document.querySelector('.btn-large');
@@ -18,7 +19,11 @@ const checkEmailErrorMessage = '이메일을 확인해주세요.';
 const checkPasswordErrorMessage = '비밀번호를 확인해주세요.';
 const iconEye = document.querySelector('.password-eye')
 const confirmEye = document.querySelector('.confirm-eye')
-const user = { email : 'test@codeit.com', password : 'codeit101'}
+// const user = { email : 'test@codeit.com', password : 'codeit101'}
+
+if(localStorage.getItem("accessToken") !== null) {
+  location.href = '/folder.html'
+};
 
 emailInputs.addEventListener(`focusout`,(e) => {
   const emailText = e.target.value;
@@ -33,10 +38,6 @@ emailInputs.addEventListener(`focusout`,(e) => {
       emailInput.classList.add('error-input');
     }
   } 
-  else if(emailInput.value === user.email) {
-    emailErrorText.textContent = existingEmailErrorMessage;
-    emailInput.classList.add('error-input');
-  }
   else{
     emailErrorText.textContent = '';
     emailInput.classList.remove('error-input');
@@ -69,21 +70,35 @@ confirmPassword.addEventListener('focusout',(e) => {
   }
 });
 
-singupBtn.addEventListener('click',(e) => {
-  if(emailInput.value === '' ||
-    passwordInput.value === '' ||
-    emailInput.classList.contains('error-input') ||
-    passwordInput.classList.contains('error-input') ||
-    confirmpasswordInput.classList.contains('error-input')){  
-    e.preventDefault();
-    emailErrorText.textContent = checkEmailErrorMessage;
-    emailInput.classList.add('error-input');
-    passwordErrorText.textContent = checkPasswordErrorMessage;
-    passwordInput.classList.add('error-input');
-    }
-  else{
-    location.href = '/folder.html'
+singupBtn.addEventListener('click', async (e) => {
+  const userData = {
+    email: emailInput.value,
+  } 
+  try{
+    const response = await signupRequest(userData)
+    if(emailInput.value === '' ||
+      passwordInput.value === '' ||
+      emailInput.classList.contains('error-input') ||
+      passwordInput.classList.contains('error-input') ||
+      confirmpasswordInput.classList.contains('error-input')){  
+      e.preventDefault();
+      emailErrorText.textContent = checkEmailErrorMessage;
+      emailInput.classList.add('error-input');
+      passwordErrorText.textContent = checkPasswordErrorMessage;
+      passwordInput.classList.add('error-input');
+      }  
+      else if( response.httpCode !== 200 ) {
+      emailErrorText.textContent = existingEmailErrorMessage;
+      emailInput.classList.add('error-input');
+      }
+      else{
+        location.href = '/folder.html'
+        localStorage.setItem('accessToken', response.resData.data.accessToken)
+      } 
+  } catch (error) {
+    console.error('Sign-up request failed:', error);
   }
+
 });
 
 iconEye.addEventListener('click', (e) => {

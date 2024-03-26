@@ -1,4 +1,4 @@
-
+import { signinRequest } from './signApi.js';
 const emailInputs = document.querySelector(`.email-input-group`);
 const passwordInputs = document.querySelector(`.password-input-group`);
 const singinBtn = document.querySelector('#singin-btn');
@@ -12,6 +12,10 @@ const emptyPasswordErrorMessage =  '비밀번호를 입력해주세요.';
 const checkEmailErrorMessage =  '이메일을 확인해주세요.';
 const checkPasswordErrorMessage = '비밀번호를 확인해주세요.';
 const iconEye = document.querySelector('.password-eye')
+
+if(localStorage.getItem("accessToken") !== null) {
+  location.href = '/folder.html'
+};
 
  emailInputs.addEventListener(`focusout`,(e) => {
   const emailText = e.target.value;
@@ -33,7 +37,7 @@ const iconEye = document.querySelector('.password-eye')
 });
 
 passwordInputs.addEventListener(`focusout`,(e) => {
-  passwordText = e.target.value;
+  const passwordText = e.target.value;
   if(passwordText === ''){
     passwordErrorText.textContent = emptyPasswordErrorMessage;
     passwordInput.classList.add('error-input');
@@ -44,19 +48,28 @@ passwordInputs.addEventListener(`focusout`,(e) => {
   }
 });
 
-const user = { email : 'test@codeit.com', password : 'codeit101'}
+// const user = { email : 'test@codeit.com', password : 'sprint101'}
 
-singinBtn.addEventListener('click',(e) => {
-  if(emailInput.value === user.email &&
-    passwordInput.value === user.password){
-    location.href = '/folder.html'
+singinBtn.addEventListener('click', async (e) => {
+  const userData = {
+    email: emailInput.value,
+    password: passwordInput.value
+  } 
+  try{
+    const response = await signinRequest(userData)
+    if(response.httpCode === 200 ){
+      location.href = '/folder.html'
+      localStorage.setItem('accessToken', response.resData.data.accessToken)
+      }
+    else{
+      e.preventDefault();
+      emailErrorText.textContent = checkEmailErrorMessage;
+      emailInput.classList.add('error-input');
+      passwordErrorText.textContent = checkPasswordErrorMessage;
+      passwordInput.classList.add('error-input');
     }
-  else{
-    e.preventDefault();
-    emailErrorText.textContent = checkEmailErrorMessage;
-    emailInput.classList.add('error-input');
-    passwordErrorText.textContent = checkPasswordErrorMessage;
-    passwordInput.classList.add('error-input');
+  } catch (error) {
+    console.error('Sign-in request failed:', error);
   }
 });
 
