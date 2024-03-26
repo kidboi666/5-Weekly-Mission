@@ -1,39 +1,29 @@
-export const loginId = document.querySelector('.signin-email');
-export const emailErr = document.querySelector('.email-err');
+export const loginId = document.querySelector(".sign-email");
+export const emailErr = document.querySelector(".email-err");
 
-export function emailSignIn (e) {
-  if (loginId.value === "") {
-    emailErr.textContent = '이메일을 입력해 주세요.'
-    emailErr.classList.remove("hide");
-    loginId.classList.add("input-err");
-  } else if (loginId.value === "test@codeit.com") {
-    emailErr.classList.add("hide");
-    loginId.classList.remove("input-err");
-  } else if (loginId.value.indexOf('@') == -1) {
-    emailErr.textContent = '올바른 이메일 주소가 아닙니다.'
-    emailErr.classList.remove("hide");
-    loginId.classList.add("input-err");
-  } else {
-    emailErr.classList.add("hide");
-    loginId.classList.remove("input-err");
-  }
-};
+/* 필요한 기능 가져오기 */
+import { valueVerify, valueRight, CORRECT_EMAIL } from "./apply.js";
 
-export function emailSignUp (e) {
+/* 로그인 이메일 검증 함수 */
+export function signInEmailErr() {
   if (loginId.value === "") {
-    emailErr.textContent = '이메일을 입력해 주세요.'
-    emailErr.classList.remove("hide");
-    loginId.classList.add("input-err");
-  } else if (loginId.value === "test@codeit.com") {
-    emailErr.textContent = '이미 사용 중인 이메일입니다.'
-    emailErr.classList.remove("hide");
-    loginId.classList.add("input-err");
-  } else if (loginId.value.indexOf('@') == -1) {
-    emailErr.textContent = '올바른 이메일 주소가 아닙니다.'
-    emailErr.classList.remove("hide");
-    loginId.classList.add("input-err");
+    valueVerify(emailErr, loginId, "이메일을 입력해주세요.");
+  } else if (loginId.value.indexOf("@") == -1) {
+    valueVerify(emailErr, loginId, "올바른 이메일 주소가 아닙니다.");
   } else {
-    emailErr.classList.add("hide");
-    loginId.classList.remove("input-err");
+    valueRight(emailErr, loginId);
   }
-};
+}
+
+/* 회원가입 이메일 검증 함수 */
+export function signUpEmailErr() {
+  if (loginId.value === "") {
+    valueVerify(emailErr, loginId, "이메일을 입력해주세요.");
+  } else if (loginId.value === CORRECT_EMAIL) {
+    valueVerify(emailErr, loginId, "이미 사용 중인 이메일입니다.");
+  } else if (loginId.value.indexOf("@") == -1) {
+    valueVerify(emailErr, loginId, "올바른 이메일 주소가 아닙니다.");
+  } else {
+    valueRight(emailErr, loginId);
+  }
+}
