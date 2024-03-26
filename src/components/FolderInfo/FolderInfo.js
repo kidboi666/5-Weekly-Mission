@@ -1,7 +1,11 @@
 import '../../assets/css/reset.css';
 import './FolderInfo.css';
 
-export default function Profile({ ownerName, folderName, profileImgSource }) {
+export default function FolderInfo({
+  ownerName,
+  folderName,
+  profileImgSource,
+}) {
   console.log(ownerName);
   return (
     <div className='folder-info'>
