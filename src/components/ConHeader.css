@@ -1,0 +1,63 @@
+h2 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 3rem;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+p {
+    line-height: 1.5;
+}
+
+.con-header-wrap {
+    text-align: center;
+    background: #f0f6ff;
+    padding: 7.0625rem 0 3.75rem;
+}
+
+.con-header-wrap h2 {
+    margin: 1.25rem 0 0;
+}
+
+.con-header h3 {
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 400;
+    margin: 0.75rem 0 0;
+}
+
+@media (max-width: 1199px) {
+    /* 타블렛 */
+
+    .wrap {
+        width: 43.625rem;
+    }
+}
+
+@media (max-width: 767px) {
+    /* 모바일 */
+    h2 {
+        font-size: 2rem;
+        line-height: 1.3125;
+        padding: 0 4rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        line-height: 1.16666666667;
+    }
+
+    p {
+        font-size: 0.9375rem;
+    }
+
+    .wrap {
+        width: auto;
+        padding: 0 2rem;
+    }
+}
