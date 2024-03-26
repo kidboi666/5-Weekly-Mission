@@ -1,3 +1,4 @@
+import '../../assets/css/reset.css';
 import './FolderInfo.css';
 
 export default function Profile({ ownerName, folderName, profileImgSource }) {
