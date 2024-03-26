@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getFolderInfo } from '../../utils/api';
 import FolderInfo from '../FolderInfo/FolderInfo';
+import LinkCardList from '../LinkCardList/LinkCardList';
 
 export default function Folder() {
   const [ownerInfo, setOwnerInfo] = useState({});
@@ -30,6 +31,7 @@ export default function Folder() {
         profileImgSource={ownerInfo.profileImageSource}
         folderName={folderName}
       />
+      <LinkCardList items={items} />
     </>
   );
 }
