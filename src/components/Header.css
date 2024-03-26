@@ -1,0 +1,42 @@
+.header {
+  position: sticky;
+  top: 0;
+  padding: 20px 200px;
+  background: var(--background-color);
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1520px;
+  margin: 0 auto;
+}
+
+.header__link-login {
+  width: 128px;
+}
+
+@media (max-width: 1199px) {
+  .header {
+    padding: 20px 32px;
+  }
+
+  .header__inner {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .header__link-home {
+    width: 89px;
+  }
+
+  .header__logo {
+    width: 100%;
+  }
+
+  .header__link-login {
+    width: 80px;
+  }
+}
