@@ -1,3 +1,4 @@
+
 const EmailForm = document.querySelector('.loginform'); //이메일폼
 const PwForm = document.querySelector('.passwordform'); //비밀번호폼
 const Emailinput = document.querySelector('.email'); //이메일 input 태그
@@ -9,7 +10,15 @@ const pwErrorMessage = document.createElement('p');  //비밀번호 입력 오�
 const login_button = document.querySelector('.login_button'); //로그인 버튼
 
 const MANAGE_ID = "test@codeit.com";
-const MANAGE_PW = "codeit101"; 
+const MANAGE_PW = "sprint101";
+
+window.onload = function () {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+        location.href = '../folder.html';
+    }
+};
+
 
 function check_email_focusout() { //이메일 유효성 검사
     if (Emailinput.value === '') {
@@ -50,7 +59,7 @@ function check_pw_focusin() {
     pwErrorMessage.textContent = '';
 }
 
-function check_to_login(event) {
+async function check_to_login(event) {
     // 이메일과 비밀번호 입력 확인
     event.preventDefault();
     if (Emailinput.value === '' && PWinput.value === '') {
@@ -63,7 +72,7 @@ function check_to_login(event) {
         PwForm.lastElementChild.append(pwErrorMessage);
         return;
     }
-    else if(Emailinput.value === '') {
+    else if (Emailinput.value === '') {
         emailErrorMessage.textContent = '이메일을 입력해주세요.';
         Emailinput.classList.add('input_error');
         EmailForm.lastElementChild.append(emailErrorMessage);
@@ -96,12 +105,47 @@ function check_to_login(event) {
     }
 
     // 로그인 성공 시 페이지 이동 또는 기타 작업 수행
-    window.location.href = "folder.html";
+    const url = 'https://bootcamp-api.codeit.kr/api/sign-in';
+    const values = { email: Emailinput.value,
+         password: PWinput.value
+         };
+    try {
+        console.log(values);
+        await signinPost(url, values);
+    } catch (error) {
+        console.error('Fetch 요청 중 에러가 발생하였습니다:', error);
+    }
 }
 
+async function signinPost(url, values) {
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(values),
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            if (data && data.data.accessToken) {
+                localStorage.setItem('accessToken', data.data.accessToken);
+                window.location.href = "folder.html";
+            } else {
+                console.error('accessToken이 응답에 없습니다.');
+            }
+        } else {
+            console.error('Fetch 요청이 실패하였습니다. HTTP 상태 코드:', response.status);
+        }
+    } catch (error) {
+        console.error('Fetch 요청 처리 중 에러가 발생하였습니다:', error);
+    }
+}
 
 Emailinput.addEventListener('focusout', check_email_focusout);
 Emailinput.addEventListener('focusin', check_email_focusin);
 PWinput.addEventListener('focusout', check_pw_focusout);
 PWinput.addEventListener('focusin', check_pw_focusin);
 login_button.addEventListener('click', check_to_login);
+
