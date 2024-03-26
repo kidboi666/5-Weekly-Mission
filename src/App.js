@@ -3,13 +3,13 @@ import "./styles/pages/main/main.css";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import ConHeader from "./components/ConHeader";
+import ContentWrap from "./components/ContentWrap";
 
 function App() {
     return (
         <>
             <Header />
-            <ConHeader />
+            <ContentWrap />
             <Footer />
         </>
     );

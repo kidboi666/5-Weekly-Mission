@@ -18,6 +18,7 @@ p {
     text-align: center;
     background: #f0f6ff;
     padding: 7.0625rem 0 3.75rem;
+    margin: 0 0 2.5rem;
 }
 
 .con-header-wrap h2 {
@@ -31,12 +32,12 @@ p {
     margin: 0.75rem 0 0;
 }
 
+.con-header img {
+    width: 4rem;
+}
+
 @media (max-width: 1199px) {
     /* 타블렛 */
-
-    .wrap {
-        width: 43.625rem;
-    }
 }
 
 @media (max-width: 767px) {
@@ -54,10 +55,5 @@ p {
 
     p {
         font-size: 0.9375rem;
-    }
-
-    .wrap {
-        width: auto;
-        padding: 0 2rem;
     }
 }

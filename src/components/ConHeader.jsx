@@ -1,14 +1,15 @@
 import "./ConHeader.css";
-import Avatar from "../assets/svg/Avatar.svg";
 
-function ConHeader() {
+function ConHeader({ folderData }) {
+    const owner = folderData?.owner;
+
     return (
         <div className="con-header-wrap">
             <div className="con-header">
-                <img src={Avatar} alt="" />
-                <h3>@코드잇</h3>
+                <img src={owner?.profileImageSource} alt="" />
+                <h3>{owner?.name}</h3>
             </div>
-            <h2>⭐️ 즐겨찾기</h2>
+            <h2>{folderData?.name}</h2>
         </div>
     );
 }
