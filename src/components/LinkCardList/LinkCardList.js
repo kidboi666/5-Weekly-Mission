@@ -1,4 +1,5 @@
 import LinkCard from '../LinkCard/LinkCard';
+import './LinkCardList.css';
 
 export default function LinkCardList({ items }) {
   return (
