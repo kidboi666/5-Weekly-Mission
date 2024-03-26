@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/sign.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+  </head>
+  <body>
+    <div class="signin">
+      <div class="signin-form">
+        <div class="signin-logo">
+          <a href="index.html"><img src="imgs/logo.svg" alt="logo" /></a>
+          <div class="question black">
+            <span>회원이 아니신가요?</span>
+            <a href="signin.html" class="primary">로그인 하기</a>
+          </div>
+        </div>
+        <form id="login-form">
+          <div class="email-box">
+            <label for="email">이메일</label>
+            <div class="email">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="codeit@codeit.com"
+              />
+              <span id="email-error" class="email-err"></span>
+            </div>
+          </div>
+          <div class="password-box">
+            <label for="password">비밀번호</label>
+            <div class="password">
+              <input id="password" name="password" type="password" />
+              <i class="fa-solid fa-eye fa-2x" id="togglePassword"></i>
+              <span id="password-error" class="password-err"></span>
+            </div>
+            <label for="password-confirm">비밀번호 확인</label>
+            <div class="password">
+              <input
+                id="password-confirm"
+                name="password-confirm"
+                type="password"
+              />
+              <i class="fa-solid fa-eye fa-2x" id="togglePasswordConfirm"></i>
+              <span id="pwd-confirm-error" class="password-err"></span>
+            </div>
+          </div>
+          <button id="signin-button" class="signin-but white" type="submit">
+            회원가입
+          </button>
+        </form>
+        <!-- <form>
+          <label for="email">이메일</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="codeit@codeit.com"
+          />
+          <label for="password">비밀번호</label>
+          <div class="password">
+            <input id="password" name="password" type="password" />
+            <i class="fa-solid fa-eye fa-2x togglePassword"></i>
+          </div>
+          <label for="password-check">비밀번호 확인</label>
+          <div class="password">
+            <input id="password-check" name="password-check" type="password" />
+            <i class="fa-solid fa-eye fa-2x togglePassword"></i>
+          </div>
+          <button class="signin-but white" type="submit">회원가입</button>
+        </form> -->
+        <div class="social-login gray-4">
+          <span>다른 방식으로 가입하기</span>
+          <div class="social-images">
+            <a href="https://www.google.com/"
+              ><img src="imgs/google.svg" alt="google"
+            /></a>
+            <a href="https://www.kakaocorp.com/page/"
+              ><img src="imgs/kakao.svg" alt="kakao"
+            /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="signup.js"></script>
+  </body>
+</html>
