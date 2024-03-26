@@ -1,0 +1,25 @@
+.folder-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 624px 60px;
+  gap: 20px;
+  width: fit-content;
+
+  .owner-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    .owner-profile-image {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  .folder-name {
+    font-size: 2.5em;
+    font-weight: 600;
+  }
+}

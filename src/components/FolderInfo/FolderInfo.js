@@ -1,13 +1,19 @@
+import './FolderInfo.css';
+
 export default function Profile({ ownerName, folderName, profileImgSource }) {
   console.log(ownerName);
   return (
-    <div>
-      <div>
-        <img src={profileImgSource} />
+    <div className='folder-info'>
+      <div className='owner-profile'>
+        <img
+          src={profileImgSource}
+          alt='Folder Owner Profile'
+          className='owner-profile-image'
+        />
         <span>@{ownerName}</span>
       </div>
 
-      <span>{folderName}</span>
+      <span className='folder-name'>{folderName}</span>
     </div>
   );
 }
