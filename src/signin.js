@@ -3,7 +3,8 @@ import {
   removeInputError,
   isEmailValid,
   togglePassword,
-  TEST_USER
+  TEST_USER,
+  PostRequestToServer
 } from './global.js';
 
 
@@ -49,23 +50,21 @@ const passwordToggleButton = document.querySelector('#password-toggle')
 passwordToggleButton.addEventListener("click", () => togglePassword(password, passwordToggleButton))
 
 
-// 테스트 유저
-// 버튼에 위임되어서, 테스트 유저 계정 입력 시 리퀘스트 대신 folder 페이지로 이동
-// "submit" 이벤트는 클릭, 엔터키에 모두 반응하는 이벤트이다.
-// 이벤트를 버튼이 아니라 form 에 입력한 이유를 모르겠다.
+// 테스트 유저인 경우 folder.html 페이지로 이동
+// 일반 사용자인 경우 POST REQUEST 에 대한 RESPONSE 200 일 때, folder.html 이동
 const signForm = document.querySelector("#form");
 signForm.addEventListener("submit", submitForm);
 function submitForm(event) {
 
-  event.preventDefault();
-  // 서버로 리퀘스트가 가지 않도록
-  // submit 이벤트는 버튼에서 일어난다. event 객체는 버튼이다.
-  // 그래서 event.preventDefault() 로 표기
+  event.preventDefault(); // 주어진 조건에서만 이벤트가 작동하도록
 
   const isTestUser =
-    emailInput.value === TEST_USER.email && passwordInput.value === TEST_USER.password;
+    emailInput.value === TEST_USER.email && passwordInput.value === TEST_USER.password; // 계정 정보의 형식 유효성 검사
 
-  if (isTestUser) {
+  const isAccountValid = PostRequestToServer({email: emailInput,password: passwordInput}, 'https://bootcamp-api.codeit.kr/docs/api/sign-in') // 계정 정보의 POST REQUEST 유효성 검사
+
+
+  if (isTestUser || isAccountValid) {
     location.href = "/folder";
     return;
   } else {

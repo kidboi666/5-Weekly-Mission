@@ -40,8 +40,27 @@ export function togglePassword(input, button) {
   }
 }
 
+// 테스트 계정
 export const TEST_USER = {
   email: "test@codeit.com",
   password: "codeit101",
 };
+
+
+// 계정 정보의 POST REQUEST 유효성 검사
+export async function PostRequestToServer (input, address) {  
+  const userAccount = {email: input.email, password: input.password}
+  const response = await fetch(address, {
+    method : 'post',
+    body : JSON.stringify(userAccount)
+  });
+  const result = await response.json();
+  if (result.status === 200) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
 
