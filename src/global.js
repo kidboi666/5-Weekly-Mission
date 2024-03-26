@@ -17,18 +17,26 @@ export function removeInputError (element) {
   element.input.classList.remove(SIGN_INPUT_ERROR_CLASSNAME);
 }
 
-export function isEmailValid (element) {
-  return new RegExp(EMAIL_REGEX).test(element);
+// 이메일 유효성 검사
+export function isEmailValid (email) {
+  return new RegExp(EMAIL_REGEX).test(email);
 }
 
+// 비밀번호 유효성 검사
+export function isPasswordValid (password) {
+  const isEightLettersOrMore = password.length >= 8 
+  const isNumberAndCharacter = password.match(/[0-9]/g) && password.match(/[a-zA-Z]/gi);
+  return isEightLettersOrMore && isNumberAndCharacter
+}
 
+// 비밀번호 토글
 export function togglePassword(input, button) {
   if (input.getAttribute('type') ==='password') {
     input.setAttribute('type', 'text');
-    button.getElementByTagName('img').setAttribute('src','../images/eye-off.svg');
+    button.getElementsByTagName('img')[0].setAttribute('src','./images/eye-on.svg'); // 아이콘 위치는 HTML 문서 기준으로 써야 함
   } else {
     input.setAttribute('type', 'password');
-    button.getElementByTagName('img').setAttribute('src','../images/eye-on.svg');
+    button.getElementsByTagName('img')[0].setAttribute('src','./images/eye-off.svg');
   }
 }
 

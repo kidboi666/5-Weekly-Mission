@@ -1,4 +1,110 @@
-const form = document.querySelector('.form');
+import {
+  setInputError,
+  removeInputError,
+  isEmailValid,
+  isPasswordValid,
+  togglePassword,
+  TEST_USER,
+} from './global.js';
+
+
+// 이메일 공란, 이메일 형식 체크 및 초기화
+const emailInput = document.querySelector('#email');
+const emailErrorMessage = document.querySelector('#email-error-message');
+emailInput.addEventListener("focusout", (event) => checkEmailInput(event.target.value))
+
+
+function checkEmailInput(email) {
+  if (email === '') {
+    setInputError({input: emailInput, errorMessage: emailErrorMessage}, '이메일을 입력해주세요.');
+    return false;
+  }
+
+  if (isEmailValid(email) === false) {
+    setInputError({input: emailInput, errorMessage: emailErrorMessage}, '올바른 이메일 주소가 아닙니다.');
+    return false;
+  }
+
+  if (email === TEST_USER.email) {
+    setInputError({input: emailInput, errorMessage: emailErrorMessage}, '이미 사용 중인 이메일입니다.')
+    return false; // if 문이 실행되면 역이서 함수를 끝낸다는 의도는 알겠는데, 왜 false 값인가?
+  }
+
+  removeInputError({input:emailInput, errorMessage: emailErrorMessage});
+  return true; // true 의 의미를 잘 모르겠다.
+}
+
+
+// 비밀번호 공란 체크 및 초기화
+const passwordInput = document.querySelector('#password');
+const passwordErrorMessage = document.querySelector('#password-error-message');
+passwordInput.addEventListener("focusout", (event) => checkPasswordInput(event.target.value))
+
+function checkPasswordInput(password) {
+  if (password === '' || !isPasswordValid) {
+    setInputError({input: passwordInput, errorMessage: passwordErrorMessage}, '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.');
+    return false;
+  }
+
+  removeInputError({input:passwordInput, errorMessage: passwordErrorMessage});
+  return true
+}
+
+
+// 비밀번호 확인 공란 체크 및 초기화
+const confirmPasswordInput = document.querySelector('#confirm-password');
+const confirmPasswordErrorMessage = document.querySelector('#confirm-password-error-message');
+confirmPasswordInput.addEventListener("focusout", (event) => checkConfirmPasswordInput(event.target.value))
+
+function checkConfirmPasswordInput(password) {
+  if (password === '' || !isPasswordValid) {
+    setInputError({input: confirmPasswordInput, errorMessage: confirmPasswordErrorMessage}, '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.');
+    return false;
+  }
+
+  if (!(passwordInput.value === password)) {
+    setInputError({input: confirmPasswordInput, errorMessage: confirmPasswordErrorMessage}, '비밀번호가 일치하지 않습니다.');
+    return false;
+  }
+
+  removeInputError({input:confirmPasswordInput, errorMessage: confirmPasswordErrorMessage});
+  return true;
+}
+
+
+
+// 비밀번호 출력형식 토글
+const passwordToggleButton = document.querySelector('#password-toggle')
+passwordToggleButton.addEventListener("click", () => togglePassword(passwordInput, passwordToggleButton))
+
+const confirmPasswordToggleButton = document.querySelector('#confirm-password-toggle')
+confirmPasswordToggleButton.addEventListener("click", () => togglePassword(confirmPasswordInput, confirmPasswordToggleButton))
+
+
+
+// 테스트 유저
+const signForm = document.querySelector("#form");
+signForm.addEventListener("submit", submitForm);
+function submitForm(event) {
+
+  event.preventDefault(); // 특정 조건 안에서만 이벤트를 실행하려고 할 때, 일단 기본적으로는 실행이 안되게 막아놓는다는 뜻 아닐까.
+
+  const isEmailValid = checkEmailInput;
+  const isPasswordValid = checkPasswordInput;
+  const isConfirmPasswordValid = checkConfirmPasswordInput;
+  
+  if(isEmailValid && isPasswordValid && isConfirmPasswordValid) {
+    location.href = "/forlder";
+  }
+}
+
+
+
+
+
+
+
+/* const form = document.querySelector('.form');
 const id = document.querySelector('#username');
 const pwd = document.querySelector('#password');
 const repeat = document.querySelector('#password_repeat')
@@ -155,4 +261,4 @@ function submitByEnter(e) {
 }
 
 btn.addEventListener('click', submit);
-form.addEventListener('keypress', submitByEnter);
+form.addEventListener('keypress', submitByEnter); */
