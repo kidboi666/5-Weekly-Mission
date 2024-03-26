@@ -1,11 +1,12 @@
+import './LinkCard.css';
+
 export default function LinkCard({ linkCardInfo }) {
-  const thumbnailURL = linkCardInfo.imgSource;
+  const thumbnailURL = linkCardInfo.imageSource;
   const description = linkCardInfo.description;
   const title = linkCardInfo.title;
   const url = linkCardInfo.url;
   const createdDate = new Date(linkCardInfo.createdAt);
   const timestamp = getTimeDifference(createdDate);
-
   return (
     <a
       className='link-card'
@@ -13,13 +14,15 @@ export default function LinkCard({ linkCardInfo }) {
       target='_blank'
       rel='noreferrer noopener'
     >
-      <img className='thumbnail' src={thumbnailURL} />
+      <div className='thumbnail-container'>
+        <img className='thumbnail' src={thumbnailURL} alt='Link Thumbnail' />
+      </div>
       <div className='link-card-info'>
         <div className='link-card-title-bar'>
-          <span className='link-card-title'>{title}</span>
+          <span className='link-card-title'>{formatTitle(title)}</span>
           <span className='timestamp'>{timestamp}</span>
         </div>
-        <p className='linc-card-description'>{description}</p>
+        <p className='link-card-description'>{description}</p>
         <span className='link-card-date-created'>
           {formatDate(createdDate)}
         </span>
@@ -61,4 +64,18 @@ function getTimeDifference(createdDate) {
 
 function formatDate(date) {
   return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
+}
+
+function formatTitle(str) {
+  const delimiters = [':', '|', '–', '-'];
+  let title = str;
+
+  for (const delimiter of delimiters) {
+    const index = str.indexOf(delimiter);
+    if (index !== -1 && index < title.length) {
+      title = str.substring(0, index);
+    }
+  }
+
+  return title;
 }
