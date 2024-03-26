@@ -1,0 +1,46 @@
+h2 {
+    font-size: 4rem;
+    line-height: 1.25;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 3rem;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+p {
+    line-height: 1.5;
+}
+
+@media (max-width: 1199px) {
+    /* 타블렛 */
+
+    .wrap {
+        width: 43.625rem;
+    }
+}
+
+@media (max-width: 767px) {
+    /* 모바일 */
+    h2 {
+        font-size: 2rem;
+        line-height: 1.3125;
+        padding: 0 4rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        line-height: 1.16666666667;
+    }
+
+    p {
+        font-size: 0.9375rem;
+    }
+
+    .wrap {
+        width: auto;
+        padding: 0 2rem;
+    }
+}
