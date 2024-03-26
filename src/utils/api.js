@@ -9,5 +9,10 @@ export async function getFolderInfo() {
   }
 
   const result = await response.json();
-  return result;
+  return result.folder;
 }
+
+/*
+fetch('https://bootcamp-api.codeit.kr/api/sample/folder').then((response) => response.json()).then((result)=>{console.log(result);});
+fetch('https://bootcamp-api.codeit.kr/api/sample/user').then((response) => response.json()).then((result)=>{console.log(result);});
+*/

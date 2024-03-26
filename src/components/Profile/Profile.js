@@ -1,14 +1,13 @@
-import profileImg from '../../assets/images/profile_img1.png';
-
-export default function Profile() {
+export default function Profile({ ownerName, folderName, profileImgSource }) {
+  console.log(ownerName);
   return (
     <div>
       <div>
-        <img src={profileImg} />
-        <span>@코드잇</span>
+        <img src={profileImgSource} />
+        <span>@{ownerName}</span>
       </div>
 
-      <span>⭐️ 즐겨찾기</span>
+      <span>{folderName}</span>
     </div>
   );
 }
