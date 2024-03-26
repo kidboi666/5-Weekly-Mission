@@ -4,7 +4,7 @@ import {
   isEmailValid,
   togglePassword,
   TEST_USER,
-  PostRequestToServer
+  checkAccountValid
 } from './global.js';
 
 
@@ -61,7 +61,7 @@ function submitForm(event) {
   const isTestUser =
     emailInput.value === TEST_USER.email && passwordInput.value === TEST_USER.password; // 계정 정보의 형식 유효성 검사
 
-  const isAccountValid = PostRequestToServer({email: emailInput,password: passwordInput}, 'https://bootcamp-api.codeit.kr/docs/api/sign-in') // 계정 정보의 POST REQUEST 유효성 검사
+  const isAccountValid = checkAccountValid({email: emailInput,password: passwordInput}, 'https://bootcamp-api.codeit.kr/docs/api/sign-in') // 계정 정보의 POST REQUEST 유효성 검사
 
 
   if (isTestUser || isAccountValid) {

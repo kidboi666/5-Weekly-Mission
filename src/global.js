@@ -48,7 +48,7 @@ export const TEST_USER = {
 
 
 // 계정 정보의 POST REQUEST 유효성 검사
-export async function PostRequestToServer (input, address) {  
+export async function checkAccountValid (input, address) {  
   const userAccount = {email: input.email, password: input.password}
   const response = await fetch(address, {
     method : 'post',
@@ -62,5 +62,16 @@ export async function PostRequestToServer (input, address) {
   }
 }
 
-
-
+// 이메일 중복 검사
+export async function checkAccountAlreadyExist (input, address) {
+  const response = await fetch(address, {
+    method : 'post',
+    body : JSON.stringify(input)
+  });
+  const result = await response.json();
+  if (result.status === 200) {
+    return true;
+  } else {
+    return false;
+  }
+}
