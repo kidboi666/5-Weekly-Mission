@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getFolderInfo } from '../../utils/api';
-import Profile from '../Profile/Profile';
+import FolderInfo from '../FolderInfo/FolderInfo';
 
 export default function Folder() {
   const [ownerInfo, setOwnerInfo] = useState({});
@@ -25,7 +25,7 @@ export default function Folder() {
 
   return (
     <>
-      <Profile
+      <FolderInfo
         ownerName={ownerInfo.name}
         profileImgSource={ownerInfo.profileImageSource}
         folderName={folderName}
