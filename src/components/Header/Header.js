@@ -1,13 +1,14 @@
 import logo from '../../assets/images/logo.svg';
+import './Header.css';
 
 export default function Header() {
   return (
-    <header>
+    <header className='main-header'>
       <h1>
         <a href='#'>
-          <img src={logo} alt='Linkbrary' class='sign-logo' />
+          <img src={logo} alt='Linkbrary' className='logo-img' />
         </a>
-        <span>Linkbrary</span>
+        <span className='blind'>Linkbrary</span>
       </h1>
       <div>Profile</div>
     </header>
