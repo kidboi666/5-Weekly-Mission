@@ -1,0 +1,157 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* HEADER */
+header,
+main {
+  width: 400px;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 200px;
+}
+
+.logo {
+  width: 238px;
+  height: 38px;
+}
+
+.sign-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.sign-wrapper p {
+  line-height: 150%;
+  margin: 0;
+}
+
+.sign-wrapper a {
+  color: var(--primary);
+  font-weight: 600;
+  border-bottom: 1px solid var(--primary);
+}
+
+/* FORM */
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0;
+}
+
+form label {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+form label.pw {
+  margin-top: 24px;
+}
+
+form input {
+  width: 100%;
+  color: var(--Linkbrary-gray100, #373740);
+  border-radius: 8px;
+  border: 1px solid var(--gray3);
+  padding: 18px 15px;
+  line-height: 150%;
+  background-color: var(--white);
+}
+
+form input:focus {
+  outline: 1px solid var(--primary);
+}
+
+form .pw-wrapper {
+  position: relative;
+}
+
+form .pw-wrapper .eyeIcon {
+  position: absolute;
+  background-image: url("../Images/eye-off.svg");
+  width: 16px;
+  height: 16px;
+  top: 22px;
+  right: 20px;
+}
+
+form .pw-wrapper .eyeIcon.visible {
+  background-image: url("../Images/eye-on.svg");
+}
+
+form .pw-wrapper .eyeIcon:hover {
+  cursor: pointer;
+}
+
+button.form-button {
+  width: 100%;
+  border: 0;
+  padding: 16px 20px;
+  margin-bottom: 32px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.warningMsg {
+  font-size: 14px;
+  color: var(--red);
+  margin-top: 6px;
+}
+
+.warningForm {
+  outline: 1px solid var(--red);
+}
+
+/* SNS */
+.sns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: var(--gray2);
+  border: 1px solid var(--gray3);
+  border-radius: 8px;
+  margin-bottom: 100px;
+}
+
+.sns p {
+  color: var(--Linkbrary-gray100, #373740);
+  font-size: 14px;
+}
+
+.sns-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.sns-icon a {
+  width: 42px;
+  height: 42px;
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+  body {
+    padding: 0 32px;
+  }
+  header {
+    margin-top: 120px;
+  }
+  main {
+    width: min(100%, 400px);
+  }
+}

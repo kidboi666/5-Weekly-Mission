@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./Styles/sign.css" />
+    <link rel="stylesheet" href="./Styles/common.css" />
+    <title>Linkbrary</title>
+  </head>
+  <body>
+    <header>
+      <a href="/">
+        <img src="./Images/logo.svg" alt="Linkbrary 로고" class="logo" />
+      </a>
+      <div class="sign-wrapper">
+        <p>회원이 아니신가요?</p>
+        <a href="./signup.html">회원 가입하기</a>
+      </div>
+    </header>
+    <main>
+      <form id="signinForm">
+        <label for="email">이메일</label>
+        <input type="email" id="email" name="email" />
+        <label for="pw" class="pw">비밀번호</label>
+        <div class="pw-wrapper">
+          <input type="password" id="pw" name="password" />
+          <div class="eyeIcon invisible"></div>
+        </div>
+      </form>
+      <button form="signinForm" class="button-grad form-button">로그인</button>
+      <div class="sns">
+        <p>소셜 로그인</p>
+        <div class="sns-icon">
+          <a href="https://www.google.com/" target="_blank" class="google">
+            <img src="./Images/icon-google.svg" alt="구글 아이콘" />
+          </a>
+          <a href="https://www.kakaocorp.com/page/" target="_blank">
+            <img src="./Images/icon-kakaotalk.svg" alt="카카오톡 아이콘" />
+          </a>
+        </div>
+      </div>
+    </main>
+    <script type="module" src="./Scripts/signin.js"></script>
+  </body>
+</html>
