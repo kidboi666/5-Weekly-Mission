@@ -2,8 +2,15 @@
   display: grid;
   gap: 20px;
   grid-template-columns: auto auto auto;
+  justify-content: center;
+}
+
+.link-card-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
   background-color: #fff;
   width: 100%;
   padding: 40px 0 100px;
-  justify-content: center;
 }
