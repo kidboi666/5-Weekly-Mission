@@ -18,11 +18,12 @@ p {
     width: 66.25rem;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1124px) {
     /* 타블렛 */
 
     .wrap {
-        width: 43.625rem;
+        width: 44rem;
+        padding: 0 2rem;
     }
 }
 

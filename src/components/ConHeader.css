@@ -48,6 +48,14 @@ p {
         padding: 0 4rem;
     }
 
+    .con-header-wrap h2 {
+        margin: 0.625rem 0 0;
+    }
+
+    .con-header h3 {
+        margin: 0;
+    }
+
     h3 {
         font-size: 1.5rem;
         line-height: 1.16666666667;

@@ -17,6 +17,28 @@ header > h1.logo > a {
     height: 24px;
 }
 
+header .header-profile {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+header .header-img {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+header .header-img img {
+    width: 100%;
+}
+
+header .header-email {
+    font-size: 0.875rem;
+    line-height: 1.19357142857;
+}
+
 @media (max-width: 1199px) {
     /* 타블렛 */
     header {
@@ -35,5 +57,9 @@ header > h1.logo > a {
     header > h1.logo > a {
         width: 88.67px;
         height: 1rem;
+    }
+
+    header .header-email {
+        display: none;
     }
 }
