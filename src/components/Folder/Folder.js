@@ -9,7 +9,6 @@ export default function Folder() {
   const [folderName, setFolderName] = useState('');
   const [items, setItems] = useState([]);
   const [searchValue, setSearchValue] = useState('');
-
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     setSearchValue(e.target['search-input'].value);
@@ -23,13 +22,19 @@ export default function Folder() {
 
     const { name, owner, links } = result;
     setFolderName(name);
-    setItems(links);
+
+    if (searchValue !== '') {
+      setItems(searchTMP(links, searchValue));
+    } else {
+      setItems(links);
+    }
     setOwnerInfo(owner);
   };
 
   useEffect(() => {
     handleLoad();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchValue]);
 
   return (
     <div className='folder-container'>
@@ -41,4 +46,25 @@ export default function Folder() {
       <LinkCardList items={items} searchOnSubmit={handleSearchSubmit} />
     </div>
   );
+}
+
+function searchTMP(items, searchValue) {
+  let searchedItems = [];
+  const lowerSearchValue = searchValue.toLowerCase();
+
+  for (const item of items) {
+    const lowerTitle = item.title.toLowerCase();
+    const lowerDescription = item.description.toLowerCase();
+    const lowerUrl = item.url.toLowerCase();
+
+    if (lowerTitle.includes(lowerSearchValue)) {
+      searchedItems.push(item);
+    } else if (lowerDescription.includes(lowerSearchValue)) {
+      searchedItems.push(item);
+    } else if (lowerUrl.includes(lowerSearchValue)) {
+      searchedItems.push(item);
+    }
+  }
+
+  return searchedItems;
 }
