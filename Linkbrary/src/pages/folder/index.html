@@ -5,12 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="scss/just-for-fun/blackJack.scss">
+    <link rel="stylesheet" href="../../assets/scss/layouts/_header.scss">
+
+    <link rel="stylesheet" href="../../assets/scss/just-for-fun/blackJack.scss">
 </head>
 
 <body>
     <main>
-        <h1>LOOKING FOR FOLDER PAGE?</h1>
+        <header class="main-header">
+            <h1>
+                <a href="../../index.html">
+                    <img src="../../assets/img/logo.svg" alt="Linkbrary" class="sign-logo">
+                </a>
+                <p class="blind">Linkbrary</p>
+            </h1>
+            <a href="../signin/index.html" class="btn header-login" id="sign-out-btn">로그아웃</a>
+
+        </header>
+
+        <h2>LOOKING FOR FOLDER PAGE?</h2>
         <h2 style="text-align: center;">그런건 없습니다<br>대신 블랙잭 한판 어떠신가요?</h2>
         <ul class="rules">
             <li>6덱 블랙잭입니다, 덱이 50장 미만이면 자동셔플됩니다</li>
@@ -89,7 +102,8 @@
         </div>
 
     </main>
-    <script src="js/justForFun/blackJack.js">
+    <script type="module" src="folder.js"></script>
+    <script src="../../js/justForFun/blackJack.js">
     </script>
 </body>
 

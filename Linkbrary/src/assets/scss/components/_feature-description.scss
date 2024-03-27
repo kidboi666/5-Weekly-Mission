@@ -1,4 +1,4 @@
-@use "../abstracts" as a;
+@use '../abstracts' as a;
 .feature-description-section {
   background-color: a.$white-color;
   margin: -120px 0 0;
@@ -52,17 +52,17 @@
     }
 
     .folder-manage-image {
-      background-image: url("../../img/feature_bg1.png");
+      background-image: url('../../img/feature_bg1.png');
       background-size: cover;
     }
 
     .folder-share-image {
-      background-image: url("../../img/feature_bg2.png");
+      background-image: url('../../img/feature_bg2.png');
       background-size: cover;
     }
 
     .folder-search-image {
-      background-image: url("../../img/feature_bg3.png");
+      background-image: url('../../img/feature_bg3.png');
       background-size: cover;
     }
 

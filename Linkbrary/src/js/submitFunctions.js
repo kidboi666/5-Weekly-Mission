@@ -1,16 +1,17 @@
-import validateLogin from "./loginValidation";
-import validateSignUp from "./signUpValidation";
+import { requestAuthorization } from './api/signinAPI';
+import { requestSignUp } from './api/signupAPI';
+
 export function signInSubmit() {
-  validateLogin(
-    document.querySelector("#user-email"),
-    document.querySelector("#password")
+  requestAuthorization(
+    document.querySelector('#user-email'),
+    document.querySelector('#password')
   );
 }
 
 export function signUpSubmit() {
-  validateSignUp(
-    document.querySelector("#user-email"),
-    document.querySelector("#password"),
-    document.querySelector("#password-check")
+  requestSignUp(
+    document.querySelector('#user-email'),
+    document.querySelector('#password'),
+    document.querySelector('#password-check')
   );
 }
