@@ -23,11 +23,15 @@
   }
 
   .logo-img {
-    width: 210px;
+    width: 133px;
+  }
+
+  @media (max-width: 1124px) {
+    padding: 32px;
   }
 
   @media (max-width: 767px) {
-    padding: 13px 32px;
+    padding: 18px 32px;
 
     .logo-img {
       width: 88px;
