@@ -1,0 +1,10 @@
+body {
+}
+
+#root {
+  background-color: #e7effb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
