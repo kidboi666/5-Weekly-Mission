@@ -1,17 +1,15 @@
-import { useState } from 'react';
-
-export default function SearchBar() {
-  const [searchValue, setSearchValue] = useState('');
-
+export default function SearchBar({ onSubmit }) {
   return (
-    <div class='search-bar'>
-      <input
-        type='text'
-        name='search-link'
-        id='search-link'
-        placeholder='링크를 검색하세요'
-        class='search-input'
-      />
+    <div className='search-bar'>
+      <form onSubmit={onSubmit}>
+        <input
+          type='text'
+          name='search-input'
+          id='search-link'
+          placeholder='링크를 검색하세요'
+          className='search-input'
+        />
+      </form>
     </div>
   );
 }

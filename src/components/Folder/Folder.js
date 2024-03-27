@@ -9,6 +9,13 @@ export default function Folder() {
   const [folderName, setFolderName] = useState('');
   const [items, setItems] = useState([]);
 
+  const [searchValue, setSearchValue] = useState('');
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    setSearchValue(e.target['search-input'].value);
+  };
+
   const handleLoad = async () => {
     let result;
     try {
@@ -32,7 +39,7 @@ export default function Folder() {
         profileImgSource={ownerInfo.profileImageSource}
         folderName={folderName}
       />
-      <LinkCardList items={items} />
+      <LinkCardList items={items} searchOnSubmit={handleSearchSubmit} />
     </div>
   );
 }
