@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getFolderInfo } from '../../utils/api';
 import FolderInfo from '../FolderInfo/FolderInfo';
 import LinkCardList from '../LinkCardList/LinkCardList';
+import './Folder.css';
 
 export default function Folder() {
   const [ownerInfo, setOwnerInfo] = useState({});
@@ -25,13 +26,13 @@ export default function Folder() {
   }, []);
 
   return (
-    <>
+    <div className='folder-container'>
       <FolderInfo
         ownerName={ownerInfo.name}
         profileImgSource={ownerInfo.profileImageSource}
         folderName={folderName}
       />
       <LinkCardList items={items} />
-    </>
+    </div>
   );
 }
