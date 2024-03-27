@@ -21,8 +21,3 @@ export async function getUserInfo() {
   const result = await response.json();
   return result;
 }
-
-/*
-fetch('https://bootcamp-api.codeit.kr/api/sample/folder').then((response) => response.json()).then((result)=>{console.log(result);});
-fetch('https://bootcamp-api.codeit.kr/api/sample/user').then((response) => response.json()).then((result)=>{console.log(result);});
-*/

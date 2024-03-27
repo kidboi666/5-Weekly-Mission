@@ -8,7 +8,6 @@ export default function Folder() {
   const [ownerInfo, setOwnerInfo] = useState({});
   const [folderName, setFolderName] = useState('');
   const [items, setItems] = useState([]);
-
   const [searchValue, setSearchValue] = useState('');
 
   const handleSearchSubmit = (e) => {

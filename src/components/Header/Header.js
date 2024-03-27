@@ -21,7 +21,7 @@ export default function Header() {
   return (
     <header className='main-header'>
       <h1>
-        <a href='#'>
+        <a href='/'>
           <img src={logo} alt='Linkbrary' className='logo-img' />
         </a>
         <span className='blind'>Linkbrary</span>
