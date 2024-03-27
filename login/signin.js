@@ -57,5 +57,10 @@ passwordInput.addEventListener('focusout', validatePassword);
 document.addEventListener('keydown', function (event) {
   if (event.key === 'Enter') {
     event.preventDefault();
+    window.location.href = '/folder';
   }
 });
+
+/*
+https://bootcamp-api.codeit.kr/docs 에 명세된 “/api/sign-in”으로 { “email”: “test@codeit.com”, “password”: “sprint101” } POST 요청해서 성공 응답을 받으면 “/folder”로 이동합니다.
+*/
