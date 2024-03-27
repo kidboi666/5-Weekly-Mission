@@ -2,7 +2,6 @@ import facebookLogo from '../../assets/images/facebook_logo.svg';
 import twitterLogo from '../../assets/images/twitter_logo.svg';
 import youtubeLogo from '../../assets/images/youtube_logo.svg';
 import instagramLogo from '../../assets/images/instagram_logo.svg';
-import '../../assets/css/reset.css';
 import './Footer.css';
 export default function Footer() {
   return (

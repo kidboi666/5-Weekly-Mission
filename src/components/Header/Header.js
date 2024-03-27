@@ -1,4 +1,3 @@
-import '../../assets/css/reset.css';
 import './Header.css';
 import logo from '../../assets/images/logo.svg';
 export default function Header() {

@@ -1,4 +1,3 @@
-import '../../assets/css/reset.css';
 import './FolderInfo.css';
 
 export default function FolderInfo({
