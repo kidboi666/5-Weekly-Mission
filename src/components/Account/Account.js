@@ -1,3 +1,5 @@
+import './Account.css';
+
 export default function Account({ profileImgSource, userEmail }) {
   return (
     <div className='account'>
