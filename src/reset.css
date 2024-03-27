@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+  word-break: keep-all;
+  font-family: 'pretendard';
+  margin : 0;
+  /* 웹브라우저에서 기본값으로 주는 margin 상쇄 */
+}
+
+
+html,
+body {
+  font-size: 62.5%;
+}
+/* = 1rem = 10px
+웹브라우저 기본 폰트사이즈의 62.5% / 크롬은 16px*/
+
+a {
+  color: inherit; /* 이 부분은 뭘 위해서?*/
+  text-decoration: none;
+  cursor: pointer;
+}
+
+input:focus {
+  outline: none;
+}
+
+button {
+  border: none; 
+  padding: unset;
+  background-color: unset;
+  cursor: pointer;
+}
