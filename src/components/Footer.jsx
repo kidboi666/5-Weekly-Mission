@@ -42,7 +42,7 @@ function Footer() {
             <ul class="sns-menu flex-box">
                 {footerDatas.map(({ imgUrl, alt, link }) => {
                     return (
-                        <li>
+                        <li key={link}>
                             <a href={link} target="_blank">
                                 <img src={imgUrl} alt={alt} />
                             </a>
