@@ -8,17 +8,14 @@ const $passwordErrorMessage = document.querySelector(
   '.form-group__error-message--password'
 );
 
-const EMAIL_VALUE = $emailInput.value;
-const PASSWORD_VALUE = $passwordInput.value;
-
 function appendErrorMessage(errorContainer, message) {
   errorContainer.textContent = message;
 }
 
 function showEmailErrorMessage(emailErrorMessage) {
-  if (EMAIL_VALUE === '') {
+  if ($emailInput.value === '') {
     appendErrorMessage(emailErrorMessage, '이메일을 입력해주세요');
-  } else if (EMAIL_VALUE.indexOf('@') === -1) {
+  } else if ($emailInput.value.indexOf('@') === -1) {
     appendErrorMessage(emailErrorMessage, '올바른 이메일 주소가 아닙니다.');
   } else {
     appendErrorMessage(emailErrorMessage, '');
@@ -26,7 +23,7 @@ function showEmailErrorMessage(emailErrorMessage) {
 }
 
 function showPasswordErrorMessage(passwordErrorMessage) {
-  if (PASSWORD_VALUE === '') {
+  if ($passwordInput.value === '') {
     appendErrorMessage(passwordErrorMessage, '비밀번호를 입력해주세요');
   } else {
     appendErrorMessage(passwordErrorMessage, '');
@@ -67,7 +64,7 @@ async function submitForm(event) {
       return;
     }
     localStorage.setItem('accessToken', accessToken);
-    location.href = '/folder';
+    location.href = '../folder/folder.html';
   } catch (error) {
     console.error(error);
     appendErrorMessage($emailErrorMessage, '이메일을 확인해주세요.');
@@ -75,6 +72,9 @@ async function submitForm(event) {
   }
 }
 
+$emailInput.addEventListener('input', validateEmail);
 $emailInput.addEventListener('focusout', validateEmail);
+$passwordInput.addEventListener('input', validatePassword);
 $passwordInput.addEventListener('focusout', validatePassword);
+
 document.addEventListener('submit', submitForm);
