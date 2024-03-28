@@ -1,6 +1,7 @@
 import { elementComponents, textMsgComponents } from "./signComponentsModule.js";
-import { emailCheck, passwordCheck } from "../validation.js";
-import { commonFncInsertTextContent } from "../common.js";
+import { emailCheck, passwordCheck } from "../utils/validation.js";
+import { commonFncInsertTextContent } from "../utils/common.js";
+
 
 export const signSection = {
 
@@ -21,15 +22,6 @@ export const signSection = {
 
             updateInputStyleByMsg();
             return returnBooleanData;
-        },
-
-        checkDuplicateEmail : function(inputElement) {
-            if(inputElement.value === 'test@codeit.com'){
-                commonFncInsertTextContent(signSection.elementComponents.idValidationDiv, textMsgComponents.findDuplicateEmail);
-                updateInputStyleByMsg();
-                return false;
-            }
-            return true;
         }
     },
 
@@ -44,7 +36,7 @@ export const signSection = {
             commonFncInsertTextContent(passwordValidationMsgElement, textMsgComponents.checkInputPassword, '', inputElement.value === '');
             updateInputStyleByMsg();
 
-            return !(inputElement.value === '');
+            return inputElement.value !== '';
         },
 
         passwordValidation : function(inputElement) {
@@ -72,14 +64,16 @@ export const signSection = {
 }
 
 export const updateInputStyleByMsg = function(){
-
     const arrayDivEl = [elementComponents.idValidationDiv, 
-                        elementComponents.passwordValidationDiv, 
-                        elementComponents.passwordVerifyValidationDiv];
+                        elementComponents.passwordValidationDiv];
 
     const arrayInputBoxEl = [elementComponents.userEmailInput,
-                             elementComponents.userPasswordInput,
-                             elementComponents.userPasswordVerifyInput];
+                             elementComponents.userPasswordInput];
+    
+    if(elementComponents.passwordVerifyValidationDiv !== undefined){
+        arrayDivEl.push(elementComponents.passwordVerifyValidationDiv);
+        arrayInputBoxEl.push(elementComponents.userPasswordVerifyInput);
+    }
     
     arrayDivEl.forEach((divEl, i) => {
         if(divEl.textContent.length > 0){
