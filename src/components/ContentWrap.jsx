@@ -3,27 +3,20 @@ import ConHeader from "./ConHeader";
 import Search from "./Search";
 import { useEffect, useState } from "react";
 import CardList from "./CardList";
+import { fetchData } from "../fetchUtils";
 
 function ContentWrap() {
     const [folderData, setFolderData] = useState([]);
     const [cardData, setCardData] = useState([]);
 
-    const fetchData = async () => {
-        try {
-            const response = await fetch("https://bootcamp-api.codeit.kr/api/sample/folder");
-            const data = await response.json();
-
-            const { folder } = data;
-            const { links } = folder;
-            setFolderData(folder);
-            setCardData(links);
-        } catch (e) {
-            console.log(e);
-        }
-    };
-
     useEffect(() => {
-        fetchData();
+        async function fetchDataAndSetState() {
+            const { cardData, folderData } = await fetchData();
+
+            setFolderData(folderData);
+            setCardData(cardData);
+        }
+        fetchDataAndSetState();
     }, []);
 
     return (
