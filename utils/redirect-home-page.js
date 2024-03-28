@@ -1,3 +1,3 @@
-export default function redirectHomePage() {
-  window.location.href = '/folder'
+export default function redirect(path) {
+  window.location.href = path
 }

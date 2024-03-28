@@ -1,32 +1,25 @@
-export default async function register(email, password) {
-  const url = 'https://bootcamp-api.codeit.kr/api/sign-up'
-  const data = {
-    email,
-    password,
-  }
+import BASE_URL from './base_url.js'
 
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  }
-
+export default async function register(registerOption) {
+  console.log(registerOption)
   try {
-    const response = await fetch(url, options)
-    const responseData = await response.json()
-    if (responseData.error) {
+    const response = await fetch(`${BASE_URL}/sign-up`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(registerOption),
+    })
+    if (!response?.ok) {
       return {
         success: false,
-        message: '이미 존재하는 이메일 입니다.',
+        message: '요청이 올바르지 않습니다.',
       }
     }
-    if (!!responseData.data) {
-      localStorage.setItem('accessToken', responseData.data.accessToken)
-      return { success: true }
-    }
-    return { success: false, message: '서버 에러' }
+
+    const responseData = await response.json()
+    localStorage.setItem('accessToken', responseData.data.accessToken)
+    return { success: true }
   } catch (error) {
     console.log('Error:', error)
     return { success: false, message: '서버 에러' }

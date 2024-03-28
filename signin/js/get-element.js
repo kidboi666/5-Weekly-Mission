@@ -1,7 +1,0 @@
-export const emailEl = document.getElementById('signIn-email')
-export const emailErrorEl = document.getElementById('signIn-email-error')
-export const passwordEl = document.getElementById('signIn-password')
-export const passwordErrorEl = document.getElementById('signIn-password-error')
-export const formEl = document.getElementById('signIn-form')
-export const eyeOffIconEl = document.getElementById('eye-off')
-export const eyeOnIconEl = document.getElementById('eye-on')

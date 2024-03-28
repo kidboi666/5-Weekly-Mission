@@ -1,34 +1,47 @@
-import handleEmailFocusIn from './handle-event/handle-email-focus-in.js'
-import handlePasswordFocusOut from './handle-event/handle-password-focus-out.js'
-import handlePasswordFocusIn from './handle-event/handle-password-focus-in.js'
-import handleSubmit from './handle-event/handle-submit.js'
-import handleEmailFocusOut from './handle-event/handle-email-focus-out.js'
-import handleEyeOffIconClick from './handle-event/handle-eye-off-click.js'
-import handleEyeOnIconClick from './handle-event/handle-eye-on-click.js'
-
-import {
-  emailEl,
-  eyeOffIconEl,
-  eyeOnIconEl,
-  formEl,
-  passwordEl,
-} from './get-element.js'
 import isLoggedIn from '../../utils/is-logged-in.js'
-import redirectHomePage from '../../utils/redirect-home-page.js'
+import redirect from '../../utils/redirect-home-page.js'
+import { handleSubmit } from './handle-submit.js'
+import {
+  hideInputError,
+  hidePassword,
+  showPassword,
+  validateAndDisplayEmailError,
+  validateAndDisplayPasswordError,
+} from './ui-controller.js'
 
 const checkLoggedIn = isLoggedIn()
 if (checkLoggedIn) {
-  redirectHomePage()
+  redirect('/folder')
 }
 
+const emailEl = document.getElementById('signIn-email')
+const emailErrorEl = document.getElementById('signIn-email-error')
+const passwordEl = document.getElementById('signIn-password')
+const passwordErrorEl = document.getElementById('signIn-password-error')
+const formEl = document.getElementById('signIn-form')
+const eyeOffIconEl = document.getElementById('eye-off')
+const eyeOnIconEl = document.getElementById('eye-on')
+
 function onDocumentReady() {
-  emailEl.addEventListener('focusout', handleEmailFocusOut)
-  emailEl.addEventListener('focusin', handleEmailFocusIn)
-  passwordEl.addEventListener('focusout', handlePasswordFocusOut)
-  passwordEl.addEventListener('focusin', handlePasswordFocusIn)
+  emailEl.addEventListener('focusin', () => {
+    hideInputError(emailEl, emailErrorEl)
+  })
+  emailEl.addEventListener('focusout', () => {
+    validateAndDisplayEmailError(emailEl, emailErrorEl)
+  })
+  passwordEl.addEventListener('focusout', () => {
+    validateAndDisplayPasswordError(passwordEl, passwordErrorEl)
+  })
+  passwordEl.addEventListener('focusin', () => {
+    hideInputError(passwordEl, passwordErrorEl)
+  })
+  eyeOffIconEl.addEventListener('click', () => {
+    showPassword(passwordEl, eyeOffIconEl, eyeOnIconEl)
+  })
+  eyeOnIconEl.addEventListener('click', () => {
+    hidePassword(passwordEl, eyeOffIconEl, eyeOnIconEl)
+  })
   formEl.addEventListener('submit', handleSubmit)
-  eyeOffIconEl.addEventListener('click', handleEyeOffIconClick)
-  eyeOnIconEl.addEventListener('click', handleEyeOnIconClick)
 }
 
 document.addEventListener('DOMContentLoaded', onDocumentReady)
