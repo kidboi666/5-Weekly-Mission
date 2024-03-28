@@ -15,6 +15,8 @@ const $passwordConfirmErrorMessage = document.querySelector(
   '.form-group__error-message--password-confirm'
 );
 
+const $form = document.querySelector('.sign-form');
+
 class EmailValidate {
   constructor(emailInput, errorMessageContainer) {
     this.emailInput = emailInput;
@@ -136,6 +138,38 @@ class PasswordValidate {
   }
 }
 
+async function submitForm() {
+  try {
+    const response = await fetch('https://bootcamp-api.codeit.kr/api/sign-up', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: $emailInput.value,
+        password: $passwordInput.value,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('로그인 오류');
+    }
+
+    const { data } = await response.json();
+    const accessToken = data?.accessToken;
+    if (!accessToken) {
+      alert('토큰이 없습니다.');
+      return;
+    }
+    localStorage.setItem('accessToken', accessToken);
+    location.href = '../folder/folder.html';
+  } catch (error) {
+    console.error(error);
+    appendErrorMessage($emailErrorMessage, '이메일을 확인해주세요.');
+    appendErrorMessage($passwordErrorMessage, '비밀번호를 확인해주세요.');
+  }
+}
+
 const emailValidate = new EmailValidate($emailInput, $emailErrorMessage);
 
 const passwordValidate = new PasswordValidate(
@@ -151,12 +185,14 @@ const passwordConfirmValidate = new PasswordValidate(
 $emailInput.addEventListener('input', () => {
   emailValidate.validate();
 });
-$emailInput.addEventListener('submit', () => {
-  emailValidate.checkEmail();
-});
 
 $passwordInput.addEventListener('input', () => {
   passwordValidate.validate();
+});
+
+$form.addEventListener('submit', () => {
+  emailValidate.checkEmail();
+  submitForm();
 });
 
 $passwordConfirmInput.addEventListener('input', () => {
