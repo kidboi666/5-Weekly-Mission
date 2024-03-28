@@ -1,7 +1,7 @@
 import LinkbraryImage from "../../image/Linkbrary.png";
 import profileImage from "../../image/profile img.jpg";
-import { useState, useEffect } from "react";
 import styled from "styled-components";
+import useFetchData from "../Hooks/useFetchData";
 
 const NavContainer = styled.nav`
   nav {
@@ -50,19 +50,9 @@ const NavContainer = styled.nav`
 `;
 
 const Nav = () => {
-  const [profileData, setProfileData] = useState(null);
-
-  useEffect(() => {
-    // 프로필 데이터 가져오기
-    fetch("https://bootcamp-api.codeit.kr/api/sample/user")
-      .then((response) => response.json())
-      .then((data) => {
-        setProfileData(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching profile data:", error);
-      });
-  }, []);
+  const profileData = useFetchData(
+    "https://bootcamp-api.codeit.kr/api/sample/user"
+  );
 
   return (
     <NavContainer>
