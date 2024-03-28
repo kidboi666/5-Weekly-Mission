@@ -1,0 +1,6 @@
+.shared-card {
+  width: calc(100% / 3);
+}
+.shared-card img {
+  width: 100%;
+}

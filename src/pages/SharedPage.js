@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Search from "../components/utils/Search";
 import Card from "../components/Card";
 import { getSharedList } from "../api";
+import "./SharedPage.css";
+import ExampleImg from "../assets/login_google.png";
 
 export default function SharedPage() {
   const [items, setItems] = useState([]);
@@ -16,17 +18,17 @@ export default function SharedPage() {
   }, []);
 
   return (
-    <div>
+    <div className='shared-page'>
       <div className='top-box'>
         <div className='profile-box'>
-          <img src='' alt='프로필' />
+          <img src={ExampleImg} alt='프로필' />
           <p>@코드잇</p>
         </div>
         <h2 className='title'>⭐️ 즐겨찾기</h2>
       </div>
-      <section>
+      <section class='shared-section'>
         <Search />
-        <ul>
+        <ul class='card-list'>
           {items.map((item) => (
             <Card key={item.id} item={item} />
           ))}
