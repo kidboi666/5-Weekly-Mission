@@ -1,17 +1,17 @@
-const emailInput = document.querySelector('input[type="email"]');
-const emailErrorMessage = document.querySelector(
+const $emailInput = document.querySelector('input[type="email"]');
+const $emailErrorMessage = document.querySelector(
   '.form-group__error-message--email'
 );
 
-const passwordInput = document.querySelector('.form-group__password');
-const passwordErrorMessage = document.querySelector(
+const $passwordInput = document.querySelector('.form-group__password');
+const $passwordErrorMessage = document.querySelector(
   '.form-group__error-message--password'
 );
 
-const passwordConfirmInput = document.querySelector(
+const $passwordConfirmInput = document.querySelector(
   '.form-group__password-confirm'
 );
-const passwordConfirmErrorMessage = document.querySelector(
+const $passwordConfirmErrorMessage = document.querySelector(
   '.form-group__error-message--password-confirm'
 );
 
@@ -22,7 +22,7 @@ class EmailValidate {
   }
 
   validate() {
-    const email = emailInput.value;
+    const email = $emailInput.value;
     if (this.empty(email)) {
       this.showErrorMessage('이메일을 입력해주세요');
       return;
@@ -33,10 +33,10 @@ class EmailValidate {
       return;
     }
 
-    if (this.useAlready(email)) {
-      this.showErrorMessage('이미 사용중인 이메일 입니다');
-      return;
-    }
+    // if (this.checkEmail(email)) {
+    //   this.showErrorMessage('이미 사용중인 이메일 입니다');
+    //   return;
+    // }
 
     this.clearErrorMessage();
   }
@@ -49,8 +49,29 @@ class EmailValidate {
     return email.indexOf('@') !== -1;
   }
 
-  useAlready(email) {
-    return email === 'test@codeit.com';
+  async checkEmail(email) {
+    try {
+      const CHECK_EMAIL_URL = 'https://bootcamp-api.codeit.kr/api/check-email';
+
+      await fetch(CHECK_EMAIL_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+        }),
+      });
+
+      if (!response.ok) throw new Error('사용할 수 없는 중복된 이메일 오류');
+
+      const { data } = await response.json();
+      const isUsableNickname = data?.isUsableNickname;
+      if (!isUsableNickname) return;
+      location.href = '../folder/folder.html';
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   showErrorMessage(message) {
@@ -115,27 +136,30 @@ class PasswordValidate {
   }
 }
 
-const emailValidate = new EmailValidate(emailInput, emailErrorMessage);
+const emailValidate = new EmailValidate($emailInput, $emailErrorMessage);
 
 const passwordValidate = new PasswordValidate(
-  passwordInput,
-  passwordErrorMessage
+  $passwordInput,
+  $passwordErrorMessage
 );
 
 const passwordConfirmValidate = new PasswordValidate(
-  passwordConfirmInput,
-  passwordConfirmErrorMessage
+  $passwordConfirmInput,
+  $passwordConfirmErrorMessage
 );
 
-emailInput.addEventListener('input', () => {
+$emailInput.addEventListener('input', () => {
   emailValidate.validate();
 });
+$emailInput.addEventListener('submit', () => {
+  emailValidate.checkEmail();
+});
 
-passwordInput.addEventListener('input', () => {
+$passwordInput.addEventListener('input', () => {
   passwordValidate.validate();
 });
 
-passwordConfirmInput.addEventListener('input', () => {
+$passwordConfirmInput.addEventListener('input', () => {
   passwordConfirmValidate.validate();
   PasswordValidate.passwordMatch(passwordValidate, passwordConfirmValidate);
 });
