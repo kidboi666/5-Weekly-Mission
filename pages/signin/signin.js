@@ -1,5 +1,3 @@
-import { signIn } from '../../apis/api';
-
 const $emailInput = document.querySelector('input[type="email"]');
 const $emailErrorMessage = document.querySelector(
   '.form-group__error-message--email'
@@ -43,14 +41,40 @@ function validatePassword() {
   showPasswordErrorMessage($passwordErrorMessage);
 }
 
-$emailInput.addEventListener('blur', validateEmail);
-$passwordInput.addEventListener('blur', validatePassword);
+async function submitForm(event) {
+  event.preventDefault();
 
-document.addEventListener('keydown', function (event) {
-  if (event.key === 'Enter') {
-    event.preventDefault();
-    signIn({ EMAIL_VALUE, PASSWORD_VALUE }).then(console.log(body));
+  try {
+    const response = await fetch('https://bootcamp-api.codeit.kr/api/sign-in', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: $emailInput.value,
+        password: $passwordInput.value,
+      }),
+    });
 
-    window.location.href = '/folder';
+    if (!response.ok) {
+      throw new Error('로그인 오류');
+    }
+
+    const { data } = await response.json();
+    const accessToken = data?.accessToken;
+    if (!accessToken) {
+      alert('토큰이 없습니다.');
+      return;
+    }
+    localStorage.setItem('accessToken', accessToken);
+    location.href = '/folder';
+  } catch (error) {
+    console.error(error);
+    appendErrorMessage($emailErrorMessage, '이메일을 확인해주세요.');
+    appendErrorMessage($passwordErrorMessage, '비밀번호를 확인해주세요.');
   }
-});
+}
+
+$emailInput.addEventListener('focusout', validateEmail);
+$passwordInput.addEventListener('focusout', validatePassword);
+document.addEventListener('submit', submitForm);
