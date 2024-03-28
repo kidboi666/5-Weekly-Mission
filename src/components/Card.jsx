@@ -1,4 +1,5 @@
 import catImg from "../assets/images/cat.jpg";
+import "./Card.css";
 import GetDate from "../utils/GetDate";
 import GetDaysAgo from "../utils/GetDaysAgo";
 
