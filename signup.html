@@ -1,59 +1,77 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>signup</title>
-    <link rel="stylesheet" href="css/signin.css">
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>signup</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/signin.css">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="contents">
     <div class="title">
-      <div class="logo">
+      <h1>
         <a href="/"> 
-          <img src="images/logo.svg">
+          <img class="logo" src="images/logo.svg" alt="로고">
         </a>
-      </div>
+      </h1>
       <h2>
-        이미 회원이신가요>
+        이미 회원이신가요?
         <a href="./signin.html">로그인하기</a>
       </h2>
     </div>
     <div class="input-form">
-      <div class="email-input">
-        <h3>이메일</h3>
-        <form>
-          <input type="email">
-        </form>
-      </div>
-      <div class="pwd-input">
-        <h3>비밀번호</h3>
-        <form>
-          <input name="focus" type="password">
-        </form>
-      </div>
-      <div class="pwd-input-check">
-        <h3>비밀번호 확인</h3>
-        <form style="margin-bottom: 12px;">
-          <input name="focus" type="password">
-        </form>
-        <p> 비밀번호와 다릅니다</p>
-      </div>
+      <form>
+        <ol>
+          <li>
+            <label>
+              이메일<br>
+              <input class="email-input" type="email">
+            </label>
+            <p class="error-msg email-error hide"></p>
+          </li>
+          <li class="pwd-input-wrapper">
+            <label>
+              비밀번호<br>
+              <input class="pwd-input" type="password">       
+            </label>
+            <button type="button" class="pwd-eye-off">
+              <img class="eyeOnOff" src="images/eye-off.svg" alt="eye-off">
+            </button>
+            <p class="error-msg pwd-error hide"></p>
+          </li>
+          <li class="pwd-input-check-wrapper">
+            <label>
+              비밀번호 확인<br>
+              <input class="pwd-input-check" type="password">       
+            </label>
+            <button type="button" class="pwd-eye-off">
+              <img class="eyeOnOff" src="images/eye-off.svg" alt="eye-off">
+            </button>
+            <p class="error-msg pwd-check-error hide"></p>
+          </li>
+        </ol>
+      </form>
     </div>
-    <button> 회원가입 </button>
+    <button class="button-sign">회원가입</button>
     <div class="social-login">
       <p>다른 방식으로 가입하기</p>
       <div class="social-icon">
-        <div class="image1">
-          <a href="http://www.google.com"><img src="images/google.png"></a>
+        <div class="google-icon">
+          <a href="http://www.google.com">
+            <img src="images/google.png" alt="구글 아이콘">
+          </a>
         </div>
-        <div class="image2">
-          <a href="http://www.kakao.com"><img src="images/99FE484C5C3451F218 1.svg"></a>
+        <div class="kakao-icon">
+          <a href="http://www.kakao.com">
+            <img src="images/99FE484C5C3451F218 1.svg" alt="카카오 아이콘">
+          </a>
         </div>
       </div>
     </div>
   </div>
+  <script type="module" src="signup.js"></script>
 </body>

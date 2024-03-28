@@ -4,25 +4,22 @@
   box-sizing: border-box;
 }
 
-
 html {
-  height:100%;
+  height: 100%;
 }
 
 body {
-  position:relative;
-  width:100%;
-  height:100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
 }
 
 .contents {
   display: flex;
   flex-direction: column;
-  gap:30px;
+  align-items: center;
+  gap: 30px;
 }
 
 .title {
@@ -45,9 +42,9 @@ h2 {
 
 h2 a {
   color: #6D6AFE;
- font-size: 16px;
- font-family: Pretendard;
- font-weight: 600;
+  font-size: 16px;
+  font-family: Pretendard;
+  font-weight: 600;
 }
 
 h3 {
@@ -58,10 +55,11 @@ h3 {
   margin-bottom: 12px;
 }
 
-.input-form {
-  display: flex;
-  gap:24px;
-  flex-direction: column;
+label {
+  color: black;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 input {
@@ -69,26 +67,37 @@ input {
   padding: 18px 15px;
   border-radius: 8px;
   border: 1px #CCD5E3 solid;
-  justify-content: center;
-  align-items: center;
   color: #373740;
   font-size: 16px;
   font-family: Pretendard;
   font-weight: 400;
   line-height: 24px;
+  margin-top: 12px;
 }
 
 input:focus {
-  outline: 1px #6D6AFE solid;
+  border: 1px #6D6AFE solid;
 }
 
+.hide {
+  display: none;
+}
 
-button {
+.error-msg {
+  color: red;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.error-border {
+  border-color: red;
+}
+
+.button-sign {
   width: 100%;
   padding: 16px 20px;
   background: linear-gradient(91deg, #6D6AFE 0%, #6AE3FE 100%);
   border-radius: 8px; 
-  border: none;
   color: #F5F5F5;
   font-size: 18px;
   font-family: Pretendard;
@@ -118,17 +127,17 @@ button {
   font-weight: 400;
 }
 
-.social-login .image2 {
-  width:42px;
-  height:42px;
+.social-login .kakao-icon {
+  width: 42px;
+  height: 42px;
   background-color: #FEE500;
   border-radius: 37.33px;
   position: relative;
 }
 
-.social-login .image1 {
-  width:42px;
-  height:42px;
+.social-login .google-icon {
+  width: 42px;
+  height: 42px;
   background-color: #FFFFFF;
   border-radius: 37.33px;
   position: relative;
@@ -136,7 +145,7 @@ button {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.image2 img {
+.kakao-icon img {
   position: absolute;
   top: 10px;
   bottom: 8px;
@@ -144,7 +153,7 @@ button {
   right: 8px;
 }
 
-.image1 img {
+.google-icon img {
   position: absolute;
   top: 10px;
   bottom: 10px;
@@ -152,13 +161,74 @@ button {
   right: 10px;
 }
 
+.pwd-eye-off {
+  position: absolute;
+  top: 50px;
+  right: 15px;
+  padding: 0;
+  height: 16px;
+}
+
+.pwd-input-wrapper {
+  margin-top: 24px;
+  position: relative;
+}
+
+.pwd-input-check-wrapper {
+  margin-top: 24px;
+  position: relative;
+}
+
 .pwd-input-check p {
   color: #FF5B56;
   font-size: 14px;
   font-family: Pretendard;
   font-weight: 400;
+  margin-top: 6px;
 }
 
-.pwd-input form {
-  background-image: url(eye-off.svg);
+.pwd-input-check input {
+  border-color: red;
+}
+
+@media (max-width: 767px) {
+  body {
+    width: initial;
+    margin: 0 auto;
+  }
+
+  .contents {
+    padding: 120px 32px 233px 32px;
+    width: 100%;
+  }
+
+  input {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .button-sign {
+    width: 100%;
+    max-width: 400px;    
+  }
+  
+  .social-login {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .input-form {
+    width: 100%;
+  }
+
+  ol {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  ol li {
+    width: 100%;
+    max-width: 400px;
+  }
 }
