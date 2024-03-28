@@ -30,8 +30,8 @@ const footerDatas = [
 function Footer() {
     return (
         <footer>
-            <div class="copy">©codeit - 2023</div>
-            <ul class="menu flex-box">
+            <div className="copy">©codeit - 2023</div>
+            <ul className="menu flex-box">
                 <li>
                     <a href="./html/privacy.html">Privacy Policy</a>
                 </li>
@@ -39,7 +39,7 @@ function Footer() {
                     <a href="./html/faq.html">FAQ</a>
                 </li>
             </ul>
-            <ul class="sns-menu flex-box">
+            <ul className="sns-menu flex-box">
                 {footerDatas.map(({ imgUrl, alt, link }) => {
                     return (
                         <li key={link}>
