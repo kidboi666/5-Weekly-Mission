@@ -1,0 +1,38 @@
+import 'styled-components/native'
+
+declare module 'styled-components' {
+  export interface DefaultTheme {
+    title: {
+      ls: string,
+      ms: string,
+    },
+    font: {
+      l: string,
+      lm: string,
+      m: string,
+      sm: string,
+      s: string,
+    },
+    color: {
+      Primary: string,
+      red: string,
+      black: string,
+      white: string,
+      gray3: string,
+      gray6: string,
+      gray9: string,
+      grayc: string,
+      graye: string,
+      grayf: string,
+    },
+    bgColor: {
+      gradient: string,
+    },
+    screenSize: {
+      pc: string,
+      tablet: string,
+      mo: string,
+      mo2: string,
+    },
+  }
+}
