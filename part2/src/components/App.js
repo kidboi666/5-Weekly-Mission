@@ -3,6 +3,7 @@ import { getSampleUser, getFolderInfo } from "../api";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import Folder from "./Folder";
+import CardList from "./CardList";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -39,6 +40,7 @@ function App() {
     <div className="app">
       <Nav email={email} imgUrl={imgUrl} />
       <Folder owner={owner} folderName={folderName} />
+      <CardList links={links} />
       <Footer />
     </div>
   );
