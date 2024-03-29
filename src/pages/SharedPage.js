@@ -3,7 +3,8 @@ import Search from "../components/utils/Search";
 import Card from "../components/Card";
 import { getSharedList } from "../api";
 import "./SharedPage.css";
-import ExampleImg from "../assets/login_google.png";
+// import ExampleImg from "../assets/login_google.png";
+import ExampleImg from "../assets/main_bg.png";
 
 export default function SharedPage() {
   const [items, setItems] = useState([]);
