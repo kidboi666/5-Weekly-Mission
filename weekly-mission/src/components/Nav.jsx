@@ -22,6 +22,16 @@ const Gnb = styled.div`
   width: 100%;
   height: 94px;
   margin: 0;
+
+  @media (max-width: 1199px) {
+    max-width: 800px;
+    padding: 0 32px;
+  }
+
+  @media (max-width: 769px) {
+    min-width: 400px;
+    padding: 0 32px;
+  }
 `;
 
 const GnbLogo = styled.a`

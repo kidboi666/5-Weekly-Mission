@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const SearchbarContainer = styled.div`
   position: relative;
+  margin: 0 16px;
 
   input {
     width: 100%;

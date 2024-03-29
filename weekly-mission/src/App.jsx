@@ -1,4 +1,3 @@
-//import "./App.css";
 import { createGlobalStyle } from "styled-components";
 import Nav from "./components/Nav";
 import Header from "./components/Header";

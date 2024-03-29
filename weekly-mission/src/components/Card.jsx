@@ -7,6 +7,17 @@ const CardContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
   margin-top: 20px;
+  padding: 0 32px;
+
+  @media (max-width: 1199px) {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 1124px;
+    padding: 0 20px;
+  }
+
+  @media (max-width: 769px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 const Card = styled.div`
@@ -20,6 +31,7 @@ const Card = styled.div`
 
   &:hover {
     transform: scale(1.3);
+    position: relative;
     z-index: 1;
   }
 `;
