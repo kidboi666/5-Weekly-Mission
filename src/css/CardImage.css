@@ -1,0 +1,20 @@
+.wrap-img {
+  position: relative;
+}
+
+.little-star {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  bottom: 151px;
+  left: 291px;
+}
+
+.card-img {
+  width: 340px;
+  height: 253.746px;
+  flex-shrink: 0;
+}

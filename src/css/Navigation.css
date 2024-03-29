@@ -6,22 +6,53 @@
   justify-content: center;
   gap: 8px;
   align-self: stretch;
-  background: #f0f6ff;
+  background: #e7effb;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  height: 93px;
 }
 
 .wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  align-self: stretch;
   width: 100%;
   max-width: 1520px;
   margin-left: 200px;
   margin-right: 200px;
+}
+
+/* 태블릿 사이즈 */
+@media (max-width: 1199px) {
+  .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    width: 100%;
+    max-width: 1520px;
+    margin-left: 200px;
+    margin-right: 200px;
+    gap: 538px;
+    padding: 0;
+  }
+}
+
+/* 모바일 사이즈 */
+@media (max-width: 767px) {
+  .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    width: 100%;
+    margin-left: 32px;
+    margin-right: 32px;
+    gap: 0;
+    padding: 0;
+  }
 }
 
 .login-button {
