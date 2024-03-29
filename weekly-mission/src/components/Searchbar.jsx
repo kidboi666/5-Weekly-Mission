@@ -4,7 +4,16 @@ import styled from "styled-components";
 const SearchbarContainer = styled.div`
   position: relative;
 
-  .search-icon {
+  input {
+    width: 100%;
+    height: 54px;
+    padding: 15px 20px 15px 40px;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    border: none;
+  }
+
+  img {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -15,21 +24,12 @@ const SearchbarContainer = styled.div`
     width: 20px;
     height: 20px;
   }
-
-  input {
-    width: 100%;
-    height: 54px;
-    padding: 15px 20px 15px 40px;
-    border-radius: 10px;
-    background-color: #f5f5f5;
-    border: none;
-  }
 `;
 
 const SearchBar = () => {
   return (
     <SearchbarContainer>
-      <img src={searchIcon} alt="Search Icon" className="search-icon" />
+      <img src={searchIcon} alt="Search Icon" />
       <input type="text" placeholder="링크를 검색해 보세요." />
     </SearchbarContainer>
   );

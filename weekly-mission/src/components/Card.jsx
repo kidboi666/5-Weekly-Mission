@@ -3,87 +3,71 @@ import noImage from "../../image/noimage.svg";
 import styled from "styled-components";
 
 const CardContainer = styled.div`
-  .card_grid_container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-    margin-top: 20px;
-  }
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 20px;
+`;
 
-  .card {
-    width: 340px;
-    height: 334px;
-    border-radius: 15px;
-    box-shadow: 0px 5px 25px 0px #00000014;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+const Card = styled.div`
+  width: 340px;
+  height: 334px;
+  border-radius: 15px;
+  box-shadow: 0px 5px 25px 0px #00000014;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 
-    &:hover {
-      transform: scale(1.3);
-    }
+  &:hover {
+    transform: scale(1.3);
+    z-index: 1;
   }
+`;
 
-  .card_img_div {
-    width: 100%;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
+const CardImage = styled.img`
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  object-fit: cover;
+`;
 
-  .card_img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+const CardText = styled.div`
+  width: 100%;
+  padding: 15px 20px;
+  gap: 10px;
+  border-radius: 0px 0px 15px 15px;
+  display: flex;
+  flex-direction: column;
+`;
 
-  .card_text {
-    width: 100%;
-    padding: 15px 20px;
-    gap: 10px;
-    border-radius: 0px 0px 15px 15px;
-    display: flex;
-    flex-direction: column;
-  }
+const CardTime = styled.p`
+  font-size: 13px;
+  line-height: 15.51px;
+  color: #666666;
+  font-weight: 400;
+  text-align: left;
+`;
 
-  .card_text_time,
-  .card_text_date {
-    font-weight: 400;
-    text-align: left;
-  }
+const CardDescription = styled.div`
+  width: 300px;
+  height: 48px;
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #333333;
+  text-align: left;
+`;
 
-  .card_text_description {
-    width: 300px;
-    height: 48px;
-    overflow: hidden;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    color: #333333;
-  }
-
-  .card_text_time {
-    font-size: 13px;
-    line-height: 15.51px;
-    color: #666666;
-  }
-
-  .card_text_description {
-    width: 300px;
-    height: 49px;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    text-align: left;
-  }
-
-  .card_text_date {
-    font-size: 14px;
-    line-height: 16.71px;
-    color: #333333;
-  }
+const CardDate = styled.div`
+  font-size: 14px;
+  line-height: 16.71px;
+  color: #333333;
+  font-weight: 400;
+  text-align: left;
 `;
 
 const generateTimeText = (createdAt) => {
@@ -125,46 +109,35 @@ const formatDate = (createdAtString) => {
   return `${year}.${month}.${day}`;
 };
 
-const Card = () => {
+const Cards = () => {
   const folderData = useFetchData(
     "https://bootcamp-api.codeit.kr/api/sample/folder"
   );
 
   return (
     <CardContainer>
-      <div className="card_grid_container">
-        {folderData &&
-          folderData.folder.links.map((link) => (
-            <div key={link.id} className="card">
-              <a href={link.url} target="_blank" rel="noopener noreferrer">
-                <div className="card_img_div">
-                  {link.imageSource ? (
-                    <img
-                      src={link.imageSource}
-                      className="card_img"
-                      alt={link.title}
-                    />
-                  ) : (
-                    <img src={noImage} className="card_img" alt="noImage" />
-                  )}
-                </div>
-              </a>
-              <div className="card_text">
-                <p className="card_text_time">
-                  {generateTimeText(link.createdAt)}
-                </p>
-                <div className="card_text_description">
-                  <p>{link.description}</p>
-                </div>
-                <div className="card_text_date">
-                  <p>{formatDate(link.createdAt)}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-      </div>
+      {folderData &&
+        folderData.folder.links.map((link) => (
+          <Card key={link.id}>
+            <a href={link.url} target="_blank" rel="noopener noreferrer">
+              <CardImage
+                src={link.imageSource || noImage}
+                alt={link.title || "noImage"}
+              />
+            </a>
+            <CardText>
+              <CardTime>{generateTimeText(link.createdAt)}</CardTime>
+              <CardDescription>
+                <p>{link.description}</p>
+              </CardDescription>
+              <CardDate>
+                <p>{formatDate(link.createdAt)}</p>
+              </CardDate>
+            </CardText>
+          </Card>
+        ))}
     </CardContainer>
   );
 };
 
-export default Card;
+export default Cards;
