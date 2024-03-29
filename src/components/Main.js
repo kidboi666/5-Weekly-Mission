@@ -2,6 +2,7 @@ import FolderData from "./Folderdata/Folderdata";
 import Nav from "./Navigation/Nav";
 import { SearchBar } from "./SearchBar/SearchBar";
 import "./Main.css";
+import Cards from "./Cards/Cards";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <div className="PageDisplay">
         <SearchBar />
       </div>
+      <Cards />
     </>
   );
 }
