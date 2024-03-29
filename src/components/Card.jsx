@@ -1,6 +1,7 @@
 import { CardContainer, Sort, CardGrid, CardImage, CardContent, CardContentText } from './CardStyled.jsx';
 import fetchData from './apis/GetApi.jsx';
 import { useEffect, useState } from 'react';
+import { timeAgo } from './utils/CardUtil.jsx';
 
 function Card() {
   const [data, setData] = useState(null);
@@ -19,7 +20,7 @@ function Card() {
             <CardImage src={link.imageSource} alt="" />
             <CardContent>
               <CardContentText size={13} color="gray60" className="card__createdAt">
-                {link.createdAt}
+                {timeAgo(link.createdAt)}
               </CardContentText>
               <CardContentText size={16} color="black" className="card__description">
                 {link.description}
