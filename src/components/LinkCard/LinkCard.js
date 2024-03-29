@@ -1,5 +1,15 @@
 import './LinkCard.css';
 
+const STYLE_LINK_CARD_CLASS_NAME = 'link-card';
+const STYLE_LINK_CARD_INFO_CLASS_NAME = 'link-card-info';
+const STYLE_LINK_CARD_TITLE_BAR_CLASS_NAME = 'link-card-title-bar';
+const STYLE_LINK_CARD_TITLE_CLASS_NAME = 'link-card-title';
+const STYLE_TIMESTAMP_CLASS_NAME = 'timestamp';
+const STYLE_LINK_CARD_DESCRIPTION_CLASS_NAME = 'link-card-description';
+const STYLE_LINK_CARD_CREATED_CLASS_NAME = 'link-card-created';
+const STYLE_THUMBNAIL_CONTAINER_CLASS_NAME = 'thumbnail-container';
+const STYLE_THUMBNAIL_CLASS_NAME = 'thumbnail';
+
 export default function LinkCard({ linkCardInfo }) {
   const thumbnailURL = linkCardInfo.imageSource;
   const description = linkCardInfo.description;
@@ -9,21 +19,27 @@ export default function LinkCard({ linkCardInfo }) {
   const timestamp = getTimeDifference(createdDate);
   return (
     <a
-      className="link-card"
+      className={STYLE_LINK_CARD_CLASS_NAME}
       href={url}
       target="_blank"
       rel="noreferrer noopener"
     >
-      <div className="thumbnail-container">
-        <img className="thumbnail" src={thumbnailURL} alt="Link Thumbnail" />
+      <div className={STYLE_THUMBNAIL_CONTAINER_CLASS_NAME}>
+        <img
+          className={STYLE_THUMBNAIL_CLASS_NAME}
+          src={thumbnailURL}
+          alt="Link Thumbnail"
+        />
       </div>
-      <div className="link-card-info">
-        <div className="link-card-title-bar">
-          <span className="link-card-title">{formatTitle(title)}</span>
-          <span className="timestamp">{timestamp}</span>
+      <div className={STYLE_LINK_CARD_INFO_CLASS_NAME}>
+        <div className={STYLE_LINK_CARD_TITLE_BAR_CLASS_NAME}>
+          <span className={STYLE_LINK_CARD_TITLE_CLASS_NAME}>
+            {formatTitle(title)}
+          </span>
+          <span className={STYLE_TIMESTAMP_CLASS_NAME}>{timestamp}</span>
         </div>
-        <p className="link-card-description">{description}</p>
-        <span className="link-card-date-created">
+        <p className={STYLE_LINK_CARD_DESCRIPTION_CLASS_NAME}>{description}</p>
+        <span className={STYLE_LINK_CARD_CREATED_CLASS_NAME}>
           {formatDate(createdDate)}
         </span>
       </div>
