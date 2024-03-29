@@ -3,13 +3,17 @@ import '../styles/Header.css';
 import fetchData from './apis/GetApi.jsx';
 
 function Header() {
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     fetchData('api/sample/folder')
       .then((fetchedData) => setData(fetchedData))
       .catch((error) => console.error(error));
   }, []);
+
+  if (!data) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <header className="Header">

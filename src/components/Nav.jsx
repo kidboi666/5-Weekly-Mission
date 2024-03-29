@@ -1,8 +1,21 @@
 import '../styles/Nav.css';
 import logo from '../assets/logo.svg';
-import logo_profile from '../assets/profile.svg';
+import fetchData from './apis/GetApi.jsx';
+import { useState, useEffect } from 'react';
 
 function Nav() {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetchData('api/sample/user')
+      .then((fetchedData) => setData(fetchedData))
+      .catch((error) => console.error(error));
+  }, []);
+
+  if (!data) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
     <nav>
       <div className="gnb">
@@ -10,8 +23,8 @@ function Nav() {
           <img className="logo" src={logo} />
         </a>
         <div className="user-info">
-          <img src={logo_profile} />
-          <span>user</span>
+          <img src={data.profileImageSource} />
+          <span>{data.email}</span>
         </div>
       </div>
     </nav>
