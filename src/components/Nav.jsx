@@ -18,10 +18,16 @@ function Nav() {
         <a>
           <img className="logo" src={logo} />
         </a>
-        <div className="user-info">
-          <img src={data?.profileImageSource} />
-          <span>{data?.email}</span>
-        </div>
+        {data ? (
+          <div className="user-info">
+            <img src={data?.profileImageSource} />
+            <span>{data?.email}</span>
+          </div>
+        ) : (
+          <a className="cta cta-short" href="signin.html">
+            <span>로그인</span>
+          </a>
+        )}
       </div>
     </nav>
   );
