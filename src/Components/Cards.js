@@ -25,18 +25,18 @@ function Cards() {
             return `${timeDiff} minutes ago`;
         }
         if (timeDiff < 60 * 24) {
-            const hours = moment.duration(timeDiff, 'minutes').hours();
+            const hours = Math.floor(timeDiff / 60);
             return hours === 1 ? '1 hour ago' : `${hours} hours ago`;
         }
         if (timeDiff <= 60 * 24 * 30) {
-            const days = moment.duration(timeDiff, 'minutes').days();
+            const days = Math.floor(timeDiff / (60 * 24));
             return days === 1 ? '1 day ago' : `${days} days ago`;
         }
         if (timeDiff <= 60 * 24 * 30 * 31) {
-            const months = moment.duration(timeDiff, 'minutes').months();
+            const months = Math.floor(timeDiff / (60 * 24 * 30));
             return months === 1 ? '1 month ago' : `${months} months ago`;
         }
-        const years = moment.duration(timeDiff, 'minutes').years();
+        const years = Math.floor(timeDiff / (60 * 24 * 30 * 12));
         return years === 1 ? '1 year ago' : `${years} years ago`;
     };
 
