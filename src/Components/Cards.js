@@ -1,5 +1,5 @@
 // Cards.js
-import { useFetch } from './hooks/useFetch';
+import { useFetch } from '../hooks/useFetch';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import '../style.css';
