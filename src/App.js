@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import CardList from "./components/CardList.js";
+import { useEffect, useState } from "react";
+import { getFolderData } from "./api/Api";
+import useData from "./hooks/useData";
 
 function App() {
+  const [links, setLinks] = useState([]);
+
+  const linkData = useData(getFolderData);
+
+  const loadLinkData = () => {
+    setLinks(linkData?.folder.links);
+  };
+
+  useEffect(() => {
+    loadLinkData();
+  }, [linkData]);
+
+  console.log(links);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Nav />
+      <Header />
+      {links && <CardList links={links} />}
+      <Footer />
+    </>
   );
 }
 
