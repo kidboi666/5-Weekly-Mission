@@ -27,6 +27,11 @@ export const CardContent = styled.article`
 export const CardContentText = styled.p`
   font-size: ${(props) => props.size}px;
   color: ${(props) => `var(--${props.color})`};
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 `;
 
 export const CardContainer = styled.div`
