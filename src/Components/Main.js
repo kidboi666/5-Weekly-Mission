@@ -2,7 +2,7 @@
 import Cards from './Cards';
 import Article from './Article';
 import '../style.css';
-import search_icon from '../public/Search.svg';
+import search_icon from '../assets/Search.svg';
 
 function Main() {
     return (

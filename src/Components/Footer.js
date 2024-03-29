@@ -1,10 +1,10 @@
 // Footer.js
 import { Link } from 'react-router-dom';
 import '../style.css';
-import facebook from '../public/facebook.svg';
-import twitter from '../public/twitter.svg';
-import youtube from '../public/youtube.svg';
-import instagram from '../public/instagram.svg';
+import facebook from '../assets/facebook.svg';
+import twitter from '../assets/twitter.svg';
+import youtube from '../assets/youtube.svg';
+import instagram from '../assets/instagram.svg';
 
 function Footer() {
     return (

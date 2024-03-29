@@ -1,7 +1,7 @@
 // Header.js
 import { useFetch } from './hooks/useFetch';
 import { Link } from 'react-router-dom';
-import logo from '../public/logo.svg';
+import logo from '../assets/logo.svg';
 import '../style.css';
 
 function Header() {

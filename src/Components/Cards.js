@@ -3,7 +3,7 @@ import { useFetch } from './hooks/useFetch';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import '../style.css';
-import thumbnail from '../public/thumbnail.svg';
+import thumbnail from '../assets/thumbnail.svg';
 
 function Cards() {
     const folderData = useFetch('https://bootcamp-api.codeit.kr/api/sample/folder');
