@@ -17,6 +17,17 @@
   width: 128px;
 }
 
+.header__profile {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header__profile p {
+  font-size: 14px;
+  color: #373740;
+}
+
 @media (max-width: 1199px) {
   .header {
     padding: 20px 32px;
@@ -38,5 +49,9 @@
 
   .header__link-login {
     width: 80px;
+  }
+
+  .header__profile p {
+    display: none;
   }
 }
