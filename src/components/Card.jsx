@@ -1,5 +1,6 @@
 import imgCard from '../assets/reactcard.png';
 import { CardContainer, CardImage, CardContent, CardContentText, Sort, CardList } from './CardStyled.jsx';
+import {} from './utils/CardUtil.jsx';
 
 function Card() {
   const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
