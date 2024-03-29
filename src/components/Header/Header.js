@@ -3,6 +3,13 @@ import logo from '../../assets/images/logo.svg';
 import { useEffect, useState } from 'react';
 import { getUserInfo } from '../../utils/api';
 import Account from '../Account/Account';
+
+const STYLE_MAIN_HEADER_CLASS_NAME = 'main-header';
+const STYLE_LOGO_IMG_CLASS_NAME = 'logo-img';
+const STYLE_BLIND_CLASS_NAME = 'blind';
+
+const LOGO_ALT_MESSAGE = 'Linkbrary';
+
 export default function Header() {
   const [userInfo, setUserInfo] = useState(null);
 
@@ -19,12 +26,16 @@ export default function Header() {
   });
 
   return (
-    <header className='main-header'>
+    <header className={STYLE_MAIN_HEADER_CLASS_NAME}>
       <h1>
-        <a href='/'>
-          <img src={logo} alt='Linkbrary' className='logo-img' />
+        <a href="/">
+          <img
+            src={logo}
+            alt={LOGO_ALT_MESSAGE}
+            className={STYLE_LOGO_IMG_CLASS_NAME}
+          />
         </a>
-        <span className='blind'>Linkbrary</span>
+        <span className={STYLE_BLIND_CLASS_NAME}>Linkbrary</span>
       </h1>
       {userInfo ? (
         <Account
@@ -32,7 +43,7 @@ export default function Header() {
           userEmail={userInfo.email}
         />
       ) : (
-        <a href='/'>로그인</a>
+        <a href="/">로그인</a>
       )}
     </header>
   );
