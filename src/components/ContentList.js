@@ -1,28 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import contentImage1 from "../assets/contentImage1.png";
-import contentImage2 from "../assets/contentImage2.png";
-import contentImage3 from "../assets/contentImage3.png";
-import contentImage4 from "../assets/contentImage4.png";
-import contentImage5 from "../assets/contentImage5.png";
-import contentImage6 from "../assets/contentImage6.png";
-import contentImage7 from "../assets/contentImage7.png";
-import contentImage8 from "../assets/contentImage8.png";
-import contentImage9 from "../assets/contentImage9.png";
-
-const imgList = [
-  contentImage1,
-  contentImage2,
-  contentImage3,
-  contentImage4,
-  contentImage5,
-  contentImage6,
-  contentImage7,
-  contentImage8,
-  contentImage9,
-];
 
 const ContentListBlock = styled.div`
+  div {
+    position: relative;
+    width: 21.25rem;
+  }
+
   ul {
     margin: 0;
     padding: 0;
@@ -33,7 +17,7 @@ const ContentListBlock = styled.div`
   }
 
   img {
-    position: relative;
+    // position: relative;
     border-top-left-radius: 14px;
     border-top-right-radius: 14px;
     // display: flex;
@@ -41,39 +25,46 @@ const ContentListBlock = styled.div`
   }
 
   p {
-    // position: absolute;
-    top: 10px;
+    position: absolute;
+    top: -100px;
   }
 `;
 
-// function formatDate(value) {
-//   const date = new Date(value);
-//   return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
-// }
-
-function ReviewListItem({ item }) {
-  const id = item.id;
-
-  return (
-    <div>
-      <img src={imgList[id - 1]} alt={`contentImage${id}`} />
-      <p>{`id : ${item.id}`}</p>
-    </div>
-  );
+function ContentListItemTitle({ item }) {
+  const title = item.title;
+  return <p>{title}</p>;
 }
 
-function ContentList({ items }) {
+function ContentListItemImg({ item }) {
+  const img = item.imageSource;
+  return <img src={img} alt={item.title} />;
+}
+
+function ContentList({ itemTest }) {
+  let testArray = [];
+
+  for (let i = 0; i <= 8; i++) {
+    testArray.push(itemTest[i]);
+  }
+
   return (
     <ContentListBlock>
-      <ul>
-        {items.map((item) => {
+      <>
+        {testArray.map((item) => {
           return (
-            <li key={item.id}>
-              <ReviewListItem item={item} />
-            </li>
+            <div>
+              <ContentListItemImg item={item} />
+              <div>
+                <ContentListItemTitle item={item} />
+                {/* {item.createdAt}
+                {item.title}
+                {item.description}
+                {item.url} */}
+              </div>
+            </div>
           );
         })}
-      </ul>
+      </>
     </ContentListBlock>
   );
 }

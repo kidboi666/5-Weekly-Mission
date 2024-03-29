@@ -10,13 +10,14 @@ const ContentBlock = styled.div`
 
   div {
     display: flex;
-    width: 66.25rem;
+    // width: 66.25rem;
     margin: 0 auto;
-    flex-direction: column;
+    flex-wrap: wrap;
   }
 
   img {
     width: 21.25rem;
+    height: 15.85913rem;
   }
 `;
 
@@ -27,20 +28,22 @@ function Content() {
   //   const testImg = item.folder.links[id].imageSource;
   //   <img src={testImg} alt="item" />;
   // });
+  const itemTest = items.folder.links;
+  console.log("ff", itemTest[0]);
 
   return (
     <ContentBlock>
       <div>
         <Search />
         <p>데이터 테스트</p>
-        <p>{items.folder.links[0].id}</p>
+        {/* <p>{items.folder.links[0].id}</p>
         <img src={testImg} alt="item" />
         <p>{items.folder.links[0].createdAt}</p>
         <p>{items.folder.links[0].title}</p>
         <p>{items.folder.links[0].description}</p>
-        <p>{items.folder.links[0].url}</p>
+        <p>{items.folder.links[0].url}</p> */}
         {/* <li>{listItems}</li> */}
-        {/* <ContentList items={items} /> */}
+        <ContentList itemTest={itemTest} />
       </div>
     </ContentBlock>
   );
