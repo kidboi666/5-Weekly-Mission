@@ -6,8 +6,8 @@ export async function getSharedList() {
     throw new Error("리스트를 불러오는데 실패했습니다.");
   }
   const body = await response.json();
-  const items = body.folder.links;
-  return items;
+  const folder = body.folder;
+  return folder;
 }
 
 export async function getUser() {
