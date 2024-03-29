@@ -77,3 +77,19 @@
   color: #333;
   font-size: 14px;
 }
+
+/* Tablet */
+@media screen and (max-width: 1124px) {
+  .cardList {
+    grid: auto-flow 1fr / 1fr 1fr;
+    padding: 0 32px 0;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .cardList {
+    grid: auto-flow 1fr / 1fr;
+    padding: 0 32px 0;
+  }
+}

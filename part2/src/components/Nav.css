@@ -17,3 +17,24 @@ nav {
   border: none;
   cursor: pointer;
 }
+
+/* Tablet */
+@media screen and (max-width: 1124px) {
+  nav {
+    justify-content: center;
+    gap: 450px;
+    padding: 20px 32px;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  nav {
+    justify-content: space-between;
+    gap: 0;
+  }
+  .logo {
+    flex-basis: 88px;
+    height: 16px;
+  }
+}
