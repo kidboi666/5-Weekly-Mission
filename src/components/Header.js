@@ -7,7 +7,7 @@ import ProfileImage from "./utils/ProfileImage";
 
 export default function Header() {
   const { user, setUser } = useContext(UserContext);
-  const { email, profileImageSource } = user;
+
   return (
     <header className='header'>
       <div className='header__inner'>
@@ -16,15 +16,15 @@ export default function Header() {
         </a>
         {!user && (
           <Button
-            className='header__link-login'
+            className='header__login-button'
             link='/signin.html'
             text='로그인'
           />
         )}
         {user && (
           <div className='header__profile'>
-            <ProfileImage src={profileImageSource} size='28' />
-            <p>{email}</p>
+            <ProfileImage src={user.profileImageSource} size='28' />
+            <p>{user.email}</p>
           </div>
         )}
       </div>

@@ -14,13 +14,6 @@
   gap: 12px;
 }
 
-.shared-page .profile-box img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
 .shared-page .profile-box p {
   font-size: 16px;
 }
@@ -47,12 +40,9 @@
     gap: 10px;
     padding: 10px 0 40px;
   }
+
   .shared-page .profile-box {
     gap: 6px;
-  }
-  .shared-page .profile-box img {
-    width: 40px;
-    height: 40px;
   }
 
   .shared-page .profile-box p {

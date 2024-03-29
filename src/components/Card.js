@@ -1,5 +1,6 @@
 import React from "react";
 import "./Card.css";
+import noImage from "../assets/no-image.png";
 
 export default function Card({ item }) {
   const { createdAt, url, title, imageSource } = item;
@@ -40,7 +41,7 @@ export default function Card({ item }) {
   return (
     <li className='shared-card'>
       <a href={url}>
-        <img src={imageSource} alt={title} />
+        <img src={imageSource ? imageSource : noImage} alt={title} />
         <div className='shared-card__text'>
           <p className='shared-card__ago'>{betweenDate}</p>
           <h2 className='shared-card__title'>{title}</h2>

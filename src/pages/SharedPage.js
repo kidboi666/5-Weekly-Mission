@@ -4,6 +4,7 @@ import Card from "../components/Card";
 import { getSharedList } from "../api";
 import "./SharedPage.css";
 import { UserContext } from "../contexts/UserContext";
+import ProfileImage from "../components/utils/ProfileImage";
 
 export default function SharedPage() {
   const [folder, setFolder] = useState();
@@ -22,7 +23,7 @@ export default function SharedPage() {
     <div className='shared-page'>
       <div className='top-box'>
         <div className='profile-box'>
-          <img src={user?.profileImageSource} alt='프로필' />
+          <ProfileImage src={user?.profileImageSource} size='60' />
           <p>{user?.name}</p>
         </div>
         <h2 className='title'>{folder?.name} </h2>

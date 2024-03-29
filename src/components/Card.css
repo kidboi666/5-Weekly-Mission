@@ -53,4 +53,8 @@
   .shared-card {
     width: 100%;
   }
+
+  .shared-card img {
+    height: 50vw;
+  }
 }
