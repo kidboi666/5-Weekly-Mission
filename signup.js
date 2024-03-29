@@ -8,7 +8,7 @@ import {
     setEyeOn
 } from "./utils.js";
 
-import { signUpUrl, checkEmailUrl } from "./api.js"
+import { signUpUrl, checkEmailUrl, postData, saveAccessTokenToLocalStorage, checkAccessToken } from "./api.js"
 
 const emailInput = document.querySelector('.email-input');
 const pwdInput = document.querySelector('.pwd-input');
@@ -20,21 +20,23 @@ const signUpButton = document.querySelector('.button-sign');
 const pwdWrapper = document.querySelector(".pwd-input-wrapper");
 const pwdCheckWrapper = document.querySelector(".pwd-input-check-wrapper");
 const input = document.querySelectorAll('input');
+const signupInputData = {
+    "email": emailInput.value,
+    "password": pwdInput.value,
+}
+
+checkAccessToken('signUpToken');
 
 function checkSignUpValid() {
     checkEmailDuplicated();
     if (emailInput.value === '') {
-        emailError.innerText = '이메일을 입력해주세요';
-        addErrorSign(emailInput,emailError);
+        addErrorSign(emailInput,emailError, '이메일을 입력해주세요',);
     }
     if (pwdInput.value === '') {
-        pwdError.innerText = '이메일을 입력해주세요';
-        addErrorSign(pwdInput,pwdError);
+        addErrorSign(pwdInput,pwdError, '비밀번호를 입력해주세요');
     }
     if (pwdCheckInput.value !== pwdInput.value) {
-        pwdCheckError.classList.remove('hide'); 
-        addErrorSign(pwdCheckInput,pwdCheckError);
-        pwdCheckError.innerText = '비밀번호가 맞지 않습니다.';
+        addErrorSign(pwdCheckInput,pwdCheckError, '비밀번호가 맞지 않습니다.');
     } else {
         removeErrorSign(pwdCheckInput,pwdCheckError);
     }
@@ -45,49 +47,31 @@ function checkSignUpValid() {
 
 async function checkEmailDuplicated() {  
     try {
-        const res = await fetch(checkEmailUrl, {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify({
-                "email": emailInput.value,
-            })
-        });
+        const res = await postData(checkEmailUrl, signupInputData);
         if (!res.ok) {
             throw new Error('Email already exists');
         } 
     } catch {
-        addErrorSign(emailInput, emailError);
-        emailError.innerText = '중복된 이메일입니다.'
+        addErrorSign(emailInput, emailError, '중복된 이메일입니다.');
     }
 }
 
-async function postIdPwd() {  
-    const res = await fetch(signUpUrl, {
-        method: "POST",
-        headers: {
-            "Content-type": "application/json"
-        },
-        body: JSON.stringify({
-            "email": emailInput.value,
-            "password": pwdInput.value,
-        })
-    });
-    const result = await res.json();
-    const signUpToken = result.data.accessToken;
-    localStorage.setItem('signUpToken',signUpToken);
-    location.href = 'folder.html';
-}
+async function postIdPwd() {
+    try {
+        const res = await postData(signUpUrl, signupInputData);
+        if (!res.ok) {
+            throw new Error('bad request');
+        } 
 
-function checkToken() {
-    const token = localStorage.getItem('signUpToken');
-    if (token) {
+        const result = await res.json();
+        saveAccessTokenToLocalStorage(result, 'signUpToken')
+
         location.href = 'folder.html';
+    } catch {
+        addErrorSign(emailInput, emailError, '이메일 확인 부탁!');
+        addErrorSign(pwdInput, pwdError, '비밀번호 확인 부탁!');
     }
-};
-
-checkToken();
+}
 
 emailInput.addEventListener('focusout', () => {
     if (emailInput.value === '') {
@@ -104,13 +88,11 @@ emailInput.addEventListener('focusout', () => {
 
 pwdInput.addEventListener('focusout', () => {
     if (pwdInput.value === '') {
-        addErrorSign(pwdInput, pwdError);
-        pwdError.innerText = '비밀번호를 입력해주세요';
+        addErrorSign(pwdInput, pwdError, '비밀번호를 입력해주세요');
     } else {
         removeErrorSign(pwdInput, pwdError);
         if (!checkPwdValid(pwdInput.value)) {
-            pwdError.innerText = '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.';
-            addErrorSign(pwdInput, pwdError);
+            addErrorSign(pwdInput, pwdError, '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.');
         }
     }
 });

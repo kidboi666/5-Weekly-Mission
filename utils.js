@@ -3,7 +3,8 @@ export const VALID_EMAIL = 'test@codeit.com';
 const email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
 const pwd_regex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/i;
 
-function addErrorSign(inputElement, errorElement) {
+function addErrorSign(inputElement, errorElement, comment) {
+    errorElement.innerText = comment;
     errorElement.classList.remove('hide');
     inputElement.classList.add('error-border');
 }
@@ -23,7 +24,7 @@ function checkPwdValid(pwdValue) {
 
 function checkError() {
     if (document.querySelector('.error-border')) return true;
-    else return false;
+    return false;
 }
 
 function setEyeOn(e) {

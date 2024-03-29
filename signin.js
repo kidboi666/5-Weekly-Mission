@@ -5,8 +5,7 @@ import {
     setEyeOff,
     setEyeOn,
 } from "./utils.js";
-
-import { signInUrl } from '../api.js'
+import { signInUrl, postData, checkAccessToken, saveAccessTokenToLocalStorage } from './api.js'
 
 const emailInput = document.querySelector('.email-input');
 const pwdInput = document.querySelector('.pwd-input');
@@ -16,60 +15,44 @@ const pwdError = document.querySelector('.pwd-error');
 const input = document.querySelectorAll('input');
 const pwdWrapper = document.querySelector(".pwd-input-wrapper");
 
-async function postIdPwd() {  
+checkAccessToken('signInToken');
+
+async function postIdPwd() {
+    const signinInputData = {
+        "email": emailInput.value,
+        "password": pwdInput.value,
+    }
     try {
-        const res = await fetch(signInUrl, {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify({
-                "email": emailInput.value,
-                "password": pwdInput.value,
-            })
-        });
-        const result = await res.json();
-        const signInToken = result.data.accessToken;
-        localStorage.setItem('signInToken',signInToken);
+        const res = await postData(signInUrl, signinInputData);
         if (!res.ok) {
             throw new Error('bad request');
-        }
+        } 
+
+        const result = await res.json();
+        saveAccessTokenToLocalStorage(result, 'signInToken')
+
         location.href = 'folder.html';
     } catch {
-        addErrorSign(emailInput, emailError);
-        emailError.innerText = '이메일 확인 부탁!'
-        addErrorSign(pwdInput, pwdError);
-        pwdError.innerText = '비밀번호 확인 부탁!'
+        addErrorSign(emailInput, emailError, '이메일 확인 부탁!');
+        addErrorSign(pwdInput, pwdError, '비밀번호 확인 부탁!');
     }
 }
 
-function checkToken() {
-    const token = localStorage.getItem('signInToken');
-    if (token) {
-        location.href = 'folder.html';
-    }
-};
-
-checkToken();
-
 emailInput.addEventListener('focusout', () => {
     if (emailInput.value === '') {
-        emailError.innerText = '이메일을 입력해주세요';
-        addErrorSign(emailInput, emailError);
+        addErrorSign(emailInput, emailError, '이메일을 입력해주세요');
     } else {
         removeErrorSign(emailInput, emailError);
         if (!checkEmailValid(emailInput.value)) {
-            addErrorSign(emailInput, emailError);
-            emailError.innerText = '이메일을 형식을 확인해주세요';
+            addErrorSign(emailInput, emailError, '이메일을 형식을 확인해주세요');
         }
     }
 });
 
 pwdInput.addEventListener('focusout', () => {
     if (pwdInput.value === '') {
-        addErrorSign(pwdInput, pwdError);
-        pwdError.innerText = '비밀번호를 입력해주세요';
-    } else {
+        addErrorSign(pwdInput, pwdError, '비밀번호를 입력해주세요');
+        } else {
         removeErrorSign(pwdInput, pwdError);
     }
 });
@@ -82,32 +65,18 @@ pwdInput.addEventListener('focusin', () => {
     removeErrorSign(pwdInput, pwdError);
 });
 
-input.forEach(element => {
-    element.addEventListener('keyup', (e) => { 
-        if (e.keyCode === 13) {
-            if (emailInput.value === '') {
-                emailError.innerText = '이메일을 입력해주세요';
-                addErrorSign(emailInput, emailError);
-            } else postIdPwd();
-            if (pwdInput.value === '') {
-                pwdError.innerText = '비밀번호를 입력해주세요';
-                addErrorSign(pwdInput, pwdError);
-            } else postIdPwd();
-        }
-    });
-});
-
 pwdWrapper.addEventListener('mousedown', setEyeOn);
 
 pwdWrapper.addEventListener('mouseup', setEyeOff) ;
 
+input.forEach(element => {
+    element.addEventListener('keyup', (e) => { 
+        if (e.keyCode === 13) {
+            postIdPwd();
+        }
+    });
+});
+
 loginButton.addEventListener('click', () => {
-    if (emailInput.value === '') {
-        emailError.innerText = '이메일을 입력해주세요';
-        addErrorSign(emailInput, emailError);
-    } else postIdPwd();
-    if (pwdInput.value === '') {
-        pwdError.innerText = '비밀번호를 입력해주세요';
-        addErrorSign(pwdInput, pwdError);
-    } else postIdPwd();
+    postIdPwd();
 });
