@@ -1,19 +1,5 @@
 import styled from 'styled-components';
 
-export const CardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 32.5rem;
-  height: 32.7rem;
-  box-shadow: 0 0.5rem 2.5rem 0 rgba(0, 0, 0, 0.08);
-  border-radius: 1.5rem;
-
-  @media (min-width: 768px) {
-    width: 34rem;
-    height: 33.4rem;
-  }
-`;
-
 export const CardImage = styled.img`
   width: 100%;
   min-height: 19.2rem;
@@ -43,13 +29,27 @@ export const CardContentText = styled.p`
   color: ${(props) => `var(--${props.color})`};
 `;
 
+export const CardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 32.5rem;
+  height: 32.7rem;
+  box-shadow: 0 0.5rem 2.5rem 0 rgba(0, 0, 0, 0.08);
+  border-radius: 1.5rem;
+
+  @media (min-width: 768px) {
+    width: 34rem;
+    height: 33.4rem;
+  }
+`;
+
 export const Sort = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
 `;
 
-export const CardList = styled.div`
+export const CardGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(32.5rem);
   justify-content: center;

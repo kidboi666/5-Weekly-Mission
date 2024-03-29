@@ -1,16 +1,14 @@
-import imgCard from '../assets/reactcard.png';
-import { CardContainer, CardImage, CardContent, CardContentText, Sort, CardList } from './CardStyled.jsx';
-import {} from './utils/CardUtil.jsx';
+import { CardContainer, Sort, CardGrid, CardImage, CardContent, CardContentText } from './CardListStyled.jsx';
 
-function Card() {
+function CardList() {
   const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   return (
     <Sort>
-      <CardList>
+      <CardGrid>
         {cards.map((card, index) => (
           <CardContainer key={index}>
-            <CardImage src={imgCard} alt="" />
+            <CardImage src="https://codeit-images.codeit.com/badges/COMPLETE_100_LESSONS.png" alt="" />
             <CardContent>
               <CardContentText size={13} color="gray60" className="card__createdAt">
                 createdAt
@@ -24,9 +22,9 @@ function Card() {
             </CardContent>
           </CardContainer>
         ))}
-      </CardList>
+      </CardGrid>
     </Sort>
   );
 }
 
-export default Card;
+export default CardList;
