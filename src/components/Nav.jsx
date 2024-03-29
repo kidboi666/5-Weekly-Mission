@@ -12,10 +12,6 @@ function Nav() {
       .catch((error) => console.error(error));
   }, []);
 
-  if (!data) {
-    return <h1>Loading...</h1>;
-  }
-
   return (
     <nav>
       <div className="gnb">
@@ -23,8 +19,8 @@ function Nav() {
           <img className="logo" src={logo} />
         </a>
         <div className="user-info">
-          <img src={data.profileImageSource} />
-          <span>{data.email}</span>
+          <img src={data?.profileImageSource} />
+          <span>{data?.email}</span>
         </div>
       </div>
     </nav>
