@@ -1,4 +1,4 @@
-import { CardContainer, Sort, CardGrid, CardImage, CardContent, CardContentText, ATag } from './CardStyled.jsx';
+import { CardContainer, Sort, CardGrid, CardImage, CardContent, CardContentText, ATag } from '../styles/CardStyled.jsx';
 import fetchData from './apis/GetApi.jsx';
 import { useEffect, useState } from 'react';
 import { timeAgo } from './utils/CardUtil.jsx';
