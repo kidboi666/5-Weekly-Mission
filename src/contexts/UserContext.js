@@ -11,8 +11,6 @@ export function UserProvider({ children }) {
     setUser(nextUser);
   };
 
-  console.log(user);
-
   useEffect(() => {
     handleLoadUser();
   }, []);
