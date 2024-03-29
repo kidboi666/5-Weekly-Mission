@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CardImage = styled.img`
+export const CardImage = styled.div`
   width: 100%;
   min-height: 19.2rem;
   height: 19.2rem;
@@ -13,6 +13,16 @@ export const CardImage = styled.img`
     min-height: 20rem;
     height: 20rem;
   }
+
+  &:hover {
+    background-size: 130%;
+  }
+`;
+
+export const ATag = styled.a`
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
 `;
 
 export const CardContent = styled.article`

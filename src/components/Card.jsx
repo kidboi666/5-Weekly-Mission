@@ -1,4 +1,4 @@
-import { CardContainer, Sort, CardGrid, CardImage, CardContent, CardContentText } from './CardStyled.jsx';
+import { CardContainer, Sort, CardGrid, CardImage, CardContent, CardContentText, ATag } from './CardStyled.jsx';
 import fetchData from './apis/GetApi.jsx';
 import { useEffect, useState } from 'react';
 import { timeAgo } from './utils/CardUtil.jsx';
@@ -17,7 +17,9 @@ function Card() {
       <CardGrid>
         {data?.folder.links.map((link, i) => (
           <CardContainer key={i}>
-            <CardImage src={link.imageSource} alt="" />
+            <ATag href={link.url}>
+              <CardImage style={{ backgroundImage: `url(${link.imageSource})` }} />
+            </ATag>
             <CardContent>
               <CardContentText size={13} color="gray60" className="card__createdAt">
                 {timeAgo(link.createdAt)}
