@@ -1,0 +1,37 @@
+header {
+  background-color: var(--Linkbrary-bg, #f0f6ff);
+}
+
+.Header__profileArea {
+  padding: 20px 0 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Header__profileArea__profileImg {
+  width: 3.75rem;
+  height: 3.75rem;
+  padding: 1rem 1.0625rem 1rem 0.75rem;
+}
+
+.Header__profileArea__nickname {
+  color: var(--text-color-light-mode, #000);
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem;
+  padding-bottom: 1.25rem;
+}
+
+.Header__profileArea__folderName {
+  color: #000;
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Pretendard;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
