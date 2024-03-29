@@ -1,6 +1,7 @@
 // Cards.js
 import { useFetch } from './hooks/useFetch';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 import '../style.css';
 import thumbnail from '../public/thumbnail.svg';
 
@@ -9,16 +10,13 @@ function Cards() {
 
     // 날짜 형식 변경 함수
     const formatDate = (dateString) => {
-        const date = new Date(dateString);
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2, '0');
-        return `${year}.${month}.${day}`;
+        const date = moment(dateString);
+        return date.format('YYYY.MM.DD');
     };
 
     // 시간 차 계산 함수
     const generateTimeText = (createdAt) => {
-        const timeDiff = Math.floor((Date.now() - new Date(createdAt)) / (1000 * 60));
+        const timeDiff = moment().diff(moment(createdAt), 'minutes');
 
         if (timeDiff < 2) {
             return '1 minute ago';
@@ -27,18 +25,18 @@ function Cards() {
             return `${timeDiff} minutes ago`;
         }
         if (timeDiff < 60 * 24) {
-            const hours = Math.floor(timeDiff / 60);
+            const hours = moment.duration(timeDiff, 'minutes').hours();
             return hours === 1 ? '1 hour ago' : `${hours} hours ago`;
         }
         if (timeDiff <= 60 * 24 * 30) {
-            const days = Math.floor(timeDiff / (60 * 24));
+            const days = moment.duration(timeDiff, 'minutes').days();
             return days === 1 ? '1 day ago' : `${days} days ago`;
         }
         if (timeDiff <= 60 * 24 * 30 * 31) {
-            const months = Math.floor(timeDiff / (60 * 24 * 30));
+            const months = moment.duration(timeDiff, 'minutes').months();
             return months === 1 ? '1 month ago' : `${months} months ago`;
         }
-        const years = Math.floor(timeDiff / (60 * 24 * 30 * 12));
+        const years = moment.duration(timeDiff, 'minutes').years();
         return years === 1 ? '1 year ago' : `${years} years ago`;
     };
 
