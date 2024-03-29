@@ -17,6 +17,10 @@
   --pc-max-size: 1920px;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Pretendard;
   font-size: 16px;

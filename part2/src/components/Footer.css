@@ -1,0 +1,30 @@
+footer {
+  background-color: var(--white);
+  padding-top: 120px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  color: #676767;
+  background-color: var(--jungle-black);
+  padding: 32px 104px 64px 104px;
+  height: 160px;
+}
+
+.privacy {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.privacy button {
+  color: #cfcfcf;
+  background-color: transparent;
+  border: none;
+}
+
+.sns {
+  display: flex;
+  gap: 12px;
+}

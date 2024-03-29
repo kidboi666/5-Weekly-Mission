@@ -1,11 +1,11 @@
 import "./Nav.css";
-import StyledButton from "./StyledButton";
+import GradientButton from "./GradientButton";
 
 function Nav() {
   return (
     <nav>
       <button className="logo"></button>
-      <StyledButton size="medium">로그인</StyledButton>
+      <GradientButton size="medium">로그인</GradientButton>
     </nav>
   );
 }

@@ -6,7 +6,7 @@ const SIZES = {
   small: 80,
 };
 
-const StyledButton = styled.button`
+const GradientButton = styled.button`
   width: ${({ size }) => SIZES[size] ?? SIZES["medium"]}px;
   padding: 16px 20px;
   border: none;
@@ -16,6 +16,9 @@ const StyledButton = styled.button`
   font-size: 18px;
   font-weight: 600;
   align-items: center;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
-export default StyledButton;
+export default GradientButton;

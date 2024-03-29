@@ -15,4 +15,5 @@ nav {
   height: 24px;
   background-size: cover;
   border: none;
+  cursor: pointer;
 }
