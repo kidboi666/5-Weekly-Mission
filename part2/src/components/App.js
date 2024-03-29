@@ -1,30 +1,44 @@
+import { useEffect, useState } from "react";
+import { getSampleUser, getFolderInfo } from "../api";
 import Nav from "./Nav";
 import Footer from "./Footer";
-import { getSampleUser } from "../api";
-import { useEffect, useState } from "react";
+import Folder from "./Folder";
 
 function App() {
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
   const [imgUrl, setImgUrl] = useState("");
+  const [owner, setOwner] = useState({});
+  const [folderName, setFolderName] = useState("");
+  const [links, setLinks] = useState({});
 
   const handleLoadUser = async () => {
     const result = await getSampleUser();
     if (!result) return;
 
-    const { email, name, profileImageSource } = result;
+    const { email, profileImageSource } = result;
     setEmail(email);
-    setName(name);
     setImgUrl(profileImageSource);
+  };
+
+  const handleLoadFolder = async () => {
+    const result = await getFolderInfo();
+    if (!result) return;
+
+    const { folder } = result;
+    setOwner(folder.owner);
+    setFolderName(folder.name);
+    setLinks(folder.links);
   };
 
   useEffect(() => {
     handleLoadUser();
+    handleLoadFolder();
   }, []);
 
   return (
     <div className="app">
-      <Nav email={email} name={name} imgUrl={imgUrl} />
+      <Nav email={email} imgUrl={imgUrl} />
+      <Folder owner={owner} folderName={folderName} />
       <Footer />
     </div>
   );

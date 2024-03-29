@@ -2,8 +2,8 @@ import "./Nav.css";
 import GradientButton from "./GradientButton";
 import Profile from "./Profile";
 
-function Nav({ email, name, imgUrl }) {
-  const isSingin = email && name && imgUrl ? true : false;
+function Nav({ email, imgUrl }) {
+  const isSingin = email && imgUrl ? true : false;
 
   return (
     <nav>
