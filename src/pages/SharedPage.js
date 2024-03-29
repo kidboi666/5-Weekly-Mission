@@ -26,9 +26,9 @@ export default function SharedPage() {
         </div>
         <h2 className='title'>⭐️ 즐겨찾기</h2>
       </div>
-      <section class='shared-section'>
+      <section className='shared-section'>
         <Search />
-        <ul class='card-list'>
+        <ul className='card-list'>
           {items.map((item) => (
             <Card key={item.id} item={item} />
           ))}
