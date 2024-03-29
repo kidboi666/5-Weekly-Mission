@@ -1,6 +1,6 @@
 import { CardContainer, Sort, CardGrid, CardImage, CardContent, CardContentText } from './CardListStyled.jsx';
 
-function CardList() {
+function Card() {
   const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   return (
@@ -27,4 +27,4 @@ function CardList() {
   );
 }
 
-export default CardList;
+export default Card;
