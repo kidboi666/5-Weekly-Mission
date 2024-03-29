@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Search from "../components/utils/Search";
 import Card from "../components/Card";
 import { getSharedList } from "../api";
 import "./SharedPage.css";
-// import ExampleImg from "../assets/login_google.png";
-import ExampleImg from "../assets/main_bg.png";
+import { UserContext } from "../contexts/UserContext";
 
 export default function SharedPage() {
   const [items, setItems] = useState([]);
+  const { user } = useContext(UserContext);
 
   const handleLoad = async () => {
     const nextItems = await getSharedList();
@@ -22,8 +22,8 @@ export default function SharedPage() {
     <div className='shared-page'>
       <div className='top-box'>
         <div className='profile-box'>
-          <img src={ExampleImg} alt='프로필' />
-          <p>@코드잇</p>
+          <img src={user && user.profileImageSource} alt='프로필' />
+          <p>{user && user.name}</p>
         </div>
         <h2 className='title'>⭐️ 즐겨찾기</h2>
       </div>
