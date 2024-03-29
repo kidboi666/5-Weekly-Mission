@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import Header from '../components/Header';
-import Card from '../components/Card';
-import Input from '../components/Input';
-import Footer from '../components/Footer';
+import Header from '../../components/Header';
+import Card from '../../components/Card';
+import Input from '../../components/Input';
+import Footer from '../../components/Footer';
 
 function Folder() {
   return (

@@ -1,5 +1,5 @@
 import './App.css';
-import Folder from '../pages/Folder';
+import Folder from '../pages/folder/Folder';
 function App() {
   return (
     <div className='App'>
