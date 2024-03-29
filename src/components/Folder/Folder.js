@@ -3,15 +3,19 @@ import { getFolderInfo } from '../../utils/api';
 import FolderInfo from '../FolderInfo/FolderInfo';
 import LinkCardList from '../LinkCardList/LinkCardList';
 import './Folder.css';
+import { SEARCH_INPUT_ID } from '../SearchBar/SearchBar';
+
+const STYLE_FOLDER_CONTAINER_CLASS_NAME = 'folder-container';
 
 export default function Folder() {
   const [ownerInfo, setOwnerInfo] = useState({});
   const [folderName, setFolderName] = useState('');
   const [items, setItems] = useState([]);
   const [searchValue, setSearchValue] = useState('');
+
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    setSearchValue(e.target['search-input'].value);
+    setSearchValue(e.target[SEARCH_INPUT_ID].value);
   };
 
   const handleLoad = async () => {
@@ -37,7 +41,7 @@ export default function Folder() {
   }, [searchValue]);
 
   return (
-    <div className='folder-container'>
+    <div className={STYLE_FOLDER_CONTAINER_CLASS_NAME}>
       <FolderInfo
         ownerName={ownerInfo.name}
         profileImgSource={ownerInfo.profileImageSource}
