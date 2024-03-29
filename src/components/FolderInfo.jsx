@@ -11,7 +11,7 @@ function FolderInfo() {
     background-color: #f0f6ff;
 
     @media screen and (max-width: 767px) {
-      padding-top: 27.5px;
+      padding-top: 59.5px;
     }
   `;
 
