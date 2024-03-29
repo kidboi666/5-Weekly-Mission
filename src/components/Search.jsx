@@ -8,6 +8,7 @@ const CommonStyles = styled.div`
 
 const SearchBar = styled(CommonStyles)`
   margin-top: 40px;
+  margin-bottom: 40px;
   padding: 0 1.6rem;
   display: flex;
   justify-content: center;
