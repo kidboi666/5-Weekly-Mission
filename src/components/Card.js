@@ -7,9 +7,11 @@ export default function Card({ item }) {
   return (
     <div class='shared-card'>
       <img src={imageSource} alt={title} />
-      <p>10분 전</p>
-      <h2>{title}</h2>
-      <p>{createdAt}</p>
+      <div className='shared-card__text'>
+        <p className='shared-card__ago'>{createdAt}</p>
+        <h2 className='shared-card__title'>{title}</h2>
+        <p className='shared-card__date'>{createdAt}</p>
+      </div>
     </div>
   );
 }

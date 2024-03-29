@@ -29,9 +29,11 @@
 .shared-section {
   max-width: 1060px;
   margin: 0 auto;
+  padding: 0 32px 100px;
 }
 
 .shared-section .card-list {
   display: flex;
   flex-wrap: wrap;
+  gap: 20px;
 }
