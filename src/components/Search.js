@@ -17,25 +17,34 @@ const SearchBlock = styled.div`
     gap: 0.625rem;
   }
 
-  p {
+  input {
+    width: 58rem;
     margin: 0;
-    color: var(--Text, #666);
+    color: #666;
+    background: #f5f5f5;
     text-align: right;
     font-family: Pretendard;
     font-size: 1rem;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5rem;
+    text-align: left;
+    border: none;
+  }
+
+  input:focus {
+    outline: none;
   }
 `;
 
 function Search() {
-  // input으로 변경하기
   return (
     <SearchBlock>
       <div>
-        <img src={searchImg} alt="검색" />
-        <p>링크를 검색해 보세요.</p>
+        <img src={searchImg} alt="검색 아이콘" />
+        <form>
+          <input type="text" placeholder="링크를 검색해 보세요."></input>
+        </form>
       </div>
     </SearchBlock>
   );

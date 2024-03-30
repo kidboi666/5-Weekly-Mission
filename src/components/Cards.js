@@ -1,17 +1,25 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import noImage from "../assets/noImage.svg";
 
 const Img = styled.img`
   width: 20rem;
   height: 12.5rem;
+  // 크기가 안 맞는 이미지를 위해 cover 추가
+  object-fit: cover;
   border-top-left-radius: 14px;
   border-top-right-radius: 14px;
 `;
 
 const TestBlock = styled.div`
   width: 20rem;
-  border-radius: 14px;
+  border-radius: 15px;
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
+
+  &:hover {
+    border: 2px solid #6d6afe;
+  }
 
   div {
     padding: 1.25rem;
@@ -42,34 +50,50 @@ const CardsBlock = styled.div`
   }
 `;
 
+const linkStyle = { textDecoration: "none", color: "#000000" };
+
 function formatDate(value) {
   const date = new Date(value);
   return `${date.getFullYear()}. ${
     date.getMonth() + 1
-  }. ${date.getDate()} / ${date.getHours()}시 ${date.getSeconds()}분`;
+  }. ${date.getDate()}  / ${date.getHours()}시 ${date.getMinutes()}분 ${date.getSeconds()}초`;
+  // / ${date.getHours()}시 ${date.getSeconds()}분
 }
 
+function addImage(image = noImage) {
+  return image;
+}
+
+// function TestTime(test) {
+//   const now = new Date();
+//   console.log(Number(now.getMinutes()));
+//   console.log(Number(test.getMinutes()));
+
+//   return <></>;
+// }
+
 function ReviewListItem({ item }) {
-  // console.log("item", item);
+  const timeData = item.createdAt;
 
   return (
     <TestBlock>
-      {/* <p>id: {item.id}</p> */}
-      <Img src={item.imageSource} alt={item.title} />
-      <div>
-        <p>url: {item.url}</p>
-        <p>날짜: {formatDate(item.createdAt)}</p>
-        <p>createdAt: {item.createdAt}</p>
-        <p>title: {item.title}</p>
-        <p>description: {item.description}</p>
-      </div>
+      <Link to={item.url} target="_blank" style={linkStyle}>
+        <Img src={addImage(item.imageSource)} alt={item.title} />
+
+        <div>
+          <p>날짜: {formatDate(item.createdAt)}</p>
+          {/* <p>test: {TestTime(item.createdAt)}</p> */}
+          <p>createdAt: {item.createdAt}</p>
+          <p>{item.title}</p>
+          <p>{item.description}</p>
+          <p>{formatDate(item.createdAt)}</p>
+        </div>
+      </Link>
     </TestBlock>
   );
 }
 
 function Cards({ items }) {
-  // console.log("items", items);
-
   // key 추가하기
   return (
     <CardsBlock>

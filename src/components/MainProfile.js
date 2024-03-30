@@ -40,11 +40,17 @@ const MainProfileBlock = styled.div`
   }
 `;
 
-function Test(a = "비회원") {
+function test(a = "비회원") {
   return a;
 }
 
 function MainProfile({ profile }) {
+  // 에러 방지
+  if (!profile || !profile.owner) {
+    console.log("데이터가 없습니다.");
+    return <div>로딩중</div>;
+  }
+
   const folderUserImage = profile.owner.profileImageSource;
   const folderUserName = profile.owner.name;
   const folderName = profile.name;
@@ -54,7 +60,7 @@ function MainProfile({ profile }) {
       <MainProfileBlock>
         <div>
           <img src={folderUserImage} alt="profile" />
-          <p>{Test(folderUserName)}</p>
+          <p>{test(folderUserName)}</p>
           {/* <p>{folderUserName}</p> */}
           <h2>{folderName}</h2>
         </div>

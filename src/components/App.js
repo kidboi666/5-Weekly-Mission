@@ -14,7 +14,6 @@ function App() {
 
   const handleLoad = async () => {
     const { folder } = await getContent();
-    // console.log("test", folder);
 
     setProfile(folder);
     setItems(folder.links);
