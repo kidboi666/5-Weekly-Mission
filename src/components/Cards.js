@@ -30,12 +30,15 @@ const TestBlock = styled.div`
 
 const CardsBlock = styled.div`
   width: 66.25rem;
-  margin: 0 auto;
+  margin: 2.5rem auto;
 
   ul {
     display: flex;
     gap: 1.5625rem 1.25rem;
+    justify-content: center;
     flex-wrap: wrap;
+    margin-top: 0;
+    padding: 0;
   }
 `;
 
