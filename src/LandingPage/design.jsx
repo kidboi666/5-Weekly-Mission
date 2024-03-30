@@ -1,17 +1,7 @@
-import React from "react";
 import styled from "styled-components";
+import { Button, ButtonLabel } from "components/button";
 
-import MainImg from "../images/img_landing_main.png";
-import FirstImg from "../images/img1_landing.svg";
-import SecondImg from "../images/img2_landing.svg";
-import ThirdImg from "../images/img3_landing.svg";
-import FourthImg from "../images/img4_landing.svg";
-import { Button, ButtonLabel } from "../components/button";
-import TextColor from "../palette/text-color";
-import Nav from "../components/nav";
-import Footer from "../components/footer";
-
-const MainTextArea = styled.div`
+export const MainTextArea = styled.div`
   line-height: 80px;
   font-size: 64px;
   text-align: center;
@@ -34,7 +24,7 @@ const MainTextArea = styled.div`
     margin: 0;
   }
 `;
-const MainImageArea = styled.div`
+export const MainImageArea = styled.div`
   max-width: 1200px;
   width: 100%;
   height: 590px;
@@ -82,7 +72,7 @@ const MainImageArea = styled.div`
     }
   }
 `;
-const ContentsFrame = styled.div`
+export const ContentsFrame = styled.div`
   max-width: 998px;
   width: 100%;
   height: 450px;
@@ -92,7 +82,7 @@ const ContentsFrame = styled.div`
   transform: translateX(-50%);
   display: flex;
   flex-direction: ${(props) =>
-    props.reversed == true ? "row-reverse" : "row"};
+    props.reversed === true ? "row-reverse" : "row"};
   align-items: center;
   justify-content: space-between;
   @media (max-width: 1199px) {
@@ -107,7 +97,7 @@ const ContentsFrame = styled.div`
     top: 40px;
   }
 `;
-const TextArea = styled.div`
+export const TextArea = styled.div`
   width: 291px;
   height: ${(Props) =>
     Props.$textAreaSize === "small"
@@ -129,7 +119,7 @@ const TextArea = styled.div`
     height: 375px;
   }
 `;
-const ImageArea = styled.div`
+export const ImageArea = styled.div`
   max-width: 550px;
   width: 100%;
   height: 450px;
@@ -161,7 +151,7 @@ const ImageArea = styled.div`
     }
   }
 `;
-const LargeText = styled.div`
+export const LargeText = styled.div`
   font-size: 48px;
   font-weight: 700;
   font-family: "Pretendard";
@@ -176,7 +166,7 @@ const LargeText = styled.div`
     height: 29px;
   }
 `;
-const SmallText = styled.div`
+export const SmallText = styled.div`
   font-size: 16px;
   text-align: left;
   font-weight: 500;
@@ -191,7 +181,7 @@ const SmallText = styled.div`
     font-weight: 520;
   }
 `;
-const SecondLine = styled.p`
+export const SecondLine = styled.p`
   @media (max-width: 1199px) {
     margin: 0;
     width: 380px;
@@ -201,7 +191,7 @@ const SecondLine = styled.p`
     width: 200px;
   }
 `;
-const SectionTemplate = styled.section`
+export const SectionTemplate = styled.section`
   position: relative;
   margin: 0;
   width: 100%;
@@ -215,7 +205,7 @@ const SectionTemplate = styled.section`
     height: 457px;
   }
 `;
-const FirstSectionTemplate = styled(SectionTemplate)`
+export const FirstSectionTemplate = styled(SectionTemplate)`
   height: 620px;
   @media (max-width: 1199px) {
     height: 445px;
@@ -238,7 +228,7 @@ const FirstSectionTemplate = styled(SectionTemplate)`
     }
   }
 `;
-const MainSectionTemplate = styled.section`
+export const MainSectionTemplate = styled.section`
   position: relative;
   margin: 0;
   background-color: #f0f6ff;
@@ -272,106 +262,3 @@ const MainSectionTemplate = styled.section`
     }
   }
 `;
-const MainSection = function () {
-  return (
-    <MainSectionTemplate>
-      <MainTextArea>
-        <p>
-          <TextColor.gradient.PurpleRed>
-            세상의 모든 정보
-          </TextColor.gradient.PurpleRed>
-          를
-        </p>
-        <SecondLine>쉽게 저장하고 관리해 보세요</SecondLine>
-      </MainTextArea>
-      <Button href="/signup" as="a">
-        <ButtonLabel>링크 추가하기</ButtonLabel>
-      </Button>
-      <MainImageArea>
-        <img src={MainImg} />
-      </MainImageArea>
-    </MainSectionTemplate>
-  );
-};
-const FirstSection = function () {
-  return (
-    <FirstSectionTemplate>
-      <ContentsFrame>
-        <TextArea>
-          <LargeText>
-            <TextColor.gradient.RedBlue>원하는 링크</TextColor.gradient.RedBlue>
-            를 저장하세요
-          </LargeText>
-          <SmallText>
-            나중에 읽고 싶은 글, 다시 보고 싶은 영상, 사고 싶은 옷, 기억하고
-            싶은 모든 것을 한 공간에 저장하세요.
-          </SmallText>
-        </TextArea>
-        <ImageArea>
-          <img src={FirstImg} />
-        </ImageArea>
-      </ContentsFrame>
-    </FirstSectionTemplate>
-  );
-};
-const Section = function ({
-  imgSrc,
-  reversed = false,
-  $textAreaSize,
-  children,
-}) {
-  return (
-    <SectionTemplate>
-      <ContentsFrame reversed={reversed}>
-        <TextArea $textAreaSize={$textAreaSize}>{children}</TextArea>
-        <ImageArea>
-          <img src={imgSrc} />
-        </ImageArea>
-      </ContentsFrame>
-    </SectionTemplate>
-  );
-};
-const LandingPage = function () {
-  return (
-    <>
-      <Nav />
-      <MainSection />
-      <FirstSection />
-      <Section imgSrc={SecondImg} reversed={true} $textAreaSize={"medium"}>
-        <LargeText>
-          링크를 폴더로
-          <TextColor.gradient.YellowBlue> 관리</TextColor.gradient.YellowBlue>
-          하세요
-        </LargeText>
-        <SmallText>
-          나만의 폴더를 무제한으로 만들고 다양하게 활용할 수 있습니다.
-        </SmallText>
-      </Section>
-
-      <Section imgSrc={ThirdImg}>
-        <LargeText>
-          저장한 링크를
-          <TextColor.gradient.BlueWhite>공유</TextColor.gradient.BlueWhite>해
-          보세요
-        </LargeText>
-        <SmallText>
-          여러 링크를 폴더에 담고 공유할 수 있습니다. 가족, 친구, 동료들에게
-          쉽고 빠르게 링크를 공유해 보세요.
-        </SmallText>
-      </Section>
-
-      <Section imgSrc={FourthImg} reversed={true} $textAreaSize={"small"}>
-        <LargeText>
-          저장한 링크를
-          <TextColor.gradient.BlueRed>검색</TextColor.gradient.BlueRed>해 보세요
-        </LargeText>
-
-        <SmallText>중요한 정보들을 검색으로 쉽게 찾아보세요.</SmallText>
-      </Section>
-
-      <Footer />
-    </>
-  );
-};
-
-export default LandingPage;
