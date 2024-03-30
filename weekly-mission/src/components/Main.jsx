@@ -17,9 +17,7 @@ const Main = () => {
   return (
     <MainContainer>
       <MainContent>
-        <div className="searchbar">
-          <SearchBar />
-        </div>
+        <SearchBar />
         <Cards />
       </MainContent>
     </MainContainer>
