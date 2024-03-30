@@ -13,11 +13,13 @@ export default function Card({ item }) {
   return (
     <li className='shared-card'>
       <Link to={url} target='_blank' rel='noreferrer'>
-        <img
-          className='shared-card__thumbnail'
-          src={imageSource ? imageSource : noImage}
-          alt={title}
-        />
+        <div className='shared-card__thumbnail-wrap'>
+          <img
+            className='shared-card__thumbnail'
+            src={imageSource ? imageSource : noImage}
+            alt={title}
+          />
+        </div>
         <div className='shared-card__text'>
           <p className='shared-card__ago'>{dateBetween}</p>
           <h2 className='shared-card__title'>{title}</h2>

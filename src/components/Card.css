@@ -10,10 +10,22 @@
   background-color: var(--background-color);
 }
 
-.shared-card__thumbnail {
+.shared-card:hover .shared-card__thumbnail {
+  transform: scale(1.3);
+}
+
+.shared-card__thumbnail-wrap {
   width: 100%;
   height: 200px;
+  overflow: hidden;
+}
+
+.shared-card__thumbnail {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  object-position: center;
+  transition: transform 0.2s;
 }
 
 .shared-card__text {
@@ -59,7 +71,7 @@
     width: 100%;
   }
 
-  .shared-card__thumbnail {
+  .shared-card__thumbnail-wrap {
     height: 50vw;
   }
 }
