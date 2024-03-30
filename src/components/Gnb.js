@@ -12,12 +12,14 @@ function GNB() {
 
     const headerStyle = {
         display: 'flex',
-        width: '1920px',
         padding: '20px 200px',
         flexDirection: 'column',
         alignItems: 'center',
         gap: '8px',
-        backgroundColor: '#F0F6FF',
+        alignSelf: 'stretch',
+        backgroundColor: 'var(--gray-color-lightest, #f0f6ff)',
+        position: 'sticky',
+        top: '0',
     };
 
     const headerContainerStyle = {
@@ -35,7 +37,7 @@ function GNB() {
                         <Logo />
                     </Link>
                     {headerState === 'default' ? (
-                        <Link to="/sign-up" style={LinkStyle}>
+                        <Link to="/sign-in" style={LinkStyle}>
                             <CTA text={'로그인'} />
                         </Link>
                     ) : (

@@ -1,5 +1,5 @@
 import React from 'react';
-import eyesOffImg from '../imgs/noeyes.svg';
+import eyesOffImg from '../assets/noeyes.svg';
 
 function EyesOff() {
     return (

@@ -1,9 +1,10 @@
 import React from 'react';
-import facebookImg from '../imgs/facebook.svg';
-import twitterImg from '../imgs/twiter.svg';
-import youtubeImg from '../imgs/youtube.svg';
-import instagramImg from '../imgs/instagram.svg';
-import '../style/footer.css';
+import facebookImg from '../assets/facebook.svg';
+import twitterImg from '../assets/twiter.svg';
+import youtubeImg from '../assets/youtube.svg';
+import instagramImg from '../assets/instagram.svg';
+import '../styles/footer.css';
+import { Link } from 'react-router-dom';
 
 function Footer() {
     return (
@@ -13,8 +14,12 @@ function Footer() {
                     <div className="footer-content">
                         <p className="codeit">©codeit - 2023</p>
                         <div className="footer-menu">
-                            <a href="/privacy.html">Privacy Policy</a>
-                            <a href="/faq.html">FAQ</a>
+                            <Link to="privacy">
+                                <p>Privacy Policy</p>
+                            </Link>
+                            <Link to="/faq">
+                                <p>FAQ</p>
+                            </Link>
                         </div>
                         <div className="footer-icon">
                             <a href="https://www.facebook.com/" target="_blank">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import StarDefault from '../imgs/starDefault.svg';
-import StarSeleted from '../imgs/starSeleted.svg';
+import StarDefault from '../assets/starDefault.svg';
+import StarSeleted from '../assets/starSeleted.svg';
 
 function Star() {
     const [starState, setStarState] = useState('default');
