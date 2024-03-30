@@ -1,26 +1,7 @@
-import useFetchData from "../Hooks/useFetchData";
 import noImage from "../../image/noimage.svg";
 import styled from "styled-components";
 
 const CardContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
-  margin-top: 20px;
-  padding: 0 32px;
-
-  @media (max-width: 1199px) {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 1124px;
-    padding: 0 20px;
-  }
-
-  @media (max-width: 769px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
-`;
-
-const Card = styled.div`
   width: 340px;
   height: 334px;
   border-radius: 15px;
@@ -28,11 +9,13 @@ const Card = styled.div`
   text-align: center;
   position: relative;
   overflow: hidden;
+  transition: transform 0.2s ease;
 
   &:hover {
     transform: scale(1.3);
     position: relative;
     z-index: 1;
+    background-color: rgba(255, 255, 255, 1);
   }
 `;
 
@@ -121,35 +104,25 @@ const formatDate = (createdAtString) => {
   return `${year}.${month}.${day}`;
 };
 
-const Cards = () => {
-  const folderData = useFetchData(
-    "https://bootcamp-api.codeit.kr/api/sample/folder"
-  );
+const Card = ({ link }) => {
+  const { url, imageSource, title, createdAt, description } = link;
 
   return (
     <CardContainer>
-      {folderData &&
-        folderData.folder.links.map((link) => (
-          <Card key={link.id}>
-            <a href={link.url} target="_blank" rel="noopener noreferrer">
-              <CardImage
-                src={link.imageSource || noImage}
-                alt={link.title || "noImage"}
-              />
-            </a>
-            <CardText>
-              <CardTime>{generateTimeText(link.createdAt)}</CardTime>
-              <CardDescription>
-                <p>{link.description}</p>
-              </CardDescription>
-              <CardDate>
-                <p>{formatDate(link.createdAt)}</p>
-              </CardDate>
-            </CardText>
-          </Card>
-        ))}
+      <a href={url} target="_blank" rel="noopener noreferrer">
+        <CardImage src={imageSource || noImage} alt={title || "noImage"} />
+      </a>
+      <CardText>
+        <CardTime>{generateTimeText(createdAt)}</CardTime>
+        <CardDescription>
+          <p>{description}</p>
+        </CardDescription>
+        <CardDate>
+          <p>{formatDate(createdAt)}</p>
+        </CardDate>
+      </CardText>
     </CardContainer>
   );
 };
 
-export default Cards;
+export default Card;

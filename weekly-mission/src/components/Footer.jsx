@@ -42,6 +42,7 @@ const Info = styled.div`
   display: flex;
   column-gap: 30px;
   padding-right: 18px;
+  color: #676767;
 `;
 
 const Icons = styled.div`

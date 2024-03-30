@@ -1,4 +1,4 @@
-import Cards from "./Card";
+import Cards from "./Cards";
 import SearchBar from "./Searchbar";
 import styled from "styled-components";
 
