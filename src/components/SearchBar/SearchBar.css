@@ -1,11 +1,11 @@
 .SearchBar {
   position: relative;
   width: 100%;
+  margin: 0 auto;
 }
 
 .SearchBarInput {
   width: 100%;
-  max-width: 106rem;
   height: 5.4rem;
   padding-left: 3.8rem;
   padding-right: 1.6rem;

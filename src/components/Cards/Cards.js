@@ -1,12 +1,10 @@
 import { useFetch } from ".././hooks/useFetch";
-import { Link } from "react-router-dom";
 import moment from "moment";
 import thumbnail from "../.././assets/thumbnail.svg";
+import "./Cards.css";
 
 function Cards() {
-  const folderData = useFetch(
-    "https://bootcamp-api.codeit.kr/api/sample/folder"
-  );
+  const CardData = useFetch("https://bootcamp-api.codeit.kr/api/sample/folder");
 
   // 날짜 형식을 변경하는 함수
   const formatDate = (dateString) => {
@@ -42,8 +40,8 @@ function Cards() {
 
   return (
     <div className="card_grid_container">
-      {folderData &&
-        folderData.folder.links.map((link) => (
+      {CardData &&
+        CardData.folder.links.map((link) => (
           <div key={link.id} className="card">
             <div className="card_img_div">
               {link.imageSource ? (
