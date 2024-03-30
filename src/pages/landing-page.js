@@ -129,7 +129,38 @@ const TextArea = styled.div`
     height: 375px;
   }
 `;
-const ImageArea = styled.div``;
+const ImageArea = styled.div`
+  max-width: 550px;
+  width: 100%;
+  height: 450px;
+
+  @media (max-width: 1199px) {
+    width: 385px;
+    height: 315px;
+  }
+
+  @media (max-width: 767px) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 325px;
+    height: 265px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+
+    @media (max-width: 1199px) {
+      height: 315px;
+    }
+
+    @media (max-width: 767px) {
+      height: 265px;
+    }
+  }
+`;
 const LargeText = styled.div`
   font-size: 48px;
   font-weight: 700;
@@ -188,36 +219,6 @@ const SectionTemplate = styled.section`
 
   ${ContentsFrame} {
     ${ImageArea} {
-      max-width: 550px;
-      width: 100%;
-      height: 450px;
-
-      @media (max-width: 1199px) {
-        width: 385px;
-        height: 315px;
-      }
-
-      @media (max-width: 767px) {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        max-width: 325px;
-        height: 265px;
-      }
-
-      img {
-        width: 100%;
-        height: 100%;
-
-        @media (max-width: 1199px) {
-          height: 315px;
-        }
-
-        @media (max-width: 767px) {
-          height: 265px;
-        }
-      }
     }
   }
 `;
@@ -238,7 +239,7 @@ const FirstSectionTemplate = styled(SectionTemplate)`
       @media (max-width: 1199px) {
         width: 270px;
       }
-	  @media (max-width: 767px) {
+      @media (max-width: 767px) {
         width: 325px;
       }
     }
