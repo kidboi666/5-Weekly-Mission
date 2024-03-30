@@ -1,11 +1,11 @@
-import Nav from "./components/Nav";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import CardList from "./components/CardList.js";
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import CardList from "../components/CardList";
 import { useEffect, useState } from "react";
-import { getFolderData } from "./api/Api";
-import useData from "./hooks/useData";
-import SearchInput from "./components/SearchInput";
+import { getFolderData } from "../api/Api";
+import useData from "../hooks/useData";
+import SearchInput from "../components/SearchInput";
 
 function Folder() {
   const [links, setLinks] = useState([]);
