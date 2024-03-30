@@ -19,27 +19,6 @@ const SmallText = styled.div``;
 const SecondLine = styled.p``;
 const FirstLine = styled.p``;
 
-const EnterPC = styled.div`
-  @media (max-width: 1199px) {
-    display: inline;
-  }
-`;
-const EnterTablet = styled.div`
-  display: inline;
-  @media (max-width: 1199px) {
-    display: block;
-  }
-  @media (max-width: 767px) {
-    display: inline;
-  }
-`;
-const EnterMobile = styled.div`
-  display: inline;
-  @media (max-width: 767px) {
-    display: block;
-  }
-`;
-
 const SectionTemplate = styled.section`
   position: relative;
   margin: 0;
@@ -83,11 +62,11 @@ const SectionTemplate = styled.section`
     }
 
     ${TextArea} {
-      width: 300px;
+      width: 291px;
       height: ${(Props) =>
-        Props.textAreaSize === "small"
+        Props.$textAreaSize === "small"
           ? "148px"
-          : Props.textAreaSize === "medium"
+          : Props.$textAreaSize === "medium"
           ? "172px"
           : "198px"};
       display: flex;
@@ -95,13 +74,16 @@ const SectionTemplate = styled.section`
       align-items: flex-start;
       justify-content: space-between;
 
+      @media (max-width: 1199px) {
+        width: 277px;
+      }
+
       @media (max-width: 767px) {
         width: 100%;
         height: 375px;
       }
 
       ${LargeText} {
-        width: 300px;
         font-size: 48px;
         font-weight: 700;
         font-family: "Pretendard";
@@ -117,11 +99,10 @@ const SectionTemplate = styled.section`
         }
       }
       ${SmallText} {
-        width: 330px;
         font-size: 16px;
         text-align: left;
-        font-weight: 400;
-        font-family: "Abel";
+        font-weight: 500;
+        font-family: "Pretendard";
         line-height: 24px;
         color: #6b6b6b;
 
@@ -130,7 +111,6 @@ const SectionTemplate = styled.section`
           font-size: 15px;
           line-height: 22.5px;
           font-weight: 520;
-          font-family: "Pretendard";
         }
       }
     }
@@ -186,6 +166,12 @@ const FirstSectionTemplate = styled(SectionTemplate)`
     @media (max-width: 1199px) {
       top: 80px;
     }
+
+	${TextArea} {
+		@media (max-width: 1199px) {
+			width: 270px;
+		  }
+	}
   }
 `;
 const MainSectionTemplate = styled.section`
@@ -342,14 +328,8 @@ const FirstSection = function () {
             를 저장하세요
           </LargeText>
           <SmallText>
-            {"나중에 읽고 싶은 글, 다시 보고 싶은 영상, "}
-            <EnterTablet />
-            <EnterPC />
-            {"사고 싶은 옷, "}
-            <EnterMobile />
-            {"기억하고 싶은 모든 것을 "}
-            <EnterTablet />
-            <EnterPC />한 공간에 저장하세요.
+            나중에 읽고 싶은 글, 다시 보고 싶은 영상, 사고 싶은 옷, 기억하고
+            싶은 모든 것을 한 공간에 저장하세요.
           </SmallText>
         </TextArea>
         <ImageArea>
@@ -362,18 +342,18 @@ const FirstSection = function () {
 const Section = function ({
   imgSrc,
   reversed = false,
-  textAreaSize,
+  $textAreaSize,
   children,
 }) {
   return (
-    <FirstSectionTemplate reversed={reversed} $textAreaSize={textAreaSize}>
+    <SectionTemplate reversed={reversed} $textAreaSize={$textAreaSize}>
       <ContentsFrame>
         <TextArea>{children}</TextArea>
         <ImageArea>
           <img src={imgSrc} />
         </ImageArea>
       </ContentsFrame>
-    </FirstSectionTemplate>
+    </SectionTemplate>
   );
 };
 
@@ -390,14 +370,7 @@ const LandingPage = function () {
           하세요
         </LargeText>
         <SmallText>
-          {"나만의 폴더를 무제한으로 만들고 "}
-          <EnterPC />
-          <EnterTablet />
-          {"다양하게 활용할 수 "}
-          <EnterMobile />
-          있습니다.
-          <EnterPC />
-          <EnterTablet />
+          나만의 폴더를 무제한으로 만들고 다양하게 활용할 수 있습니다.
         </SmallText>
       </Section>
 
@@ -408,17 +381,8 @@ const LandingPage = function () {
           보세요
         </LargeText>
         <SmallText>
-          {"여러 링크를 폴더에 담고 공유할 수 "}
-          <EnterTablet />
-          {"있습니다. "}
-          <EnterPC />
-          {"가족, "}
-          <EnterMobile />
-          {"친구, 동료들에게 쉽고 "}
-          <EnterTablet />
-          {"빠르게 링크를 "}
-          <EnterPC />
-          {"공유해 보세요. "}
+          여러 링크를 폴더에 담고 공유할 수 있습니다. 가족, 친구, 동료들에게
+          쉽고 빠르게 링크를 공유해 보세요.
         </SmallText>
       </Section>
 
@@ -428,11 +392,7 @@ const LandingPage = function () {
           <TextColor.gradient.BlueRed>검색</TextColor.gradient.BlueRed>해 보세요
         </LargeText>
 
-        <SmallText>
-          {"중요한 정보들을 검색으로 쉽게 "}
-          <EnterTablet />
-          찾아보세요.
-        </SmallText>
+        <SmallText>중요한 정보들을 검색으로 쉽게 찾아보세요.</SmallText>
       </Section>
 
       <Footer />

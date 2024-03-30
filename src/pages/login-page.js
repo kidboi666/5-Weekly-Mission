@@ -133,7 +133,7 @@ const LoginPage = function () {
               onBlur={validateEmail}
               onFocus={cancelEmailError}
               errorMessage={emailError}
-            ></Auth.Input>
+            />
 
             <Auth.Input
               type={passwordShown ? "text" : "password"}
