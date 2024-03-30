@@ -5,30 +5,26 @@ import CardList from "./components/CardList.js";
 import { useEffect, useState } from "react";
 import { getFolderData } from "./api/Api";
 import useData from "./hooks/useData";
+import SearchInput from "./components/SearchInput";
 
-function App() {
+function Folder() {
   const [links, setLinks] = useState([]);
 
   const linkData = useData(getFolderData);
 
-  const loadLinkData = () => {
-    setLinks(linkData?.folder.links);
-  };
-
   useEffect(() => {
-    loadLinkData();
+    setLinks(linkData?.folder.links);
   }, [linkData]);
-
-  console.log(links);
 
   return (
     <>
       <Nav />
       <Header />
+      <SearchInput />
       {links && <CardList links={links} />}
       <Footer />
     </>
   );
 }
 
-export default App;
+export default Folder;
