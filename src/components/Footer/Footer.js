@@ -14,16 +14,16 @@ function Footer() {
           <p>FAQ</p>
         </div>
         <div className="footer_icon_div">
-          <a href="https://facebook.com/">
+          <a href="https://facebook.com/" target="_blank">
             <img src={facebook} width="20" height="20" alt="페이스북 아이콘" />
           </a>
-          <a href="https://twitter.com/">
+          <a href="https://twitter.com/" target="_blank">
             <img src={twitter} width="20" height="20" alt="트위터 아이콘" />
           </a>
-          <a href="https://youtube.com/">
+          <a href="https://youtube.com/" target="_blank">
             <img src={youtube} width="20" height="20" alt="유튜브 아이콘" />
           </a>
-          <a href="https://instagram.com/">
+          <a href="https://instagram.com/" target="_blank">
             <img
               src={instagram}
               width="20"
