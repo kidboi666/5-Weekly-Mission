@@ -5,8 +5,8 @@ import { router } from "./router";
 function App() {
   return (
     <>
-      <GlobalStyle />
       <RouterProvider router={router} />
+      <GlobalStyle />
     </>
   );
 }

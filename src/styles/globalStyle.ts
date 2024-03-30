@@ -1,8 +1,17 @@
 // reset css
 
 import { ExecutionProps, createGlobalStyle } from "styled-components";
+import { theme } from "./theme";
 
 export const GlobalStyle = createGlobalStyle<ExecutionProps & object>`
+
+	@font-face {
+		font-family: 'Pretendard-Regular';
+		src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+		font-weight: 400;
+		font-style: normal;
+	}
+
 	html, body, div, span, applet, object, iframe,
 	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 	a, abbr, acronym, address, big, cite, code,
@@ -21,15 +30,19 @@ export const GlobalStyle = createGlobalStyle<ExecutionProps & object>`
 		border: 0;
 		font-size: inherit;
 		color: #000;
-		box-sizing: border-box;
+		font-weight: 400;
+		font-family: 'Pretendard-Regular', Arial, Helvetica, sans-serif;
 		vertical-align: baseline;
+		box-sizing: border-box;
 	}
 	article, aside, details, figcaption, figure, 
 	footer, header, hgroup, menu, nav, section {
 		display: block;
 	}
-	body {
+	html, body {
+		font-size: 16px;
 		line-height: 1;
+		min-width: ${theme.screenSize.minWidth};
 	}
 	ol, ul {
 		list-style: none;
@@ -54,6 +67,7 @@ export const GlobalStyle = createGlobalStyle<ExecutionProps & object>`
 	}
 	button {
 		background-color: transparent;
+		border: 0;
 	}
 
 `;

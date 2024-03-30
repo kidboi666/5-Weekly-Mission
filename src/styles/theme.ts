@@ -3,12 +3,12 @@
 import { DefaultTheme } from 'styled-components';
 
 const theme : DefaultTheme  = {
-  /* 타이틀 사이즈 pc 기준 - 48,64*/
+  /* 타이틀 사이즈 pc 기준(px) - 48,64*/
   title: {
     ls: "4rem",
     ms: "3rem",
   },
-  /* 폰트 사이트- 13,14,16,18,20 */
+  /* 폰트 사이트(px)- 13,14,16,18,20 */
   font: {
     l: "1.25rem",
     lm: "1.125rem",
@@ -39,9 +39,19 @@ const theme : DefaultTheme  = {
   screenSize: {
     pc: "75rem",
     tablet: "74.9375rem",
-    mo: "47.9375rem",
-    mo2: "23.4375rem",
+    moLarge: "47.9375rem",
+    moSmall: "23.4375rem",
+    minWidth: "18.75rem"
   },
+  /* 
+  section inner size(px)
+  l:1060, m:998, s:400
+  */
+  innerSize: {
+    l:'66.25rem',
+    m:'62.375rem',
+    s:'25rem'
+  }
 };
 
 export { theme };

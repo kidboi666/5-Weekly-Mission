@@ -31,8 +31,14 @@ declare module 'styled-components' {
     screenSize: {
       pc: string,
       tablet: string,
-      mo: string,
-      mo2: string,
+      moLarge: string,
+      moSmall: string,
+      minWidth: string,
     },
+    innerSize: {
+      l:string,
+      m:string,
+      s:string,
+    }
   }
 }
