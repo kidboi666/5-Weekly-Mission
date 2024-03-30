@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import LinkbraryImage from "../../image/Linkbrary.png";
 import profileImage from "../../image/profile img.jpg";
 import styled from "styled-components";
@@ -34,7 +35,7 @@ const Gnb = styled.div`
   }
 `;
 
-const GnbLogo = styled.a`
+const GnbLogo = styled(Link)`
   width: 133px;
   height: 24px;
   color: #6d6afe;
@@ -78,9 +79,9 @@ const Nav = () => {
             <span className="email">{profileData.email}</span>
           </ProfileInfo>
         ) : (
-          <a href="../../signin/signin.html">
+          <Link to="../../signin/signin.html">
             <GnbButton>로그인</GnbButton>
-          </a>
+          </Link>
         )}
       </Gnb>
     </NavContainer>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import noImage from "../../image/noimage.svg";
 import styled from "styled-components";
 
@@ -109,9 +110,9 @@ const Card = ({ link }) => {
 
   return (
     <CardContainer>
-      <a href={url} target="_blank" rel="noopener noreferrer">
+      <Link to={url} target="_blank" rel="noopener noreferrer">
         <CardImage src={imageSource || noImage} alt={title || "noImage"} />
-      </a>
+      </Link>
       <CardText>
         <CardTime>{generateTimeText(createdAt)}</CardTime>
         <CardDescription>
