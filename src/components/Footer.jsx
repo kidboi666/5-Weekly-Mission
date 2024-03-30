@@ -1,4 +1,4 @@
-import styles from "./Footer.module.css";
+import "./Footer.css";
 import facebook from "../assets/akar-icons_facebook-fill.svg";
 import twitter from "../assets/akar-icons_twitter-fill.svg";
 import youtube from "../assets/akar-icons_youtube-fill.svg";
@@ -7,14 +7,14 @@ import instagram from "../assets/ant-design_instagram-filled.svg";
 function Footer() {
   return (
     <footer>
-      <div className={styles.footer__wrap}>
-        <div className={styles.footer__content}>
-          <div className={styles.footer__history}>©codeit - 2023</div>
-          <div className={styles.footer__supportLink}>
+      <div className="footer__wrap">
+        <div className="footer__content">
+          <div className="footer__history">©codeit - 2023</div>
+          <div className="footer__supportLink">
             <a href="/privacy">Privacy Policy</a>
             <a href="/faq">FAQ</a>
           </div>
-          <div className={styles.footer__snsLink}>
+          <div className="footer__snsLink">
             <a
               href="https://www.facebook.com/"
               target="_blank"
