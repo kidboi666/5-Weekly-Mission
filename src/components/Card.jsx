@@ -1,16 +1,8 @@
 import { CardContainer, Sort, CardGrid, CardImage, CardContent, CardContentText, ATag } from '../styles/CardStyled.jsx';
-import fetchData from './apis/GetApi.jsx';
-import { useEffect, useState } from 'react';
 import { timeAgo } from './utils/CardUtil.jsx';
-
+import useFetch from './hooks/useFetch.jsx';
 function Card() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetchData('api/sample/folder')
-      .then((fetchedData) => setData(fetchedData))
-      .catch((error) => console.error(error));
-  }, []);
+  const [data] = useFetch('api/sample/folder');
 
   return (
     <Sort>

@@ -1,15 +1,8 @@
-import { useState, useEffect } from 'react';
 import '../styles/Header.css';
-import fetchData from './apis/GetApi.jsx';
+import useFetch from './hooks/useFetch';
 
 function Header() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetchData('api/sample/folder')
-      .then((fetchedData) => setData(fetchedData))
-      .catch((error) => console.error(error));
-  }, []);
+  const [data] = useFetch('api/sample/folder');
 
   if (!data) {
     return <h1>Loading...</h1>;

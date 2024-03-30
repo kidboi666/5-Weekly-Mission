@@ -1,16 +1,9 @@
 import '../styles/Nav.css';
 import logo from '../assets/logo.svg';
-import fetchData from './apis/GetApi.jsx';
-import { useState, useEffect } from 'react';
+import useFetch from './hooks/useFetch';
 
 function Nav() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetchData('api/sample/user')
-      .then((fetchedData) => setData(fetchedData))
-      .catch((error) => console.error(error));
-  }, []);
+  const [data] = useFetch('api/sample/user');
 
   return (
     <nav>
