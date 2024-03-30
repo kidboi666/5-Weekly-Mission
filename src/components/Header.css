@@ -3,6 +3,7 @@
   top: 0;
   padding: 20px 200px;
   background: var(--background-color);
+  z-index: 1;
 }
 
 .header__inner {
