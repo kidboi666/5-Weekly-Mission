@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const HeaderBlock = styled.div`
+const MainProfileBlock = styled.div`
   background: #f0f6ff;
 
   div {
@@ -13,18 +13,18 @@ const HeaderBlock = styled.div`
   }
 `;
 
-function Header() {
+function MainProfile({ profile }) {
   return (
     <>
-      <HeaderBlock>
+      <MainProfileBlock>
         <div>
           <p>프로필</p>
           <p>@코드잇</p>
           <p>즐겨찾기</p>
         </div>
-      </HeaderBlock>
+      </MainProfileBlock>
     </>
   );
 }
 
-export default Header;
+export default MainProfile;

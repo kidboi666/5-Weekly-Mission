@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 const SearchBlock = styled.div`
+  width: 20rem;
+  margin: 0 auto;
+
   p {
     margin: 0;
   }
