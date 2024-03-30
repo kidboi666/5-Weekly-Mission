@@ -2,6 +2,7 @@ import React from "react";
 import "./Card.css";
 import noImage from "../assets/no-image.png";
 import { dateAgo, dateToString } from "../utils/date";
+import { Link } from "react-router-dom";
 
 export default function Card({ item }) {
   const { createdAt, url, title, imageSource } = item;
@@ -11,7 +12,7 @@ export default function Card({ item }) {
 
   return (
     <li className='shared-card'>
-      <a href={url} target='_blank' rel='noreferrer'>
+      <Link to={url} target='_blank' rel='noreferrer'>
         <img
           className='shared-card__thumbnail'
           src={imageSource ? imageSource : noImage}
@@ -22,7 +23,7 @@ export default function Card({ item }) {
           <h2 className='shared-card__title'>{title}</h2>
           <p className='shared-card__date'>{date}</p>
         </div>
-      </a>
+      </Link>
     </li>
   );
 }

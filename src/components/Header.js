@@ -4,16 +4,16 @@ import Button from "./utils/Button";
 import logoImg from "../assets/logo.svg";
 import { UserContext } from "../contexts/UserContext";
 import ProfileImage from "./utils/ProfileImage";
+import { Link } from "react-router-dom";
 
 export default function Header() {
-  const { user, setUser } = useContext(UserContext);
-
+  const { user } = useContext(UserContext);
   return (
     <header className='header'>
       <div className='header__inner'>
-        <a className='header__link-home' href='/'>
+        <Link to='/' className='header__link-home'>
           <img className='header__logo' src={logoImg} alt='linkbrary logo' />
-        </a>
+        </Link>
         {!user && (
           <Button
             className='header__login-button'

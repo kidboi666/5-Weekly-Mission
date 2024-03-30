@@ -1,6 +1,7 @@
 import React from "react";
 import "./Footer.css";
 import FooterSnsItem from "./FooterSnsItem";
+import { Link } from "react-router-dom";
 
 const snsList = [
   {
@@ -32,10 +33,10 @@ export default function Footer() {
         <p className='footer__address'>©codeit - 2023</p>
         <ul className='footer__nav'>
           <li className='footer__nav-li'>
-            <a href='/privacy'>Privacy Policy</a>
+            <Link to='/privacy'>Privacy Policy</Link>
           </li>
           <li className='footer__nav-li'>
-            <a href='/faq'>FAQ</a>
+            <Link to='/faq'>FAQ</Link>
           </li>
         </ul>
         <ul className='footer__sns'>
