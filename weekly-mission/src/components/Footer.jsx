@@ -1,10 +1,6 @@
-import {
-  BiLogoFacebookCircle,
-  BiLogoTwitter,
-  BiLogoYoutube,
-  BiLogoInstagramAlt,
-} from "react-icons/bi";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import FooterIcons from "./FooterIcon";
 
 const FooterContainer = styled.footer`
   width: 100%;
@@ -43,24 +39,17 @@ const Info = styled.div`
   column-gap: 30px;
   padding-right: 18px;
   color: #676767;
-`;
 
-const Icons = styled.div`
-  display: flex;
-  column-gap: 12px;
-  height: 20px;
-`;
-
-const StyledLink = styled.a`
-  gap: 30px;
-  font-family: "Acme";
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 20px;
-  letter-spacing: 0em;
-  text-align: left;
-  text-decoration-line: none;
-  color: #cfcfcf;
+  a {
+    font-family: "Acme";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    text-decoration-line: none;
+    color: #cfcfcf;
+  }
 `;
 
 const Footer = () => {
@@ -69,29 +58,10 @@ const Footer = () => {
       <FooterBox>
         <CodeitLogo>©codeit - 2023</CodeitLogo>
         <Info>
-          <StyledLink href="/privacy">Privacy Policy</StyledLink>
-          <StyledLink href="/faq">FAQ</StyledLink>
+          <Link to="/privacy">Privacy Policy</Link>
+          <Link to="/faq">FAQ</Link>
         </Info>
-        <Icons>
-          <StyledLink
-            href="https://www.facebook.com/?locale=ko_KR"
-            target="_blank"
-          >
-            <BiLogoFacebookCircle />
-          </StyledLink>
-          <StyledLink href="https://twitter.com/?lang=ko" target="_blank">
-            <BiLogoTwitter />
-          </StyledLink>
-          <StyledLink
-            href="https://www.youtube.com/?gl=KR&hl=ko"
-            target="_blank"
-          >
-            <BiLogoYoutube />
-          </StyledLink>
-          <StyledLink href="https://www.instagram.com/" target="_blank">
-            <BiLogoInstagramAlt />
-          </StyledLink>
-        </Icons>
+        <FooterIcons />
       </FooterBox>
     </FooterContainer>
   );

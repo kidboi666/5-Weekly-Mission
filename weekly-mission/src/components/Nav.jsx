@@ -66,7 +66,7 @@ const Nav = () => {
   return (
     <NavContainer>
       <Gnb>
-        <GnbLogo href="index.html">
+        <GnbLogo Link to="index.html">
           <img src={LinkbraryImage} alt="Linkbrary Logo" />
         </GnbLogo>
         {profileData ? (
