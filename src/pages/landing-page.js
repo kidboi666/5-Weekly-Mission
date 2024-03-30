@@ -11,14 +11,165 @@ import TextColor from "../palette/text-color";
 import Nav from "../components/nav";
 import Footer from "../components/footer";
 
-const ContentsFrame = styled.div``;
-const TextArea = styled.div``;
-const ImageArea = styled.div``;
-const LargeText = styled.div``;
-const SmallText = styled.div``;
-const SecondLine = styled.p``;
-const FirstLine = styled.p``;
+const MainTextArea = styled.div`
+  line-height: 80px;
+  font-size: 64px;
+  text-align: center;
+  font-weight: 700;
+  font-family: "Pretendard";
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+  @media (max-width: 767px) {
+    width: 250px;
+    height: 126px;
+    line-height: 42px;
+    font-size: 32px;
+    padding: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+`;
+const MainImageArea = styled.div`
+  max-width: 1200px;
+  width: 100%;
+  height: 590px;
+  padding-top: 50px;
+  padding-left: 41px;
+  padding-right: 41px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+
+  @media (max-width: 1199px) {
+    max-width: 700px;
+    width: 100%;
+    height: 343px;
+    padding-top: 29px;
+    padding-left: 23.8px;
+    padding-right: 23.8px;
+  }
+
+  @media (max-width: 767px) {
+    max-width: 325px;
+    width: 100%;
+    height: 160px;
+    padding-top: 13.5px;
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+
+  img {
+    max-width: 1118px;
+    width: 100%;
+    height: 590px;
+
+    @media (max-width: 1199px) {
+      max-width: 650px;
+      width: 100%;
+      height: 343px;
+    }
+
+    @media (max-width: 767px) {
+      max-width: 302px;
+      width: 100%;
+      height: 178.7px;
+    }
+  }
+`;
+const ContentsFrame = styled.div`
+  max-width: 998px;
+  width: 100%;
+  height: 450px;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: ${(props) =>
+    props.reversed == true ? "row-reverse" : "row"};
+  align-items: center;
+  justify-content: space-between;
+  @media (max-width: 1199px) {
+    width: 700px;
+    height: 315px;
+  }
+
+  @media (max-width: 767px) {
+    width: 325px;
+    height: 375px;
+    flex-direction: column;
+    top: 40px;
+  }
+`;
+const TextArea = styled.div`
+  width: 291px;
+  height: ${(Props) =>
+    Props.$textAreaSize === "small"
+      ? "148px"
+      : Props.$textAreaSize === "medium"
+      ? "172px"
+      : "198px"};
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  @media (max-width: 1199px) {
+    width: 277px;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+    height: 375px;
+  }
+`;
+const ImageArea = styled.div``;
+const LargeText = styled.div`
+  font-size: 48px;
+  font-weight: 700;
+  font-family: "Pretendard";
+  line-height: 57px;
+  text-align: left;
+  height: 116px;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    font-size: 24px;
+    line-height: 28.6px;
+    height: 29px;
+  }
+`;
+const SmallText = styled.div`
+  font-size: 16px;
+  text-align: left;
+  font-weight: 500;
+  font-family: "Pretendard";
+  line-height: 24px;
+  color: #6b6b6b;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    font-size: 15px;
+    line-height: 22.5px;
+    font-weight: 520;
+  }
+`;
+const SecondLine = styled.p`
+  @media (max-width: 1199px) {
+    margin: 0;
+    width: 380px;
+  }
+
+  @media (max-width: 767px) {
+    width: 200px;
+  }
+`;
 const SectionTemplate = styled.section`
   position: relative;
   margin: 0;
@@ -36,85 +187,6 @@ const SectionTemplate = styled.section`
   }
 
   ${ContentsFrame} {
-    max-width: 998px;
-    width: 100%;
-    height: 450px;
-    position: absolute;
-    top: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: ${(props) =>
-      props.reversed == true ? "row-reverse" : "row"};
-    align-items: center;
-    justify-content: space-between;
-
-    @media (max-width: 1199px) {
-      width: 700px;
-      height: 315px;
-    }
-
-    @media (max-width: 767px) {
-      width: 325px;
-      height: 375px;
-      flex-direction: column;
-      top: 40px;
-    }
-
-    ${TextArea} {
-      width: 291px;
-      height: ${(Props) =>
-        Props.$textAreaSize === "small"
-          ? "148px"
-          : Props.$textAreaSize === "medium"
-          ? "172px"
-          : "198px"};
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: space-between;
-
-      @media (max-width: 1199px) {
-        width: 277px;
-      }
-
-      @media (max-width: 767px) {
-        width: 100%;
-        height: 375px;
-      }
-
-      ${LargeText} {
-        font-size: 48px;
-        font-weight: 700;
-        font-family: "Pretendard";
-        line-height: 57px;
-        text-align: left;
-        height: 116px;
-
-        @media (max-width: 767px) {
-          width: 100%;
-          font-size: 24px;
-          line-height: 28.6px;
-          height: 29px;
-        }
-      }
-      ${SmallText} {
-        font-size: 16px;
-        text-align: left;
-        font-weight: 500;
-        font-family: "Pretendard";
-        line-height: 24px;
-        color: #6b6b6b;
-
-        @media (max-width: 767px) {
-          width: 100%;
-          font-size: 15px;
-          line-height: 22.5px;
-          font-weight: 520;
-        }
-      }
-    }
-
     ${ImageArea} {
       max-width: 550px;
       width: 100%;
@@ -151,27 +223,25 @@ const SectionTemplate = styled.section`
 `;
 const FirstSectionTemplate = styled(SectionTemplate)`
   height: 620px;
-
   @media (max-width: 1199px) {
     height: 445px;
   }
-
   @media (max-width: 767px) {
     height: 451px;
   }
-
   ${ContentsFrame} {
     top: 120px;
-
     @media (max-width: 1199px) {
       top: 80px;
     }
-
-	${TextArea} {
-		@media (max-width: 1199px) {
-			width: 270px;
-		  }
-	}
+    ${TextArea} {
+      @media (max-width: 1199px) {
+        width: 270px;
+      }
+	  @media (max-width: 767px) {
+        width: 325px;
+      }
+    }
   }
 `;
 const MainSectionTemplate = styled.section`
@@ -186,113 +256,24 @@ const MainSectionTemplate = styled.section`
   overflow: hidden;
   justify-content: space-between;
   padding-top: 70px;
-
   @media (max-width: 1199px) {
     height: 756px;
     padding-top: 40px;
   }
-
   @media (max-width: 767px) {
     height: 399px;
     padding-top: 28px;
   }
-
-  ${TextArea} {
-    line-height: 80px;
-    font-size: 64px;
-    text-align: center;
-    font-weight: 700;
-    font-family: "Pretendard";
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    @media (max-width: 767px) {
-      width: 250px;
-      height: 126px;
-      line-height: 42px;
-      font-size: 32px;
-      padding: 0;
-    }
-
-    p {
-      margin: 0;
-    }
-
-    ${SecondLine} {
-      @media (max-width: 1199px) {
-        margin: 0;
-        width: 380px;
-      }
-
-      @media (max-width: 767px) {
-        width: 200px;
-      }
-    }
-  }
-
   ${Button} {
     max-width: 350px;
     width: 100%;
     height: 53px;
-
     @media (max-width: 767px) {
       max-width: 200px;
       width: 100%;
       height: 37px;
-
       ${ButtonLabel} {
         font-size: 14px;
-      }
-    }
-  }
-
-  ${ImageArea} {
-    max-width: 1200px;
-    width: 100%;
-    height: 590px;
-    padding-top: 50px;
-    padding-left: 41px;
-    padding-right: 41px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: hidden;
-
-    @media (max-width: 1199px) {
-      max-width: 700px;
-      width: 100%;
-      height: 343px;
-      padding-top: 29px;
-      padding-left: 23.8px;
-      padding-right: 23.8px;
-    }
-
-    @media (max-width: 767px) {
-      max-width: 325px;
-      width: 100%;
-      height: 160px;
-      padding-top: 13.5px;
-      padding-left: 11px;
-      padding-right: 11px;
-    }
-
-    img {
-      max-width: 1118px;
-      width: 100%;
-      height: 590px;
-
-      @media (max-width: 1199px) {
-        max-width: 650px;
-        width: 100%;
-        height: 343px;
-      }
-
-      @media (max-width: 767px) {
-        max-width: 302px;
-        width: 100%;
-        height: 178.7px;
       }
     }
   }
@@ -300,21 +281,21 @@ const MainSectionTemplate = styled.section`
 const MainSection = function () {
   return (
     <MainSectionTemplate>
-      <TextArea>
-        <FirstLine>
+      <MainTextArea>
+        <p>
           <TextColor.gradient.PurpleRed>
             세상의 모든 정보
           </TextColor.gradient.PurpleRed>
           를
-        </FirstLine>
+        </p>
         <SecondLine>쉽게 저장하고 관리해 보세요</SecondLine>
-      </TextArea>
+      </MainTextArea>
       <Button href="/signup" as="a">
         <ButtonLabel>링크 추가하기</ButtonLabel>
       </Button>
-      <ImageArea>
+      <MainImageArea>
         <img src={MainImg} />
-      </ImageArea>
+      </MainImageArea>
     </MainSectionTemplate>
   );
 };
@@ -346,9 +327,9 @@ const Section = function ({
   children,
 }) {
   return (
-    <SectionTemplate reversed={reversed} $textAreaSize={$textAreaSize}>
-      <ContentsFrame>
-        <TextArea>{children}</TextArea>
+    <SectionTemplate>
+      <ContentsFrame reversed={reversed}>
+        <TextArea $textAreaSize={$textAreaSize}>{children}</TextArea>
         <ImageArea>
           <img src={imgSrc} />
         </ImageArea>
