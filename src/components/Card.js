@@ -10,14 +10,14 @@ export default function Card({ item }) {
     createdAt[5] === "0" ? createdAt.slice(6, 7) : createdAt.slice(5, 7)
   }. ${createdAt.slice(8, 10)}`;
 
-  const betweenDate = dateAgo(createdAt);
+  const dateBetween = dateAgo(createdAt);
 
   return (
     <li className='shared-card'>
       <a href={url} target='_blank' rel='noreferrer'>
         <img src={imageSource ? imageSource : noImage} alt={title} />
         <div className='shared-card__text'>
-          <p className='shared-card__ago'>{betweenDate}</p>
+          <p className='shared-card__ago'>{dateBetween}</p>
           <h2 className='shared-card__title'>{title}</h2>
           <p className='shared-card__date'>{dateToString}</p>
         </div>
