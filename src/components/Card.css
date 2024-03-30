@@ -10,7 +10,7 @@
   background-color: var(--background-color);
 }
 
-.shared-card img {
+.shared-card__thumbnail {
   width: 100%;
   height: 200px;
   object-fit: cover;
@@ -59,7 +59,7 @@
     width: 100%;
   }
 
-  .shared-card img {
+  .shared-card__thumbnail {
     height: 50vw;
   }
 }

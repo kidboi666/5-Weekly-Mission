@@ -21,16 +21,16 @@ export default function SharedPage() {
 
   return (
     <div className='shared-page'>
-      <div className='top-box'>
-        <div className='profile-box'>
+      <div className='shared__top-wrap'>
+        <div className='shared__profile-wrap'>
           <ProfileImage src={user?.profileImageSource} size='60' />
-          <p>{user?.name}</p>
+          <p className='shared__profile-text'>{user?.name}</p>
         </div>
-        <h2 className='title'>{folder?.name} </h2>
+        <h2 className='shared__title'>{folder?.name} </h2>
       </div>
-      <section className='shared-section'>
+      <section className='shared__section'>
         <Search />
-        <ul className='card-list'>
+        <ul className='shared__card-list'>
           {folder?.links.map((item) => (
             <Card key={item.id} item={item} />
           ))}

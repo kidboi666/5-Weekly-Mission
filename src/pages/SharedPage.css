@@ -1,4 +1,4 @@
-.shared-page .top-box {
+.shared__top-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,53 +7,53 @@
   background-color: var(--background-color);
 }
 
-.shared-page .profile-box {
+.shared__profile-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
 }
 
-.shared-page .profile-box p {
+.shared__profile-text {
   font-size: 16px;
 }
 
-.shared-page .title {
+.shared__title {
   font-size: 40px;
   font-weight: 600;
 }
 
-.shared-section {
+.shared__section {
   max-width: 1060px;
   margin: 0 auto;
   padding: 0 32px 100px;
 }
 
-.shared-section .card-list {
+.shared__card-list {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
 
 @media (max-width: 767px) {
-  .shared-page .top-box {
+  .shared__top-wrap {
     gap: 10px;
     padding: 10px 0 40px;
   }
 
-  .shared-page .profile-box {
+  .shared__profile-wrap {
     gap: 6px;
   }
 
-  .shared-page .profile-box p {
+  .shared__profile-text {
     font-size: 14px;
   }
 
-  .shared-page .title {
+  .shared__title {
     font-size: 32px;
   }
 
-  .shared-section {
+  .shared__section {
     padding-bottom: 60px;
   }
 }

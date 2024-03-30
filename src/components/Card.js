@@ -1,25 +1,26 @@
 import React from "react";
 import "./Card.css";
 import noImage from "../assets/no-image.png";
-import dateAgo from "../utils/dateAgo";
+import { dateAgo, dateToString } from "../utils/date";
 
 export default function Card({ item }) {
   const { createdAt, url, title, imageSource } = item;
 
-  const dateToString = `${createdAt.slice(0, 4)}. ${
-    createdAt[5] === "0" ? createdAt.slice(6, 7) : createdAt.slice(5, 7)
-  }. ${createdAt.slice(8, 10)}`;
-
   const dateBetween = dateAgo(createdAt);
+  const date = dateToString(createdAt);
 
   return (
     <li className='shared-card'>
       <a href={url} target='_blank' rel='noreferrer'>
-        <img src={imageSource ? imageSource : noImage} alt={title} />
+        <img
+          className='shared-card__thumbnail'
+          src={imageSource ? imageSource : noImage}
+          alt={title}
+        />
         <div className='shared-card__text'>
           <p className='shared-card__ago'>{dateBetween}</p>
           <h2 className='shared-card__title'>{title}</h2>
-          <p className='shared-card__date'>{dateToString}</p>
+          <p className='shared-card__date'>{date}</p>
         </div>
       </a>
     </li>

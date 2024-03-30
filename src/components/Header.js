@@ -24,7 +24,7 @@ export default function Header() {
         {user && (
           <div className='header__profile'>
             <ProfileImage src={user.profileImageSource} size='28' />
-            <p>{user.email}</p>
+            <p className='header__profile-text'>{user.email}</p>
           </div>
         )}
       </div>

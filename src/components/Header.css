@@ -23,7 +23,7 @@
   gap: 6px;
 }
 
-.header__profile p {
+.header__profile-text {
   font-size: 14px;
   color: #373740;
 }
@@ -51,7 +51,7 @@
     width: 80px;
   }
 
-  .header__profile p {
+  .header__profile-text {
     display: none;
   }
 }
