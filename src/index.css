@@ -7,6 +7,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   padding-top: 93px;
 }
+@media (max-width: 767px) {
+  body {
+    padding-top: 63px;
+  }
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

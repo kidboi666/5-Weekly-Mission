@@ -13,6 +13,12 @@
   align-self: stretch;
 }
 
+@media (max-width) {
+  .card-content {
+    width: 325px;
+  }
+}
+
 .wrap-card-content-time-kebab {
   display: flex;
   justify-content: space-between;
@@ -45,6 +51,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: 24px; /* 150% */
+  height: 49px;
+  align-self: stretch;
 }
 
 .card-content-createdAt {

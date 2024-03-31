@@ -15,6 +15,16 @@
 
 .card-img {
   width: 340px;
-  height: 253.746px;
+  height: 200px;
   flex-shrink: 0;
+  border-radius: 15px 15px 0px 0px;
+  background: #d9d9d9;
+}
+
+@media (max-width: 767px) {
+  .card-img {
+    width: 325px;
+    height: 192px;
+    flex-shrink: 0;
+  }
 }

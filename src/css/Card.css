@@ -1,0 +1,14 @@
+.wrap-card {
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
+  width: 340px;
+  height: 334px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 767px) {
+  .wrap-card {
+    width: 325px;
+    height: 327px;
+  }
+}
