@@ -1,0 +1,72 @@
+/* palette에 있는 color값들을 css 변수로 등록하고 사용해 주세요. */
+:root {
+    --Linkbrary-primary-color: #6D6AFE;
+    --Linkbrary-red: #FF5B56;
+    --The-julge-black: #111322;
+    --Linkbrary-white: #FFF;
+    --Linkbrary-gray100: #373740;
+    --Linkbrary-gray60: #9FA6B2;
+    --Linkbrary-gray20: #CCD5E3;
+    --Linkbrary-gray10: #E7EFFB;
+    --Grey-Light: #F5F5F5;
+    --Linkbrary-bg: #F0F6FF;
+    --z-top: 1000;
+    --z-above: 100;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Pretendard';
+    font-size: 1.6rem;
+}
+
+.cursor-point {
+    cursor: pointer;
+}
+
+object{
+    pointer-events: none;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* 버튼 */
+.primary-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.6rem 2rem;
+    border-radius: 0.8rem;
+    background: linear-gradient(91deg, var(--Linkbrary-primary-color) 0.12%, #6AE3FE 101.84%);
+    border: none;
+    color: var(--Grey-Light);
+    font-size: 1.8rem;
+    line-height: 2.1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.primary-btn.sm {
+    width: 12.8rem;
+}
+
+.primary-btn.md {
+    width: 35rem;
+}
+
+.primary-btn.lg {
+    width: 40rem;
+}
