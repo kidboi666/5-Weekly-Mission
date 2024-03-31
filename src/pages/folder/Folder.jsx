@@ -4,23 +4,11 @@ import Card from '../../components/Card';
 import Input from '../../components/Input';
 import Footer from '../../components/Footer';
 import FolderInfo from '../../components/FolderInfo';
-import img_1 from '../../assets/image/image_1.png';
-import img_2 from '../../assets/image/image_2.png';
-import img_3 from '../../assets/image/image_3.png';
-import img_4 from '../../assets/image/image_4.png';
-import img_5 from '../../assets/image/image_5.png';
-import img_6 from '../../assets/image/image_6.png';
-import img_7 from '../../assets/image/image_7.png';
-import img_8 from '../../assets/image/image_8.png';
-import img_9 from '../../assets/image/image_9.png';
+
 import styled from 'styled-components';
 import useGetData from '../../components/hooks/useGetData';
 
-const imageIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const images = [img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8, img_9];
-
-const MainContainer = styled.div``;
-const MainWrapper = styled.div`
+const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,38 +61,27 @@ function Folder() {
       <FolderInfo />
       <main>
         <MainContainer>
-          <MainWrapper>
-            <Input />
-            {data ? (
-              <CardContainer>
-                {data.folder.links ? (
-                  data.folder.links.map((link) => (
-                    <Card
-                      key={link.id}
-                      url={link.url}
-                      src={link.imageSource}
-                      desc={link.description}
-                      createdAt={link.createdAt}
-                    />
-                  ))
-                ) : (
-                  <p>로딩 중..</p>
-                )}
-              </CardContainer>
-            ) : (
-              <p>로딩중....</p>
-            )}
-          </MainWrapper>
+          <Input />
+          {data ? (
+            <CardContainer>
+              {data.folder.links ? (
+                data.folder.links.map((link) => (
+                  <Card
+                    key={link.id}
+                    url={link.url}
+                    src={link.imageSource}
+                    desc={link.description}
+                    createdAt={link.createdAt}
+                  />
+                ))
+              ) : (
+                <p>로딩 중..</p>
+              )}
+            </CardContainer>
+          ) : (
+            <p>로딩중....</p>
+          )}
         </MainContainer>
-        {/* <Card src={img_1} />
-        <Card src={img_2} />
-        <Card src={img_3} />
-        <Card src={img_4} />
-        <Card src={img_5} />
-        <Card src={img_6} />
-        <Card src={img_7} />
-        <Card src={img_8} />
-        <Card src={img_9} /> */}
       </main>
       <Footer />
     </>
