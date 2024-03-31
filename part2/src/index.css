@@ -14,7 +14,6 @@
   --button-text-color: #f5f5f5;
   --p-color: #6b6b6b;
   --grad-purple-to-blue: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
-  --pc-max-size: 1920px;
 }
 
 * {
