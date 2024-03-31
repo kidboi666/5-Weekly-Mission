@@ -1,12 +1,12 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Share from './Share';
+import Shared from './Shared';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-          <Route path="/"  element={<Share />}/>
+          <Route path="/"  element={<Shared />}/>
       </Routes>
     </BrowserRouter>
   );

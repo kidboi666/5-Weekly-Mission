@@ -1,11 +1,13 @@
 import Header from "./Components/Header";
+import Main from './Components/Main';
 
-function Share() {
+function Shared() {
     return (
         <>
             <Header />
+            <Main />
         </>
     );
 }
 
-export default Share;
+export default Shared;
