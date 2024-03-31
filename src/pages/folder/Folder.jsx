@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Header from '../../components/Header';
 import Card from '../../components/Card';
 import Input from '../../components/Input';
@@ -13,6 +14,7 @@ import img_7 from '../../assets/image/image_7.png';
 import img_8 from '../../assets/image/image_8.png';
 import img_9 from '../../assets/image/image_9.png';
 import styled from 'styled-components';
+import useGetData from '../../components/hooks/useGetData';
 
 const imageIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const images = [img_1, img_2, img_3, img_4, img_5, img_6, img_7, img_8, img_9];
@@ -55,7 +57,16 @@ const CardContainer = styled.div`
   }
 `;
 
+const BASE_URL = 'https://bootcamp-api.codeit.kr/api/sample/folder';
+
 function Folder() {
+  const [data, isLoading, error, fetchData] = useGetData(BASE_URL);
+
+  useEffect(() => {
+    fetchData(BASE_URL);
+  }, [BASE_URL]);
+  console.log(data);
+
   return (
     <>
       <Header />
@@ -64,11 +75,25 @@ function Folder() {
         <MainContainer>
           <MainWrapper>
             <Input />
-            <CardContainer>
-              {imageIndex.map((card, idx) => (
-                <Card src={images[idx]} key={idx} />
-              ))}
-            </CardContainer>
+            {data ? (
+              <CardContainer>
+                {data.folder.links ? (
+                  data.folder.links.map((link) => (
+                    <Card
+                      key={link.id}
+                      url={link.url}
+                      src={link.imageSource}
+                      desc={link.description}
+                      createdAt={link.createdAt}
+                    />
+                  ))
+                ) : (
+                  <p>로딩 중..</p>
+                )}
+              </CardContainer>
+            ) : (
+              <p>로딩중....</p>
+            )}
           </MainWrapper>
         </MainContainer>
         {/* <Card src={img_1} />

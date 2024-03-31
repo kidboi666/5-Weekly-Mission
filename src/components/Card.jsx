@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import useGetData from './hooks/useGetData';
 
 const Container = styled.div`
   width: 340px;
@@ -15,6 +14,7 @@ const Link = styled.a`
 
 const Img = styled.img`
   width: 340px;
+  height: 200px;
   border-radius: 15px 15px 0px 0px;
   margin: 0;
 `;
@@ -22,7 +22,7 @@ const Img = styled.img`
 const Desc = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 10px;
   width: 300px;
   height: 100px;
@@ -49,25 +49,21 @@ const Date = styled.span`
   font-size: 0.85rem;
   margin: 0;
 `;
-const BASE_URL = 'https://bootcamp-api.codeit.kr/api/sample/folder';
-function Card({ src, ago }) {
-  const [data, isLoading, error, fetchData] = useGetData(BASE_URL);
 
-  useEffect(() => {
-    fetchData(BASE_URL);
-  }, [BASE_URL]);
-  console.log(data);
+function Card({ url, src, desc, createdAt }) {
+  const processedCreatedAt = createdAt.substr(0, 10);
 
   return (
     <>
       <Container>
-        <Link href='card--link'>
-          {/* TODO : get 요청으로 온 이미지와 컨텐츠를 보여줘야 함 */}
+        <Link href={url}>
           <Img src={src} alt='대표 이미지' />
           <Desc>
-            <Ago>지난시간</Ago>
-            <Content>콘텐츠 내용</Content>
-            <Date>게시 날짜</Date>
+            <Ago>dateNow - 'createdAt'</Ago>
+            <Content>
+              {desc.length > 10 ? desc.substr(0, 70) + '...' : desc}
+            </Content>
+            <Date>{processedCreatedAt}</Date>
           </Desc>
         </Link>
       </Container>
