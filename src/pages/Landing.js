@@ -16,6 +16,7 @@ function Landing() {
     return (
         <>
             <GNB text={'로그인'} />
+
             <main>
                 <div className="main-content">
                     <p className="explain">

@@ -1,6 +1,71 @@
-body {
-    height: 100^;
+.shared-frame {
+    display: flex;
+    padding: 20px 0 60px;
+    flex-direction: column;
+    background: #f0f6ff;
+    align-items: center;
 }
-.shard-body {
-    height: 100vh;
+.shared-frame img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 12px;
+}
+
+.shared-username {
+    color: #000;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    text-align: center;
+    line-height: 24px;
+    margin-bottom: 20px;
+}
+
+.shared-favorites {
+    color: #000;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: Pretendard;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.shared-content {
+    padding: 40px 190px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.shared-card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+    gap: 20px;
+}
+
+@media screen and (max-width: 1124px) {
+    .shared-content {
+        padding: 40px 32px;
+    }
+    .shared-card {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .shared-content {
+        padding: 40px 32px;
+    }
+    .shared-card {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

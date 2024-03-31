@@ -3,23 +3,7 @@ import '../styles/card.css';
 import CardNoneImg from '../assets/nocardImg.svg';
 import { getCardData } from '../api/cardData';
 
-function Card() {
-    const [data, setData] = useState();
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await getCardData();
-                console.log(response);
-                setData(response);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchData();
-    }, []);
-
+function Card({ link }) {
     const getTimeDifference = (createdAt) => {
         const currentTime = new Date();
         const createdTime = new Date(createdAt);
@@ -62,21 +46,16 @@ function Card() {
     };
 
     return (
-        <>
-            {data &&
-                data.folder.links.map((link, index) => (
-                    <button key={index} className="card-button">
-                        <div className="card-img-area">
-                            <img className="card-img" src={CardNoneImg} alt="내용 이미지" />
-                        </div>
-                        <div className="card-info-area">
-                            <p className="card-time">{getTimeDifference(link.createdAt)}</p>
-                            <p className="card-info">{link.description}</p>
-                            <p className="card-date">{formatDate(link.createdAt)}</p>
-                        </div>
-                    </button>
-                ))}
-        </>
+        <button className="card-button">
+            <div className="card-img-area">
+                <img className="card-img" src={link.imageSource ? link.imageSource : CardNoneImg} alt="내용 이미지" />
+            </div>
+            <div className="card-info-area">
+                <p className="card-time">{getTimeDifference(link.createdAt)}</p>
+                <p className="card-info">{link.title}</p>
+                <p className="card-date">{formatDate(link.createdAt)}</p>
+            </div>
+        </button>
     );
 }
 
