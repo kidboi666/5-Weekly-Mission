@@ -1,14 +1,17 @@
 import React from "react";
-import {MainSection, FirstSection, Sections} from "./architecture"
+import { MainSection, FirstSection, Sections } from "./architecture";
+import Layout from "Layout";
 
 const LandingPage = function () {
-	return (
-		<>
-		<MainSection/>
-		<FirstSection/>
-		<Sections/>
-		</>
-	);
-}
+  return (
+    <>
+      <Layout>
+        <MainSection />
+        <FirstSection />
+        <Sections />
+      </Layout>
+    </>
+  );
+};
 
-export default LandingPage
+export default LandingPage;
