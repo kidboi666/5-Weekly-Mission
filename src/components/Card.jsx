@@ -10,7 +10,7 @@ function Card() {
         {data?.folder.links.map((link, i) => (
           <CardContainer key={i}>
             <ATag href={link.url}>
-              <CardImage style={{ backgroundImage: `url(${link.imageSource})` }} />
+              <CardImage style={{ backgroundImage: `url(${link.imageSource || defaultImage})` }} />
             </ATag>
             <CardContent>
               <CardContentText size={13} color="gray60" className="card__createdAt">
@@ -29,5 +29,4 @@ function Card() {
     </Sort>
   );
 }
-
 export default Card;
