@@ -1,4 +1,5 @@
 import './LinkCard.css';
+import noImagePlaceholder from '../../assets/images/placeholder_image.png';
 
 const STYLE_LINK_CARD_CLASS_NAME = 'link-card';
 const STYLE_LINK_CARD_INFO_CLASS_NAME = 'link-card-info';
@@ -11,7 +12,9 @@ const STYLE_THUMBNAIL_CONTAINER_CLASS_NAME = 'thumbnail-container';
 const STYLE_THUMBNAIL_CLASS_NAME = 'thumbnail';
 
 export default function LinkCard({ linkCardInfo }) {
-  const thumbnailURL = linkCardInfo.imageSource;
+  const thumbnailURL = linkCardInfo.imageSource
+    ? linkCardInfo.imageSource
+    : noImagePlaceholder;
   const description = linkCardInfo.description;
   const title = linkCardInfo.title;
   const url = linkCardInfo.url;
