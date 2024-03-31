@@ -1,8 +1,6 @@
 import { fetchUserFolder } from '../api/user.js';
 import { useFetch } from "../hooks/useFetch.js";
 
-import '../static/css/main.css';
-
 function Profile() {
     const userFolder = useFetch(fetchUserFolder);
 
