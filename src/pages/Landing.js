@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/landing.css';
+import '../styles/Landing.css';
 import GNB from '../components/Gnb';
 import Footer from '../components/footer';
 import mainContentImg from '../assets/content2.png';

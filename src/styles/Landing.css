@@ -164,13 +164,21 @@
         padding-right: 113px;
     }
 
-    .main-content-img {
+    .main-img {
         width: 698px;
         height: 343px;
+        padding: 29px 24px;
         overflow: hidden;
     }
 
-    .main-content-img img {
+    .main-content-img {
+        width: 698px;
+        height: 343px;
+        padding: 29px 24px;
+        overflow: hidden;
+    }
+
+    .main-content-img {
         width: 650px;
         height: 383px;
         flex-shrink: 0;
