@@ -9,7 +9,7 @@ const STYLE_FOOTER_BAR_CLASS_NAME = 'footer-bar';
 const STYLE_COPYRIGHT_CLASS_NAME = 'copyright';
 const STYLE_POLICY_BAR_CLASS_NAME = 'policy-bar';
 const STYLE_FOOTER_LINK_CLASS_NAME = 'footer-link';
-const STYLE_INFO_LINK_BAR_CLASS_NAME = 'info-link-bar';
+const STYLE_INFO_LINK_BAR_CLASS_NAME = 'info-link-list';
 
 export default function Footer() {
   return (
@@ -24,46 +24,44 @@ export default function Footer() {
             FAQ
           </a>
         </div>
-        <div className={STYLE_INFO_LINK_BAR_CLASS_NAME}>
-          <ul>
-            <li>
-              <a
-                href="https://www.facebook.com/"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                <img src={facebookLogo} alt="Facebook link logo" />
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://twitter.com/"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                <img src={twitterLogo} alt="Twitter link logo" />
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.youtube.com/"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                <img src={youtubeLogo} alt="Youtube link logo" />
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                <img src={instagramLogo} alt="Instagram link logo" />
-              </a>
-            </li>
-          </ul>
-        </div>
+        <ul className={STYLE_INFO_LINK_BAR_CLASS_NAME}>
+          <li>
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <img src={facebookLogo} alt="Facebook link logo" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://twitter.com/"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <img src={twitterLogo} alt="Twitter link logo" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.youtube.com/"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <img src={youtubeLogo} alt="Youtube link logo" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              <img src={instagramLogo} alt="Instagram link logo" />
+            </a>
+          </li>
+        </ul>
       </div>
     </footer>
   );
