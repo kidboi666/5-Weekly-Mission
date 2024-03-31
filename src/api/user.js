@@ -21,3 +21,23 @@ export const fetchUserInfo = async () => {
 
     return response.json();
 };
+
+/**
+ * 유저 폴더 불러오기
+ * 
+ * @author yum
+ * @date 23.03
+ * @param String
+ * @return application/json
+ */
+export const fetchUserFolder = async () => {
+    const response = await fetch(`${CODEIT_API_URL}/sample/folder`, {
+        method: 'GET',
+    });
+
+    if(!response.ok) {
+        throw new Error('fail');
+    }
+
+    return response.json();
+};

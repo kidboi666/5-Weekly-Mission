@@ -1,10 +1,15 @@
-import Section from './Section';
+import Profile from './Profile';
+import SearchBar from './SearchBar';
+import Card from './Card';
+
 import '../static/css/main.css';
 
 function Main() {
     return (
         <main className="wrap-content">
-            <Section />
+            <Profile />
+            <SearchBar />
+            <Card />
         </main>
     );
 }

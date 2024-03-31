@@ -10,7 +10,7 @@ header {
     width: 100%;
     z-index: var(--z-top);
     background-color: var(--Linkbrary-bg);
-    padding: 2rem 20rem;
+    padding: 3.2rem 20rem;
 }
 
 .wrap-header {
@@ -41,21 +41,32 @@ header {
     align-items: center;
 }
 
-.content-01 {
+.user-folder {
+    display: flex;
+width: 100%;
+padding: 2rem 62.4rem 6rem 62.4rem;
+flex-direction: column;
+align-items: flex-start;
+gap: 8px;
+    background-color: var(--Linkbrary-bg);
+}
+.user-folder-info {
     display: flex;
     width: 100%;
     flex-direction: column;
     align-items: center;
-    gap: 4rem;
-    background-color: var(--Linkbrary-bg);
     margin-top: 8rem;
 }
 
-.content-01 h1 {
-    color: #000;
-    text-align: center;
-    font-size: 6.4rem;
-    font-weight: 700;
-    line-height: 8rem;
-    white-space: nowrap;
+.user-folder-info h1 {
+    font-size: 6rem;
+    font-weight: 600;
+    margin-top: 2rem;
 }
+
+.folder-profile {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1.2rem;
+}
+

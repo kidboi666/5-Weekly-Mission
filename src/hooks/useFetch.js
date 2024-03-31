@@ -1,5 +1,13 @@
 import { useState, useEffect } from "react";
 
+/**
+ * 특정 데이터 불러오기
+ * 
+ * @author yum
+ * @date 23.03
+ * @param String
+ * @return application/json
+ */
 export function useFetch(functionName) {
     const [data, setData] = useState(null);
 
