@@ -1,17 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./components/App";
-// import Test from "./pages/Test";
-// import NoLogin from "./pages/NoLogin";
+import Signin from "./pages/Signin";
 
-function MainTest() {
+function PageLink() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        {/* <Route path="NoLogin" element={<NoLogin />} /> */}
+        <Route path="signin" element={<Signin />} />
       </Routes>
     </BrowserRouter>
   );
 }
 
-export default MainTest;
+export default PageLink;

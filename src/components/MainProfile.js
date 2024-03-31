@@ -5,7 +5,7 @@ const MainProfileBlock = styled.div`
   background: #f0f6ff;
 
   div {
-    padding: 1.25rem 39rem 3.75rem 39rem;
+    padding: 8rem 39rem 3.75rem 39rem;
     text-align: center;
   }
 
@@ -17,7 +17,7 @@ const MainProfileBlock = styled.div`
     margin-top: 0.75rem;
     margin-bottom: 0;
 
-    color: var(--text-color-light-mode, #000);
+    color: #000;
     font-family: Pretendard;
     font-size: 1rem;
     font-style: normal;

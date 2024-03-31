@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import MainTest from "./MainTest";
+import PageLink from "./PageLink";
 import App from "./components/App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <MainTest />
+    <PageLink />
   </React.StrictMode>
 );

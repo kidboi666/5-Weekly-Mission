@@ -54,9 +54,7 @@ const linkStyle = { textDecoration: "none", color: "#000000" };
 
 function formatDate(value) {
   const date = new Date(value);
-  return `${date.getFullYear()}. ${
-    date.getMonth() + 1
-  }. ${date.getDate()}  / ${date.getHours()}시 ${date.getMinutes()}분 ${date.getSeconds()}초`;
+  return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}  `;
   // / ${date.getHours()}시 ${date.getSeconds()}분
 }
 
@@ -64,16 +62,8 @@ function addImage(image = noImage) {
   return image;
 }
 
-// function TestTime(test) {
-//   const now = new Date();
-//   console.log(Number(now.getMinutes()));
-//   console.log(Number(test.getMinutes()));
-
-//   return <></>;
-// }
-
 function ReviewListItem({ item }) {
-  const timeData = item.createdAt;
+  // const timeData = item.createdAt;
 
   return (
     <TestBlock>
@@ -81,9 +71,8 @@ function ReviewListItem({ item }) {
         <Img src={addImage(item.imageSource)} alt={item.title} />
 
         <div>
-          <p>날짜: {formatDate(item.createdAt)}</p>
           {/* <p>test: {TestTime(item.createdAt)}</p> */}
-          <p>createdAt: {item.createdAt}</p>
+          {/* <p>createdAt: {item.createdAt}</p> */}
           <p>{item.title}</p>
           <p>{item.description}</p>
           <p>{formatDate(item.createdAt)}</p>
@@ -94,6 +83,10 @@ function ReviewListItem({ item }) {
 }
 
 function Cards({ items }) {
+  if (!items) {
+    return <TestBlock>테스트</TestBlock>;
+  }
+
   // key 추가하기
   return (
     <CardsBlock>
