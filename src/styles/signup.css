@@ -1,44 +1,43 @@
-/* style.module.css */
 @import url('./reset.css');
 @import url('./color.css');
 
-.body {
+.signup-body {
     height: 100vh;
     background: var(--gray-color-lightest, #f0f6ff);
     display: flex;
-    padding: 238px 520px 253px;
+    padding: 238px auto 253px;
     justify-content: center;
     align-items: center;
 }
 
-.signinContainer {
+.signup-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 32px;
 }
 
-.login {
+.signup {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
 }
 
-.firstArea {
+.signup-first-area {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 16px;
 }
 
-.firstArea img {
-    width: 210.583px;
+.signup-first-area img {
+    width: 210signin-583px;
     height: 38px;
 }
 
-.signupText {
-    color: black;
+.signup-text {
+    color: var(--black, #000);
     font-family: Pretendard;
     font-size: 16px;
     font-style: normal;
@@ -48,7 +47,7 @@
     gap: 5px;
 }
 
-.signupBtn {
+.signup-signin-go {
     color: var(--primary-color, #6d6afe);
     font-family: Pretendard;
     font-size: 16px;
@@ -57,22 +56,32 @@
     line-height: 24px;
 }
 
-.secondArea {
+.signup-second-area {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 24px;
 }
 
-.label {
+.active {
+    border-color: red !important;
+}
+
+.signup-email-notice,
+.signup-password-notice,
+.signup-verify-notice {
+    color: red !important;
+}
+
+.signup-label {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
 }
 
-.label p {
-    color: black;
+.signup-label p {
+    color: #000;
     font-family: Pretendard;
     font-size: 14px;
     font-style: normal;
@@ -80,7 +89,7 @@
     line-height: normal;
 }
 
-.secondArea input {
+.signup-second-area input {
     display: flex;
     width: 400px;
     padding: 18px 15px;
@@ -88,20 +97,11 @@
     align-items: center;
     border-radius: 8px;
     border: 1px solid gray;
-    background: white;
+    background: #fff;
     position: relative;
 }
 
-.active {
-    border-color: red !important;
-}
-
-.emailNotice,
-.passwordNotice {
-    color: red !important;
-}
-
-.eyes {
+.signup-eyes {
     width: 16px;
     height: 16px;
     fill: #fff;
@@ -110,10 +110,9 @@
     margin-left: 365px;
 }
 
-.loginBtn {
+.signup-btn {
     display: flex;
     width: 400px;
-    margin-top: 10px;
     padding: 16px 20px;
     justify-content: center;
     align-items: center;
@@ -127,24 +126,25 @@
     font-weight: 600;
     line-height: normal;
     border: none;
+    margin-top: 10px;
 }
 
-.loginBtn:hover {
+.signup-btn:hover {
     cursor: pointer;
 }
 
-.snsLogin {
+.signup-sns-signup {
     display: flex;
     width: 400px;
     padding: 12px 24px;
     justify-content: space-between;
     align-items: center;
     border-radius: 8px;
-    border: 1px solid var(--gray-color, #ccd5e3);
+    border: 1px solid #ccd5e3;
     background: var(--gray-color-lighter, #e7effb);
 }
 
-.snsLogin p {
+.signup-sns-signup p {
     color: #373740;
     font-family: Pretendard;
     font-size: 14px;
@@ -153,7 +153,7 @@
     line-height: normal;
 }
 
-.snsLogin a {
+.signup-sns-signup a {
     color: #373740;
     font-family: Pretendard;
     font-size: 14px;
@@ -162,18 +162,28 @@
     line-height: normal;
 }
 
-.snsIcon {
+.signup-icon {
     display: flex;
     align-items: flex-start;
     gap: 16px;
 }
 
-.googleLogin {
+.signup-google-signup {
     width: 42px;
     height: 42px;
 }
 
-.kakaoLogin {
+.signup-kakao-signup {
     width: 42px;
     height: 42px;
+}
+
+@media screen and (max-width: 768px) {
+    .signup-body {
+        padding: 0;
+    }
+    .signup-container {
+        width: 100%;
+        padding: 150px 32px;
+    }
 }

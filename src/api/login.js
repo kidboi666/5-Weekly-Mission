@@ -1,6 +1,7 @@
+import GNB from '../components/Gnb';
 import { APIPATH } from '../constants/path';
 
-export const GetLogin = async ({ email, password, setEmailError, setPasswordError }) => {
+export const getLogin = async ({ email, password, setEmailError, setPasswordError }) => {
     try {
         const response = await fetch(`${APIPATH}/api/sign-in`, {
             method: 'POST',

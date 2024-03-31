@@ -1,47 +1,46 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Logo from './Logo';
 import CTA from './Cta';
 import { Link } from 'react-router-dom';
-
+import profileImg from '../assets/profile.svg';
+import { getProfile } from '../api/profile';
+import '../styles/gnb.css';
 function GNB() {
-    const [headerState, setHeaderState] = useState('default');
+    const [data, setData] = useState();
 
     const LinkStyle = {
         textDecoration: 'none',
     };
 
-    const headerStyle = {
-        display: 'flex',
-        padding: '20px 200px',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '8px',
-        alignSelf: 'stretch',
-        backgroundColor: 'var(--gray-color-lightest, #f0f6ff)',
-        position: 'sticky',
-        top: '0',
-    };
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await getProfile();
+                setData(response);
+            } catch (error) {
+                console.error(error);
+            }
+        };
 
-    const headerContainerStyle = {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        alignSelf: 'stretch',
-    };
+        fetchData();
+    }, []);
 
     return (
         <>
-            <header className="header" style={headerStyle}>
-                <div className="header-container" style={headerContainerStyle}>
+            <header>
+                <div className="header-container">
                     <Link to="/">
                         <Logo />
                     </Link>
-                    {headerState === 'default' ? (
+                    {!data ? (
                         <Link to="/sign-in" style={LinkStyle}>
                             <CTA text={'로그인'} />
                         </Link>
                     ) : (
-                        <div>나는 빡빡이다.</div>
+                        <div className="header-profile">
+                            <img src={profileImg} alt="프로필" />
+                            <p>{data.email}</p>
+                        </div>
                     )}
                 </div>
             </header>

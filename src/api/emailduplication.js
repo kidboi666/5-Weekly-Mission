@@ -1,5 +1,5 @@
 import { APIPATH } from '../constants/path';
-import { attemptSignup } from './signup';
+import { attemptSignup } from './attemptSignup';
 
 export const checkEmailDuplication = async ({ email, password, setEmailError, setPasswordError }) => {
     try {

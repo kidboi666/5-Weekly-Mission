@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import styles from '../styles/signup.module.css'; // 모듈 스타일을 가져옵니다.
+import '../styles/signup.css';
 import Logo from '../components/Logo';
 import KakaoImg from '../assets/kakaoLogin.png';
 import GoogleImg from '../assets/googleLogin.png';
@@ -10,6 +10,10 @@ import { handleEmailChange, handlePasswordChange, handleIdFocusOut, handlePasswo
 import { checkEmailDuplication } from '../api/emailduplication';
 
 function SignUp() {
+    const LinkStyle = {
+        textDecoration: 'none',
+    };
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [verify, setVerify] = useState('');
@@ -49,24 +53,24 @@ function SignUp() {
     };
 
     return (
-        <div className={styles.body}>
-            <div className={styles.signupContainer}>
-                <div className={styles.signup}>
-                    <div className={styles.firstArea}>
+        <div className="signup-body">
+            <div className="signup-container">
+                <div className="signup">
+                    <div className="signup-first-area">
                         <Logo />
-                        <p className={styles.signupText}>
+                        <p className="signup-text">
                             이미 회원이신가요?
-                            <Link to="/sign-in" style={{ textDecoration: 'none' }}>
-                                <p className={styles.signinBtn}>로그인 하기</p>
+                            <Link to="/sign-in" style={LinkStyle}>
+                                <p className="signup-signin-go">로그인 하기</p>
                             </Link>
                         </p>
                     </div>
                     <form onSubmit={handleSignupSubmit}>
-                        <div className={styles.secondArea}>
-                            <label className={styles.label}>
+                        <div className="signup-second-area">
+                            <label className="signup-label">
                                 <p>이메일</p>
                                 <input
-                                    className={`${styles.id} ${emailError !== '' && styles.active}`}
+                                    className={emailError === '' ? 'signup-id' : 'signup-id active'}
                                     type="text"
                                     name="id"
                                     placeholder="이메일 입력"
@@ -77,12 +81,12 @@ function SignUp() {
                                         handleIdFocusOut(e, setEmailError);
                                     }}
                                 />
-                                <p className={styles.emailNotice}>{emailError}</p>
+                                <p className="signup-email-notice">{emailError}</p>
                             </label>
-                            <label className={styles.label}>
+                            <label className="signup-label">
                                 <p>비밀번호</p>
                                 <input
-                                    className={`${styles.password} ${passwordError !== '' && styles.active}`}
+                                    className={passwordError === '' ? 'signup-password' : 'signup-password active'}
                                     type={showPassword ? 'password' : 'text'}
                                     name="password"
                                     placeholder="비밀번호 입력"
@@ -95,16 +99,18 @@ function SignUp() {
                                 />
                                 <img
                                     src={showPassword ? EyesNoImg : EyesImg}
-                                    className={`${styles.eyes} ${styles.passwordEyes}`}
+                                    className="signup-eyes password-eyes"
                                     alt="비밀번호"
                                     onClick={handleShowPassword}
                                 />
-                                <p className={styles.passwordNotice}>{passwordError}</p>
+                                <p className="signup-password-notice">{passwordError}</p>
                             </label>
-                            <label className={styles.label}>
+                            <label className="signup-label">
                                 <p>비밀번호 확인</p>
                                 <input
-                                    className={`${styles.verifyPassword} ${verifyError !== '' && styles.active}`}
+                                    className={
+                                        verifyError === '' ? 'signup-verify-password' : 'signup-verify-password active'
+                                    }
                                     type={showVerify ? 'password' : 'text'}
                                     name="passwordCheck"
                                     placeholder="비밀번호 확인"
@@ -113,23 +119,23 @@ function SignUp() {
                                 />
                                 <img
                                     src={showVerify ? EyesNoImg : EyesImg}
-                                    className={`${styles.eyes} ${styles.verifyEyes}`}
+                                    className="signup-eyes signup-verify-eyes"
                                     alt="비밀번호 확인"
                                     onClick={handleShowVerify}
                                 />
-                                <p className={styles.verifyNotice}>{verifyError}</p>
+                                <p className="signup-verify-notice">{verifyError}</p>
                             </label>
                         </div>
-                        <button className={styles.signupBtn}>회원가입</button>
+                        <button className="signup-btn">회원가입</button>
                     </form>
                 </div>
-                <div className={styles.snsSignup}>
+                <div className="signup-sns-signup">
                     <p>다른 방식으로 가입하기</p>
-                    <div className={styles.signupIcon}>
-                        <a href="https://www.google.com/" className={styles.googleSignup}>
+                    <div className="signup-icon">
+                        <a href="https://www.google.com/" className="signup-google-signup">
                             <img src={GoogleImg} alt="구글 회원가입" />
                         </a>
-                        <a href="https://www.kakaocorp.com/page/" className={styles.kakaoSignup}>
+                        <a href="https://www.kakaocorp.com/page/" className="signup-kakao-signup">
                             <img src={KakaoImg} alt="카카오 회원가입" />
                         </a>
                     </div>

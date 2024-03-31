@@ -19,8 +19,6 @@ export const attemptSignup = async ({ email, password, setEmailError, setPasswor
 
         const data = await response.json();
         localStorage.setItem('accessToken', data.data.accessToken);
-
-        console.log('회원가입 성공');
     } catch (error) {
         console.error(error);
         setEmailError('이메일을 확인해주세요.');

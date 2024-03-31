@@ -1,43 +1,40 @@
-@import url('./reset.css');
-@import url('./color.css');
-
-.body {
+.signin-body {
     height: 100vh;
     background: var(--gray-color-lightest, #f0f6ff);
     display: flex;
-    padding: 238px 520px 253px;
+    padding: 238px auto 253px;
     justify-content: center;
     align-items: center;
 }
 
-.signupContainer {
+.signin-containor {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 32px;
 }
 
-.signup {
+.signin-login {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
 }
 
-.firstArea {
+.signin-first-area {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 16px;
 }
 
-.firstArea img {
-    width: 210.583px;
+.signin-first-area img {
+    width: 210signin-583px;
     height: 38px;
 }
 
-.signupText {
-    color: var(--black, #000);
+.signin-signup-text {
+    color: black;
     font-family: Pretendard;
     font-size: 16px;
     font-style: normal;
@@ -47,7 +44,7 @@
     gap: 5px;
 }
 
-.signinBtn {
+.signin-signup-go {
     color: var(--primary-color, #6d6afe);
     font-family: Pretendard;
     font-size: 16px;
@@ -56,32 +53,22 @@
     line-height: 24px;
 }
 
-.secondArea {
+.signin-second-area {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 24px;
 }
 
-.active {
-    border-color: red !important;
-}
-
-.emailNotice,
-.passwordNotice,
-.verifyNotice {
-    color: red !important;
-}
-
-.label {
+.signin-label {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
 }
 
-.label p {
-    color: #000;
+.signin-label p {
+    color: black;
     font-family: Pretendard;
     font-size: 14px;
     font-style: normal;
@@ -89,7 +76,7 @@
     line-height: normal;
 }
 
-.secondArea input {
+.signin-second-area input {
     display: flex;
     width: 400px;
     padding: 18px 15px;
@@ -97,11 +84,20 @@
     align-items: center;
     border-radius: 8px;
     border: 1px solid gray;
-    background: #fff;
+    background: white;
     position: relative;
 }
 
-.eyes {
+.active {
+    border-color: red !important;
+}
+
+.signin-email-notice,
+.signin-password-notice {
+    color: red !important;
+}
+
+.signin-eyes {
     width: 16px;
     height: 16px;
     fill: #fff;
@@ -110,9 +106,10 @@
     margin-left: 365px;
 }
 
-.signupBtn {
+.signin-login-btn {
     display: flex;
     width: 400px;
+    margin-top: 10px;
     padding: 16px 20px;
     justify-content: center;
     align-items: center;
@@ -126,25 +123,27 @@
     font-weight: 600;
     line-height: normal;
     border: none;
-    margin-top: 10px;
 }
 
-.signupBtn:hover {
+.signin-login-btn:hover {
     cursor: pointer;
 }
+.signin-form {
+    margin-bottom: 30px;
+}
 
-.snsSignup {
+.signin-sns-login {
     display: flex;
     width: 400px;
     padding: 12px 24px;
     justify-content: space-between;
     align-items: center;
     border-radius: 8px;
-    border: 1px solid #ccd5e3;
+    border: 1px solid var(--gray-color, #ccd5e3);
     background: var(--gray-color-lighter, #e7effb);
 }
 
-.snsSignup p {
+.signin-sns-login p {
     color: #373740;
     font-family: Pretendard;
     font-size: 14px;
@@ -153,20 +152,36 @@
     line-height: normal;
 }
 
-.signupIcon {
+.signin-sns-login a {
+    color: #373740;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.signin-sns-icon {
     display: flex;
     align-items: flex-start;
     gap: 16px;
 }
 
-.googleSignup {
+.signin-google-login {
     width: 42px;
     height: 42px;
-    flex-shrink: 0;
 }
 
-.kakaooSignup {
-    width: 26px;
-    height: 24px;
-    flex-shrink: 0;
+.signin-kakao-login {
+    width: 42px;
+    height: 42px;
+}
+
+@media (max-width: 768px) {
+    .signin-body {
+        padding: 0;
+    }
+    .signin-container {
+        padding: 150px 32px;
+    }
 }
