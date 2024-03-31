@@ -45,8 +45,13 @@ function Card({ link }) {
         return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}.`;
     };
 
+    const handleSiteOpen = () => {
+        const url = link.url;
+        window.open(url, '_blank');
+    };
+
     return (
-        <button className="card-button">
+        <button className="card-button" onClick={handleSiteOpen}>
             <div className="card-img-area">
                 <img className="card-img" src={link.imageSource ? link.imageSource : CardNoneImg} alt="내용 이미지" />
             </div>
