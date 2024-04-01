@@ -58,7 +58,7 @@ export const SignupPage = function () {
     e.preventDefault(); // 폼 기본 제출 동작 방지
     const emailMessage = checkEmail(email);
     const passwordMessage = checkPassword(password);
-    const passwordCheckMessage = checkPassword(passwordCheck);
+    const passwordCheckMessage = checkPasswordCheck(password, passwordCheck);
 
     // 유효성 검사가 모두 통과되었는지 확인합니다.
     if (
@@ -111,11 +111,12 @@ export const SignupPage = function () {
         checkPassword={checkPassword}
       />
       <PasswordCheckInput
-        password={passwordCheck}
-        setPassword={setPasswordCheck}
-        passwordError={passwordCheckError}
-        setPasswordError={setPasswordCheckError}
-        checkPassword={checkPasswordCheck}
+        password={password}
+		passwordCheck={passwordCheck}
+        setPasswordCheck={setPasswordCheck}
+        passwordCheckError={passwordCheckError}
+        setPasswordCheckError={setPasswordCheckError}
+        checkPasswordCheck={checkPasswordCheck}
       />
     </Frame>
   );

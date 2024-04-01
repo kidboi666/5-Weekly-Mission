@@ -2,6 +2,7 @@ import { Input } from "../ui";
 import { useState } from "react";
 
 export const PasswordCheckInput = function ({
+  password,
   passwordCheck,
   setPasswordCheck,
   passwordCheckError,
@@ -16,7 +17,7 @@ export const PasswordCheckInput = function ({
     setPasswordCheck(e.target.value || "");
   };
   const validateCheckPassword = () => {
-    const message = checkPasswordCheck(passwordCheck);
+    const message = checkPasswordCheck(password, passwordCheck);
     setPasswordCheckError(message);
   };
   const cancelPasswordCheckError = () => {
