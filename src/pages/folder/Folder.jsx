@@ -6,7 +6,7 @@ import Footer from '../../components/Footer';
 import FolderInfo from '../../components/FolderInfo';
 
 import styled from 'styled-components';
-import useGetData from '../../components/hooks/useGetData';
+import useGetData from '../../hooks/useGetData';
 
 const MainContainer = styled.div`
   display: flex;

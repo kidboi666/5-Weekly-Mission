@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import useGetData from './hooks/useGetData';
+import useGetData from '../hooks/useGetData';
 
 const Container = styled.div`
   display: flex;
