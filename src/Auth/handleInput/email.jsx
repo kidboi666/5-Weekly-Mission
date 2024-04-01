@@ -1,13 +1,18 @@
-import { Input } from "../../ui";
+import { Input } from "../ui";
 
-
-export const EmailInput = function ({ email, setEmail, emailError, setEmailError, checkEmail }) {
+export const EmailInput = function ({
+  email,
+  setEmail,
+  emailError,
+  setEmailError,
+  checkEmail,
+}) {
   const handleEmailChange = (e) => {
     setEmail(e.target.value || "");
   };
   const validateEmail = () => {
-	const message = checkEmail(email)
-	setEmailError(message)
+    const message = checkEmail(email);
+    setEmailError(message);
   };
   const cancelEmailError = () => {
     if (!email) {

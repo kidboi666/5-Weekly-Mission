@@ -1,7 +1,13 @@
-import { Input } from "../../ui";
-import { useState} from "react";
+import { Input } from "../ui";
+import { useState } from "react";
 
-export const PasswordInput = function ({ password, setPassword, passwordError, setPasswordError, checkPassword }) {
+export const PasswordInput = function ({
+  password,
+  setPassword,
+  passwordError,
+  setPasswordError,
+  checkPassword,
+}) {
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisibility = () => {
     setPasswordShown(!passwordShown);
@@ -10,8 +16,8 @@ export const PasswordInput = function ({ password, setPassword, passwordError, s
     setPassword(e.target.value || "");
   };
   const validatePassword = () => {
-	const message = checkPassword(password)
-	setPasswordError(message)
+    const message = checkPassword(password);
+    setPasswordError(message);
   };
   const cancelPasswordError = () => {
     if (!password) {
