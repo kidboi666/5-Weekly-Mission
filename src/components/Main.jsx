@@ -1,5 +1,5 @@
 import FolderData from "./Folderdata";
-import Nav from "./Navigation";
+import Navigation from "./Navigation";
 import { SearchBar } from "./SearchBar";
 import Cards from "./Cards";
 import styled from "styled-components";
@@ -31,7 +31,7 @@ const PageDisplay = styled.div`
 function Main() {
   return (
     <>
-      <Nav />
+      <Navigation />
       <FolderData />
       <PageDisplay>
         <SearchBar />

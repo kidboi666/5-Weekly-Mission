@@ -1,11 +1,11 @@
 import logoImg from "../../assets/logo.svg";
 import styles from "./index.module.css";
-import { useFetch } from "../hooks/useFetch";
+import { useFetch } from "../../utils/hooks/useFetch";
 
-function Nav() {
-  const Userprofile = useFetch(
-    "https://bootcamp-api.codeit.kr/api/sample/user"
-  );
+const BASE_URL_USER = "https://bootcamp-api.codeit.kr/api/sample/user";
+
+function Navigation() {
+  const Userprofile = useFetch(BASE_URL_USER);
 
   return (
     <div className={styles.Navigation}>
@@ -36,4 +36,4 @@ function Nav() {
   );
 }
 
-export default Nav;
+export default Navigation;

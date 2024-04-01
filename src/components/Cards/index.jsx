@@ -1,43 +1,11 @@
-import { useFetch } from "../hooks/useFetch";
-import moment from "moment";
+import { useFetch } from "../../utils/hooks/useFetch";
+import { formatDate, generateTimeText } from "../../utils/hooks/date";
 import thumbnail from "../../assets/thumbnail.svg";
 import styles from "./index.module.css";
+const BASE_URL_FOLDER = "https://bootcamp-api.codeit.kr/api/sample/folder";
 
 function Cards() {
-  const CardData = useFetch("https://bootcamp-api.codeit.kr/api/sample/folder");
-
-  // 날짜 형식을 변경하는 함수
-  const formatDate = (dateString) => {
-    const date = moment(dateString);
-    return date.format("YYYY.MM.DD");
-  };
-
-  // 폴더 업로드 시간에 따른 표현식 구현 함수
-  const generateTimeText = (createdAt) => {
-    const timeDiff = moment().diff(moment(createdAt), "minutes");
-    const minuteInHour = 60;
-
-    if (timeDiff < 2) {
-      return "1 minute ago";
-    }
-    if (timeDiff <= 59) {
-      return `${timeDiff} minutes ago`;
-    }
-    if (timeDiff < minuteInHour * 24) {
-      const hours = Math.floor(timeDiff / minuteInHour);
-      return hours === 1 ? "1 hour ago" : `${hours} hours ago`;
-    }
-    if (timeDiff <= minuteInHour * 24 * 30) {
-      const days = Math.floor(timeDiff / (minuteInHour * 24));
-      return days === 1 ? "1 day ago" : `${days} days ago`;
-    }
-    if (timeDiff <= minuteInHour * 24 * 30 * 31) {
-      const months = Math.floor(timeDiff / (minuteInHour * 24 * 30));
-      return months === 1 ? "1 month ago" : `${months} months ago`;
-    }
-    const years = Math.floor(timeDiff / (minuteInHour * 24 * 30 * 12));
-    return years === 1 ? "1 year ago" : `${years} years ago`;
-  };
+  const CardData = useFetch(BASE_URL_FOLDER);
 
   return (
     <div className={styles.card_grid_container}>
