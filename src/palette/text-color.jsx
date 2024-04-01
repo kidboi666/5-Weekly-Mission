@@ -36,6 +36,15 @@ const TextColor = {
       -webkit-background-clip: text;
     `,
   },
+  ContentGray: styled.span`
+    color: #666666;
+  `,
+  Gray: styled.span`
+    color: #676767;
+  `,
+  ContentBlack: styled.span`
+    color: #333333;
+  `,
 };
 
 export default TextColor;

@@ -97,6 +97,8 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  text-decoration : none;
+  color: #000000
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -134,7 +136,10 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
+html, body {
+    font-size: 62.5%;
+}
 `;
+
 
 export default ResetStyle

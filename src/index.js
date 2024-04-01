@@ -4,9 +4,10 @@ import ReactDOM from "react-dom/client";
 import GlobalStyle from "./style-initialization/global-style";
 import ResetStyle from "./style-initialization/reset-style";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LandingPage from "./pages/landing-page";
-import LoginPage from "./pages/login-page";
-import SignupPage from "./pages/signup-page";
+import LandingPage from "LandingPage";
+import {LoginPage} from "./Auth";
+import {SignupPage} from "./Auth";
+import { SharedPage } from "Shared";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -19,7 +20,7 @@ root.render(
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/signup" element={<SignupPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
-		<Route path="/folder" element={<LandingPage />}></Route>
+        <Route path="/folder" element={<SharedPage />}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
