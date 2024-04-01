@@ -1,5 +1,6 @@
 import { MainWrap } from "./mainStyle";
 
-export default function MainIndex() {
+function Index() {
   return <MainWrap>main</MainWrap>;
 }
+export default Index;

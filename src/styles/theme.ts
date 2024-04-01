@@ -17,7 +17,7 @@ const theme : DefaultTheme  = {
     s: "0.815rem",
   },
   color: {
-    Primary: "#6D6AFE",
+    primary: "#6D6AFE",
     red: "#FF5B56",
     black: "#111322",
     white: "#FFFFFF",
@@ -48,9 +48,9 @@ const theme : DefaultTheme  = {
   l:1060, m:998, s:400
   */
   innerSize: {
-    l:'66.25rem',
-    m:'62.375rem',
-    s:'25rem'
+    l:'70.25rem',
+    m:'66.375rem',
+    s:'29rem'
   }
 };
 

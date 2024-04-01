@@ -2,7 +2,7 @@
 
 import styled, { css } from "styled-components";
 import { theme } from "./theme";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 // ====  정렬  =====
 
@@ -86,19 +86,28 @@ export const customFont = styled.div<IFont>`
   `}
 `
 
+// ====  ellipsis  ====
+export const EllipsisLine  = styled.div<{line:number}>`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: ${({line}) => line};
+  -webkit-box-orient: vertical;
+`
+
 
 // ====  버튼  ====
 
 export interface IButton {
   fontSize?: number,
-  lineHeight?:number,
+  height?:number,
   width?:number,
 }
 
 export const gradient = css<IButton> `
-  ${({ width, fontSize, lineHeight }) => `
+  ${({ width, fontSize, height }) => `
   font-size: ${fontSize || theme.font.m}px;
-  line-height: ${lineHeight || 36}px;
+  line-height: ${height || 36}px;
   width: ${width+'px' || 100+'%' };
   `}
   color: #fff;
@@ -112,7 +121,7 @@ export const BtnGradient = styled.button<IButton>`
  ${gradient}
 `
 // Link
-export const LinkGradient = styled(Link)<IButton>`
+export const LinkGradient = styled(NavLink)<IButton>`
  ${gradient}
 `;
 
@@ -130,22 +139,50 @@ export const Profile = styled.span<IProfileImg>`
   background-image: url(${({bgImageUrl}) => bgImageUrl || "/assets/icon/icon_user.svg"});
   overflow: hidden;
 `
+// ====  section  ====
+export const ContainHead = styled.section`
+  
+`
+export const ContainBody = styled.section`
+  background-color: #fff;
+`
 
-// ====  section inner size  ====
+// ====  section inner  ====
 export const inner = css`
   width:100%;
-  padding: 0 32px;
   margin: 0 auto;
 `
-export const  innerLarge = css`
+export const innerLarge = css`
   ${inner}
   max-width: ${theme.innerSize.l};
 `
-export const  innerMedium = css`
+export const innerMedium = css`
   ${inner}
   max-width: ${theme.innerSize.l};
 `
-export const  innerSmall = css`
+export const innerSmall = css`
   ${inner}
   max-width: ${theme.innerSize.l};
+`
+
+export const InnerLarge = styled.div`
+  ${innerLarge}
+`
+export const InnerMedium = styled.div`
+  ${innerMedium}
+`
+export const InnerSmall = styled.div`
+  ${innerSmall}
+`
+export const ContainHeadInner = styled.div`
+  margin: 0 auto;
+  padding: 20px 32px 60px;
+  width:100%;
+  text-align: center;
+`
+export const ContainBodyInner = styled.div`
+  margin: 0 auto;
+  padding: 40px 32px 100px;
+  width:100%;
+  text-align: center;
 `

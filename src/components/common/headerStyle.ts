@@ -12,7 +12,7 @@ export const HaderWrap = styled.header`
 `
 export const HeaderInner = styled(DFlaxAlignCenterBtw)`
   width: calc(100% - 21rem);
-  padding: 1.25rem 2rem;
+  padding: 2.125rem 2rem;
   margin: 0 auto;
   transition: all 0.3s;
   a { 

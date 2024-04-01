@@ -1,5 +1,5 @@
-function FAQIndex() {
+function Index() {
   return <div>Frequently Asked Questions</div>;
 }
 
-export default FAQIndex;
+export default Index;

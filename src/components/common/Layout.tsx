@@ -4,12 +4,11 @@ import Footer from "./Footer";
 import styled from "styled-components";
 import { theme } from "../../styles/theme";
 
-const MainWrap = styled.main`
-  min-height: 100vh;
+const Contatiner = styled.main`
+  padding-top: 5.8125rem;
   background-color: ${theme.color.grayf};
-  padding-top: 4.25rem;
   @media screen and (max-width: ${theme.screenSize.pc}) {
-    padding-top: 3.375rem;
+    padding-top: 3.9375rem;
   }
 `;
 
@@ -17,9 +16,9 @@ export default function Layout() {
   return (
     <div>
       <Header />
-      <MainWrap>
+      <Contatiner>
         <Outlet />
-      </MainWrap>
+      </Contatiner>
       <Footer />
     </div>
   );

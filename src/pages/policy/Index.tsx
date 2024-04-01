@@ -1,5 +1,5 @@
-function PolicyIndex() {
+function Index() {
   return <div>Privacy Policy</div>;
 }
 
-export default PolicyIndex;
+export default Index;
