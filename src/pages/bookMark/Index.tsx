@@ -1,5 +1,5 @@
 import PostCard from "../../components/bookMark/PostCard";
-import SearchInput from "../../components/form/SearchInput";
+import SearchInput from "../../components/form/FormInput";
 import { ContainBody, ContainHead, TitleMs } from "../../styles/commonStyle";
 import {
   FolderContainBodyInner,
@@ -22,8 +22,8 @@ function Index() {
         <FolderContainBodyInner>
           <SearchInput></SearchInput>
           <PostCardWrap>
-            {Array.from({ length: 10 }, (_, i) => (
-              <PostCard></PostCard>
+            {Array.from({ length: 9 }, (_, i) => (
+              <PostCard key={"bookmark" + i}></PostCard>
             ))}
           </PostCardWrap>
         </FolderContainBodyInner>

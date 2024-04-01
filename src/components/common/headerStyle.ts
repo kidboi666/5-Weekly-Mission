@@ -44,7 +44,7 @@ export const HeaderControl = styled.div`
   }
 `
 export const HeaderUserInfo = styled(DFlaxAlignCenter)`
-  gap: 6px;
+  gap: 0.375rem;
 `
 export const Email = styled.span`
   color: ${theme.color.gray3};

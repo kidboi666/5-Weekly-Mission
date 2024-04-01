@@ -87,11 +87,12 @@ export const customFont = styled.div<IFont>`
 `
 
 // ====  ellipsis  ====
-export const EllipsisLine  = styled.div<{line:number}>`
+
+export const EllipsisLine  = styled.div<{$tline?: number}>`
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: ${({line}) => line};
+  -webkit-line-clamp: ${({$tline}) => $tline};
   -webkit-box-orient: vertical;
 `
 
@@ -176,13 +177,19 @@ export const InnerSmall = styled.div`
 `
 export const ContainHeadInner = styled.div`
   margin: 0 auto;
-  padding: 20px 32px 60px;
+  padding: 1.25rem 2rem 3.75rem;
   width:100%;
   text-align: center;
+  @media screen and (max-width: ${theme.screenSize.moLarge}) {
+    padding: 0.625rem 2rem 2.5rem;
+  }
 `
 export const ContainBodyInner = styled.div`
   margin: 0 auto;
-  padding: 40px 32px 100px;
+  padding: 40px 2rem 6.25rem;
   width:100%;
   text-align: center;
+  @media screen and (max-width: ${theme.screenSize.moLarge}) {
+    padding: 1.25rem 2rem 3.75rem;
+  }
 `

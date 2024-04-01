@@ -69,5 +69,7 @@ export const GlobalStyle = createGlobalStyle<ExecutionProps & object>`
 		background-color: transparent;
 		border: 0;
 	}
-
+	input {
+		border: 0;
+	}
 `;
