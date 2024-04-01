@@ -1,12 +1,11 @@
-import Folder from './Folder/Folder';
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
 import '../assets/css/reset.css';
-export default function App() {
+export default function App({ children }) {
   return (
     <>
       <Header />
-      <Folder />
+      <div>{children}</div>
       <Footer />
     </>
   );
