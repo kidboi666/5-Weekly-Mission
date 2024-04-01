@@ -3,6 +3,7 @@ import logo from '../../assets/images/logo.svg';
 import { useEffect, useState } from 'react';
 import { getUserInfo } from '../../utils/api';
 import Account from '../Account/Account';
+import Button from '../Button/Button';
 
 const STYLE_MAIN_HEADER_CLASS_NAME = 'main-header';
 const STYLE_LOGO_IMG_CLASS_NAME = 'logo-img';
@@ -43,7 +44,7 @@ export default function Header() {
           userEmail={userInfo.email}
         />
       ) : (
-        <a href="/">로그인</a>
+        <Button>로그인</Button>
       )}
     </header>
   );
