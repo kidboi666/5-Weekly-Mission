@@ -2,18 +2,18 @@ import facebook from "../../assets/facebook.svg";
 import twitter from "../../assets/twitter.svg";
 import youtube from "../../assets/youtube.svg";
 import instagram from "../../assets/instagram.svg";
-import "./Footer.css";
+import styles from "./index.module.css";
 
 function Footer() {
   return (
     <footer>
-      <div className="footer_container">
-        <span className="footer_codeit">©codeit - 2024</span>
-        <div className="footer_center_div">
+      <div className={styles.footer_container}>
+        <span className={styles.footer_codeit}>©codeit - 2024</span>
+        <div className={styles.footer_center_div}>
           <p>Privacy Policy</p>
           <p>FAQ</p>
         </div>
-        <div className="footer_icon_div">
+        <div className={styles.footer_icon_div}>
           <a href="https://facebook.com/" target="_blank">
             <img src={facebook} width="20" height="20" alt="페이스북 아이콘" />
           </a>

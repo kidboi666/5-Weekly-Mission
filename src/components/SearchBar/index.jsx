@@ -1,18 +1,18 @@
-import "./SearchBar.css";
-import searchIcon from "../../assets/Search.svg";
+import styles from "./index.module.css";
+import searchIcon from "../../assets/search.svg";
 
 export const SearchBar = () => {
   return (
-    <div className="SearchBar">
+    <div className={styles.SearchBar}>
       <input
-        className="SearchBarInput"
+        className={styles.SearchBarInput}
         type="search"
         placeholder="링크를 검색해 보세요."
       />
       <img
         src={searchIcon}
         alt="검색 돋보기 아이콘"
-        className="SearchBarIcon"
+        className={styles.SearchBarIcon}
       />
     </div>
   );

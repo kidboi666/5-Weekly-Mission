@@ -1,5 +1,5 @@
 import { useFetch } from "../hooks/useFetch";
-import "./Folderdata.css";
+import styles from "./index.module.css";
 
 function FolderData() {
   const folderData = useFetch(
@@ -7,16 +7,18 @@ function FolderData() {
   );
 
   return (
-    <div className="folderInfoContainer">
+    <div className={styles.folderInfoContainer}>
       {folderData && (
-        <div className="folderInfo">
+        <div className={styles.folderInfo}>
           <img
             src={folderData.folder.owner.profileImageSource}
-            className="folderProfile"
+            className={styles.folderProfile}
             alt="프로필"
           />
-          <span className="ownerName">{folderData.folder.owner.name}</span>
-          <h1 className="folderName">{folderData.folder.name}</h1>
+          <span className={styles.ownerName}>
+            {folderData.folder.owner.name}
+          </span>
+          <h1 className={styles.folderName}>{folderData.folder.name}</h1>
         </div>
       )}
     </div>

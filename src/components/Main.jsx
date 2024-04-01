@@ -1,9 +1,9 @@
-import FolderData from "./Folderdata/Folderdata";
-import Nav from "./Navigation/Nav";
-import { SearchBar } from "./SearchBar/SearchBar";
-import Cards from "./Cards/Cards";
+import FolderData from "./Folderdata";
+import Nav from "./Navigation";
+import { SearchBar } from "./SearchBar";
+import Cards from "./Cards";
 import styled from "styled-components";
-import Footer from "./Footer/Footer";
+import Footer from "./Footer";
 
 /*테블릿 1124 이상 모바일 최소여백 32       테블릿 768~1199 모바일 375 ~767    */
 const PageDisplay = styled.div`
@@ -28,7 +28,7 @@ const PageDisplay = styled.div`
   }
 `;
 
-function App() {
+function Main() {
   return (
     <>
       <Nav />
@@ -42,4 +42,4 @@ function App() {
   );
 }
 
-export default App;
+export default Main;

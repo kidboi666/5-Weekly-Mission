@@ -1,7 +1,7 @@
 import Main from "./components/Main";
 
-function Homepage() {
+function App() {
   return <Main />;
 }
 
-export default Homepage;
+export default App;
