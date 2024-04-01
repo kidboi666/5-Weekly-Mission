@@ -134,7 +134,10 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
+html, body {
+    font-size: 62.5%;
+}
 `;
+
 
 export default ResetStyle

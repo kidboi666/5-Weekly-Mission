@@ -1,6 +1,4 @@
-import styled from "styled-components";
-
-export const CardImageTemplate = styled.div`
+.CardImage {
   width: 100%;
   min-height: 19.2rem;
   height: 19.2rem;
@@ -13,4 +11,8 @@ export const CardImageTemplate = styled.div`
     min-height: 20rem;
     height: 20rem;
   }
-`;
+}
+
+.CardImage.CardImage-zoom-in {
+  background-size: 130%;
+}

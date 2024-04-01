@@ -1,5 +1,5 @@
 import Layout from "Layout";
-import { PageLayout } from "./PageLayout";
+import { PageLayout } from "./page-frame";
 import { FolderInfo } from "./ui/FolderInfo";
 import { SearchBar } from "./ui/SearchBar";
 import { CardList } from "./ui/CardList";
