@@ -31,7 +31,7 @@ const Container = styled.div`
 
 const Logo = styled.a`
   width: 8.5rem;
-  @media screen and(max-width: 767px) {
+  @media screen and (max-width: 767px) {
     width: 5rem;
   }
 `;
