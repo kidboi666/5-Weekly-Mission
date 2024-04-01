@@ -1,0 +1,59 @@
+.shared__top-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0 60px;
+  background-color: var(--background-color);
+}
+
+.shared__profile-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.shared__profile-text {
+  font-size: 16px;
+}
+
+.shared__title {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.shared__section {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 0 32px 100px;
+}
+
+.shared__card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+@media (max-width: 767px) {
+  .shared__top-wrap {
+    gap: 10px;
+    padding: 10px 0 40px;
+  }
+
+  .shared__profile-wrap {
+    gap: 6px;
+  }
+
+  .shared__profile-text {
+    font-size: 14px;
+  }
+
+  .shared__title {
+    font-size: 32px;
+  }
+
+  .shared__section {
+    padding-bottom: 60px;
+  }
+}
