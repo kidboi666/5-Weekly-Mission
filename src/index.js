@@ -4,7 +4,7 @@ import GlobalStyle from "./style-initialization/global-style";
 import ResetStyle from "./style-initialization/reset-style";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "LandingPage";
-import LoginPage from "./pages/login-page";
+import {LoginPage} from "./Auth";
 import SignupPage from "./pages/signup-page";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
