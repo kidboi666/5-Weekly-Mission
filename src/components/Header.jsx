@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import logo from '../assets/Linkbrary.svg';
 import styled from 'styled-components';
-import useGetData from '../hooks/useGetData';
+import useGetData from '../hooks/useFetchData';
+import { HEADER_BASE_URL } from '../contants/constant';
 
 const Wrapper = styled.div`
   top: 0;
@@ -65,14 +66,12 @@ const LoginButton = styled.a`
   background-color: #eeeeee;
 `;
 
-const SAMPLE_USER_URL = 'https://bootcamp-api.codeit.kr/api/sample/user';
-
 function Header() {
-  const [data, isLoading, error, fetchData] = useGetData(SAMPLE_USER_URL);
+  const { data, isLoading, fetchData } = useGetData(HEADER_BASE_URL);
 
   useEffect(() => {
-    fetchData(SAMPLE_USER_URL);
-  }, [SAMPLE_USER_URL]);
+    fetchData(HEADER_BASE_URL);
+  }, []);
 
   return (
     <header>

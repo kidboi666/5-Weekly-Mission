@@ -6,7 +6,8 @@ import Footer from '../../components/Footer';
 import FolderInfo from '../../components/FolderInfo';
 
 import styled from 'styled-components';
-import useGetData from '../../hooks/useGetData';
+import useGetData from '../../hooks/useFetchData';
+import { FOLDER_BASE_URL } from '../../contants/constant';
 
 const MainContainer = styled.div`
   display: flex;
@@ -45,15 +46,12 @@ const CardContainer = styled.div`
   }
 `;
 
-const BASE_URL = 'https://bootcamp-api.codeit.kr/api/sample/folder';
-
 function Folder() {
-  const [data, isLoading, error, fetchData] = useGetData(BASE_URL);
+  const { data, isLoading, fetchData } = useGetData(FOLDER_BASE_URL);
 
   useEffect(() => {
-    fetchData(BASE_URL);
-  }, [BASE_URL]);
-  console.log(data);
+    fetchData(FOLDER_BASE_URL);
+  }, []);
 
   return (
     <>
@@ -62,7 +60,7 @@ function Folder() {
       <main>
         <MainContainer>
           <Input />
-          {data ? (
+          {!isLoading ? (
             <CardContainer>
               {data.folder.links ? (
                 data.folder.links.map((link) => (

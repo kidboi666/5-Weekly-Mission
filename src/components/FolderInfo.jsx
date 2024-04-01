@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import useGetData from '../hooks/useGetData';
+import useGetData from '../hooks/useFetchData';
+import { FOLDER_INFO_BASE_URL } from '../contants/constant';
 
 const Container = styled.div`
   display: flex;
@@ -47,18 +48,16 @@ const FolderName = styled.p`
   }
 `;
 
-const BASE_URL = 'https://bootcamp-api.codeit.kr/api/sample/folder';
-
 function FolderInfo() {
-  const [data, isLoading, error, fetchData] = useGetData(BASE_URL);
+  const [data, isLoading, fetchData] = useGetData(FOLDER_INFO_BASE_URL);
 
   useEffect(() => {
-    fetchData(BASE_URL);
-  }, [BASE_URL]);
+    fetchData(FOLDER_INFO_BASE_URL);
+  }, []);
 
   return (
     <>
-      {data ? (
+      {!isLoading ? (
         <Container>
           <UserInfo>
             <Img src={data.folder.owner.profileImageSource} alt='유저 아바타' />

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FALLBACK_IMG_URL } from '../contants/constant';
 
 const Container = styled.div`
   width: 340px;
@@ -57,14 +58,7 @@ function Card({ url, src = '', desc, createdAt }) {
     <>
       <Container>
         <Link href={url}>
-          <Img
-            src={
-              src
-                ? src
-                : 'https://preview.free3d.com/img/2017/02/2162632931086960368/roqpgvhv.jpg'
-            }
-            alt='대표 이미지'
-          />
+          <Img src={src ? src : FALLBACK_IMG_URL} alt='대표 이미지' />
           <Desc>
             <Ago>dateNow - 'createdAt'</Ago>
             <Content>

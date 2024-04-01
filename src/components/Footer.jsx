@@ -39,6 +39,29 @@ const Sns = styled.div`
   gap: 12px;
 `;
 
+const snsList = [
+  {
+    href: 'https://www.facebook.com/',
+    src: facebook,
+    alt: '페이스북 아이콘',
+  },
+  {
+    href: 'https://twitter.com/?lang=en',
+    src: twitter,
+    alt: '트위터 아이콘',
+  },
+  {
+    href: 'https://www.youtube.com/',
+    src: youtube,
+    alt: '유튜브 아이콘',
+  },
+  {
+    href: 'https://www.instagram.com/',
+    src: instagram,
+    alt: '인스타그램 아이콘',
+  },
+];
+
 function Footer() {
   return (
     <footer>
@@ -52,7 +75,12 @@ function Footer() {
             <Faq href='../pages/FaQ'>FAQ</Faq>
           </Info>
           <Sns>
-            <a href='https://www.facebook.com/'>
+            {snsList.map((sns) => (
+              <a href={sns.href}>
+                <img src={sns.src} alt={sns.alt} />
+              </a>
+            ))}
+            {/* <a href='https://www.facebook.com/'>
               <img src={facebook} alt='페이스북 아이콘' />
             </a>
             <a href='https://twitter.com/?lang=en'>
@@ -63,7 +91,7 @@ function Footer() {
             </a>
             <a href='https://www.instagram.com/'>
               <img src={instagram} alt='인스타그램 아이콘' />
-            </a>
+            </a> */}
           </Sns>
         </Wrapper>
       </Container>
