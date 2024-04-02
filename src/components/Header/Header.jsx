@@ -1,6 +1,6 @@
 import './Header.css';
 import logo from '../../assets/images/logo.svg';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { getUserInfo } from '../../utils/api';
 import Account from '../Account/Account';
 import Button from '../Button/Button';
@@ -12,19 +12,19 @@ const STYLE_BLIND_CLASS_NAME = 'blind';
 const LOGO_ALT_MESSAGE = 'Linkbrary';
 
 export default function Header() {
-  const [userInfo, setUserInfo] = useState(null);
+  const [userInfo, setUserInfo] = useState({});
 
-  const handleLoadHeader = async () => {
+  const handleLoadHeader = useCallback(async () => {
     let result;
     try {
       result = await getUserInfo();
-      setUserInfo(result);
     } catch (error) {}
-  };
+    setUserInfo(result);
+  }, []);
 
   useEffect(() => {
     handleLoadHeader();
-  });
+  }, [handleLoadHeader]);
 
   return (
     <header className={STYLE_MAIN_HEADER_CLASS_NAME}>
