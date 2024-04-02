@@ -11,9 +11,11 @@ export default function Header() {
   return (
     <header className='header'>
       <div className='header__inner'>
-        <Link to='/' className='header__link-home'>
-          <img className='header__logo' src={logoImg} alt='linkbrary logo' />
-        </Link>
+        <h1>
+          <Link to='/' className='header__link-home'>
+            <img className='header__logo' src={logoImg} alt='linkbrary logo' />
+          </Link>
+        </h1>
         {!user && (
           <Button
             className='header__login-button'
