@@ -53,22 +53,16 @@ export default function Folder() {
 }
 
 function searchTMP(items, searchValue) {
-  let searchedItems = [];
-  const lowerSearchValue = searchValue.toLowerCase();
+  const searchProperties = ['title', 'description', 'url'];
 
-  for (const item of items) {
-    const lowerTitle = item.title.toLowerCase();
-    const lowerDescription = item.description.toLowerCase();
-    const lowerUrl = item.url.toLowerCase();
-
-    if (lowerTitle.includes(lowerSearchValue)) {
-      searchedItems.push(item);
-    } else if (lowerDescription.includes(lowerSearchValue)) {
-      searchedItems.push(item);
-    } else if (lowerUrl.includes(lowerSearchValue)) {
-      searchedItems.push(item);
-    }
-  }
-
+  const searchedItems = items.filter((item) =>
+    searchProperties.some((property) =>
+      containsSubstring(item[property], searchValue)
+    )
+  );
   return searchedItems;
+}
+
+function containsSubstring(string, substring) {
+  return string.toLowerCase().includes(substring.toLowerCase());
 }
