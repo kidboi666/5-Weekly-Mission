@@ -1,16 +1,16 @@
 // HomepPage.js
-import Header from './components/Header';
-import Main from './components/Main';
-import Footer from './components/Footer';
+import Header from "./Components/Header/Header";
+import Main from "./Components/Main/Main";
+import Footer from "./Components/Footer/Footer";
 
 function HomePage() {
-    return (
-        <>
-            <Header />
-            <Main />
-            <Footer />
-        </>
-    );
+  return (
+    <>
+      <Header />
+      <Main />
+      <Footer />
+    </>
+  );
 }
 
 export default HomePage;

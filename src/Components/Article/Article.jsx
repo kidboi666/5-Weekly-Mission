@@ -1,0 +1,29 @@
+// Article.js
+import { useFetch } from "../../hooks/useFetch";
+import { BASE_URL } from "../../constants/baseURL";
+import styles from "./Article.module.css";
+
+function Article() {
+  const folderData = useFetch(`${BASE_URL}folder`);
+
+  return (
+    <div className={styles.folder_info_container}>
+      {folderData && (
+        <div className={styles.folder_info}>
+          <img
+            src={folderData.folder.owner.profileImageSource}
+            alt="프로필"
+            width={60}
+            height={60}
+          />
+          <span className={styles.owner_name}>
+            {folderData.folder.owner.name}
+          </span>
+          <h1 className={styles.folder_name}>{folderData.folder.name}</h1>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default Article;
