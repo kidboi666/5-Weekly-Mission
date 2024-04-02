@@ -29,7 +29,7 @@ export const CardWrap = styled(NavLink)`
     }
     &__time-ago {
       font-size: ${theme.font.sm};
-      line-height: 1rem;
+      line-height: 1.0625rem;
       color: ${theme.color.gray6};
     }
     &__btn-menu {
@@ -38,12 +38,13 @@ export const CardWrap = styled(NavLink)`
     &__content {
       padding-top: 0.625rem;
       line-height: 1.5rem;
+      height: 3.44rem;
       word-break: break-all;
     }
     &__date {
       padding-top: 10px;
       font-size: ${theme.font.s};
-      line-height: 1rem;
+      line-height: 1.1875rem;
       color: ${theme.color.gray3};
     }
   }

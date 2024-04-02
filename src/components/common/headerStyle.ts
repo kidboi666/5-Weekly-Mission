@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { DFlaxAlignCenter, DFlaxAlignCenterBtw, LinkGradient } from "../../styles/commonStyle";
 import { theme } from "../../styles/theme";
 

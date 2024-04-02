@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import PostCard from "../../components/folder/PostCard";
 import SearchInput from "../../components/form/FormInput";
 import { ContainBody, ContainHead, TitleMs } from "../../styles/commonStyle";
@@ -6,9 +7,25 @@ import {
   FolderContainHeadInner,
   PostCardWrap,
 } from "./folderStyle";
+import { IFolderListApi, folderListApi } from "../../constant/api";
 const logo = "/assets/logo/logo_codeit.svg";
 
 function Index() {
+  const [isLoading, setLoading] = useState(false);
+  const [cardInfo, setCardInfo] = useState<IFolderListApi[]>();
+
+  useEffect(() => {
+    (async () => {
+      try {
+        setLoading(true);
+        const data = await folderListApi();
+        setCardInfo(data);
+      } catch (e) {
+        console.log(e);
+      }
+    })();
+  }, []);
+
   return (
     <>
       <ContainHead>
@@ -21,11 +38,15 @@ function Index() {
       <ContainBody>
         <FolderContainBodyInner>
           <SearchInput></SearchInput>
-          <PostCardWrap>
-            {Array.from({ length: 9 }, (_, i) => (
-              <PostCard key={"bookmark" + i}></PostCard>
-            ))}
-          </PostCardWrap>
+          {isLoading ? (
+            <PostCardWrap>
+              {cardInfo
+                ? cardInfo.map((data) => <PostCard key={data.id} {...data} />)
+                : "리스트가 없습니다."}
+            </PostCardWrap>
+          ) : (
+            "Loading..."
+          )}
         </FolderContainBodyInner>
       </ContainBody>
     </>

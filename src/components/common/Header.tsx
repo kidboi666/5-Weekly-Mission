@@ -7,13 +7,13 @@ import {
   HeaderLogo,
   HeaderUserInfo,
 } from "./headerStyle";
-import { IheaderUserLoginInfo, headerUserLoginInfo } from "../../constant/api";
+import { IHeaderUserLoginInfo, headerUserLoginInfo } from "../../constant/api";
 import { LinkGradient, Profile } from "../../styles/commonStyle";
 import { useEffect, useState } from "react";
 const logo = "/assets/logo/logo.svg";
 
 function Header() {
-  const [userInfo, setUserInfo] = useState<IheaderUserLoginInfo>();
+  const [userInfo, setUserInfo] = useState<IHeaderUserLoginInfo>();
   useEffect(() => {
     // 유저정보 받아오기
     (async () => {
