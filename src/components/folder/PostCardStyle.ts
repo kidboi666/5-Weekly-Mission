@@ -3,23 +3,30 @@ import { theme } from "../../styles/theme";
 import { NavLink } from "react-router-dom";
 
 export const CardWrap = styled(NavLink)`
-  border-radius: 0.9375rem;
-  overflow: hidden;
-  box-shadow: 0 0.3125rem 1.5625rem rgba(0,0,0,.08);
   border: 1px solid transparent;
+  border-radius: 0.9375rem;
+  box-shadow: 0 0.3125rem 1.5625rem rgba(0,0,0,.08);
+  overflow: hidden;
   .card {
     &__image {
       position: relative;
       width: 100%;
       height: 12.5rem;
       overflow: hidden;
-      background-color: ${theme.color.graye};
+      background-color: #DDDFFF;
       img {
         position: absolute;
         left: 0;
         top: 50%;
         width: 100%;
-        transform: translateY(-50%);
+        transform: translate(0,-50%);
+        transition: transform 0.3s;
+        &.empty {
+          left: 50%;
+          width: 133px;
+          transform: translate(-50%,-50%);
+          opacity:.18;
+        }
       }
     }
     &__info {
@@ -50,6 +57,14 @@ export const CardWrap = styled(NavLink)`
   }
   &:hover {
     border: 1px solid ${theme.color.primary};
+    .card__image {
+      img {
+        transform: scale(1.3) translate(0,-30%);
+      }
+      .empty {
+        transform: scale(1.3) translate(-50%,-30%);
+      }
+    }
   }
   @media screen and (max-width: ${theme.screenSize.moLarge}){
     .card {

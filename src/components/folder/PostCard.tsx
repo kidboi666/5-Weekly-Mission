@@ -2,16 +2,21 @@ import { IFolderListApi } from "../../constant/api";
 import { DFlaxAlignCenterBtw, EllipsisLine } from "../../styles/commonStyle";
 import { calculateTimeAgo } from "../../utils/calcTilmAgo";
 import { CardWrap } from "./PostCardStyle";
+const emptyImg = "/assets/logo/logo.svg";
 export default function PostCard({
   image_url,
   description,
   created_at,
 }: IFolderListApi) {
   return (
-    <CardWrap to="">
+    <CardWrap to="" target="_blank">
       <figure>
         <div className="card__image">
-          <img src={image_url} alt="이미지" />
+          {image_url ? (
+            <img src={image_url} alt={image_url} />
+          ) : (
+            <img className="empty" src={emptyImg} alt="" />
+          )}
         </div>
         <figcaption className="card__info">
           <DFlaxAlignCenterBtw className="card__time-ago">
