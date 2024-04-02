@@ -1,11 +1,11 @@
-import PostCard from "../../components/bookMark/PostCard";
+import PostCard from "../../components/folder/PostCard";
 import SearchInput from "../../components/form/FormInput";
 import { ContainBody, ContainHead, TitleMs } from "../../styles/commonStyle";
 import {
   FolderContainBodyInner,
   FolderContainHeadInner,
   PostCardWrap,
-} from "./bookMarkStyle";
+} from "./folderStyle";
 const logo = "/assets/logo/logo_codeit.svg";
 
 function Index() {

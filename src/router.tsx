@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./components/common/Layout";
-import BookMark from "./pages/bookMark/Index";
+import Folder from "./pages/folder/Index";
 import NotFoundPage from "./pages/error/NotFoundPage";
 import Privacy from "./pages/policy/Index";
 import Faq from "./pages/faq/Index";
@@ -16,7 +16,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "folder",
-        element: <BookMark />,
+        element: <Folder />,
       },
       {
         path: "privacy",

@@ -11,13 +11,13 @@ export default function PostCard() {
         <figcaption className="card__info">
           <DFlaxAlignCenterBtw className="card__time-ago">
             10 minutes ago
-            <button type="button" className="card__btn-menu">
+            <span className="card__btn-menu">
               <img src="/assets/icon/icon_dotte.svg" alt="메뉴" />
-            </button>
+            </span>
           </DFlaxAlignCenterBtw>
           <EllipsisLine $tline={2} className="card__content">
             Lorem ipsum dolor sit amet consectetur. Metus amet habitant nunc
-            consequat. Tldkd
+            consequat. Tldkd Lorem Lorem
           </EllipsisLine>
           <p className="card__date">2023. 3. 15</p>
         </figcaption>
