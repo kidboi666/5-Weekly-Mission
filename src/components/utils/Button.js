@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 export default function Button({ text, className = "", link }) {
   return (
     <button className={`btn ${className}`}>
-      {link && <Link to={link}>{text}</Link>}
-      {!link && { text }}
+      {link ? <Link to={link}>{text}</Link> : { text }}
     </button>
   );
 }
