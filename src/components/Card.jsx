@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FALLBACK_IMG_URL } from '../contants/constant';
+import { CARD_DESC_FORMAT_NUM, FALLBACK_IMG_SRC } from '../contants/constant';
+import { diffDate, formatDate } from '../utils/dateLog';
 
 const Container = styled.div`
   width: 340px;
@@ -42,7 +43,7 @@ const Content = styled.p`
   font-size: 1rem;
   margin: 0px;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 `;
 
 const Date = styled.span`
@@ -52,18 +53,20 @@ const Date = styled.span`
 `;
 
 function Card({ url, src = '', desc, createdAt }) {
-  const processedCreatedAt = createdAt.substr(0, 10);
-  const substrDesc = desc.length > 10 ? desc.substr(0, 50) + '...' : desc;
+  const formatedCreatedAt = formatDate(createdAt);
+  const formatedDesc =
+    desc.length > 1 ? desc.substr(0, CARD_DESC_FORMAT_NUM) + '...' : desc;
+  const timeAgo = diffDate(createdAt);
 
   return (
     <>
       <Container>
-        <Link href={url}>
-          <Img src={src ? src : FALLBACK_IMG_URL} alt='대표 이미지' />
+        <Link href={url} target='_blank'>
+          <Img src={src ? src : FALLBACK_IMG_SRC} alt='대표 이미지' />
           <Desc>
-            <Ago>dateNow - 'createdAt'</Ago>
-            <Content>{substrDesc}</Content>
-            <Date>{processedCreatedAt}</Date>
+            <Ago>{timeAgo}</Ago>
+            <Content>{formatedDesc}</Content>
+            <Date>{formatedCreatedAt}</Date>
           </Desc>
         </Link>
       </Container>
