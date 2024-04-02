@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import logo from '../assets/Linkbrary.svg';
+import logo from '../assets/linkbrary.svg';
 import styled from 'styled-components';
 import useGetData from '../hooks/useFetchData';
 import { HEADER_BASE_URL } from '../contants/constant';
@@ -80,7 +80,7 @@ function Header() {
           <Logo href='../pages/main'>
             <img src={logo} alt='로고' />
           </Logo>
-          {!isLoading ? (
+          {data ? (
             <UserProfile>
               <img src={data.profileImageSource} alt='유저 아이콘' />
               <span>{data.email}</span>

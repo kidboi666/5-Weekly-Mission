@@ -53,6 +53,7 @@ const Date = styled.span`
 
 function Card({ url, src = '', desc, createdAt }) {
   const processedCreatedAt = createdAt.substr(0, 10);
+  const substrDesc = desc.length > 10 ? desc.substr(0, 50) + '...' : desc;
 
   return (
     <>
@@ -61,9 +62,7 @@ function Card({ url, src = '', desc, createdAt }) {
           <Img src={src ? src : FALLBACK_IMG_URL} alt='대표 이미지' />
           <Desc>
             <Ago>dateNow - 'createdAt'</Ago>
-            <Content>
-              {desc.length > 10 ? desc.substr(0, 70) + '...' : desc}
-            </Content>
+            <Content>{substrDesc}</Content>
             <Date>{processedCreatedAt}</Date>
           </Desc>
         </Link>

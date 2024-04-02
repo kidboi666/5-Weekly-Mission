@@ -60,7 +60,7 @@ function Folder() {
       <main>
         <MainContainer>
           <Input />
-          {!isLoading ? (
+          {data ? (
             <CardContainer>
               {data.folder.links ? (
                 data.folder.links.map((link) => (

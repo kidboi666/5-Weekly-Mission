@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import icon from '../assets/icon/Search.svg';
+import icon from '../assets/icon/search.svg';
 
 const Container = styled.div`
   display: flex;

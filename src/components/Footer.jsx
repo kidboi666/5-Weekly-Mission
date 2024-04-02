@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import facebook from '../assets/icon/Facebook.svg';
-import twitter from '../assets/icon/Twitter.svg';
-import youtube from '../assets/icon/Youtube.svg';
-import instagram from '../assets/icon/Instagram.svg';
+import facebook from '../assets/icon/facebook.svg';
+import twitter from '../assets/icon/twitter.svg';
+import youtube from '../assets/icon/youtube.svg';
+import instagram from '../assets/icon/instagram.svg';
 
 const Container = styled.div`
   background-color: black;
@@ -78,13 +78,15 @@ function Footer() {
             </PrivacyPolicy>
             <Faq href='../pages/FaQ'>FAQ</Faq>
           </Info>
-          <Sns>
-            {snsList.map((sns) => (
-              <a href={sns.href} key={sns.id}>
+          {/* <Sns> */}
+          {snsList.map((sns) => (
+            <Sns key={sns.id}>
+              <a href={sns.href}>
                 <img src={sns.src} alt={sns.alt} />
               </a>
-            ))}
-            {/* <a href='https://www.facebook.com/'>
+            </Sns>
+          ))}
+          {/* <a href='https://www.facebook.com/'>
               <img src={facebook} alt='페이스북 아이콘' />
             </a>
             <a href='https://twitter.com/?lang=en'>
@@ -96,7 +98,7 @@ function Footer() {
             <a href='https://www.instagram.com/'>
               <img src={instagram} alt='인스타그램 아이콘' />
             </a> */}
-          </Sns>
+          {/* </Sns> */}
         </Wrapper>
       </Container>
     </footer>

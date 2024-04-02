@@ -49,7 +49,7 @@ const FolderName = styled.p`
 `;
 
 function FolderInfo() {
-  const [data, isLoading, fetchData] = useGetData(FOLDER_INFO_BASE_URL);
+  const { data, isLoading, fetchData } = useGetData(FOLDER_INFO_BASE_URL);
 
   useEffect(() => {
     fetchData(FOLDER_INFO_BASE_URL);
@@ -57,7 +57,7 @@ function FolderInfo() {
 
   return (
     <>
-      {!isLoading ? (
+      {data ? (
         <Container>
           <UserInfo>
             <Img src={data.folder.owner.profileImageSource} alt='유저 아바타' />
