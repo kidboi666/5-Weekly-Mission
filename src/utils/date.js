@@ -1,4 +1,4 @@
-export function dateAgo(time) {
+export function formatDateToAgo(time) {
   const today = new Date();
   const timeValue = new Date(time);
 
@@ -25,7 +25,7 @@ export function dateAgo(time) {
   return `${years} years ago`;
 }
 
-export function dateToString(time) {
+export function formatDateToString(time) {
   return `${time.slice(0, 4)}. ${
     time[5] === "0" ? time.slice(6, 7) : time.slice(5, 7)
   }. ${time.slice(8, 10)}`;

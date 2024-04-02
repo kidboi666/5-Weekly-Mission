@@ -1,14 +1,14 @@
 import React from "react";
 import "./Card.css";
 import noImage from "../assets/no-image.png";
-import { dateAgo, dateToString } from "../utils/date";
+import { formatDateToString, formatDateToAgo } from "../utils/date";
 import { Link } from "react-router-dom";
 
 export default function Card({ item }) {
   const { createdAt, url, title, imageSource } = item;
 
-  const dateBetween = dateAgo(createdAt);
-  const date = dateToString(createdAt);
+  const dateBetween = formatDateToAgo(createdAt);
+  const date = formatDateToString(createdAt);
 
   return (
     <li className='shared-card'>
