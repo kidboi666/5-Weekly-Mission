@@ -78,7 +78,6 @@ function Footer() {
             </PrivacyPolicy>
             <Faq href='../pages/FaQ'>FAQ</Faq>
           </Info>
-          {/* <Sns> */}
           {snsList.map((sns) => (
             <Sns key={sns.id}>
               <a href={sns.href}>
@@ -86,19 +85,6 @@ function Footer() {
               </a>
             </Sns>
           ))}
-          {/* <a href='https://www.facebook.com/'>
-              <img src={facebook} alt='페이스북 아이콘' />
-            </a>
-            <a href='https://twitter.com/?lang=en'>
-              <img src={twitter} alt='트위터 아이콘' />
-            </a>
-            <a href='https://www.youtube.com/'>
-              <img src={youtube} alt='유튜브 아이콘' />
-            </a>
-            <a href='https://www.instagram.com/'>
-              <img src={instagram} alt='인스타그램 아이콘' />
-            </a> */}
-          {/* </Sns> */}
         </Wrapper>
       </Container>
     </footer>
