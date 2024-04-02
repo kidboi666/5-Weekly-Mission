@@ -1,0 +1,19 @@
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.profile-img {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.profile-email {
+  color: #373740;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+}
