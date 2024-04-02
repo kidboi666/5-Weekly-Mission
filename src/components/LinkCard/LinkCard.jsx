@@ -9,8 +9,9 @@ import {
   STYLE_LINK_CARD_CREATED_CLASS_NAME,
   STYLE_THUMBNAIL_CONTAINER_CLASS_NAME,
   STYLE_THUMBNAIL_CLASS_NAME,
-  INTERVALS,
 } from './constants.js';
+import getTimeDifference from '../../utils/time-functions/getTimeDifference.js';
+import formatDate from '../../utils/time-functions/formatDate.js';
 
 export default function LinkCard({ linkCardInfo }) {
   const thumbnailURL = linkCardInfo.imageSource
@@ -19,7 +20,7 @@ export default function LinkCard({ linkCardInfo }) {
   const description = linkCardInfo.description;
   const url = linkCardInfo.url;
   const createdDate = new Date(linkCardInfo.createdAt);
-  const timestamp = getTimeDifference(createdDate, INTERVALS);
+  const timestamp = getTimeDifference(createdDate);
   return (
     <a
       className={STYLE_LINK_CARD_CLASS_NAME}
@@ -45,24 +46,4 @@ export default function LinkCard({ linkCardInfo }) {
       </div>
     </a>
   );
-}
-
-function getTimeDifference(createdDate, intervals) {
-  const currentDate = new Date();
-  const timeDifference = currentDate - createdDate;
-
-  for (const interval of intervals) {
-    const value = Math.floor(timeDifference / interval.divisor);
-    if (value >= 1) {
-      return value === 1
-        ? `1 ${interval.label} ago`
-        : `${value} ${interval.label}s ago`;
-    }
-  }
-
-  return 'just now';
-}
-
-function formatDate(date) {
-  return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
 }
