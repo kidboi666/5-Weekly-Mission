@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+}
+
+.folderTitle {
+  width: 100%;
+  height: 244px;
+  background: var(--Linkbrary-bg, #F0F6FF);
+}
+
+.folderTitle__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px auto 60px auto;
+}
+
+.folder__img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 12px;
+}
+
+.folder__tagName {
+  color: var(--text-color-light-mode, #000);
+  font-family: "Pretendard";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  margin-bottom: 20px;
+}
+
+.folder__name {
+  color: #000;
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+
+  /* Linkbrary/h1-semibold */
+  font-family: Pretendard;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
