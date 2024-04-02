@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import Search from "../components/utils/Search";
+import Search from "../components/Search";
 import Card from "../components/Card";
 import { getSharedList } from "../api";
 import "./SharedPage.css";
 import { UserContext } from "../contexts/UserContext";
-import ProfileImage from "../components/utils/ProfileImage";
+import ProfileImage from "../components/ProfileImage";
 
 export default function SharedPage() {
   const [folder, setFolder] = useState();
