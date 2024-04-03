@@ -1,15 +1,16 @@
-import './App.css';
 import GlobalStyles from './GlobalStyles';
+import { Header } from './Header';
 import { LinkList } from './LinkList';
-import { getLinkList } from './api';
+import { getLinkList, getUsers } from './api';
 
 const { links } = await getLinkList();
+const user = await getUsers();
 
 function App() {
-  console.log(links);
   return (
     <div>
       <GlobalStyles />
+      <Header user={user}/>
       <LinkList links={links} />
     </div>  
   )

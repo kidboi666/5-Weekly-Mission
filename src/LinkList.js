@@ -53,11 +53,11 @@ export function LinkList({links}) {
         <div className="Link-container">
             <ul className="LinkList">
                 {links.map((link) => {
-                return (
-                    <li key={link.id}>
-                        <LinkItem link={link}/>
-                    </li>
-                );
+                    return (
+                        <li key={link.id}>
+                            <LinkItem link={link}/>
+                        </li>
+                    );
                 })}
             </ul>
         </div>

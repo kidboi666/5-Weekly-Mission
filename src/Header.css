@@ -1,0 +1,41 @@
+.header {
+    margin: 0 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+}
+
+.icon img {
+    position: absolute;
+}
+
+.icon {
+    height: 28px;
+    width: 28px;    
+    position: relative; 
+}
+
+.profile {
+    top: 8px;
+    left: 9px;
+}
+
+.user-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 6px;
+}
+
+.user-container p {
+    color: #373740;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

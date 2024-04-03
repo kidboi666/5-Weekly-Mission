@@ -1,14 +1,18 @@
-export function Header() {
+import './Header.css';
+
+export function Header({user}) {
     return (
-        <>
-            <h1>
-                <a href="/">
-                    <img src="images/logo.svg" alt="linklabrary로고" />
-                </a>
-            </h1>
-            <a class="onclick-signin button-style" href='./signin.html'>
-                로그인
+        <div className='header'>
+            <a href="/">
+                <img src="images/logo.svg" alt="linklabrary로고" /> 
             </a>
-        </>
+            <div className='user-container'>
+                <div className="icon">
+                    <img src="images/Ellipse21.svg" alt="myicon"></img> 
+                    <img className="profile" src="images/myprofile.png" alt="myprofile"></img>
+                </div>
+                <p>{user.email}</p>    
+            </div>
+        </div>
     );
 }
