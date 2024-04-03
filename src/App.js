@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import GlobalStyles from './GlobalStyles';
+import { Header } from './Header';
+import { LinkList } from './LinkList';
+import { getLinkList, getUsers } from './api';
+
+const { links } = await getLinkList();
+const user = await getUsers();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <div>
+      <GlobalStyles />
+      <Header user={user}/>
+      <LinkList links={links} />
+    </div>  
+  )
 }
 
-export default App;
+export default App; 
