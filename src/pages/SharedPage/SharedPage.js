@@ -4,6 +4,8 @@ import Card from "../../components/Card/Card";
 import { getSharedList } from "../../api";
 import "./SharedPage.css";
 import { UserContext } from "../../contexts/UserContext";
+import { StyledSectionWrap, StyledTopWrap } from "../Common.styled";
+import * as S from "./SharedPage.styled";
 import ProfileImage from "../../components/ProfileImage/ProfileImage";
 
 export default function SharedPage() {
@@ -20,22 +22,22 @@ export default function SharedPage() {
   }, []);
 
   return (
-    <div className='shared-page'>
-      <div className='shared__top-wrap'>
+    <>
+      <StyledTopWrap>
         <div className='shared__profile-wrap'>
           <ProfileImage src={user?.profileImageSource} size='m' />
           <p className='shared__profile-text'>{user?.name}</p>
         </div>
-        <h2 className='shared__title'>{folder?.name} </h2>
-      </div>
-      <section className='shared__section'>
+        <S.StyledTitle>{folder?.name} </S.StyledTitle>
+      </StyledTopWrap>
+      <StyledSectionWrap>
         <Search />
-        <ul className='shared__card-list'>
+        <S.StyledList>
           {folder?.links.map((item) => (
             <Card key={item.id} item={item} />
           ))}
-        </ul>
-      </section>
-    </div>
+        </S.StyledList>
+      </StyledSectionWrap>
+    </>
   );
 }
