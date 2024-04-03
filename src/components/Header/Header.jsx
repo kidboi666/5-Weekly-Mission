@@ -6,20 +6,11 @@ import Profile from "../Profile/Profile";
 
 function Header() {
     const [user, setUser] = useState("");
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
         async function fetchDataAndSetState() {
             const { id, name, email, profileImageSource } = await loginFetchData();
             setUser({ id, name, email, profileImageSource });
-
-            if (user.id) {
-                setIsLoggedIn(true);
-            }
-
-            return () => {
-                setIsLoggedIn(false);
-            };
         }
         fetchDataAndSetState();
     }, [user.id]);
@@ -31,7 +22,7 @@ function Header() {
                     <img src={logoImg} alt="Linkbrary" />
                 </a>
             </h1>
-            {isLoggedIn ? (
+            {user ? (
                 <Profile user={user} />
             ) : (
                 <a href="/" className="login-btn btn-form01">
