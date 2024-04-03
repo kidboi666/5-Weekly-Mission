@@ -16,6 +16,7 @@ export const StyledWrap = styled.div`
   flex-direction: ${({ $flextype }) => $flextype};
   align-items: center;
   gap: ${({ $flextype }) => ($flextype === "row" ? 6 : 12)}px;
+
   @media (max-width: 767px) {
     gap: 6px;
   }
@@ -36,6 +37,7 @@ export const StyledImg = styled.img`
 export const StyledText = styled.p`
   font-$size: ${({ $flextype }) => ($flextype === "row" ? 14 : 16)}px;
   color: ${({ $flextype }) => ($flextype === "row" ? "#373740" : "inherit")};
+
   @media (max-width: 767px) {
     display: ${({ $flextype }) => ($flextype === "row" ? "none" : "block")};
     font-$size: 14px;
