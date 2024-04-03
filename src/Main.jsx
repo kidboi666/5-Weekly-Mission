@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import App from './components/App';
 import SharedPage from './pages/SharedPage/SharedPage';
+import FolderPage from './pages/FolderPage/FolderPage';
 
 export default function Main() {
   return (
@@ -8,6 +9,8 @@ export default function Main() {
       <App>
         <Routes>
           <Route path="/" element={<SharedPage />} />
+          <Route path="/shared" element={<SharedPage />} />
+          <Route path="/folder" element={<FolderPage />} />
         </Routes>
       </App>
     </BrowserRouter>
