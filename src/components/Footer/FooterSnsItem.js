@@ -9,13 +9,8 @@ const imgList = [facebookImg, twitterImg, youtubeImg, instagramImg];
 
 export default function FooterSnsItem({ id, name, url }) {
   return (
-    <li className='footer__sns-li'>
-      <Link
-        to={url}
-        className='footer__sns-link'
-        target='_blank'
-        rel='noreferrer'
-      >
+    <li>
+      <Link to={url} target='_blank' rel='noreferrer'>
         <img src={imgList[id - 1]} alt={name} />
       </Link>
     </li>

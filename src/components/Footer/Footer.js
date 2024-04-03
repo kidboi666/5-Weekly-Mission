@@ -1,5 +1,5 @@
 import React from "react";
-import FooterSnsItem from "../FooterSnsItem/FooterSnsItem";
+import FooterSnsItem from "./FooterSnsItem";
 import { Link } from "react-router-dom";
 import * as S from "./Footer.styled";
 
