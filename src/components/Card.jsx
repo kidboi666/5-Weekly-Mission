@@ -19,6 +19,7 @@ const Img = styled.img`
   height: 200px;
   border-radius: 15px 15px 0px 0px;
   margin: 0;
+  object-fit: cover;
 `;
 
 const Desc = styled.div`

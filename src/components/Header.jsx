@@ -46,11 +46,8 @@ const UserProfile = styled.div`
     border-radius: 50%;
   }
 
-  & span {
-  }
-
   @media screen and (max-width: 767px) {
-    & p {
+    & span {
       display: none;
     }
   }

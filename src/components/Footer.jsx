@@ -5,17 +5,16 @@ import twitter from '../assets/icon/twitter.svg';
 import youtube from '../assets/icon/youtube.svg';
 import instagram from '../assets/icon/instagram.svg';
 
-const Container = styled.div`
+const Wrapper = styled.div`
   background-color: black;
   height: 160px;
 `;
 
-const Wrapper = styled.div`
+const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: #676767;
-
   margin: 100px;
 `;
 
@@ -32,6 +31,12 @@ const PrivacyPolicy = styled.a`
 const Faq = styled.a`
   color: #676767;
   text-decoration: none;
+`;
+
+const SnsList = styled.div`
+  display: flex;
+  gap: 12px;
+  align-items: center;
 `;
 
 const Sns = styled.div`
@@ -69,8 +74,8 @@ const snsList = [
 function Footer() {
   return (
     <footer>
-      <Container>
-        <Wrapper>
+      <Wrapper>
+        <Container>
           <p>@codeit - 2023</p>
           <Info>
             <PrivacyPolicy href='../pages/PrivacyPolicy'>
@@ -78,15 +83,17 @@ function Footer() {
             </PrivacyPolicy>
             <Faq href='../pages/FaQ'>FAQ</Faq>
           </Info>
-          {snsList.map((sns) => (
-            <Sns key={sns.id}>
-              <a href={sns.href}>
-                <img src={sns.src} alt={sns.alt} />
-              </a>
-            </Sns>
-          ))}
-        </Wrapper>
-      </Container>
+          <SnsList>
+            {snsList.map((sns) => (
+              <Sns key={sns.id}>
+                <a href={sns.href}>
+                  <img src={sns.src} alt={sns.alt} />
+                </a>
+              </Sns>
+            ))}
+          </SnsList>
+        </Container>
+      </Wrapper>
     </footer>
   );
 }
