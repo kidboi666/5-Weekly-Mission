@@ -1,0 +1,65 @@
+.folder-tool-bar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .folder-tool-buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    .folder-name-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .folder-add-button {
+      display: flex;
+      font-weight: 500;
+      gap: 4px;
+      color: #6d6afe;
+    }
+  }
+
+  .folder-name-display {
+    font-size: 24px;
+    letter-spacing: -0.2px;
+    font-weight: 600;
+  }
+
+  .folder-name-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .util-buttons {
+      display: flex;
+      gap: 12px;
+    }
+  }
+}
+
+.folder-tool-button {
+  background-color: #fff;
+  border: 1px solid #6d6afe;
+  padding: 8px 12px;
+  border-radius: 5px;
+  height: 36px;
+
+  &:hover {
+    background-color: #e7effb;
+  }
+  &:focus {
+    background-color: #6d6afe;
+    color: #fff;
+  }
+}
+
+.util-button {
+  display: flex;
+  gap: 4px;
+  color: #9fa6b2;
+  font-size: 14px;
+  font-weight: 600;
+}
