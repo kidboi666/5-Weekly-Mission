@@ -11,8 +11,6 @@ const STYLE_FOLDER_NAME_BAR = 'folder-name-bar';
 const STYLE_UTIL_BUTTONS = 'util-buttons';
 const STYLE_UTIL_BUTTON = 'util-button';
 
-const DEFAULT_FOLDER_NAME = '전체';
-
 const UTIL_BUTTONS_PROPS = [
   {
     imgSrc: shareIcon,
@@ -45,5 +43,4 @@ export {
   STYLE_UTIL_BUTTONS,
   STYLE_UTIL_BUTTON,
   UTIL_BUTTONS_PROPS,
-  DEFAULT_FOLDER_NAME,
 };

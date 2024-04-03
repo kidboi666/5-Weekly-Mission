@@ -118,10 +118,8 @@ const links = [
   },
 ];
 
-fetch('https://bootcamp-api.codeit.kr/api/users/1/folders')
-  .then((response) => response.json())
-  .then((result) => {
-    console.log(result);
-  });
+// fetch('https://bootcamp-api.codeit.kr/api/users/1/folders')
+//   .then((response) => response.json())
+//   .then((result) => {});
 
 export { folders, links };

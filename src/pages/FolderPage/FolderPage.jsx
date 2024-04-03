@@ -4,20 +4,29 @@ import LinkCardList from '../../components/LinkCardList/LinkCardList';
 import { folders, links } from '../../utils/mockData';
 import { useState } from 'react';
 
-export default function FolderPage() {
-  const [currentFolder, setCurrentFolder] = useState(null);
+const allFolder = {
+  'id': 0,
+  'name': '전체',
+  'user_id': 1,
+};
 
-  const handleFolderNameButtonClick = (folderName) => {
-    setCurrentFolder(folderName);
+const newFolders = [allFolder, ...folders];
+
+export default function FolderPage() {
+  const [currentFolderId, setCurrentFolderId] = useState(newFolders[0].id);
+
+  const handleFolderNameButtonClick = (id) => {
+    setCurrentFolderId(id);
   };
 
   return (
     <>
       <AddLinkBar />
       <LinkCardList
-        folders={folders}
+        folders={newFolders}
         items={links}
         folderNameOnClick={handleFolderNameButtonClick}
+        currentFolderId={currentFolderId}
       />
     </>
   );

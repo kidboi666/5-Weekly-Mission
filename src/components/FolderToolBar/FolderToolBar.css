@@ -61,10 +61,11 @@
   &:hover {
     background-color: #e7effb;
   }
-  &:focus {
-    background-color: #6d6afe;
-    color: #fff;
-  }
+}
+
+.focused-button {
+  background-color: #6d6afe;
+  color: #fff;
 }
 
 .util-button {

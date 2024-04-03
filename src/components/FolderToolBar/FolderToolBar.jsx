@@ -11,24 +11,30 @@ import {
   STYLE_FOLDER_NAME_BAR,
   STYLE_UTIL_BUTTONS,
   UTIL_BUTTONS_PROPS,
-  DEFAULT_FOLDER_NAME,
 } from './constants';
 import UtilButton from './UtilButton';
 
 export default function FolderToolBar({
   folders,
-  currentFolder = DEFAULT_FOLDER_NAME,
+  currentFolderId,
+  folderNameOnClick,
 }) {
+  const currentFolder = folders.find((folder) => folder.id === currentFolderId);
+  const currentFolderName = currentFolder.name;
+
   return (
     <div className={STYLE_FOLDER_TOOL_BAR_CONTAINER}>
       <div className={STYLE_FOLDER_TOOL_BUTTONS}>
         <ul className={STYLE_FOLDER_NAME_BUTTONS}>
-          <li>
-            <FolderToolBarButton>전체</FolderToolBarButton>
-          </li>
           {folders.map((item) => (
             <li key={item.id}>
-              <FolderToolBarButton>{item.name}</FolderToolBarButton>
+              <FolderToolBarButton
+                onClick={folderNameOnClick}
+                id={item.id}
+                isFocused={item.id === currentFolderId}
+              >
+                {item.name}
+              </FolderToolBarButton>
             </li>
           ))}
         </ul>
@@ -39,7 +45,7 @@ export default function FolderToolBar({
         </button>
       </div>
       <div className={STYLE_FOLDER_NAME_BAR}>
-        <span className={STYLE_FOLDER_NAME_DISPLAY}>{currentFolder}</span>
+        <span className={STYLE_FOLDER_NAME_DISPLAY}>{currentFolderName}</span>
         <ul className={STYLE_UTIL_BUTTONS}>
           {UTIL_BUTTONS_PROPS.map((btn) => (
             <li key={btn.id}>
