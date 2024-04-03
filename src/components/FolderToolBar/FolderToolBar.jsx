@@ -11,10 +11,14 @@ import {
   STYLE_FOLDER_NAME_BAR,
   STYLE_UTIL_BUTTONS,
   UTIL_BUTTONS_PROPS,
+  DEFAULT_FOLDER_NAME,
 } from './constants';
 import UtilButton from './UtilButton';
 
-export default function FolderToolBar({ folder, currentFolder }) {
+export default function FolderToolBar({
+  folders,
+  currentFolder = DEFAULT_FOLDER_NAME,
+}) {
   return (
     <div className={STYLE_FOLDER_TOOL_BAR_CONTAINER}>
       <div className={STYLE_FOLDER_TOOL_BUTTONS}>
@@ -22,7 +26,7 @@ export default function FolderToolBar({ folder, currentFolder }) {
           <li>
             <FolderToolBarButton>전체</FolderToolBarButton>
           </li>
-          {folder.map((item) => (
+          {folders.map((item) => (
             <li key={item.id}>
               <FolderToolBarButton>{item.name}</FolderToolBarButton>
             </li>
