@@ -1,17 +1,18 @@
 import "./styles/form.css";
 import "./styles/pages/main/main.css";
 
-import Header from "./components/Header";
 import Footer from "./components/Footer";
-import ContentWrap from "./components/ContentWrap";
+import Header from "./components/Header";
+import { BrowserRouter } from "react-router-dom";
+import AppRouter from "./routes/";
 
 function App() {
     return (
-        <>
+        <BrowserRouter>
             <Header />
-            <ContentWrap />
+            <AppRouter />
             <Footer />
-        </>
+        </BrowserRouter>
     );
 }
 
