@@ -18,10 +18,10 @@ export const StyledCard = styled.li`
   &:hover {
     background-color: var(--background-color);
   }
-
   &:hover ${StyledThumnail} {
     transform: scale(1.3);
   }
+
   @media (max-width: 767px) {
     width: 100%;
   }
@@ -31,6 +31,7 @@ export const StyledThumnailWrap = styled.div`
   width: 100%;
   height: 200px;
   overflow: hidden;
+
   @media (max-width: 767px) {
     height: 50vw;
   }

@@ -16,6 +16,7 @@ export const StyledImg = styled.img`
   object-fit: cover;
   width: ${({ size }) => SIZES[size].pc}px;
   height: ${({ size }) => SIZES[size].pc}px;
+
   @media (max-width: 767px) {
     width: ${({ size }) => SIZES[size].mo}px;
     height: ${({ size }) => SIZES[size].mo}px;
