@@ -1,5 +1,5 @@
 import "./CardList.css";
-import Card from "./Card";
+import Card from "../Card/Card";
 
 function CardList({ cardData }) {
     return (

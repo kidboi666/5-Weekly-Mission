@@ -1,8 +1,8 @@
 import "./Footer.css";
-import fbImg from "../assets/icon/svg/akar-icons_facebook-fill.svg";
-import twImg from "../assets/icon/svg/akar-icons_twitter-fill.svg";
-import ytImg from "../assets/icon/svg/akar-icons_youtube-fill.svg";
-import igImg from "../assets/icon/svg/ant-design_instagram-filled.svg";
+import fbImg from "../../assets/icon/svg/akar-icons_facebook-fill.svg";
+import twImg from "../../assets/icon/svg/akar-icons_twitter-fill.svg";
+import ytImg from "../../assets/icon/svg/akar-icons_youtube-fill.svg";
+import igImg from "../../assets/icon/svg/ant-design_instagram-filled.svg";
 
 const footerDatas = [
     {

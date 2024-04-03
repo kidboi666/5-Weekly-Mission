@@ -1,7 +1,7 @@
-import catImg from "../assets/images/cat.jpg";
+import catImg from "../../assets/images/cat.jpg";
 import "./Card.css";
-import GetDate from "../utils/GetDate";
-import GetDaysAgo from "../utils/GetDaysAgo";
+import GetDate from "../../utils/GetDate";
+import GetDaysAgo from "../../utils/GetDaysAgo";
 
 function Card({ data }) {
     const { createdAt, description, id, title, url, imageSource } = data;

@@ -1,8 +1,8 @@
 import "./Header.css";
-import logoImg from "../assets/svg/Linkbrary.svg";
+import logoImg from "../../assets/svg/Linkbrary.svg";
 import { useEffect, useState } from "react";
-import { loginFetchData } from "../fetchUtils";
-import Profile from "./Profile";
+import { loginFetchData } from "../../fetchUtils";
+import Profile from "../Profile/Profile";
 
 function Header() {
     const [user, setUser] = useState("");

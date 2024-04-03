@@ -1,6 +1,6 @@
-import ConHeader from "../components/ConHeader";
-import Search from "../components/Search";
-import CardList from "../components/CardList";
+import ConHeader from "../components/ConHeader/ConHeader";
+import Search from "../components/Search/Search";
+import CardList from "../components/CardList/CardList";
 import { useEffect, useState } from "react";
 import { fetchData } from "../fetchUtils";
 
