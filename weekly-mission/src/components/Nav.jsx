@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import LinkbraryImage from "../../image/Linkbrary.png";
 import profileImage from "../../image/profile img.jpg";
 import styled from "styled-components";
-import useFetchData from "../Hooks/useFetchData";
+import useFetchData from "../hooks/useFetchData";
 
 const NavContainer = styled.nav`
   width: 100%;
@@ -35,7 +35,7 @@ const Gnb = styled.div`
   }
 `;
 
-const GnbLogo = styled(Link)`
+const GnbLogo = styled.a`
   width: 133px;
   height: 24px;
   color: #6d6afe;
@@ -59,14 +59,13 @@ const GnbButton = styled.button`
 `;
 
 const Nav = () => {
-  const profileData = useFetchData(
-    "https://bootcamp-api.codeit.kr/api/sample/user"
-  );
+  const profileData = useFetchData(`${import.meta.env.VITE_BASE_URL}/user`);
+  console.log(import.meta.env.VITE_BASE_URL);
 
   return (
     <NavContainer>
       <Gnb>
-        <GnbLogo Link to="index.html">
+        <GnbLogo href="index.html">
           <img src={LinkbraryImage} alt="Linkbrary Logo" />
         </GnbLogo>
         {profileData ? (

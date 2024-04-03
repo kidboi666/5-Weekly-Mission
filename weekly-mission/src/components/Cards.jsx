@@ -1,4 +1,4 @@
-import useFetchData from "../Hooks/useFetchData";
+import useFetchData from "../hooks/useFetchData";
 import styled from "styled-components";
 import Card from "./Card";
 
@@ -20,17 +20,17 @@ const CardContainer = styled.div`
 `;
 
 const Cards = () => {
-  const folderData = useFetchData(
-    "https://bootcamp-api.codeit.kr/api/sample/folder"
-  );
+  const folderData = useFetchData(`${import.meta.env.VITE_BASE_URL}/folder`);
 
-  return folderData ? (
+  if (!folderData) return null;
+
+  return (
     <CardContainer>
       {folderData.folder.links.map((link) => (
         <Card key={link.id} link={link} />
       ))}
     </CardContainer>
-  ) : null;
+  );
 };
 
 export default Cards;

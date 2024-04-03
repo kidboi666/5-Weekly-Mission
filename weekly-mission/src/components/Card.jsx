@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import noImage from "../../image/noimage.svg";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const CardContainer = styled.div`
   width: 340px;
@@ -124,6 +125,16 @@ const Card = ({ link }) => {
       </CardText>
     </CardContainer>
   );
+};
+
+Card.propTypes = {
+  link: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    imageSource: PropTypes.string,
+    title: PropTypes.string,
+    createdAt: PropTypes.string.isRequired,
+    description: PropTypes.string,
+  }).isRequired,
 };
 
 export default Card;

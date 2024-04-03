@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import Nav from "../components/Nav";
 import Header from "../components/Header";
-import Main from "../components/Main";
+import SearchAndCards from "../components/SearchAndCards";
 import Footer from "../components/Footer";
 
 const GlobalStyle = createGlobalStyle`
@@ -23,7 +23,7 @@ function LinkShare() {
       <GlobalStyle />
       <Nav />
       <Header />
-      <Main />
+      <SearchAndCards />
       <Footer />
     </>
   );
