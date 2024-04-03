@@ -5,9 +5,9 @@ function CardList({ cardListData }) {
     return (
         <ul className="card-list">
             {cardListData.map(({ createdAt, description, id, title, url, imageSource }) => {
-                const data = { createdAt, description, id, title, url, imageSource };
+                const card = { createdAt, description, id, title, url, imageSource };
 
-                return <Card data={data} key={id} />;
+                return <Card card={card} key={id} />;
             })}
         </ul>
     );

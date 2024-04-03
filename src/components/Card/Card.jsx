@@ -3,8 +3,8 @@ import "./Card.css";
 import GetDate from "../../utils/GetDate";
 import GetDaysAgo from "../../utils/GetDaysAgo";
 
-function Card({ data }) {
-    const { createdAt, description, id, title, url, imageSource } = data;
+function Card({ card }) {
+    const { createdAt, description, id, title, url, imageSource } = card;
 
     return (
         <li key={id}>
