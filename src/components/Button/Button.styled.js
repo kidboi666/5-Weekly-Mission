@@ -1,4 +1,6 @@
-.btn {
+import styled from "styled-components";
+
+export const StyledButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,11 +14,8 @@
   color: var(--white-color);
   font-weight: 600;
   font-size: 1.125rem;
-}
-
-@media (max-width: 767px) {
-  .btn {
+  @media (max-width: 767px) {
     padding: 10px 0;
     font-size: 0.875rem;
   }
-}
+`;
