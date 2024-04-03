@@ -9,6 +9,7 @@ export async function getUser() {
 }
 
 // 로그인
+// 수정필요
 export const signinRequest = async (email, password) => {
   try {
     const response = await fetch(`${URL}/sign-in`, {
