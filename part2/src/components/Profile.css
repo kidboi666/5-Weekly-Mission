@@ -1,0 +1,11 @@
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.profile img {
+  width: 28px;
+  height: 28px;
+  border-radius: 45px;
+}

@@ -1,0 +1,18 @@
+.mainContent-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  padding: 40px 0;
+}
+
+.mainContent {
+  width: 1060px;
+}
+
+/* Tablet & MOBILE */
+@media screen and (max-width: 1199px) {
+  .mainContent-wrapper {
+    padding: 40px 32px;
+  }
+}

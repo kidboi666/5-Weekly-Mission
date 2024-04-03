@@ -1,0 +1,46 @@
+footer {
+  background-color: var(--white);
+  padding-top: 120px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  color: #676767;
+  background-color: var(--jungle-black);
+  padding: 32px 104px 64px 104px;
+  height: 160px;
+}
+
+.privacy {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.privacy button {
+  color: #cfcfcf;
+  background-color: transparent;
+  border: none;
+}
+
+.sns {
+  display: flex;
+  gap: 12px;
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .info {
+    display: grid;
+    grid-template: 1fr / 1fr 1fr;
+    padding: 32px 32px 64px;
+    gap: 60px;
+  }
+  .info .license {
+    grid-area: 2/ 1;
+  }
+  .sns {
+    justify-content: flex-end;
+  }
+}
