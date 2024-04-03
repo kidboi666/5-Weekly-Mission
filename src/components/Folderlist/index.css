@@ -1,0 +1,16 @@
+@import "../../global.css";
+
+* {
+  font-size: 1.6rem;
+}
+
+.folderButtons {
+  padding: 0.8rem 1.2rem;
+  border: 1px solid var(--primary);
+  border-radius: 5px;
+}
+
+.active {
+  background: var(--primary);
+  color: var(--white);
+}
