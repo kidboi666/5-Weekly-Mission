@@ -35,3 +35,9 @@
   align-items: center;
   gap: 40px;
 }
+
+.no-saved-link {
+  width: 100%;
+  text-align: center;
+  padding: 40px;
+}

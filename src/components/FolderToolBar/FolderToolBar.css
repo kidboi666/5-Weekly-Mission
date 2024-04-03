@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  width: 1060px;
 
   .folder-tool-buttons {
     display: flex;
@@ -40,9 +41,17 @@
       gap: 12px;
     }
   }
+
+  @media (max-width: 1124px) {
+    width: 706px;
+  }
+
+  @media (max-width: 767px) {
+    width: 325px;
+  }
 }
 
-.folder-tool-button {
+.folder-name-button {
   background-color: #fff;
   border: 1px solid #6d6afe;
   padding: 8px 12px;
