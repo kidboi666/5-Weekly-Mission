@@ -1,5 +1,15 @@
 import React from "react";
+import { StyledSectionWrap } from "../Common.styled";
+import LinkInput from "../../components/LinkInput/LinkInput";
+import * as S from "./FolderPage.styled";
 
 export default function FolderPage() {
-  return <div>folder</div>;
+  return (
+    <>
+      <S.StyledTopWrap>
+        <LinkInput />
+      </S.StyledTopWrap>
+      <StyledSectionWrap></StyledSectionWrap>
+    </>
+  );
 }

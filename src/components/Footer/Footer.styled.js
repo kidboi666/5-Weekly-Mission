@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledFooter = styled.footer`
   padding: 32px 104px 108px;
   background-color: var(--black-color);
-  font-family: "Acme", sans-serif;
+  font-family: "Arial", sans-serif;
   font-size: 1rem;
 
   @media (max-width: 767px) {

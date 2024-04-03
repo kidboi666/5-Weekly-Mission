@@ -5,7 +5,7 @@ import { StyledButton } from "./Button.styled";
 export default function Button({ text, className = "", link }) {
   return (
     <StyledButton className={className}>
-      {link ? <Link to={link}>{text}</Link> : { text }}
+      {link ? <Link to={link}>{text}</Link> : <span>{text}</span>}
     </StyledButton>
   );
 }
