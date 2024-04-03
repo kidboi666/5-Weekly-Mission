@@ -9,7 +9,7 @@ export const fetchData = async () => {
         const data = await response.json();
         const { folder } = data;
         const { links } = folder;
-        return { folderData: folder, cardData: links };
+        return { folderData: folder, cardListData: links };
     } catch (e) {
         alert(e.message);
     }

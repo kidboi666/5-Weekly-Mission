@@ -6,14 +6,14 @@ import { fetchData } from "../fetchUtils";
 
 function Shared() {
     const [folderData, setFolderData] = useState([]);
-    const [cardData, setCardData] = useState([]);
+    const [cardListData, setCardListData] = useState([]);
 
     useEffect(() => {
         async function fetchDataAndSetState() {
-            const { cardData, folderData } = await fetchData();
+            const { cardListData, folderData } = await fetchData();
 
             setFolderData(folderData);
-            setCardData(cardData);
+            setCardListData(cardListData);
         }
         fetchDataAndSetState();
     }, []);
@@ -23,7 +23,7 @@ function Shared() {
             <ConHeader folderData={folderData} />
             <div className="wrap">
                 <Search />
-                <CardList cardData={cardData} />
+                <CardList cardListData={cardListData} />
             </div>
         </div>
     );
