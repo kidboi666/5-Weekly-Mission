@@ -123,3 +123,5 @@ fetch('https://bootcamp-api.codeit.kr/api/users/1/folders')
   .then((result) => {
     console.log(result);
   });
+
+export { folders, links };

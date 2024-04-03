@@ -1,12 +1,8 @@
 button {
   background-color: transparent;
-  border-radius: 5px;
-  font-size: 1em;
-  font-weight: 600;
   &:hover,
   &:focus {
     cursor: pointer;
-    filter: brightness(1.1);
   }
 }
 
