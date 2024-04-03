@@ -1,0 +1,31 @@
+@import "../../global.css";
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0 6rems;
+  width: 100%;
+  height: 24.4rem;
+  background-color: var(--background);
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profileImage {
+  height: 6rem;
+  width: 6rem;
+}
+
+.userName {
+  font-size: 1.6rem;
+}
+
+.folderName {
+  font-size: 4rem;
+  font-weight: 60rem;
+  margin-top: 2rem;
+}
