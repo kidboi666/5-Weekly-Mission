@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import logoImg from "../../assets/logo.svg";
 import { UserContext } from "../../contexts/UserContext";
-import ProfileImage from "../ProfileImage/ProfileImage";
+import Profile from "../Profile/Profile";
 import { Link } from "react-router-dom";
 import * as S from "./Header.styled";
 
@@ -17,10 +17,7 @@ export default function Header() {
         </S.StyledLogo>
         {!user && <S.StyledButton link='/signin.html' text='로그인' />}
         {user && (
-          <S.StyledProfileWrap>
-            <ProfileImage src={user.profileImageSource} size='s' />
-            <S.StyledProfileText>{user.email}</S.StyledProfileText>
-          </S.StyledProfileWrap>
+          <Profile user={user.email} src={user.profileImageSource} $size='s' />
         )}
       </S.StyledInner>
     </S.StyledHeader>

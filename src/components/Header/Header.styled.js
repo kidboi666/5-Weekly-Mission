@@ -40,18 +40,3 @@ export const StyledButton = styled(Button)`
     width: 80px;
   }
 `;
-
-export const StyledProfileWrap = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 6px;
-`;
-
-export const StyledProfileText = styled.p`
-  font-size: 14px;
-  color: #373740;
-
-  @media (max-width: 767px) {
-    display: none;
-  }
-`;

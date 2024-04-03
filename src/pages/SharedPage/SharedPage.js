@@ -2,11 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import Search from "../../components/Search/Search";
 import Card from "../../components/Card/Card";
 import { getSharedList } from "../../api";
-import "./SharedPage.css";
 import { UserContext } from "../../contexts/UserContext";
 import { StyledSectionWrap, StyledTopWrap } from "../Common.styled";
 import * as S from "./SharedPage.styled";
-import ProfileImage from "../../components/ProfileImage/ProfileImage";
+import ProfileImage from "../../components/Profile/Profile";
 
 export default function SharedPage() {
   const [folder, setFolder] = useState();
@@ -24,11 +23,13 @@ export default function SharedPage() {
   return (
     <>
       <StyledTopWrap>
-        <div className='shared__profile-wrap'>
-          <ProfileImage src={user?.profileImageSource} size='m' />
-          <p className='shared__profile-text'>{user?.name}</p>
-        </div>
-        <S.StyledTitle>{folder?.name} </S.StyledTitle>
+        <ProfileImage
+          src={user?.profileImageSource}
+          $size='m'
+          user={user?.name}
+          $flextype='column'
+        />
+        <S.StyledTitle>{folder?.name}</S.StyledTitle>
       </StyledTopWrap>
       <StyledSectionWrap>
         <Search />
