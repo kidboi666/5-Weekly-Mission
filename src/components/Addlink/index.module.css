@@ -2,16 +2,15 @@
 
 .addLinkBar {
   position: relative;
-  width: 100%;
   margin: 0 auto;
   width: 80rem;
   display: flex;
   align-items: center;
+  background-color: var(--light-blue);
 }
 
 .addLinkInput {
   width: 100%;
-  height: 5.4rem;
   padding: 2rem 3.8rem 2rem 5.2rem;
   border-radius: 1rem;
   border: 1px solid var(--primary);
@@ -43,7 +42,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 3.7rem;
+
   cursor: pointer;
   padding: 1rem 1.55rem;
   background-image: linear-gradient(135deg, var(--primary) 0%, #6ae3fe 100%);

@@ -38,6 +38,14 @@
   padding: 1.5rem 2rem;
 }
 
+.noLinkText {
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: span 3;
+}
+
 .card img {
   width: 34rem;
   height: 20rem;

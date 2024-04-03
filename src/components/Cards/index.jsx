@@ -2,6 +2,7 @@ import { useFetch } from "../../utils/hooks/useFetch";
 import { formatDate, generateTimeText } from "../../utils/hooks/date";
 import thumbnail from "../../assets/thumbnail.svg";
 import styles from "./index.module.css";
+
 const BASE_URL_FOLDER = "https://bootcamp-api.codeit.kr/api/sample/folder";
 
 function Cards() {
@@ -9,7 +10,7 @@ function Cards() {
 
   return (
     <div className={styles.card_grid_container}>
-      {CardData &&
+      {CardData ? (
         CardData.folder.links.map((link) => (
           <a href={link.url}>
             <div key={link.id} className={styles.card}>
@@ -43,7 +44,10 @@ function Cards() {
               </div>
             </div>
           </a>
-        ))}
+        ))
+      ) : (
+        <div className={styles.noLinkText}>저장된 링크가 없습니다</div>
+      )}
     </div>
   );
 }

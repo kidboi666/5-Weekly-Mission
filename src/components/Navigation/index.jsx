@@ -2,7 +2,7 @@ import logoImg from "../../assets/logo.svg";
 import styles from "./index.module.css";
 import { useFetch } from "../../utils/hooks/useFetch";
 
-const BASE_URL_USER = "https://bootcamp-api.codeit.kr/api/sample/user";
+const BASE_URL_USER = "https://bootcamp-api.codeit.kr/api/users/1";
 
 function Navigation() {
   const Userprofile = useFetch(BASE_URL_USER);
@@ -10,7 +10,7 @@ function Navigation() {
   return (
     <div className={styles.Navigation}>
       <div className={styles.Container}>
-        <a href="/">
+        <a href="/shared">
           <img
             className={styles.NavigationLogo}
             src={logoImg}
@@ -20,11 +20,13 @@ function Navigation() {
         {Userprofile ? (
           <div className={styles.userProfile}>
             <img
-              src={Userprofile.profileImageSource}
+              src={Userprofile.data[0].image_source}
               alt="유저 프로필사진"
               className={styles.userProfileImg}
             />
-            <span className={styles.userProfileId}>{Userprofile.email}</span>
+            <span className={styles.userProfileId}>
+              {Userprofile.data[0].email}
+            </span>
           </div>
         ) : (
           <button className={`${styles.signButton} ${styles.signButtonShort}`}>
