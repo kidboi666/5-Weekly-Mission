@@ -1,35 +1,28 @@
 import React, { useContext } from "react";
-import "./Header.css";
-import Button from "../Button/Button";
 import logoImg from "../../assets/logo.svg";
 import { UserContext } from "../../contexts/UserContext";
 import ProfileImage from "../ProfileImage/ProfileImage";
 import { Link } from "react-router-dom";
+import * as S from "./Header.styled";
 
 export default function Header() {
   const { user } = useContext(UserContext);
   return (
-    <header className='header'>
-      <div className='header__inner'>
-        <h1>
-          <Link to='/' className='header__link-home'>
-            <img className='header__logo' src={logoImg} alt='linkbrary logo' />
+    <S.StyledHeader>
+      <S.StyledInner>
+        <S.StyledLogo>
+          <Link to='/'>
+            <img src={logoImg} alt='linkbrary logo' />
           </Link>
-        </h1>
-        {!user && (
-          <Button
-            className='header__login-button'
-            link='/signin.html'
-            text='로그인'
-          />
-        )}
+        </S.StyledLogo>
+        {!user && <S.StyledButton link='/signin.html' text='로그인' />}
         {user && (
-          <div className='header__profile'>
+          <S.StyledProfileWrap>
             <ProfileImage src={user.profileImageSource} size='28' />
-            <p className='header__profile-text'>{user.email}</p>
-          </div>
+            <S.StyledProfileText>{user.email}</S.StyledProfileText>
+          </S.StyledProfileWrap>
         )}
-      </div>
-    </header>
+      </S.StyledInner>
+    </S.StyledHeader>
   );
 }
