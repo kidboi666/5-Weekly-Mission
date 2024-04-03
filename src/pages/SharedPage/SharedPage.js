@@ -23,7 +23,7 @@ export default function SharedPage() {
     <div className='shared-page'>
       <div className='shared__top-wrap'>
         <div className='shared__profile-wrap'>
-          <ProfileImage src={user?.profileImageSource} size='60' />
+          <ProfileImage src={user?.profileImageSource} size='m' />
           <p className='shared__profile-text'>{user?.name}</p>
         </div>
         <h2 className='shared__title'>{folder?.name} </h2>

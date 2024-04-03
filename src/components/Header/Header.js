@@ -18,7 +18,7 @@ export default function Header() {
         {!user && <S.StyledButton link='/signin.html' text='로그인' />}
         {user && (
           <S.StyledProfileWrap>
-            <ProfileImage src={user.profileImageSource} size='28' />
+            <ProfileImage src={user.profileImageSource} size='s' />
             <S.StyledProfileText>{user.email}</S.StyledProfileText>
           </S.StyledProfileWrap>
         )}
