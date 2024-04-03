@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { getFolderInfo } from '../../utils/api';
-import FolderInfo from '../FolderInfo/FolderInfo';
-import LinkCardList from '../LinkCardList/LinkCardList';
-import './Folder.css';
-import { SEARCH_INPUT_ID } from '../SearchBar/SearchBar';
+import FolderInfo from '../../components/FolderInfo/FolderInfo';
+import LinkCardList from '../../components/LinkCardList/LinkCardList';
+import './SharedPage.css';
+import { SEARCH_INPUT_ID } from '../../components/SearchBar/SearchBar';
 
 const STYLE_FOLDER_CONTAINER_CLASS_NAME = 'folder-container';
 
-export default function Folder() {
+export default function SharedPage() {
   const [ownerInfo, setOwnerInfo] = useState({});
   const [folderName, setFolderName] = useState('');
   const [items, setItems] = useState([]);
