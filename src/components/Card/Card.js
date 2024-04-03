@@ -1,7 +1,7 @@
 import React from "react";
 import "./Card.css";
-import noImage from "../assets/no-image.png";
-import { formatDateToString, formatDateToAgo } from "../utils/date";
+import noImage from "../../assets/no-image.png";
+import { formatDateToString, formatDateToAgo } from "../../utils/date";
 import { Link } from "react-router-dom";
 
 export default function Card({ item }) {

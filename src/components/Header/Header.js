@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import "./Header.css";
-import Button from "./Button";
-import logoImg from "../assets/logo.svg";
-import { UserContext } from "../contexts/UserContext";
-import ProfileImage from "./ProfileImage";
+import Button from "../Button/Button";
+import logoImg from "../../assets/logo.svg";
+import { UserContext } from "../../contexts/UserContext";
+import ProfileImage from "../ProfileImage/ProfileImage";
 import { Link } from "react-router-dom";
 
 export default function Header() {

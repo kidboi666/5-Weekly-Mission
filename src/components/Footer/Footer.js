@@ -1,6 +1,6 @@
 import React from "react";
 import "./Footer.css";
-import FooterSnsItem from "./FooterSnsItem";
+import FooterSnsItem from "../FooterSnsItem/FooterSnsItem";
 import { Link } from "react-router-dom";
 
 const snsList = [
