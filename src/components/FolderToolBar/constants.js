@@ -1,18 +1,6 @@
 import shareIcon from '../../assets/images/share_icon.svg';
 import penIcon from '../../assets/images/pen_icon.svg';
 import deleteIcon from '../../assets/images/delete_icon.svg';
-
-const STYLE_FOLDER_TOOL_BAR_CONTAINER = 'folder-tool-bar-container';
-const STYLE_FOLDER_TOOL_BUTTONS = 'folder-tool-buttons';
-const STYLE_FOLDER_NAME_BUTTONS = 'folder-name-buttons';
-const STYLE_FOLDER_ADD_BUTTON = 'folder-add-button';
-const STYLE_FOLDER_NAME_DISPLAY = 'folder-name-display';
-const STYLE_FOLDER_NAME_BAR = 'folder-name-bar';
-const STYLE_UTIL_BUTTONS = 'util-buttons';
-const STYLE_UTIL_BUTTON = 'util-button';
-const STYLE_ADD_ICON = 'add-icon';
-const STYLE_ADD_ICON_WHITE = 'add-icon-white';
-
 const UTIL_BUTTONS_PROPS = [
   {
     imgSrc: shareIcon,
@@ -35,16 +23,6 @@ const UTIL_BUTTONS_PROPS = [
   },
 ];
 
-export {
-  STYLE_FOLDER_TOOL_BAR_CONTAINER,
-  STYLE_FOLDER_TOOL_BUTTONS,
-  STYLE_FOLDER_NAME_BUTTONS,
-  STYLE_FOLDER_ADD_BUTTON,
-  STYLE_FOLDER_NAME_DISPLAY,
-  STYLE_FOLDER_NAME_BAR,
-  STYLE_UTIL_BUTTONS,
-  STYLE_UTIL_BUTTON,
-  UTIL_BUTTONS_PROPS,
-  STYLE_ADD_ICON,
-  STYLE_ADD_ICON_WHITE,
-};
+const KEBAB_BUTTON = 'kebab-button';
+
+export { UTIL_BUTTONS_PROPS };
