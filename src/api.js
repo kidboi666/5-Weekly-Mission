@@ -21,7 +21,7 @@ export async function getUser() {
   return body;
 }
 
-export async function getFoldersList() {
+export async function getFoldersMenu() {
   const response = await fetch(
     "https://bootcamp-api.codeit.kr/api/users/1/folders"
   );
@@ -29,7 +29,8 @@ export async function getFoldersList() {
     throw new Error("사용자 데이터를 불러오는데 실패했습니다.");
   }
   const body = await response.json();
-  return body;
+  const menuArray = body.data.map((item) => item.name);
+  return menuArray;
 }
 
 export async function getFoldersItems() {
