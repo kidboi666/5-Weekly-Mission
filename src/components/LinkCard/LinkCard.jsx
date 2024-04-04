@@ -1,5 +1,7 @@
 import './LinkCard.css';
 import noImagePlaceholder from '../../assets/images/placeholder_image.png';
+import starIcon from '../../assets/images/star.svg';
+import purpleStarIcon from '../../assets/images/purplestar.svg';
 import kebab from '../../assets/images/kebab.svg';
 import {
   STYLE_LINK_CARD_CLASS_NAME,
@@ -20,6 +22,7 @@ import { useState } from 'react';
 
 export default function LinkCard({ linkCardInfo }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
   const thumbnailURL = linkCardInfo.imageSource
     ? linkCardInfo.imageSource
     : noImagePlaceholder;
@@ -33,6 +36,11 @@ export default function LinkCard({ linkCardInfo }) {
     event.preventDefault();
   };
 
+  const handleStarClick = (event) => {
+    event.preventDefault();
+    setIsFavorite(!isFavorite);
+  };
+
   return (
     <a
       className={STYLE_LINK_CARD_CLASS_NAME}
@@ -41,6 +49,17 @@ export default function LinkCard({ linkCardInfo }) {
       rel="noreferrer noopener"
     >
       <div className={STYLE_THUMBNAIL_CONTAINER_CLASS_NAME}>
+        <button onClick={handleStarClick} className="star-button">
+          {isFavorite ? (
+            <img
+              src={purpleStarIcon}
+              alt="favorite"
+              className="purple-star-icon"
+            />
+          ) : (
+            <img src={starIcon} alt="favorite" className="star-icon" />
+          )}
+        </button>
         <img
           className={STYLE_THUMBNAIL_CLASS_NAME}
           src={thumbnailURL}
