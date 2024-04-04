@@ -30,17 +30,11 @@
     padding: 15px 20px;
     gap: 10px;
 
-    .link-card-title-bar {
+    .link-card-timestamp-bar {
       display: flex;
       justify-content: space-between;
       font-size: 13px;
-
-      .link-card-title {
-        display: inline-block;
-        max-width: 50%;
-        height: 16px;
-        overflow: hidden;
-      }
+      position: relative;
     }
 
     .link-card-description {
