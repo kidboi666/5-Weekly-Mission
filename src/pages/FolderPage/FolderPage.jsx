@@ -39,7 +39,11 @@ export default function FolderPage() {
     try {
       result = await getUserLinks(id);
     } catch (error) {}
-    setLinks(result);
+    let links = [];
+    for (const link of result) {
+      links.push(convertObjectKeysToCamelCase(link));
+    }
+    setLinks(links);
   };
 
   useEffect(() => {
