@@ -2,7 +2,6 @@ const BASE_URL = 'https://bootcamp-api.codeit.kr/api/sample';
 const USER_BASE_URL = 'https://bootcamp-api.codeit.kr/api/users/1';
 
 const FOLDER_PATH = '/folder';
-const USER_PATH = '/user';
 const USER_FOLDERS_PATH = '/folders';
 const LINK_PATH = '/links';
 const LINK_FOLDER_SEARCH_OPTION = '?folderId=';
@@ -22,13 +21,13 @@ export async function getFolderInfo() {
 }
 
 export async function getUserInfo() {
-  const query = `${BASE_URL}${USER_PATH}`;
+  const query = `${USER_BASE_URL}`;
   const response = await fetch(query);
   if (!response.ok) {
     throw new Error(USER_LOADING_ERROR_MESSAGE);
   }
   const result = await response.json();
-  return result;
+  return result.data[0];
 }
 
 export async function getUserFolders() {
@@ -50,6 +49,6 @@ export async function getUserLinks(id) {
     throw new Error();
   }
   const result = await response.json();
-  console.log(result);
+
   return result.data;
 }

@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { getUserInfo } from '../../utils/api';
 import Account from '../Account/Account';
 import Button from '../Button/Button';
+import { convertObjectKeysToCamelCase } from '../../utils/convertObjectKeysToCamelCase';
 
 const STYLE_MAIN_HEADER_CLASS_NAME = 'main-header';
 const STYLE_LOGO_IMG_CLASS_NAME = 'logo-img';
@@ -19,7 +20,8 @@ export default function Header() {
     try {
       result = await getUserInfo();
     } catch (error) {}
-    setUserInfo(result);
+    const convertedResult = convertObjectKeysToCamelCase(result);
+    setUserInfo(convertedResult);
   }, []);
 
   useEffect(() => {
@@ -40,7 +42,7 @@ export default function Header() {
       </h1>
       {userInfo ? (
         <Account
-          profileImgSource={userInfo.profileImageSource}
+          profileImgSource={userInfo.imageSource}
           userEmail={userInfo.email}
         />
       ) : (
