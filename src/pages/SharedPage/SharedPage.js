@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import Search from "../../components/Search/Search";
-import Card from "../../components/Card/Card";
 import { getSharedList } from "../../api";
 import { UserContext } from "../../contexts/UserContext";
 import { StyledSectionWrap, StyledTopWrap } from "../Common.styled";
 import * as S from "./SharedPage.styled";
 import ProfileImage from "../../components/Profile/Profile";
+import CardList from "../../components/CardList.js/CardList";
 
 export default function SharedPage() {
   const [folder, setFolder] = useState();
@@ -33,11 +33,7 @@ export default function SharedPage() {
       </StyledTopWrap>
       <StyledSectionWrap>
         <Search />
-        <S.StyledList>
-          {folder?.links.map((item) => (
-            <Card key={item.id} item={item} />
-          ))}
-        </S.StyledList>
+        {folder && <CardList items={folder.links} />}
       </StyledSectionWrap>
     </>
   );
