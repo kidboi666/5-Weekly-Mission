@@ -7,7 +7,7 @@ import {
   HeaderLogo,
   HeaderUserInfo,
 } from "./headerStyle";
-import { IHeaderUserLoginInfo, headerUserLoginInfo } from "../../constant/api";
+import { IHeaderUserLoginInfo, headerUserLoginInfo } from "../../api/api";
 import { Profile } from "../../styles/commonStyle";
 import { useEffect, useState } from "react";
 import Button from "./atoms/Button";

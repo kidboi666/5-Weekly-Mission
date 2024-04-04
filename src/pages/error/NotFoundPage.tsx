@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { NotFoundWrap } from "./notFoundStyle";
 import { TitleMs } from "../../styles/commonStyle";
+import { NotFoundWrap } from "./notFoundStyle";
 
 export default function NotFoundPage() {
   return (

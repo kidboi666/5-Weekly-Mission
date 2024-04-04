@@ -8,7 +8,7 @@ import {
   PostCardWrap,
   BoxLinkSearch,
 } from "./folderStyle";
-import { IFolderListApi, folderListApi } from "../../constant/api";
+import { IFolderListApi, folderListApi } from "../../api/api";
 import { TitleMs } from "../../styles/commonStyle";
 import Input from "../../components/common/atoms/Input";
 const logo = "/assets/logo/logo_codeit.svg";

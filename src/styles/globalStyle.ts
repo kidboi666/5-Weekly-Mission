@@ -69,6 +69,7 @@ export const GlobalStyle = createGlobalStyle<ExecutionProps & object>`
 	button {
 		background-color: transparent;
 		border: 0;
+		cursor: pointer;
 	}
 	input {
 		border: 0;

@@ -12,7 +12,7 @@ import {
   PostCardWrap,
   LinkAddHeadInner,
 } from "./folderStyle";
-import { IFolderListApi, folderListApi } from "../../constant/api";
+import { IFolderListApi, folderListApi } from "../../api/api";
 import Button from "../../components/common/atoms/Button";
 import Input from "../../components/common/atoms/Input";
 import { relative } from "path";

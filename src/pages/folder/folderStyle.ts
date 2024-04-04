@@ -26,6 +26,7 @@ export const LinkAddHeadInner = styled.div`
     top: 16px;
   }
   @media screen and (max-width: ${theme.screenSize.moLarge}) {
+    margin: 20px auto 40px;
     .button__gradient {
       right: 42px;
       top: 8px;
@@ -56,6 +57,7 @@ export const EmptyBox = styled.div`
 export const FolderBtnBox = css`
   ${dflexBtw}
   padding-bottom: 24px;
+  gap: 0 32px;
 `
 export const BookmarkBox = styled.div`
   ${FolderBtnBox}
@@ -63,12 +65,42 @@ export const BookmarkBox = styled.div`
     color: ${theme.color.primary};
     font-weight: 500;
   }
+  @media screen and (max-width: ${theme.screenSize.moLarge}) {
+    padding-bottom: 28px;
+    .button__icon-after {
+      position: fixed;
+      bottom:101px;
+      left: 50%;
+      padding-right: 16px;
+      width: 127px;
+      line-height: 33px;
+      color: ${theme.color.white};
+      border: 1px solid ${theme.color.white};
+      border-radius: 50em;
+      background-color: ${theme.color.primary};
+      background-image: url('/assets/icon/icon_white_add.svg');
+      background-position: right 22px center;
+      transform: translateX(-50%);
+      z-index: 5;
+    }
+  }
 `
 export const ShareBox = styled.div`
   ${FolderBtnBox}
+  @media screen and (max-width: ${theme.screenSize.moLarge}) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-bottom: 20px;
+    h3 {
+      padding-bottom: 12px;
+    }
+  }
 `
 export const BookMarkBtnList = styled(DFlaxAlignCenter)`
-  gap:0 8px;
+  flex: 1;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  gap:8px;
 `
 export const ShareListBtn = styled(DFlaxAlignCenter)`
   gap:0 12px;
@@ -81,4 +113,7 @@ export const ShareListBtn = styled(DFlaxAlignCenter)`
 `
 export const BoxLinkSearch = styled.div`
   margin-bottom: 40px;
+  @media screen and (max-width: ${theme.screenSize.moLarge}) {
+    margin-bottom:32px;
+  }
 `

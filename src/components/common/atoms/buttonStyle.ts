@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { theme } from "../../../styles/theme";
 
 export const ButtonModule = styled.button<{$afterButtonIcon:string, $BeforButtonIcon:string}>`
-  cursor: pointer;
   &.button {
     &__outlined {
       padding: 0 12px;
@@ -14,6 +13,11 @@ export const ButtonModule = styled.button<{$afterButtonIcon:string, $BeforButton
       &:hover {
         color: ${theme.color.white};
         background-color: ${theme.color.primary};
+      }
+      @media screen and (max-width: ${theme.screenSize.moLarge}) {
+        padding: 0 10px;
+        font-size: 14px;
+        line-height: 27px;
       }
     }
     &__icon-before {
