@@ -14,13 +14,20 @@ const NavigationBlock = styled.div`
   div {
     display: flex;
     justify-content: space-between;
-    padding: 1.25rem 16rem;
+    padding: 1.5rem 16rem;
+
+    @media screen and (max-width: 1124px) {
+      padding: 1.5rem 2.03125rem 1.5rem 2.03125rem;
+    }
+
+    @media screen and (max-width: 545px) {
+      padding: 1.125rem 2rem 1.0625rem 2rem;
+    }
   }
 `;
 
 const Button = styled.button`
   display: flex;
-  width: 7rem;
   padding: 0.8rem 1.05rem;
   justify-content: center;
   align-items: center;
@@ -62,7 +69,7 @@ function Navigation({ user }) {
   return (
     <NavigationBlock>
       <div>
-        <Link to="/" style={{ display: "flex" }}>
+        <Link to="Linkbrary" style={{ display: "flex" }}>
           <img src={logoImg} alt="로고 이미지 Linkbrary" />
         </Link>
         <>{Login(user)}</>

@@ -6,11 +6,14 @@ const SearchBlock = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  width: 61rem;
-  margin: 2.5rem auto 0;
+  margin: 2.5rem 15rem 0;
   padding: 0.9375rem 1rem;
   border-radius: 0.625rem;
   background: #f5f5f5;
+
+  @media screen and (max-width: 1124px) {
+    margin: 2.5rem 2rem 0;
+  }
 
   div {
     display: flex;
@@ -18,8 +21,7 @@ const SearchBlock = styled.div`
   }
 
   input {
-    width: 58rem;
-    margin: 0;
+    width: 100%;
     color: #666;
     background: #f5f5f5;
     text-align: right;
@@ -30,6 +32,14 @@ const SearchBlock = styled.div`
     line-height: 1.5rem;
     text-align: left;
     border: none;
+
+    // @media screen and (max-width: 1124px) {
+    //   padding: 1.5rem 2.03125rem 1.5rem 2.03125rem;
+    // }
+
+    // @media screen and (max-width: 545px) {
+    //   width: 354px;
+    // }
   }
 
   input:focus {

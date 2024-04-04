@@ -8,13 +8,17 @@ import instagramIcon from "../assets/instagramIcon.svg";
 
 const FooterBlock = styled.div`
   display: flex;
+  position: relative;
   justify-content: space-between;
   align-items: center;
-
   background: #111322;
   color: #ffffff;
   margin-top: 6.25rem;
   padding: 2rem 6.5rem 4rem 6.5rem;
+
+  @media screen and (max-width: 545px) {
+    padding: 2rem 2rem 4rem 2rem;
+  }
 
   div {
     display: flex;
@@ -32,6 +36,13 @@ const ImageBlock = styled.span`
   gap: 0.75rem;
 `;
 
+const LinkBlock = styled.div`
+  @media screen and (max-width: 545px) {
+    position: absolute;
+    top: 90px;
+  }
+`;
+
 const linkStyle = { textDecoration: "none", color: "#676767" };
 const facebook = "https://www.facebook.com/";
 const twitter = "https://twitter.com/?lang=ko";
@@ -42,14 +53,14 @@ function Footer() {
   return (
     <FooterBlock>
       <p>©codeit - 2023</p>
-      <div>
+      <LinkBlock>
         <Link to="PrivacyPolicy" style={linkStyle}>
           <span>Privacy Policy</span>
         </Link>
         <Link to="FAQ" style={linkStyle}>
           <span>FAQ</span>
         </Link>
-      </div>
+      </LinkBlock>
       <p>
         <ImageBlock>
           <Link to={facebook} target="_blank">

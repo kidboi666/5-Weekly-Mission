@@ -3,31 +3,41 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import noImage from "../assets/noImage.svg";
 
-const Img = styled.img`
-  width: 20rem;
-  height: 12.5rem;
-  // 크기가 안 맞는 이미지를 위해 cover 추가
-  object-fit: cover;
-  border-top-left-radius: 14px;
-  border-top-right-radius: 14px;
+const ImgBlock = styled.div`
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+
+  img {
+    width: 20rem;
+    height: 12.5rem;
+    // 크기가 안 맞는 이미지를 위해 cover 추가
+    object-fit: cover;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+
+    transition: all 0.2s linear;
+
+    &:hover {
+      transform: scale(1.4);
+    }
+  }
 `;
 
-const TestBlock = styled.div`
+const ContentBlock = styled.div`
   width: 20rem;
+  border: 2px solid transparent;
   border-radius: 15px;
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
+
+  overflow: hidden;
 
   &:hover {
     border: 2px solid #6d6afe;
   }
 
-  div {
-    padding: 1.25rem;
-  }
-
   p {
     margin: 0;
-
     // 긴 내용 생략
     overflow: hidden;
     text-overflow: ellipsis;
@@ -37,7 +47,6 @@ const TestBlock = styled.div`
 `;
 
 const CardsBlock = styled.div`
-  width: 66.25rem;
   margin: 2.5rem auto;
 
   ul {
@@ -46,8 +55,16 @@ const CardsBlock = styled.div`
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 0;
-    padding: 0;
+    padding: 0 6rem;
+
+    @media screen and (max-width: 1124px) {
+      padding: 0 2rem;
+    }
   }
+`;
+
+const TextBlock = styled.div`
+  padding: 1.25rem;
 `;
 
 const linkStyle = { textDecoration: "none", color: "#000000" };
@@ -66,26 +83,27 @@ function ReviewListItem({ item }) {
   // const timeData = item.createdAt;
 
   return (
-    <TestBlock>
+    <ContentBlock>
       <Link to={item.url} target="_blank" style={linkStyle}>
-        <Img src={addImage(item.imageSource)} alt={item.title} />
-
-        <div>
+        <ImgBlock>
+          <img src={addImage(item.imageSource)} alt={item.title} />
+        </ImgBlock>
+        <TextBlock>
           {/* <p>test: {TestTime(item.createdAt)}</p> */}
           {/* <p>createdAt: {item.createdAt}</p> */}
           <p>{item.title}</p>
           <p>{item.description}</p>
           <p>{formatDate(item.createdAt)}</p>
-        </div>
+        </TextBlock>
       </Link>
-    </TestBlock>
+    </ContentBlock>
   );
 }
 
 function Cards({ items }) {
-  if (!items) {
-    return <TestBlock>테스트</TestBlock>;
-  }
+  // if (!items) {
+  //   return <ContentBlock>테스트</ContentBlock>;
+  // }
 
   // key 추가하기
   return (

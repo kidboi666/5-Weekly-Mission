@@ -5,7 +5,7 @@ const MainProfileBlock = styled.div`
   background: #f0f6ff;
 
   div {
-    padding: 8rem 39rem 3.75rem 39rem;
+    padding: 100px;
     text-align: center;
   }
 
@@ -56,16 +56,14 @@ function MainProfile({ profile }) {
   const folderName = profile.name;
 
   return (
-    <>
-      <MainProfileBlock>
-        <div>
-          <img src={folderUserImage} alt="profile" />
-          <p>{test(folderUserName)}</p>
-          {/* <p>{folderUserName}</p> */}
-          <h2>{folderName}</h2>
-        </div>
-      </MainProfileBlock>
-    </>
+    <MainProfileBlock>
+      <div>
+        <img src={folderUserImage} alt="profile" />
+        <p>{test(folderUserName)}</p>
+        {/* <p>{folderUserName}</p> */}
+        <h2>{folderName}</h2>
+      </div>
+    </MainProfileBlock>
   );
 }
 

@@ -22,6 +22,10 @@ const UserBlock = styled.span`
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+
+    @media screen and (max-width: 545px) {
+      display: none;
+    }
   }
 `;
 
