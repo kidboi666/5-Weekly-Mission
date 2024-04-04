@@ -3,6 +3,7 @@ import LinkCardList from '../../components/LinkCardList/LinkCardList';
 import { getUserFolders, getUserLinks } from '../../utils/api';
 import { useEffect, useState, useCallback } from 'react';
 import './FolderPage.css';
+import { convertObjectKeysToCamelCase } from '../../utils/convertObjectKeysToCamelCase';
 
 const allFolder = {
   'id': 0,
@@ -24,7 +25,11 @@ export default function FolderPage() {
     try {
       result = await getUserLinks(0);
     } catch (error) {}
-    setLinks(result);
+    let links = [];
+    for (const link of result) {
+      links.push(convertObjectKeysToCamelCase(link));
+    }
+    setLinks(links);
     setCurrentFolderId(0);
   }, []);
 
