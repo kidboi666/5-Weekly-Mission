@@ -1,5 +1,5 @@
-import CardList from "./CardList";
-import Search from "./Search";
+import CardList from "../CardList/CardList";
+import Search from "../Search/Search";
 import "./MainContent.css";
 
 function MainContent({ links }) {

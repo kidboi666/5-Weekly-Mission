@@ -10,7 +10,7 @@ nav {
 }
 
 .logo {
-  background-image: url(../assets/logo.svg);
+  background-image: url(../../assets/logo.svg);
   flex: 0 0 133px;
   height: 24px;
   background-size: cover;

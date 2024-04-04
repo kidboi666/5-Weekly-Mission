@@ -1,5 +1,5 @@
 import "./CardList.css";
-import noImageBackground from "../assets/card_no_image_background.svg";
+import noImageBackground from "../../assets/card_no_image_background.svg";
 
 function formatDate(value) {
   const date = new Date(value);
@@ -14,27 +14,48 @@ function calculateTime(value) {
   const YEAR = 12 * MONTH;
 
   const date = new Date() - new Date(value);
-  if (date < HOUR) {
-    const d = parseInt(date / MINUTE);
-    if (d < 2) return "1 minutes ago";
-    return `${d} minutes ago`;
-  } else if (date < DAY) {
-    const d = parseInt(date / HOUR);
-    if (d === 1) return "1 hour ago";
-    return `${d} hours ago`;
-  } else if (date < MONTH) {
-    const d = parseInt(date / DAY);
-    if (d === 1) return "1 day ago";
-    return `${d} days ago`;
-  } else if (date < YEAR) {
-    const d = parseInt(date / MONTH);
-    if (d === 1) return "1 month ago";
-    return `${d} months ago`;
-  } else {
-    const d = parseInt(date / YEAR);
-    if (d === 1) return "1 year ago";
-    return `${d} years ago`;
+  // 한시간 이내
+  const diffInMinites = parseInt(date / MINUTE);
+  const diffInHours = parseInt(date / HOUR);
+  if (diffInHours < 1) {
+    if (diffInMinites === 1) {
+      return "1 minutes ago";
+    }
+    return `${diffInMinites} minutes ago`;
   }
+
+  //  하루 이내
+  const diffInDays = parseInt(date / DAY);
+  if (diffInDays < 1) {
+    if (diffInHours === 1) {
+      return "1 hour ago";
+    }
+    return `${diffInHours} hours ago`;
+  }
+
+  // 한 달 이내
+  const diffInMonths = parseInt(date / MONTH);
+  if (diffInMonths < 1) {
+    if (diffInDays === 1) {
+      return "1 day ago";
+    }
+    return `${diffInDays} days ago`;
+  }
+
+  // 1년 이내
+  const diffinYears = parseInt(date / YEAR);
+  if (diffinYears < 1) {
+    if (diffInMonths === 1) {
+      return "1 month ago";
+    }
+    return `${diffInMonths} months ago`;
+  }
+
+  // 1년 이상
+  if (diffinYears === 1) {
+    return "1 year ago";
+  }
+  return `${diffinYears} years ago`;
 }
 
 function Card({ link }) {
@@ -59,6 +80,7 @@ function Card({ link }) {
 }
 
 function CardList({ links }) {
+  if (!links) return;
   return (
     <ul className="cardList">
       {Object.values(links).map((link) => {

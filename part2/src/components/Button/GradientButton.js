@@ -7,7 +7,7 @@ const SIZES = {
 };
 
 const GradientButton = styled.button`
-  width: ${({ size }) => SIZES[size] ?? SIZES["medium"]}px;
+  width: ${({ size }) => SIZES[size ?? "medium"]}px;
   padding: 16px 20px;
   border: none;
   border-radius: 8px;

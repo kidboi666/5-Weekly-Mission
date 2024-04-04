@@ -1,5 +1,5 @@
 import "./Footer.css";
-import SnsButton from "./SnsButton";
+import SnsButton from "../Button/SnsButton";
 
 function Footer() {
   return (
