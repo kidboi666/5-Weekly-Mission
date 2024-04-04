@@ -1,32 +1,22 @@
-import { useEffect, useState } from "react";
-import { getFolderInfo } from "../api";
+import Nav from "../components/Nav/Nav";
 import Folder from "../components/Folder/Folder";
-import MainContent from "../components/MainContent/MainContent";
+import Search from "../components/Search/Search";
+import CardList from "../components/CardList/CardList";
+import Footer from "../components/Footer/Footer";
+import "../components/MainContent.css";
 
-function SharedPage() {
-  const [folderInfo, setFolderInfo] = useState({});
-
-  const handleLoadFolder = async () => {
-    const result = await getFolderInfo();
-    if (!result) return;
-
-    const { folder } = result;
-    setFolderInfo((prevInfo) => ({
-      ...prevInfo,
-      owner: folder.owner,
-      name: folder.name,
-      links: folder.links,
-    }));
-  };
-
-  useEffect(() => {
-    handleLoadFolder();
-  }, []);
-
+function SharedPage({ userInfo, folderInfo }) {
   return (
     <>
+      <Nav email={userInfo.email} imgUrl={userInfo.profileImageSource} />
       <Folder owner={folderInfo.owner} folderName={folderInfo.name} />
-      <MainContent links={folderInfo.links} />
+      <div className="mainContent-wrapper">
+        <div className="mainContent">
+          <Search />
+          <CardList links={folderInfo.links} />
+        </div>
+      </div>
+      <Footer />
     </>
   );
 }
