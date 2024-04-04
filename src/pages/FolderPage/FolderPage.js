@@ -7,6 +7,7 @@ import Search from "../../components/Search/Search";
 import CardList from "../../components/CardList/CardList";
 import MenuButton from "../../components/MenuButton/MenuButton";
 import AddIcon from "../../assets/add_icon.png";
+import AddWhiteIcon from "../../assets/add_white_icon.png";
 import ShareIcon from "../../assets/share_icon.png";
 import PenIcon from "../../assets/pen_icon.png";
 import DeleteIcon from "../../assets/delete_icon.png";
@@ -74,6 +75,10 @@ export default function FolderPage() {
         )}
         {items && <CardList items={items} />}
       </StyledSectionWrap>
+      <S.StyledMobileAddButton>
+        폴더 추가
+        <S.StyledAddIcon src={AddWhiteIcon} alt='+' />
+      </S.StyledMobileAddButton>
     </>
   );
 }

@@ -29,3 +29,9 @@ img {
 address {
   font-style: normal;
 }
+
+#root {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 160px;
+}
