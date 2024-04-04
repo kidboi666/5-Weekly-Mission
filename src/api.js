@@ -20,3 +20,26 @@ export async function getUser() {
   const body = await response.json();
   return body;
 }
+
+export async function getFoldersList() {
+  const response = await fetch(
+    "https://bootcamp-api.codeit.kr/api/users/1/folders"
+  );
+  if (!response.ok) {
+    throw new Error("사용자 데이터를 불러오는데 실패했습니다.");
+  }
+  const body = await response.json();
+  return body;
+}
+
+export async function getFoldersItems() {
+  // const queryId = id ? `?folderId=${id}` : "";
+  const response = await fetch(
+    `https://bootcamp-api.codeit.kr/api/users/1/links`
+  );
+  if (!response.ok) {
+    throw new Error("사용자 데이터를 불러오는데 실패했습니다.");
+  }
+  const body = await response.json();
+  return body;
+}
