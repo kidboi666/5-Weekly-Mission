@@ -1,12 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getSampleUser, getFolderInfo } from "../api";
+import { getSampleUser, getFolderInfo, getFolderList } from "../api";
 import SharedPage from "../pages/SharedPage";
 import FolderPage from "../pages/FolderPage";
 
 function App() {
   const [userInfo, setUserInfo] = useState({});
   const [folderInfo, setFolderInfo] = useState({});
+  const [folderList, setFolderList] = useState({});
 
   const handleLoadUser = async () => {
     const result = await getSampleUser();
@@ -29,16 +30,28 @@ function App() {
     }));
   };
 
+  const handleLoadFolderList = async () => {
+    const result = await getFolderList(1);
+    if (!result) return;
+
+    const { data } = result;
+    setFolderList((prevList) => ({
+      ...prevList,
+      data,
+    }));
+  };
+
   useEffect(() => {
     handleLoadUser();
     handleLoadFolder();
+    handleLoadFolderList();
   }, []);
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/shared" element={<SharedPage userInfo={userInfo} folderInfo={folderInfo} />} />
-        <Route path="/folder" element={<FolderPage userInfo={userInfo} folderInfo={folderInfo} />} />
+        <Route path="/folder" element={<FolderPage userInfo={userInfo} folderInfo={folderInfo} folderList={folderList} />} />
       </Routes>
     </BrowserRouter>
   );
