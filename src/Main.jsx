@@ -8,7 +8,7 @@ export default function Main() {
     <BrowserRouter>
       <App>
         <Routes>
-          <Route path="/" element={<SharedPage />} />
+          <Route path="/" element={<FolderPage />} />
           <Route path="/folder" element={<FolderPage />} />
           <Route path="/shared" element={<SharedPage />} />
         </Routes>

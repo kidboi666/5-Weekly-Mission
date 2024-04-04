@@ -1,8 +1,8 @@
 import AddLinkBar from '../../components/AddLinkBar/AddLinkBar';
 
 import LinkCardList from '../../components/LinkCardList/LinkCardList';
-import { folders, links } from '../../utils/mockData';
-import { useState } from 'react';
+import { getUserFolders, getUserLinks } from '../../utils/api';
+import { useEffect, useState, useCallback } from 'react';
 
 const allFolder = {
   'id': 0,
@@ -10,20 +10,42 @@ const allFolder = {
   'user_id': 1,
 };
 
-const newFolders = [allFolder, ...folders];
-
 export default function FolderPage() {
-  const [currentFolderId, setCurrentFolderId] = useState(newFolders[0].id);
+  const [currentFolderId, setCurrentFolderId] = useState(0);
+  const [folders, setFolders] = useState([allFolder]);
+  const [links, setLinks] = useState([]);
 
-  const handleFolderNameButtonClick = (id) => {
+  const handleLoad = useCallback(async () => {
+    let result;
+    try {
+      result = await getUserFolders();
+    } catch (error) {}
+    setFolders([allFolder, ...result]);
+    try {
+      result = await getUserLinks(0);
+    } catch (error) {}
+    setLinks(result);
+    setCurrentFolderId(0);
+  }, []);
+
+  const handleFolderNameButtonClick = async (id) => {
     setCurrentFolderId(id);
+    let result;
+    try {
+      result = await getUserLinks(id);
+    } catch (error) {}
+    setLinks(result);
   };
+
+  useEffect(() => {
+    handleLoad();
+  }, [handleLoad]);
 
   return (
     <>
       <AddLinkBar />
       <LinkCardList
-        folders={newFolders}
+        folders={folders}
         items={links}
         folderNameOnClick={handleFolderNameButtonClick}
         currentFolderId={currentFolderId}
