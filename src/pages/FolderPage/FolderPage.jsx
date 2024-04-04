@@ -1,8 +1,8 @@
 import AddLinkBar from '../../components/AddLinkBar/AddLinkBar';
-
 import LinkCardList from '../../components/LinkCardList/LinkCardList';
 import { getUserFolders, getUserLinks } from '../../utils/api';
 import { useEffect, useState, useCallback } from 'react';
+import './FolderPage.css';
 
 const allFolder = {
   'id': 0,
