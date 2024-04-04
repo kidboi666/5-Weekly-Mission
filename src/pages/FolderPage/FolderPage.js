@@ -4,7 +4,7 @@ import LinkInput from "../../components/LinkInput/LinkInput";
 import * as S from "./FolderPage.styled";
 import { getFoldersItems, getFoldersList } from "../../api";
 import Search from "../../components/Search/Search";
-import CardList from "../../components/CardList.js/CardList";
+import CardList from "../../components/CardList/CardList";
 
 export default function FolderPage() {
   const [items, setItems] = useState([]);
@@ -18,6 +18,7 @@ export default function FolderPage() {
   useEffect(() => {
     handleLoad();
   }, []);
+  console.log(items);
 
   return (
     <>
@@ -26,7 +27,9 @@ export default function FolderPage() {
       </S.StyledTopWrap>
       <StyledSectionWrap>
         <Search />
-        {!items && <p>저장된 링크가 없습니다</p>}
+        {!items.length && (
+          <S.StyledNoData>저장된 링크가 없습니다</S.StyledNoData>
+        )}
         {items && <CardList items={items} />}
       </StyledSectionWrap>
     </>

@@ -45,6 +45,8 @@ export async function getFoldersItems() {
   const newData = data.map((item) => {
     item.createdAt = item.created_at;
     delete item.created_at;
+    item.imageSource = item.image_source;
+    delete item.image_source;
     return item;
   });
   return newData;
