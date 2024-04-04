@@ -1,15 +1,7 @@
-import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Shared from './Shared';
+import "./styles/common.css";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-          <Route path="/"  element={<Shared />}/>
-      </Routes>
-    </BrowserRouter>
-  );
+  return "hi";
 }
 
 export default App;
