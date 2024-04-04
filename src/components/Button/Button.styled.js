@@ -4,7 +4,7 @@ export const StyledButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 16px 0;
+  padding: 16px 5px;
   background: linear-gradient(
     90.99deg,
     var(--primary-color) 0.12%,
