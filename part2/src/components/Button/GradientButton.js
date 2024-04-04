@@ -8,12 +8,13 @@ const SIZES = {
 
 const GradientButton = styled.button`
   width: ${({ size }) => SIZES[size ?? "medium"]}px;
-  padding: 16px 20px;
+  font-family: Pretendard;
+  padding: 16px ${({ size }) => (size === "small" ? "10" : "20")}px;
   border: none;
   border-radius: 8px;
   background: var(--grad-purple-to-blue);
   color: var(--button-text-color);
-  font-size: 18px;
+  font-size: ${({ size }) => (size === "small" ? "14" : "18")}px;
   font-weight: 600;
   align-items: center;
   &:hover {

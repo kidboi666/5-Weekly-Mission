@@ -38,7 +38,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/shared" element={<SharedPage userInfo={userInfo} folderInfo={folderInfo} />} />
-        <Route path="/folder" element={<FolderPage />} />
+        <Route path="/folder" element={<FolderPage userInfo={userInfo} folderInfo={folderInfo} />} />
       </Routes>
     </BrowserRouter>
   );
