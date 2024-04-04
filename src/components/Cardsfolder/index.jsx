@@ -30,14 +30,14 @@ function Cardsfolder(props) {
               <div className={styles.card_txt_div}>
                 <div className={styles.card_txt_div_top}>
                   <p className={styles.left_time_p}>
-                    {generateTimeText(link.createdAt)}
+                    {generateTimeText(link.created_at)}
                   </p>
                 </div>
                 <div className={styles.card_txt_div_body}>
                   <p className={styles.card_txt_div_body}>{link.description}</p>
                 </div>
                 <div className={styles.card_txt_date}>
-                  {formatDate(link.createdAt)}
+                  {formatDate(link.created_at)}
                 </div>
               </div>
             </div>
