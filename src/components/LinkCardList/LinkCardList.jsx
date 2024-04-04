@@ -29,7 +29,7 @@ export default function LinkCardList({
           />
         )}
 
-        {items ? (
+        {items.length > 0 ? (
           <ul className={STYLE_LINK_CARD_LIST_CLASS_NAME}>
             {items.map((item) => (
               <li key={item.id}>

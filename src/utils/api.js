@@ -43,12 +43,13 @@ export async function getUserFolders() {
 export async function getUserLinks(id) {
   let linkPath = `${LINK_PATH}`;
   if (id && id > 0) {
-    linkPath = `${LINK_PATH}${id}`;
+    linkPath = `${LINK_PATH}${LINK_FOLDER_SEARCH_OPTION}${id}`;
   }
   const response = await fetch(`${USER_BASE_URL}${linkPath}`);
   if (!response.ok) {
     throw new Error();
   }
   const result = await response.json();
+  console.log(result);
   return result.data;
 }
