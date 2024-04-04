@@ -8,8 +8,10 @@ import {
   HeaderUserInfo,
 } from "./headerStyle";
 import { IHeaderUserLoginInfo, headerUserLoginInfo } from "../../constant/api";
-import { LinkGradient, Profile } from "../../styles/commonStyle";
+import { Profile } from "../../styles/commonStyle";
 import { useEffect, useState } from "react";
+import Button from "./atoms/Button";
+import LinkButton from "./atoms/LinkButton";
 const logo = "/assets/logo/logo.svg";
 
 function Header() {
@@ -40,14 +42,9 @@ function Header() {
               <Email>{userInfo?.email}</Email>
             </HeaderUserInfo>
           ) : (
-            <LinkGradient
-              to="/signin.html"
-              width={128}
-              fontSize={18}
-              height={52}
-            >
+            <LinkButton $link={"/signin"} $linkClass={"link__gradient large"}>
               로그인
-            </LinkGradient>
+            </LinkButton>
           )}
         </HeaderControl>
       </HeaderInner>

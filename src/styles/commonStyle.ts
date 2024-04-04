@@ -6,8 +6,16 @@ import { NavLink } from "react-router-dom";
 
 // ====  정렬  =====
 
-const  dflex = css`
+export const  dflex = css`
   display: flex;
+`
+export const  dflexCenter = css`
+  ${dflex}
+  align-items: center;
+`
+export const  dflexBtw = css`
+  ${dflexCenter}
+  justify-content: space-between;
 `
 export const DFlaxAlignCenter = styled.div`
   ${dflex}
@@ -41,6 +49,11 @@ export const TitleMs = styled.h3`
       line-height: 1.79rem;
   }
 `
+export const SubTitle = styled.h3`
+  font-size: 1.5rem;
+  line-height: 1.8125rem;
+  font-weight: 600;
+`
 
 // ====  폰트  ====
 
@@ -71,18 +84,18 @@ export const Font = styled.div`
 `;
 
 export interface IFont {
-  fontSize?: number,
-  lineHeight?:number,
-  weight?:string,
-  color?:string
+  $fontSize?: number,
+  $lineHeight?:number,
+  $weight?:string,
+  $color?:string
 }
 
 export const customFont = styled.div<IFont>`
-  ${({ weight, fontSize, lineHeight, color }) => `
-    font-size: ${fontSize || theme.font.m}px;
-    line-height: ${lineHeight || 1.2}px;
-    font-weight: ${weight || '400' };
-    color:${color || '#000' };
+  ${({ $weight, $fontSize, $lineHeight, $color }) => `
+    font-size: ${$fontSize || theme.font.m}px;
+    line-height: ${$lineHeight || 1.2}px;
+    font-weight: ${$weight || '400' };
+    color:${$color || '#000' };
   `}
 `
 
@@ -96,48 +109,17 @@ export const EllipsisLine  = styled.div<{$tline?: number}>`
   -webkit-box-orient: vertical;
 `
 
-
-// ====  버튼  ====
-
-export interface IButton {
-  fontSize?: number,
-  height?:number,
-  width?:number,
-}
-
-export const gradient = css<IButton> `
-  ${({ width, fontSize, height }) => `
-  font-size: ${fontSize || theme.font.m}px;
-  line-height: ${height || 36}px;
-  width: ${width+'px' || 100+'%' };
-  `}
-  color: #fff;
-  font-weight: 600;
-  text-align:center;
-  background:${theme.bgColor.gradient};
-  border-radius: 8px;
-`
-// button
-export const BtnGradient = styled.button<IButton>`
- ${gradient}
-`
-// Link
-export const LinkGradient = styled(NavLink)<IButton>`
- ${gradient}
-`;
-
-
 // ====  profile  ====
 
 export interface IProfileImg {
-  bgImageUrl?: string,
+  $bgImageUrl?: string,
 }
 
 export const Profile = styled.span<IProfileImg>`
   width: 28px;
   height: 28px;
   border-radius: 50em;
-  background-image: url(${({bgImageUrl}) => bgImageUrl || "/assets/icon/icon_user.svg"});
+  background-image: url(${({$bgImageUrl}) => $bgImageUrl || "/assets/icon/icon_user.svg"});
   overflow: hidden;
 `
 // ====  section  ====
@@ -145,6 +127,9 @@ export const ContainHead = styled.section`
   
 `
 export const ContainBody = styled.section`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   background-color: #fff;
 `
 
@@ -176,18 +161,15 @@ export const InnerSmall = styled.div`
   ${innerSmall}
 `
 export const ContainHeadInner = styled.div`
-  margin: 0 auto;
   padding: 1.25rem 2rem 3.75rem;
-  width:100%;
   text-align: center;
   @media screen and (max-width: ${theme.screenSize.moLarge}) {
     padding: 0.625rem 2rem 2.5rem;
   }
 `
 export const ContainBodyInner = styled.div`
-  margin: 0 auto;
+  flex: 1;
   padding: 40px 2rem 6.25rem;
-  width:100%;
   text-align: center;
   @media screen and (max-width: ${theme.screenSize.moLarge}) {
     padding: 1.25rem 2rem 3.75rem;

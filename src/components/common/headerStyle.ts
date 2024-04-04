@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DFlaxAlignCenter, DFlaxAlignCenterBtw, LinkGradient } from "../../styles/commonStyle";
+import { DFlaxAlignCenter, DFlaxAlignCenterBtw } from "../../styles/commonStyle";
 import { theme } from "../../styles/theme";
 
 export const HaderWrap = styled.header`
@@ -35,13 +35,13 @@ export const HeaderLogo = styled.h1`
   }
 `
 export const HeaderControl = styled.div`
-  @media screen and (max-width: ${theme.screenSize.moLarge}) {
-    ${LinkGradient} {
+  /* @media screen and (max-width: ${theme.screenSize.moLarge}) {
+    LinkGradient} {
         width: 5rem;
         line-height: 2.313rem;
         font-size: ${theme.font.sm};
       }
-  }
+  } */
 `
 export const HeaderUserInfo = styled(DFlaxAlignCenter)`
   gap: 0.375rem;

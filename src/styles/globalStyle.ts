@@ -24,25 +24,26 @@ export const GlobalStyle = createGlobalStyle<ExecutionProps & object>`
 	article, aside, canvas, details, embed, 
 	figure, figcaption, footer, header, hgroup, 
 	menu, nav, output, ruby, section, summary,
-	time, mark, audio, video {
+	time, mark, audio, video , a, button{
 		margin: 0;
 		padding: 0;
 		border: 0;
-		font-size: inherit;
 		color: #000;
+		font-size: inherit;
 		font-weight: 400;
-		font-family: 'Pretendard-Regular', Arial, Helvetica, sans-serif;
 		vertical-align: baseline;
 		box-sizing: border-box;
+		font-family: 'Pretendard-Regular', Arial, Helvetica, sans-serif;
 	}
 	article, aside, details, figcaption, figure, 
 	footer, header, hgroup, menu, nav, section {
 		display: block;
 	}
 	html, body {
+		min-width: ${theme.screenSize.minWidth};
 		font-size: 16px;
 		line-height: 1;
-		min-width: ${theme.screenSize.minWidth};
+		font-family: 'Pretendard-Regular', Arial, Helvetica, sans-serif;
 	}
 	ol, ul {
 		list-style: none;
