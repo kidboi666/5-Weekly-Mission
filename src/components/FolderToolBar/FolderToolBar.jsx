@@ -1,4 +1,5 @@
 import addIcon from '../../assets/images/add_icon.svg';
+import addIconWhite from '../../assets/images/add_icon_white.svg';
 import FolderToolBarButton from './FolderToolBarButton';
 import './FolderToolBar.css';
 
@@ -11,6 +12,8 @@ import {
   STYLE_FOLDER_NAME_BAR,
   STYLE_UTIL_BUTTONS,
   UTIL_BUTTONS_PROPS,
+  STYLE_ADD_ICON,
+  STYLE_ADD_ICON_WHITE,
 } from './constants';
 import UtilButton from './UtilButton';
 
@@ -41,7 +44,16 @@ export default function FolderToolBar({
 
         <button className={STYLE_FOLDER_ADD_BUTTON}>
           <span>폴더 추가</span>
-          <img src={addIcon} alt="폴더 추가 아이콘" />
+          <img
+            src={addIcon}
+            alt="폴더 추가 아이콘"
+            className={STYLE_ADD_ICON}
+          />
+          <img
+            src={addIconWhite}
+            alt="폴더 추가 아이콘"
+            className={STYLE_ADD_ICON_WHITE}
+          />
         </button>
       </div>
       <div className={STYLE_FOLDER_NAME_BAR}>

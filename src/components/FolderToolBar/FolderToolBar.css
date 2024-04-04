@@ -16,13 +16,6 @@
       width: 80%;
       gap: 8px;
     }
-
-    .folder-add-button {
-      display: flex;
-      font-weight: 500;
-      gap: 4px;
-      color: #6d6afe;
-    }
   }
 
   .folder-name-display {
@@ -48,6 +41,12 @@
 
   @media (max-width: 767px) {
     width: 325px;
+
+    .folder-name-bar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
   }
 }
 
@@ -66,6 +65,9 @@
 .focused-button {
   background-color: #6d6afe;
   color: #fff;
+  &:hover {
+    background-color: #6d6afe;
+  }
 }
 
 .util-button {
@@ -74,4 +76,33 @@
   color: #9fa6b2;
   font-size: 14px;
   font-weight: 600;
+}
+
+.folder-add-button {
+  display: flex;
+  font-weight: 500;
+  gap: 4px;
+  color: #6d6afe;
+
+  .add-icon-white {
+    display: none;
+  }
+
+  @media (max-width: 767px) {
+    position: fixed;
+    bottom: 101px;
+    padding: 8px 24px;
+    left: calc((100vw - 128px) / 2);
+    border-radius: 20px;
+    background-color: #6d6afe;
+    color: #fff;
+
+    .add-icon {
+      display: none;
+    }
+
+    .add-icon-white {
+      display: block;
+    }
+  }
 }
