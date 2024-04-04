@@ -49,9 +49,11 @@ export default function FolderToolBar({
         <ul className={STYLE_UTIL_BUTTONS}>
           {UTIL_BUTTONS_PROPS.map((btn) => (
             <li key={btn.id}>
-              <UtilButton imgSrc={btn.imgSrc} alt={btn.alt}>
-                {btn.btnText}
-              </UtilButton>
+              {currentFolderId !== 0 && (
+                <UtilButton imgSrc={btn.imgSrc} alt={btn.alt}>
+                  {btn.btnText}
+                </UtilButton>
+              )}
             </li>
           ))}
         </ul>
