@@ -14,3 +14,14 @@
   background: var(--primary);
   color: var(--white);
 }
+
+.addFolderIcon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.folderName {
+  font-size: 2.4rem;
+}
