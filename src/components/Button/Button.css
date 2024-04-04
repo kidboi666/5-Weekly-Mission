@@ -17,6 +17,7 @@ button {
   font-weight: 600;
   color: #f5f5f5;
   text-decoration-line: none;
+  flex-shrink: 0;
 }
 
 @media (max-width: 767px) {
