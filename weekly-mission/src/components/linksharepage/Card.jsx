@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import noImage from "../../image/noimage.svg";
+import noImage from "../../../image/noimage.svg";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 

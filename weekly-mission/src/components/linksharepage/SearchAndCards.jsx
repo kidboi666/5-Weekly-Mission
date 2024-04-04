@@ -1,5 +1,5 @@
 import Cards from "./Cards";
-import SearchBar from "./Searchbar";
+import SearchBar from "../shared/Searchbar";
 import styled from "styled-components";
 
 const SearchAndCardsContainer = styled.div`

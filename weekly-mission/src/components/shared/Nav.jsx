@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
-import LinkbraryImage from "../../image/Linkbrary.png";
-import profileImage from "../../image/profile img.jpg";
+import LinkbraryImage from "../../../image/Linkbrary.png";
+import profileImage from "../../../image/profile img.jpg";
 import styled from "styled-components";
-import useFetchData from "../hooks/useFetchData";
+import useFetchData from "../../hooks/useFetchData";
+import Button from "./Button";
 
 const NavContainer = styled.nav`
   width: 100%;
   display: flex;
   justify-content: center;
-  position: sticky;
   top: 0;
   background-color: #f0f6ff;
   z-index: 2;
@@ -48,19 +48,16 @@ const ProfileInfo = styled.div`
   column-gap: 6px;
 `;
 
-const GnbButton = styled.button`
+const GnbButton = styled(Button)`
   width: 128px;
   height: 53px;
   padding: 16px 20px;
-  background-image: linear-gradient(90.99deg, #6d6afe 0.12%, #6ae3fe 101.84%);
-  color: #f5f5f5;
   font-size: 18px;
   font-weight: 600;
 `;
 
 const Nav = () => {
   const profileData = useFetchData(`${import.meta.env.VITE_BASE_URL}/user`);
-  console.log(import.meta.env.VITE_BASE_URL);
 
   return (
     <NavContainer>

@@ -1,4 +1,4 @@
-import useFetchData from "../hooks/useFetchData";
+import useFetchData from "../../hooks/useFetchData";
 import styled from "styled-components";
 
 const HeaderContainer = styled.header`
