@@ -10,6 +10,9 @@ import {
   STYLE_LINK_CARD_CREATED_CLASS_NAME,
   STYLE_THUMBNAIL_CONTAINER_CLASS_NAME,
   STYLE_THUMBNAIL_CLASS_NAME,
+  STYLE_KEBAB_BUTTON,
+  STYLE_DROPDOWN_LIST,
+  STYLE_DROPDOWN_ITEM,
 } from './constants.js';
 import getTimeDifference from '../../utils/time-functions/getTimeDifference.js';
 import formatDate from '../../utils/time-functions/formatDate.js';
@@ -47,13 +50,13 @@ export default function LinkCard({ linkCardInfo }) {
       <div className={STYLE_LINK_CARD_INFO_CLASS_NAME}>
         <div className={STYLE_LINK_CARD_TIMESTAMP_BAR_CLASS_NAME}>
           <span className={STYLE_TIMESTAMP_CLASS_NAME}>{timestamp}</span>
-          <button onClick={handleKebabClick}>
-            <img src={kebab} alt="kebab" />
+          <button onClick={handleKebabClick} className={kebab}>
+            <img src={kebab} alt="kebab" className={STYLE_KEBAB_BUTTON} />
           </button>
           {isDropdownOpen && (
-            <ul>
-              <li>삭제하기</li>
-              <li>폴더에 추가</li>
+            <ul className={STYLE_DROPDOWN_LIST}>
+              <li className={STYLE_DROPDOWN_ITEM}>삭제하기</li>
+              <li className={STYLE_DROPDOWN_ITEM}>폴더에 추가</li>
             </ul>
           )}
         </div>
