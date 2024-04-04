@@ -7,6 +7,10 @@ export const StyledForm = styled.form`
   width: 100%;
   max-width: 800px;
   height: 69px;
+
+  @media (max-width: 767px) {
+    height: 53px;
+  }
 `;
 
 export const StyledInput = styled.input`
@@ -20,16 +24,27 @@ export const StyledInput = styled.input`
   font-size: 16px;
   background: #fff url(${LinkIcon}) no-repeat 20px 23px / 20px;
 
-  &:placeholder {
+  &::placeholder {
     color: #9fa6b2;
+  }
+
+  @media (max-width: 767px) {
+    padding-left: 34px;
+    background-position: 10px 18px;
+    background-size: 16px;
+    font-size: 14px;
   }
 `;
 
 export const StyledButton = styled(Button)`
   position: absolute;
-  top: 16px;
+  top: 50%;
   right: 20px;
+  transform: translateY(-50%);
   width: 80px;
   height: 37px;
   font-size: 14px;
+  @media (max-width: 767px) {
+    right: 10px;
+  }
 `;

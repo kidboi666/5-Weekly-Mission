@@ -22,6 +22,10 @@ export const StyledCard = styled.li`
     transform: scale(1.3);
   }
 
+  @media (max-width: 1124px) {
+    width: calc((100% - 20px) / 2);
+  }
+
   @media (max-width: 767px) {
     width: 100%;
   }

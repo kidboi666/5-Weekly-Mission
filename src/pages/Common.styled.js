@@ -5,7 +5,7 @@ export const StyledTopWrap = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  padding: 20px 0 60px;
+  padding: 20px 33px 60px;
   background-color: var(--background-color);
 
   @media (max-width: 767px) {
