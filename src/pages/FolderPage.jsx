@@ -1,6 +1,5 @@
 import Navigation from "../components/Navigation";
 import SearchBar from "../components/SearchBar";
-import Cards from "../components/Cards";
 import styled from "styled-components";
 import Footer from "../components/Footer";
 import Addlink from "../components/Addlink";
@@ -37,7 +36,6 @@ function FolderPage() {
       <PageDisplay>
         <SearchBar />
         <Foldermenu />
-        <Cards />
       </PageDisplay>
       <Footer />
     </>

@@ -5,6 +5,9 @@ import Cards from "../components/Cards";
 import styled from "styled-components";
 import Footer from "../components/Footer";
 
+const BASE_URL_FOLDER_SAMPLE =
+  "https://bootcamp-api.codeit.kr/api/sample/folder";
+
 /*테블릿 1124 이상 모바일 최소여백 32       테블릿 768~1199 모바일 375 ~767    */
 const PageDisplay = styled.div`
   display: flex;
@@ -35,7 +38,7 @@ function SharedPage() {
       <FolderData />
       <PageDisplay>
         <SearchBar />
-        <Cards />
+        <Cards url={BASE_URL_FOLDER_SAMPLE} />
       </PageDisplay>
       <Footer />
     </>

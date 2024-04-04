@@ -3,13 +3,13 @@ import { formatDate, generateTimeText } from "../../utils/hooks/date";
 import thumbnail from "../../assets/thumbnail.svg";
 import styles from "./index.module.css";
 
-function Cards(props) {
+function Cardsfolder(props) {
   const CardData = useFetch(props.url);
 
   return (
     <div className={styles.card_grid_container}>
       {CardData ? (
-        CardData.folder.links.map((link) => (
+        CardData.data.map((link) => (
           <a href={link.url}>
             <div key={link.id} className={styles.card}>
               <div className={styles.card_img_div}>
@@ -50,4 +50,4 @@ function Cards(props) {
   );
 }
 
-export default Cards;
+export default Cardsfolder;

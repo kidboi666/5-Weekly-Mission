@@ -6,9 +6,10 @@ import deleteicon from "../../assets/deleteicon.svg";
 import changenameicon from "../../assets/changenameicon.svg";
 import shareicon from "../../assets/shareicon.svg";
 import { useState } from "react";
+import Cardsfolder from "../../components/Cardsfolder";
 
 const BASE_URL_FOLDER = "https://bootcamp-api.codeit.kr/api/users/1/folders";
-// const BASE_URL_ALLFOLDER = "https://bootcamp-api.codeit.kr/api/users/1/links";
+const BASE_URL_ALL_FOLDER = "https://bootcamp-api.codeit.kr/api/users/1/links";
 
 const FolderListContainer = styled.div`
   display: flex;
@@ -34,19 +35,27 @@ const ImageContainer = styled.div`
 
 function Foldermenu() {
   const FolderlistData = useFetch(BASE_URL_FOLDER);
-  const AllFiles = document.querySelector(".allFolders");
   const [activeButton, setActiveButton] = useState("전체");
+  const [url, setUrl] = useState(BASE_URL_ALL_FOLDER);
 
   const handleOnClick = (e) => {
+    const folderId = e.currentTarget.id; // 클릭된 버튼의 ID 가져오기
+    const folderName = e.currentTarget.textContent; // 클릭된 버튼의 텍스트 가져오기
+
+    // 클릭된 버튼에 active 클래스 추가하기
     const btns = document.querySelectorAll(".folderButtons");
-    btns.forEach(function (btn, i) {
-      if (e.currentTarget === btn) {
-        btn.classList.add(`active`);
-        setActiveButton(document.querySelector(".active").textContent);
-      } else {
-        btn.classList.remove(`active`);
-      }
+    btns.forEach((btn) => {
+      btn.classList.remove("active");
     });
+    e.currentTarget.classList.add("active");
+
+    setActiveButton(folderName); // 선택된 폴더의 이름 설정하기
+
+    if (folderId !== "all") {
+      setUrl(`${BASE_URL_ALL_FOLDER}?folderId=${folderId}`); // 선택된 폴더에 해당하는 URL 설정하기
+    } else {
+      setUrl(BASE_URL_ALL_FOLDER);
+    }
   };
 
   return (
@@ -55,6 +64,7 @@ function Foldermenu() {
         <button
           className="folderButtons allFolders active"
           onClick={handleOnClick}
+          id="all"
         >
           전체
         </button>
@@ -64,6 +74,7 @@ function Foldermenu() {
               className="folderButtons"
               key={folderdata.id}
               onClick={handleOnClick}
+              id={folderdata.id}
             >
               {folderdata.name}
             </button>
@@ -82,6 +93,7 @@ function Foldermenu() {
           <img src={deleteicon} alt="폴더 삭제 아이콘" />
         </ImageContainer>
       </FolderMenuContainer>
+      <Cardsfolder url={url} />
     </div>
   );
 }
