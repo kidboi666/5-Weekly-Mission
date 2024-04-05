@@ -1,5 +1,5 @@
-import { SearchBar, SearchBarInput, Input, SearchImg } from '../../styles/SearchStyled';
-import SearchIconPath from '../../assets/search.svg';
+import { SearchBar, SearchBarInput, Input, SearchImg } from '../styles/SearchStyled';
+import SearchIconPath from '../assets/search.svg';
 
 function Search() {
   return (

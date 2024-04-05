@@ -5,7 +5,7 @@ function Header() {
   const { data, isLoading, error } = useFetch('api/sample/folder');
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   if (error) {

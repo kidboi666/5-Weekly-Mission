@@ -1,7 +1,15 @@
+import Search from '../components/Search';
+import Footer from '../components/Footer';
+import Nav from '../components/Nav';
+import LinkAdd from '../components/FolderConponents/LinkAdd';
+
 function Folder() {
   return (
     <>
-      <div>123</div>
+      <Nav />
+      <LinkAdd />
+      <Search />
+      <Footer />
     </>
   );
 }

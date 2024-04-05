@@ -1,12 +1,12 @@
-import '../../styles/Nav.css';
-import logo from '../../assets/logo.svg';
-import useFetch from '../hooks/useFetch';
+import '../styles/Nav.css';
+import logo from '../assets/logo.svg';
+import useFetch from './hooks/useFetch';
 
 function Nav() {
   const { data, isLoading, error } = useFetch('api/sample/user');
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   if (error) {

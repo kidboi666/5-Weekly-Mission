@@ -1,8 +1,8 @@
-import '../../styles/Footer.css';
-import FacebookLogo from '../../assets/snslogo/facebook.svg';
-import TwitterLogo from '../../assets/snslogo/twitter.svg';
-import YoutubeLogo from '../../assets/snslogo/youtube.svg';
-import InstagramLogo from '../../assets/snslogo/instagram.svg';
+import '../styles/Footer.css';
+import FacebookLogo from '../assets/snslogo/facebook.svg';
+import TwitterLogo from '../assets/snslogo/twitter.svg';
+import YoutubeLogo from '../assets/snslogo/youtube.svg';
+import InstagramLogo from '../assets/snslogo/instagram.svg';
 
 function Footer() {
   return (
