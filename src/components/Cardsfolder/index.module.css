@@ -6,6 +6,7 @@
   align-items: flex-start;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 10px;
+  position: relative;
 }
 
 .card_txt_div_body {
@@ -19,6 +20,11 @@
   text-overflow: ellipsis;
 }
 
+.card_txt_div_top {
+  display: flex;
+  justify-content: space-between;
+}
+
 .left_time_p {
   font-size: 1.4rem;
   color: var(--text-content-gray);
@@ -26,6 +32,8 @@
 
 .card_txt_div_body {
   font-size: 1.6rem;
+  height: 4.9rem;
+  width: 30rem;
 }
 
 .card_txt_date {
@@ -46,7 +54,13 @@
   grid-column: span 3;
 }
 
-.card img {
+.card_favorite_icon {
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+}
+
+.card_img {
   width: 34rem;
   height: 20rem;
   object-fit: cover;

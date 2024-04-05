@@ -2,6 +2,8 @@ import { useFetch } from "../../utils/hooks/useFetch";
 import { formatDate, generateTimeText } from "../../utils/hooks/date";
 import thumbnail from "../../assets/thumbnail.svg";
 import styles from "./index.module.css";
+import starticon from "../../assets/staricon.svg";
+import moreoptionicon from "../../assets/moreoptionicon.svg";
 
 function Cardsfolder(props) {
   const CardData = useFetch(props.url);
@@ -32,6 +34,12 @@ function Cardsfolder(props) {
                   <p className={styles.left_time_p}>
                     {generateTimeText(link.created_at)}
                   </p>
+                  <button className={styles.card_moreoption_icon}>
+                    <img
+                      src={moreoptionicon}
+                      alt="링크 게시물 옵션 버튼 아이콘 "
+                    />
+                  </button>
                 </div>
                 <div className={styles.card_txt_div_body}>
                   <p className={styles.card_txt_div_body}>{link.description}</p>
@@ -40,6 +48,9 @@ function Cardsfolder(props) {
                   {formatDate(link.created_at)}
                 </div>
               </div>
+              <button className={styles.card_favorite_icon}>
+                <img src={starticon} alt="즐겨찾기 별 아이콘" />
+              </button>
             </div>
           </a>
         ))

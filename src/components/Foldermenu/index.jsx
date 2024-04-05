@@ -24,6 +24,7 @@ const FolderMenuContainer = styled.div`
   align-items: center;
   margin-top: 2.4rem;
   height: 3.2rem;
+  margin-bottom: 2.4rem;
 `;
 
 const ImageContainer = styled.div`
