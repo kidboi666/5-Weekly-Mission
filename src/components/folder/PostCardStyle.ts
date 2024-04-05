@@ -3,7 +3,7 @@ import { theme } from "../../styles/theme";
 
 export const CardWrap = styled.div`
   position: relative;
-  > a { 
+  .card__link { 
     display: block;
     position: relative;
     border: 1px solid transparent;
@@ -14,10 +14,7 @@ export const CardWrap = styled.div`
       border: 1px solid ${theme.color.primary};
       .card__image {
         img {
-          transform: scale(1.3) translate(0,-30%);
-        }
-        .empty {
-          transform: scale(1.3) translate(-50%,-30%);
+          transform: scale(1.3) translate(-40%,-40%);
         }
       }
     }
@@ -31,16 +28,16 @@ export const CardWrap = styled.div`
       background-color: #DDDFFF;
       img {
         position: absolute;
-        left: 0;
+        left: 50%;
         top: 50%;
         width: 100%;
-        transform: translate(0,-50%);
+        transform: translate(-50%,-50%);
         transition: transform 0.3s;
         &.empty {
           left: 50%;
           width: 133px;
-          transform: translate(-50%,-50%);
           opacity:.18;
+          transform: translateX(-50%);
         }
       }
     }

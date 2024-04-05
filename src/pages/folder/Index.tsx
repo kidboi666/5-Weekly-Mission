@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import PostCard from "../../components/folder/PostCard";
 import { ContainBody, ContainHead, SubTitle } from "../../styles/commonStyle";
 import {
@@ -12,45 +11,42 @@ import {
   PostCardWrap,
   LinkAddHeadInner,
 } from "./folderStyle";
-import { IFolderListApi, folderListApi } from "../../api/api";
+
 import Button from "../../components/common/atoms/Button";
 import Input from "../../components/common/atoms/Input";
-import { relative } from "path";
-const logo = "/assets/logo/logo_codeit.svg";
+import useFetch from "../../hook/useFetch";
+import { FOLDERLISTAPI, SHAREDCONTANTAPI } from "../../constant/api";
+import {
+  IFolderListApi,
+  IFolderMenuButtonWrapApi,
+} from "../../constant/interface";
 const add = "/assets/icon/icon_primary_add.svg";
 const search = "/assets/icon/icon_search.svg";
 const link = "/assets/icon/icon_primaty_link.svg";
 
 const folderControlBtn = [
   {
-    id: "공유",
+    id: "fcb1",
+    name: "공유",
     imgSrc: "/assets/icon/icon_gray_share.svg",
   },
   {
-    id: "이름 변경",
+    id: "fcb2",
+    name: "이름 변경",
     imgSrc: "/assets/icon/icon_gray_pen.svg",
   },
   {
-    id: "삭제",
+    id: "fcb3",
+    name: "삭제",
     imgSrc: "/assets/icon/icon_gray_delete.svg",
   },
 ];
 
 function Index() {
-  const [isLoading, setLoading] = useState(false);
-  const [cardInfo, setCardInfo] = useState<IFolderListApi[]>();
-
-  useEffect(() => {
-    (async () => {
-      try {
-        setLoading(true);
-        const data = await folderListApi();
-        setCardInfo(data);
-      } catch (e) {
-        console.log(e);
-      }
-    })();
-  }, []);
+  const { value: cardInfo, isLoading: cardInfoLoading } =
+    useFetch<IFolderListApi[]>(SHAREDCONTANTAPI);
+  const { value: btnBookMarkMenu, isLoading: btnMenuLoading } =
+    useFetch<IFolderMenuButtonWrapApi>(FOLDERLISTAPI);
 
   return (
     <>
@@ -79,9 +75,19 @@ function Index() {
           {/* 폴더버튼 리스트 */}
           <BookmarkBox>
             <BookMarkBtnList>
-              <Button $btnClass={"button__outlined"}>전체</Button>
-              <Button $btnClass={"button__outlined"}>북마크1</Button>
-              <Button $btnClass={"button__outlined"}>북마크12</Button>
+              {btnMenuLoading && (
+                <>
+                  <Button key={"folder-all"} $btnClass={"button__outlined"}>
+                    전체
+                  </Button>
+                  {btnBookMarkMenu &&
+                    btnBookMarkMenu.data.map((menu: any) => (
+                      <Button key={menu.id} $btnClass={"button__outlined"}>
+                        {menu.name}
+                      </Button>
+                    ))}
+                </>
+              )}
             </BookMarkBtnList>
             <div>
               <Button $btnClass={"button__icon-after"} $afterButtonIcon={add}>
@@ -99,13 +105,13 @@ function Index() {
                   $btnClass={"button__icon-before"}
                   $BeforButtonIcon={btn.imgSrc}
                 >
-                  {btn.id}
+                  {btn.name}
                 </Button>
               ))}
             </ShareListBtn>
           </ShareBox>
 
-          {isLoading ? (
+          {cardInfoLoading ? (
             cardInfo ? (
               <PostCardWrap>
                 {cardInfo &&

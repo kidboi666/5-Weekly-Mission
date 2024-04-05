@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import { IFolderListApi } from "../../api/api";
 import { DFlaxAlignCenterBtw, EllipsisLine } from "../../styles/commonStyle";
 import { calculateTimeAgo } from "../../utils/calcTilmAgo";
 import { BookMarkBtn, CardMenu, CardWrap } from "./PostCardStyle";
-import { ReactElement, useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import { IFolderListApi } from "../../constant/interface";
 const emptyImg = "/assets/logo/logo.svg";
 export default function PostCard({
   image_url,
@@ -28,7 +28,7 @@ export default function PostCard({
       >
         북마크버튼
       </BookMarkBtn>
-      <Link to="" target="_blank">
+      <Link to="" target="_blank" className="card__link">
         <figure>
           <div className="card__image">
             {image_url ? (

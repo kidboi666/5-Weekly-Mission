@@ -1,5 +1,11 @@
+import { InnerLarge } from "../../styles/commonStyle";
+
 function Index() {
-  return <div>Privacy Policy</div>;
+  return (
+    <div>
+      <InnerLarge>Privacy Policy</InnerLarge>
+    </div>
+  );
 }
 
 export default Index;

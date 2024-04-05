@@ -50,7 +50,7 @@ export const PostCardWrap = styled.div`
   }
 `
 export const EmptyBox = styled.div`
-    padding: 41px 0 35px;
+  padding: 41px 0 35px;
   line-height: 24px;
   text-align: center;
 `

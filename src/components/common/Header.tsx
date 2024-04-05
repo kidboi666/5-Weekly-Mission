@@ -7,26 +7,16 @@ import {
   HeaderLogo,
   HeaderUserInfo,
 } from "./headerStyle";
-import { IHeaderUserLoginInfo, headerUserLoginInfo } from "../../api/api";
 import { Profile } from "../../styles/commonStyle";
-import { useEffect, useState } from "react";
-import Button from "./atoms/Button";
 import LinkButton from "./atoms/LinkButton";
+import useFetch from "../../hook/useFetch";
+import { USERLOGINAPI } from "../../constant/api";
+import { IHeaderUserLoginInfoApi } from "../../constant/interface";
 const logo = "/assets/logo/logo.svg";
 
 function Header() {
-  const [userInfo, setUserInfo] = useState<IHeaderUserLoginInfo>();
-  useEffect(() => {
-    // 유저정보 받아오기
-    (async () => {
-      try {
-        const data = await headerUserLoginInfo();
-        setUserInfo(data);
-      } catch (e) {
-        console.error("유저 정보를 가지고 올수 없습니다.", e);
-      }
-    })();
-  }, []);
+  const { value: userInfo } = useFetch<IHeaderUserLoginInfoApi>(USERLOGINAPI);
+
   return (
     <HaderWrap>
       <HeaderInner>

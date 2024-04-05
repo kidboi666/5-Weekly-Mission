@@ -7,7 +7,7 @@ export default function NotFoundPage() {
     <NotFoundWrap>
       <TitleMs>페이지 작업 중 입니다.</TitleMs>
       <div>
-        <Link to="">홈으로</Link>
+        <Link to="/folder">폴더 페이지로</Link>
       </div>
     </NotFoundWrap>
   );

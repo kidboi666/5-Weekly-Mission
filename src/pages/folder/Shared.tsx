@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import PostCard from "../../components/folder/PostCard";
 import { ContainBody, ContainHead } from "../../styles/commonStyle";
 import {
@@ -8,9 +7,11 @@ import {
   PostCardWrap,
   BoxLinkSearch,
 } from "./folderStyle";
-import { IFolderListApi, folderListApi } from "../../api/api";
 import { TitleMs } from "../../styles/commonStyle";
 import Input from "../../components/common/atoms/Input";
+import { IFolderListApi } from "../../constant/interface";
+import { SHAREDCONTANTAPI } from "../../constant/api";
+import useFetch from "../../hook/useFetch";
 const logo = "/assets/logo/logo_codeit.svg";
 const search = "/assets/icon/icon_search.svg";
 
@@ -31,20 +32,8 @@ function FolderHead({ $title, $folderLogo, $folderLogoAlt }: IFolder) {
 }
 
 function Shared() {
-  const [isLoading, setLoading] = useState(false);
-  const [cardInfo, setCardInfo] = useState<IFolderListApi[]>();
-
-  useEffect(() => {
-    (async () => {
-      try {
-        setLoading(true);
-        const data = await folderListApi();
-        setCardInfo(data);
-      } catch (e) {
-        console.log(e);
-      }
-    })();
-  }, []);
+  const { value: cardInfo, isLoading } =
+    useFetch<IFolderListApi[]>(SHAREDCONTANTAPI);
 
   return (
     <>
