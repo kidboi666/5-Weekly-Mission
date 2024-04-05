@@ -1,5 +1,14 @@
 import styled from 'styled-components';
 
+export const NoCard = styled.div`
+  color: black;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 41px;
+`;
+
 export const CardImage = styled.div`
   width: 100%;
   min-height: 19.2rem;
