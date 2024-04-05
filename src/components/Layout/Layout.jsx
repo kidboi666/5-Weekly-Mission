@@ -1,4 +1,5 @@
 import { useGetUserInfo } from "../../api/useGetUserInfo";
+import { Footer } from "../Footer/Footer";
 import { Header } from "../Header/Header";
 
 export const Layout = ({ children, isFixed }) => {
@@ -10,6 +11,7 @@ export const Layout = ({ children, isFixed }) => {
     <>
       <Header profile={profile} isFixed={isFixed} />
       <main>{children}</main>
+      <Footer />
     </>
   );
 };
