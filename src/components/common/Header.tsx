@@ -1,24 +1,31 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Email,
-  HaderWrap,
   HeaderControl,
   HeaderInner,
   HeaderLogo,
   HeaderUserInfo,
+  HeaderWrap,
 } from "./headerStyle";
 import { Profile } from "../../styles/commonStyle";
 import LinkButton from "./atoms/LinkButton";
 import useFetch from "../../hook/useFetch";
 import { USERLOGINAPI } from "../../constant/api";
 import { IHeaderUserLoginInfoApi } from "./interface";
+import { useEffect, useState } from "react";
 const logo = "/assets/logo/logo.svg";
 
 function Header() {
+  const { pathname } = useLocation();
   const { value: userInfo } = useFetch<IHeaderUserLoginInfoApi>(USERLOGINAPI);
-
+  const [fixed, setFixed] = useState(true);
+  useEffect(() => {
+    if (pathname === "/folder") {
+      setFixed(false);
+    }
+  }, [pathname]);
   return (
-    <HaderWrap>
+    <HeaderWrap className="head__wrap" $position={fixed}>
       <HeaderInner>
         <HeaderLogo className="head__logo">
           <Link to="/">
@@ -38,7 +45,7 @@ function Header() {
           )}
         </HeaderControl>
       </HeaderInner>
-    </HaderWrap>
+    </HeaderWrap>
   );
 }
 export default Header;

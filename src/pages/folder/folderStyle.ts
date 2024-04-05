@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { ContainBodyInner, ContainHeadInner, DFlaxAlignCenter, DFlaxAlignCenterBtw, dflexBtw, innerLarge } from "../../styles/commonStyle";
+import { ContainBodyInner, ContainHeadInner, DFlaxAlignCenter, dflexBtw, innerLarge } from "../../styles/commonStyle";
 import { theme } from "../../styles/theme";
 
 export const ShareHeadInner = styled(ContainHeadInner)`
@@ -15,6 +15,7 @@ export const ShareHeadInner = styled(ContainHeadInner)`
     padding-top: 1.25rem;
   }
 `
+
 export const LinkAddHeadInner = styled.div`
   position: relative;
   max-width: 864px;

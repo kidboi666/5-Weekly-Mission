@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { DFlaxAlignCenter, DFlaxAlignCenterBtw } from "../../styles/commonStyle";
 import { theme } from "../../styles/theme";
 
-export const HaderWrap = styled.header`
-  position: fixed;
+export const HeaderWrap = styled.header<{$position:boolean | undefined}>`
+  position: ${({$position})=> $position ? 'fixed' : 'absolute'};
   top: 0;
   left: 0;
   right: 0;

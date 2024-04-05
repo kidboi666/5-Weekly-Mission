@@ -15,7 +15,7 @@ import {
 import Button from "../../components/common/atoms/Button";
 import Input from "../../components/common/atoms/Input";
 import useFetch from "../../hook/useFetch";
-import { FOLDERBOOKMARKLISTAPI, FOLDERLISTAPI } from "../../constant/api";
+import { FOLDERCONTANTLISTAPI, FOLDERMENULISTAPI } from "../../constant/api";
 import { IFolderContentApi, IFolderMenuButtonApi } from "./interface";
 import { useEffect, useState } from "react";
 
@@ -41,27 +41,31 @@ const folderControlBtn = [
   },
 ];
 
+export interface aaa {
+  setHeadFixed: any;
+}
+
 function useFatchDataLoad<T>(api: string) {
   return useFetch<T>(api);
 }
 
 function Index() {
   const [title, setTitle] = useState("전체");
-  const [dynamicAPI, setDynamicAPI] = useState<string>(FOLDERBOOKMARKLISTAPI);
+  const [dynamicAPI, setDynamicAPI] = useState<string>(FOLDERCONTANTLISTAPI);
   const { value: menu, isLoading: menuLoading } =
-    useFatchDataLoad<IFolderMenuButtonApi>(FOLDERLISTAPI);
+    useFatchDataLoad<IFolderMenuButtonApi>(FOLDERMENULISTAPI);
   const { value: contant, isLoading: contantLoading } =
     useFatchDataLoad<IFolderContentApi>(dynamicAPI);
 
   const handleClick = (api: string) => {
     if (menu === undefined || api === "") return;
     if (api === "all") {
-      setDynamicAPI(FOLDERBOOKMARKLISTAPI);
+      setDynamicAPI(FOLDERCONTANTLISTAPI);
       setTitle("전체");
       return;
     }
     // api/users/1/links?folderId={해당 폴더 ID}
-    setDynamicAPI(`${FOLDERBOOKMARKLISTAPI}?folderId=${api}`);
+    setDynamicAPI(`${FOLDERCONTANTLISTAPI}?folderId=${api}`);
     const result = menu?.data.filter((data) => +data.id === +api);
     result && setTitle(result[0]?.name as "");
   };
