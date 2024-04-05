@@ -6,12 +6,4 @@ import "./index.css";
 import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <BrowserRouter>
-    <App>
-      <Routes>
-        <Route path="/" element={<Folder />} />
-      </Routes>
-    </App>
-  </BrowserRouter>
-);
+root.render(<App />);
