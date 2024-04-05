@@ -13,6 +13,10 @@ export const StyledMenuWrap = styled.div`
   display: flex;
   justify-content: space-between;
   padding-bottom: 24px;
+
+  @media (max-width: 767px) {
+    padding-bottom: 28px;
+  }
 `;
 
 export const StyledMenuList = styled.ul`
@@ -68,7 +72,7 @@ export const StyledTitleWrap = styled.div`
   @media (max-width: 767px) {
     flex-direction: column;
     gap: 12px;
-    padding: 28px 0 20px;
+    padding: 0 0 20px;
   }
 `;
 
