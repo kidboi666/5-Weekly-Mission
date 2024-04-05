@@ -4,8 +4,8 @@ import CardList from './CardList';
 function Content() {
   return (
     <>
-      <Search></Search>
-      <CardList></CardList>
+      <Search />
+      <CardList />
     </>
   );
 }
