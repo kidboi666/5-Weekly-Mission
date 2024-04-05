@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./MenuButton.styled";
 
-export default function menuButton({ item, onClick, value }) {
+export default function MenuButton({ item, onClick, value, currentFolder }) {
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    setIsActive(value === currentFolder);
+  }, [currentFolder, value]);
+
   return (
-    <S.StyledButton value={value} onClick={onClick}>
+    <S.StyledButton isActive={isActive} value={value} onClick={onClick}>
       {item}
     </S.StyledButton>
   );

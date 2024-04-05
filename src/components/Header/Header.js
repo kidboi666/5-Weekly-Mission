@@ -10,7 +10,6 @@ export default function Header() {
   const location = useLocation();
 
   const $isSticky = () => location.pathname !== "/folder";
-  console.log($isSticky());
 
   return (
     <S.StyledHeader $isSticky={$isSticky}>

@@ -41,14 +41,14 @@ export default function FolderPage() {
     setMenu(nextMenu);
   };
 
-  useEffect(() => {
-    handleLoadMenu();
-  }, []);
-
   const handleLoadItems = useCallback(async () => {
     const nextItems = await getFoldersItems(folder);
     setItems(nextItems);
   }, [folder]);
+
+  useEffect(() => {
+    handleLoadMenu();
+  }, []);
 
   useEffect(() => {
     handleLoadItems();
@@ -64,15 +64,15 @@ export default function FolderPage() {
         <S.StyledMenuWrap>
           <S.StyledMenuList>
             <MenuButton
-              active={folder === "전체"}
               item='전체'
               value='전체'
+              currentFolder={folder}
               onClick={handleClick}
             />
             {menu?.map((item, index) => (
               <MenuButton
                 key={index}
-                active={folder === item}
+                currentFolder={folder}
                 item={item}
                 value={item}
                 onClick={handleClick}

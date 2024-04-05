@@ -7,10 +7,8 @@ export const StyledButton = styled.button`
   border: 1px solid var(--primary-color);
   border-radius: 5px;
 
-  &:active {
-    background: var(--primary-color);
-    color: white;
-  }
+  background: ${({ isActive }) => (isActive ? "var(--primary-color)" : "none")};
+  color: ${({ isActive }) => (isActive ? "white" : "inherit")};
 
   @media (max-width: 767px) {
     height: 29px;
