@@ -3,7 +3,15 @@ import logo from '../assets/logo.svg';
 import useFetch from './hooks/useFetch';
 
 function Nav() {
-  const [data] = useFetch('api/sample/user');
+  const { data, isLoading, error } = useFetch('api/sample/user');
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <nav>
@@ -13,8 +21,8 @@ function Nav() {
         </a>
         {data ? (
           <div className="user-info">
-            <img src={data?.profileImageSource} alt="사용자의 프로필 사진" />
-            <span>{data?.email}</span>
+            <img src={data.profileImageSource} alt="사용자의 프로필 사진" />
+            <span>{data.email}</span>
           </div>
         ) : (
           <a className="cta cta-short" href="signin.html">

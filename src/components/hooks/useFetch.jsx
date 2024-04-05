@@ -1,16 +1,23 @@
 import { useState, useEffect } from 'react';
-import fetchData from '../apis/GetApi.jsx';
+import fetchData from '../apis/GetApi';
 
-function useFetch(url) {
+function useFetch(url, method) {
   const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchData(url)
-      .then((fetchedData) => setData(fetchedData))
-      .catch((error) => console.error(error));
-  }, [url]);
+    const fetchUrl = async () => {
+      const result = await fetchData(url, method);
+      setData(result.data);
+      setIsLoading(false);
+      setError(result.error);
+    };
 
-  return [data, setData];
+    fetchUrl();
+  }, [url, method]);
+
+  return { data, isLoading, error };
 }
 
 export default useFetch;

@@ -4,15 +4,23 @@ import useFetch from './hooks/useFetch.jsx';
 import defaultImage from '../assets/defaultImage.svg';
 
 function CardList() {
-  const [data] = useFetch('api/sample/folder');
+  const { data, isLoading, error } = useFetch('api/sample/folder');
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <Sort>
       <CardGrid>
-        {data?.folder.links.map((link, i) => (
+        {data.folder.links.map((link, i) => (
           <CardContainer key={`card-index-${i}`}>
             <ATag href={link.url}>
-              <CardImage style={{ backgroundImage: `url(${link.imageSource || defaultImage})` }} />
+              <CardImage style={{ backgroundImage: `url(${link?.imageSource || defaultImage})` }} />
             </ATag>
             <CardContent>
               <CardContentText size={13} color="gray60" className="card__createdAt">
