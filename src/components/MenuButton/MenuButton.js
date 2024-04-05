@@ -9,7 +9,7 @@ export default function MenuButton({ item, onClick, value, currentFolder }) {
   }, [currentFolder, value]);
 
   return (
-    <S.StyledButton isActive={isActive} value={value} onClick={onClick}>
+    <S.StyledButton $isActive={isActive} value={value} onClick={onClick}>
       {item}
     </S.StyledButton>
   );

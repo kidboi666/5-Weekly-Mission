@@ -9,7 +9,7 @@ export default function Header() {
   const { user } = useContext(UserContext);
   const location = useLocation();
 
-  const $isSticky = () => location.pathname !== "/folder";
+  const $isSticky = location.pathname !== "/folder";
 
   return (
     <S.StyledHeader $isSticky={$isSticky}>
