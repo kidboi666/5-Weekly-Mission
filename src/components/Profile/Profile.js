@@ -2,12 +2,7 @@ import React from "react";
 import profileInit from "../../assets/profile_init.png";
 import * as S from "./Profile.styled";
 
-export default function ProfileImage({
-  user,
-  src,
-  $size = "s",
-  $flextype = "row",
-}) {
+export default function Profile({ user, src, $size = "s", $flextype = "row" }) {
   return (
     <S.StyledWrap $flextype={$flextype}>
       <S.StyledImg

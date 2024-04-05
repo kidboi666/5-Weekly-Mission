@@ -4,7 +4,7 @@ import { getSharedList } from "../../api";
 import { UserContext } from "../../contexts/UserContext";
 import { StyledSectionWrap, StyledTopWrap } from "../Common.styled";
 import * as S from "./SharedPage.styled";
-import ProfileImage from "../../components/Profile/Profile";
+import Profile from "../../components/Profile/Profile";
 import CardList from "../../components/CardList/CardList";
 
 export default function SharedPage() {
@@ -23,7 +23,7 @@ export default function SharedPage() {
   return (
     <>
       <StyledTopWrap>
-        <ProfileImage
+        <Profile
           src={user?.profileImageSource}
           $size='m'
           user={user?.name}
