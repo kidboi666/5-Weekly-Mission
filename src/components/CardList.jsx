@@ -10,7 +10,7 @@ function CardList() {
     <Sort>
       <CardGrid>
         {data?.folder.links.map((link, i) => (
-          <CardContainer key={i}>
+          <CardContainer key={`card-index-${i}`}>
             <ATag href={link.url}>
               <CardImage style={{ backgroundImage: `url(${link.imageSource || defaultImage})` }} />
             </ATag>
