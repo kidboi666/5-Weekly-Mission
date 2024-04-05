@@ -1,0 +1,9 @@
+header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: var(--z-index-nav);
+  background-color: var(--Linkbrary-bg);
+  padding: 3.2rem 20rem;
+}

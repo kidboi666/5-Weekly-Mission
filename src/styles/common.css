@@ -1,6 +1,7 @@
 @import "./color.css";
 @import "./font.css";
 @import "./reset.css";
+@import "./button.css";
 
 :root {
   --z-index-nav: 100;

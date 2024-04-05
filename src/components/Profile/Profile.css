@@ -1,0 +1,16 @@
+.profile {
+  display: flex;
+  align-items: center;
+  column-gap: 0.6rem;
+}
+
+.profile-image {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+}
+
+.profile-email {
+  font-size: 1.4rem;
+  color: var(--gray100);
+}
