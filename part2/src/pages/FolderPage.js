@@ -3,13 +3,13 @@ import { getLinkList } from "../api";
 import Nav from "../components/Nav/Nav";
 import AddLink from "../components/AddLink";
 import Search from "../components/Search/Search";
-import Sorting from "../components/Sorting";
+import FolderToolBar from "../components/FolderToolBar";
 import NoLink from "../components/NoLink";
 import CardList from "../components/CardList/CardList";
 import Footer from "../components/Footer/Footer";
 import "../components/MainContent.css";
 
-function FolderPage({ userInfo, folderInfo, folderList }) {
+function FolderPage({ userInfo, folderList }) {
   const id = 1;
   const [folderId, setFolderId] = useState(0);
   const [linkList, setLinkList] = useState({});
@@ -32,7 +32,7 @@ function FolderPage({ userInfo, folderInfo, folderList }) {
       <div className="mainContent-wrapper">
         <div className="mainContent">
           <Search />
-          <Sorting folderList={folderList.data} setFolderId={setFolderId} />
+          <FolderToolBar folderList={folderList.data} setFolderId={setFolderId} />
           {linkList.data.length === 0 ? <NoLink /> : <CardList links={linkList.data} />}
         </div>
       </div>

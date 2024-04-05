@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getSampleUser, getFolderInfo, getFolderList, getLinkList } from "../api";
+import { getSampleUser, getFolderInfo, getFolderList } from "../api";
 import SharedPage from "../pages/SharedPage";
 import FolderPage from "../pages/FolderPage";
 
@@ -55,7 +55,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/shared" element={<SharedPage userInfo={userInfo} folderInfo={folderInfo} />} />
-        <Route path="/folder" element={<FolderPage userInfo={userInfo} folderInfo={folderInfo} folderList={folderList} />} />
+        <Route path="/folder" element={<FolderPage userInfo={userInfo} folderList={folderList} />} />
       </Routes>
     </BrowserRouter>
   );
