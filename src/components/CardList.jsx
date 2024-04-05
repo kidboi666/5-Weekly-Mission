@@ -3,7 +3,7 @@ import { timeAgo } from './utils/CardUtil.jsx';
 import useFetch from './hooks/useFetch.jsx';
 import defaultImage from '../assets/defaultImage.svg';
 
-function Card() {
+function CardList() {
   const [data] = useFetch('api/sample/folder');
 
   return (
@@ -31,4 +31,4 @@ function Card() {
     </Sort>
   );
 }
-export default Card;
+export default CardList;

@@ -1,11 +1,11 @@
 import Search from './Search';
-import Card from './Card';
+import CardList from './CardList';
 
 function Content() {
   return (
     <>
       <Search></Search>
-      <Card></Card>
+      <CardList></CardList>
     </>
   );
 }
