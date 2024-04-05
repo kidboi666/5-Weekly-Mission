@@ -37,9 +37,9 @@ export default function Card({ item }) {
           <S.StyledTitle>{title}</S.StyledTitle>
           <S.StyledDate>{date}</S.StyledDate>
         </S.StyledTextWrap>
-        <S.StyleStarButton onClick={handleClick}>
+        <S.StyleStar onClick={handleClick}>
           <img src={star} alt='별' />
-        </S.StyleStarButton>
+        </S.StyleStar>
       </Link>
     </S.StyledCard>
   );

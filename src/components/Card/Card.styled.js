@@ -84,10 +84,13 @@ export const StyledDate = styled.p`
   color: #333333;
 `;
 
-export const StyleStarButton = styled.button`
+export const StyleStar = styled.button`
   position: absolute;
   top: 15px;
   right: 15px;
   width: 34px;
-  z-index: 1;
+
+  @media (max-width: 767px) {
+    width: 30px;
+  }
 `;
