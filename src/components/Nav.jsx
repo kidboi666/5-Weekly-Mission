@@ -9,11 +9,11 @@ function Nav() {
     <nav>
       <div className="gnb">
         <a>
-          <img className="logo" src={logo} />
+          <img className="logo" src={logo} alt="메인페이지의 로고" />
         </a>
         {data ? (
           <div className="user-info">
-            <img src={data?.profileImageSource} />
+            <img src={data?.profileImageSource} alt="사용자의 프로필 사진" />
             <span>{data?.email}</span>
           </div>
         ) : (
