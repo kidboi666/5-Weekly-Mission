@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import * as S from "./Card.styled";
 import star from "../../assets/star_icon.png";
 import starActive from "../../assets/star_active_icon.png";
+import kebab from "../../assets/kebab_icon.png";
 
 export default function Card({ item }) {
   const { createdAt, url, title, imageSource } = item;
@@ -27,7 +28,12 @@ export default function Card({ item }) {
           />
         </S.StyledThumnailWrap>
         <S.StyledTextWrap>
-          <S.StyledDateAgo>{dateBetween}</S.StyledDateAgo>
+          <S.StyledTextTopWrap>
+            <S.StyledDateAgo>{dateBetween}</S.StyledDateAgo>
+            <S.StyledKebab>
+              <img src={kebab} alt='더보기' />
+            </S.StyledKebab>
+          </S.StyledTextTopWrap>
           <S.StyledTitle>{title}</S.StyledTitle>
           <S.StyledDate>{date}</S.StyledDate>
         </S.StyledTextWrap>

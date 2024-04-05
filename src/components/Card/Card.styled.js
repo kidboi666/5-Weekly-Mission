@@ -49,10 +49,20 @@ export const StyledTextWrap = styled.div`
   padding: 15px 20px;
 `;
 
+export const StyledTextTopWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const StyledDateAgo = styled.p`
   font-size: 13px;
   font-weight: 400;
   color: #666666;
+`;
+
+export const StyledKebab = styled.button`
+  width: 21px;
 `;
 
 export const StyledTitle = styled.h2`
