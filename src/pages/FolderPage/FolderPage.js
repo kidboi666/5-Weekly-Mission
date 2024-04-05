@@ -84,17 +84,19 @@ export default function FolderPage() {
             <S.StyledAddIcon src={AddIcon} alt='+' />
           </S.StyledAddButton>
         </S.StyledMenuWrap>
-        <S.StyledTitleWrap>
-          <S.StyledTitle>{folder}</S.StyledTitle>
-          <S.StyledControlWrap>
-            {CONTROLS.map((item, index) => (
-              <S.StyledControl key={index}>
-                <S.StyledControlIcon src={item.icon} alt='' />
-                {item.name}
-              </S.StyledControl>
-            ))}
-          </S.StyledControlWrap>
-        </S.StyledTitleWrap>
+        {folder !== "전체" && (
+          <S.StyledTitleWrap>
+            <S.StyledTitle>{folder}</S.StyledTitle>
+            <S.StyledControlWrap>
+              {CONTROLS.map((item, index) => (
+                <S.StyledControl key={index}>
+                  <S.StyledControlIcon src={item.icon} alt='' />
+                  {item.name}
+                </S.StyledControl>
+              ))}
+            </S.StyledControlWrap>
+          </S.StyledTitleWrap>
+        )}
         {!items && <S.StyledNoData>저장된 링크가 없습니다</S.StyledNoData>}
         {items && <CardList items={items} />}
       </StyledSectionWrap>

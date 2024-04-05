@@ -12,6 +12,7 @@ export const StyledTopWrap = styled(TopWrap)`
 export const StyledMenuWrap = styled.div`
   display: flex;
   justify-content: space-between;
+  padding-bottom: 24px;
 `;
 
 export const StyledMenuList = styled.ul`
@@ -62,7 +63,7 @@ export const StyledMobileAddButton = styled(StyledAddButton)`
 export const StyledTitleWrap = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 24px 0;
+  padding: 0 0 24px;
 
   @media (max-width: 767px) {
     flex-direction: column;
