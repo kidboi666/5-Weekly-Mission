@@ -3,6 +3,7 @@ import { Layout } from "../components/Layout/Layout";
 import { FolderInfo } from "../components/FolderInfo/FolderInfo";
 import { SearchBar } from "../components/SearchBar/SearchBar";
 import { styled } from "styled-components";
+import { CardList } from "../components/CardList/CardList";
 
 function SharedPage() {
   const SharedPageItems = styled.div`
@@ -34,6 +35,7 @@ function SharedPage() {
         <SharedPageItems>
           <SearchBar />
         </SharedPageItems>
+        <CardList></CardList>
       </Layout>
     </>
   );
