@@ -1,7 +1,13 @@
 // user login info
 export interface IHeaderUserLoginInfoApi {
-  email:string,
-  id:string,
-  name?:string,
-  profileImageSource?:string,
+  data: [
+    {
+      id:number,
+      email:string,
+      name?:string,
+      image_source?:string,
+      created_at?:string,
+      auth_id:string
+    }
+  ]
 }

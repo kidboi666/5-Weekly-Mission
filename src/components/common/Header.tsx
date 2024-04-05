@@ -17,13 +17,14 @@ const logo = "/assets/logo/logo.svg";
 
 function Header() {
   const { pathname } = useLocation();
-  const { value: userInfo } = useFetch<IHeaderUserLoginInfoApi>(USERLOGINAPI);
+  const { value } = useFetch<IHeaderUserLoginInfoApi>(USERLOGINAPI);
   const [fixed, setFixed] = useState(true);
   useEffect(() => {
     if (pathname === "/folder") {
       setFixed(false);
     }
   }, [pathname]);
+  const userInfo = value?.data[0] ?? undefined;
   return (
     <HeaderWrap className="head__wrap" $position={fixed}>
       <HeaderInner>
