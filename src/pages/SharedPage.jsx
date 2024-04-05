@@ -1,17 +1,10 @@
-import { useGetUserInfo } from "../api/useGetUserInfo";
-import { Header } from "../components/Header/Header";
+import { Layout } from "../components/Layout/Layout";
 
 function SharedPage() {
-  const { data } = useGetUserInfo();
-
-  const { email, profileImageSource } = data || {};
-  const profile = data ? { email, profileImageSource } : null;
-
   return (
-    <>
-      <Header profile={profile} />
-      <main></main>
-    </>
+    <Layout isFixed={true}>
+      <div>body</div>
+    </Layout>
   );
 }
 

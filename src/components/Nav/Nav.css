@@ -1,10 +1,17 @@
 .navigation {
-  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
   z-index: var(--z-index-nav);
   background-color: var(--Linkbrary-bg);
+}
+
+.navigation.fixed {
+  position: fixed;
+}
+
+.navigation.static {
+  position: static;
 }
 
 .navigation-items {

@@ -5,9 +5,10 @@ import { ROUTE } from "../../utill/constant";
 import { LOGO_IMAGE, TEXT } from "./constant";
 import "./Nav.css";
 
-export const Nav = ({ profile }) => {
+export const Nav = ({ profile, isFixed }) => {
+  const isFixedNav = isFixed ? "navigation fixed" : "navigation static";
   return (
-    <nav className="navigation">
+    <nav className={isFixedNav}>
       <div className="navigation-items">
         <Link to="/">
           <img src={LOGO_IMAGE} alt="Linkbrary logo" />
