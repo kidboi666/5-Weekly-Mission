@@ -1,7 +1,14 @@
 .layout-main {
   display: flex;
-  justify-self: center;
-  margin-top: 9.3rem;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  row-gap: 2rem;
+  padding-bottom: 2rem;
 
-  margin-bottom: 50rem;
+  @media (min-width: 768px) {
+    row-gap: 4rem;
+    padding-bottom: 6rem;
+  }
 }
