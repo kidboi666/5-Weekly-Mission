@@ -29,22 +29,20 @@ const CONTROLS = [
 
 export default function FolderPage() {
   const [menu, setMenu] = useState();
-  const [items, setItems] = useState([]);
   const [folder, setFolder] = useState("전체");
+  const [items, setItems] = useState([]);
 
   const handleClick = async (e) => {
     setFolder(e.target.value);
   };
 
-  const handleLoad = async () => {
+  const handleLoadMenu = async () => {
     const nextMenu = await getFoldersMenu();
-    const allItems = await getFoldersItems("전체");
     setMenu(nextMenu);
-    setItems(allItems);
   };
 
   useEffect(() => {
-    handleLoad();
+    handleLoadMenu();
   }, []);
 
   const handleLoadItems = useCallback(async () => {
@@ -87,7 +85,7 @@ export default function FolderPage() {
           </S.StyledAddButton>
         </S.StyledMenuWrap>
         <S.StyledTitleWrap>
-          <S.StyledTitle>유용한 글</S.StyledTitle>
+          <S.StyledTitle>{folder}</S.StyledTitle>
           <S.StyledControlWrap>
             {CONTROLS.map((item, index) => (
               <S.StyledControl key={index}>
