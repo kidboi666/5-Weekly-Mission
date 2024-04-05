@@ -1,6 +1,8 @@
 import { CardContainer, Sort, CardGrid, CardImage, CardContent, CardContentText, ATag } from '../styles/CardStyled.jsx';
 import { timeAgo } from './utils/CardUtil.jsx';
 import useFetch from './hooks/useFetch.jsx';
+import defaultImage from '../assets/defaultImgae.svg';
+
 function Card() {
   const [data] = useFetch('api/sample/folder');
 
