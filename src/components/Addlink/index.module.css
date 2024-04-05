@@ -7,6 +7,14 @@
   display: flex;
   align-items: center;
   background-color: var(--light-blue);
+
+  @media (max-width: 1123px) {
+    width: 70.4rem;
+  }
+
+  @media (max-width: 767px) {
+    width: 32.5rem;
+  }
 }
 
 .addLinkInput {
@@ -19,12 +27,11 @@
   display: flex;
   justify-content: center;
 
-  /* @media (min-width: 768px) {
-    height: 5.4rem;
+  @media (min-width: 768px) {
     padding-left: 4.2rem;
     font-size: 1.6rem;
     line-height: 150%;
-  } */
+  }
 }
 
 .addLinkBar::placeholder {

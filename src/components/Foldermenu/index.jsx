@@ -16,6 +16,7 @@ const FolderListContainer = styled.div`
   justify-content: start;
   gap: 0.8rem;
   position: relative;
+  flex-wrap: wrap;
 `;
 
 const FolderMenuContainer = styled.div`
@@ -61,38 +62,42 @@ function Foldermenu() {
 
   return (
     <div>
-      <FolderListContainer>
-        <button
-          className="folderButtons allFolders active"
-          onClick={handleOnClick}
-          id="all"
-        >
-          전체
-        </button>
-        {FolderlistData &&
-          FolderlistData.data.map((folderdata) => (
-            <button
-              className="folderButtons"
-              key={folderdata.id}
-              onClick={handleOnClick}
-              id={folderdata.id}
-            >
-              {folderdata.name}
-            </button>
-          ))}
+      <div className="buttonContainer">
+        <FolderListContainer>
+          <button
+            className="folderButtons allFolders active"
+            onClick={handleOnClick}
+            id="all"
+          >
+            전체
+          </button>
+          {FolderlistData &&
+            FolderlistData.data.map((folderdata) => (
+              <button
+                className="folderButtons"
+                key={folderdata.id}
+                onClick={handleOnClick}
+                id={folderdata.id}
+              >
+                {folderdata.name}
+              </button>
+            ))}
+        </FolderListContainer>
         <img
           className="addFolderIcon"
           src={addfolderIcon}
           alt="폴더 추가 아이콘"
         />
-      </FolderListContainer>
+      </div>
       <FolderMenuContainer>
         <p className="folderName">{activeButton}</p>
-        <ImageContainer>
-          <img src={shareicon} alt="폴더 공유 아이콘" />
-          <img src={changenameicon} alt="폴더 이름 변경 아이콘" />
-          <img src={deleteicon} alt="폴더 삭제 아이콘" />
-        </ImageContainer>
+        {activeButton === "전체" && (
+          <ImageContainer>
+            <img src={shareicon} alt="폴더 공유 아이콘" />
+            <img src={changenameicon} alt="폴더 이름 변경 아이콘" />
+            <img src={deleteicon} alt="폴더 삭제 아이콘" />
+          </ImageContainer>
+        )}
       </FolderMenuContainer>
       <Cardsfolder url={url} />
     </div>

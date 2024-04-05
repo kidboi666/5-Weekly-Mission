@@ -58,18 +58,25 @@
   position: absolute;
   top: 1.6rem;
   right: 1.6rem;
+  z-index: 1;
 }
 
 .card_img {
-  width: 34rem;
-  height: 20rem;
-  object-fit: cover;
+  background-size: cover;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 
   @media (max-width: 767px) {
     width: 32.5rem;
   }
+}
+
+.coloredText {
+  background-color: var(--light-blue);
+}
+
+.zoomIn {
+  background-size: 130%;
 }
 
 .card_grid_container {
