@@ -2,6 +2,8 @@ import { useGetUserInfo } from "../../api/useGetUserInfo";
 import { Footer } from "../Footer/Footer";
 import { Header } from "../Header/Header";
 
+import "./Layout.css";
+
 export const Layout = ({ children, isFixed }) => {
   const { data } = useGetUserInfo();
   const { email, profileImageSource } = data || {};
@@ -10,7 +12,7 @@ export const Layout = ({ children, isFixed }) => {
   return (
     <>
       <Header profile={profile} isFixed={isFixed} />
-      <main>{children}</main>
+      <main className="layout-main">{children}</main>
       <Footer />
     </>
   );
