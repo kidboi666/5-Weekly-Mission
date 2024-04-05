@@ -12,6 +12,10 @@
   line-height: 2.1rem;
   font-weight: 600;
   text-align: center;
+
+  @media (max-width: 767px) {
+    padding: 1rem 1.6rem;
+  }
 }
 
 .btn-sm {

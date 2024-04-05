@@ -7,17 +7,19 @@ import "./Nav.css";
 
 export const Nav = ({ profile }) => {
   return (
-    <nav className="nav-top">
-      <Link to="/">
-        <img src={LOGO_IMAGE} alt="Linkbrary logo" />
-      </Link>
-      {profile ? (
-        <Profile profile={profile} />
-      ) : (
-        <Link to={ROUTE.로그인} className="btn-primary btn-sm">
-          {TEXT.login}
+    <nav className="navigation">
+      <div className="navigation-items">
+        <Link to="/">
+          <img src={LOGO_IMAGE} alt="Linkbrary logo" />
         </Link>
-      )}
+        {profile ? (
+          <Profile profile={profile} />
+        ) : (
+          <Link to={ROUTE.로그인} className="btn-primary btn-sm">
+            {TEXT.login}
+          </Link>
+        )}
+      </div>
     </nav>
   );
 };

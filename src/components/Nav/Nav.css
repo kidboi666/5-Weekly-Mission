@@ -1,7 +1,23 @@
-nav.nav-top {
+.navigation {
+  position: fixed;
+  left: 0;
+  top: 0;
   width: 100%;
+  z-index: var(--z-index-nav);
+  background-color: var(--Linkbrary-bg);
+}
+
+.navigation-items {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  padding: 3.2rem 20rem;
   margin: 0 auto;
+
+  @media (max-width: 1199px) {
+    padding-right: 3.2rem;
+    padding-left: 3.2rem;
+    max-width: 86.3rem;
+  }
 }
