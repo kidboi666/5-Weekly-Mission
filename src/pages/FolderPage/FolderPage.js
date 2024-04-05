@@ -30,7 +30,7 @@ const CONTROLS = [
 export default function FolderPage() {
   const [menu, setMenu] = useState();
   const [items, setItems] = useState([]);
-  const [folder, setFolder] = useState();
+  const [folder, setFolder] = useState("전체");
 
   const handleClick = async (e) => {
     setFolder(e.target.value);
@@ -65,10 +65,16 @@ export default function FolderPage() {
         <Search />
         <S.StyledMenuWrap>
           <S.StyledMenuList>
-            <MenuButton item='전체' value='전체' onClick={handleClick} />
+            <MenuButton
+              active={folder === "전체"}
+              item='전체'
+              value='전체'
+              onClick={handleClick}
+            />
             {menu?.map((item, index) => (
               <MenuButton
                 key={index}
+                active={folder === item}
                 item={item}
                 value={item}
                 onClick={handleClick}

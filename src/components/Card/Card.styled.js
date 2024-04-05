@@ -9,6 +9,7 @@ export const StyledThumnail = styled.img`
 `;
 
 export const StyledCard = styled.li`
+  position: relative;
   width: calc((100% - 40px) / 3);
   border-radius: 15px;
   overflow: hidden;
@@ -71,4 +72,12 @@ export const StyledDate = styled.p`
   font-size: 14px;
   font-weight: 400;
   color: #333333;
+`;
+
+export const StyleStarButton = styled.button`
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 34px;
+  z-index: 1;
 `;
