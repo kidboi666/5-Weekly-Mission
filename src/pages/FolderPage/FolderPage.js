@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { StyledSectionWrap } from "../Common.styled";
 import LinkInput from "../../components/LinkInput/LinkInput";
 import * as S from "./FolderPage.styled";
@@ -30,16 +30,31 @@ const CONTROLS = [
 export default function FolderPage() {
   const [menu, setMenu] = useState();
   const [items, setItems] = useState([]);
+  const [folder, setFolder] = useState();
+
+  const handleClick = async (e) => {
+    setFolder(e.target.value);
+  };
 
   const handleLoad = async () => {
     const nextMenu = await getFoldersMenu();
-    const nextItems = await getFoldersItems();
+    const allItems = await getFoldersItems("전체");
     setMenu(nextMenu);
-    setItems(nextItems);
+    setItems(allItems);
   };
+
   useEffect(() => {
     handleLoad();
   }, []);
+
+  const handleLoadItems = useCallback(async () => {
+    const nextItems = await getFoldersItems(folder);
+    setItems(nextItems);
+  }, [folder]);
+
+  useEffect(() => {
+    handleLoadItems();
+  }, [folder, handleLoadItems]);
 
   return (
     <>
@@ -50,8 +65,14 @@ export default function FolderPage() {
         <Search />
         <S.StyledMenuWrap>
           <S.StyledMenuList>
+            <MenuButton item='전체' value='전체' onClick={handleClick} />
             {menu?.map((item, index) => (
-              <MenuButton key={index} item={item} />
+              <MenuButton
+                key={index}
+                item={item}
+                value={item}
+                onClick={handleClick}
+              />
             ))}
           </S.StyledMenuList>
           <S.StyledAddButton>
@@ -70,9 +91,7 @@ export default function FolderPage() {
             ))}
           </S.StyledControlWrap>
         </S.StyledTitleWrap>
-        {!items.length && (
-          <S.StyledNoData>저장된 링크가 없습니다</S.StyledNoData>
-        )}
+        {!items && <S.StyledNoData>저장된 링크가 없습니다</S.StyledNoData>}
         {items && <CardList items={items} />}
       </StyledSectionWrap>
       <S.StyledMobileAddButton>

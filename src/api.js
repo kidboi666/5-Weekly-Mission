@@ -33,22 +33,24 @@ export async function getFoldersMenu() {
   return menuArray;
 }
 
-export async function getFoldersItems() {
-  // const queryId = id ? `?folderId=${id}` : "";
+export async function getFoldersItems(id) {
+  const queryId = id === "전체" ? "" : `?folderId=${id}`;
   const response = await fetch(
-    `https://bootcamp-api.codeit.kr/api/users/1/links`
+    `https://bootcamp-api.codeit.kr/api/users/1/links${queryId}`
   );
   if (!response.ok) {
     throw new Error("사용자 데이터를 불러오는데 실패했습니다.");
   }
   const body = await response.json();
   const data = body.data;
-  const newData = data.map((item) => {
-    item.createdAt = item.created_at;
-    delete item.created_at;
-    item.imageSource = item.image_source;
-    delete item.image_source;
-    return item;
-  });
+  const newData = data
+    ? data.map((item) => {
+        item.createdAt = item.created_at;
+        delete item.created_at;
+        item.imageSource = item.image_source;
+        delete item.image_source;
+        return item;
+      })
+    : data;
   return newData;
 }
