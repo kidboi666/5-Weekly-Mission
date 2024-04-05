@@ -70,6 +70,8 @@ export const StyledTitle = styled.h2`
   font-weight: 400;
   color: #000000;
   width: 100%;
+  height: 49px;
+  line-height: 24px;
   text-overflow: ellipsis;
   overflow: hidden;
   word-break: break-word;

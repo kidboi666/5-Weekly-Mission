@@ -4,7 +4,7 @@ import { formatDateToString, formatDateToAgo } from "../../utils/date";
 import { Link } from "react-router-dom";
 import * as S from "./Card.styled";
 import star from "../../assets/star_icon.png";
-import starActive from "../../assets/star_active_icon.png";
+// import starActive from "../../assets/star_active_icon.png";
 import kebab from "../../assets/kebab_icon.png";
 
 export default function Card({ item }) {
