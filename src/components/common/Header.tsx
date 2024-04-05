@@ -11,7 +11,7 @@ import { Profile } from "../../styles/commonStyle";
 import LinkButton from "./atoms/LinkButton";
 import useFetch from "../../hook/useFetch";
 import { USERLOGINAPI } from "../../constant/api";
-import { IHeaderUserLoginInfoApi } from "../../constant/interface";
+import { IHeaderUserLoginInfoApi } from "./interface";
 const logo = "/assets/logo/logo.svg";
 
 function Header() {

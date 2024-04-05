@@ -15,11 +15,10 @@ import {
 import Button from "../../components/common/atoms/Button";
 import Input from "../../components/common/atoms/Input";
 import useFetch from "../../hook/useFetch";
-import { FOLDERLISTAPI, SHAREDCONTANTAPI } from "../../constant/api";
-import {
-  IFolderListApi,
-  IFolderMenuButtonWrapApi,
-} from "../../constant/interface";
+import { FOLDERBOOKMARKLISTAPI, FOLDERLISTAPI } from "../../constant/api";
+import { IFolderContentApi, IFolderMenuButtonApi } from "./interface";
+import { useEffect, useState } from "react";
+
 const add = "/assets/icon/icon_primary_add.svg";
 const search = "/assets/icon/icon_search.svg";
 const link = "/assets/icon/icon_primaty_link.svg";
@@ -42,11 +41,32 @@ const folderControlBtn = [
   },
 ];
 
+function useFatchDataLoad<T>(api: string) {
+  return useFetch<T>(api);
+}
+
 function Index() {
-  const { value: cardInfo, isLoading: cardInfoLoading } =
-    useFetch<IFolderListApi[]>(SHAREDCONTANTAPI);
-  const { value: btnBookMarkMenu, isLoading: btnMenuLoading } =
-    useFetch<IFolderMenuButtonWrapApi>(FOLDERLISTAPI);
+  const [title, setTitle] = useState("전체");
+  const [dynamicAPI, setDynamicAPI] = useState<string>(FOLDERBOOKMARKLISTAPI);
+  const { value: menu, isLoading: menuLoading } =
+    useFatchDataLoad<IFolderMenuButtonApi>(FOLDERLISTAPI);
+  const { value: contant, isLoading: contantLoading } =
+    useFatchDataLoad<IFolderContentApi>(dynamicAPI);
+
+  const handleClick = (api: string) => {
+    if (menu === undefined || api === "") return;
+    if (api === "all") {
+      setDynamicAPI(FOLDERBOOKMARKLISTAPI);
+      setTitle("전체");
+      return;
+    }
+    // api/users/1/links?folderId={해당 폴더 ID}
+    setDynamicAPI(`${FOLDERBOOKMARKLISTAPI}?folderId=${api}`);
+    const result = menu?.data.filter((data) => +data.id === +api);
+    result && setTitle(result[0]?.name as "");
+  };
+
+  useEffect(() => {}, [menu, contant]);
 
   return (
     <>
@@ -75,14 +95,25 @@ function Index() {
           {/* 폴더버튼 리스트 */}
           <BookmarkBox>
             <BookMarkBtnList>
-              {btnMenuLoading && (
+              {menuLoading && (
                 <>
-                  <Button key={"folder-all"} $btnClass={"button__outlined"}>
+                  <Button
+                    $id={"all"}
+                    $btnClass={"button__outlined"}
+                    clickEvent={handleClick}
+                    $clickEventName={"bookmarkId"}
+                  >
                     전체
                   </Button>
-                  {btnBookMarkMenu &&
-                    btnBookMarkMenu.data.map((menu: any) => (
-                      <Button key={menu.id} $btnClass={"button__outlined"}>
+                  {menu &&
+                    menu.data.map((menu: any) => (
+                      <Button
+                        key={menu.id}
+                        $id={menu.id}
+                        $btnClass={"button__outlined"}
+                        clickEvent={handleClick}
+                        $clickEventName={"bookmarkId"}
+                      >
                         {menu.name}
                       </Button>
                     ))}
@@ -97,11 +128,12 @@ function Index() {
           </BookmarkBox>
           {/* 버튼 수정 */}
           <ShareBox>
-            <SubTitle>유용한 글</SubTitle>
+            <SubTitle>{title}</SubTitle>
             <ShareListBtn>
               {folderControlBtn.map((btn) => (
                 <Button
                   key={btn.id}
+                  $id={btn.id}
                   $btnClass={"button__icon-before"}
                   $BeforButtonIcon={btn.imgSrc}
                 >
@@ -111,11 +143,13 @@ function Index() {
             </ShareListBtn>
           </ShareBox>
 
-          {cardInfoLoading ? (
-            cardInfo ? (
+          {contantLoading ? (
+            contant && contant.data.length !== 0 ? (
               <PostCardWrap>
-                {cardInfo &&
-                  cardInfo.map((data) => <PostCard key={data.id} {...data} />)}
+                {contant &&
+                  contant.data.map((data) => (
+                    <PostCard key={data.id} {...data} />
+                  ))}
               </PostCardWrap>
             ) : (
               <EmptyBox>저장된 링크가 없습니다.</EmptyBox>

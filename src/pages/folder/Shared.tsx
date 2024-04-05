@@ -9,9 +9,9 @@ import {
 } from "./folderStyle";
 import { TitleMs } from "../../styles/commonStyle";
 import Input from "../../components/common/atoms/Input";
-import { IFolderListApi } from "../../constant/interface";
 import { SHAREDCONTANTAPI } from "../../constant/api";
 import useFetch from "../../hook/useFetch";
+import { IFolderContent } from "./interface";
 const logo = "/assets/logo/logo_codeit.svg";
 const search = "/assets/icon/icon_search.svg";
 
@@ -31,10 +31,13 @@ function FolderHead({ $title, $folderLogo, $folderLogoAlt }: IFolder) {
   );
 }
 
-function Shared() {
-  const { value: cardInfo, isLoading } =
-    useFetch<IFolderListApi[]>(SHAREDCONTANTAPI);
+function useFatchDataLoad<T>(api: string) {
+  return useFetch<T>(api);
+}
 
+function Shared() {
+  const { value, isLoading } =
+    useFatchDataLoad<IFolderContent[]>(SHAREDCONTANTAPI);
   return (
     <>
       <ContainHead>
@@ -54,10 +57,10 @@ function Shared() {
             />
           </BoxLinkSearch>
           {isLoading ? (
-            cardInfo ? (
+            value ? (
               <PostCardWrap>
-                {cardInfo &&
-                  cardInfo.map((data) => <PostCard key={data.id} {...data} />)}
+                {value &&
+                  value.map((data) => <PostCard key={data.id} {...data} />)}
               </PostCardWrap>
             ) : (
               <EmptyBox>저장된 링크가 없습니다.</EmptyBox>

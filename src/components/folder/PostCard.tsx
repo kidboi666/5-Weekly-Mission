@@ -3,13 +3,17 @@ import { DFlaxAlignCenterBtw, EllipsisLine } from "../../styles/commonStyle";
 import { calculateTimeAgo } from "../../utils/calcTilmAgo";
 import { BookMarkBtn, CardMenu, CardWrap } from "./PostCardStyle";
 import { useState } from "react";
-import { IFolderListApi } from "../../constant/interface";
+import { IFolderContent } from "../../pages/folder/interface";
 const emptyImg = "/assets/logo/logo.svg";
 export default function PostCard({
-  image_url,
+  id,
+  url,
+  title,
+  image_source,
   description,
   created_at,
-}: IFolderListApi) {
+  folder_id,
+}: IFolderContent) {
   const [bookMark, setBookMark] = useState(false);
   const [cardMenuShow, setCardMenuShow] = useState(false);
 
@@ -31,8 +35,8 @@ export default function PostCard({
       <Link to="" target="_blank" className="card__link">
         <figure>
           <div className="card__image">
-            {image_url ? (
-              <img src={image_url} alt={image_url} />
+            {image_source ? (
+              <img src={image_source} alt={image_source} />
             ) : (
               <img className="empty" src={emptyImg} alt="" />
             )}
