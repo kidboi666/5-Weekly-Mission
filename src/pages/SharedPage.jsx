@@ -1,11 +1,11 @@
+import { useGetUserInfo } from "../api/useGetUserInfo";
 import { Header } from "../components/Header/Header";
 
 function SharedPage() {
-  const profile = {
-    email: "email@email.com",
-    profileImageSource:
-      "https://cdn-icons-png.flaticon.com/512/9131/9131529.png",
-  };
+  const { data } = useGetUserInfo();
+
+  const { email, profileImageSource } = data || {};
+  const profile = data ? { email, profileImageSource } : null;
 
   return (
     <>
