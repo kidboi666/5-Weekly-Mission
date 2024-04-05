@@ -59,7 +59,7 @@ function calculateTime(value) {
 }
 
 function Card({ link }) {
-  const imgUrl = link.imageSource ?? noImageBackground;
+  const imgUrl = (link.imageSource || link.image_source) ?? noImageBackground;
 
   const handleClick = () => {
     window.open(link.url, "_blank", "noopener, noreferrer");
@@ -71,9 +71,9 @@ function Card({ link }) {
         <img src={imgUrl} alt={link.title} />
       </div>
       <div className="linkInfo">
-        <p className="times">{calculateTime(link.createdAt)}</p>
+        <p className="times">{calculateTime(link.createdAt || link.created_at)}</p>
         <p className="paragraph">{link.description}</p>
-        <p className="createdAt">{formatDate(link.createdAt)}</p>
+        <p className="createdAt">{formatDate(link.createdAt || link.created_at)}</p>
       </div>
     </button>
   );
@@ -81,6 +81,7 @@ function Card({ link }) {
 
 function CardList({ links }) {
   if (!links) return;
+  console.log(links);
   return (
     <ul className="cardList">
       {Object.values(links).map((link) => {

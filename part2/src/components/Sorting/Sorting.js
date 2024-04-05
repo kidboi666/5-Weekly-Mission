@@ -6,7 +6,7 @@ function SortingButton({ folderName }) {
 }
 
 function Sorting({ folderList }) {
-  console.log(folderList);
+  // console.log(folderList);
   if (!folderList) return;
   return (
     <SortingWrap>

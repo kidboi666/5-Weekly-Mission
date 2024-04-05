@@ -68,6 +68,7 @@
 }
 
 .card .linkInfo .paragraph {
+  height: 48px;
   font-size: 16px;
   text-align: left;
   overflow: hidden;

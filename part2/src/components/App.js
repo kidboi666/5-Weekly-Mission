@@ -1,51 +1,69 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getSampleUser, getFolderInfo, getFolderList } from "../api";
+import { getSampleUser, getFolderInfo, getFolderList, getLinkList } from "../api";
 import SharedPage from "../pages/SharedPage";
 import FolderPage from "../pages/FolderPage";
 
-function App() {
-  const [userInfo, setUserInfo] = useState({});
-  const [folderInfo, setFolderInfo] = useState({});
-  const [folderList, setFolderList] = useState({});
-
-  const handleLoadUser = async () => {
-    const result = await getSampleUser();
-    if (!result) return;
-
-    const { email, profileImageSource } = result;
-    setUserInfo((prevInfo) => ({ ...prevInfo, email, profileImageSource }));
-  };
-
-  const handleLoadFolder = async () => {
-    const result = await getFolderInfo();
-    if (!result) return;
-
-    const { folder } = result;
-    setFolderInfo((prevInfo) => ({
-      ...prevInfo,
-      owner: folder.owner,
-      name: folder.name,
-      links: folder.links,
-    }));
-  };
-
-  const handleLoadFolderList = async () => {
-    const result = await getFolderList(1);
-    if (!result) return;
-
-    const { data } = result;
-    setFolderList((prevList) => ({
-      ...prevList,
-      data,
-    }));
-  };
-
+function useUser() {
+  const [userInfo, setUserInfo] = useState({ email: "", imgUrl: "" });
   useEffect(() => {
-    handleLoadUser();
-    handleLoadFolder();
-    handleLoadFolderList();
+    (async function loadData() {
+      const result = await getSampleUser();
+      if (!result) return;
+
+      const { email, profileImageSource: imgUrl } = result;
+      setUserInfo({ email, imgUrl });
+    })();
   }, []);
+  return { userInfo };
+}
+
+function useFolder() {
+  const [folderInfo, setFolderInfo] = useState({});
+  useEffect(() => {
+    (async function loadData() {
+      const result = await getFolderInfo();
+      if (!result) return;
+
+      const { folder } = result;
+      setFolderInfo(folder);
+    })();
+  }, []);
+  return { folderInfo };
+}
+
+function useFolderList() {
+  const [folderList, setFolderList] = useState({});
+  useEffect(() => {
+    (async function loadData() {
+      const result = await getFolderList(1);
+      if (!result) return;
+
+      const { data } = result;
+      setFolderList({ data });
+    })();
+  }, []);
+  return { folderList };
+}
+
+export function useLinkList() {
+  const [linkList, setLinkList] = useState({});
+  useEffect(() => {
+    (async function loadData() {
+      const result = await getLinkList(1);
+      if (!result) return;
+
+      const { data } = result;
+      setLinkList({ data });
+    })();
+  }, []);
+  return { linkList };
+}
+
+function App() {
+  const { userInfo } = useUser();
+  const { folderInfo } = useFolder();
+  const { folderList } = useFolderList();
 
   return (
     <BrowserRouter>
