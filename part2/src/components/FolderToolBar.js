@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import FolderListButton from "./Button/FolderListButton";
 import addIcon from "../assets/plus.svg";
+import addIconWhite from "../assets/plus-white.svg";
 import shareIcon from "../assets/share.svg";
 import editIcon from "../assets/pen.svg";
 import deleteIcon from "../assets/trash.svg";
@@ -34,23 +35,25 @@ function Sorting({ folderList, setFolderId }) {
       </FolderListWrapper>
       <AddFolderButton>
         <p>폴더 추가</p>
-        <img src={addIcon} alt="폴더 추가"></img>
+        <div className="icon"></div>
       </AddFolderButton>
       <FolderName>{selectedFolderName}</FolderName>
-      <OptionWrapper>
-        <OptionButton>
-          <img className="icon" src={shareIcon} alt="아이콘" />
-          공유
-        </OptionButton>
-        <OptionButton>
-          <img className="icon" src={editIcon} alt="아이콘" />
-          이름 변경
-        </OptionButton>
-        <OptionButton>
-          <img className="icon" src={deleteIcon} alt="아이콘" />
-          삭제
-        </OptionButton>
-      </OptionWrapper>
+      {selectedFolderName === "전체" ? null : (
+        <OptionWrapper>
+          <OptionButton>
+            <img className="icon" src={shareIcon} alt="아이콘" />
+            공유
+          </OptionButton>
+          <OptionButton>
+            <img className="icon" src={editIcon} alt="아이콘" />
+            이름 변경
+          </OptionButton>
+          <OptionButton>
+            <img className="icon" src={deleteIcon} alt="아이콘" />
+            삭제
+          </OptionButton>
+        </OptionWrapper>
+      )}
     </FolderToolBarWrap>
   );
 }
@@ -62,12 +65,21 @@ const FolderToolBarWrap = styled.div`
   grid-column-gap: 1.2rem;
   align-items: center;
   margin-bottom: 2.4rem;
+
+  @media screen and (max-width: 767px) {
+    grid-template-areas:
+      "folderList"
+      "folderName"
+      "option";
+  }
 `;
 
 const FolderListWrapper = styled.div`
   display: flex;
   grid-area: folderList;
   column-gap: 0.8rem;
+  flex-wrap: wrap;
+  row-gap: 1.2rem;
 `;
 
 const AddFolderButton = styled.button`
@@ -83,6 +95,30 @@ const AddFolderButton = styled.button`
   font-size: 16px;
   font-weight: 500;
   grid-area: addFolder;
+
+  & .icon {
+    width: 16px;
+    height: 16px;
+    background-image: url(${addIcon});
+  }
+
+  @media screen and (max-width: 767px) {
+    border-radius: 20px;
+    border: 1px solid var(--Linkbrary-white, #fff);
+    background: var(--Linkbrary-primary-color, #6d6afe);
+    padding: 8px 24px;
+    height: 35px;
+    color: #fff;
+    z-index: 10;
+    position: fixed;
+    bottom: 101px;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    & .icon {
+      background-image: url(${addIconWhite});
+    }
+  }
 `;
 
 const FolderName = styled.h2`
@@ -94,6 +130,10 @@ const OptionWrapper = styled.div`
   display: flex;
   grid-area: option;
   justify-self: flex-end;
+
+  @media screen and (max-width: 767px) {
+    justify-self: flex-start;
+  }
 `;
 
 const OptionButton = styled.button`

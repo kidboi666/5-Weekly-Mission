@@ -8,7 +8,7 @@ import "../components/MainContent.css";
 function SharedPage({ userInfo, folderInfo }) {
   return (
     <>
-      <Nav email={userInfo.email} imgUrl={userInfo.profileImageSource} />
+      <Nav userInfo={userInfo} />
       <Folder owner={folderInfo.owner} folderName={folderInfo.name} />
       <div className="mainContent-wrapper">
         <div className="mainContent">

@@ -16,7 +16,7 @@ function AddLink() {
 
 const AddLinkWrap = styled.div`
   display: flex;
-  padding: 60px 320px 90px 320px;
+  padding: 60px 32px 90px 32px;
   justify-content: center;
   align-items: flex-start;
   gap: 8px;

@@ -27,7 +27,7 @@ function FolderPage({ userInfo, folderList }) {
 
   return (
     <>
-      <Nav email={userInfo.email} imgUrl={userInfo.profileImageSource} />
+      <Nav userInfo={userInfo} isfixed={false} />
       <AddLink />
       <div className="mainContent-wrapper">
         <div className="mainContent">
