@@ -1,5 +1,5 @@
-import '../styles/Nav.css';
-import logo from '../assets/logo.svg';
+import '../../styles/Nav.css';
+import logo from '../../assets/logo.svg';
 import useFetch from '../hooks/useFetch';
 
 function Nav() {

@@ -1,4 +1,4 @@
-import '../styles/Header.css';
+import '../../styles/Header.css';
 import useFetch from '../hooks/useFetch';
 
 function Header() {

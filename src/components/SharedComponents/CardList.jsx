@@ -9,7 +9,7 @@ import {
 } from '../../styles/CardStyled.jsx';
 import { timeAgo } from '../utils/CardUtil.jsx';
 import useFetch from '../hooks/useFetch.jsx';
-import defaultImage from '../assets/defaultImage.svg';
+import defaultImage from '../../assets/defaultImage.svg';
 
 function CardList() {
   const { data, isLoading, error } = useFetch('api/sample/folder');
