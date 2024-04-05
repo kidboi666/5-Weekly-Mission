@@ -46,20 +46,6 @@ function useFolderList() {
   return { folderList };
 }
 
-export function useLinkList() {
-  const [linkList, setLinkList] = useState({});
-  useEffect(() => {
-    (async function loadData() {
-      const result = await getLinkList(1);
-      if (!result) return;
-
-      const { data } = result;
-      setLinkList({ data });
-    })();
-  }, []);
-  return { linkList };
-}
-
 function App() {
   const { userInfo } = useUser();
   const { folderInfo } = useFolder();

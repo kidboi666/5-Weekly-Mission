@@ -25,7 +25,7 @@ export async function getFolderList(id) {
   return result;
 }
 
-export async function getLinkList(id, folderId) {
+export async function getLinkList(id, folderId = -1) {
   let query = "";
   if (folderId) {
     query = `?folderId=${folderId}`;

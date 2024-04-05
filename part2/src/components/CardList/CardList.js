@@ -81,7 +81,6 @@ function Card({ link }) {
 
 function CardList({ links }) {
   if (!links) return;
-  console.log(links);
   return (
     <ul className="cardList">
       {Object.values(links).map((link) => {

@@ -8,6 +8,7 @@ const FolderSortingButton = styled.button`
   border-radius: 5px;
   border: 1px solid var(--Linkbrary-primary-color, #6d6afe);
   background: #fff;
+  cursor: pointer;
 `;
 
 export default FolderSortingButton;

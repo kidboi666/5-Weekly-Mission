@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import linkIcon from "../../assets/link.svg";
-import GradientButton from "../Button/GradientButton";
+import linkIcon from "../assets/link.svg";
+import GradientButton from "./Button/GradientButton";
 
 function AddLink() {
   return (

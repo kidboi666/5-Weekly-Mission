@@ -8,6 +8,7 @@
 
 .mainContent {
   width: 1060px;
+  min-height: 50vh;
 }
 
 /* Tablet & MOBILE */
