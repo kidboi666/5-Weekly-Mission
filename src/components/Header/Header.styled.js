@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Button from "../Button/Button";
 
 export const StyledHeader = styled.header`
-  position: sticky;
+  position: ${($isSticky) => ($isSticky === true ? "sticky" : "relative")};
   top: 0;
   padding: 20px 200px;
   background: var(--background-color);

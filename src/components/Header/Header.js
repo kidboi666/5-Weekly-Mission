@@ -2,13 +2,18 @@ import React, { useContext } from "react";
 import logoImg from "../../assets/logo.svg";
 import { UserContext } from "../../contexts/UserContext";
 import Profile from "../Profile/Profile";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import * as S from "./Header.styled";
 
 export default function Header() {
   const { user } = useContext(UserContext);
+  const location = useLocation();
+
+  const $isSticky = () => location.pathname !== "/folder";
+  console.log($isSticky());
+
   return (
-    <S.StyledHeader>
+    <S.StyledHeader $isSticky={$isSticky}>
       <S.StyledInner>
         <S.StyledLogo>
           <Link to='/'>
