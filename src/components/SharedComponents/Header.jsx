@@ -1,5 +1,5 @@
 import '../styles/Header.css';
-import useFetch from './hooks/useFetch';
+import useFetch from '../hooks/useFetch';
 
 function Header() {
   const { data, isLoading, error } = useFetch('api/sample/folder');

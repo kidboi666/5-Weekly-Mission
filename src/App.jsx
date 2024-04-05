@@ -1,16 +1,13 @@
 import './App.css';
-import Nav from './components/Nav.jsx';
-import Header from './components/Header.jsx';
-import Content from './components/Content.jsx';
-import Footer from './components/Footer.jsx';
+import Shared from './routes/Shared.jsx';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
     <>
-      <Nav />
-      <Header />
-      <Content />
-      <Footer />
+      <Routes>
+        <Route path="/shared" element={<Shared />} />
+      </Routes>
     </>
   );
 }

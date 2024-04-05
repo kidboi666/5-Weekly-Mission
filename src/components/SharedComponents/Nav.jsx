@@ -1,6 +1,6 @@
 import '../styles/Nav.css';
 import logo from '../assets/logo.svg';
-import useFetch from './hooks/useFetch';
+import useFetch from '../hooks/useFetch';
 
 function Nav() {
   const { data, isLoading, error } = useFetch('api/sample/user');
