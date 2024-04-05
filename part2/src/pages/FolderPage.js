@@ -33,7 +33,7 @@ function FolderPage({ userInfo, folderList }) {
         <div className="mainContent">
           <Search />
           <FolderToolBar folderList={folderList.data} setFolderId={setFolderId} />
-          {linkList.data.length === 0 ? <NoLink /> : <CardList links={linkList.data} />}
+          {linkList.data.length === 0 ? <NoLink /> : <CardList links={linkList.data} isFolderPage={true} />}
         </div>
       </div>
       <Footer />

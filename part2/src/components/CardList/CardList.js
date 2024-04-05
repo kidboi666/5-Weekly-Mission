@@ -1,5 +1,8 @@
 import "./CardList.css";
+import styled from "styled-components";
 import noImageBackground from "../../assets/card_no_image_background.svg";
+import starIcon from "../../assets/star.svg";
+import kebabIcon from "../../assets/kebab.svg";
 
 function formatDate(value) {
   const date = new Date(value);
@@ -58,7 +61,30 @@ function calculateTime(value) {
   return `${diffinYears} years ago`;
 }
 
-function Card({ link }) {
+const LinkImage = styled.div`
+  background-image: url(${(props) => props.img});
+  position: relative;
+  display: block;
+  border-radius: 15px 15px 0 0;
+  object-fit: cover;
+  background-position: center;
+  background-size: 100%;
+  transition: background-size 0.3s ease-in-out;
+`;
+
+const Icon = styled.button`
+  width: ${(props) => props.width}px;
+  height: ${(props) => props.height}px;
+  position: absolute;
+  right: 15px;
+  top: ${(props) => props.top}px;
+  background-color: transparent;
+  border: none;
+  background-image: url(${(props) => props.img});
+  cursor: pointer;
+`;
+
+function Card({ link, isFolderPage = false }) {
   const imgUrl = (link.imageSource || link.image_source) ?? noImageBackground;
 
   const handleClick = () => {
@@ -67,26 +93,26 @@ function Card({ link }) {
 
   return (
     <button className="card" onClick={handleClick}>
-      <div className="image-wrapper">
-        <img src={imgUrl} alt={link.title} />
-      </div>
+      <LinkImage className="image-wrapper" img={imgUrl}></LinkImage>
       <div className="linkInfo">
         <p className="times">{calculateTime(link.createdAt || link.created_at)}</p>
         <p className="paragraph">{link.description}</p>
         <p className="createdAt">{formatDate(link.createdAt || link.created_at)}</p>
       </div>
+      {isFolderPage ? <Icon width="34" height="34" top="15" img={starIcon} /> : null}
+      {isFolderPage ? <Icon width="21" height="17" top="215" img={kebabIcon} /> : null}
     </button>
   );
 }
 
-function CardList({ links }) {
+function CardList({ links, isFolderPage = false }) {
   if (!links) return;
   return (
     <ul className="cardList">
       {Object.values(links).map((link) => {
         return (
           <li key={link.id}>
-            <Card link={link} />
+            <Card link={link} isFolderPage={isFolderPage} />
           </li>
         );
       })}
