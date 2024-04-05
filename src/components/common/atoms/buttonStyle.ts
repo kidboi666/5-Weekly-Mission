@@ -10,6 +10,9 @@ export const ButtonModule = styled.button<{$afterButtonIcon:string, $BeforButton
       border: 1px solid ${theme.color.primary};
       border-radius: 5px;
       &:hover {
+        background-color: ${theme.color.graye};
+      }
+      &.active {
         color: ${theme.color.white};
         background-color: ${theme.color.primary};
       }

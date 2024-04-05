@@ -51,14 +51,18 @@ function useFatchDataLoad<T>(api: string) {
 
 function Index() {
   const [title, setTitle] = useState("전체");
+  const [btnActive, setBtnActive] = useState<number>(-1);
   const [dynamicAPI, setDynamicAPI] = useState<string>(FOLDERCONTANTLISTAPI);
   const { value: menu, isLoading: menuLoading } =
     useFatchDataLoad<IFolderMenuButtonApi>(FOLDERMENULISTAPI);
   const { value: contant, isLoading: contantLoading } =
     useFatchDataLoad<IFolderContentApi>(dynamicAPI);
 
-  const handleClick = (api: string) => {
+  const handleClick = (api: string, index: number | undefined) => {
     if (menu === undefined || api === "") return;
+    if (index !== undefined) {
+      setBtnActive(index);
+    }
     if (api === "all") {
       setDynamicAPI(FOLDERCONTANTLISTAPI);
       setTitle("전체");
@@ -103,20 +107,26 @@ function Index() {
                 <>
                   <Button
                     $id={"all"}
-                    $btnClass={"button__outlined"}
+                    $btnClass={`button__outlined ${
+                      btnActive === -1 ? "active" : ""
+                    }`}
                     clickEvent={handleClick}
                     $clickEventName={"bookmarkId"}
+                    $clickIndex={-1}
                   >
                     전체
                   </Button>
                   {menu &&
-                    menu.data.map((menu: any) => (
+                    menu.data.map((menu: any, i) => (
                       <Button
                         key={menu.id}
                         $id={menu.id}
-                        $btnClass={"button__outlined"}
+                        $btnClass={`button__outlined ${
+                          btnActive === i ? "active" : ""
+                        }`}
                         clickEvent={handleClick}
                         $clickEventName={"bookmarkId"}
+                        $clickIndex={i}
                       >
                         {menu.name}
                       </Button>
@@ -133,18 +143,20 @@ function Index() {
           {/* 버튼 수정 */}
           <ShareBox>
             <SubTitle>{title}</SubTitle>
-            <ShareListBtn>
-              {folderControlBtn.map((btn) => (
-                <Button
-                  key={btn.id}
-                  $id={btn.id}
-                  $btnClass={"button__icon-before"}
-                  $BeforButtonIcon={btn.imgSrc}
-                >
-                  {btn.name}
-                </Button>
-              ))}
-            </ShareListBtn>
+            {title === "전체" || (
+              <ShareListBtn>
+                {folderControlBtn.map((btn) => (
+                  <Button
+                    key={btn.id}
+                    $id={btn.id}
+                    $btnClass={"button__icon-before"}
+                    $BeforButtonIcon={btn.imgSrc}
+                  >
+                    {btn.name}
+                  </Button>
+                ))}
+              </ShareListBtn>
+            )}
           </ShareBox>
 
           {contantLoading ? (

@@ -78,8 +78,7 @@ export const BookmarkBox = styled.div`
       color: ${theme.color.white};
       border: 1px solid ${theme.color.white};
       border-radius: 50em;
-      background-color: ${theme.color.primary};
-      background-image: url('/assets/icon/icon_white_add.svg');
+      background: ${theme.color.primary} url('/assets/icon/icon_white_add.svg') no-repeat;
       background-position: right 22px center;
       transform: translateX(-50%);
       z-index: 5;

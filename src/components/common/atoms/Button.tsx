@@ -6,8 +6,9 @@ interface IButtonModule {
   $id?: string;
   $afterButtonIcon?: string;
   $type?: "button" | "reset" | "submit" | undefined;
-  clickEvent?: (value: any) => void;
+  clickEvent?: (value?: any, index?: number) => void;
   $clickEventName?: string;
+  $clickIndex?: number | undefined;
 }
 
 export default function Button({
@@ -19,11 +20,12 @@ export default function Button({
   $afterButtonIcon = "",
   clickEvent,
   $clickEventName,
+  $clickIndex,
 }: IButtonModule) {
   const buttonHenlerEvent = () => {
     if (!clickEvent) return;
     if ($clickEventName === "bookmarkId") {
-      clickEvent($id);
+      clickEvent($id, $clickIndex);
     }
   };
 
