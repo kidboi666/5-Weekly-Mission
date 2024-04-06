@@ -71,6 +71,10 @@ th {
 button {
   border: none;
   background-color: transparent;
+  &:hover,
+  &:focus {
+    cursor: pointer;
+  }
 }
 
 div {
