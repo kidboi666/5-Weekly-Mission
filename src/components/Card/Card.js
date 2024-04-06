@@ -13,9 +13,13 @@ export default function Card({ item }) {
   const dateBetween = formatDateToAgo(createdAt);
   const date = formatDateToString(createdAt);
 
-  const handleClick = (e) => {
+  const handleStarClick = (e) => {
     e.preventDefault();
     console.log("별 클릭");
+  };
+  const handleKebabClick = (e) => {
+    e.preventDefault();
+    console.log("케밥 클릭");
   };
 
   return (
@@ -30,14 +34,14 @@ export default function Card({ item }) {
         <S.StyledTextWrap>
           <S.StyledTextTopWrap>
             <S.StyledDateAgo>{dateBetween}</S.StyledDateAgo>
-            <S.StyledKebab>
+            <S.StyledKebab onClick={handleKebabClick}>
               <img src={kebab} alt='더보기' />
             </S.StyledKebab>
           </S.StyledTextTopWrap>
           <S.StyledTitle>{title}</S.StyledTitle>
           <S.StyledDate>{date}</S.StyledDate>
         </S.StyledTextWrap>
-        <S.StyleStar onClick={handleClick}>
+        <S.StyleStar onClick={handleStarClick}>
           <img src={star} alt='별' />
         </S.StyleStar>
       </Link>

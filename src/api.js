@@ -11,12 +11,13 @@ export async function getSharedList() {
 }
 
 export async function getUser() {
-  const response = await fetch(`${BASIC_URL}/api/sample/user`);
+  const response = await fetch(`${BASIC_URL}/api/users/1`);
   if (!response.ok) {
     throw new Error("사용자 데이터를 불러오는데 실패했습니다.");
   }
   const body = await response.json();
-  return body;
+  const data = body.data[0];
+  return data;
 }
 
 export async function getFoldersMenu() {
