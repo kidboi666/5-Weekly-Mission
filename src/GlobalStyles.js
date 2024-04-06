@@ -50,7 +50,9 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
   }
   a {
-    text-decoration-line: none;
+    text-decoration: none; /* 링크 밑줄 제거 */
+    color: inherit; /* 링크 색상 상속 */
+    cursor: pointer; 
   }
 `;
 

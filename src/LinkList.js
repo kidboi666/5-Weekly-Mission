@@ -1,11 +1,5 @@
 import './Linklist.css';
 
-function click(url) {
-    return function() {
-        window.open(url);
-    }
-}
-
 function calculatePastTime(createdAt) {
     const now = new Date();
     const createdDate = new Date(createdAt);
@@ -32,20 +26,24 @@ function calculatePastTime(createdAt) {
 }
 
 function LinkItem({link}) {
+    const base_image = 'images/card-default.png';
     const url = link.url;
     const createdAt = link.createdAt
+    const imageSource = link.imageSource ? link.imageSource : base_image;
     return (
-        <button onClick={click(url)} className="Link-card">
-            <div className="Link-image-wrapper">
-                <img className="Link-image" src={link.imageSource} alt="링크이미지"></img>
+        <a href={url}>
+            <div className='Link-card'>
+                <div className="Link-image-wrapper">
+                    <img className="Link-image" src={imageSource} alt="링크이미지"></img>
+                </div>
+                <div className="Link-info">
+                    <p className="creation-time">{calculatePastTime(createdAt)}</p>
+                    <p className='link-description'>{link.description}</p>
+                    <p>2023. 3. 15</p>
+                </div>
             </div>
-            <div className="Link-info">
-                <p>{calculatePastTime(createdAt)}</p>
-                <p>{link.title}</p>
-                <p>{link.description}</p>
-            </div>
-        </button>
-    )
+        </a>
+    );
 }
 
 export function LinkList({links}) {
