@@ -1,7 +1,8 @@
-import { useFetchFolder } from "../hooks/useFetchFolder";
-import noImageLogo from "../assets/noImageLogo.svg";
-import SearchImg from "../assets/Search.svg";
-import "../pages/SharedPage.css";
+import { useFetchFolder } from "../../hooks/useFetchFolder";
+import noImageLogo from "../../assets/noImageLogo.svg";
+import "../Shared/SharedPage.css";
+import User from "../../components/User/User";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 function formatDate(value) {
   const date = new Date(value);
@@ -21,14 +22,8 @@ function FolderListPage() {
   const folderdata = useFetchFolder();
   return (
     <div className="container">
-      <form>
-        <div className="search-wrapper">
-          <button className="search-btn">
-            <img className="search-img" src={SearchImg} alt="search-img" />
-          </button>
-          <input className="input" placeholder="링크를 검색해 보세요." />
-        </div>
-      </form>
+      <User />
+      <SearchBar />
       <div className="card-container">
         {folderdata &&
           folderdata.folder.links.map((item) => (
