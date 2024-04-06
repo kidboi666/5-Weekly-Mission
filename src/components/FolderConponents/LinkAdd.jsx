@@ -1,25 +1,20 @@
-import styled from 'styled-components';
+import { LinkAddBackGround, SearchBar, SearchBarInput, Input, SearchImg } from './Folderstyles/LinkAddStyled';
+import icon from '../../assets/linkicon.svg';
 
 function LinkAdd() {
-  const LinkAdd = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 1rem 0 4rem;
-    box-sizing: border-box;
-    background-color: var(--light-blue);
-
-    @media (min-width: 768px) {
-      padding: 2rem 0 6rem;
-    }
-  `;
-
   return (
     <>
-      <LinkAdd></LinkAdd>
+      <LinkAddBackGround>
+        <SearchBar>
+          <SearchBarInput>
+            <Input id="searchInput" type="search" placeholder="링크를 추가해 보세요" />
+            <label htmlFor="searchInput">
+              <SearchImg src={icon} alt="SearchIcon" />
+            </label>
+          </SearchBarInput>
+        </SearchBar>
+      </LinkAddBackGround>
     </>
   );
 }
-
 export default LinkAdd;
