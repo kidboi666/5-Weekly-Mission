@@ -8,6 +8,8 @@ import kebab from '../../assets/images/kebab.svg';
 import getTimeDifference from '../../utils/time-functions/getTimeDifference.js';
 import formatDate from '../../utils/time-functions/formatDate.js';
 
+const DROPDOWN_LIST_ITEMS = ['삭제하기', '폴더에추가'];
+
 export default function LinkCard({ linkCardInfo }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
@@ -60,8 +62,11 @@ export default function LinkCard({ linkCardInfo }) {
             </button>
             {isDropdownOpen && (
               <ul className={styles.dropdownList}>
-                <li className={styles.dropdownItem}>삭제하기</li>
-                <li className={styles.dropdownItem}>폴더에 추가</li>
+                {DROPDOWN_LIST_ITEMS.map((item, index) => (
+                  <li key={index} className={styles.dropdownItem}>
+                    {item}
+                  </li>
+                ))}
               </ul>
             )}
           </div>
