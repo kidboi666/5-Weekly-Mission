@@ -8,7 +8,7 @@ export const useGetLinkList = (folderId = ALL_LINKS_ID, userId) => {
   const queryString = folderId === ALL_LINKS_ID ? "" : `?folderId=${folderId}`;
   const getLinkList = useCallback(
     () => axiosInstance.get(`users/${userId}/links${queryString}`),
-    [queryString]
+    [userId, queryString]
   );
   const { asyncData, error, data } = useAsync(getLinkList);
 

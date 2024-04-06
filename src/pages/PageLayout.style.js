@@ -24,3 +24,22 @@ export const FolderBox = styled.div`
     row-gap: 2.4rem;
   }
 `;
+
+export const NoLinkWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-top: 3.4rem;
+
+  @media (min-width: 768px) {
+    padding-top: 4.1rem;
+  }
+`;
+
+export const NoLinkText = styled.span`
+  font-size: 1.4rem;
+  line-height: 150%;
+
+  @media (min-width: 768px) {
+    font-size: 1.6rem;
+  }
+`;

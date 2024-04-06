@@ -1,5 +1,5 @@
 import { ALL_LINKS_ID } from "../../api/constant";
-import { ALL_LINKS_TEXT } from "./constant";
+import { ALL_LINKS_TEXT, BUTTONS } from "./constant";
 import * as FolderToolBarLayout from "./FolderToolBar.style";
 
 export const FolderToolBar = ({
@@ -45,6 +45,23 @@ export const FolderToolBar = ({
       <FolderToolBarLayout.FolderName>
         {folderName}
       </FolderToolBarLayout.FolderName>
+
+      {/* "전체" 일 때를 제외한 버튼 출력 */}
+      {selectedFolderId !== ALL_LINKS_ID && (
+        <FolderToolBarLayout.IconButtonWrap>
+          {BUTTONS.map(({ text, iconSource }, index) => (
+            <FolderToolBarLayout.IconButtonWrap key={index}>
+              <FolderToolBarLayout.IconImage
+                src={iconSource}
+                alt={`${text} 아이콘`}
+              />
+              <FolderToolBarLayout.IconText>
+                {text}
+              </FolderToolBarLayout.IconText>
+            </FolderToolBarLayout.IconButtonWrap>
+          ))}
+        </FolderToolBarLayout.IconButtonWrap>
+      )}
     </FolderToolBarLayout.FolderToolBarWrap>
   );
 };

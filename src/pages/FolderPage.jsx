@@ -27,11 +27,19 @@ function FolderPage() {
             selectedFolderId={selectedFolderId}
             onFolderClick={setSelectedFolderId}
           />
-          <CardList>
-            {links?.map((link) => (
-              <CardContainer key={link?.id} {...link}></CardContainer>
-            ))}
-          </CardList>
+          {links.length === 0 ? (
+            <PageLayout.NoLinkWrap>
+              <PageLayout.NoLinkText>
+                저장된 링크가 없습니다.
+              </PageLayout.NoLinkText>
+            </PageLayout.NoLinkWrap>
+          ) : (
+            <CardList>
+              {links?.map((link) => (
+                <CardContainer key={link?.id} values={link}></CardContainer>
+              ))}
+            </CardList>
+          )}
         </PageLayout.FolderBox>
       </PageLayout.PageWrap>
     </Layout>

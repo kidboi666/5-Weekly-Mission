@@ -11,7 +11,7 @@ export const FolderToolBarWrap = styled.div`
     display: grid;
     grid-template-areas:
       "folderList folderList add-button"
-      "folder-name buttons buttons";
+      "folder-name folder-name buttons";
     justify-content: space-between;
     align-items: center;
     row-gap: 2.4rem;
@@ -107,4 +107,32 @@ export const FolderName = styled.h2`
     margin-top: 0;
     font-size: 2.4rem;
   }
+`;
+
+export const IconButtonWrap = styled.div`
+  display: flex;
+  justify-self: flex-start;
+  grid-area: buttons;
+  column-gap: 1.2rem;
+
+  @media (min-width: 768px) {
+    justify-end: flex-end;
+  }
+`;
+
+export const IconButton = styled.button`
+  display: flex;
+  align-items: center;
+  column-gap: 0.4rem;
+`;
+
+export const IconImage = styled.img`
+  widht: 1.8rem;
+  height: 1.8rem;
+`;
+
+export const IconText = styled.span`
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--Linkbrary-gray60);
 `;

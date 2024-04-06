@@ -2,14 +2,8 @@ import { Link } from "react-router-dom";
 import * as CardLayout from "./CardContainer.style";
 import { DEFAULT_IMAGE } from "./constant";
 
-export const CardContainer = ({
-  url,
-  imageSource,
-  alt,
-  elapsedTime,
-  description,
-  createdAt,
-}) => {
+export const CardContainer = ({ values }) => {
+  const { url, imageSource, alt, elapsedTime, description, createdAt } = values;
   const imgSrc = imageSource || DEFAULT_IMAGE;
 
   return (
