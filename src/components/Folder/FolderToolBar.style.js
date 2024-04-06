@@ -32,7 +32,7 @@ export const FolderToolBarButton = styled.button`
   display: flex;
   align-items: center;
   height: 3.1rem;
-  padding: 0.1rem;
+  padding: 1rem;
   border-radius: 0.5rem;
   border: 0.1rem solid var(--Linkbrary-primary-color);
   font-size: 1.4rem;
