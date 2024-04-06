@@ -31,6 +31,7 @@ export default function LinkCard({ linkCardInfo }) {
   const url = linkCardInfo.url;
   const createdDate = new Date(linkCardInfo.createdAt);
   const timestamp = getTimeDifference(createdDate);
+  const altMessage = linkCardInfo.title;
 
   function handleKebabClick(event) {
     setIsDropdownOpen(!isDropdownOpen);
@@ -64,7 +65,7 @@ export default function LinkCard({ linkCardInfo }) {
         <img
           className={STYLE_THUMBNAIL_CLASS_NAME}
           src={thumbnailURL}
-          alt="Link Thumbnail"
+          alt={altMessage}
         />
       </div>
       <div className={STYLE_LINK_CARD_INFO_CLASS_NAME}>
@@ -94,8 +95,9 @@ export default function LinkCard({ linkCardInfo }) {
 LinkCard.propTypes = {
   linkCardInfo: PropTypes.shape({
     imageSource: PropTypes.string,
-    description: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
-    createdAt: PropTypes.string.isRequired, // Assuming createdAt is a string representing date
+    description: PropTypes.string,
+    url: PropTypes.string,
+    createdAt: PropTypes.string,
+    title: PropTypes.string,
   }).isRequired,
 };
