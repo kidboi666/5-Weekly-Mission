@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from './LinkCard.module.css';
 import noImagePlaceholder from '../../assets/images/placeholder_image.png';
 import starIcon from '../../assets/images/star.svg';
@@ -13,6 +13,21 @@ const DROPDOWN_LIST_ITEMS = ['삭제하기', '폴더에추가'];
 export default function LinkCard({ linkCardInfo }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsDropdownOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
   const thumbnailURL = linkCardInfo.imageSource
     ? linkCardInfo.imageSource
     : noImagePlaceholder;
@@ -22,15 +37,20 @@ export default function LinkCard({ linkCardInfo }) {
   const timestamp = getTimeDifference(createdDate);
   const altMessage = linkCardInfo.title;
 
-  function handleKebabClick(event) {
+  const handleKebabClick = (event) => {
     setIsDropdownOpen(!isDropdownOpen);
     event.preventDefault();
-  }
+  };
 
-  function handleStarClick(event) {
+  const handleStarClick = (event) => {
     event.preventDefault();
     setIsFavorite(!isFavorite);
-  }
+  };
+
+  const handleDropdownItemClick = (event) => {
+    event.preventDefault();
+    alert(event.target.textContent);
+  };
 
   return (
     <a
@@ -56,15 +76,20 @@ export default function LinkCard({ linkCardInfo }) {
       <div className={styles.linkCardInfo}>
         <div className={styles.linkCardTimestampBar}>
           <span className={styles.timestamp}>{timestamp}</span>
-          <div className="kebab-button-container">
+          <div className="kebab-button-container" ref={dropdownRef}>
             <button onClick={handleKebabClick} className={styles.kebabButton}>
               <img src={kebab} alt="kebab" className={styles.kebabButton} />
             </button>
             {isDropdownOpen && (
               <ul className={styles.dropdownList}>
                 {DROPDOWN_LIST_ITEMS.map((item, index) => (
-                  <li key={index} className={styles.dropdownItem}>
-                    {item}
+                  <li key={index}>
+                    <button
+                      onClick={handleDropdownItemClick}
+                      className={styles.dropdownItem}
+                    >
+                      {item}
+                    </button>
                   </li>
                 ))}
               </ul>
