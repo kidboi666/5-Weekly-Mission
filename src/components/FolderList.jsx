@@ -2,7 +2,6 @@ import "./FolderList.css";
 import addBtn from "../assets/add.svg";
 
 function FolderList({ folders }) {
-  console.log(folders);
   return (
     <div className="folderLinkList">
       <div className="folderLinkList__folders">
