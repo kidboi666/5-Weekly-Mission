@@ -2,23 +2,9 @@ import { useGetFolderInfo } from "../api/useGetFolderInfo";
 import { Layout } from "../components/Layout/Layout";
 import { FolderInfo } from "../components/FolderInfo/FolderInfo";
 import { SearchBar } from "../components/SearchBar/SearchBar";
-import { styled } from "styled-components";
 import { CardList } from "../components/Card/CardList";
 import { CardContainer } from "../components/Card/CardContainer";
-
-const SharedPageItems = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 112.4rem;
-  row-gap: 3.2rem;
-  padding: 0 3.2rem;
-
-  @media (min-width: 768px) {
-    row-gap: 4rem;
-  }
-`;
+import * as PageLayout from "./PageLayout.style";
 
 function SharedPage() {
   const { data } = useGetFolderInfo();
@@ -32,14 +18,14 @@ function SharedPage() {
           ownerName={ownerName}
           profileImage={profileImage}
         />
-        <SharedPageItems>
+        <PageLayout.PageWrap>
           <SearchBar />
           <CardList>
             {links?.map((link) => (
               <CardContainer key={link?.id} {...link}></CardContainer>
             ))}
           </CardList>
-        </SharedPageItems>
+        </PageLayout.PageWrap>
       </Layout>
     </>
   );

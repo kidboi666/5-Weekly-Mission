@@ -8,7 +8,7 @@ export const AddLinkWrap = styled.div`
   background-color: var(--Linkbrary-bg);
 
   @media (min-width: 768px) {
-    padding: 6rem 32rem 9rem;
+    padding: 6rem 3.2rem 9rem;
   }
 `;
 
@@ -19,7 +19,7 @@ export const AddLinkForm = styled.form`
   max-width: 80rem;
   height: 5.3rem;
   column-gap: 1rem;
-  padding: 0.1rem;
+  padding: 0.1rem 1rem;
   border: 0.1rem solid var(--Linkbrary-primary-color);
   border-radius: 1.5rem;
   background-color: var(--Linkbrary-white);
