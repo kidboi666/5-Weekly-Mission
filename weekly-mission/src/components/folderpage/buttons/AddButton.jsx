@@ -9,6 +9,7 @@ const StyledAddButton = styled.button`
   background-color: white;
   border: none;
   white-space: nowrap;
+  cursor: pointer;
 `;
 
 const AddButton = ({ onClick }) => {
