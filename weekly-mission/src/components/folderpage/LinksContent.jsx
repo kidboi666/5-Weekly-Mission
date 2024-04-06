@@ -32,17 +32,7 @@ const SelectedFolder = styled.div`
 `;
 
 const LinksContent = ({ linksData, activeFolderName, activeFolderId }) => {
-  if (!linksData || linksData.data.length === 0) {
-    return (
-      <>
-        <FoldermenuToolbar>
-          <SelectedFolder>{activeFolderName}</SelectedFolder>
-          {activeFolderId !== null && <ActionButtons />}
-        </FoldermenuToolbar>
-        <NoLink />
-      </>
-    );
-  }
+  const isEmpty = !linksData || linksData.data.length === 0;
 
   return (
     <>
@@ -50,10 +40,13 @@ const LinksContent = ({ linksData, activeFolderName, activeFolderId }) => {
         <SelectedFolder>{activeFolderName}</SelectedFolder>
         {activeFolderId !== null && <ActionButtons />}
       </FoldermenuToolbar>
+
       <FolderContainer>
-        {linksData.data.map((link) => (
-          <Card key={link.id} link={link} />
-        ))}
+        {isEmpty ? (
+          <NoLink />
+        ) : (
+          linksData.data.map((link) => <Card key={link.id} link={link} />)
+        )}
       </FolderContainer>
     </>
   );
