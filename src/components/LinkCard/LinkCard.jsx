@@ -69,15 +69,17 @@ export default function LinkCard({ linkCardInfo }) {
       <div className={STYLE_LINK_CARD_INFO_CLASS_NAME}>
         <div className={STYLE_LINK_CARD_TIMESTAMP_BAR_CLASS_NAME}>
           <span className={STYLE_TIMESTAMP_CLASS_NAME}>{timestamp}</span>
-          <button onClick={handleKebabClick} className={kebab}>
-            <img src={kebab} alt="kebab" className={STYLE_KEBAB_BUTTON} />
-          </button>
-          {isDropdownOpen && (
-            <ul className={STYLE_DROPDOWN_LIST}>
-              <li className={STYLE_DROPDOWN_ITEM}>삭제하기</li>
-              <li className={STYLE_DROPDOWN_ITEM}>폴더에 추가</li>
-            </ul>
-          )}
+          <div className="kebab-button-container">
+            <button onClick={handleKebabClick} className={kebab}>
+              <img src={kebab} alt="kebab" className={STYLE_KEBAB_BUTTON} />
+            </button>
+            {isDropdownOpen && (
+              <ul className={STYLE_DROPDOWN_LIST}>
+                <li className={STYLE_DROPDOWN_ITEM}>삭제하기</li>
+                <li className={STYLE_DROPDOWN_ITEM}>폴더에 추가</li>
+              </ul>
+            )}
+          </div>
         </div>
         <p className={STYLE_LINK_CARD_DESCRIPTION_CLASS_NAME}>{description}</p>
         <span className={STYLE_LINK_CARD_CREATED_CLASS_NAME}>
