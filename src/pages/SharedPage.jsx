@@ -1,7 +1,7 @@
 import { useGetFolderInfo } from "../api/useGetFolderInfo";
 import { Layout } from "../components/Layout/Layout";
 import { FolderInfo } from "../components/FolderInfo/FolderInfo";
-import { SearchBar } from "../components/SearchBar";
+import { SearchBar } from "../components/SearchBar/SearchBar";
 import { styled } from "styled-components";
 
 const SharedPageItems = styled.div`

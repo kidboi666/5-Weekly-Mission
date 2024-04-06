@@ -1,15 +1,14 @@
-import "./SearchBar.css";
 import { SEARCH_IMAGE } from "./constant";
+import * as SearchBarLayout from "./SearchBar.style";
 
 export const SearchBar = () => {
   return (
-    <div className="searchBar">
-      <input
+    <SearchBarLayout.SearchBarWrap>
+      <SearchBarLayout.SearchBarInput
         type="text"
         placeholder="링크를 검색해 보세요."
-        className="searchBar-input"
       />
-      <img src={SEARCH_IMAGE} alt="돋보기 아이콘" className="searchBar-icon" />
-    </div>
+      <SearchBarLayout.SearchBarIcon src={SEARCH_IMAGE} alt="돋보기 아이콘" />
+    </SearchBarLayout.SearchBarWrap>
   );
 };
