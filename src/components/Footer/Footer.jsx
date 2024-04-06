@@ -1,51 +1,50 @@
+import { Link } from "react-router-dom";
 import { ROUTE } from "../../utill/constant";
 import { TEXT } from "./constant";
-import "./Footer.css";
+import * as FooterLayout from "./Footer.style";
 
 export const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="footer-items">
-        <span className="footer-copyright">{TEXT.codeit}</span>
-        <div className="footer-links">
-          <a className="footer-link" href={ROUTE.개인정보처리방침}>
-            {TEXT.privacyPolicy}
-          </a>
-          <a className="footer-link" href={ROUTE.FAQ}>
-            {TEXT.faq}
-          </a>
-        </div>
-        <div className="footer-sns">
-          <a
-            href="https://www.facebook.com/"
-            target="_blank"
+    <FooterLayout.FooterWrap>
+      <FooterLayout.FooterItems>
+        <FooterLayout.FooterCopyright>
+          {TEXT.codeit}
+        </FooterLayout.FooterCopyright>
+        <FooterLayout.FooterLinks>
+          <Link to={ROUTE.개인정보처리방침}>{TEXT.privacyPolicy}</Link>
+          <Link to={ROUTE.FAQ}>{TEXT.faq}</Link>
+        </FooterLayout.FooterLinks>
+        <FooterLayout.FooterSns>
+          <Link
+            to="https://www.facebook.com/"
+            target="blank"
             rel="noopener noreferrer"
           >
             <img src="images/icon/facebook.svg" alt="facebook 로고" />
-          </a>
-          <a
-            href="https://twitter.com/"
-            target="_blank"
+          </Link>
+          <Link
+            to="https://twitter.com/"
+            target="blank"
             rel="noopener noreferrer"
           >
             <img src="images/icon/twitter.svg" alt="twitter 로고" />
-          </a>
-          <a
-            href="https://www.youtube.com/"
-            target="_blank"
+          </Link>
+          <Link
+            to="https://www.youtube.com/"
+            target="blank"
             rel="noopener noreferrer"
           >
             <img src="images/icon/youtube.svg" alt="youtube 로고" />
-          </a>
-          <a
-            href="https://www.instagram.com/"
-            target="_blank"
+          </Link>
+          <Link
+            to="https://www.instagram.com/"
+            target="blank"
             rel="noopener noreferrer"
           >
             <img src="images/icon/instagram.svg" alt="instagram 로고" />
-          </a>
-        </div>
-      </div>
-    </footer>
+          </Link>
+        </FooterLayout.FooterSns>
+      </FooterLayout.FooterItems>
+    </FooterLayout.FooterWrap>
   );
 };

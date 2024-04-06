@@ -1,4 +1,6 @@
-.footer {
+import styled from "styled-components";
+
+export const FooterWrap = styled.footer`
   display: flex;
   justify-content: center;
   width: 100%;
@@ -9,9 +11,9 @@
   @media (min-width: 768px) {
     margin-top: 6rem;
   }
-}
+`;
 
-.footer-items {
+export const FooterItems = styled.div`
   display: grid;
   justify-content: space-between;
   grid-template:
@@ -30,16 +32,16 @@
     max-width: 192rem;
     padding: 3.2rem 10.4rem 0;
   }
-}
+`;
 
-.footer-copyright {
+export const FooterCopyright = styled.span`
   grid-area: copyright;
   color: #676767;
   font-family: Arial;
   font-size: 1.6rem;
-}
+`;
 
-.footer-links {
+export const FooterLinks = styled.div`
   grid-area: footer-links;
   display: flex;
   column-gap: 3rem;
@@ -47,10 +49,10 @@
   color: #cfcfcf;
   font-family: Arial;
   font-size: 1.6rem;
-}
+`;
 
-.footer-sns {
+export const FooterSns = styled.div`
   grid-area: sns;
   display: flex;
   column-gap: 1.2rem;
-}
+`;
