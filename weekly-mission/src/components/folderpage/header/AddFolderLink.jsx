@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import linkIcon from "../../../image/link.png";
-import Button from "../shared/Button";
+import linkIcon from "../../../../image/link.png";
+import Button from "../../shared/Button";
 
 const AddFolderLink_Container = styled.div`
   position: relative;

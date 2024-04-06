@@ -46,7 +46,9 @@ const FolderName = styled.h1`
 `;
 
 const Header = () => {
-  const folderData = useFetchData(`${import.meta.env.VITE_BASE_URL}/folder`);
+  const folderData = useFetchData(
+    `${import.meta.env.VITE_BASE_URL}/sample/folder`
+  );
 
   return (
     <HeaderContainer>

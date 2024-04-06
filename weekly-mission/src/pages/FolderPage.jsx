@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
 import Nav from "../components/shared/Nav";
-import AddLinkSection from "../components/folderpage/AddLinkSection";
+import AddLinkSection from "../components/folderpage/header/AddLinkSection";
 import FolderLayout from "../components/folderpage/FolderLayout";
 import Footer from "../components/shared/Footer";
 

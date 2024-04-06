@@ -4,7 +4,6 @@ import styled from "styled-components";
 const SearchbarContainer = styled.div`
   position: relative;
   padding: 0 32px;
-  width: 100%;
 `;
 
 const Input = styled.input`

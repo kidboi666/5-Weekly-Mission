@@ -7,7 +7,6 @@ const CardContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
   margin-top: 20px;
-  padding: 0 32px;
 
   @media (max-width: 1199px) {
     grid-template-columns: repeat(2, 1fr);
@@ -20,7 +19,9 @@ const CardContainer = styled.div`
 `;
 
 const Cards = () => {
-  const folderData = useFetchData(`${import.meta.env.VITE_BASE_URL}/folder`);
+  const folderData = useFetchData(
+    `${import.meta.env.VITE_BASE_URL}/sample/folder`
+  );
 
   if (!folderData) return null;
 

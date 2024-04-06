@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import LinkbraryImage from "../../../image/Linkbrary.png";
-import profileImage from "../../../image/profile img.jpg";
+import profileImage from "../../../image/profileimg.jpg";
 import styled from "styled-components";
 import useFetchData from "../../hooks/useFetchData";
 import Button from "./Button";
@@ -57,7 +57,9 @@ const GnbButton = styled(Button)`
 `;
 
 const Nav = () => {
-  const profileData = useFetchData(`${import.meta.env.VITE_BASE_URL}/user`);
+  const profileData = useFetchData(
+    `${import.meta.env.VITE_BASE_URL}/sample/user`
+  );
 
   return (
     <NavContainer>
