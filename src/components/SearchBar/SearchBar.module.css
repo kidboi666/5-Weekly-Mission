@@ -1,4 +1,4 @@
-.search-input {
+.searchInput {
   background-color: #f5f5f5;
   border: none;
   color: #666;
@@ -6,7 +6,7 @@
   flex-grow: 1;
 }
 
-.search-bar {
+.searchBar {
   background-color: #f5f5f5;
   width: 1060px;
   display: flex;
@@ -24,7 +24,7 @@
   }
 }
 
-.search-button {
+.searchButton {
   background-color: transparent;
   padding: 0;
   width: 16px;

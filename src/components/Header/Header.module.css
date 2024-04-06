@@ -1,0 +1,48 @@
+.mainHeader {
+  width: inherit;
+  max-width: 1920px;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: inherit;
+  z-index: 2;
+  padding: 32px 200px;
+}
+
+.blind {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.headerLogin {
+  width: 128px;
+}
+
+.logoImg {
+  width: 133px;
+}
+
+@media (max-width: 1124px) {
+  .mainHeader {
+    padding: 32px;
+  }
+}
+
+@media (max-width: 767px) {
+  .mainHeader {
+    padding: 18px 32px;
+  }
+
+  .logoImg {
+    width: 88px;
+  }
+
+  .headerLogin {
+    width: 80px;
+  }
+}

@@ -1,7 +1,8 @@
-import './FolderToolBar.css';
 import PropTypes from 'prop-types';
-const STYLE_FOOTER_NAME_BUTTON = 'folder-name-button';
-const STYLE_FOCUSED_BUTTON = 'focused-button';
+import styles from './FolderToolBar.module.css';
+
+const styleFooterNameButton = styles.folderNameButton;
+const styleFocusedButton = styles.focusedButton;
 
 export default function FolderToolBarButton({
   id,
@@ -15,8 +16,8 @@ export default function FolderToolBarButton({
   return (
     <button
       onClick={handleClick}
-      className={`${STYLE_FOOTER_NAME_BUTTON} ${
-        isFocused ? STYLE_FOCUSED_BUTTON : ''
+      className={`${styleFooterNameButton} ${
+        isFocused ? styleFocusedButton : ''
       }`}
     >
       {children}

@@ -1,27 +1,22 @@
-import './Header.css';
-import logo from '../../assets/images/logo.svg';
 import { useCallback, useEffect, useState } from 'react';
+import logo from '../../assets/images/logo.svg';
 import { getUserInfo } from '../../utils/api';
 import Account from '../Account/Account';
 import Button from '../Button/Button';
 import { convertObjectKeysToCamelCase } from '../../utils/convertObjectKeysToCamelCase';
+import styles from './Header.module.css';
 
-const STYLE_MAIN_HEADER_CLASS_NAME = 'main-header';
-const STYLE_LOGO_IMG_CLASS_NAME = 'logo-img';
-const STYLE_BLIND_CLASS_NAME = 'blind';
-
-const LOGO_ALT_MESSAGE = 'Linkbrary';
-
-export default function Header() {
+const Header = () => {
   const [userInfo, setUserInfo] = useState({});
 
   const handleLoadHeader = useCallback(async () => {
-    let result;
     try {
-      result = await getUserInfo();
-    } catch (error) {}
-    const convertedResult = convertObjectKeysToCamelCase(result);
-    setUserInfo(convertedResult);
+      const result = await getUserInfo();
+      const convertedResult = convertObjectKeysToCamelCase(result);
+      setUserInfo(convertedResult);
+    } catch (error) {
+      console.error('Error fetching user info:', error);
+    }
   }, []);
 
   useEffect(() => {
@@ -29,16 +24,12 @@ export default function Header() {
   }, [handleLoadHeader]);
 
   return (
-    <header className={STYLE_MAIN_HEADER_CLASS_NAME}>
+    <header className={styles.mainHeader}>
       <h1>
         <a href="/">
-          <img
-            src={logo}
-            alt={LOGO_ALT_MESSAGE}
-            className={STYLE_LOGO_IMG_CLASS_NAME}
-          />
+          <img src={logo} alt="Linkbrary" className={styles.logoImg} />
         </a>
-        <span className={STYLE_BLIND_CLASS_NAME}>Linkbrary</span>
+        <span className={styles.blind}>Linkbrary</span>
       </h1>
       {userInfo ? (
         <Account
@@ -50,4 +41,6 @@ export default function Header() {
       )}
     </header>
   );
-}
+};
+
+export default Header;

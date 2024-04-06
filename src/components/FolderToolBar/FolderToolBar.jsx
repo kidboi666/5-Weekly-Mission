@@ -1,9 +1,8 @@
 import addIcon from '../../assets/images/add_icon.svg';
 import addIconWhite from '../../assets/images/add_icon_white.svg';
 import FolderToolBarButton from './FolderToolBarButton';
-import './FolderToolBar.css';
+import styles from './FolderToolBar.module.css';
 import { UTIL_BUTTONS_PROPS } from './constants';
-import * as styles from './styles';
 import UtilButton from './UtilButton';
 import PropTypes from 'prop-types';
 
@@ -16,9 +15,9 @@ export default function FolderToolBar({
   const currentFolderName = currentFolder.name;
 
   return (
-    <div className={styles.FOLDER_TOOL_BAR_CONTAINER}>
-      <div className={styles.FOLDER_TOOL_BUTTONS}>
-        <ul className={styles.FOLDER_NAME_BUTTONS}>
+    <div className={styles.folderToolBarContainer}>
+      <div className={styles.folderToolButtons}>
+        <ul className={styles.folderNameButtons}>
           {folders.map((item) => (
             <li key={item.id}>
               <FolderToolBarButton
@@ -32,23 +31,23 @@ export default function FolderToolBar({
           ))}
         </ul>
 
-        <button className={styles.FOLDER_ADD_BUTTON}>
+        <button className={styles.folderAddButton}>
           <span>폴더 추가</span>
           <img
             src={addIcon}
             alt="폴더 추가 아이콘"
-            className={styles.ADD_ICON}
+            className={styles.addIcon}
           />
           <img
             src={addIconWhite}
             alt="폴더 추가 아이콘"
-            className={styles.ADD_ICON_WHITE}
+            className={styles.addIconWhite}
           />
         </button>
       </div>
-      <div className={styles.FOLDER_NAME_BAR}>
-        <span className={styles.FOLDER_NAME_DISPLAY}>{currentFolderName}</span>
-        <ul className={styles.UTIL_BUTTONS}>
+      <div className={styles.folderNameBar}>
+        <span className={styles.folderNameDisplay}>{currentFolderName}</span>
+        <ul className={styles.utilButtons}>
           {UTIL_BUTTONS_PROPS.map((btn) => (
             <li key={btn.id}>
               {currentFolderId !== 0 && (

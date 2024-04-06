@@ -3,13 +3,13 @@
   align-items: center;
   gap: 6px;
 }
-.user-profile-img {
+.userProfileImg {
   width: 28px;
   aspect-ratio: 1/1;
   border-radius: 50%;
 }
 
-.user-email {
+.userEmail {
   font-size: 14px;
   @media (max-width: 767px) {
     position: absolute;

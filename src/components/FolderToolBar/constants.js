@@ -23,6 +23,4 @@ const UTIL_BUTTONS_PROPS = [
   },
 ];
 
-const KEBAB_BUTTON = 'kebab-button';
-
 export { UTIL_BUTTONS_PROPS };

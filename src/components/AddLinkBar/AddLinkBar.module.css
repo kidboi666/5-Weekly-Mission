@@ -1,4 +1,4 @@
-.add-link-bar {
+.addLinkBar {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
@@ -9,19 +9,19 @@
   background: #fff;
   width: 800px;
 
-  .input-box {
+  .inputBox {
     display: flex;
     align-items: center;
     gap: 12px;
     flex-grow: 1;
     height: inherit;
 
-    .link-icon {
+    .linkIcon {
       width: 20px;
       height: 20px;
     }
 
-    .link-input {
+    .linkInput {
       border: none;
       font-size: 20px;
       flex-grow: 1;
@@ -37,15 +37,15 @@
     padding: 8px 10px;
     width: 305px;
 
-    .input-box {
+    .inputBox {
       gap: 8px;
 
-      .link-input {
+      .linkInput {
         font-size: 14px;
       }
     }
 
-    .link-icon {
+    .linkIcon {
       width: 16px;
       height: 16px;
     }

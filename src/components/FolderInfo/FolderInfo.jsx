@@ -1,34 +1,26 @@
-import './FolderInfo.css';
 import PropTypes from 'prop-types';
+import styles from './FolderInfo.module.css';
 
-const STYLE_FOLDER_INFO_CLASS_NAME = 'folder-info';
-const STYLE_OWNER_PROFILE_CLASS_NAME = 'owner-profile';
-const STYLE_OWNER_PROFILE_IMAGE_CLASS_NAME = 'owner-profile-image';
-const STYLE_FOLDER_NAME_CLASS_NAME = 'folder-name';
-
-export default function FolderInfo({
-  ownerName,
-  folderName,
-  profileImgSource,
-}) {
+const FolderInfo = ({ ownerName, folderName, profileImgSource }) => {
   return (
-    <div className={STYLE_FOLDER_INFO_CLASS_NAME}>
-      <div className={STYLE_OWNER_PROFILE_CLASS_NAME}>
+    <div className={styles.folderInfo}>
+      <div className={styles.ownerProfile}>
         <img
           src={profileImgSource}
           alt="Folder Owner Profile"
-          className={STYLE_OWNER_PROFILE_IMAGE_CLASS_NAME}
+          className={styles.ownerProfileImage}
         />
         <span>@{ownerName}</span>
       </div>
-
-      <span className={STYLE_FOLDER_NAME_CLASS_NAME}>{folderName}</span>
+      <span className={styles.folderName}>{folderName}</span>
     </div>
   );
-}
+};
 
 FolderInfo.propTypes = {
   ownerName: PropTypes.string,
   folderName: PropTypes.string,
   profileImgSource: PropTypes.string,
 };
+
+export default FolderInfo;

@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
-import './Button.css';
+import styles from './Button.module.css';
 
-const STYLE_BTN_CLASS_NAME = 'btn';
-
-export default function Button({ children, onClick }) {
+const Button = ({ children, onClick }) => {
   return (
-    <button onClick={onClick} className={STYLE_BTN_CLASS_NAME}>
+    <button onClick={onClick} className={styles.btn}>
       {children}
     </button>
   );
-}
+};
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
   onClick: PropTypes.func.isRequired,
 };
+
+export default Button;

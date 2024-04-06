@@ -1,25 +1,18 @@
 import FolderToolBar from '../FolderToolBar/FolderToolBar';
 import LinkCard from '../LinkCard/LinkCard';
 import SearchBar from '../SearchBar/SearchBar';
-import './LinkCardList.css';
+import styles from './LinkCardList.module.css';
 
-const STYLE_LINK_CARD_LIST_CONTAINER_CLASS_NAME = 'link-card-list-container';
-const STYLE_LINK_CARD_LIST_CLASS_NAME = 'link-card-list';
-const STYLE_CONTENT_WRAPPER_CLASS_NAME = 'content-wrapper';
-const STYLE_NO_SAVED_LINK = 'no-saved-link';
-
-const NO_SAVED_LINK_MSG = '저장된 링크가 없습니다';
-
-export default function LinkCardList({
+const LinkCardList = ({
   items,
   searchOnSubmit,
   folders,
   folderNameOnClick,
   currentFolderId,
-}) {
+}) => {
   return (
-    <div className={STYLE_LINK_CARD_LIST_CONTAINER_CLASS_NAME}>
-      <div className={STYLE_CONTENT_WRAPPER_CLASS_NAME}>
+    <div className={styles.linkCardListContainer}>
+      <div className={styles.contentWrapper}>
         <SearchBar onSubmit={searchOnSubmit} />
         {folders && (
           <FolderToolBar
@@ -30,7 +23,7 @@ export default function LinkCardList({
         )}
 
         {items.length > 0 ? (
-          <ul className={STYLE_LINK_CARD_LIST_CLASS_NAME}>
+          <ul className={styles.linkCardList}>
             {items.map((item) => (
               <li key={item.id}>
                 <LinkCard linkCardInfo={item} />
@@ -38,9 +31,11 @@ export default function LinkCardList({
             ))}
           </ul>
         ) : (
-          <p className={STYLE_NO_SAVED_LINK}>{NO_SAVED_LINK_MSG}</p>
+          <p className={styles.noSavedLink}>저장된 링크가 없습니다</p>
         )}
       </div>
     </div>
   );
-}
+};
+
+export default LinkCardList;
