@@ -1,8 +1,7 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useFetchFolder } from "../hooks/useFetchFolder";
 import noImageLogo from "../assets/noImageLogo.svg";
 import SearchImg from "../assets/Search.svg";
-import "../pages/FolderListPage.css";
+import "../pages/SharedPage.css";
 
 function formatDate(value) {
   const date = new Date(value);
@@ -34,12 +33,20 @@ function FolderListPage() {
         {folderdata &&
           folderdata.folder.links.map((item) => (
             <div className="card" key={item.id}>
-              <a href={item.url} target="_blank">
+              <a href={item.url} target="_blank" rel="noreferrer">
                 <div className="card-Thumbnail-container">
                   {item.imageSource ? (
-                    <img className="card-thumbnail" src={item.imageSource} />
+                    <img
+                      className="card-thumbnail"
+                      src={item.imageSource}
+                      alt="카드 썸네일"
+                    />
                   ) : (
-                    <img className="card-no-thumbnail" src={noImageLogo} />
+                    <img
+                      className="card-no-thumbnail"
+                      src={noImageLogo}
+                      alt="카드 썸네일 없음"
+                    />
                   )}
                 </div>
                 <div className="card-info">
