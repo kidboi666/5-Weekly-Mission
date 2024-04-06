@@ -21,14 +21,14 @@ export const LinkAddHeadInner = styled.div`
   max-width: 864px;
   margin: 60px auto 90px;
   padding: 0 32px 0;
-  .button__gradient {
+  .button--gradient {
     position: absolute;
     right: 52px;
     top: 16px;
   }
   @media screen and (max-width: ${theme.screenSize.moLarge}) {
     margin: 20px auto 40px;
-    .button__gradient {
+    .button--gradient {
       right: 42px;
       top: 8px;
     }
@@ -62,13 +62,13 @@ export const FolderBtnBox = css`
 `
 export const BookmarkBox = styled.div`
   ${FolderBtnBox}
-  .button__icon-after {
+  .button--icon-after {
     color: ${theme.color.primary};
     font-weight: 500;
   }
   @media screen and (max-width: ${theme.screenSize.moLarge}) {
     padding-bottom: 28px;
-    .button__icon-after {
+    .button--icon-after {
       position: fixed;
       bottom:101px;
       left: 50%;
@@ -104,7 +104,7 @@ export const BookMarkBtnList = styled(DFlaxAlignCenter)`
 `
 export const ShareListBtn = styled(DFlaxAlignCenter)`
   gap:0 12px;
-  .button__icon-before {
+  .button--icon-before {
     font-size: 14px;
     font-weight: 600;
     line-height: 29px;

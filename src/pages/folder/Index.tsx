@@ -81,12 +81,12 @@ function Index() {
       <ContainHead>
         <LinkAddHeadInner>
           <Input
-            $inputClass={"input__link__add"}
+            $inputClass={"input__link--add"}
             $placeholder={"링크를 추가해 보세요"}
             $beforeBgIcon={link}
             $btnShow={true}
             $btnText={"추가하기"}
-            $btnClass={"button__gradient mideum"}
+            $btnClass={"button--gradient mideum"}
           />
         </LinkAddHeadInner>
       </ContainHead>
@@ -95,7 +95,7 @@ function Index() {
           {/* 검색창 */}
           <BoxLinkSearch>
             <Input
-              $inputClass={"input__link__search"}
+              $inputClass={"input__link--search"}
               $placeholder={"링크를 검색해 보세요."}
               $beforeBgIcon={search}
             />
@@ -107,7 +107,7 @@ function Index() {
                 <>
                   <Button
                     $id={"all"}
-                    $btnClass={`button__outlined ${
+                    $btnClass={`button--outlined ${
                       btnActive === -1 ? "active" : ""
                     }`}
                     clickEvent={handleClick}
@@ -121,7 +121,7 @@ function Index() {
                       <Button
                         key={menu.id}
                         $id={menu.id}
-                        $btnClass={`button__outlined ${
+                        $btnClass={`button--outlined ${
                           btnActive === i ? "active" : ""
                         }`}
                         clickEvent={handleClick}
@@ -135,7 +135,7 @@ function Index() {
               )}
             </BookMarkBtnList>
             <div>
-              <Button $btnClass={"button__icon-after"} $afterButtonIcon={add}>
+              <Button $btnClass={"button--icon-after"} $afterButtonIcon={add}>
                 폴더추가
               </Button>
             </div>
@@ -149,7 +149,7 @@ function Index() {
                   <Button
                     key={btn.id}
                     $id={btn.id}
-                    $btnClass={"button__icon-before"}
+                    $btnClass={"button--icon-before"}
                     $BeforButtonIcon={btn.imgSrc}
                   >
                     {btn.name}

@@ -40,7 +40,7 @@ function Header() {
               <Email>{userInfo?.email}</Email>
             </HeaderUserInfo>
           ) : (
-            <LinkButton $link={"/signin"} $linkClass={"link__gradient large"}>
+            <LinkButton $link={"/signin"} $linkClass={"link--gradient large"}>
               로그인
             </LinkButton>
           )}

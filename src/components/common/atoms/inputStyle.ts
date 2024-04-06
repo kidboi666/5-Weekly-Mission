@@ -15,7 +15,7 @@ export const InputModule = styled.input<{$beforeBgIcon:string}>`
   }
   &.input {
     &__link {
-      &__search {
+      &--search {
         padding: 0 1rem 0 2.625rem;
         width: 100%;
         line-height: 54px;
@@ -29,7 +29,7 @@ export const InputModule = styled.input<{$beforeBgIcon:string}>`
           font-size: 14px;
         }
       }
-      &__add {
+      &--add {
         width: 100%;
         padding: 0 120px 0 52px;
         line-height: 67px;

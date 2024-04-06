@@ -6,7 +6,7 @@ export const LinkModule = styled(Link)`
   display: block;
   text-align: center;
   &.link {
-    &__gradient {
+    &--gradient {
       color: #fff;
       font-weight: 600;
       text-align:center;

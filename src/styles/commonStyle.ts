@@ -58,26 +58,26 @@ export const SubTitle = styled.h3`
 // ====  폰트  ====
 
 export const Font = styled.div`
-  &.font__size {
-    &__l {
+  &.font--size {
+    &-l {
       font-size: ${({ theme }) => theme.font.l};
     }
 
-    &__ms {
+    &-ms {
       font-size: ${({ theme }) => theme.font.lm};
     }
 
-    &__m {
+    &-m {
       font-size: ${({ theme }) => theme.font.m};
       line-height: 1.5rem;
     }
 
-    &__s {
+    &-s {
       font-size: ${({ theme }) => theme.font.sm};
       line-height: 1.375rem;
     }
 
-    &__ss {
+    &-ss {
       font-size: ${({ theme }) => theme.font.s};
     }
   }

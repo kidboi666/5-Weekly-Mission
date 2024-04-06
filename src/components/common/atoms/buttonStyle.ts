@@ -3,7 +3,7 @@ import { theme } from "../../../styles/theme";
 
 export const ButtonModule = styled.button<{$afterButtonIcon:string, $BeforButtonIcon:string}>`
   &.button {
-    &__outlined {
+    &--outlined {
       padding: 0 12px;
       line-height: 33px;
       background-color: transparent;
@@ -22,19 +22,19 @@ export const ButtonModule = styled.button<{$afterButtonIcon:string, $BeforButton
         line-height: 27px;
       }
     }
-    &__icon-before {
+    &--icon-before {
       display: inline-block;
       padding-left: 22px;
       background: url(${({$BeforButtonIcon}) => $BeforButtonIcon || ''}) no-repeat left center;
       background-size: 18px 18px;
     }
-    &__icon-after {
+    &--icon-after {
       display: inline-block;
       padding-right: 20px;
       background: url(${({$afterButtonIcon}) => $afterButtonIcon || ''}) no-repeat right center;
       background-size: 18px 18px;
     }
-    &__gradient {
+    &--gradient {
       color: #fff;
       font-weight: 600;
       text-align:center;
