@@ -3,6 +3,8 @@ import { Layout } from "../components/Layout/Layout";
 import { FolderInfo } from "../components/FolderInfo/FolderInfo";
 import { SearchBar } from "../components/SearchBar/SearchBar";
 import { styled } from "styled-components";
+import { CardList } from "../components/Card/CardList";
+import { CardContainer } from "../components/Card/CardContainer";
 
 const SharedPageItems = styled.div`
   display: flex;
@@ -32,6 +34,11 @@ function SharedPage() {
         />
         <SharedPageItems>
           <SearchBar />
+          <CardList>
+            {links?.map((link) => (
+              <CardContainer key={link?.id} {...link}></CardContainer>
+            ))}
+          </CardList>
         </SharedPageItems>
       </Layout>
     </>
