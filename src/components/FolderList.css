@@ -12,25 +12,49 @@
 }
 
 .folderLinkList__folder {
+  cursor: pointer;
   border-radius: 5px;
   border: 1px solid var(--Linkbrary-primary-color, #6d6afe);
   background: #fff;
   padding: 8px 12px;
+  color: #000;
+  font-size: 16px;
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .folderLinkList__addFolderButton {
   display: flex;
   color: #6d6afe;
   text-align: center;
+  max-width: 80px;
   font-family: Pretendard;
-  font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.3px;
+  flex-shrink: 0;
 }
 
 .folderLinkList__addFolderIcon {
   align-items: center;
   margin-left: 4px;
+}
+
+@media (max-width: 1124px) {
+  .folderLinkList__folders {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 767px) {
+  .CardLinkList {
+    grid-template-columns: repeat(1, 325px);
+  }
+  .CardListItem {
+    height: 327px;
+  }
 }

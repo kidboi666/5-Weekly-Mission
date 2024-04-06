@@ -2,3 +2,18 @@
   width: 1060px;
   margin: 0 auto;
 }
+
+/* 태블릿 사이즈 */
+@media (max-width: 1199px) {
+  .folderContent {
+    width: 704px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .folderContent {
+    width: 325px;
+    margin: 0 auto;
+  }
+}

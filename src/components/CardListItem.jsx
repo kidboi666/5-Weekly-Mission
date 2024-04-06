@@ -1,5 +1,6 @@
 import "./CardListItem.css";
 import NonBgImg from "../assets/noBackgroundImage.png";
+import BookmarkIcon from "../assets/star.svg";
 import { Link } from "react-router-dom";
 import { formatDate, calculatePostTimeElapsed } from "./PostDateUtility";
 import KebabMenu from "./KebabMenu";
@@ -15,6 +16,11 @@ function CardListItem({ link }) {
             className="CardListItem__previewImg"
             src={image_source ? image_source : NonBgImg}
             alt={title}
+          />
+          <img
+            className="CardListItem__bookmarkIcon"
+            src={BookmarkIcon}
+            alt="북마크아이콘"
           />
         </div>
         <div className="CardListItem__content">

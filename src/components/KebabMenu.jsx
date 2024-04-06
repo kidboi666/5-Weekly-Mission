@@ -1,9 +1,10 @@
 import "./KebabMenu.css";
 import KebabImg from "../assets/kebab.svg";
+
 function KebabMenu() {
   return (
     <div className="KebabMenu">
-      <button className="KebabMenu__btn">
+      <button className="KebabMenu__btn" href="#">
         <img className="KebabMenu__img" src={KebabImg} alt="케밥버튼" />
       </button>
     </div>

@@ -5,11 +5,11 @@ function FolderList({ folders }) {
   return (
     <div className="folderLinkList">
       <div className="folderLinkList__folders">
-        <div className="folderLinkList__folder">전체</div>
+        <button className="folderLinkList__folder">전체</button>
         {folders.map((folder) => (
-          <div className="folderLinkList__folder" key={folder.id}>
-            <div className="folderLinkList__items">{folder.name}</div>
-          </div>
+          <button className="folderLinkList__folder" key={folder.id}>
+            {folder.name}
+          </button>
         ))}
       </div>
       <div className="folderLinkList__addFolderButton">
