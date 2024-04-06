@@ -1,4 +1,6 @@
-.layout-main {
+import styled from "styled-components";
+
+export const MainWrap = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,4 +13,4 @@
     row-gap: 4rem;
     padding-bottom: 6rem;
   }
-}
+`;

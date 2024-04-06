@@ -2,7 +2,7 @@ import { useGetUserInfo } from "../../api/useGetUserInfo";
 import { Footer } from "../Footer/Footer";
 import { Header } from "../Header/Header";
 
-import "./Layout.css";
+import * as MainLayout from "./Layout.style";
 
 export const Layout = ({ children, isFixed }) => {
   const { data } = useGetUserInfo();
@@ -12,7 +12,7 @@ export const Layout = ({ children, isFixed }) => {
   return (
     <>
       <Header profile={profile} isFixed={isFixed} />
-      <main className="layout-main">{children}</main>
+      <MainLayout.MainWrap>{children}</MainLayout.MainWrap>
       <Footer />
     </>
   );
