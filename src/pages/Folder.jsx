@@ -2,6 +2,7 @@ import "./Folder.css";
 import Nav from "../components/Nav";
 import SearchInput from "../components/SearchInput";
 import FolderList from "../components/FolderList";
+import FolderTitle from "../components/FolderTitle";
 import Footer from "../components/Footer";
 import useData from "../hooks/useData";
 import { getFolderListData } from "../api/Api";
@@ -24,6 +25,7 @@ function Folder() {
       <section className="folderContent">
         <SearchInput />
         {folders && <FolderList folders={folders} />}
+        <FolderTitle />
         {links && <CardList links={links} />}
       </section>
       <Footer />
