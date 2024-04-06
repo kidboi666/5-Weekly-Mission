@@ -5,7 +5,6 @@ export function convertObjectKeysToCamelCase(obj) {
   let camelCaseObj = {};
   Object.keys(obj).forEach((key) => {
     const camelCaseKey = convertStringToCamelCase(key);
-    console.log(camelCaseKey, key);
     camelCaseObj[camelCaseKey] = obj[key];
   });
   return camelCaseObj;

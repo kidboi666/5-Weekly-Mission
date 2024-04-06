@@ -11,8 +11,8 @@ export default function UtilButton({ imgSrc, children, onClick, alt }) {
 }
 
 UtilButton.propTypes = {
-  imgSrc: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-  onClick: PropTypes.func.isRequired,
-  alt: PropTypes.string.isRequired,
+  imgSrc: PropTypes.string,
+  children: PropTypes.node,
+  onClick: PropTypes.func,
+  alt: PropTypes.string,
 };

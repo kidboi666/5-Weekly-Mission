@@ -15,8 +15,8 @@ const Account = ({ profileImgSource, userEmail }) => {
 };
 
 Account.propTypes = {
-  profileImgSource: PropTypes.string.isRequired,
-  userEmail: PropTypes.string.isRequired,
+  profileImgSource: PropTypes.string,
+  userEmail: PropTypes.string,
 };
 
 export default Account;

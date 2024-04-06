@@ -87,5 +87,5 @@ LinkCard.propTypes = {
     url: PropTypes.string,
     createdAt: PropTypes.string,
     title: PropTypes.string,
-  }).isRequired,
+  }),
 };

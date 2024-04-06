@@ -27,7 +27,7 @@ export default function FolderToolBarButton({
 
 FolderToolBarButton.propTypes = {
   id: PropTypes.number,
-  children: PropTypes.node.isRequired,
-  onClick: PropTypes.func.isRequired,
-  isFocused: PropTypes.bool.isRequired,
+  children: PropTypes.node,
+  onClick: PropTypes.func,
+  isFocused: PropTypes.bool,
 };
