@@ -4,9 +4,9 @@ import { ButtonLabel } from "components/button";
 import { NavTemplate, ContentsFrame, Logo, LoginButton } from "./design";
 import { Profile } from "./ui";
 
-export const Navigation = function ({ profile }) {
+export const Navigation = function ({ profile, position }) {
   return (
-    <NavTemplate>
+    <NavTemplate position={position}>
       <ContentsFrame>
         <Logo href="/">
           <img src={LogoImgSrc} />

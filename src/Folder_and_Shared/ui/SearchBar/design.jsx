@@ -11,8 +11,6 @@ export const Input = styled.input`
   padding-left: 3.8rem;
   padding-right: 1.6rem;
   border-radius: 1rem;
-  border-style: none;
-  border: none;
   background-color: #f5f5f5;
   font-size: 1.4rem;
 

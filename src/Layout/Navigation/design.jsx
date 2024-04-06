@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { Button} from "components/button";
+import { Button } from "components/button";
 
 export const ContentsFrame = styled.div`
   width: 100%;
@@ -44,7 +44,7 @@ export const NavTemplate = styled.nav`
   height: 93px;
   padding: 20px 200px 20px 200px;
   background-color: #f0f6ff;
-  position: sticky;
+  position: ${(props) => (props.position === "static" ? "static" : "sticky")};
   top: 0;
   z-index: 1;
   display: flex;

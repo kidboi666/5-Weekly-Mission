@@ -4,13 +4,11 @@ import Layout from "Layout";
 
 const LandingPage = function () {
   return (
-    <>
-      <Layout>
-        <MainSection />
-        <FirstSection />
-        <Sections />
-      </Layout>
-    </>
+    <Layout>
+      <MainSection />
+      <FirstSection />
+      <Sections />
+    </Layout>
   );
 };
 

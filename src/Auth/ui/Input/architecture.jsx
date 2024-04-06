@@ -18,7 +18,7 @@ export const Input = function ({
   errorMessage,
   password,
   togglePassword,
-  visibility
+  visibility,
 }) {
   const border = errorMessage === "" ? "Default" : "Error";
   const ToggleComponent = (
@@ -27,7 +27,7 @@ export const Input = function ({
       className={`fa fa-${visibility ? "eye-slash" : "eye"} fa-lg`}
     ></i>
   );
-  const TogglePassword = password ? ToggleComponent : (<></>);
+  const TogglePassword = password ? ToggleComponent : <></>;
   return (
     <InputEntry>
       <InputLabel>{label}</InputLabel>
@@ -41,8 +41,8 @@ export const Input = function ({
             onFocus={onFocus}
             placeholder={label}
             border={border}
-          ></InputField>
-		  {TogglePassword}
+          />
+          {TogglePassword}
         </InputBinder>
         <ErrorMessage>{errorMessage}</ErrorMessage>
       </InputWrapper>

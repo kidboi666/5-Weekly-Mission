@@ -14,10 +14,23 @@ export const SharedPageTemplate = styled.div`
     padding-bottom: 6rem;
   }
 `;
-export const Items = styled.div`
+export const FolderPageTemplate = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
+  width: 100%;
+  row-gap: 2rem;
+  padding-bottom: 2rem;
+
+  @media (min-width: 768px) {
+    row-gap: 4rem;
+    padding-bottom: 4rem;
+  }
+`;
+export const Items = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 112.4rem;
   row-gap: 3.2rem;
@@ -25,5 +38,14 @@ export const Items = styled.div`
 
   @media (min-width: 768px) {
     row-gap: 4rem;
+  }
+`;
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+
+  @include tablet {
+    row-gap: 2.4rem;
   }
 `;

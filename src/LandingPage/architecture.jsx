@@ -36,7 +36,7 @@ export const MainSection = function () {
         <ButtonLabel>링크 추가하기</ButtonLabel>
       </Button>
       <MainImageArea>
-        <img src={MainImg} />
+        <img src={MainImg} alt={"랜딩 페이지 메인 이미지"}/>
       </MainImageArea>
     </MainSectionTemplate>
   );
