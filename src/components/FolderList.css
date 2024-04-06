@@ -1,0 +1,36 @@
+.folderLinkList {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.folderLinkList__folders {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.folderLinkList__folder {
+  border-radius: 5px;
+  border: 1px solid var(--Linkbrary-primary-color, #6d6afe);
+  background: #fff;
+  padding: 8px 12px;
+}
+
+.folderLinkList__addFolderButton {
+  display: flex;
+  color: #6d6afe;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.3px;
+}
+
+.folderLinkList__addFolderIcon {
+  align-items: center;
+  margin-left: 4px;
+}
