@@ -26,7 +26,7 @@ function SharedPage() {
 
   return (
     <>
-      <Layout isFixed={true}>
+      <Layout isSticky={true}>
         <FolderInfo
           folderName={folderName}
           ownerName={ownerName}

@@ -1,9 +1,9 @@
 import { Nav } from "../Nav/Nav";
 import { HeaderLayout } from "./Header.style";
 
-export const Header = ({ profile, isFixed }) => {
+export const Header = ({ profile, isSticky }) => {
   return (
-    <HeaderLayout isFixed={isFixed}>
+    <HeaderLayout isSticky={isSticky}>
       <Nav profile={profile} />
     </HeaderLayout>
   );

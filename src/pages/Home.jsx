@@ -1,17 +1,18 @@
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
+const ViewHomePage = styled.div`
+  background: var(--Linkbrary-bg);
+  padding: 23.8rem 0rem 25.3rem 0rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  width: 100vw;
+  height: 100vh;
+`;
+
 function Home() {
-  const ViewHomePage = styled.div`
-    background: var(--Linkbrary-bg);
-    padding: 23.8rem 0rem 25.3rem 0rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5rem;
-    width: 100vw;
-    height: 100vh;
-  `;
   return (
     <ViewHomePage>
       <Link to="/shared" className="btn-primary btn-sm">
