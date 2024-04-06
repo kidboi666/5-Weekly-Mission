@@ -15,7 +15,6 @@ function FolderPage() {
   const { data: folderList } = useGetFolderList(userId);
   const [selectedFolderId, setSelectedFolderId] = useState(ALL_LINKS_ID);
   const { data: links } = useGetLinkList(selectedFolderId, userId);
-  console.log(links);
 
   return (
     <Layout isSticky={false} userId={userId}>
@@ -23,7 +22,11 @@ function FolderPage() {
       <PageLayout.PageWrap>
         <SearchBar />
         <PageLayout.FolderBox>
-          <FolderToolBar folderList={folderList} />
+          <FolderToolBar
+            folderList={folderList}
+            selectedFolderId={selectedFolderId}
+            onFolderClick={setSelectedFolderId}
+          />
           <CardList>
             {links?.map((link) => (
               <CardContainer key={link?.id} {...link}></CardContainer>
