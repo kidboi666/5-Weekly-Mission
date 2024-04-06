@@ -1,14 +1,13 @@
-import "./Profile.css";
+import * as ProfileLayout from "./Profile.style";
 
 export const Profile = ({ profile }) => {
   return (
-    <div className="profile">
-      <img
+    <ProfileLayout.Profile>
+      <ProfileLayout.ProfileImage
         src={profile.profileImageSource}
-        className="profile-image"
         alt="프로필이미지"
       />
-      <span className="profile-email">{profile.email}</span>
-    </div>
+      <ProfileLayout.ProfileEmail>{profile.email}</ProfileLayout.ProfileEmail>
+    </ProfileLayout.Profile>
   );
 };

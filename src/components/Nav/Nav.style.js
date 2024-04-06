@@ -1,11 +1,13 @@
-.navigation {
+import styled from "styled-components";
+
+export const Navigation = styled.nav`
   width: 100%;
   display: flex;
   justify-content: center;
   background-color: var(--Linkbrary-bg);
-}
+`;
 
-.navigation-items {
+export const NavigationItems = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,4 +21,4 @@
     padding-left: 3.2rem;
     max-width: 86.3rem;
   }
-}
+`;
