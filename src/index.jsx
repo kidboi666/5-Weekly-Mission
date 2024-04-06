@@ -4,12 +4,13 @@ import {
   createBrowserRouter,
   Navigate,
   RouterProvider,
-  Routes,
 } from 'react-router-dom';
 import './index.css';
-import App from './components/App';
+import './assets/css/reset.css';
 import SharedPage from './pages/SharedPage/SharedPage';
 import FolderPage from './pages/FolderPage/FolderPage';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
 const router = createBrowserRouter([
   {
@@ -28,10 +29,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}>
-      <App>
-        <Routes />
-      </App>
-    </RouterProvider>
+    <Header />
+    <RouterProvider router={router} />
+    <Footer />
   </React.StrictMode>
 );
