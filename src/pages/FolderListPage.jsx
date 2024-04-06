@@ -1,4 +1,4 @@
-// import { Link } from "react-router-dom";
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useFetchFolder } from "../hooks/useFetchFolder";
 import noImageLogo from "../assets/noImageLogo.svg";
 import SearchImg from "../assets/Search.svg";

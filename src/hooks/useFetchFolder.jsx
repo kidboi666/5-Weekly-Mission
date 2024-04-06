@@ -1,8 +1,8 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 const BASE_URL = "https://bootcamp-api.codeit.kr/api/sample";
 
 export function useFetchFolder() {
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
 
   const fetchData = async () => {
     try {
@@ -20,7 +20,7 @@ export function useFetchFolder() {
 
   useEffect(() => {
     fetchData(data);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return data;

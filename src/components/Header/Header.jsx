@@ -1,6 +1,6 @@
-import { useFetchUser } from "../hooks/useFetchUser";
-import Logo from "../assets/logo.svg";
-import "../components/Header.css";
+import { useFetchUser } from "../../hooks/useFetchUser";
+import Logo from "../../assets/logo.svg";
+import "../Header/Header.css";
 
 function Header() {
   const userData = useFetchUser();

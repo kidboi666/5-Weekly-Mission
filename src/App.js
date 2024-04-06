@@ -1,7 +1,7 @@
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import User from "./components/User";
 import FolderListPage from "./pages/FolderListPage";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer/Footer";
 import "./App.css";
 
 function App() {

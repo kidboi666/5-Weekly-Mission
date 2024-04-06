@@ -1,27 +1,9 @@
-import { useEffect, useState } from "react";
-const BASE_URL = "https://bootcamp-api.codeit.kr/api/sample";
+import { axiosInstance } from "../util/axiosInstance";
+import { useAsync } from "./useAsync";
 
-export function useFetchUser() {
-  const [data, setData] = useState();
+export const useFetchUser = () => {
+  const user = () => axiosInstance.get("sample/user");
+  const { data, loading, error } = useAsync(user);
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch(`${BASE_URL}/user`);
-      if (response.ok) {
-        const data = await response.json();
-        setData(data);
-      } else {
-        throw new Error("불러오는데 실패 했습니다.");
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData(data);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  return data;
-}
+  return { data, loading, error };
+};

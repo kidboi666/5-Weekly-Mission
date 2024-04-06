@@ -1,9 +1,9 @@
-import FacebookLogo from "../assets/facebook.svg";
-import TwitterLogo from "../assets/twitter.svg";
-import YoutubeLogo from "../assets/youtube.svg";
-import InstagramLogo from "../assets/instagram.svg";
-
-import "../components/Footer.css";
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import FacebookLogo from "../../assets/facebook.svg";
+import TwitterLogo from "../../assets/twitter.svg";
+import YoutubeLogo from "../../assets/youtube.svg";
+import InstagramLogo from "../../assets/instagram.svg";
+import "../Footer/Footer.css";
 
 function Footer() {
   return (
