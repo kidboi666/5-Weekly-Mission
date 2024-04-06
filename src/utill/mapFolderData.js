@@ -2,7 +2,7 @@ import format from "date-fns/format";
 import { getElapsedTime } from "./getElapsedTime";
 
 /**
- * API로 불러온 유저폴더정보 가공
+ * API로 불러온 유저폴더정보 가공
  * * 7주차 템플릿 코드 사용
  *
  * @study
