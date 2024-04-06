@@ -1,10 +1,9 @@
 import useData from "../hooks/useData";
-import { getFolderData } from "../api/Api";
+import { getSampleUserData } from "../api/Api";
 import "./Header.css";
 
 function Header() {
-  const folderData = useData(getFolderData);
-
+  const folderData = useData(getSampleUserData);
   return (
     <header>
       {folderData && (

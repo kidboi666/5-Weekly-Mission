@@ -7,7 +7,7 @@ function Nav() {
     <nav className="nav">
       <ul>
         <li>
-          <a href="/">
+          <a href="/shared">
             <img className="nav__logo" src={logoImg} alt="로고 이미지" />
           </a>
         </li>
