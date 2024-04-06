@@ -44,6 +44,7 @@ a {
 }
 
 .CardListItem__content {
+  position: relative;
   display: flex;
   padding: 15px 20px;
   flex-direction: column;
