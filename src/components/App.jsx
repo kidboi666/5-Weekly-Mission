@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
 import '../assets/css/reset.css';
@@ -12,3 +13,7 @@ export default function App({ children }) {
     </>
   );
 }
+
+App.propTypes = {
+  children: PropTypes.node.isRequired,
+};

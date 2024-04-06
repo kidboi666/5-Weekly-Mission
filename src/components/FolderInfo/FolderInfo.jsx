@@ -1,4 +1,5 @@
 import './FolderInfo.css';
+import PropTypes from 'prop-types';
 
 const STYLE_FOLDER_INFO_CLASS_NAME = 'folder-info';
 const STYLE_OWNER_PROFILE_CLASS_NAME = 'owner-profile';
@@ -25,3 +26,9 @@ export default function FolderInfo({
     </div>
   );
 }
+
+FolderInfo.propTypes = {
+  ownerName: PropTypes.string,
+  folderName: PropTypes.string,
+  profileImgSource: PropTypes.string,
+};

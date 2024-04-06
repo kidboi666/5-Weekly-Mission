@@ -3,9 +3,9 @@ import addIconWhite from '../../assets/images/add_icon_white.svg';
 import FolderToolBarButton from './FolderToolBarButton';
 import './FolderToolBar.css';
 import { UTIL_BUTTONS_PROPS } from './constants';
-
 import * as styles from './styles';
 import UtilButton from './UtilButton';
+import PropTypes from 'prop-types';
 
 export default function FolderToolBar({
   folders,
@@ -63,3 +63,9 @@ export default function FolderToolBar({
     </div>
   );
 }
+
+FolderToolBar.propTypes = {
+  folders: PropTypes.array,
+  currentFolderId: PropTypes.number,
+  folderNameOnClick: PropTypes.func,
+};

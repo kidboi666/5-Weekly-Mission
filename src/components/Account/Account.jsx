@@ -1,4 +1,5 @@
 import './Account.css';
+import PropTypes from 'prop-types';
 const STYLE_ACCOUNT_CLASS_NAME = 'account';
 const STYLE_USER_PROFILE_IMG_CLASS_NAME = 'user-profile-img';
 const STYLE_USER_EMAIL_CLASS_NAME = 'user-email';
@@ -17,3 +18,8 @@ export default function Account({ profileImgSource, userEmail }) {
     </div>
   );
 }
+
+Account.propTypes = {
+  profileImgSource: PropTypes.string.isRequired,
+  userEmail: PropTypes.string.isRequired,
+};

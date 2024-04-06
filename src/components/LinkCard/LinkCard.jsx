@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import './LinkCard.css';
 import noImagePlaceholder from '../../assets/images/placeholder_image.png';
 import starIcon from '../../assets/images/star.svg';
@@ -31,15 +32,15 @@ export default function LinkCard({ linkCardInfo }) {
   const createdDate = new Date(linkCardInfo.createdAt);
   const timestamp = getTimeDifference(createdDate);
 
-  const handleKebabClick = (event) => {
+  function handleKebabClick(event) {
     setIsDropdownOpen(!isDropdownOpen);
     event.preventDefault();
-  };
+  }
 
-  const handleStarClick = (event) => {
+  function handleStarClick(event) {
     event.preventDefault();
     setIsFavorite(!isFavorite);
-  };
+  }
 
   return (
     <a
@@ -70,7 +71,7 @@ export default function LinkCard({ linkCardInfo }) {
         <div className={STYLE_LINK_CARD_TIMESTAMP_BAR_CLASS_NAME}>
           <span className={STYLE_TIMESTAMP_CLASS_NAME}>{timestamp}</span>
           <div className="kebab-button-container">
-            <button onClick={handleKebabClick} className={kebab}>
+            <button onClick={handleKebabClick} className={STYLE_KEBAB_BUTTON}>
               <img src={kebab} alt="kebab" className={STYLE_KEBAB_BUTTON} />
             </button>
             {isDropdownOpen && (
@@ -89,3 +90,12 @@ export default function LinkCard({ linkCardInfo }) {
     </a>
   );
 }
+
+LinkCard.propTypes = {
+  linkCardInfo: PropTypes.shape({
+    imageSource: PropTypes.string,
+    description: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired, // Assuming createdAt is a string representing date
+  }).isRequired,
+};

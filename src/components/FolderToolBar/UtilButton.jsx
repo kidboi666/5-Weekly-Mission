@@ -1,4 +1,5 @@
 import './FolderToolBar.css';
+import PropTypes from 'prop-types';
 import { UTIL_BUTTON } from './styles';
 
 export default function UtilButton({ imgSrc, children, onClick, alt }) {
@@ -9,3 +10,10 @@ export default function UtilButton({ imgSrc, children, onClick, alt }) {
     </button>
   );
 }
+
+UtilButton.propTypes = {
+  imgSrc: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  onClick: PropTypes.func.isRequired,
+  alt: PropTypes.string.isRequired,
+};
