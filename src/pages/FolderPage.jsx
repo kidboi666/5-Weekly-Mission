@@ -36,7 +36,11 @@ function FolderPage() {
           ) : (
             <CardList>
               {links?.map((link) => (
-                <CardContainer key={link?.id} values={link}></CardContainer>
+                <CardContainer
+                  key={link?.id}
+                  {...link}
+                  isEdit={true}
+                ></CardContainer>
               ))}
             </CardList>
           )}

@@ -22,7 +22,11 @@ function SharedPage() {
           <SearchBar />
           <CardList>
             {links?.map((link) => (
-              <CardContainer key={link?.id} {...link}></CardContainer>
+              <CardContainer
+                key={link?.id}
+                {...link}
+                isEdit={false}
+              ></CardContainer>
             ))}
           </CardList>
         </PageLayout.PageWrap>

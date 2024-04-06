@@ -50,7 +50,7 @@ export const FolderToolBar = ({
       {selectedFolderId !== ALL_LINKS_ID && (
         <FolderToolBarLayout.IconButtonWrap>
           {BUTTONS.map(({ text, iconSource }, index) => (
-            <FolderToolBarLayout.IconButtonWrap key={index}>
+            <FolderToolBarLayout.IconButton key={index}>
               <FolderToolBarLayout.IconImage
                 src={iconSource}
                 alt={`${text} 아이콘`}
@@ -58,7 +58,7 @@ export const FolderToolBar = ({
               <FolderToolBarLayout.IconText>
                 {text}
               </FolderToolBarLayout.IconText>
-            </FolderToolBarLayout.IconButtonWrap>
+            </FolderToolBarLayout.IconButton>
           ))}
         </FolderToolBarLayout.IconButtonWrap>
       )}

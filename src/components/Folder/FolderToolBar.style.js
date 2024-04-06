@@ -11,7 +11,7 @@ export const FolderToolBarWrap = styled.div`
     display: grid;
     grid-template-areas:
       "folderList folderList add-button"
-      "folder-name folder-name buttons";
+      "folder-name buttons buttons";
     justify-content: space-between;
     align-items: center;
     row-gap: 2.4rem;
@@ -116,7 +116,7 @@ export const IconButtonWrap = styled.div`
   column-gap: 1.2rem;
 
   @media (min-width: 768px) {
-    justify-end: flex-end;
+    justify-self: flex-end;
   }
 `;
 

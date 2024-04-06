@@ -75,3 +75,23 @@ export const CardWrap = styled.div`
     transition: all 200ms;
   }
 `;
+
+export const FavoritCardButton = styled.button`
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 3.4rem;
+  height: 3.4rem;
+  z-index: var(--z-index-icon);
+`;
+
+export const KebabButton = styled.button`
+  position: absolute;
+  top: 20.7rem;
+  right: 2rem;
+  z-index: var(--z-index-icon);
+
+  @media (min-width: 768px) {
+    top: 21.5rem;
+  }
+`;
