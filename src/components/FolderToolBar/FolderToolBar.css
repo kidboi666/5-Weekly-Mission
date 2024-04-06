@@ -92,7 +92,8 @@
     position: fixed;
     bottom: 101px;
     padding: 8px 24px;
-    left: calc((100vw - 128px) / 2);
+    left: 50%;
+    transform: translateX(-50%);
     border-radius: 20px;
     background-color: #6d6afe;
     color: #fff;
