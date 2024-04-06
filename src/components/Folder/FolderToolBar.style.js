@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { ReactComponent as AddIcon } from "./add.svg";
 
 export const FolderToolBarWrap = styled.div`
-  display: lfex;
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
   row-gap: 1.2rem;
@@ -38,7 +39,7 @@ export const FolderToolBarButton = styled.button`
   transition: all 0.3s ease-in-out;
 
   @media (min-width: 768px) {
-    hheight: 3.7rem;
+    height: 3.7rem;
     padding: 0 1.2rem;
     font-size: 1.6rem;
   }
@@ -50,5 +51,60 @@ export const FolderToolBarButton = styled.button`
   &.selected {
     background-color: var(--Linkbrary-primary-color);
     color: var(--Linkbrary-white);
+  }
+`;
+
+export const AddFolderButtonWrap = styled.div`
+  grid-area: add-button;
+  position: fixed;
+  bottom: 10.1rem;
+  left: 50%;
+  transform: transLateX(-50%);
+  z-index: var(--z-index-fab);
+
+  @media (min-width: 768px) {
+    justify-self: flex-end;
+    position: static;
+    transform: none;
+  }
+`;
+export const AddFolderButton = styled.button`
+  display: flex;
+  align-items: center;
+  column-gap: 0.4rem;
+  fon-size: 1.6rem;
+  font-weight: 500;
+  height: 3.5rem;
+  padding: 0 2.4rem;
+  border-radius: 2rem;
+  border: 0.1rem solid var(--Linkbrary-white);
+  background-color: var(--Linkbrary-primary-color);
+  color: var(--Linkbrary-gray10);
+
+  @media (min-width: 768px) {
+    padding: 0;
+    background-color: transparent;
+    color: var(--Linkbrary-primary-color);
+  }
+`;
+
+export const AddFolderSvg = styled(AddIcon)`
+  fill: var(--Linkbrary-gray10);
+
+  @media (min-width: 768px) {
+    fill: var(--Linkbrary-primary-color);
+  }
+`;
+
+export const FolderName = styled.h2`
+  gird-area: folder-name;
+  margin-top: 1.6rem;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.02rem;
+
+  @media (min-width: 768px) {
+    margin-top: 0;
+    font-size: 2.4rem;
   }
 `;

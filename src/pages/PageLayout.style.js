@@ -13,3 +13,14 @@ export const PageWrap = styled.div`
     row-gap: 4rem;
   }
 `;
+
+export const FolderBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    row-gap: 2.4rem;
+  }
+`;
