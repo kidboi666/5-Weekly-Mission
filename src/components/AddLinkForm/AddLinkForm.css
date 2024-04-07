@@ -43,7 +43,13 @@
 
 @media (max-width: 767px) {
     /* 모바일 */
+    .link-con-wrap img {
+        height: 16px;
+    }
     .link-wrap {
         padding: 87px 32px 40px;
+    }
+    .link-con-wrap > .link-input {
+        font-size: 14px;
     }
 }
