@@ -3,9 +3,11 @@ import logoImg from "../../assets/svg/Linkbrary.svg";
 import { useEffect, useState } from "react";
 import { loginFetchData } from "../../fetchUtils";
 import Profile from "../Profile/Profile";
+import { useLocation } from "react-router-dom";
 
 function Header() {
     const [user, setUser] = useState("");
+    const location = useLocation();
 
     useEffect(() => {
         async function fetchDataAndSetState() {
@@ -16,7 +18,7 @@ function Header() {
     }, [user.id]);
 
     return (
-        <header>
+        <header className={`${location.pathname === "/folder" ? "header-static" : ""}`}>
             <h1 className="logo">
                 <a href="./">
                     <img src={logoImg} alt="Linkbrary" />
