@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 const BASE_URL = "https://bootcamp-api.codeit.kr/api/sample";
 
 export function useFetchFolder() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState();
 
   const fetchData = async () => {
     try {

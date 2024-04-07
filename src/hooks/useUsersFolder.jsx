@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 const BASE_URL = "https://bootcamp-api.codeit.kr/api/";
 
-export function useFetchUser() {
+export function useUsersFolder() {
   const [data, setData] = useState();
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`${BASE_URL}sample/user`);
+      const response = await fetch(`${BASE_URL}users/1/folders`);
       if (response.ok) {
         const data = await response.json();
         setData(data);
