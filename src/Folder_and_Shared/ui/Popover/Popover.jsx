@@ -1,8 +1,8 @@
 import styles from "./Popover.module.scss";
 import classNames from "classnames/bind";
 import { useCallback, useMemo, useRef } from "react";
-import { Portal } from "sharing/ui-portal";
-import { useBackgroundClick } from "sharing/util/useBackgroundClick";
+import { Portal } from "../Portal";
+import { useBackgroundClick } from "Folder_and_Shared/util/useBackgroundClick";
 
 const cx = classNames.bind(styles);
 
