@@ -1,4 +1,5 @@
 import { useFetchUser } from "../../hooks/useFetchUser";
+import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import "../Header/Header.css";
 
@@ -8,7 +9,9 @@ function Header() {
   return (
     <div className="header-container">
       <div className="header-nav">
-        <img className="header-logo" src={Logo} alt="Linkbrary-logo" />
+        <Link to="/">
+          <img className="header-logo" src={Logo} alt="Linkbrary-logo" />
+        </Link>
         {userData && (
           <div className="header-user-profile">
             <img

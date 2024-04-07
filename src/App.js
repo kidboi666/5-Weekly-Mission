@@ -1,15 +1,13 @@
 import Header from "./components/Header/Header";
-import User from "./components/User";
-import FolderListPage from "./pages/FolderListPage";
 import Footer from "./components/Footer/Footer";
 import "./App.css";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
     <div>
       <Header />
-      <User />
-      <FolderListPage />
+      <Outlet />
       <Footer />
     </div>
   );
