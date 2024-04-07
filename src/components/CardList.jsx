@@ -7,18 +7,20 @@ function CardList({ url }) {
   const links = result?.data;
   console.log(links);
   return (
-    <ul className="CardLinkList">
+    <>
       {links && links.length === 0 ? (
         <NoPage />
       ) : (
-        links &&
-        links.map((link) => (
-          <li key={link.id}>
-            <CardListItem link={link} />
-          </li>
-        ))
+        <ul className="CardLinkList">
+          {links &&
+            links.map((link) => (
+              <li key={link.id}>
+                <CardListItem link={link} />
+              </li>
+            ))}
+        </ul>
       )}
-    </ul>
+    </>
   );
 }
 

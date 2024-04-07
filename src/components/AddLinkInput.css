@@ -54,3 +54,15 @@
   font-weight: 600;
   line-height: normal;
 }
+
+@media (max-width: 1124px) {
+  .AddLinkForm__wrap {
+    width: 704px;
+  }
+}
+
+@media (max-width: 767px) {
+  .AddLinkForm__wrap {
+    width: 325px;
+  }
+}

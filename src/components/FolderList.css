@@ -1,5 +1,5 @@
 .folderLinkList {
-  display: grid;
+  display: flex;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 8fr 2fr;
   align-items: center;
@@ -32,17 +32,26 @@
 }
 
 .folderLinkList__addFolderButton {
+  cursor: pointer;
+  background: none;
+  border: none;
   justify-self: end;
   display: flex;
   color: #6d6afe;
   text-align: center;
+  padding: 0;
   max-width: 80px;
   font-family: Pretendard;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.3px;
   flex-shrink: 0;
+}
+
+.folderLinkList__addFolderButton--mobile {
+  display: none;
 }
 
 .folderLinkList__addFolderIcon {
@@ -74,5 +83,39 @@
   }
   .CardListItem {
     height: 327px;
+  }
+  .folderLinkList__addFolderButton {
+    display: none;
+  }
+
+  .folderLinkList__addFolderButton--mobile {
+    cursor: pointer;
+    position: fixed;
+    left: 50%;
+    bottom: 110px;
+    transform: translate(-50%, -50%);
+    display: flex;
+    width: 135px;
+    height: 36px;
+    padding: 8px 24px;
+    align-items: flex-start;
+    gap: 4px;
+    color: var(--Linkbrary-gray10, #e7effb);
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.3px;
+    border-radius: 20px;
+    border: 1px solid var(--Linkbrary-white, #fff);
+    background: var(--Linkbrary-primary-color, #6d6afe);
+    z-index: 9999;
+  }
+
+  .folderLinkList__addFolderIcon {
+    width: 16px;
+    height: 16px;
   }
 }
