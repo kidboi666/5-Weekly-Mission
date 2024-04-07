@@ -2,7 +2,7 @@ import React from "react";
 // import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logoImg from "../assets/logo.svg";
-import { signinRequest } from "../api/appAip";
+import { requestPost } from "../api/appAip";
 
 // const [user, setUser] = useState({
 //   email: "",
@@ -18,17 +18,17 @@ const handleSubmit = (event) => {
   const userEmail = $userEmail.value;
   const userPassword = $userPassword.value;
 
-  signinRequest(userEmail, userPassword);
+  requestPost(userEmail, userPassword);
   handleUser();
 };
 
 const handleUser = async () => {
-  const userData = await signinRequest();
+  const userData = await requestPost();
   console.log(userData);
   // TestLoginData(userData);
 };
 
-function Signin() {
+function SigninPage() {
   return (
     <>
       <Link to="/" style={{ display: "flex" }}>
@@ -53,4 +53,4 @@ function Signin() {
   );
 }
 
-export default Signin;
+export default SigninPage;

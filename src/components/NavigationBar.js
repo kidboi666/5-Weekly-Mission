@@ -1,12 +1,46 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import User from "./User";
+import NavUserProfile from "./NavUserProfile";
 import logoImg from "../assets/logo.svg";
+
+// 로그인 확인
+function Login(user) {
+  const userCheck = user;
+
+  if (!userCheck) {
+    return (
+      <Link to="/signin" style={linkStyle}>
+        <Button>로그인</Button>
+      </Link>
+    );
+  }
+
+  // 유저가 있다면 표시
+  if (userCheck) {
+    return <NavUserProfile user={user} />;
+  }
+}
+
+function NavigationBar({ user, folder }) {
+  // 스타일 주는 방법 변경
+  return (
+    <NavigationBlock folder={folder}>
+      <div>
+        <Link to="/" style={{ display: "flex" }}>
+          <img src={logoImg} alt="로고 이미지 Linkbrary" />
+        </Link>
+        <>{Login(user)}</>
+      </div>
+    </NavigationBlock>
+  );
+}
+
+export default NavigationBar;
 
 const NavigationBlock = styled.div`
   background: #f0f6ff;
-  position: fixed;
+  position: ${({ folder }) => (folder ? "sticky" : "fixed")}
   z-index: 1;
   left: 0;
   right: 0;
@@ -14,7 +48,7 @@ const NavigationBlock = styled.div`
   div {
     display: flex;
     justify-content: space-between;
-    padding: 1.5rem 16rem;
+    padding: 1.5rem 12rem;
 
     @media screen and (max-width: 1124px) {
       padding: 1.5rem 2.03125rem 1.5rem 2.03125rem;
@@ -26,7 +60,7 @@ const NavigationBlock = styled.div`
   }
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   display: flex;
   padding: 0.8rem 1.05rem;
   justify-content: center;
@@ -45,37 +79,3 @@ const Button = styled.button`
 `;
 
 const linkStyle = { textDecoration: "none" };
-
-// 로그인 확인
-function Login(user) {
-  const userCheck = user;
-
-  if (!userCheck) {
-    return (
-      <Link to="signin" style={linkStyle}>
-        <Button>로그인</Button>
-      </Link>
-    );
-  }
-
-  // 유저가 있다면 표시
-  if (userCheck) {
-    return <User user={user} />;
-  }
-}
-
-function Navigation({ user }) {
-  // 스타일 주는 방법 변경
-  return (
-    <NavigationBlock>
-      <div>
-        <Link to="Linkbrary" style={{ display: "flex" }}>
-          <img src={logoImg} alt="로고 이미지 Linkbrary" />
-        </Link>
-        <>{Login(user)}</>
-      </div>
-    </NavigationBlock>
-  );
-}
-
-export default Navigation;

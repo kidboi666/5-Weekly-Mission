@@ -5,7 +5,7 @@ const MainProfileBlock = styled.div`
   background: #f0f6ff;
 
   div {
-    padding: 100px;
+    padding: 6rem;
     text-align: center;
   }
 

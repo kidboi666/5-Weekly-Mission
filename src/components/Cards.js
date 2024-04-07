@@ -1,7 +1,62 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { Time } from "../util/time";
+import { contentDate } from "../util/contentDate";
 import noImage from "../assets/noImage.svg";
+import starIcon from "../assets/starIcon.svg";
+import purpleStarIcon from "../assets/purpleStarIcon.svg";
+import kebabIcon from "../assets/kebabIcon.svg";
+
+function ReviewListItem({ item }) {
+  const imageData = item.imageSource;
+  const folderImageData = item.image_source;
+
+  // function onClick(event) {
+  //   console.log(event.target.src);
+  //   event.target.src === purpleStarIcon
+  //     ? (event.target.src = starIcon)
+  //     : (event.target.src = purpleStarIcon);
+  // }
+
+  return (
+    <ContentBlock>
+      <Link to={item.url} target="_blank" style={linkStyle}>
+        <ImgBlock>
+          <img src={imageData ?? folderImageData ?? noImage} alt={item.title} />
+        </ImgBlock>
+        <TextBlock>
+          <p>{Time(item.createdAt)}</p>
+          <p>{item.title}</p>
+          <p>{item.description}</p>
+          <p>{contentDate(item.createdAt ?? item.created_at)}</p>
+        </TextBlock>
+      </Link>
+      {/* <button onClick={onClick}> */}
+      <StarIcon src={starIcon} alt="즐겨찾기 아이콘" />
+      {/* </button> */}
+      <KebabIcon src={kebabIcon} alt="더보기 아이콘" />
+    </ContentBlock>
+  );
+}
+
+function Cards({ items }) {
+  if (!items) {
+    return <NotLinkBlock>저장된 링크가 없습니다.</NotLinkBlock>;
+  }
+
+  return (
+    <CardsBlock>
+      <ul>
+        {items.map((item) => {
+          return <ReviewListItem key={item?.id} item={item} />;
+        })}
+      </ul>
+    </CardsBlock>
+  );
+}
+
+export default Cards;
 
 const ImgBlock = styled.div`
   padding: 0;
@@ -15,7 +70,6 @@ const ImgBlock = styled.div`
     object-fit: cover;
     border-top-left-radius: 14px;
     border-top-right-radius: 14px;
-
     transition: all 0.2s linear;
 
     &:hover {
@@ -25,11 +79,11 @@ const ImgBlock = styled.div`
 `;
 
 const ContentBlock = styled.div`
+  position: relative;
   width: 20rem;
   border: 2px solid transparent;
   border-radius: 15px;
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
-
   overflow: hidden;
 
   &:hover {
@@ -69,56 +123,29 @@ const TextBlock = styled.div`
 
 const linkStyle = { textDecoration: "none", color: "#000000" };
 
-function formatDate(value) {
-  const date = new Date(value);
-  return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}  `;
-  // / ${date.getHours()}시 ${date.getSeconds()}분
-}
+const StarIcon = styled.img`
+  position: absolute;
+  top: 0.94rem;
+  right: 0.94rem;
 
-function addImage(image = noImage) {
-  return image;
-}
+  &:hover {
+    cursor: pointer;
+  }
+`;
 
-function ReviewListItem({ item }) {
-  // const timeData = item.createdAt;
+const KebabIcon = styled.img`
+  position: absolute;
+  top: 13.5rem;
+  right: 0.94rem;
 
-  return (
-    <ContentBlock>
-      <Link to={item.url} target="_blank" style={linkStyle}>
-        <ImgBlock>
-          <img src={addImage(item.imageSource)} alt={item.title} />
-        </ImgBlock>
-        <TextBlock>
-          {/* <p>test: {TestTime(item.createdAt)}</p> */}
-          {/* <p>createdAt: {item.createdAt}</p> */}
-          <p>{item.title}</p>
-          <p>{item.description}</p>
-          <p>{formatDate(item.createdAt)}</p>
-        </TextBlock>
-      </Link>
-    </ContentBlock>
-  );
-}
+  &:hover {
+    cursor: pointer;
+  }
+`;
 
-function Cards({ items }) {
-  // if (!items) {
-  //   return <ContentBlock>테스트</ContentBlock>;
-  // }
-
-  // key 추가하기
-  return (
-    <CardsBlock>
-      <ul>
-        {items.map((item) => {
-          return (
-            <>
-              <ReviewListItem item={item} />
-            </>
-          );
-        })}
-      </ul>
-    </CardsBlock>
-  );
-}
-
-export default Cards;
+const NotLinkBlock = styled.span`
+  display: flex;
+  height: 6.25rem;
+  justify-content: center;
+  align-items: center;
+`;
