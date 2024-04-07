@@ -2,17 +2,13 @@ import { Link } from "react-router-dom";
 import { DFlaxAlignCenterBtw, EllipsisLine } from "../../styles/commonStyle";
 import { calculateTimeAgo } from "../../utils/calcTilmAgo";
 import { BookMarkBtn, CardMenu, CardWrap } from "./PostCardStyle";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { IFolderContent } from "../../pages/folder/interface";
 const emptyImg = "/assets/logo/logo.svg";
 export default function PostCard({
-  id,
-  url,
-  title,
   image_source,
   description,
   created_at,
-  folder_id,
 }: IFolderContent) {
   const [bookMark, setBookMark] = useState(false);
   const [cardMenuShow, setCardMenuShow] = useState(false);
@@ -23,6 +19,10 @@ export default function PostCard({
   const handleMenuItemClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setCardMenuShow(false);
   };
+
+  const date = useMemo(() => {
+    return new Date(`${created_at}`);
+  }, []);
 
   return (
     <CardWrap>
@@ -48,9 +48,7 @@ export default function PostCard({
             <EllipsisLine $tline={2} className="card__content">
               {description}
             </EllipsisLine>
-            <p className="card__date">
-              {new Date(`${created_at}`).toLocaleString()}
-            </p>
+            <p className="card__date">{date.toLocaleString()}</p>
           </figcaption>
         </figure>
       </Link>

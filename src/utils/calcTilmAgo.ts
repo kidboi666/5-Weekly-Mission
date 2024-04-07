@@ -11,27 +11,20 @@ export function calculateTimeAgo(created_at:string) {
     const hoursDifference = differenceInHours(currentDate, createdAtDate);
     const minutesDifference = differenceInMinutes(currentDate, createdAtDate);
   
-    if (minutesDifference < 2) {
-        return "1 minute ago";
-    } else if (minutesDifference <= 59) {
-        return `${minutesDifference} minutes ago`;
-    } else if (hoursDifference === 1) {
-        return "1 hour ago";
-    } else if (hoursDifference <= 23) {
-        return `${hoursDifference} hours ago`;
-    } else if (daysDifference === 1) {
-        return "1 day ago";
-    } else if (daysDifference <= 30) {
-        return `${daysDifference} days ago`;
-    } else if (monthsDifference === 1) {
-        return "1 month ago";
-    } else if (monthsDifference <= 11) {
-        return `${monthsDifference} months ago`;
-    } else if (yearsDifference === 1) {
-        return "1 year ago";
-    } else {
-        const years = Math.floor(yearsDifference);
-        return `${years} years ago`;
-    }
+    if (minutesDifference <= 59) {
+        return `${minutesDifference} minute${minutesDifference < 2 ? '' : 's'} ago`;
+    } 
+    if (hoursDifference <= 23) {
+        return `${hoursDifference} hour${hoursDifference < 2 ? '' : 's'} ago`;
+    } 
+    if (daysDifference <= 30) {
+        return `${daysDifference} day${daysDifference < 2 ? '' : 's'}  ago`;
+    } 
+   if (monthsDifference <= 11) {
+        return `${monthsDifference} month${monthsDifference < 2 ? '' : 's'} ago`;
+    } 
+    
+    const years = Math.floor(yearsDifference);
+    return `${years} year${years < 2 ? '' : 's'} ago`;
 
 }
