@@ -1,10 +1,9 @@
-import GNB from '../components/Gnb';
+import GNB from '../components/gnb';
 import Footer from '../components/footer';
-import codeitImg from '../assets/codeitImg.svg';
-import Card from '../components/Card';
+import Card from '../components/card';
 import SearchBar from '../components/searchBar';
 import { useState, useEffect } from 'react';
-import { getCardData } from '../api/cardData';
+import { getCardData } from '../api/api';
 import '../styles/shard.css';
 
 function Shared() {

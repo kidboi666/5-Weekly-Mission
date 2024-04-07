@@ -18,11 +18,9 @@ function CTA({ text, width }) {
     };
 
     return (
-        <>
-            <p className="Cta-btn" style={btnStyle}>
-                {text}
-            </p>
-        </>
+        <p className="cta-btn" style={btnStyle}>
+            {text}
+        </p>
     );
 }
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Landing from './pages/Landing';
-import SignIn from './pages/SignIn';
-import SignUp from './pages/Signup';
+import Landing from './pages/landing';
+import SignIn from './pages/signIn';
+import SignUp from './pages/signup';
 import Shared from './pages/shared';
 
 function App() {

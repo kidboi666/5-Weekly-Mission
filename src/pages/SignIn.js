@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom';
 import '../styles/signin.css';
-import Logo from '../components/Logo';
+import Logo from '../components/logo';
 import KakaoImg from '../assets/kakaoLogin.png';
 import GoogleImg from '../assets/googleLogin.png';
-import EyesImg from '../assets/eyes.svg';
-import EyesNoImg from '../assets/noeyes.svg';
 import { useState } from 'react';
-import { getLogin } from '../api/login';
+import { getLogin } from '../api/api';
 import { handleEmailChange, handlePasswordChange, handleIdFocusOut, handlePasswordFocusOut } from '../utils/common';
+import Eyes from '../components/eyes';
 
 function SignIn() {
     const LinkStyle = {
@@ -18,15 +17,11 @@ function SignIn() {
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
-    const [showPassword, setShowPassword] = useState(true);
+    const [isPasswordShowing, setIsPasswordShowing] = useState(true);
 
     const handleLoginSubmit = (e) => {
         e.preventDefault();
         getLogin({ email, password, setEmailError, setPasswordError });
-    };
-
-    const handleShowPassword = (e) => {
-        setShowPassword(!showPassword);
     };
 
     return (
@@ -49,6 +44,7 @@ function SignIn() {
                                 <input
                                     className={emailError === '' ? 'signin-id' : 'signin-id active'}
                                     type="text"
+                                    value={email}
                                     name="id"
                                     placeholder="이메일 입력"
                                     onChange={(e) => {
@@ -64,7 +60,8 @@ function SignIn() {
                                 <p>비밀번호</p>
                                 <input
                                     className={passwordError === '' ? 'signin-password' : 'signin-password active'}
-                                    type={showPassword ? 'password' : 'text'}
+                                    type={isPasswordShowing ? 'password' : 'text'}
+                                    value={password}
                                     name="password"
                                     placeholder="비밀번호 입력"
                                     onChange={(e) => {
@@ -74,12 +71,7 @@ function SignIn() {
                                         handlePasswordFocusOut(e, setPasswordError);
                                     }}
                                 />
-                                <img
-                                    src={showPassword ? EyesNoImg : EyesImg}
-                                    alt="비밀번호 보기"
-                                    className="signin-eyes password-eyes"
-                                    onClick={handleShowPassword}
-                                />
+                                <Eyes isShowing={isPasswordShowing} setIsShowing={setIsPasswordShowing} />
                                 <p className="signin-password-notice">{passwordError}</p>
                             </label>
                         </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Landing.css';
-import GNB from '../components/Gnb';
+import '../styles/landing.css';
+import GNB from '../components/gnb';
 import Footer from '../components/footer';
 import mainContentImg from '../assets/content2.png';
 import content2Img from '../assets/content2.png';
@@ -30,7 +30,7 @@ function Landing() {
                         <img src={mainContentImg} alt="홈페이지 이미지" className="main-content-img" />
                     </div>
                 </div>
-                <div className="content a">
+                <div className="content interval">
                     <div className="content-container">
                         <div className="textbox">
                             <h1 className="content-title">
