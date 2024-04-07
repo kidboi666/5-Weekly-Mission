@@ -3,8 +3,8 @@ import classNames from "classnames/bind";
 import { useCallback, useRef, useState } from "react";
 import { Card } from "Folder_and_Shared/ui/Card";
 import { CardContent } from "Folder_and_Shared/ui/CardContent";
-import { CardImage } from "Folder_and_Shared/ui/CardContent";
-import { Popover } from "Folder_and_Shared/ui/CardContent";
+import { CardImage } from "Folder_and_Shared/ui/CardImage";
+import { Popover } from "Folder_and_Shared/ui/Popover";
 
 const cx = classNames.bind(styles);
 
