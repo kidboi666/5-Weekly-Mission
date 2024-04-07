@@ -5,7 +5,7 @@ import { ModalContentBox } from "./ModalContentBox";
 import { ModalContentButton } from "./ModalContentButton";
 import { ModalContentDescription } from "./ModalContentDescription";
 import { ModalContentTitle } from "./ModalContentTitle";
-import { FolderItem } from "../FolderItem";
+import { FolderItem } from "../../ui/FolderItem";
 
 const cx = classNames.bind(styles);
 
