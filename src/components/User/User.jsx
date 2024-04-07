@@ -1,5 +1,5 @@
-import { useFetchFolder } from "../hooks/useFetchFolder";
-import "../components/User.css";
+import { useFetchFolder } from "../../hooks/useFetchFolder";
+import "../User/User.css";
 
 function User() {
   const dataFolder = useFetchFolder();
