@@ -1,0 +1,71 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 192rem;
+}
+
+.folder-container {
+  display: flex;
+  gap: 2.4rem;
+  width: 100%;
+  max-width: 106rem;
+  flex-direction: column;
+}
+
+.toolbar-container {
+  display: grid;
+  grid-template-areas:
+    "folders folders add-button"
+    "folder-name buttons buttons";
+  justify-content: space-between;
+  gap: 1.2rem;
+}
+
+.toolbar-box {
+  display: flex;
+  gap: 1.2rem;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  grid-area: folders;
+}
+
+.toolbar {
+  display: flex;
+  row-gap: 1.2rem;
+}
+
+.toolbar-btn {
+  display: flex;
+  align-items: center;
+  border: 0.1rem solid #6d6afe;
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  height: 3.7rem;
+  padding: 0 1.2rem;
+}
+
+.folder-name {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+.no-link-msg {
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+.folder-btn-box {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  height: 3.5rem;
+  grid-area: add-button;
+}
+
+.folder-btn {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #6d6afe;
+}
