@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import UserContext from './contexts/UserContext'
+import Nav from  './components/Nav'
+import Header from  './components/Header'
+import Body from './components/Body';
+import Footer from  './components/Footer'
+import { fetchUserData } from './utils/fetchUserData'
+import { createContext, useEffect, useState } from 'react';
+import { createGlobalStyle } from 'styled-components';
+import colorsCss from "./utils/colors.css";
+import resetCss from "./utils/reset.css";
 
-function App() {
+const GlobalStyle = createGlobalStyle`
+  * {
+    colorsCss
+    resetCss
+  }
+`
+function App(){
+  const [user, setUser] = useState('');
+
+  const getUserData = async() =>{
+        try {
+        const userData = await fetchUserData();
+        setUser(userData);
+        } catch(error){
+        console.error('fetch Error',error)
+        }
+    }
+
+  useEffect(getUserData,[])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContext.Provider value={user}>
+      <>
+        <GlobalStyle />
+        <Nav />
+        <Header/>
+        <Body/>
+        <Footer/>
+      </>
+    </UserContext.Provider>
   );
 }
 
