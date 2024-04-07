@@ -61,14 +61,12 @@ function FolderAip() {
     setFolderItems(folder.data);
   };
 
-  // ----
   const fetchUser = async () => {
     const folder = await fetchFolderUser();
 
     setFolderUser(folder.data);
   };
 
-  // ----
   const fetchContent = async () => {
     const folder = await fetchFolderContent();
 

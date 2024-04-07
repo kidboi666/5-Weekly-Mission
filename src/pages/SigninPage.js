@@ -19,7 +19,6 @@ const handleSubmit = (event) => {
 const handleUser = async () => {
   const userData = await requestPost();
   console.log(userData);
-  // TestLoginData(userData);
 };
 
 function SigninPage() {
