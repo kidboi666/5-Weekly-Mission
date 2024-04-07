@@ -3,7 +3,6 @@ a {
 }
 
 .CardLinkList {
-  margin: 40px auto;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, 340px);
@@ -48,9 +47,6 @@ a {
   position: absolute;
   top: 15px;
   right: 15px;
-}
-.CardListItem__bookmarkIcon:hover {
-  opacity: 1;
 }
 
 .CardListItem__content {

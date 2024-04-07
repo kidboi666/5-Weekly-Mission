@@ -17,11 +17,13 @@ function CardListItem({ link }) {
             src={image_source ? image_source : NonBgImg}
             alt={title}
           />
-          <img
-            className="CardListItem__bookmarkIcon"
-            src={BookmarkIcon}
-            alt="북마크아이콘"
-          />
+          <button disabled>
+            <img
+              className="CardListItem__bookmarkIcon"
+              src={BookmarkIcon}
+              alt="북마크아이콘"
+            />
+          </button>
         </div>
         <div className="CardListItem__content">
           <KebabMenu />

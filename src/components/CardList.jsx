@@ -1,13 +1,23 @@
 import CardListItem from "./CardListItem";
+import NoPage from "./NoPage";
+import useSelectFolder from "../hooks/useSelectFolder";
 
-function CardList({ links }) {
+function CardList({ url }) {
+  const result = useSelectFolder({ url });
+  const links = result?.data;
+  console.log(links);
   return (
     <ul className="CardLinkList">
-      {links.map((link) => (
-        <li key={link.id}>
-          <CardListItem link={link} />
-        </li>
-      ))}
+      {links && links.length === 0 ? (
+        <NoPage />
+      ) : (
+        links &&
+        links.map((link) => (
+          <li key={link.id}>
+            <CardListItem link={link} />
+          </li>
+        ))
+      )}
     </ul>
   );
 }
