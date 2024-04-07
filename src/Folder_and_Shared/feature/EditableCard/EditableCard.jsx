@@ -5,6 +5,8 @@ import { Card } from "Folder_and_Shared/ui/Card";
 import { CardContent } from "Folder_and_Shared/ui/CardContent";
 import { CardImage } from "Folder_and_Shared/ui/CardImage";
 import { Popover } from "Folder_and_Shared/ui/Popover";
+import KebabImage from "./imgSrc/kebab.svg"
+import StarImage from "./imgSrc/star.svg"
 
 const cx = classNames.bind(styles);
 
@@ -52,18 +54,12 @@ export const EditableCard = ({
           createdAt={createdAt}
           isHovered={isHovered}
         />
-        <button
-          className={cx("star")}
-          onClick={(event) => event.preventDefault()}
-        >
-          <img src="images/star.svg" alt="즐겨찾기를 나타내는 별" />
+        <button className={cx("star")} onClick={(event) => event.preventDefault()}>
+          <img src={StarImage}alt="즐겨찾기를 나타내는 별" />
         </button>
-        <button
-          ref={kebabButtonRef}
-          className={cx("kebab")}
-          onClick={handleKebabClick}
-        >
-          <img src="images/kebab.svg" alt="더보기를 나타내는 점 3개" />
+		
+        <button ref={kebabButtonRef} className={cx("kebab")} onClick={handleKebabClick}>
+          <img src={KebabImage} alt="더보기를 나타내는 점 3개" />
         </button>
         <Popover
           isOpen={isPopoverOpen}

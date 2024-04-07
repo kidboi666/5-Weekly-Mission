@@ -4,6 +4,7 @@ import Layout from "Layout";
 import { FolderPageLayout } from "./page-frame";
 import { SearchBar } from "./ui/SearchBar";
 import { LinkForm } from "./ui/LinkForm";
+import { FolderToolBar } from "./feature/FolderToolBar/FolderToolBar";
 import { CardList } from "./feature/CardList";
 import { useState } from "react";
 
@@ -19,6 +20,13 @@ export const FolderPage = function () {
       <FolderPageLayout
         linkForm={<LinkForm />}
         searchBar={<SearchBar />}
+        folderToolBar={
+          <FolderToolBar
+            folders={folders}
+            selectedFolderId={selectedFolderId}
+            onFolderClick={setSelectedFolderId}
+          />
+        }
         cardList={loading ? null : <CardList links={links} />}
       />
     </Layout>
