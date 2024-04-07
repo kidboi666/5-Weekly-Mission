@@ -6,6 +6,13 @@
     margin: 40px 0 0;
 }
 
+.empty-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11rem 0;
+}
+
 @media (max-width: 1124px) {
     /* 타블렛 */
 
