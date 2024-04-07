@@ -27,6 +27,20 @@
   line-height: normal;
 }
 
+.folderLinkList__folder--active {
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid var(--Linkbrary-primary-color, #6d6afe);
+  background: var(--Linkbrary-primary-color, #6d6afe);
+  padding: 8px 12px;
+  color: #fff;
+  font-size: 16px;
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
 .folderLinkList__folder:hover {
   background: var(--Linkbrary-gray10, #e7effb);
 }
@@ -59,10 +73,36 @@
   margin-left: 4px;
 }
 
-.folderName {
+.folderLinkList__folderMenu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.folderLinkList__folderEditBtns {
+  display: flex;
+  gap: 12px;
+}
+
+.folderLinkList__folderEditBtn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: var(--Linkbrary-gray60, #9fa6b2);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.folderLinkList__folderName {
   color: #000;
   font-family: Pretendard;
   font-size: 24px;
+  width: 50%;
   font-style: normal;
   font-weight: 600;
   line-height: normal;

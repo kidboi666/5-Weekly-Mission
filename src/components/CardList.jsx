@@ -5,7 +5,6 @@ import useSelectFolder from "../hooks/useSelectFolder";
 function CardList({ url }) {
   const result = useSelectFolder({ url });
   const links = result?.data;
-  console.log(links);
   return (
     <>
       {links && links.length === 0 ? (
