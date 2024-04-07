@@ -1,9 +1,14 @@
 @import "../../../styles/global.scss";
 
-.button {
+.modal-header {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  width: 100%;
+  row-gap: 0.8rem;
+}
+
+.button {
   width: 100%;
   height: 5.1rem;
   background-color: $color-red;
@@ -11,12 +16,4 @@
   font-size: 1.6rem;
   font-weight: 600;
   color: $color-gray-light;
-
-  &.red {
-    background-color: $color-red;
-  }
-
-  &.blue {
-    background: linear-gradient(91deg, $color-primary 0.12%, #6ae3fe 101.84%);
-  }
 }

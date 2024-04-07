@@ -9,7 +9,7 @@ export const Navigation = function ({ profile, position }) {
     <NavTemplate position={position}>
       <ContentsFrame>
         <Logo href="/">
-          <img src={LogoImgSrc} />
+          <img src={LogoImgSrc} alt={"Linkbrary 홈으로 이동하는 logo"}/>
         </Logo>
         {profile ? (
           <Profile profile={profile} />

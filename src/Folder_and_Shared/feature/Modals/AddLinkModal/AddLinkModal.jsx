@@ -1,11 +1,11 @@
 import styles from "./AddLinkModal.module.scss";
 import classNames from "classnames/bind";
-import { Modal } from "./Modal";
-import { ModalContentBox } from "./ModalContentBox";
-import { ModalContentButton } from "./ModalContentButton";
-import { ModalContentDescription } from "./ModalContentDescription";
-import { ModalContentTitle } from "./ModalContentTitle";
-import { FolderItem } from "../../ui/FolderItem";
+import { Modal } from "../Template/Modal";
+import { ModalContentBox } from "../Template/ModalContentBox";
+import { ModalContentButton } from "../Template/ModalContentButton";
+import { ModalContentDescription } from "../Template/ModalContentDescription";
+import { ModalContentTitle } from "../Template/ModalContentTitle";
+import { FolderItem } from "../../../ui/FolderItem";
 
 const cx = classNames.bind(styles);
 
