@@ -1,0 +1,49 @@
+.link-wrap {
+    text-align: center;
+    background: #f0f6ff;
+    padding: 3.75rem 0 3.75rem;
+    margin: 0 0 2.5rem;
+}
+
+.link-con-wrap {
+    max-width: 800px;
+    width: 100%;
+    padding: 0 1.25rem;
+    border: 1px solid #6d6afe;
+    background: #fff;
+    border-radius: 0.625rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.link-con-wrap > .link-input {
+    width: 100%;
+    padding: 1rem 0;
+    margin: 0 12px;
+    border: none;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.link-con-wrap > .link-button {
+    min-width: 80px;
+    background: linear-gradient(90.99deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.19357142857;
+    padding: 10px 15.5px;
+    border-radius: 0.5rem;
+}
+
+@media (max-width: 1199px) {
+    /* 타블렛 */
+}
+
+@media (max-width: 767px) {
+    /* 모바일 */
+    .link-wrap {
+        padding: 87px 32px 40px;
+    }
+}
