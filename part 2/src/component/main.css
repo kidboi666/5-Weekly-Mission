@@ -1,0 +1,14 @@
+.main {
+  padding: 93px 0 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+}
+
+@media (max-width: 767px) {
+  .main {
+    padding: 63px 0 0;
+  }
+}

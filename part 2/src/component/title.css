@@ -1,0 +1,40 @@
+.my-bookmark {
+  width: 100%;
+  padding: 20px 0 60px;
+  display: flex;
+  justify-content: center;
+  background: #f0f6ff;
+}
+
+.my-bookmark-title {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.my-bookmark-title .profileImage {
+  width: 60px;
+  height: 60px;
+  border-radius: 47px;
+}
+
+.my-bookmark-title .titleName {
+  margin: 12px 0 20px;
+}
+
+.my-bookmark-title .folderName {
+  font-family: Pretendard;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+@media (max-width: 767px) {
+  .my-bookmark-title .titleName {
+    margin: 6px 0 10px;
+  }
+
+  .my-bookmark-title .folderName {
+    font-size: 32px;
+  }
+}
