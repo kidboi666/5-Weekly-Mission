@@ -17,7 +17,7 @@
 
 #AddLinkForm__Input {
   display: flex;
-  width: calc(100% - 27px);
+  width: calc(100% - 37px);
   padding: 16px 20px;
   flex-direction: column;
   align-items: flex-start;
@@ -42,7 +42,7 @@
 .AddLinkForm__addBtn {
   cursor: pointer;
   position: absolute;
-  right: 0;
+  right: 10px;
   top: 16px;
   background: none;
   border: none;
