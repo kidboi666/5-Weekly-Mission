@@ -44,6 +44,20 @@ export async function getFolderLinkData() {
     console.log(error);
   }
 }
+export async function getFolderData() {
+  try {
+    const response = await fetch(`${URL}/api/users/1/links?folderId={14}`, {
+      method: "GET",
+    });
+    if (!response.ok) {
+      throw new Error("내용 불러오기 실패!");
+    }
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 export async function getSampleUserData() {
   try {
