@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   color: #676767;
   margin: 100px;
 `;

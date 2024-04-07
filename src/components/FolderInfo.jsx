@@ -41,7 +41,7 @@ const FolderName = styled.p`
   font-size: 2.5rem;
   padding: 0;
   margin-top: 0;
-
+  padding-bottom: 2rem;
   @media screen and (max-width: 767px) {
     font-size: 2rem;
     margin-top: 0.7rem;

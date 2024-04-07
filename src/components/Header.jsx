@@ -2,12 +2,11 @@ import React, { useEffect } from 'react';
 import logo from '../assets/linkbrary.svg';
 import styled from 'styled-components';
 import useGetData from '../hooks/useFetchData';
-import { HEADER_BASE_URL } from '../contants/constant';
+import { EX_IMG, HEADER_BASE_URL } from '../contants/constant';
 
 const Wrapper = styled.div`
   top: 0;
   width: 100%;
-  position: fixed;
   z-index: 1;
 `;
 
@@ -22,17 +21,12 @@ const Container = styled.div`
     padding-right: 2rem;
     padding-left: 2rem;
   }
-
-  @media screen and (max-width: 767px) {
-    padding-right: 1rem;
-    padding-left: 1rem;
-  }
 `;
 
 const Logo = styled.a`
   width: 8.5rem;
   @media screen and (max-width: 767px) {
-    width: 5rem;
+    width: 6rem;
   }
 `;
 
@@ -52,34 +46,38 @@ const UserProfile = styled.div`
     }
   }
 `;
+
 const LoginButton = styled.a`
   padding-top: 1rem;
   padding-bottom: 1rem;
   padding-right: 2rem;
   padding-left: 2rem;
-
   border: none;
   border-radius: 1rem;
   background-color: #eeeeee;
 `;
-
-function Header() {
-  const { data, isLoading, fetchData } = useGetData(HEADER_BASE_URL);
+// function Profile({user}) {
+//   return <div>{user.}</div>;
+// }
+function Header({ position, url = HEADER_BASE_URL }) {
+  const { data, fetchData } = useGetData(url);
 
   useEffect(() => {
-    fetchData(HEADER_BASE_URL);
+    fetchData(url);
   }, []);
+
+  console.log(data);
 
   return (
     <header>
-      <Wrapper>
+      <Wrapper style={{ position: position }}>
         <Container>
           <Logo href='../pages/main'>
             <img src={logo} alt='로고' />
           </Logo>
           {data ? (
             <UserProfile>
-              <img src={data.profileImageSource} alt='유저 아이콘' />
+              <img src={data[0]} alt='유저 아이콘' />
               <span>{data.email}</span>
             </UserProfile>
           ) : (
