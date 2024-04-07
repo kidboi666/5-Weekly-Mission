@@ -3,23 +3,25 @@ import styled from "styled-components";
 import searchImg from "../assets/SearchIcon.svg";
 
 const SearchBlock = styled.div`
-  display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  width: 61rem;
-  margin: 2.5rem auto 0;
-  padding: 0.9375rem 1rem;
+  padding: 0 1rem;
+  margin: 0 6rem;
   border-radius: 0.625rem;
   background: #f5f5f5;
 
   div {
     display: flex;
-    gap: 0.625rem;
+    gap: 0.75rem;
+  }
+
+  @media screen and (max-width: 1124px) {
+    margin: 2.5rem 2rem 0;
   }
 
   input {
-    width: 58rem;
-    margin: 0;
+    width: 100%;
+    padding: 0.9375rem 0;
     color: #666;
     background: #f5f5f5;
     text-align: right;
@@ -37,14 +39,13 @@ const SearchBlock = styled.div`
   }
 `;
 
+// input 스타일 변경
 function Search() {
   return (
     <SearchBlock>
       <div>
         <img src={searchImg} alt="검색 아이콘" />
-        <form>
-          <input type="text" placeholder="링크를 검색해 보세요."></input>
-        </form>
+        <input type="search" placeholder="링크를 검색해 보세요."></input>
       </div>
     </SearchBlock>
   );

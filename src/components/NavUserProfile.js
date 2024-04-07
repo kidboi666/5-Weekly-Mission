@@ -1,6 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 
+function NavUserProfile({ user }) {
+  return (
+    <UserBlock>
+      <>
+        <img
+          src={user.profileImageSource ?? user.image_source}
+          alt={user.name}
+        />
+        <p>{user.email}</p>
+      </>
+    </UserBlock>
+  );
+}
+
+export default NavUserProfile;
+
 const UserBlock = styled.span`
   display: flex;
   justify-content: center;
@@ -22,18 +38,9 @@ const UserBlock = styled.span`
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+
+    @media screen and (max-width: 545px) {
+      display: none;
+    }
   }
 `;
-
-function User({ user }) {
-  return (
-    <UserBlock>
-      <>
-        <img src={user.profileImageSource} alt={user.name} />
-        <p>{user.email}</p>
-      </>
-    </UserBlock>
-  );
-}
-
-export default User;
