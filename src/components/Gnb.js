@@ -1,17 +1,46 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import Logo from './logo';
 import CTA from './cta';
 import { Link } from 'react-router-dom';
 import profileImg from '../assets/profile.svg';
 import { getProfile } from '../api/api';
-import '../styles/gnb.css';
 
-function GNB() {
+const Header = styled.header`
+    display: flex;
+    padding: 20px 200px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--gray-color-lightest, #f0f6ff);
+    position: sticky;
+    top: 0;
+
+    @media screen and (max-width: 1200px) {
+        padding: 33px 32.5px 32px 32.5px;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 33px 32.5px 32px 32.5px;
+    }
+`;
+
+const HeaderContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    width: 100%;
+`;
+
+const HeaderProfile = styled.div`
+    display: flex;
+    gap: 10px;
+    align-items: center;
+`;
+
+const GNB = () => {
     const [data, setData] = useState();
-
-    const LinkStyle = {
-        textDecoration: 'none',
-    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,24 +56,24 @@ function GNB() {
     }, []);
 
     return (
-        <header>
-            <div className="header-container">
+        <Header>
+            <HeaderContainer>
                 <Link to="/">
                     <Logo />
                 </Link>
                 {data ? (
-                    <div className="header-profile">
+                    <HeaderProfile>
                         <img src={profileImg} alt="프로필" />
                         <p>{data.email}</p>
-                    </div>
+                    </HeaderProfile>
                 ) : (
-                    <Link to="/sign-in" style={LinkStyle}>
+                    <Link to="/sign-in">
                         <CTA text={'로그인'} />
                     </Link>
                 )}
-            </div>
-        </header>
+            </HeaderContainer>
+        </Header>
     );
-}
+};
 
 export default GNB;

@@ -1,13 +1,35 @@
+import React from 'react';
+import styled from 'styled-components';
 import searchIcon from '../assets/search.svg';
-import '../styles/searchBar.css';
 
-function SearchBar() {
+const SearchBarContainer = styled.div`
+    display: flex;
+    width: 100%;
+    padding: 15px 16px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 10px;
+    background: #f5f5f5;
+`;
+
+const SearchIcon = styled.img`
+    width: 16px;
+    height: 16px;
+`;
+
+const SearchInput = styled.input`
+    flex-grow: 1;
+    background-color: transparent;
+    border: none;
+`;
+
+const SearchBar = () => {
     return (
-        <div className="searchbar-container">
-            <img src={searchIcon} alt="검색" />
-            <input placeholder="링크를 검색해 보세요" />
-        </div>
+        <SearchBarContainer>
+            <SearchIcon src={searchIcon} alt="검색" />
+            <SearchInput placeholder="링크를 검색해 보세요" />
+        </SearchBarContainer>
     );
-}
+};
 
 export default SearchBar;
