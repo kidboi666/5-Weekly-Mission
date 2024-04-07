@@ -1,0 +1,13 @@
+.card-title-wrap > ul {
+    display: flex;
+    gap: 12px;
+}
+
+.card-title-wrap > ul button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    line-height: 1.19357142857;
+    color: #9fa6b2;
+}
