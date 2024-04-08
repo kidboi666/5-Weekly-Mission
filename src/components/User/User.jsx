@@ -1,5 +1,5 @@
-import { useFetchFolder } from "../hooks/useFetchFolder";
-import "../components/User.css";
+import { useFetchFolder } from "../../hooks/useFetchFolder";
+import "../User/User.css";
 
 function User() {
   const dataFolder = useFetchFolder();
@@ -11,6 +11,7 @@ function User() {
           <img
             className="user-avatar"
             src={dataFolder.folder.owner.profileImageSource}
+            alt="유저 이미지"
           />
           <p className="user-oner">@{dataFolder.folder.owner.name}</p>
           <p className="user-name">{dataFolder.folder.name}</p>
