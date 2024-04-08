@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const NoCard = styled.div`
+export const NoFolder = styled.div`
   color: black;
   font-size: 16px;
   display: flex;
@@ -9,7 +9,7 @@ export const NoCard = styled.div`
   margin-top: 41px;
 `;
 
-export const CardImage = styled.div`
+export const FolderImage = styled.div`
   width: 100%;
   min-height: 19.2rem;
   height: 19.2rem;
@@ -28,13 +28,7 @@ export const CardImage = styled.div`
   }
 `;
 
-export const ATag = styled.a`
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
-`;
-
-export const CardContent = styled.article`
+export const FolderContent = styled.article`
   height: 100%;
   padding: 1.5rem 2rem;
   display: flex;
@@ -43,7 +37,7 @@ export const CardContent = styled.article`
   gap: 1rem;
 `;
 
-export const CardContentText = styled.p`
+export const FolderContentText = styled.p`
   font-size: ${(props) => props.size}px;
   color: ${(props) => `var(--${props.color})`};
   overflow: hidden;
@@ -53,7 +47,7 @@ export const CardContentText = styled.p`
   -webkit-box-orient: vertical;
 `;
 
-export const CardContainer = styled.div`
+export const FolderContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 32.5rem;
@@ -73,7 +67,7 @@ export const Sort = styled.div`
   width: 100%;
 `;
 
-export const CardGrid = styled.div`
+export const FolderGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(32.5rem);
   justify-content: center;
@@ -86,4 +80,10 @@ export const CardGrid = styled.div`
     row-gap: 2.5rem;
     column-gap: 2rem;
   }
+`;
+
+export const ATag = styled.a`
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
 `;
