@@ -4,12 +4,12 @@ import { ButtonLabel } from "components/button";
 import { NavTemplate, ContentsFrame, Logo, LoginButton } from "./design";
 import { Profile } from "./ui";
 
-export const Navigation = function ({ profile }) {
+export const Navigation = function ({ profile, position }) {
   return (
-    <NavTemplate>
+    <NavTemplate position={position}>
       <ContentsFrame>
         <Logo href="/">
-          <img src={LogoImgSrc} />
+          <img src={LogoImgSrc} alt={"Linkbrary 홈으로 이동하는 logo"}/>
         </Logo>
         {profile ? (
           <Profile profile={profile} />

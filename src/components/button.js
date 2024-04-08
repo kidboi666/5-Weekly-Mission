@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-export const ButtonLabel = styled.p``
+export const ButtonLabel = styled.p`
+  font-size: 18px;
+  font-weight: 600;
+  color: #f5f5f5;
+  font-family: "Pretendard";
+`;
 
 export const Button = styled.button`
   border-radius: 8px;
@@ -10,12 +15,4 @@ export const Button = styled.button`
   align-items: center;
   justify-content: center;
   text-decoration: none;
-
-  ${ButtonLabel} {
-	font-size: 18px;
-	font-weight: 600;
-	color: #f5f5f5;
-	font-family: "Pretendard";
-  }
 `;
-
