@@ -1,4 +1,4 @@
-import useFetchData from "../Hooks/useFetchData";
+import useFetchData from "../../hooks/useFetchData";
 import styled from "styled-components";
 
 const HeaderContainer = styled.header`
@@ -47,7 +47,7 @@ const FolderName = styled.h1`
 
 const Header = () => {
   const folderData = useFetchData(
-    "https://bootcamp-api.codeit.kr/api/sample/folder"
+    `${import.meta.env.VITE_BASE_URL}/sample/folder`
   );
 
   return (
