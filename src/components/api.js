@@ -4,8 +4,8 @@ export async function getLinkList() {
     return body.folder;
 }
 
-export async function getUsers() {
-    const response = await fetch('https://bootcamp-api.codeit.kr/api/sample/user');
+export async function getData(url) {
+    const response = await fetch(url);
     const body = await response.json();
     return body;
 }

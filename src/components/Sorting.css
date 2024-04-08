@@ -1,0 +1,35 @@
+.sorting-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.button-wrapper {
+    display: flex;
+    gap: 8px;
+}
+
+.button-wrapper button {
+    border-radius: 5px;
+    border: 1px solid var(--Linkbrary-primary-color, #6D6AFE);
+    background: #FFF;
+    padding: 8px 12px;
+}
+
+.sort-name {
+    color: #000;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.folder-name {
+    color: #000;
+    /* Linkbrary/h3-semibold */
+    font-family: Pretendard;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}

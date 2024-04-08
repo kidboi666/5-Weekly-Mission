@@ -20,6 +20,7 @@ const GlobalStyles = createGlobalStyle`
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    border-width: 0;
   }
   /* HTML5 display-role reset for older browsers */
   article, aside, details, figcaption, figure, 
@@ -54,6 +55,12 @@ const GlobalStyles = createGlobalStyle`
     color: inherit; /* 링크 색상 상속 */
     cursor: pointer; 
   }
+  .element {
+    border: none;
+    border-width: 0;
+    border-style: none;
+    border-color: transparent;
+}
 `;
 
 export default GlobalStyles;
