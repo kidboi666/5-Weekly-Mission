@@ -1,7 +1,7 @@
 import React from "react";
-import "./Footer.css";
 import FooterSnsItem from "./FooterSnsItem";
 import { Link } from "react-router-dom";
+import * as S from "./Footer.styled";
 
 const snsList = [
   {
@@ -28,18 +28,18 @@ const snsList = [
 
 export default function Footer() {
   return (
-    <footer className='footer'>
-      <div className='footer__inner'>
-        <p className='footer__address'>©codeit - 2023</p>
-        <ul className='footer__nav'>
-          <li className='footer__nav-li'>
+    <S.StyledFooter>
+      <S.StyledInner>
+        <S.StyledAddress>©codeit - 2023</S.StyledAddress>
+        <S.StyledNavList>
+          <li>
             <Link to='/privacy'>Privacy Policy</Link>
           </li>
-          <li className='footer__nav-li'>
+          <li>
             <Link to='/faq'>FAQ</Link>
           </li>
-        </ul>
-        <ul className='footer__sns'>
+        </S.StyledNavList>
+        <S.StyledSnsList>
           {snsList.map((item) => (
             <FooterSnsItem
               key={item.id}
@@ -48,8 +48,8 @@ export default function Footer() {
               url={item.url}
             />
           ))}
-        </ul>
-      </div>
-    </footer>
+        </S.StyledSnsList>
+      </S.StyledInner>
+    </S.StyledFooter>
   );
 }
