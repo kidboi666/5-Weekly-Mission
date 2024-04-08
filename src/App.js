@@ -1,12 +1,16 @@
-import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Shared from './Shared';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import SharedPage from "./pages/SharedPage";
+import FolderPage from "./pages/FolderPage";
+import Home from "./pages/Home";
+import "./styles/common.css";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-          <Route path="/"  element={<Shared />}/>
+        <Route path="/shared" element={<SharedPage />} />
+        <Route path="/folder" element={<FolderPage />} />
+        <Route path="/" element={<Home />}></Route>
       </Routes>
     </BrowserRouter>
   );
