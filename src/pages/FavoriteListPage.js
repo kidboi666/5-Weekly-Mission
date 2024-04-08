@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from 'react-router-dom';
 import searchBarStyles from "../components/SearchBar.module.css";
-import { getHeaderInformation, getFavoriteList } from "../api";
+import { getHeaderInformation, getAllFavoriteList } from "../api";
 import Container from '../components/Container';
 import Warn from '../components/Warn';
 import LinkItem from '../components/LinkItem';
@@ -22,7 +22,7 @@ function FavoriteListPage() {
   const handleLoad = async () => {
     const header = await getHeaderInformation();
     const owner = header.owner;
-    const links = await getFavoriteList(keyword);
+    const links = await getAllFavoriteList(keyword);
     setHeader(header);
     setOwner(owner);
     setLinks(links);
@@ -61,8 +61,8 @@ function FavoriteListPage() {
           <>
             <Warn
               className={styles.emptyList}
-              title="즐겨찾기 아티클이 없어요."
-              description="카탈로그에서 나에게 필요한 아티클을 찾아보세요."
+              title="일치하는 링크가 없습니다."
+              description=""
             />
           </>
         ) : (
