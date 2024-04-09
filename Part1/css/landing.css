@@ -188,7 +188,7 @@ a:visited {
 }
 
 /* tablet */
-@media (max-width: 1199px) {
+@media (max-width: 1124px) {
   .nav-box {
     justify-content: center;
     column-gap: 624px;

@@ -1,0 +1,18 @@
+.CardsBox {
+  display: grid;
+  grid-template-columns: repeat(3, 340px);
+  grid-template-rows: repeat(3, 334px);
+  gap: 20px;
+}
+
+@media (max-width: 1124px) {
+  .CardsBox {
+    grid-template-columns: repeat(2, 340px);
+  }
+}
+
+@media (max-width: 767px) {
+  .CardsBox {
+    grid-template-columns: 340px;
+  }
+}
