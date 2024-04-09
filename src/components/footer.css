@@ -11,6 +11,7 @@
   flex-shrink: 0;
   align-self: stretch;
   background: var(--The-julge-black, #111322);
+  width: 100%;
 }
 
 .footer__container {

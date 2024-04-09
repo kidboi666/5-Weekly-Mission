@@ -1,0 +1,114 @@
+.folderLists {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.folderItem {
+  display: flex;
+  padding: 8px 12px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid var(--Linkbrary-primary-color, #6d6afe);
+  background: #fff;
+  color: #000;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.folderItem__active {
+  background: var(--Linkbrary-primary-color, #6d6afe);
+  color: white;
+}
+.folderItem:hover {
+  cursor: pointer;
+  background: var(--Linkbrary-gray10, #e7effb);
+  color: #000;
+}
+
+.folderList__Container {
+  display: flex;
+  width: 1060px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 24px;
+}
+
+.folderList__Container__mobile {
+  display: none;
+}
+
+.folderList {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.folderList__plus {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #6d6afe;
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.3px;
+  border: 0px;
+  background: white;
+}
+.folderList__plus:hover {
+  cursor: pointer;
+}
+
+.title__container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  margin-bottom: 24px;
+}
+.title {
+  color: #000;
+
+  /* Linkbrary/h3-semibold */
+  font-family: Pretendard;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.2px;
+}
+@media (max-width: 1124px) {
+  .folderList__Container {
+    width: 700px;
+  }
+  .folderList__plus {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .folderList__Container {
+    width: 300px;
+  }
+  .title__container {
+    display: flex;
+    width: 325px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}

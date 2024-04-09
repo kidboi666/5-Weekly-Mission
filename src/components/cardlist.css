@@ -8,15 +8,14 @@
 @media (max-width: 1124px) {
   .cardList {
     grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+    gap: 20px;
   }
 }
 @media (max-width: 767px) {
   .cardList {
     grid-template-columns: repeat(1, 1fr);
-  gap: 20px;
+    gap: 20px;
   }
-  
 }
 .CardLink {
   text-decoration: none;
@@ -76,7 +75,7 @@
   -webkit-line-clamp: 2; /* 표시할 최대 줄 수 */
   -webkit-box-orient: vertical;
   white-space: normal;
-
+  height: 50px;
   /* Linkbrary/body1-regular */
   font-family: Pretendard;
   font-size: 16px;
@@ -98,4 +97,16 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.NoDataList {
+  color: #000;
+  text-align: center;
+  grid-column: 1/-1;
+  /* Linkbrary/body1-regular */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
 }

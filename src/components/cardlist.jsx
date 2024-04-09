@@ -55,20 +55,25 @@ export const getElapsedTime = (createdAt) => {
   return `1 minute ago`;
 };
 
-function CardListItem({ item }) {
-  const creatTime = item.createdAt ? item.createdAt : "error";
+function CardListItem({ item, folder = false }) {
+
+  const creatTime = item.createdAt ? item.createdAt : item.created_at;
   const creatDate = new Date(creatTime);
   const year = creatDate.getFullYear();
   const month = creatDate.getMonth() + 1;
   const day = creatDate.getDate();
 
+  const thumbnail = item.imageSource ? item.imageSource : item.image_source;
+
+
   return (
-    <Link to={item.url ? item.url : '/'} className="CardLink">
+    <Link to={item.url ? item.url : "/"} target="blank" className="CardLink">
+      <p>{item.count}</p>
       <div className="CardListItem">
         <div className="CardListItem__imgs">
-          {item.imageSource ? (
+          {thumbnail ? (
             <img
-              src={item.imageSource}
+              src={thumbnail}
               alt={item.title}
               className="CardListItem__img"
             />
@@ -77,7 +82,7 @@ function CardListItem({ item }) {
           )}
         </div>
         <div className="CardInfo">
-          <p className="CardInfo__time">{getElapsedTime(item.createrAt)}</p>
+          <p className="CardInfo__time">{getElapsedTime(creatTime)}</p>
           <h1 className="CardInfo__title">{item.description}</h1>
           <p className="CardInfo__date">
             {year}. {month}. {day}
@@ -85,21 +90,28 @@ function CardListItem({ item }) {
         </div>
       </div>
     </Link>
+  
   );
 }
 
-function CardList() {
-  const CardListItems = useFetch(
-    "https://bootcamp-api.codeit.kr/api/sample/folder"
-  );
+function CardList({ url }) {
+  const cardListItems = useFetch(url);
 
   return (
     <div className="cardList">
-      {CardListItems?.folder?.links.map((link) => {
-        return <CardListItem key={link.id} item={link} />;
-      })}
+      {cardListItems?.folder?.links.map((link) => (
+        <CardListItem key={link.id} item={link} />
+      ))}
+      {cardListItems?.data?.length > 0 ? (
+        cardListItems?.data?.map((link) => (
+          <CardListItem key={link.id} item={link} folder={true} />
+        ))
+      ) : (
+        <div className="NoDataList">저장된 링크가 없습니다.</div>
+      )}
     </div>
   );
 }
+
 
 export default CardList;

@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  height: 18px;
+
+  /* Linkbrary/body2-semibold */
+}
+.set {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 0px;
+  background: #fff;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--Linkbrary-gray60, #9fa6b2);
+}
+.set:hover {
+    cursor: pointer;
+}
+
