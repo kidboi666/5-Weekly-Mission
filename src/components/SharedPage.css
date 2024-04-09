@@ -1,0 +1,15 @@
+.contents-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 1060px;
+    margin: 0 auto;
+    @media (max-width: 1124px) {
+        width: 704px;
+    }
+
+    @media (max-width: 767px) {
+        width: 325px;
+    }
+}
+

@@ -1,19 +1,16 @@
-import GlobalStyles from './GlobalStyles';
-import { Header } from './Header';
-import { LinkList } from './LinkList';
-import { getLinkList, getUsers } from './api';
-
-const { links } = await getLinkList();
-const user = await getUsers();
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import SharedPage from './pages/SharedPage';
+import FolderPage from './pages/FolderPage';
 
 function App() {
   return (
-    <div>
-      <GlobalStyles />
-      <Header user={user}/>
-      <LinkList links={links} />
-    </div>  
-  )
+    <BrowserRouter>
+        <Routes>
+          <Route path="/shared" element={<SharedPage />} />
+          <Route path="/folder" element={<FolderPage />} />
+        </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App; 
