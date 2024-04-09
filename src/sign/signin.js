@@ -10,7 +10,7 @@ function validateEmail(email) {
 }
 
 // 이메일 및 비밀번호 검사 함수
-function validateInput(inputValue, errorElement, errorMessage) {
+function hasInput(inputValue, errorElement, errorMessage) {
     const trimmedValue = inputValue.trim();
     if (!trimmedValue) {
         errorElement.textContent = errorMessage;
@@ -25,7 +25,7 @@ function validateInput(inputValue, errorElement, errorMessage) {
 document.getElementById('email').addEventListener('focusout', function() {
     const email = this.value.trim();
     const emailError = document.getElementById('email_error');
-    if (!validateInput(email, emailError, '이메일을 입력해 주세요.')) {
+    if (!hasInput(email, emailError, '이메일을 입력해 주세요.')) {
         return;
     }
     
@@ -39,7 +39,7 @@ document.getElementById('email').addEventListener('focusout', function() {
 document.getElementById('password').addEventListener('focusout', function() {
     const password = this.value.trim();
     const passwordError = document.getElementById('password_error');
-    validateInput(password, passwordError, '비밀번호를 입력해 주세요.');
+    hasInput(password, passwordError, '비밀번호를 입력해 주세요.');
 });
 
 // submit
