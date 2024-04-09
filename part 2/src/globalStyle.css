@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+.Abel {
+  font-family: "Abel";
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --primary: #6d6afe;
+  --red: #ff5b56;
+  --black: #111322;
+  --white: #ffffff;
+  --gray_1: #3e3e43;
+  --gray_2: #9fa6b2;
+  --gray_3: #ccd5e3;
+  --gray_4: #e7effb;
+  --gray_5: #f0f6ff;
+}
+
+h1 {
+  font-family: Pretendard;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 80px;
+  letter-spacing: 0px;
+}
+
+h2 {
+  font-family: Pretendard;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 58px;
+  letter-spacing: 0px;
+}
+
+h3 {
+  font-family: Pretendard;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0em;
+}
+
+h4 {
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+h5 {
+  font-family: Abel;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+
+h6 {
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+}
+
+.btn-large {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 53px;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90.99deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  font-family: Pretendard;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #f5f5f5;
+}
+
+.header-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 53px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90.99deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  font-family: Pretendard;
+  text-align: center;
+  color: #f5f5f5;
+}
+
+a {
+  text-decoration-line: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+input:focus {
+  outline:1px solid var(--Linkbrary-primary-color, #6D6AFE);
+}
+
