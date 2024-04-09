@@ -1,5 +1,21 @@
 import styled from 'styled-components';
 import noImage from '../asset/noImage.png';
+import star from '../asset/star.svg';
+import kebabImg from '../asset/kebab.png';
+
+const CardInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+  padding: 16px 12px;
+
+  & * {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+`;
 
 const Frame = styled.div`
   display: flex;
@@ -7,11 +23,18 @@ const Frame = styled.div`
   border-radius: 12px;
   width: 340px;
   height: 335px;
-  box-shadow: 2px 2px 2px rgb(0 0 0 /20%);
+  overflow: hidden;
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
+  position: relative;
 
-  &:hover img {
+  &:hover .FolderImage_img {
     transform: scale(1.3);
     transition: transform 200ms;
+  }
+
+  &:hover ${CardInfo} {
+    background-color: #f0f6ff;
+    transition: all 200ms;
   }
 `;
 
@@ -20,56 +43,63 @@ const FolderImage = styled.div`
   height: 200px;
   overflow: hidden;
 
-  & img {
-    width: 100%;
-    height: 100%;
+  & .FolderImage_img {
+    object-fit: cover;
     transform: scale(1);
     transition: transform 200ms;
   }
 `;
 
-const CardInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 16px 12px;
-
-  & div {
-    font-family: Pretendard;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-`;
-
-const LongAgo = styled.div`
-  color: #666666;
+const LongAgo = styled.span`
+  color: #666;
   font-size: 13px;
 `;
 
-const Title = styled.h3`
-  color: #000;
-  height: 19px;
+const Title = styled.strong`
   font-size: 18px;
+  height: 19px;
   font-weight: bold;
-  font-family: Pretendard;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 `;
 
-const Info = styled.div`
-  color: #000;
+const Info = styled.p`
   height: 17px;
 `;
 
-const CreatedAt = styled.div`
+const CreatedAt = styled.time`
   color: #333;
   font-size: 14px;
 `;
 
+const Star = styled.button`
+  position: absolute;
+  z-index: 2;
+  top: 15px;
+  left: 291px;
+`;
+
+const KebabContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const ButtonImgs = styled.img`
+  display: inline-block;
+  vertical-align: top;
+`;
+
 function Card({ item }) {
-  const { createdAt, title, description, imageSource: bg } = item;
+  const {
+    createdAt: cReatedAt,
+    created_at,
+    title,
+    description,
+    imageSource,
+    image_source,
+    url,
+  } = item;
+
+  const createdAt = cReatedAt ?? created_at;
+  const bg = imageSource ?? image_source;
 
   const uploadDate = (value) => {
     const date = new Date(value);
@@ -112,17 +142,47 @@ function Card({ item }) {
     return `${years} years ago`;
   }
 
+  const handleStar = (e) => {
+    console.log(e.target);
+  };
+
   return (
     <Frame>
-      <FolderImage>
-        {bg ? <img src={bg} alt={title} /> : <img src={noImage} alt={title} />}
-      </FolderImage>
-      <CardInfo>
-        <LongAgo>{longAgo(createdAt)}</LongAgo>
-        <Title>{title}</Title>
-        <Info>{description}</Info>
-        <CreatedAt>{uploadDate(createdAt)}</CreatedAt>
-      </CardInfo>
+      <Star onClick={handleStar} type="button">
+        <ButtonImgs src={star} alt="즐겨찾기" height={34} width={34} />
+      </Star>
+      <a href={url} target="blank">
+        <FolderImage>
+          {bg ? (
+            <img
+              className="FolderImage_img"
+              src={bg}
+              alt=""
+              height={200}
+              width={340}
+            />
+          ) : (
+            <img
+              className="FolderImage_img"
+              src={noImage}
+              alt=""
+              height={200}
+              width={340}
+            />
+          )}
+        </FolderImage>
+        <CardInfo>
+          <KebabContainer>
+            <LongAgo>{longAgo(createdAt)}</LongAgo>
+            <button>
+              <ButtonImgs src={kebabImg} alt="더보기" height={17} width={21} />
+            </button>
+          </KebabContainer>
+          <Title>{title}</Title>
+          <Info>{description}</Info>
+          <CreatedAt dateTime={createdAt}>{uploadDate(createdAt)}</CreatedAt>
+        </CardInfo>
+      </a>
     </Frame>
   );
 }

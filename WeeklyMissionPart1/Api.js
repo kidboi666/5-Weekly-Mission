@@ -1,5 +1,5 @@
 const BASE_AUTH_URL = `https://bootcamp-api.codeit.kr/api`;
-const LOGIN_TOKEN = 'loginToken';
+export const LOGIN_TOKEN = 'loginToken';
 const SIGN_UP_TOKKEN = 'signUpToken';
 
 export async function signUpApi(emailInput, passwordInput) {

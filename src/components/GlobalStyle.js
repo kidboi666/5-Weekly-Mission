@@ -87,10 +87,11 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     border: 0;
     font-size: 100%;
-    font: inherit;
+    font-family: Pretendard, sans-serif ;
     vertical-align: baseline;
     text-decoration: none;
-  }
+    color: #000;
+  };
   article,
   aside,
   details,
@@ -103,30 +104,30 @@ const GlobalStyle = createGlobalStyle`
   nav,
   section {
     display: block;
-  }
+  };
   body {
     line-height: 1;
-  }
+  };
   ol,
   ul {
     list-style: none;
-  }
+  };
   blockquote,
   q {
     quotes: none;
-  }
+  };
   blockquote:before,
   blockquote:after,
   q:before,
   q:after {
     content: '';
     content: none;
-  }
+  };
 
   table {
     border-collapse: collapse;
     border-spacing: 0;
-  }
+  };
 
   button {
     background: inherit;
@@ -136,7 +137,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     overflow: visible;
     cursor: pointer;
-  }
+  };
 `;
 
 export default GlobalStyle;

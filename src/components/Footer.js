@@ -5,11 +5,20 @@ import twitter from '../asset/akar-icons_twitter-fill.svg';
 import youtube from '../asset/akar-icons_youtube-fill.svg';
 import instagram from '../asset/ant-design_instagram-filled.svg';
 
+const YEAR = new Date().getFullYear();
+const ICON_H_W = 20;
+
 const Hlink = styled.a`
-  text-decoration: none;
   color: #cfcfcf;
-  cursor: pointer;
 `;
+
+const LinkImg = styled.img`
+  display: inline-block;
+  vertical-align: top;
+  width: ${ICON_H_W}px;
+  height: ${ICON_H_W}px;
+`;
+
 const Foote = styled.footer`
   display: flex;
   height: 160px;
@@ -18,9 +27,11 @@ const Foote = styled.footer`
   align-items: center;
   flex-shrink: 0;
   background-color: ${BLACK};
+  margin-top: 60px;
 
   @media (max-width: 767px) {
     padding: 32px;
+    margin-top: 40px;
   }
 `;
 
@@ -32,8 +43,6 @@ const UnderBar = styled.div`
   flex-grow: 1;
   color: #cfcfcf;
   font-family: Acme;
-  font-size: 16px;
-  font-weight: 400;
   line-height: normal;
 
   @media (max-width: 767px) {
@@ -52,7 +61,7 @@ const CopyRight = styled.div`
 
 const FaqPolicy = styled.div`
   display: flex;
-  gap: 30px;
+  column-gap: 30px;
 
   @media (max-width: 767px) {
     grid-row: 1/2;
@@ -63,7 +72,7 @@ const FaqPolicy = styled.div`
 const LinkIcons = styled.div`
   display: grid;
   grid-template: 1fr / 1fr 1fr 1fr 1fr;
-  gap: 12px;
+  column-gap: 12px;
 
   @media (max-width: 767px) {
     grid-row: 1/2;
@@ -75,7 +84,7 @@ const Footer = () => {
   return (
     <Foote>
       <UnderBar>
-        <CopyRight>©codeit - 2023</CopyRight>
+        <CopyRight>©codeit - {YEAR}</CopyRight>
         <FaqPolicy>
           <Hlink href="https://www.google.com/" rel="noreferrer">
             Privacy Policy
@@ -86,20 +95,40 @@ const Footer = () => {
         </FaqPolicy>
         <LinkIcons>
           <Hlink href="http://facebook.com" target="_blank" rel="noreferrer">
-            <img src={facebook} alt="페이스북" />
+            <LinkImg
+              src={facebook}
+              alt="페이스북"
+              width={ICON_H_W}
+              height={ICON_H_W}
+            />
           </Hlink>
           <Hlink href="https://twitter.com/" target="_blank" rel="noreferrer">
-            <img src={twitter} alt="트위터X" />
+            <LinkImg
+              src={twitter}
+              alt="트위터X"
+              width={ICON_H_W}
+              height={ICON_H_W}
+            />
           </Hlink>
           <Hlink
             href="https://www.youtube.com/"
             target="_blank"
             rel="noreferrer"
           >
-            <img src={youtube} alt="유튜브" />
+            <LinkImg
+              src={youtube}
+              alt="유튜브"
+              width={ICON_H_W}
+              height={ICON_H_W}
+            />
           </Hlink>
           <Hlink href="http://instagram.com" target="_blank" rel="noreferrer">
-            <img src={instagram} alt="인스타그램" />
+            <LinkImg
+              src={instagram}
+              alt="인스타그램"
+              width={ICON_H_W}
+              height={ICON_H_W}
+            />
           </Hlink>
         </LinkIcons>
       </UnderBar>
