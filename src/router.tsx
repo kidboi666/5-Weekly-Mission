@@ -5,6 +5,7 @@ import NotFoundPage from "./pages/error/NotFoundPage";
 import Privacy from "./pages/policy/Index";
 import Faq from "./pages/faq/Index";
 import Main from "./pages/Index";
+import Shared from "./pages/folder/Shared";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -17,6 +18,10 @@ export const router = createBrowserRouter([
       {
         path: "folder",
         element: <Folder />,
+      },
+      {
+        path: "Shared",
+        element: <Shared />,
       },
       {
         path: "privacy",

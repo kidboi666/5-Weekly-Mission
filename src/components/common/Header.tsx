@@ -1,32 +1,32 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Email,
-  HaderWrap,
   HeaderControl,
   HeaderInner,
   HeaderLogo,
   HeaderUserInfo,
+  HeaderWrap,
 } from "./headerStyle";
-import { IHeaderUserLoginInfo, headerUserLoginInfo } from "../../constant/api";
-import { LinkGradient, Profile } from "../../styles/commonStyle";
+import { Profile } from "../../styles/commonStyle";
+import LinkButton from "./atoms/LinkButton";
+import useFetch from "../../hook/useFetch";
+import { USERLOGINAPI } from "../../constant/api";
+import { IHeaderUserLoginInfoApi } from "./interface";
 import { useEffect, useState } from "react";
 const logo = "/assets/logo/logo.svg";
 
 function Header() {
-  const [userInfo, setUserInfo] = useState<IHeaderUserLoginInfo>();
+  const { pathname } = useLocation();
+  const { value } = useFetch<IHeaderUserLoginInfoApi>(USERLOGINAPI);
+  const [fixed, setFixed] = useState(true);
   useEffect(() => {
-    // 유저정보 받아오기
-    (async () => {
-      try {
-        const data = await headerUserLoginInfo();
-        setUserInfo(data);
-      } catch (e) {
-        console.error("유저 정보를 가지고 올수 없습니다.", e);
-      }
-    })();
-  }, []);
+    if (pathname === "/folder") {
+      setFixed(false);
+    }
+  }, [pathname]);
+  const userInfo = value?.data[0] ?? undefined;
   return (
-    <HaderWrap>
+    <HeaderWrap className="head__wrap" $position={fixed}>
       <HeaderInner>
         <HeaderLogo className="head__logo">
           <Link to="/">
@@ -40,18 +40,13 @@ function Header() {
               <Email>{userInfo?.email}</Email>
             </HeaderUserInfo>
           ) : (
-            <LinkGradient
-              to="/signin.html"
-              width={128}
-              fontSize={18}
-              height={52}
-            >
+            <LinkButton $link={"/signin"} $linkClass={"link--gradient large"}>
               로그인
-            </LinkGradient>
+            </LinkButton>
           )}
         </HeaderControl>
       </HeaderInner>
-    </HaderWrap>
+    </HeaderWrap>
   );
 }
 export default Header;

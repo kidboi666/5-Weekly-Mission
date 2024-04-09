@@ -1,53 +1,179 @@
-import { useEffect, useState } from "react";
 import PostCard from "../../components/folder/PostCard";
-import SearchInput from "../../components/form/FormInput";
-import { ContainBody, ContainHead, TitleMs } from "../../styles/commonStyle";
+import { ContainBody, ContainHead, SubTitle } from "../../styles/commonStyle";
 import {
-  FolderContainBodyInner,
-  FolderContainHeadInner,
+  BookMarkBtnList,
+  BookmarkBox,
+  BodyInner,
+  ShareBox,
+  EmptyBox,
+  BoxLinkSearch,
+  ShareListBtn,
   PostCardWrap,
+  LinkAddHeadInner,
 } from "./folderStyle";
-import { IFolderListApi, folderListApi } from "../../constant/api";
-const logo = "/assets/logo/logo_codeit.svg";
+
+import Button from "../../components/common/atoms/Button";
+import Input from "../../components/common/atoms/Input";
+import useFetch from "../../hook/useFetch";
+import { FOLDERCONTANTLISTAPI, FOLDERMENULISTAPI } from "../../constant/api";
+import { IFolderContentApi, IFolderMenuButtonApi } from "./interface";
+import { useEffect, useState } from "react";
+
+const add = "/assets/icon/icon_primary_add.svg";
+const search = "/assets/icon/icon_search.svg";
+const link = "/assets/icon/icon_primaty_link.svg";
+
+const folderControlBtn = [
+  {
+    id: "fcb1",
+    name: "공유",
+    imgSrc: "/assets/icon/icon_gray_share.svg",
+  },
+  {
+    id: "fcb2",
+    name: "이름 변경",
+    imgSrc: "/assets/icon/icon_gray_pen.svg",
+  },
+  {
+    id: "fcb3",
+    name: "삭제",
+    imgSrc: "/assets/icon/icon_gray_delete.svg",
+  },
+];
+
+export interface aaa {
+  setHeadFixed: any;
+}
+
+function useFatchDataLoad<T>(api: string) {
+  return useFetch<T>(api);
+}
 
 function Index() {
-  const [isLoading, setLoading] = useState(false);
-  const [cardInfo, setCardInfo] = useState<IFolderListApi[]>();
+  const [title, setTitle] = useState("전체");
+  const [btnActive, setBtnActive] = useState<number>(-1);
+  const [dynamicAPI, setDynamicAPI] = useState<string>(FOLDERCONTANTLISTAPI);
+  const { value: menu, isLoading: menuLoading } =
+    useFatchDataLoad<IFolderMenuButtonApi>(FOLDERMENULISTAPI);
+  const { value: contant, isLoading: contantLoading } =
+    useFatchDataLoad<IFolderContentApi>(dynamicAPI);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        setLoading(true);
-        const data = await folderListApi();
-        setCardInfo(data);
-      } catch (e) {
-        console.log(e);
-      }
-    })();
-  }, []);
+  const handleClick = (api: string, index: number | undefined) => {
+    if (menu === undefined || api === "") return;
+    if (index !== undefined) {
+      setBtnActive(index);
+    }
+    if (api === "all") {
+      setDynamicAPI(FOLDERCONTANTLISTAPI);
+      setTitle("전체");
+      return;
+    }
+    // api/users/1/links?folderId={해당 폴더 ID}
+    setDynamicAPI(`${FOLDERCONTANTLISTAPI}?folderId=${api}`);
+    const result = menu?.data.filter((data) => +data.id === +api);
+    result && setTitle(result[0]?.name as "");
+  };
+
+  useEffect(() => {}, [menu, contant]);
 
   return (
     <>
       <ContainHead>
-        <FolderContainHeadInner>
-          <img src={logo} alt="코드잇 로고" />
-          <p>@코드잇</p>
-          <TitleMs as={"h2"}>⭐️ 즐겨찾기</TitleMs>
-        </FolderContainHeadInner>
+        <LinkAddHeadInner>
+          <Input
+            $inputClass={"input__link--add"}
+            $placeholder={"링크를 추가해 보세요"}
+            $beforeBgIcon={link}
+            $btnShow={true}
+            $btnText={"추가하기"}
+            $btnClass={"button--gradient mideum"}
+          />
+        </LinkAddHeadInner>
       </ContainHead>
       <ContainBody>
-        <FolderContainBodyInner>
-          <SearchInput></SearchInput>
-          {isLoading ? (
-            <PostCardWrap>
-              {cardInfo
-                ? cardInfo.map((data) => <PostCard key={data.id} {...data} />)
-                : "리스트가 없습니다."}
-            </PostCardWrap>
+        <BodyInner>
+          {/* 검색창 */}
+          <BoxLinkSearch>
+            <Input
+              $inputClass={"input__link--search"}
+              $placeholder={"링크를 검색해 보세요."}
+              $beforeBgIcon={search}
+            />
+          </BoxLinkSearch>
+          {/* 폴더버튼 리스트 */}
+          <BookmarkBox>
+            <BookMarkBtnList>
+              {menuLoading && (
+                <>
+                  <Button
+                    $id={"all"}
+                    $btnClass={`button--outlined ${
+                      btnActive === -1 ? "active" : ""
+                    }`}
+                    clickEvent={handleClick}
+                    $clickEventName={"bookmarkId"}
+                    $clickIndex={-1}
+                  >
+                    전체
+                  </Button>
+                  {menu &&
+                    menu.data.map((menu: any, i) => (
+                      <Button
+                        key={menu.id}
+                        $id={menu.id}
+                        $btnClass={`button--outlined ${
+                          btnActive === i ? "active" : ""
+                        }`}
+                        clickEvent={handleClick}
+                        $clickEventName={"bookmarkId"}
+                        $clickIndex={i}
+                      >
+                        {menu.name}
+                      </Button>
+                    ))}
+                </>
+              )}
+            </BookMarkBtnList>
+            <div>
+              <Button $btnClass={"button--icon-after"} $afterButtonIcon={add}>
+                폴더추가
+              </Button>
+            </div>
+          </BookmarkBox>
+          {/* 버튼 수정 */}
+          <ShareBox>
+            <SubTitle>{title}</SubTitle>
+            {title === "전체" || (
+              <ShareListBtn>
+                {folderControlBtn.map((btn) => (
+                  <Button
+                    key={btn.id}
+                    $id={btn.id}
+                    $btnClass={"button--icon-before"}
+                    $BeforButtonIcon={btn.imgSrc}
+                  >
+                    {btn.name}
+                  </Button>
+                ))}
+              </ShareListBtn>
+            )}
+          </ShareBox>
+
+          {contantLoading ? (
+            contant && contant.data.length !== 0 ? (
+              <PostCardWrap>
+                {contant &&
+                  contant.data.map((data) => (
+                    <PostCard key={data.id} {...data} />
+                  ))}
+              </PostCardWrap>
+            ) : (
+              <EmptyBox>저장된 링크가 없습니다.</EmptyBox>
+            )
           ) : (
-            "Loading..."
+            <EmptyBox>Loading...</EmptyBox>
           )}
-        </FolderContainBodyInner>
+        </BodyInner>
       </ContainBody>
     </>
   );

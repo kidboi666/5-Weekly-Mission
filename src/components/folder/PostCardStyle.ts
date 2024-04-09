@@ -1,25 +1,44 @@
 import styled from "styled-components";
 import { theme } from "../../styles/theme";
-import { NavLink } from "react-router-dom";
 
-export const CardWrap = styled(NavLink)`
-  border-radius: 0.9375rem;
-  overflow: hidden;
-  box-shadow: 0 0.3125rem 1.5625rem rgba(0,0,0,.08);
-  border: 1px solid transparent;
+export const CardWrap = styled.div`
+  position: relative;
+  .card__link { 
+    display: block;
+    position: relative;
+    border: 1px solid transparent;
+    border-radius: 0.9375rem;
+    box-shadow: 0 0.3125rem 1.5625rem rgba(0,0,0,.08);
+    overflow: hidden;
+    &:hover {
+      border: 1px solid ${theme.color.primary};
+      .card__image {
+        img {
+          transform: scale(1.3) translate(-40%,-40%);
+        }
+      }
+    }
+  }
   .card {
     &__image {
       position: relative;
       width: 100%;
       height: 12.5rem;
       overflow: hidden;
-      background-color: ${theme.color.graye};
+      background-color: #DDDFFF;
       img {
         position: absolute;
-        left: 0;
+        left: 50%;
         top: 50%;
         width: 100%;
-        transform: translateY(-50%);
+        transform: translate(-50%,-50%);
+        transition: transform 0.3s;
+        &.empty {
+          left: 50%;
+          width: 133px;
+          opacity:.18;
+          transform: translateX(-50%);
+        }
       }
     }
     &__info {
@@ -31,9 +50,6 @@ export const CardWrap = styled(NavLink)`
       font-size: ${theme.font.sm};
       line-height: 1.0625rem;
       color: ${theme.color.gray6};
-    }
-    &__btn-menu {
-      cursor: pointer;
     }
     &__content {
       padding-top: 0.625rem;
@@ -48,14 +64,68 @@ export const CardWrap = styled(NavLink)`
       color: ${theme.color.gray3};
     }
   }
-  &:hover {
-    border: 1px solid ${theme.color.primary};
+
+  &:nth-of-type(3n) {
+    .card__dropdown-menu {
+      right: -10px;
+    }
   }
+
   @media screen and (max-width: ${theme.screenSize.moLarge}){
     .card {
       &__image {
         height: 12rem;
       }
+    }
+  }
+`
+
+export const BookMarkBtn = styled.button`
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  width: 32px;
+  height: 32px;
+  font-size: 12px;
+  color: transparent;
+  background: url('/assets/icon/icon_star_off.svg');
+  z-index: 1;
+  &.active {
+    background: url('/assets/icon/icon_star_on.svg');  
+  }
+`
+
+export const CardMenu = styled.div`
+  position: absolute;
+  right: 20px;
+  top: 215px;
+  cursor: pointer;
+  z-index: 2;
+  .card {
+    &__dropdown-contant {
+      width:21px;
+      height: 17px;
+      background: url(/assets/icon/icon_dotte.svg) no-repeat center;
+    }
+    &__dropdown-menu {
+      position: absolute;
+      right: -75px;
+      top: 15px;
+      z-index: 1;
+    }
+    &__menu-btn {
+      line-height: 32px;
+      width: 100px;
+      background-color: ${theme.color.white};
+      &:last-of-type {
+        color: ${theme.color.primary};
+        background-color: ${theme.color.grayf};
+      }
+    }
+  }  
+  @media screen and (max-width: ${theme.screenSize.tablet}){
+    .card__dropdown-menu {
+      right: -10px;
     }
   }
 `
