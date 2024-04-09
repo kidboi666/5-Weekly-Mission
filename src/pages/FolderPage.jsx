@@ -1,9 +1,9 @@
-import FolderData from "./Folderdata/Folderdata";
-import Nav from "./Navigation/Nav";
-import { SearchBar } from "./SearchBar/SearchBar";
-import Cards from "./Cards/Cards";
+import Navigation from "../components/Navigation";
+import SearchBar from "../components/SearchBar";
 import styled from "styled-components";
-import Footer from "./Footer/Footer";
+import Footer from "../components/Footer";
+import Addlink from "../components/Addlink";
+import Foldermenu from "../components/Foldermenu";
 
 /*테블릿 1124 이상 모바일 최소여백 32       테블릿 768~1199 모바일 375 ~767    */
 const PageDisplay = styled.div`
@@ -28,18 +28,18 @@ const PageDisplay = styled.div`
   }
 `;
 
-function App() {
+function FolderPage() {
   return (
     <>
-      <Nav />
-      <FolderData />
+      <Navigation />
+      <Addlink />
       <PageDisplay>
         <SearchBar />
-        <Cards />
+        <Foldermenu />
       </PageDisplay>
       <Footer />
     </>
   );
 }
 
-export default App;
+export default FolderPage;
