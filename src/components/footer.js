@@ -6,6 +6,45 @@ import instagramImg from '../assets/instagram.svg';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+function Footer() {
+    const LinkStyle = {
+        textDecoration: 'none',
+    };
+    return (
+        <FooterMainDiv>
+            <FooterContainer>
+                <FooterContent>
+                    <FooterCodeitItem>©codeit - 2023</FooterCodeitItem>
+                    <FooterMenu>
+                        <Link to="privacy" style={LinkStyle}>
+                            <FooterMenuItem>Privacy Policy</FooterMenuItem>
+                        </Link>
+                        <Link to="/faq" style={LinkStyle}>
+                            <FooterMenuItem>FAQ</FooterMenuItem>
+                        </Link>
+                    </FooterMenu>
+                    <FooterIcon>
+                        <a href="https://www.facebook.com/" target="_blank">
+                            <img src={facebookImg} alt="facebook" />
+                        </a>
+                        <a href="https://twitter.com/" target="_blank">
+                            <img src={twitterImg} alt="twitter" />
+                        </a>
+                        <a href="https://youtube.com" target="_blank">
+                            <img src={youtubeImg} alt="youtube" />
+                        </a>
+                        <a href="https://instagram.com" target="_blank">
+                            <img src={instagramImg} alt="instagram" />
+                        </a>
+                    </FooterIcon>
+                </FooterContent>
+            </FooterContainer>
+        </FooterMainDiv>
+    );
+}
+
+export default Footer;
+
 const FooterMainDiv = styled.footer`
     display: flex;
     height: 280px;
@@ -87,42 +126,3 @@ const FooterIcon = styled.div`
         justify-content: flex-end;
     }
 `;
-
-function Footer() {
-    const LinkStyle = {
-        textDecoration: 'none',
-    };
-    return (
-        <FooterMainDiv>
-            <FooterContainer>
-                <FooterContent>
-                    <FooterCodeitItem>©codeit - 2023</FooterCodeitItem>
-                    <FooterMenu>
-                        <Link to="privacy" style={LinkStyle}>
-                            <FooterMenuItem>Privacy Policy</FooterMenuItem>
-                        </Link>
-                        <Link to="/faq" style={LinkStyle}>
-                            <FooterMenuItem>FAQ</FooterMenuItem>
-                        </Link>
-                    </FooterMenu>
-                    <FooterIcon>
-                        <a href="https://www.facebook.com/" target="_blank">
-                            <img src={facebookImg} alt="facebook" />
-                        </a>
-                        <a href="https://twitter.com/" target="_blank">
-                            <img src={twitterImg} alt="twitter" />
-                        </a>
-                        <a href="https://youtube.com" target="_blank">
-                            <img src={youtubeImg} alt="youtube" />
-                        </a>
-                        <a href="https://instagram.com" target="_blank">
-                            <img src={instagramImg} alt="instagram" />
-                        </a>
-                    </FooterIcon>
-                </FooterContent>
-            </FooterContainer>
-        </FooterMainDiv>
-    );
-}
-
-export default Footer;

@@ -3,16 +3,6 @@ import styled from 'styled-components';
 import eyesOffImg from '../assets/noeyes.svg';
 import eyesOnImg from '../assets/eyes.svg';
 
-const EyeIcon = styled.img`
-    width: 16px;
-    height: 16px;
-    fill: #fff;
-    position: absolute;
-    margin-top: 47px;
-    margin-left: 365px;
-    cursor: pointer;
-`;
-
 function Eyes({ isShowing, setIsShowing }) {
     const handleShowPassword = () => {
         setIsShowing(!isShowing);
@@ -40,3 +30,13 @@ function Eyes({ isShowing, setIsShowing }) {
 }
 
 export default Eyes;
+
+const EyeIcon = styled.img`
+    width: 16px;
+    height: 16px;
+    fill: #fff;
+    position: absolute;
+    margin-top: 47px;
+    margin-left: 365px;
+    cursor: pointer;
+`;
