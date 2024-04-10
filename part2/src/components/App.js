@@ -1,48 +1,63 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getSampleUser, getFolderInfo } from "../api";
-import Nav from "./Nav";
-import Footer from "./Footer";
-import Folder from "./Folder";
-import MainContent from "./MainContent";
+import { getSampleUser, getFolderInfo, getFolderList } from "../api";
+import SharedPage from "../pages/SharedPage";
+import FolderPage from "../pages/FolderPage";
+
+function useUser() {
+  const [userInfo, setUserInfo] = useState({ email: "", imgUrl: "" });
+  useEffect(() => {
+    (async function loadData() {
+      const result = await getSampleUser();
+      if (!result) return;
+
+      const { email, profileImageSource: imgUrl } = result;
+      setUserInfo({ email, imgUrl });
+    })();
+  }, []);
+  return { userInfo };
+}
+
+function useFolder() {
+  const [folderInfo, setFolderInfo] = useState({});
+  useEffect(() => {
+    (async function loadData() {
+      const result = await getFolderInfo();
+      if (!result) return;
+
+      const { folder } = result;
+      setFolderInfo(folder);
+    })();
+  }, []);
+  return { folderInfo };
+}
+
+function useFolderList() {
+  const [folderList, setFolderList] = useState({});
+  useEffect(() => {
+    (async function loadData() {
+      const result = await getFolderList(1);
+      if (!result) return;
+
+      const { data } = result;
+      setFolderList({ data });
+    })();
+  }, []);
+  return { folderList };
+}
 
 function App() {
-  const [email, setEmail] = useState("");
-  const [imgUrl, setImgUrl] = useState("");
-  const [owner, setOwner] = useState({});
-  const [folderName, setFolderName] = useState("");
-  const [links, setLinks] = useState({});
-
-  const handleLoadUser = async () => {
-    const result = await getSampleUser();
-    if (!result) return;
-
-    const { email, profileImageSource } = result;
-    setEmail(email);
-    setImgUrl(profileImageSource);
-  };
-
-  const handleLoadFolder = async () => {
-    const result = await getFolderInfo();
-    if (!result) return;
-
-    const { folder } = result;
-    setOwner(folder.owner);
-    setFolderName(folder.name);
-    setLinks(folder.links);
-  };
-
-  useEffect(() => {
-    handleLoadUser();
-    handleLoadFolder();
-  }, []);
+  const { userInfo } = useUser();
+  const { folderInfo } = useFolder();
+  const { folderList } = useFolderList();
 
   return (
-    <div className="app">
-      <Nav email={email} imgUrl={imgUrl} />
-      <Folder owner={owner} folderName={folderName} />
-      <MainContent links={links} />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/shared" element={<SharedPage userInfo={userInfo} folderInfo={folderInfo} />} />
+        <Route path="/folder" element={<FolderPage userInfo={userInfo} folderList={folderList} />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -8,6 +8,7 @@
 }
 
 .card {
+  position: relative;
   font-family: Pretendard;
   border: none;
   background-color: transparent;
@@ -17,9 +18,8 @@
   cursor: pointer;
 }
 
-.card:hover img {
-  transition: all 0.2s linear;
-  transform: scale(1.3);
+.card:hover .image-wrapper {
+  background-size: 130%;
 }
 
 .card .image-wrapper {
@@ -27,14 +27,6 @@
   height: 200px;
   overflow: hidden;
   border-radius: 15px 15px 0 0;
-}
-
-.card img {
-  display: block;
-  width: 340px;
-  height: 200px;
-  border-radius: 15px 15px 0 0;
-  object-fit: cover;
 }
 
 .card .imageNotFound {
@@ -68,6 +60,7 @@
 }
 
 .card .linkInfo .paragraph {
+  height: 48px;
   font-size: 16px;
   text-align: left;
   overflow: hidden;

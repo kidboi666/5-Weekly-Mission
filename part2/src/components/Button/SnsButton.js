@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import facebookIcon from "../assets/akar-icons_facebook-fill.svg";
-import twitterIcon from "../assets/akar-icons_twitter-fill.svg";
-import youtubeIcon from "../assets/akar-icons_youtube-fill.svg";
-import instagramIcon from "../assets/ant-design_instagram-filled.svg";
+import facebookIcon from "../../assets/akar-icons_facebook-fill.svg";
+import twitterIcon from "../../assets/akar-icons_twitter-fill.svg";
+import youtubeIcon from "../../assets/akar-icons_youtube-fill.svg";
+import instagramIcon from "../../assets/ant-design_instagram-filled.svg";
 
 const ICONS = {
   facebook: facebookIcon,

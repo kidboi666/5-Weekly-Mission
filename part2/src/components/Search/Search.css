@@ -8,18 +8,18 @@
   gap: 10px;
 }
 
-.searchBar img {
+.searchBar .searchIcon {
   width: 16px;
   height: 16px;
 }
 
-.searchBar input {
+.searchBar .searchInput {
   flex-grow: 1;
   background-color: transparent;
   border: none;
 }
 
-.searchBar input::placeholder {
+.searchBar .searchInput::placeholder {
   font-family: Pretendard;
   color: #666;
   line-height: 24px;
