@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom';
 import '../styles/signup.css';
-import Logo from '../components/Logo';
+import Logo from '../components/logo';
 import KakaoImg from '../assets/kakaoLogin.png';
 import GoogleImg from '../assets/googleLogin.png';
-import EyesImg from '../assets/eyes.svg';
-import EyesNoImg from '../assets/noeyes.svg';
 import { useState } from 'react';
 import { handleEmailChange, handlePasswordChange, handleIdFocusOut, handlePasswordFocusOut } from '../utils/common';
-import { checkEmailDuplication } from '../api/emailduplication';
+import { checkEmailDuplication } from '../api/api';
+import Eyes from '../components/eyes';
 
 function SignUp() {
     const LinkStyle = {
@@ -20,8 +19,8 @@ function SignUp() {
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [verifyError, setVerifyError] = useState('');
-    const [showPassword, setShowPassword] = useState(true);
-    const [showVerify, setShowVerify] = useState(true);
+    const [isPasswordShowing, setIsPasswordShowing] = useState(true);
+    const [isVerifyShowing, setIsVerifyShowing] = useState(true);
 
     const handleVerifyChange = (e) => {
         setVerify(e.target.value);
@@ -35,18 +34,10 @@ function SignUp() {
         }
     };
 
-    const handleShowPassword = (e) => {
-        setShowPassword(!showPassword);
-    };
-
-    const handleShowVerify = (e) => {
-        setShowVerify(!showVerify);
-    };
-
-    const handleSignupSubmit = (e) => {
+    const handleSignupSubmit = async (e) => {
         e.preventDefault();
         if (password === verify) {
-            checkEmailDuplication({ email, password, setEmailError, setPasswordError });
+            await checkEmailDuplication({ email, password, setEmailError, setPasswordError });
         } else {
             setVerifyError('비밀번호가 일치하지 않습니다.');
         }
@@ -72,6 +63,7 @@ function SignUp() {
                                 <input
                                     className={emailError === '' ? 'signup-id' : 'signup-id active'}
                                     type="text"
+                                    value={email}
                                     name="id"
                                     placeholder="이메일 입력"
                                     onChange={(e) => {
@@ -87,7 +79,8 @@ function SignUp() {
                                 <p>비밀번호</p>
                                 <input
                                     className={passwordError === '' ? 'signup-password' : 'signup-password active'}
-                                    type={showPassword ? 'password' : 'text'}
+                                    type={isPasswordShowing ? 'password' : 'text'}
+                                    value={password}
                                     name="password"
                                     placeholder="비밀번호 입력"
                                     onChange={(e) => {
@@ -97,12 +90,7 @@ function SignUp() {
                                         handlePasswordFocusOut(e, setPasswordError);
                                     }}
                                 />
-                                <img
-                                    src={showPassword ? EyesNoImg : EyesImg}
-                                    className="signup-eyes password-eyes"
-                                    alt="비밀번호"
-                                    onClick={handleShowPassword}
-                                />
+                                <Eyes isShowing={isPasswordShowing} setIsShowing={setIsPasswordShowing} />
                                 <p className="signup-password-notice">{passwordError}</p>
                             </label>
                             <label className="signup-label">
@@ -111,18 +99,14 @@ function SignUp() {
                                     className={
                                         verifyError === '' ? 'signup-verify-password' : 'signup-verify-password active'
                                     }
-                                    type={showVerify ? 'password' : 'text'}
+                                    type={isVerifyShowing ? 'password' : 'text'}
+                                    value={verify}
                                     name="passwordCheck"
                                     placeholder="비밀번호 확인"
                                     onChange={handleVerifyChange}
                                     onBlur={handleVerifyFocusOut}
                                 />
-                                <img
-                                    src={showVerify ? EyesNoImg : EyesImg}
-                                    className="signup-eyes signup-verify-eyes"
-                                    alt="비밀번호 확인"
-                                    onClick={handleShowVerify}
-                                />
+                                <Eyes isShowing={isVerifyShowing} setIsShowing={setIsVerifyShowing} />
                                 <p className="signup-verify-notice">{verifyError}</p>
                             </label>
                         </div>

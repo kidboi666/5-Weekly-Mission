@@ -1,67 +1,100 @@
-import React, { useEffect, useState } from 'react';
-import '../styles/card.css';
+import styled from 'styled-components';
+import { getTimeDifference, formatDate } from '../utils/common';
 import CardNoneImg from '../assets/nocardImg.svg';
-import { getCardData } from '../api/cardData';
 
 function Card({ link }) {
-    const getTimeDifference = (createdAt) => {
-        const currentTime = new Date();
-        const createdTime = new Date(createdAt);
-        const seconds = Math.floor((currentTime - createdTime) / 1000);
-        const minutes = Math.floor(seconds / 60);
-        const hours = Math.floor(minutes / 60);
-        const days = Math.floor(hours / 24);
-        const months = Math.floor(days / 30);
-        const years = Math.floor(days / 365);
+  const handleSiteOpen = () => {
+    const url = link.url;
+    window.open(url, '_blank');
+  };
 
-        if (seconds < 120) {
-            return '1 minute ago';
-        } else if (minutes < 60) {
-            return `${minutes} minutes ago`;
-        } else if (hours < 2) {
-            return '1 hour ago';
-        } else if (hours < 24) {
-            return `${hours} hours ago`;
-        } else if (days < 2) {
-            return '1 day ago';
-        } else if (days <= 30) {
-            return `${days} days ago`;
-        } else if (days < 365) {
-            if (months <= 1) {
-                return '1 month ago';
-            } else {
-                return `${months} months ago`;
-            }
-        } else if (years === 1) {
-            return '1 year ago';
-        } else {
-            const flooredYears = Math.floor(months / 12);
-            return `${flooredYears} years ago`;
-        }
-    };
+  const dateShow = link.createdAt ? link.createdAt : link.created_at;
 
-    const formatDate = (value) => {
-        const date = new Date(value);
-        return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}.`;
-    };
-
-    const handleSiteOpen = () => {
-        const url = link.url;
-        window.open(url, '_blank');
-    };
-
-    return (
-        <button className="card-button" onClick={handleSiteOpen}>
-            <div className="card-img-area">
-                <img className="card-img" src={link.imageSource ? link.imageSource : CardNoneImg} alt="내용 이미지" />
-            </div>
-            <div className="card-info-area">
-                <p className="card-time">{getTimeDifference(link.createdAt)}</p>
-                <p className="card-info">{link.title}</p>
-                <p className="card-date">{formatDate(link.createdAt)}</p>
-            </div>
-        </button>
-    );
+  return (
+    <CardButton onClick={handleSiteOpen}>
+      <CardImgArea>
+        <CardImg src={link.imageSource || link.image_source || CardNoneImg} alt="내용 이미지" />
+      </CardImgArea>
+      <CardInfoArea>
+        <CardTime>{getTimeDifference(dateShow)}</CardTime>
+        <CardInfo>{link.title}</CardInfo>
+        <CardDate>{formatDate(dateShow)}</CardDate>
+      </CardInfoArea>
+    </CardButton>
+  );
 }
 
 export default Card;
+
+const CardButton = styled.button`
+  width: 340px;
+  height: 334px;
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  border-radius: 15px;
+  cursor: pointer;
+
+  &:hover img {
+    transition: all 0.2s linear;
+    transform: scale(1.3);
+  }
+`;
+
+const CardImgArea = styled.div`
+  width: 100%;
+  height: 200px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 15px 15px 0px 0px;
+  background: #d9d9d9;
+`;
+
+const CardImg = styled.img`
+  width: 100%;
+  height: 100%;
+`;
+
+const CardInfoArea = styled.div`
+  display: flex;
+  padding: 15px 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 0px 0px 15px 15px;
+  background: #fff;
+`;
+
+const CardTime = styled.p`
+  color: #666;
+  font-family: Pretendard;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`;
+
+const CardInfo = styled.p`
+  overflow: hidden;
+  color: #000;
+  text-overflow: ellipsis;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  height: 49px;
+`;
+
+const CardDate = styled.p`
+  overflow: hidden;
+  color: #333;
+  text-overflow: ellipsis;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  height: 19px;
+`;

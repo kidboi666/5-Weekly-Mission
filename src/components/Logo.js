@@ -1,14 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LogoImg from '../assets/logo.svg';
+import logoImg from '../assets/logo.svg';
 
 function Logo() {
     return (
-        <div className="logo-compornent">
-            <Link to="/">
-                <img src={LogoImg} alt="로고 이미지" />
-            </Link>
-        </div>
+        <Link to="/">
+            <img src={logoImg} alt="로고 이미지" />
+        </Link>
     );
 }
 
