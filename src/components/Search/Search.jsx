@@ -1,5 +1,5 @@
 import "./Search.css";
-import SearchIcon from "../assets/icon/Search.png";
+import SearchIcon from "../../assets/icon/Search.png";
 
 function Search() {
     return (

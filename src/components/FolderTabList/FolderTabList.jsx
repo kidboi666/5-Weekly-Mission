@@ -1,0 +1,62 @@
+import { useCallback, useState } from "react";
+import { userFoldersTapData } from "../../fetchUtils";
+
+import "./FolderTabList.css";
+import Button from "./Button";
+import CardTitleIcon from "../CardTitleIcon/CardTitleIcon";
+import FolderAddButton from "./FolderAddButton";
+
+function FolderTabList({ folderTabDataList, setUserFolderDataList }) {
+    const [buttonClass, setButtonClass] = useState(null);
+    const [name, setName] = useState(null);
+
+    const onClickButton = useCallback(
+        async (id, name) => {
+            setButtonClass(id);
+            setName(name);
+            try {
+                const data = await userFoldersTapData(id);
+                setUserFolderDataList(data);
+            } catch (e) {
+                alert(e.message);
+            }
+        },
+        [setUserFolderDataList]
+    );
+
+    return (
+        <>
+            <div className="tab-wrap">
+                <ul className="tab-list-wrap">
+                    <li>
+                        <button
+                            className={buttonClass === null ? "select" : ""}
+                            onClick={() => onClickButton(null)}
+                        >
+                            전체
+                        </button>
+                    </li>
+                    {folderTabDataList.map(({ created_at, favorite, id, link, name, user_id }) => {
+                        const data = { created_at, favorite, id, link, name, user_id };
+                        return (
+                            <li key={id}>
+                                <Button
+                                    data={data}
+                                    onClickButton={onClickButton}
+                                    buttonClass={buttonClass}
+                                />
+                            </li>
+                        );
+                    })}
+                </ul>
+                <FolderAddButton />
+            </div>
+            <div className="card-title-wrap">
+                <h3 className="card-title">{buttonClass === null ? "전체" : name}</h3>
+                {buttonClass !== null ? <CardTitleIcon /> : null}
+            </div>
+        </>
+    );
+}
+
+export default FolderTabList;

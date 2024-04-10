@@ -1,6 +1,6 @@
 header {
     margin: -5.8125rem 0 0;
-    padding: 1.25rem 12.5rem;
+    padding: 2rem 12.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -9,6 +9,12 @@ header {
     z-index: var(--zindex-sticky);
     background: rgba(240, 246, 255, 0.4);
     backdrop-filter: blur(10px);
+}
+
+header.header-static {
+    position: relative;
+    margin: 0;
+    background: rgba(240, 246, 255);
 }
 
 header > h1.logo > a {

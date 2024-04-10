@@ -1,20 +1,19 @@
-import "./ContentWrap.css";
-import ConHeader from "./ConHeader";
-import Search from "./Search";
+import ConHeader from "../components/ConHeader/ConHeader";
+import Search from "../components/Search/Search";
+import CardList from "../components/CardList/CardList";
 import { useEffect, useState } from "react";
-import CardList from "./CardList";
 import { fetchData } from "../fetchUtils";
 
-function ContentWrap() {
+function Shared() {
     const [folderData, setFolderData] = useState([]);
-    const [cardData, setCardData] = useState([]);
+    const [cardListData, setCardListData] = useState([]);
 
     useEffect(() => {
         async function fetchDataAndSetState() {
-            const { cardData, folderData } = await fetchData();
+            const { cardListData, folderData } = await fetchData();
 
             setFolderData(folderData);
-            setCardData(cardData);
+            setCardListData(cardListData);
         }
         fetchDataAndSetState();
     }, []);
@@ -24,10 +23,10 @@ function ContentWrap() {
             <ConHeader folderData={folderData} />
             <div className="wrap">
                 <Search />
-                <CardList cardData={cardData} />
+                <CardList cardListData={cardListData} />
             </div>
         </div>
     );
 }
 
-export default ContentWrap;
+export default Shared;

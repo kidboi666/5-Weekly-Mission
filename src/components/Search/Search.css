@@ -19,3 +19,14 @@
     top: 50%;
     transform: translateY(-50%);
 }
+
+@media (max-width: 1199px) {
+    /* 타블렛 */
+}
+
+@media (max-width: 767px) {
+    .search-form > input {
+        font-size: 14px;
+        padding: 11px 16px 11px 42px;
+    }
+}

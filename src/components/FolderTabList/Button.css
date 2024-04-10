@@ -1,0 +1,29 @@
+.tab-list-wrap > li > button {
+    font-size: 1rem;
+    line-height: 1.193125;
+    padding: 8px 12px;
+    color: #000;
+    border: 1px solid #6d6afe;
+    background: #fff;
+    border-radius: 5px;
+    font-weight: 400;
+}
+
+.tab-list-wrap > li:hover > button,
+.tab-list-wrap > li > button.select {
+    background: #6d6afe;
+    color: #fff;
+}
+
+@media (max-width: 1199px) {
+    /* 타블렛 */
+}
+
+@media (max-width: 767px) {
+    /* 모바일 */
+    .tab-list-wrap > li > button {
+        padding: 6px 10px;
+        font-size: 14px;
+        line-height: 1.19357142857;
+    }
+}
