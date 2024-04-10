@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
 
-.main-footer {
+.mainFooter {
   font-family: Abel, sans-serif;
   background-color: #111322;
   display: flex;
@@ -10,7 +10,7 @@
   padding: 32px 104px 64px;
 }
 
-.footer-bar {
+.footerBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,7 +25,7 @@
   line-height: normal;
 }
 
-.policy-bar {
+.policyBar {
   display: flex;
   gap: 30px;
   color: #cfcfcf;
@@ -33,12 +33,12 @@
   font-size: 1em;
 }
 
-.info-link-list {
+.infoLinkList {
   display: flex;
   gap: 12px;
 }
 
-.footer-link {
+.footerLink {
   text-decoration: none;
   color: inherit;
   &:hover {
@@ -47,11 +47,11 @@
 }
 
 @media (max-width: 767px) {
-  .main-footer {
+  .mainFooter {
     padding: 32px;
   }
 
-  .footer-bar {
+  .footerBar {
     display: grid;
     grid-template-columns: 181px 116px;
     column-gap: auto;
