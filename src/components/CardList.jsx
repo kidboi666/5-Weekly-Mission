@@ -1,46 +1,25 @@
-import "./CardList.css";
-import NonBgImg from "../assets/이미지 없을 때 배경.png";
-import { Link } from "react-router-dom";
-import { formatDate, calculatePostTimeElapsed } from "./PostDateUtility";
+import CardListItem from "./CardListItem";
+import NoPage from "./NoPage";
+import useSelectFolder from "../hooks/useSelectFolder";
 
-function CardListItem({ link }) {
-  const { createdAt, description, imageSource, title, url } = link;
-
+function CardList({ url }) {
+  const result = useSelectFolder({ url });
+  const links = result?.data;
   return (
-    <Link to={url} target="_blank" rel="noopener noreferrer">
-      <div className="CardListItem">
-        <div className="CardListItem__imageWrap">
-          <img
-            className="CardListItem__previewImg"
-            src={imageSource ? imageSource : NonBgImg}
-            alt={title}
-          />
-        </div>
-        <div className="CardListItem__content">
-          <div className="CardListItem__postTime">
-            {calculatePostTimeElapsed(createdAt)}
-          </div>
-          <div className="CardListItem__description">
-            {title}
-            <br />
-            {description}
-          </div>
-          <div className="CardListItem__postDate">{formatDate(createdAt)}</div>
-        </div>
-      </div>
-    </Link>
-  );
-}
-
-function CardList({ links }) {
-  return (
-    <ul className="CardLinkList">
-      {links.map((link) => (
-        <li key={link.id}>
-          <CardListItem link={link} />
-        </li>
-      ))}
-    </ul>
+    <>
+      {links && links.length === 0 ? (
+        <NoPage />
+      ) : (
+        <ul className="CardLinkList">
+          {links &&
+            links.map((link) => (
+              <li key={link.id}>
+                <CardListItem link={link} />
+              </li>
+            ))}
+        </ul>
+      )}
+    </>
   );
 }
 

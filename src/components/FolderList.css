@@ -1,0 +1,161 @@
+.folderLinkList {
+  display: flex;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 8fr 2fr;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.folderLinkList__folders {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.folderLinkList__folder {
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid var(--Linkbrary-primary-color, #6d6afe);
+  background: #fff;
+  padding: 8px 12px;
+  color: #000;
+  font-size: 16px;
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.folderLinkList__folder--active {
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid var(--Linkbrary-primary-color, #6d6afe);
+  background: var(--Linkbrary-primary-color, #6d6afe);
+  padding: 8px 12px;
+  color: #fff;
+  font-size: 16px;
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.folderLinkList__folder:hover {
+  background: var(--Linkbrary-gray10, #e7effb);
+}
+
+.folderLinkList__addFolderButton {
+  cursor: pointer;
+  background: none;
+  border: none;
+  justify-self: end;
+  display: flex;
+  color: #6d6afe;
+  text-align: center;
+  padding: 0;
+  max-width: 80px;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.3px;
+  flex-shrink: 0;
+}
+
+.folderLinkList__addFolderButton--mobile {
+  display: none;
+}
+
+.folderLinkList__addFolderIcon {
+  align-items: center;
+  margin-left: 4px;
+}
+
+.folderLinkList__folderMenu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.folderLinkList__folderEditBtns {
+  display: flex;
+  gap: 12px;
+}
+
+.folderLinkList__folderEditBtn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: var(--Linkbrary-gray60, #9fa6b2);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.folderLinkList__folderName {
+  color: #000;
+  font-family: Pretendard;
+  font-size: 24px;
+  width: 50%;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  margin: 24px 0;
+}
+
+@media (max-width: 1124px) {
+  .folderLinkList__folders {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 767px) {
+  .CardLinkList {
+    grid-template-columns: repeat(1, 325px);
+  }
+  .CardListItem {
+    height: 327px;
+  }
+  .folderLinkList__addFolderButton {
+    display: none;
+  }
+
+  .folderLinkList__addFolderButton--mobile {
+    cursor: pointer;
+    position: fixed;
+    left: 50%;
+    bottom: 110px;
+    transform: translate(-50%, -50%);
+    display: flex;
+    width: 135px;
+    height: 36px;
+    padding: 8px 24px;
+    align-items: flex-start;
+    gap: 4px;
+    color: var(--Linkbrary-gray10, #e7effb);
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.3px;
+    border-radius: 20px;
+    border: 1px solid var(--Linkbrary-white, #fff);
+    background: var(--Linkbrary-primary-color, #6d6afe);
+    z-index: 9999;
+  }
+
+  .folderLinkList__addFolderIcon {
+    width: 16px;
+    height: 16px;
+  }
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <link rel="stylesheet" href="signin_style.css">
+</head>
+<body>
+  <main class="signin-layout">
+    <div class="signin__gap">
+      <header class="signin-header">
+        <a href="../"><img src="../icons/logo.svg" id="logo" alt="링크브러리 로고"></a>
+        <div class="signin-header__sign-up-massage">회원이 아니신가요?<a href="../signup/signup.html" id="sign-up-btn">회원 가입하기</a></div>
+      </header>
+      <form class="signin-form">
+        <div class="signin-form__group">
+          <div class="signin-form__input-group">
+            <label for="email">이메일</label>
+            <input id="email" name="email" type="email">
+          </div>
+          <div class="signin-form__input-group">
+            <label for="password">비밀번호</label>
+            <div class="signin-form__password-input">
+              <input id="password" name="password" type="password">
+              <img src="../icons/eye-on.svg" class="signin-form__password-icon" alt="비밀번호 보기"></i>
+            </div>
+          </div>
+        </div>
+        <button id="signin-btn" type="submit">로그인</button>
+      </form>
+    </div>
+    <div class="social-signin">
+      소셜 로그인
+      <div class="social-signin__icons">
+        <a href="https://www.google.com/">
+          <div class="social-signin__icon">
+            <img src="../icons/google.svg" class="social-signin__background" alt="구글 계정연동하기">
+            <img src="../icons/c3a9be9cb365010056fa7aa9cc9f05a2.png" id="gooole-icon">
+          </div>
+        </a>
+        <a href="https://www.kakaocorp.com/page/">
+          <div class="social-signin__icon">
+            <img src="../icons/facebook.svg" class="social-signin__background" alt="카카토톡 계정연동하기">
+            <img src="../icons/99FE484C5C3451F218 1.svg" id="kakao-icon">
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

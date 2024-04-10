@@ -1,0 +1,11 @@
+.KebabMenu {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+.KebabMenu__btn {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
