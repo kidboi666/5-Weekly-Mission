@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
-import logo from '../assets/Linkbrary.svg';
+import logo from '../assets/linkbrary.svg';
 import styled from 'styled-components';
-import useGetData from './hooks/useGetData';
+import useGetData from '../hooks/useFetchData';
+import { EX_IMG, HEADER_BASE_URL } from '../contants/constant';
 
 const Wrapper = styled.div`
   top: 0;
   width: 100%;
-  position: fixed;
+  z-index: 1;
 `;
 
 const Container = styled.div`
@@ -20,16 +21,12 @@ const Container = styled.div`
     padding-right: 2rem;
     padding-left: 2rem;
   }
-  @media screen and (max-width: 767px) {
-    padding-right: 1rem;
-    padding-left: 1rem;
-  }
 `;
 
 const Logo = styled.a`
   width: 8.5rem;
-  @media screen and(max-width: 767px) {
-    width: 5rem;
+  @media screen and (max-width: 767px) {
+    width: 6rem;
   }
 `;
 
@@ -43,44 +40,44 @@ const UserProfile = styled.div`
     border-radius: 50%;
   }
 
-  & span {
-  }
-
   @media screen and (max-width: 767px) {
-    & p {
+    & span {
       display: none;
     }
   }
 `;
+
 const LoginButton = styled.a`
   padding-top: 1rem;
   padding-bottom: 1rem;
   padding-right: 2rem;
   padding-left: 2rem;
-
   border: none;
   border-radius: 1rem;
   background-color: #eeeeee;
 `;
-const SAMPLE_USER_URL = 'https://bootcamp-api.codeit.kr/api/sample/user';
-
-function Header() {
-  const [data, isLoading, error, fetchData] = useGetData(SAMPLE_USER_URL);
+// function Profile({user}) {
+//   return <div>{user.}</div>;
+// }
+function Header({ position, url = HEADER_BASE_URL }) {
+  const { data, fetchData } = useGetData(url);
 
   useEffect(() => {
-    fetchData(SAMPLE_USER_URL);
-  }, [SAMPLE_USER_URL]);
+    fetchData(url);
+  }, []);
+
+  console.log(data);
 
   return (
     <header>
-      <Wrapper>
+      <Wrapper style={{ position: position }}>
         <Container>
           <Logo href='../pages/main'>
             <img src={logo} alt='로고' />
           </Logo>
           {data ? (
             <UserProfile>
-              <img src={data.profileImageSource} alt='유저 아이콘' />
+              <img src={data[0]} alt='유저 아이콘' />
               <span>{data.email}</span>
             </UserProfile>
           ) : (

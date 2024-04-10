@@ -10,7 +10,3 @@ export function getFolder(folderId) {
     .then((data) => console.log(data))
     .catch((error) => console.error(error));
 }
-
-export function deleteFolder(folderId) {
-  fetch(`${BASE_URL}/${folderId}`, { method: 'DELETE' });
-}

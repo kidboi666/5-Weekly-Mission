@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import useGetData from './hooks/useGetData';
+import useGetData from '../hooks/useFetchData';
+import { FOLDER_INFO_BASE_URL } from '../contants/constant';
 
 const Container = styled.div`
   display: flex;
@@ -40,21 +41,19 @@ const FolderName = styled.p`
   font-size: 2.5rem;
   padding: 0;
   margin-top: 0;
-
+  padding-bottom: 2rem;
   @media screen and (max-width: 767px) {
     font-size: 2rem;
     margin-top: 0.7rem;
   }
 `;
 
-const BASE_URL = 'https://bootcamp-api.codeit.kr/api/sample/folder';
-
 function FolderInfo() {
-  const [data, isLoading, error, fetchData] = useGetData(BASE_URL);
+  const { data, isLoading, fetchData } = useGetData(FOLDER_INFO_BASE_URL);
 
   useEffect(() => {
-    fetchData(BASE_URL);
-  }, [BASE_URL]);
+    fetchData(FOLDER_INFO_BASE_URL);
+  }, []);
 
   return (
     <>
