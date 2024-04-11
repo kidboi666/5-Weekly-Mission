@@ -54,3 +54,30 @@
   display: flex;
   column-gap: 1.2rem;
 }
+
+.footerWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.footerContent {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 1.6rem;
+}
+
+.footerHistory {
+  text-align: center;
+}
+
+.footerSupportLink {
+  display: flex;
+  justify-content: center;
+  column-gap: 3rem;
+}
+
+.footerSnsLink {
+  display: flex;
+  justify-content: center;
+  column-gap: 1.2rem;
+}

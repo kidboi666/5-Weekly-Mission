@@ -1,16 +1,71 @@
-import "./styles/form.css";
-import "./styles/pages/main/main.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import ContentWrap from "./components/ContentWrap";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { getSampleUser, getFolderInfo, getFolderList } from "../api";
+import SharedPage from "../pages/SharedPage";
+import FolderPage from "../pages/FolderPage";
+
+function useUser() {
+  const [userInfo, setUserInfo] = useState({ email: "", imgUrl: "" });
+  useEffect(() => {
+    async function loadData() {
+      const result = await getSampleUser();
+      if (!result) return;
+
+      const { email, profileImageSource: imgUrl } = result;
+      setUserInfo({ email, imgUrl });
+    }
+    loadData();
+  }, []);
+  return { userInfo };
+}
+
+function useFolder() {
+  const [folderInfo, setFolderInfo] = useState({});
+  useEffect(() => {
+    async function loadData() {
+      const result = await getFolderInfo();
+      if (!result) return;
+
+      const { folder } = result;
+      setFolderInfo(folder);
+    }
+    loadData();
+  }, []);
+  return { folderInfo };
+}
+
+function useFolderList() {
+  const [folderList, setFolderList] = useState({});
+  useEffect(() => {
+    async function loadData() {
+      const result = await getFolderList(1);
+      if (!result) return;
+
+      const { data } = result;
+      setFolderList({ data });
+    }
+    loadData();
+  }, []);
+  return { folderList };
+}
 
 function App() {
+  const { userInfo } = useUser();
+  const { folderInfo } = useFolder();
+  const { folderList } = useFolderList();
+
   return (
-    <>
-      <Header />
-      <ContentWrap />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/shared"
+          element={<SharedPage userInfo={userInfo} folderInfo={folderInfo} />}
+        />
+        <Route
+          path="/folder"
+          element={<FolderPage userInfo={userInfo} folderList={folderList} />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
