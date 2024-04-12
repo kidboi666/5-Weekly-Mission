@@ -1,0 +1,53 @@
+.Footer {
+  margin-top: 120px;
+  padding: 64px 104px 64px;
+  background-color: #111322;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  color: white;
+}
+.codeit-text a {
+  text-decoration: none;
+}
+a:visited {
+  color: white;
+}
+.social {
+  display: flex;
+  column-gap: 15px;
+}
+.help {
+  display: flex;
+  column-gap: 30px;
+}
+
+.social img {
+  height: 100%;
+}
+
+@media (max-width: 767px) {
+  .Footer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: auto;
+    grid-row-gap: 60px;
+    font-size: 20px;
+    padding: 50px;
+  }
+  .codeit-text {
+    grid-row: 2;
+    grid-column: 1;
+  }
+  .social {
+    justify-self: right;
+  }
+  .social a {
+    height: 30px;
+    width: 30px;
+  }
+  .help a {
+    line-height: 30px;
+  }
+}

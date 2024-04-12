@@ -73,12 +73,12 @@ async function loginCheck(e) {
 }
 
 // 로그인 페이지에 접근할 때 로컬 저장소에 acessToken이 있는지 확인
-window.addEventListener("DOMContentLoaded", () => {
-  const accessToken = localStorage.getItem("accessToken");
-  if (accessToken) {
-    location.href = "./folder.html";
-  }
-});
+// window.addEventListener("DOMContentLoaded", () => {
+//   const accessToken = localStorage.getItem("accessToken");
+//   if (accessToken) {
+//     location.href = "./folder.html";
+//   }
+// });
 
 // 눈 아이콘 토글
 function eyeToggle(e) {
