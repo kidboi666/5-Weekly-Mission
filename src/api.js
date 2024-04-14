@@ -1,27 +1,37 @@
-export async function fetchUserData() {
-    try {
-        const response = await fetch('https://bootcamp-api.codeit.kr/api/sample/user');
-        if (!response.ok) {
-            throw new Error('정보를 불러오는데 실패했습니다.');
-        }
-        const body = await response.json();
-        return body;
-    } catch (error) {
-        throw new Error(error.message);
-    }  
+export async function fetchUserData(id) {
+    
+    const response = await fetch(`https://bootcamp-api.codeit.kr/api/users/${id}`);
+
+    const body = await response.json();
+    return body;
 }
 
 export async function fetchFolderData() {
-    try {
-        const response = await fetch('https://bootcamp-api.codeit.kr/api/sample/folder');
-        if (!response.ok) {
-            throw new Error('정보를 불러오는데 실패했습니다.');
-        }
-        const body = await response.json();
-        return body;
-    } catch (error) {
-        throw new Error(error.message);
-    }  
+    const response = await fetch('https://bootcamp-api.codeit.kr/api/sample/folder');
+    
+    const body = await response.json();
+    return body;
+}
+
+export async function fetchFolderList(id) {
+    const response = await fetch(`https://bootcamp-api.codeit.kr/api/users/${id}/folders`);
+
+    const body = await response.json();
+    return body;
+}
+
+export async function fetchLinkList(id) {
+    const response = await fetch(`https://bootcamp-api.codeit.kr/api/users/${id}/links`);
+
+    const body = await response.json();
+    return body;
+}
+
+export async function fetchLinkListByFolderId(folderId) {
+    const response = await fetch(`https://bootcamp-api.codeit.kr/api/users/1/links?folderId=${folderId}`);
+
+    const body = await response.json();
+    return body;
 }
 
 

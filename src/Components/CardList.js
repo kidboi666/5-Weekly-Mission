@@ -1,50 +1,40 @@
-import { Link } from 'react-router-dom';
 import '../css/CardList.css'
-import SearchImg from '../img/search.svg';
-import { calculateTimeDiff, formatDate } from '../utils';
+import LinkCard from './LinkCard';
 
-function Card({ link }) {
+function CardList({ datas }) {
+    const nextData = datas.map((data) => {
+        const newData = { id: data.id };
+        if (data.created_at) {
+            newData.createdAt = data.created_at;
+        }
+        if (data.createdAt) {
+            newData.createdAt = data.createdAt;
+        }
+        newData.url = data.url;
+        newData.title = data.title;
+        newData.description = data.description;
+        if (data.imageSource) {
+            newData.imageSource = data.imageSource;
+        }
+        if (data.image_source) {
+            newData.imageSource = data.image_source;
+        }
 
-    return (
-        <>  
-            <Link to={`/detail/${link.id}`}>
-                <div className="card">
-                    <img className='card-img' src={link.imageSource} alt={link.title}></img>
-                    <div className='card-content'>
-                        <p>{link.title}</p>
-                        <p className='card-content-timediff'>{calculateTimeDiff(link.createdAt)}</p>
-                        <p>{link.description}</p>
-                        <p className='card-content-createdat'>{formatDate(link.createdAt)}</p>
-                    </div>
-                </div>
-            </Link>  
-        </>
-    )
-}
-
-function CardList({ folderData }) {
-    if (!folderData) {
-        return <p>Loading...</p>
-    }
-
-    let links = folderData.folder.links;
+        return newData;
+    })
 
     return (
-        <>  
-            <div className='card-container'>
-                <input className="search-bar" type='text' placeholder='링크를 검색해보세요.'></input>
-                <img className='search-bar-image' alt='magnifying glass' src={SearchImg} />
-                <div className="card-list">
-                    {   
-                        links.map((link) => {
-                            return (
-                                <Card key={link.id} link={link} />
-                            )
-                        })
-                    }
-                </div>
+        <div className='card-container'>
+            <div className="card-list">
+                {   
+                    nextData.map((link) => {
+                        return (
+                            <LinkCard key={link.id} link={link} />
+                        )
+                    })
+                }
             </div>
-        </>
+        </div>
     )
 }
 
