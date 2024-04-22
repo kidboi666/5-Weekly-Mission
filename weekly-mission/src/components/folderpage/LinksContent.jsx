@@ -1,7 +1,7 @@
 import Card from "../linksharepage/Card";
 import NoLink from "./NoLinks";
 import styled from "styled-components";
-import ActionButtons from "./buttons/ActionButtons";
+import ActionButton from "./buttons/ActionButtons";
 
 const FolderContainer = styled.div`
   display: grid;
@@ -31,14 +31,22 @@ const SelectedFolder = styled.div`
   font-weight: 600;
 `;
 
-const LinksContent = ({ linksData, activeFolderName, activeFolderId }) => {
+const LinksContent = ({
+  linksData,
+  activeFolderName,
+  activeFolderId,
+  onClick,
+  shareIcon,
+}) => {
   const isEmpty = !linksData || linksData.data.length === 0;
 
   return (
     <>
       <FoldermenuToolbar>
         <SelectedFolder>{activeFolderName}</SelectedFolder>
-        {activeFolderId !== null && <ActionButtons />}
+        {activeFolderId !== null && (
+          <ActionButton onClick={onClick} icon={shareIcon} text="공유" />
+        )}
       </FoldermenuToolbar>
 
       <FolderContainer>

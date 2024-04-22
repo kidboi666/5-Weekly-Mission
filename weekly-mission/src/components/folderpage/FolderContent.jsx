@@ -5,7 +5,7 @@ const FolderContent = ({ allLinksData, activeFolderName, activeFolderId }) => {
     <LinksContent
       linksData={allLinksData}
       activeFolderName={activeFolderName}
-      activeFolderId={activeFolderId === null ? null : activeFolderId}
+      activeFolderId={activeFolderId}
     />
   );
 };

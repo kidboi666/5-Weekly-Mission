@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import SearchBar from "../shared/Searchbar";
 import Foldermenu from "./Foldermenu";
+import { useState, useEffect } from "react";
 
-const FolderLayout_Container = styled.div`
+const FolderLayoutContainer = styled.div`
   padding: 32px 0;
   display: flex;
   flex-direction: column;
@@ -13,11 +14,12 @@ const FolderLayout_Container = styled.div`
 `;
 
 const FolderLayout = () => {
+  const folderId = null;
   return (
-    <FolderLayout_Container>
+    <FolderLayoutContainer>
       <SearchBar />
-      <Foldermenu />
-    </FolderLayout_Container>
+      <Foldermenu folderId={folderId} />
+    </FolderLayoutContainer>
   );
 };
 

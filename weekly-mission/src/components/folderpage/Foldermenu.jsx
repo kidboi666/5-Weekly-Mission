@@ -13,7 +13,7 @@ const FoldermenuToolbar = styled.div`
   justify-content: space-between;
 `;
 
-const FolderMenu = () => {
+const FolderMenu = ({ folderId }) => {
   const foldersData = useFetchData(
     `${import.meta.env.VITE_BASE_URL}/users/1/folders`
   );
@@ -23,11 +23,24 @@ const FolderMenu = () => {
   const [activeFolderName, setActiveFolderName] = useState("전체");
 
   useEffect(() => {
-    handleButtonClick(null, "전체");
-  }, []);
+    const fetchData = async () => {
+      try {
+        const data = await fetchLinkData(folderId);
+        setAllLinksData(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [folderId]);
 
   const handleButtonClick = async (folderId, folderName) => {
-    setActiveButton(folderId);
+    if (folderId === activeButton) {
+      return; // 이미 활성화된 버튼을 클릭한 경우 아무 작업도 수행하지 않음
+    }
+
+    setActiveButton(folderId === "전체" ? null : folderId); // 전체 버튼을 클릭할 때는 null로 설정
     setActiveFolderName(folderName);
     const data = await fetchLinkData(folderId);
     setAllLinksData(data);
@@ -43,7 +56,7 @@ const FolderMenu = () => {
           activeButton={activeButton}
           handleButtonClick={handleButtonClick}
         />
-        <AddButton onClick={onclick} />
+        <AddButton />
       </FoldermenuToolbar>
 
       <FolderContent

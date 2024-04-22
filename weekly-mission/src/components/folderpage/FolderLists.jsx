@@ -29,7 +29,7 @@ const FolderList = ({ folders, activeButton, handleButtonClick }) => {
       />
       {folders.map((folder) => (
         <FoldermenuToolbarButton
-          active={activeButton === folder.id}
+          active={activeButton === folder.id ? "true" : undefined}
           key={folder.id}
           onClick={() => handleButtonClick(folder.id, folder.name)}
         >
