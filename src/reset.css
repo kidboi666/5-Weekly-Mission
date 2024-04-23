@@ -1,31 +1,39 @@
+/* user agent stylesheet 초기화 */
+
 * {
   box-sizing: border-box;
+  margin: 0;
+  font-family: "Pretendard";
   word-break: keep-all;
-  font-family: 'pretendard';
-  margin : 0;
-  /* 웹브라우저에서 기본값으로 주는 margin 상쇄 */
 }
-
 
 html,
 body {
   font-size: 62.5%;
 }
-/* = 1rem = 10px
-웹브라우저 기본 폰트사이즈의 62.5% / 크롬은 16px*/
 
 a {
-  color: inherit; /* 이 부분은 뭘 위해서?*/
+  color: inherit;
   text-decoration: none;
   cursor: pointer;
 }
 
+input {
+  border: none;
+  padding: none;
+}
 input:focus {
   outline: none;
 }
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
 
 button {
-  border: none; 
+  border: none;
   padding: unset;
   background-color: unset;
   cursor: pointer;
