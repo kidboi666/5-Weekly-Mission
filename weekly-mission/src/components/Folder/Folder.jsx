@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import useFetchData from "../../hooks/useFetchData";
-import FolderList from "./FolderLists";
-import FolderContent from "./FolderContent";
-import AddButton from "./buttons/AddButton";
+import FolderMenuList from "../FolderMenuList/FolderMenuList";
+import FolderContent from "../FolderContent/FolderContent";
+import AddButton from "../AddButton/AddButton";
 
 import { fetchLinkData } from "../../utils/FetchFolderLinksData";
 
@@ -11,10 +11,11 @@ const FoldermenuToolbar = styled.div`
   display: flex;
   padding: 0 32px;
   justify-content: space-between;
+  align-items: center;
 `;
 
-const FolderMenu = ({ folderId }) => {
-  const foldersData = useFetchData(
+const Folder = ({ folderId }) => {
+  const { data: foldersData, isLoading } = useFetchData(
     `${import.meta.env.VITE_BASE_URL}/users/1/folders`
   );
 
@@ -37,10 +38,10 @@ const FolderMenu = ({ folderId }) => {
 
   const handleButtonClick = async (folderId, folderName) => {
     if (folderId === activeButton) {
-      return; // 이미 활성화된 버튼을 클릭한 경우 아무 작업도 수행하지 않음
+      return;
     }
 
-    setActiveButton(folderId === "전체" ? null : folderId); // 전체 버튼을 클릭할 때는 null로 설정
+    setActiveButton(folderId === "전체" ? null : folderId);
     setActiveFolderName(folderName);
     const data = await fetchLinkData(folderId);
     setAllLinksData(data);
@@ -51,7 +52,7 @@ const FolderMenu = ({ folderId }) => {
   return (
     <>
       <FoldermenuToolbar>
-        <FolderList
+        <FolderMenuList
           folders={foldersData.data}
           activeButton={activeButton}
           handleButtonClick={handleButtonClick}
@@ -68,4 +69,4 @@ const FolderMenu = ({ folderId }) => {
   );
 };
 
-export default FolderMenu;
+export default Folder;

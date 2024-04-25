@@ -1,8 +1,6 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import FooterIcons from "./FooterIcon";
 
-const FooterContainer = styled.footer`
+export const FooterContainer = styled.footer`
   width: 100%;
   height: 160px;
   display: flex;
@@ -11,7 +9,7 @@ const FooterContainer = styled.footer`
   background-color: #111322;
 `;
 
-const FooterBox = styled.div`
+export const FooterBox = styled.div`
   width: 100%;
   height: fit-content;
   display: flex;
@@ -24,7 +22,7 @@ const FooterBox = styled.div`
   }
 `;
 
-const CodeitLogo = styled.span`
+export const CodeitLogo = styled.span`
   font-family: "Acme";
   font-size: 16px;
   font-weight: 400;
@@ -34,7 +32,7 @@ const CodeitLogo = styled.span`
   color: #676767;
 `;
 
-const Info = styled.div`
+export const Info = styled.div`
   display: flex;
   column-gap: 30px;
   padding-right: 18px;
@@ -51,20 +49,3 @@ const Info = styled.div`
     color: #cfcfcf;
   }
 `;
-
-const Footer = () => {
-  return (
-    <FooterContainer>
-      <FooterBox>
-        <CodeitLogo>©codeit - 2023</CodeitLogo>
-        <Info>
-          <Link to="/privacy">Privacy Policy</Link>
-          <Link to="/faq">FAQ</Link>
-        </Info>
-        <FooterIcons />
-      </FooterBox>
-    </FooterContainer>
-  );
-};
-
-export default Footer;

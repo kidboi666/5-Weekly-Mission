@@ -1,4 +1,4 @@
-import LinksContent from "../folderpage/LinksContent";
+import LinksContent from "./LinksContent";
 
 const FolderContent = ({ allLinksData, activeFolderName, activeFolderId }) => {
   return (
