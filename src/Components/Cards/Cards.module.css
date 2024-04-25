@@ -20,7 +20,6 @@
     text-align: center;
     position: relative;
     overflow: hidden;
-    cursor: pointer;
 }
 
 .card:active {
@@ -48,6 +47,7 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .card_img {
@@ -103,6 +103,23 @@
     font-size: 13px;
 }
 
+.dot_menu_button {
+    cursor: pointer;
+}
+
+/* 모달 */
+.modal {
+    width: 100px;
+    height: 64px;
+    background-color: var(--white);
+}
+
+.modal_content {
+    width: 100%;
+    height: 31px;
+    padding: 7px 12px;
+}
+
 .card_info_txt {
     display: flex;
     align-items: center;
@@ -122,6 +139,7 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
+    cursor: pointer;
 }
 
 .card_info_date {

@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import moment from "moment";
 import thumbnail from "../../assets/thumbnail.svg";
 import dot from "../../assets/dot.svg";
 import star from "../../assets/star_empty.png";
 import formatDate from "../../utils/formatDate";
 import styles from "./Cards.module.css";
+import "react-tooltip/dist/react-tooltip.css";
+import { Tooltip } from "react-tooltip";
 
 function Cards({ items }) {
     const MINUTES = 60;
@@ -43,12 +46,12 @@ function Cards({ items }) {
                 <div className={styles.card_grid_container}>
                     {items.map((link) => (
                         <div key={link.id} className={styles.card}>
-                            <Link to={link.url} target="_blank">
-                                {link.showStar && (
-                                    <div className={styles.star}>
-                                        <img src={star} width={34} height={34} alt="star" />
-                                    </div>
-                                )}
+                            {link.showStar && (
+                                <div className={styles.star}>
+                                    <img src={star} width={34} height={34} alt='star' />
+                                </div>
+                            )}
+                            <Link to={link.url} target='_blank'>
                                 <div className={styles.card_img_div}>
                                     {link.image_source ? (
                                         <img
@@ -62,31 +65,49 @@ function Cards({ items }) {
                                         <img
                                             src={thumbnail}
                                             className={styles.card_img}
-                                            alt=""
+                                            alt=''
                                             width={450}
                                             height={350}
                                         />
                                     )}
                                 </div>
-                                <div className={styles.card_info}>
-                                    <div className={styles.card_info_top}>
-                                        <p className={styles.card_info_time}>
-                                            {generateTimeText(link.created_at)}
-                                        </p>
-                                        {link.showDot && (
+                            </Link>
+                            <div className={styles.card_info}>
+                                <div className={styles.card_info_top}>
+                                    <p className={styles.card_info_time}>
+                                        {generateTimeText(link.created_at)}
+                                    </p>
+                                    {link.showDot && (
+                                        <>
                                             <img
                                                 src={dot}
                                                 className={styles.dot_menu_button}
-                                                alt="dot"
+                                                alt='dot'
+                                                data-tooltip-id='tooltip'
                                             />
-                                        )}
-                                    </div>
-                                    <p className={styles.card_info_body}>{link.description}</p>
-                                    <p className={styles.card_info_date}>
-                                        {formatDate(link.created_at)}
-                                    </p>
+                                            <Tooltip
+                                                id='tooltip'
+                                                clickable
+                                                tooltipOptions={{ position: "bottom" }}
+                                                className={styles.modal}
+                                            >
+                                                <div role='button' className={styles.modal_content}>
+                                                    삭제하기
+                                                </div>
+                                                <div role='button' className={styles.modal_content}>
+                                                    폴더에 추가
+                                                </div>
+                                            </Tooltip>
+                                        </>
+                                    )}
                                 </div>
-                            </Link>
+                                <Link to={link.url} target='_blank'>
+                                    <p className={styles.card_info_body}>{link.description}</p>
+                                </Link>
+                                <p className={styles.card_info_date}>
+                                    {formatDate(link.created_at)}
+                                </p>
+                            </div>
                         </div>
                     ))}
                 </div>
