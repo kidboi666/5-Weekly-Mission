@@ -1,12 +1,15 @@
 import './modalFolder.css';
 import closeIcon from '../assets/_close.svg';
-import { useState } from 'react';
 
-export default function ModalFolder({ title, folderName, buttonName }) {
-  const [isModalOpen, setIsModalOpen] = useState(true);
-
+export default function ModalFolder({
+  title,
+  folderName,
+  buttonName,
+  onClose,
+  isModalOpen,
+}) {
   const handleCloseModal = () => {
-    setIsModalOpen(false);
+    onClose(false);
   };
 
   return (

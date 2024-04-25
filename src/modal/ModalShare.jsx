@@ -4,13 +4,14 @@ import kakaoIcon from '../assets/Chat.svg';
 import facebookIcon from '../assets/Telegram.svg';
 import copylinkIcon from '../assets/More.svg';
 
-import { useState } from 'react';
-
-export default function ModalShare({ title, targetName }) {
-  const [isModalOpen, setIsModalOpen] = useState(true);
-
+export default function ModalShare({
+  title,
+  targetName,
+  isModalOpen,
+  onClose,
+}) {
   const handleCloseModal = () => {
-    setIsModalOpen(false);
+    onClose(false);
   };
 
   return (

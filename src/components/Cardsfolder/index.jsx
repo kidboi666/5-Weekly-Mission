@@ -5,11 +5,16 @@ import styles from './index.module.css';
 import starticon from '../../assets/staricon.svg';
 import moreoptionicon from '../../assets/moreoptionicon.svg';
 import { useState } from 'react';
+import ModalFolder from '../../modal/ModalFolder';
+import ModalDelete from '../../modal/ModalDelete';
 
 function Cardsfolder(props) {
   const CardData = useFetch(props.url);
   const [isHovering, setIsHovering] = useState(false);
-  const [isPopover, setIsPopover] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
+  const [popoverStates, setPopoverStates] = useState({});
+  const [selectedCardDescription, setSelectedCardDescription] = useState('');
 
   const handleMouseOver = () => {
     setIsHovering(true);
@@ -19,13 +24,33 @@ function Cardsfolder(props) {
     setIsHovering(false);
   };
 
-  const handleOptionButtonClick = (e) => {
-    setIsPopover((prevState) => !prevState);
+  function handleCloseModal(isOpen) {
+    setIsModalOpen(isOpen);
+  }
+
+  function handleCloseDeleteModal(isOpen) {
+    setIsModalDeleteOpen(isOpen);
+  }
+
+  function handleClickButton() {
+    setIsModalOpen((prev) => !prev);
+  }
+
+  function handleDeleteClickButton(linkDescription) {
+    setIsModalDeleteOpen(true);
+    setSelectedCardDescription(linkDescription); // 삭제할 링크의 description 설정
+  }
+
+  const handleOptionButtonClick = (linkId, linkDescription) => {
+    setPopoverStates((prevState) => ({
+      ...prevState,
+      [linkId]: !prevState[linkId],
+    }));
+    setSelectedCardDescription(linkDescription); // 팝오버가 열린 카드의 description 설정
   };
 
   const handleFavoriteButtonClick = (e) => {
-    e.stopPropagation(); // 클릭 이벤트 전파 방지
-    // 다른 작업 수행
+    e.stopPropagation();
   };
 
   return (
@@ -83,17 +108,21 @@ function Cardsfolder(props) {
             </a>
             <button
               className={styles.card_moreoption_icon}
-              onClick={handleOptionButtonClick}
+              onClick={() => handleOptionButtonClick(link.id, link.description)}
             >
               <img src={moreoptionicon} alt="링크 게시물 옵션 버튼 아이콘 " />
             </button>
-            {isPopover && (
+            {popoverStates[link.id] && (
               <div className={styles.popover}>
                 <div className={styles.options}>
-                  <button>삭제하기</button>
+                  <button
+                    onClick={() => handleDeleteClickButton(link.description)}
+                  >
+                    삭제하기
+                  </button>
                 </div>
                 <div className={styles.options}>
-                  <button>폴더에 추가</button>
+                  <button onClick={handleClickButton}>폴더에 추가</button>
                 </div>
               </div>
             )}
@@ -109,6 +138,22 @@ function Cardsfolder(props) {
         <div className={styles.noLinkText}>
           <p>저장된 링크가 없습니다</p>
         </div>
+      )}
+      {isModalOpen && (
+        <ModalFolder
+          title={'폴더 추가'}
+          buttonName={'추가하기'}
+          onClose={handleCloseModal}
+          isModalOpen={isModalOpen}
+        />
+      )}
+      {isModalDeleteOpen && (
+        <ModalDelete
+          title={'링크 삭제'}
+          DeleteName={selectedCardDescription}
+          onClose={handleCloseDeleteModal}
+          isModalOpen={isModalDeleteOpen}
+        />
       )}
     </div>
   );
