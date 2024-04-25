@@ -6,6 +6,7 @@ import styles from "./index.module.css";
 
 const snsLists = [
   {
+    id: '페이스북',
     link: "https://facebook.com/",
     img: facebook,
     height: "20",
@@ -13,6 +14,7 @@ const snsLists = [
     alt: "페이스북 아이콘",
   },
   {
+    id: '트위터',
     link: "https://twitter.com/",
     img: twitter,
     height: "20",
@@ -20,6 +22,7 @@ const snsLists = [
     alt: "트위터 아이콘",
   },
   {
+    id: '유튜브',
     link: "https://youtube.com/",
     img: youtube,
     height: "20",
@@ -27,6 +30,7 @@ const snsLists = [
     alt: "유튜브 아이콘",
   },
   {
+    id: '인스타그램',
     link: "https://instagram.com/",
     img: instagram,
     height: "20",
@@ -46,7 +50,7 @@ function Footer() {
         </div>
         <div className={styles.footer_icon_div}>
           {snsLists.map((snsList) => (
-            <a href={snsList.link} target="_blank" rel="noopener noreferrer">
+            <a href={snsList.link} target="_blank" rel="noopener noreferrer" key={snsList.id}>
               <img
                 src={snsList.img}
                 height={snsList.height}
