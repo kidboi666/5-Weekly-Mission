@@ -10,6 +10,7 @@ const LinkCardList = ({
   folderNameOnClick,
   currentFolderId,
   onFolderAddClick,
+  onFolderNameChangeClick,
 }) => {
   return (
     <div className={styles.linkCardListContainer}>
@@ -21,6 +22,7 @@ const LinkCardList = ({
             folderNameOnClick={folderNameOnClick}
             currentFolderId={currentFolderId}
             onFolderAddClick={onFolderAddClick}
+            onFolderNameChangeClick={onFolderNameChangeClick}
           />
         )}
 

@@ -6,6 +6,7 @@ import './FolderPage.css';
 import { convertObjectKeysToCamelCase } from '../../utils/convertObjectKeysToCamelCase';
 import Modal from '../../components/Modal/Modal';
 import FolderAdd from '../../components/ModalContents/FolderAdd';
+import FolderNameChange from '../../components/ModalContents/FolderNameChange';
 const allFolder = {
   id: 0,
   name: '전체',
@@ -22,6 +23,14 @@ export default function FolderPage() {
   const handleFolderAddClick = () => {
     setShowModal(true);
     setModalContent(<FolderAdd />);
+  };
+
+  const handleFolderNameChangeClick = () => {
+    setShowModal(true);
+    const currentFolder = folders.find(
+      (folder) => folder.id === currentFolderId
+    );
+    setModalContent(<FolderNameChange folderName={currentFolder.name} />);
   };
 
   const handleLoad = useCallback(async () => {
@@ -73,6 +82,7 @@ export default function FolderPage() {
         folderNameOnClick={handleFolderNameButtonClick}
         currentFolderId={currentFolderId}
         onFolderAddClick={handleFolderAddClick}
+        onFolderNameChangeClick={handleFolderNameChangeClick}
       />
     </>
   );
