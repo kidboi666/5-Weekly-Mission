@@ -1,5 +1,5 @@
-@import "../../global.css";
-@import "../../reset.css";
+@import '../../global.css';
+@import '../../reset.css';
 
 /* m a i n */
 .main {
@@ -87,13 +87,10 @@ input:focus {
 }
 
 .add_folder_btn {
-    width: auto;
-    height: 40px;
+    width: 79px;
+    height: 19px;
     border: none;
-    border-radius: 20px;
-    background-color: var(--primary);
-    color: var(--white);
-    padding: 0 10px;
+    color: var(--primary);
     font-size: 15px;
     cursor: pointer;
 }
@@ -172,5 +169,12 @@ input:focus {
         bottom: 101px;
         right: 20px;
         z-index: 999;
+        width: 127px;
+        height: 35px;
+        border-radius: 20px;
+        background-color: var(--primary);
+        color: var(--white);
+        border: 1px solid var(--white);
+        font-size: 16px;
     }
 }

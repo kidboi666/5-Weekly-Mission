@@ -1,16 +1,16 @@
 // Header.js
-import { useFetch } from "../../hooks/useFetch";
-import { BASE_URL } from "../../constants/baseURL";
-import { Link } from "react-router-dom";
-import logo from "../../assets/logo.svg";
-import styles from "./Header.module.css";
+import { useFetch } from '../../hooks/useFetch';
+import { BASE_URL } from '../../constants/baseURL';
+import { Link } from 'react-router-dom';
+import logo from '../../assets/logo.svg';
+import styles from './Header.module.css';
 
 function Header() {
     const profileData = useFetch(`${BASE_URL}users/1`);
 
     return (
         <header className={styles.navbar}>
-            <Link to="/" className={styles.logo}>
+            <Link to="/" className={styles.logo} tabIndex={0}>
                 <img src={logo} width="133" height="24" alt="Linkbrary" />
             </Link>
             {profileData ? (
