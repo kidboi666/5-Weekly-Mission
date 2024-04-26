@@ -5,6 +5,7 @@ import { useEffect, useState, useCallback } from 'react';
 import './FolderPage.css';
 import { convertObjectKeysToCamelCase } from '../../utils/convertObjectKeysToCamelCase';
 import Modal from '../../components/Modal/Modal';
+import FolderAdd from '../../components/ModalContents/FolderAdd';
 const allFolder = {
   id: 0,
   name: '전체',
@@ -16,9 +17,11 @@ export default function FolderPage() {
   const [folders, setFolders] = useState([allFolder]);
   const [links, setLinks] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
 
   const handleFolderAddClick = () => {
     setShowModal(true);
+    setModalContent(<FolderAdd />);
   };
 
   const handleLoad = useCallback(async () => {
@@ -59,7 +62,7 @@ export default function FolderPage() {
     <>
       {showModal && (
         <>
-          <Modal onClose={() => setShowModal(false)}>123123</Modal>
+          <Modal onClose={() => setShowModal(false)}>{modalContent}</Modal>
           <div className={'overlay'} onClick={() => setShowModal(false)}></div>
         </>
       )}
