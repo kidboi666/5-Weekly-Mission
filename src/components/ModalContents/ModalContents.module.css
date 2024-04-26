@@ -20,6 +20,9 @@
   align-items: center;
   border-radius: 8px;
   border: 1px solid #ccd5e3;
+  &:focus {
+    border: 1px solid#6d6afe;
+  }
 }
 
 .modalHeader {
