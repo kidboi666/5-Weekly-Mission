@@ -1,11 +1,12 @@
 import styles from './Modal.module.css';
 
-export default function Modal({ modalText, children, onClose }) {
+export default function Modal({ children, onClose }) {
   return (
     <div className={styles.modalContainer}>
-      <button onClick={onClose} className={styles.closeButton}></button>
-      <span className={styles.modalText}>{modalText}</span>
-      {children}
+      <div className={styles.modalWrapper}>
+        <button onClick={onClose} className={styles.closeButton}></button>
+        {children}
+      </div>
     </div>
   );
 }
