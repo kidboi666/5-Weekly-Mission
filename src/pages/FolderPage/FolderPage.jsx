@@ -5,7 +5,7 @@ import { useEffect, useState, useCallback } from 'react';
 import './FolderPage.css';
 import { convertObjectKeysToCamelCase } from '../../utils/convertObjectKeysToCamelCase';
 import Modal from '../../components/Modal/Modal';
-import FolderDelete from '../../components/ModalContents/FolderDelete';
+import DeleteModal from '../../components/ModalContents/DeleteModal';
 import FolderInputModal from '../../components/ModalContents/FolderInputModal';
 const allFolder = {
   id: 0,
@@ -46,7 +46,12 @@ export default function FolderPage() {
     const currentFolder = folders.find(
       (folder) => folder.id === currentFolderId
     );
-    setModalContent(<FolderDelete folderName={currentFolder.name} />);
+    setModalContent(
+      <DeleteModal
+        headerText={'폴더 삭제'}
+        subHeaderText={currentFolder.name}
+      />
+    );
   };
 
   const handleLoad = useCallback(async () => {
