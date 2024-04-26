@@ -154,3 +154,25 @@
     color: var(--white);
     background: var(--red);
 }
+
+.sns_container {
+    display: flex;
+    gap: 32px;
+}
+
+.sns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.sns_image {
+    cursor: pointer;
+}
+
+.sns_text {
+    font-size: 13px;
+    color: #373740;
+}
