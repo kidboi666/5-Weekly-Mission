@@ -5,9 +5,8 @@ import { useEffect, useState, useCallback } from 'react';
 import './FolderPage.css';
 import { convertObjectKeysToCamelCase } from '../../utils/convertObjectKeysToCamelCase';
 import Modal from '../../components/Modal/Modal';
-import FolderAdd from '../../components/ModalContents/FolderAdd';
-import FolderNameChange from '../../components/ModalContents/FolderNameChange';
 import FolderDelete from '../../components/ModalContents/FolderDelete';
+import FolderInputModal from '../../components/ModalContents/FolderInputModal';
 const allFolder = {
   id: 0,
   name: '전체',
@@ -23,7 +22,9 @@ export default function FolderPage() {
 
   const handleFolderAddClick = () => {
     setShowModal(true);
-    setModalContent(<FolderAdd />);
+    setModalContent(
+      <FolderInputModal headerText={'폴더 추가'} buttonText={'추가하기'} />
+    );
   };
 
   const handleFolderNameChangeClick = () => {
@@ -31,7 +32,13 @@ export default function FolderPage() {
     const currentFolder = folders.find(
       (folder) => folder.id === currentFolderId
     );
-    setModalContent(<FolderNameChange folderName={currentFolder.name} />);
+    setModalContent(
+      <FolderInputModal
+        initialValue={currentFolder.name}
+        headerText={'폴더 이름 변경'}
+        buttonText={'변경하기'}
+      />
+    );
   };
 
   const handleFolderDeleteClick = () => {
