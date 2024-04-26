@@ -1,6 +1,6 @@
 import closeIcon from '../assets/_close.svg';
 
-import './modalDelete.css';
+import styles from './modalDelete.module.css';
 
 export default function ModalDelete({
   title,
@@ -14,14 +14,14 @@ export default function ModalDelete({
 
   return (
     isModalOpen && (
-      <div className="modal">
-        <div className="modal__content">
-          <div className="modal__content__header">{title}</div>
+      <div className={styles.modal}>
+        <div className={styles.modal__content}>
+          <div className={styles.modal__content__header}>{title}</div>
 
-          <div className="modal__content__body">{DeleteName}</div>
-          <button className="delete-action-button">삭제하기</button>
+          <div className={styles.modal__content__body}>{DeleteName}</div>
+          <button className={styles.delete__action__button}>삭제하기</button>
 
-          <button className="exit_button" onClick={handleCloseModal}>
+          <button className={styles.exit_button} onClick={handleCloseModal}>
             <img src={closeIcon} alt="닫기버튼" />
           </button>
         </div>

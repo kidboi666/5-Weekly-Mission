@@ -53,9 +53,13 @@ function Cardsfolder(props) {
     e.stopPropagation();
   };
 
+  if (!CardData) {
+    return null; // CardData가 없으면 렌더링하지 않음
+  }
+
   return (
     <div className={styles.card_grid_container}>
-      {CardData ? (
+      {CardData.data.length ? (
         CardData.data.map((link) => (
           <div className={styles.card_container} key={link.id}>
             <a href={link.url}>

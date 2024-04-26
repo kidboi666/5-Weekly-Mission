@@ -37,7 +37,6 @@ function FolderPage() {
         <SearchBar />
         <Foldermenu />
       </PageDisplay>
-
       <Footer />
     </>
   );
