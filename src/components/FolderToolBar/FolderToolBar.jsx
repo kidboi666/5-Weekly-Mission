@@ -15,6 +15,7 @@ export default function FolderToolBar({
   folderNameOnClick,
   onFolderAddClick,
   onFolderNameChangeClick,
+  onFolderDeleteClick,
 }) {
   const currentFolder = folders.find((folder) => folder.id === currentFolderId);
   const currentFolderName = currentFolder.name;
@@ -40,7 +41,7 @@ export default function FolderToolBar({
       btnText: '삭제',
       alt: '삭제 아이콘',
       id: 3,
-      onClick: null,
+      onClick: onFolderDeleteClick,
     },
   ];
 
