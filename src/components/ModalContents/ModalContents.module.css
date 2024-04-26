@@ -1,0 +1,37 @@
+.modalContentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 280px;
+}
+
+.modalInput {
+  width: 100%;
+  padding: 18px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid #ccd5e3;
+}
+
+.modalHeader {
+  color: #373740;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.modalButton {
+  font-size: 16px;
+  padding: 16px 20px;
+}
