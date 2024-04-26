@@ -10,6 +10,7 @@ export default function FolderToolBar({
   folders,
   currentFolderId,
   folderNameOnClick,
+  onFolderAddClick,
 }) {
   const currentFolder = folders.find((folder) => folder.id === currentFolderId);
   const currentFolderName = currentFolder.name;
@@ -31,16 +32,16 @@ export default function FolderToolBar({
           ))}
         </ul>
 
-        <button className={styles.folderAddButton}>
+        <button className={styles.folderAddButton} onClick={onFolderAddClick}>
           <span>폴더 추가</span>
           <img
             src={addIcon}
-            alt="폴더 추가 아이콘"
+            alt='폴더 추가 아이콘'
             className={styles.addIcon}
           />
           <img
             src={addIconWhite}
-            alt="폴더 추가 아이콘"
+            alt='폴더 추가 아이콘'
             className={styles.addIconWhite}
           />
         </button>
