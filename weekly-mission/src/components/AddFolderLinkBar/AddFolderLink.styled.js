@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Button from "../Button/Button";
 
 export const AddFolderLink_Container = styled.div`
   position: relative;
@@ -37,13 +36,25 @@ export const Image = styled.img`
   margin-right: 10px;
 `;
 
-export const AddButton = styled(Button)`
+export const AddButton = styled.button`
+  background-image: linear-gradient(90.99deg, #6d6afe 0.12%, #6ae3fe 101.84%);
   position: absolute;
   right: 50px;
   top: 50%;
   transform: translateY(-50%);
+
+  width: 80px;
   height: 37px;
   padding: 10px 16px;
+
+  color: #f5f5f5;
+  border: none;
+  border-radius: 8px;
   font-size: 14px;
   font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
 `;

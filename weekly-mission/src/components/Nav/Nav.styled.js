@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Button from "../Button/Button";
+import Button from "../Button/Button.styled";
 
 export const NavContainer = styled.nav`
   width: 100%;
@@ -7,7 +7,7 @@ export const NavContainer = styled.nav`
   justify-content: center;
   top: 0;
   background-color: #f0f6ff;
-  z-index: 2;
+  z-index: 1;
 `;
 
 export const Gnb = styled.div`

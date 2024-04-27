@@ -1,4 +1,4 @@
-import useFetchData from "../../hooks/useFetchData";
+import useFetchData from "../../Hooks/useFetchData";
 import AddFolderLink from "../AddFolderLinkBar/AddFolderLink";
 import * as S from "./Header.styled";
 

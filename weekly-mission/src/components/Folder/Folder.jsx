@@ -1,18 +1,12 @@
-import styled from "styled-components";
-import { useState, useEffect } from "react";
-import useFetchData from "../../hooks/useFetchData";
+import * as S from "./Folder.styled";
+import { useState, useEffect, memo } from "react";
+import useFetchData from "../../Hooks/useFetchData";
 import FolderMenuList from "../FolderMenuList/FolderMenuList";
 import FolderContent from "../FolderContent/FolderContent";
 import AddButton from "../AddButton/AddButton";
+import Modal from "../Modal/Modal";
 
 import { fetchLinkData } from "../../utils/FetchFolderLinksData";
-
-const FoldermenuToolbar = styled.div`
-  display: flex;
-  padding: 0 32px;
-  justify-content: space-between;
-  align-items: center;
-`;
 
 const Folder = ({ folderId }) => {
   const { data: foldersData, isLoading } = useFetchData(
@@ -51,14 +45,14 @@ const Folder = ({ folderId }) => {
 
   return (
     <>
-      <FoldermenuToolbar>
+      <S.FoldermenuToolbar>
         <FolderMenuList
           folders={foldersData.data}
           activeButton={activeButton}
           handleButtonClick={handleButtonClick}
         />
         <AddButton />
-      </FoldermenuToolbar>
+      </S.FoldermenuToolbar>
 
       <FolderContent
         allLinksData={allLinksData}
@@ -69,4 +63,4 @@ const Folder = ({ folderId }) => {
   );
 };
 
-export default Folder;
+export default memo(Folder);

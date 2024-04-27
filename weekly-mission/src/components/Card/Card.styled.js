@@ -3,11 +3,9 @@ import styled from "styled-components";
 export const CardContainer = styled.div`
   width: 340px;
   height: 334px;
-  border-radius: 15px;
   box-shadow: 0px 5px 25px 0px #00000014;
   text-align: center;
   position: relative;
-  overflow: hidden;
   transition: transform 0.2s ease;
 
   &:hover {
@@ -24,8 +22,28 @@ export const CardImage = styled.img`
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
   object-fit: cover;
+  border-radius: 15px;
+`;
+
+export const StarButton = styled.img`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+`;
+
+export const KebabButton = styled.img`
+  position: absolute;
+  top: 215px;
+  right: 20px;
+  cursor: pointer;
+`;
+
+export const PopoverContent = styled.div`
+  position: absolute;
+  top: 230px;
+  right: -50px;
 `;
 
 export const CardText = styled.div`

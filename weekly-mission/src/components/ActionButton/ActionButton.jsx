@@ -1,7 +1,10 @@
 import * as S from "./ActionButton.styled";
+import { memo } from "react";
 import shareIcon from "../../../image/share.png";
 import deleteIcon from "../../../image/delete.png";
 import renameIcon from "../../../image/pen.png";
+import Modal from "../Modal/Modal";
+import { useModal } from "../Context/ModalContext";
 
 const CustomButton = ({ onClick, icon, text }) => {
   return (
@@ -12,13 +15,56 @@ const CustomButton = ({ onClick, icon, text }) => {
 };
 
 const ActionButton = ({ onClick }) => {
+  const { isModalOpen, openModal, closeModal } = useModal();
+
+  const handleModalToggle = (modalType) => {
+    if (isModalOpen[modalType]) {
+      closeModal(modalType);
+    } else {
+      openModal(modalType);
+    }
+  };
+
   return (
     <S.ButtonWrapper>
-      <CustomButton onClick={onClick} icon={shareIcon} text="공유" />
-      <CustomButton onClick={onClick} icon={deleteIcon} text="삭제" />
-      <CustomButton onClick={onClick} icon={renameIcon} text="이름 변경" />
+      <CustomButton
+        onClick={() => handleModalToggle("shareFolder")}
+        icon={shareIcon}
+        text="공유"
+      />
+      {isModalOpen.shareFolder && (
+        <Modal text="폴더 공유" onClick={() => closeModal("shareFolder")} />
+      )}
+
+      <CustomButton
+        onClick={() => handleModalToggle("renameFolder")}
+        icon={renameIcon}
+        text="이름 변경"
+      />
+      {isModalOpen.renameFolder && (
+        <Modal
+          text="폴더 이름 변경"
+          buttonText="변경하기"
+          buttonType="primary"
+          onClick={() => closeModal("renameFolder")}
+        />
+      )}
+
+      <CustomButton
+        onClick={() => handleModalToggle("deleteFolder")}
+        icon={deleteIcon}
+        text="삭제"
+      />
+      {isModalOpen.deleteFolder && (
+        <Modal
+          text="폴더 삭제"
+          buttonText="삭제하기"
+          buttonType="red"
+          onClick={() => closeModal("deleteFolder")}
+        />
+      )}
     </S.ButtonWrapper>
   );
 };
 
-export default ActionButton;
+export default memo(ActionButton);

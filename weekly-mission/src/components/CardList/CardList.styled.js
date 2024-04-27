@@ -14,11 +14,11 @@ export const CardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
-  margin-top: 20px;
+  margin: 20px auto;
+  padding: 0 32px;
 
-  @media (max-width: 1199px) {
+  @media (max-width: 1124px) {
     grid-template-columns: repeat(2, 1fr);
-    max-width: 1124px;
   }
 
   @media (max-width: 769px) {
