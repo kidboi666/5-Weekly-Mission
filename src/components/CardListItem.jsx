@@ -2,7 +2,7 @@ import "./CardListItem.css";
 import NonBgImg from "../assets/noBackgroundImage.png";
 import BookmarkIcon from "../assets/star.svg";
 import { Link } from "react-router-dom";
-import { formatDate, calculatePostTimeElapsed } from "./PostDateUtility";
+import { formatDate, calculatePostTimeElapsed } from "../utils/PostDateUtility";
 import KebabMenu from "./KebabMenu";
 
 function CardListItem({ link }) {

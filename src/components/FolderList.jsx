@@ -5,7 +5,7 @@ import shareBtn from "../assets/share.svg";
 import renameBtn from "../assets/pen.svg";
 import deleteBtn from "../assets/Group 36.svg";
 import { useState } from "react";
-import CardList from "./CardList";
+import CardListSection from "./CardListSection";
 
 function FolderList({ folders }) {
   const [title, setTitle] = useState("전체");
@@ -84,9 +84,9 @@ function FolderList({ folders }) {
       </div>
       <div>
         {title === "전체" ? (
-          <CardList url={all_links_url} />
+          <CardListSection url={all_links_url} />
         ) : (
-          <CardList url={url} />
+          <CardListSection url={url} />
         )}
       </div>
     </section>
