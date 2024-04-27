@@ -31,15 +31,14 @@ function FolderTabList({ folderTabDataList, setUserFolderDataList }) {
                     <li>
                         <button
                             className={buttonClass === null ? "select" : ""}
-                            onClick={() => onClickButton(null)}
+                            onClick={() => onClickButton(null, null)}
                         >
                             전체
                         </button>
                     </li>
-                    {folderTabDataList.map(({ created_at, favorite, id, link, name, user_id }) => {
-                        const data = { created_at, favorite, id, link, name, user_id };
+                    {folderTabDataList.map((data) => {
                         return (
-                            <li key={id}>
+                            <li key={data.id}>
                                 <Button
                                     data={data}
                                     onClickButton={onClickButton}
