@@ -8,7 +8,11 @@ import kebab from '../../assets/images/kebab.svg';
 import getTimeDifference from '../../utils/time-functions/getTimeDifference.js';
 import formatDate from '../../utils/time-functions/formatDate.js';
 
-export default function LinkCard({ linkCardInfo, onShare, onLinkDelete }) {
+export default function LinkCard({
+  linkCardInfo,
+  onAddToFolder,
+  onLinkDelete,
+}) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const dropdownRef = useRef(null);
@@ -24,9 +28,14 @@ export default function LinkCard({ linkCardInfo, onShare, onLinkDelete }) {
     onLinkDelete(linkCardInfo.url);
   };
 
+  const handleAddToFolder = (e) => {
+    e.preventDefault();
+    onAddToFolder(linkCardInfo.url);
+  };
+
   const DROPDOWN_LIST_ITEMS = [
     { text: '삭제하기', onClick: handleLinkDelete },
-    { text: '폴더에추가', onClick: null },
+    { text: '폴더에추가', onClick: handleAddToFolder },
   ];
 
   useEffect(() => {
@@ -53,11 +62,6 @@ export default function LinkCard({ linkCardInfo, onShare, onLinkDelete }) {
   const handleStarClick = (event) => {
     event.preventDefault();
     setIsFavorite(!isFavorite);
-  };
-
-  const handleDropdownItemClick = (event) => {
-    event.preventDefault();
-    alert(event.target.textContent);
   };
 
   return (

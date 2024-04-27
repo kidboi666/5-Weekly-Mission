@@ -13,6 +13,7 @@ const LinkCardList = ({
   onFolderNameChangeClick,
   onFolderDeleteClick,
   onLinkDelete,
+  onAddtoFolder,
   onShare,
 }) => {
   return (
@@ -35,7 +36,11 @@ const LinkCardList = ({
           <ul className={styles.linkCardList}>
             {items.map((item) => (
               <li key={item.id}>
-                <LinkCard linkCardInfo={item} onLinkDelete={onLinkDelete} />
+                <LinkCard
+                  linkCardInfo={item}
+                  onAddToFolder={onAddtoFolder}
+                  onLinkDelete={onLinkDelete}
+                />
               </li>
             ))}
           </ul>

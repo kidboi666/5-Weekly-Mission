@@ -8,6 +8,7 @@ import Modal from '../../components/Modal/Modal';
 import DeleteModal from '../../components/ModalContents/DeleteModal';
 import FolderInputModal from '../../components/ModalContents/FolderInputModal';
 import ShareModal from '../../components/ModalContents/ShareModal';
+import AddToFolderModal from '../../components/ModalContents/AddToFolderModal';
 const allFolder = {
   id: 0,
   name: '전체',
@@ -60,6 +61,18 @@ export default function FolderPage() {
 
     setModalContent(
       <DeleteModal headerText={'링크 삭제'} subHeaderText={link} />
+    );
+  };
+
+  const handleAddToFolder = (link) => {
+    setShowModal(true);
+
+    setModalContent(
+      <AddToFolderModal
+        folders={folders}
+        headerText={'폴더에 추가'}
+        subHeaderText={link}
+      />
     );
   };
 
@@ -126,6 +139,7 @@ export default function FolderPage() {
         onFolderDeleteClick={handleFolderDeleteClick}
         onLinkDelete={handleLinkDeleteClick}
         onShare={handleShareClick}
+        onAddtoFolder={handleAddToFolder}
       />
     </>
   );
