@@ -9,3 +9,35 @@
   background: none;
   border: none;
 }
+
+.KebabMenu__options {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  gap: 4px;
+  list-style-type: none;
+  background: var(--gray-light-gray-00, #fff);
+  box-shadow: 0px 2px 8px 0px rgba(51, 50, 54, 0.1);
+  z-index: 1;
+}
+
+.KebabMenu__option {
+  background: none;
+  border: none;
+  padding: 7px 12px;
+  width: 100px;
+  color: var(--gray-light-gray-100, #333236);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.KebabMenu__option:hover {
+  background: var(--Linkbrary-gray10, #e7effb);
+  color: var(--Linkbrary-primary-color, #6d6afe);
+}

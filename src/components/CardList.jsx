@@ -1,3 +1,4 @@
+import "./CardList.css";
 import CardListItem from "./CardListItem";
 
 function CardList({ links }) {
