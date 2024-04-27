@@ -47,6 +47,8 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
+  width: 280px;
+  word-wrap: break-word;
 }
 
 .modalButton {
