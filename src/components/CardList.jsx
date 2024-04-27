@@ -1,7 +1,6 @@
 import CardListItem from "./CardListItem";
 
 function CardList({ links }) {
-  console.log(links);
   return (
     <ul className="CardLinkList">
       {links &&
