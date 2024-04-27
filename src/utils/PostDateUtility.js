@@ -3,30 +3,40 @@ export function formatDate(value) {
   return `${date.getFullYear()}. ${date.getMonth() + 1}. ${date.getDate()}`;
 }
 
-const HOURS = 60;
-const DAYS = HOURS * 24;
-const MONTH = DAYS * 30;
-const YEARS = MONTH * 12;
+const MINUTE = 60;
+const HOUR = MINUTE * 60;
+const DAY = HOUR * 24;
+const MONTH = DAY * 30;
+const YEAR = MONTH * 12;
 
 export function calculatePostTimeElapsed(value) {
   const now = new Date();
   const date = new Date(value);
-  const timeDifference = (now - date) / (1000 * 60);
-  if (timeDifference < 2) {
-    return "1 minute ago";
-  } else if (timeDifference < HOURS) {
-    return `${Math.floor(timeDifference)} minutes ago`;
-  } else if (timeDifference < DAYS) {
-    const hours = Math.floor(timeDifference / HOURS);
-    return `${hours} ${hours === 1 ? "hour" : "hours"} ago`;
-  } else if (timeDifference < MONTH) {
-    const days = Math.floor(timeDifference / DAYS);
-    return `${days} ${days === 1 ? "day" : "days"} ago`;
-  } else if (timeDifference < YEARS) {
-    const months = Math.floor(timeDifference / MONTH);
-    return `${months} ${months === 1 ? "month" : "months"} ago`;
-  } else {
-    const years = Math.floor(timeDifference / YEARS);
+  const timeDifference = (now - date) / 1000;
+
+  const years = Math.floor(timeDifference / YEAR);
+  const remainingAfterYears = timeDifference % YEAR;
+
+  const months = Math.floor(remainingAfterYears / MONTH);
+  const remainingAfterMonths = remainingAfterYears % MONTH;
+
+  const days = Math.floor(remainingAfterMonths / DAY);
+  const remainingAfterDays = remainingAfterMonths % DAY;
+
+  const hours = Math.floor(remainingAfterDays / HOUR);
+  const remainingAfterHours = remainingAfterDays % HOUR;
+
+  const minutes = Math.floor(remainingAfterHours / MINUTE);
+
+  if (years > 0) {
     return `${years} ${years === 1 ? "year" : "years"} ago`;
-  }
+  } else if (months > 0) {
+    return `${months} ${months === 1 ? "month" : "months"} ago`;
+  } else if (days > 0) {
+    return `${days} ${days === 1 ? "day" : "days"} ago`;
+  } else if (hours > 0) {
+    return `${hours} ${hours === 1 ? "hour" : "hours"} ago`;
+  } else if (minutes > 1) {
+    return `${Math.floor(timeDifference)} minutes ago`;
+  } else return "1 minute ago";
 }
