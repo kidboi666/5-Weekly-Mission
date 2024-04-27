@@ -27,8 +27,10 @@ const AddFolderLink = () => {
       {isModalOpen.addLink && (
         <Modal
           text="폴더에 추가"
+          showButton={true}
           buttonText="추가하기"
           buttonType="primary"
+          content="링크 주소"
           onClick={handleCloseAddLinkModal}
         />
       )}

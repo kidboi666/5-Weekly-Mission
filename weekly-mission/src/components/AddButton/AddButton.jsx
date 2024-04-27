@@ -33,8 +33,10 @@ const AddButton = () => {
       {isModalOpen.addFolder && (
         <AddFolderModal
           text="폴더 추가"
+          showButton={true}
           buttonText="추가하기"
           buttonType="primary"
+          showInput={true}
           onClick={handleCloseAddFolderModal}
         />
       )}

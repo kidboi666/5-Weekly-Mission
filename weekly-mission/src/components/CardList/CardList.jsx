@@ -1,6 +1,6 @@
 import SearchBar from "../Searchbar/Searchbar";
 import Folder from "../Folder/Folder";
-import useFetchData from "../../Hooks/useFetchData";
+import useFetchData from "../../hooks/useFetchData";
 import { memo } from "react";
 import Card from "../Card/Card";
 import Modal from "../Modal/Modal";
@@ -35,16 +35,20 @@ const CardList = ({ isFolderPage }) => {
       {isModalOpen.deleteFolder && (
         <Modal
           text="폴더 삭제"
+          showButton={true}
           buttonText="삭제하기"
           buttonType="red"
+          content="폴더명"
           onClick={() => closeModal("deleteFolder")}
         />
       )}
       {isModalOpen.addLink && (
         <Modal
           text="폴더에 추가"
+          showButton={true}
           buttonText="추가하기"
           buttonType="primary"
+          content="링크 주소"
           onClick={() => closeModal("addLink")}
         />
       )}

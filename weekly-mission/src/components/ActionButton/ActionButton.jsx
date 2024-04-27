@@ -1,5 +1,5 @@
 import * as S from "./ActionButton.styled";
-import { memo } from "react";
+import { useState, memo } from "react";
 import shareIcon from "../../../image/share.png";
 import deleteIcon from "../../../image/delete.png";
 import renameIcon from "../../../image/pen.png";
@@ -14,7 +14,7 @@ const CustomButton = ({ onClick, icon, text }) => {
   );
 };
 
-const ActionButton = ({ onClick }) => {
+const ActionButton = ({ activeFolderId }) => {
   const { isModalOpen, openModal, closeModal } = useModal();
 
   const handleModalToggle = (modalType) => {
@@ -33,7 +33,13 @@ const ActionButton = ({ onClick }) => {
         text="공유"
       />
       {isModalOpen.shareFolder && (
-        <Modal text="폴더 공유" onClick={() => closeModal("shareFolder")} />
+        <Modal
+          activeFolderId={activeFolderId}
+          text="폴더 공유"
+          content="폴더명"
+          showShareIcons={true}
+          onClick={() => closeModal("shareFolder")}
+        />
       )}
 
       <CustomButton
@@ -44,8 +50,10 @@ const ActionButton = ({ onClick }) => {
       {isModalOpen.renameFolder && (
         <Modal
           text="폴더 이름 변경"
+          showButton={true}
           buttonText="변경하기"
           buttonType="primary"
+          showInput={true}
           onClick={() => closeModal("renameFolder")}
         />
       )}
@@ -58,8 +66,10 @@ const ActionButton = ({ onClick }) => {
       {isModalOpen.deleteFolder && (
         <Modal
           text="폴더 삭제"
+          showButton={true}
           buttonText="삭제하기"
           buttonType="red"
+          content="폴더명"
           onClick={() => closeModal("deleteFolder")}
         />
       )}

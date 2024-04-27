@@ -13,6 +13,7 @@ const useFetchData = (url) => {
           throw new Error("Failed to fetch data");
         }
         const data = await response.json();
+
         setData(data);
       } catch (error) {
         console.error(error);

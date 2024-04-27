@@ -47,3 +47,20 @@ export const ModalInput = styled.input`
   border-radius: 8px;
   border: 1px solid #ccd5e3;
 `;
+
+export const ModalInfo = styled.div`
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  color: #9fa6b2;
+`;
+
+export const ShareIconsGroup = styled.div`
+  display: flex;
+  gap: 32px;
+`;
+
+export const ShareIcon = styled.button`
+  background-color: white;
+  cursor: pointer;
+`;

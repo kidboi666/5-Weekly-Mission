@@ -1,12 +1,11 @@
 import * as S from "./Folder.styled";
 import { useState, useEffect, memo } from "react";
-import useFetchData from "../../Hooks/useFetchData";
+import useFetchData from "../../hooks/useFetchData";
 import FolderMenuList from "../FolderMenuList/FolderMenuList";
 import FolderContent from "../FolderContent/FolderContent";
 import AddButton from "../AddButton/AddButton";
-import Modal from "../Modal/Modal";
 
-import { fetchLinkData } from "../../utils/FetchFolderLinksData";
+import { fetchLinkData } from "../../services/fetchFolderLinksData";
 
 const Folder = ({ folderId }) => {
   const { data: foldersData, isLoading } = useFetchData(

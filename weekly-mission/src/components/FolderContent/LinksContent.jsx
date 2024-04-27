@@ -8,7 +8,6 @@ const LinksContent = ({
   activeFolderName,
   activeFolderId,
   onClick,
-  shareIcon,
 }) => {
   const isEmpty = !linksData || linksData.data.length === 0;
 
@@ -16,7 +15,9 @@ const LinksContent = ({
     <>
       <S.FoldermenuToolbar>
         <S.SelectedFolder>{activeFolderName}</S.SelectedFolder>
-        {activeFolderId !== null && <ActionButton onClick={onClick} />}
+        {activeFolderId !== null && (
+          <ActionButton activeFolderId={activeFolderId} onClick={onClick} />
+        )}
       </S.FoldermenuToolbar>
 
       <S.FolderContainer>

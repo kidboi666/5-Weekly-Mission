@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import LinkbraryImage from "../../../image/Linkbrary.png";
 import profileImage from "../../../image/profileimg.jpg";
 import * as S from "../Nav/Nav.styled";
-import useFetchData from "../../Hooks/useFetchData";
+import useFetchData from "../../hooks/useFetchData";
 
 const Nav = () => {
   const profileData = useFetchData(
