@@ -70,3 +70,24 @@
   font-size: 16px;
   font-weight: 600;
 }
+
+.shareButtonBar {
+  display: flex;
+  gap: 32px;
+}
+
+.shareButtonWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.shareButton {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  &:hover {
+    box-shadow: 0 0 10px #6ae3fe;
+  }
+}

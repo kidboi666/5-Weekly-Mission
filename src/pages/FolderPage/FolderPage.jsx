@@ -7,6 +7,7 @@ import { convertObjectKeysToCamelCase } from '../../utils/convertObjectKeysToCam
 import Modal from '../../components/Modal/Modal';
 import DeleteModal from '../../components/ModalContents/DeleteModal';
 import FolderInputModal from '../../components/ModalContents/FolderInputModal';
+import ShareModal from '../../components/ModalContents/ShareModal';
 const allFolder = {
   id: 0,
   name: '전체',
@@ -62,6 +63,16 @@ export default function FolderPage() {
     );
   };
 
+  const handleShareClick = () => {
+    setShowModal(true);
+    const currentFolder = folders.find(
+      (folder) => folder.id === currentFolderId
+    );
+    setModalContent(
+      <ShareModal headerText={'폴더 공유'} subHeaderText={currentFolder.name} />
+    );
+  };
+
   const handleLoad = useCallback(async () => {
     let result;
     try {
@@ -114,6 +125,7 @@ export default function FolderPage() {
         onFolderNameChangeClick={handleFolderNameChangeClick}
         onFolderDeleteClick={handleFolderDeleteClick}
         onLinkDelete={handleLinkDeleteClick}
+        onShare={handleShareClick}
       />
     </>
   );

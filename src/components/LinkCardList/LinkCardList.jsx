@@ -13,6 +13,7 @@ const LinkCardList = ({
   onFolderNameChangeClick,
   onFolderDeleteClick,
   onLinkDelete,
+  onShare,
 }) => {
   return (
     <div className={styles.linkCardListContainer}>
@@ -26,6 +27,7 @@ const LinkCardList = ({
             onFolderAddClick={onFolderAddClick}
             onFolderNameChangeClick={onFolderNameChangeClick}
             onFolderDeleteClick={onFolderDeleteClick}
+            onShare={onShare}
           />
         )}
 

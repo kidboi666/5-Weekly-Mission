@@ -16,6 +16,7 @@ export default function FolderToolBar({
   onFolderAddClick,
   onFolderNameChangeClick,
   onFolderDeleteClick,
+  onShare,
 }) {
   const currentFolder = folders.find((folder) => folder.id === currentFolderId);
   const currentFolderName = currentFolder.name;
@@ -26,7 +27,7 @@ export default function FolderToolBar({
       btnText: '공유',
       alt: '공유 아이콘',
       id: 1,
-      onClick: null,
+      onClick: onShare,
     },
 
     {
