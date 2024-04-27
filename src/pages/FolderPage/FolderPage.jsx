@@ -54,6 +54,14 @@ export default function FolderPage() {
     );
   };
 
+  const handleLinkDeleteClick = (link) => {
+    setShowModal(true);
+
+    setModalContent(
+      <DeleteModal headerText={'링크 삭제'} subHeaderText={link} />
+    );
+  };
+
   const handleLoad = useCallback(async () => {
     let result;
     try {
@@ -105,6 +113,7 @@ export default function FolderPage() {
         onFolderAddClick={handleFolderAddClick}
         onFolderNameChangeClick={handleFolderNameChangeClick}
         onFolderDeleteClick={handleFolderDeleteClick}
+        onLinkDelete={handleLinkDeleteClick}
       />
     </>
   );

@@ -1,6 +1,6 @@
 import styles from './ModalContents.module.css';
 
-export default function deleteModal({ headerText, subHeaderText }) {
+export default function DeleteModal({ headerText, subHeaderText }) {
   return (
     <div className={styles.modalContentWrapper}>
       <div className={styles.modalHeaderWrapper}>

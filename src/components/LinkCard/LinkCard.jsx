@@ -8,9 +8,7 @@ import kebab from '../../assets/images/kebab.svg';
 import getTimeDifference from '../../utils/time-functions/getTimeDifference.js';
 import formatDate from '../../utils/time-functions/formatDate.js';
 
-const DROPDOWN_LIST_ITEMS = ['삭제하기', '폴더에추가'];
-
-export default function LinkCard({ linkCardInfo }) {
+export default function LinkCard({ linkCardInfo, onShare, onLinkDelete }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const dropdownRef = useRef(null);
@@ -20,6 +18,16 @@ export default function LinkCard({ linkCardInfo }) {
       setIsDropdownOpen(false);
     }
   };
+
+  const handleLinkDelete = (e) => {
+    e.preventDefault();
+    onLinkDelete(linkCardInfo.url);
+  };
+
+  const DROPDOWN_LIST_ITEMS = [
+    { text: '삭제하기', onClick: handleLinkDelete },
+    { text: '폴더에추가', onClick: null },
+  ];
 
   useEffect(() => {
     document.addEventListener('click', handleClickOutside);
@@ -56,19 +64,19 @@ export default function LinkCard({ linkCardInfo }) {
     <a
       className={styles.linkCard}
       href={url}
-      target="_blank"
-      rel="noreferrer noopener"
+      target='_blank'
+      rel='noreferrer noopener'
     >
       <div className={styles.thumbnailContainer}>
         <button onClick={handleStarClick} className={styles.starButton}>
           {isFavorite ? (
             <img
               src={purpleStarIcon}
-              alt="favorite"
+              alt='favorite'
               className={styles.purpleStarIcon}
             />
           ) : (
-            <img src={starIcon} alt="favorite" className={styles.starIcon} />
+            <img src={starIcon} alt='favorite' className={styles.starIcon} />
           )}
         </button>
         <img className={styles.thumbnail} src={thumbnailURL} alt={altMessage} />
@@ -76,19 +84,19 @@ export default function LinkCard({ linkCardInfo }) {
       <div className={styles.linkCardInfo}>
         <div className={styles.linkCardTimestampBar}>
           <span className={styles.timestamp}>{timestamp}</span>
-          <div className="kebab-button-container" ref={dropdownRef}>
+          <div className='kebab-button-container' ref={dropdownRef}>
             <button onClick={handleKebabClick} className={styles.kebabButton}>
-              <img src={kebab} alt="kebab" className={styles.kebabButton} />
+              <img src={kebab} alt='kebab' className={styles.kebabButton} />
             </button>
             {isDropdownOpen && (
               <ul className={styles.dropdownList}>
                 {DROPDOWN_LIST_ITEMS.map((item, index) => (
                   <li key={index}>
                     <button
-                      onClick={handleDropdownItemClick}
+                      onClick={item.onClick}
                       className={styles.dropdownItem}
                     >
-                      {item}
+                      {item.text}
                     </button>
                   </li>
                 ))}
