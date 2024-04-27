@@ -1,6 +1,7 @@
 import * as S from "./Popover.styled";
 import { memo } from "react";
 import { useModal } from "../Context/ModalContext";
+import Modal from "../Modal/Modal";
 
 const Popover = () => {
   const { isModalOpen, openModal, closeModal } = useModal();
