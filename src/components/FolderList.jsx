@@ -70,17 +70,19 @@ function FolderList({ folders }) {
         <div className="folderLinkList__folderName" id={id}>
           {title}
         </div>
-        <div className="folderLinkList__folderEditBtns">
-          <button className="folderLinkList__folderEditBtn">
-            <img src={shareBtn} alt="공유하기" /> 공유
-          </button>
-          <button className="folderLinkList__folderEditBtn">
-            <img src={renameBtn} alt="이름변경" /> 이름 변경
-          </button>
-          <button className="folderLinkList__folderEditBtn">
-            <img src={deleteBtn} alt="삭제" /> 삭제
-          </button>
-        </div>
+        {title !== "전체" && (
+          <div className="folderLinkList__folderEditBtns">
+            <button className="folderLinkList__folderEditBtn">
+              <img src={shareBtn} alt="공유하기" /> 공유
+            </button>
+            <button className="folderLinkList__folderEditBtn">
+              <img src={renameBtn} alt="이름변경" /> 이름 변경
+            </button>
+            <button className="folderLinkList__folderEditBtn">
+              <img src={deleteBtn} alt="삭제" /> 삭제
+            </button>
+          </div>
+        )}
       </div>
       <div>
         {title === "전체" ? (
