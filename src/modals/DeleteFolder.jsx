@@ -13,6 +13,7 @@ function DeleteFolder({ madalTitle, title, onClose }) {
       <div
         className={styles.modal}
         onClick={(e) => {
+          e.stopPropagation();
           e.preventDefault();
         }}
       >

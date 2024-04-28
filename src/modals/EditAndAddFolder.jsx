@@ -14,6 +14,7 @@ function EditAndAddFolder({ madalTitle, alter, onClose }) {
         className={styles.modal}
         onClick={(e) => {
           e.stopPropagation();
+          e.preventDefault();
         }}
       >
         <button
