@@ -41,16 +41,22 @@
 }
 
 .title {
+    width: 300px;
     color: #373740;
     font-weight: 700;
     font-size: 20px;
     text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .subtitle {
+    width: 300px;
     font-size: 14px;
     color: #9fa6b2;
     text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .submit_container {
