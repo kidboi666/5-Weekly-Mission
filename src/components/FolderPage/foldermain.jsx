@@ -1,5 +1,5 @@
 import FolderList from "./folderlist";
-import SearchBar from "./searchbar";
+import SearchBar from "../SharedPage/searchbar";
 import styles from './foldermain.module.css';
 function FolderMain() {
 

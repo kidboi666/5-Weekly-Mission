@@ -1,11 +1,11 @@
 import SearchBar from "./searchbar";
-import CardList from "./cardlist";
+import CardList from "../cardlist";
 import './mainsection.css';
 function MainSection() {
   return (
     <div className="mainSection">
       <SearchBar />
-      <CardList />
+      <CardList url ="https://bootcamp-api.codeit.kr/api/sample/folder"/>
     </div>
   );
 }

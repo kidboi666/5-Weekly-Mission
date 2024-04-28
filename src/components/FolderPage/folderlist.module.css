@@ -72,6 +72,11 @@
   cursor: pointer;
 }
 
+.folderList__plus__text {
+  width: 60px;
+  height: 20px;
+}
+
 .title__container {
   display: flex;
   width: 100%;
@@ -95,9 +100,6 @@
   .folderList__Container {
     width: 700px;
   }
-  .folderList__plus {
-    display: none;
-  }
 }
 
 @media (max-width: 767px) {
@@ -110,5 +112,8 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+  }
+  .folderList__plus {
+    display: none;
   }
 }

@@ -1,6 +1,6 @@
 import Header from "./components/header";
 import FolderTitle from "./components/foldertitle";
-import MainSection from "./components/mainsection";
+import MainSection from "./components/SharedPage/mainsection";
 import Footer from "./components/footer";
 import './App.css';
 

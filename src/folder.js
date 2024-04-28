@@ -1,7 +1,7 @@
-import FolderPlusLink from "./components/folderpluslink";
+import FolderPlusLink from "./components/FolderPage/folderpluslink";
 import Header from "./components/header";
 import Footer from "./components/footer";
-import FolderMain from "./components/foldermain";
+import FolderMain from "./components/FolderPage/foldermain";
 import './folder.css';
 
 function Folder() {

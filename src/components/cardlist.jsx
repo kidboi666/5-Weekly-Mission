@@ -1,7 +1,11 @@
 import "./cardlist.css";
 import { useFetch } from "../usefetch";
-import NoImgae from "../assets/NoImage.svg";
+import DefaultImgae from "../assets/NoImage.svg";
 import { Link } from "react-router-dom";
+import StarImg from "../assets/star.svg";
+import KebabImg from "../assets/kebab.svg";
+import { useState } from "react";
+import CardKebab from "./FolderPage/CardKebab";
 
 const second = 1000;
 const minute = second * 60;
@@ -55,20 +59,25 @@ export const getElapsedTime = (createdAt) => {
   return `1 minute ago`;
 };
 
-function CardListItem({ item, folder = false }) {
-
+function CardListItem({ item }) {
+  const [showKebab, setShowkebab] = useState(false);
   const creatTime = item.createdAt ? item.createdAt : item.created_at;
   const creatDate = new Date(creatTime);
   const year = creatDate.getFullYear();
   const month = creatDate.getMonth() + 1;
   const day = creatDate.getDate();
-
+  
   const thumbnail = item.imageSource ? item.imageSource : item.image_source;
 
+  const onErrorImg = (e) => {
+    e.target.src = DefaultImgae;
+  };
+  const closeKebab = () => {
+    setShowkebab(false);
+  }
 
   return (
-    <Link to={item.url ? item.url : "/"} target="blank" className="CardLink">
-      <p>{item.count}</p>
+    <>
       <div className="CardListItem">
         <div className="CardListItem__imgs">
           {thumbnail ? (
@@ -76,25 +85,52 @@ function CardListItem({ item, folder = false }) {
               src={thumbnail}
               alt={item.title}
               className="CardListItem__img"
+              onError={onErrorImg} //404 에러 이미지 기본 이미지로 바꾸기
             />
           ) : (
-            <img src={NoImgae} alt={item.title} className="CardListItem__img" />
+            <img
+              src={DefaultImgae}
+              alt={item.title}
+              className="CardListItem__img"
+            />
           )}
         </div>
-        <div className="CardInfo">
-          <p className="CardInfo__time">{getElapsedTime(creatTime)}</p>
-          <h1 className="CardInfo__title">{item.description}</h1>
-          <p className="CardInfo__date">
-            {year}. {month}. {day}
-          </p>
-        </div>
+        <Link
+          to={item.url ? item.url : "/"}
+          target="blank"
+          className="CardLink"
+        >
+          <div className="CardInfo">
+            <p className="CardInfo__time">{getElapsedTime(creatTime)}</p>
+            <p className="CardInfo__title">
+              {item.description ? item.description : item.title}
+            </p>
+            <p className="CardInfo__date">
+              {year}. {month}. {day}
+            </p>
+            <img
+              src={KebabImg}
+              alt="카드 케밥 버튼 이미지"
+              className="KebabImg"
+              onClick={(e) => {
+                e.stopPropagation(); // 상위 링크 클릭 방지
+                e.preventDefault(); // 기본 링크 이벤트 방지
+                setShowkebab(!showKebab);
+              }}
+            ></img>
+            {showKebab && (
+              <CardKebab closeKebab={closeKebab}></CardKebab>
+            )}
+          </div>
+        </Link>
+
+        <img src={StarImg} alt="즐겨찾기 버튼 이미지" className="StarImg"></img>
       </div>
-    </Link>
-  
+    </>
   );
 }
 
-function CardList({ url }) {
+function CardList({ url, folder = false }) {
   const cardListItems = useFetch(url);
 
   return (
@@ -102,16 +138,13 @@ function CardList({ url }) {
       {cardListItems?.folder?.links.map((link) => (
         <CardListItem key={link.id} item={link} />
       ))}
-      {cardListItems?.data?.length > 0 ? (
-        cardListItems?.data?.map((link) => (
-          <CardListItem key={link.id} item={link} folder={true} />
-        ))
-      ) : (
-        <div className="NoDataList">저장된 링크가 없습니다.</div>
-      )}
+      {cardListItems?.data?.length > 0
+        ? cardListItems?.data?.map((link) => (
+            <CardListItem key={link.id} item={link} />
+          ))
+        : folder && <div className="NoDataList">저장된 링크가 없습니다.</div>}
     </div>
   );
 }
-
 
 export default CardList;

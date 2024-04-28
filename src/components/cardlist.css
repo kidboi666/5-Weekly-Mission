@@ -18,10 +18,12 @@
   }
 }
 .CardLink {
+  position: relative;
   text-decoration: none;
 }
 
 .CardListItem {
+  position: relative;
   width: 340px;
   height: 334px;
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
@@ -48,6 +50,7 @@
 }
 
 .CardInfo {
+  position: relative;
   height: 134px;
   display: flex;
   width: 340px;
@@ -109,4 +112,18 @@
   font-style: normal;
   font-weight: 400;
   line-height: 24px; /* 150% */
+}
+
+
+.StarImg {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.KebabImg {
+  position: absolute;
+  top: 15px;
+  right: 20px;
 }
