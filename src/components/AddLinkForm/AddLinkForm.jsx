@@ -4,10 +4,11 @@ import { useContext } from "react";
 import ModalContext from "../Modal/ModalContext";
 
 function AddLinkForm() {
-  const { openModal } = useContext(ModalContext);
+  const { openModal, setModalType } = useContext(ModalContext);
   const onClickModalOpen = (e) => {
     e.preventDefault();
     openModal();
+    setModalType("folderAdd");
   };
   return (
     <div className="link-wrap">
