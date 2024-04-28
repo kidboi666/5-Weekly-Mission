@@ -1,9 +1,9 @@
-import Navigation from "../components/Navigation";
-import SearchBar from "../components/SearchBar";
-import styled from "styled-components";
-import Footer from "../components/Footer";
-import Addlink from "../components/Addlink";
-import Foldermenu from "../components/Foldermenu";
+import Navigation from '../components/Navigation';
+import SearchBar from '../components/SearchBar';
+import styled from 'styled-components';
+import Footer from '../components/Footer';
+import Addlink from '../components/Addlink';
+import Foldermenu from '../components/Foldermenu';
 
 /*테블릿 1124 이상 모바일 최소여백 32       테블릿 768~1199 모바일 375 ~767    */
 const PageDisplay = styled.div`

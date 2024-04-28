@@ -1,4 +1,4 @@
-@import "../.././global.css";
+@import '../.././global.css';
 
 .card {
   display: flex;
@@ -6,7 +6,6 @@
   align-items: flex-start;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 10px;
-  position: relative;
 }
 
 .card_txt_div_body {
@@ -58,11 +57,24 @@
   position: absolute;
   top: 1.6rem;
   right: 1.6rem;
-  z-index: 1;
+  z-index: 2;
+}
+
+.card_container {
+  position: relative;
+}
+
+.card_moreoption_icon {
+  position: absolute;
+  top: 21.6rem;
+  right: 2rem;
+  z-index: 2;
 }
 
 .card_img {
-  background-size: cover;
+  width: 34rem;
+  height: 20rem;
+  object-fit: cover;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 
@@ -71,6 +83,29 @@
   }
 }
 
+.popover {
+  width: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--white);
+  height: 6.2rem;
+  position: absolute;
+  top: 23.6rem;
+  right: -5.5rem;
+  z-index: 2;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.options {
+  width: 100%;
+  text-align: center;
+  padding: 0.7rem 0;
+
+  &:hover {
+    background-color: var(--gray10);
+  }
+}
 .coloredText {
   background-color: var(--light-blue);
 }
