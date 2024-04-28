@@ -1,9 +1,9 @@
-import styled from 'styled-components';
-import Logo from '../asset/logo.svg';
-import { GRAY5 } from './color';
+import styled from "styled-components";
+import Logo from "../asset/logo.svg";
+import { GRAY5 } from "./color";
 
-const Heade = styled.header`
-  position: ${({ $headerFixed }) => ($headerFixed ? 'fixed' : 'static')};
+const Heading = styled.header`
+  position: ${({ $headerFixed }) => ($headerFixed ? "fixed" : "static")};
   left: 0;
   right: 0;
   top: 0;
@@ -117,7 +117,7 @@ const UserProfile = ({ email, img }) => {
 
 const Header = ({ isLogIn, email, img, fixed }) => {
   return (
-    <Heade $headerFixed={fixed}>
+    <Heading $headerFixed={fixed}>
       <HeaderContent>
         <a href="https://www.naver.com/" target="blank">
           <H1Logo>
@@ -136,7 +136,7 @@ const Header = ({ isLogIn, email, img, fixed }) => {
           <Button type="button">로그인</Button>
         )}
       </HeaderContent>
-    </Heade>
+    </Heading>
   );
 };
 

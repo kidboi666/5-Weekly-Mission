@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   * {box-sizing: border-box};
@@ -82,7 +82,8 @@ const GlobalStyle = createGlobalStyle`
   time,
   mark,
   audio,
-  video {
+  video,
+  input {
     margin: 0;
     padding: 0;
     border: 0;

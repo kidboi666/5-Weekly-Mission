@@ -1,7 +1,7 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState } from "react";
 
 export function useData(asyncFunction) {
-  const [Data, setData] = useState(null);
+  const [data, setData] = useState(null);
 
   const getData = useCallback(
     async (value = null) => {
@@ -16,5 +16,5 @@ export function useData(asyncFunction) {
     [asyncFunction]
   );
 
-  return [Data, getData];
+  return [data, getData];
 }

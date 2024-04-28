@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import Card from './Card';
+import styled from "styled-components";
+import Card from "./Card";
 
 const CardsList = styled.ul`
   display: grid;
@@ -16,13 +16,13 @@ const CardsList = styled.ul`
   }
 `;
 
-function CardList({ items }) {
+function CardList({ items, folder }) {
   return (
     <CardsList>
       {items?.map((item) => {
         return (
           <li key={item.id}>
-            <Card item={item} />
+            <Card item={item} folder={folder} />
           </li>
         );
       })}

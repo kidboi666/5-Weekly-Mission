@@ -1,8 +1,8 @@
-import Header from './Header';
-import Footer from './Footer';
-import { useCallback, useEffect, useState } from 'react';
-import { getUsersData } from './Api';
-import { useData } from '../Hooks/useData';
+import Header from "./Header";
+import Footer from "./Footer";
+import { useCallback, useEffect, useState } from "react";
+import { getUsersData } from "./Api/Api";
+import { useData } from "../Hooks/useData";
 
 function App({ children, headerFixed }) {
   const [user, getUser] = useData(getUsersData);

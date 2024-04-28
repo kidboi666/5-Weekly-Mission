@@ -1,8 +1,11 @@
-import styled from 'styled-components';
-import { GRAY4, PRIMARY, WHITE } from '../color';
-import Add from '../../asset/add.svg';
-import AddWhite from '../../asset/addWhite.svg';
-import FolderNameBar from './FolderNameBar';
+import styled from "styled-components";
+import { GRAY4, PRIMARY, WHITE } from "../color";
+import Add from "../../asset/add.svg";
+import AddWhite from "../../asset/addWhite.svg";
+import FolderNameBar from "./FolderNameBar";
+import { useState } from "react";
+import Portal from "../../Portal/Portal";
+import ModalAddFolder from "../Modal/ModalAddFolder";
 
 const Block = styled.button`
   display: flex;
@@ -58,7 +61,7 @@ const AddFolder = styled.button`
   letter-spacing: -0.3px;
 
   &::after {
-    content: '';
+    content: "";
     background-image: url(${Add});
     background-size: cover;
     display: inline-block;
@@ -97,20 +100,14 @@ const FolderIndex = ({ items, onClick, selectedId }) => {
   return (
     <FolderList onClick={onClick}>
       <li key={-1}>
-        <FolderBlock item={{ id: '-1' }} clicked={selectedId ? false : true}>
+        <FolderBlock item={{ id: "-1" }} clicked={selectedId ? false : true}>
           전체
         </FolderBlock>
       </li>
       {items?.map(function (item) {
-        let clicked;
-        if (item?.id === selectedId) {
-          clicked = true;
-        } else {
-          clicked = false;
-        }
         return (
           <li key={item?.id}>
-            <FolderBlock item={item} clicked={clicked}>
+            <FolderBlock item={item} clicked={item?.id === selectedId}>
               {item?.name}
             </FolderBlock>
           </li>
@@ -121,7 +118,12 @@ const FolderIndex = ({ items, onClick, selectedId }) => {
 };
 
 function FolderBar({ folderInfo, onClick, selectedFolder }) {
+  const [addFolder, setAddFolder] = useState(false);
   const selectedId = Number(selectedFolder?.id);
+
+  const handleAddFolder = () => {
+    setAddFolder(!addFolder);
+  };
 
   return (
     <>
@@ -131,9 +133,14 @@ function FolderBar({ folderInfo, onClick, selectedFolder }) {
           items={folderInfo?.data}
           selectedId={selectedId}
         />
-        <AddFolder type="button">폴더 추가</AddFolder>
+        <AddFolder type="button" onClick={handleAddFolder}>
+          폴더 추가
+        </AddFolder>
       </Bar>
       <FolderNameBar selectedFolder={selectedFolder} />
+      <Portal elementId="modal-root">
+        {addFolder && <ModalAddFolder onClick={handleAddFolder} />}
+      </Portal>
     </>
   );
 }

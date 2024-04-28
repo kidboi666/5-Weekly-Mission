@@ -1,10 +1,10 @@
-import { useEffect, useCallback } from 'react';
-import { getFolderData } from '../components/Api';
-import SubHeader from '../components/SubHeader';
-import Shared from '../components/SharedPage/Shared';
-import { useData } from '../Hooks/useData';
-import UserFolderInfo from '../components/SharedPage/UserFolderInfo';
-import App from '../components/App';
+import { useEffect, useCallback } from "react";
+import { getFolderData } from "../components/Api/Api";
+import SubHeader from "../components/SubHeader";
+import Shared from "../components/SharedPage/Shared";
+import { useData } from "../Hooks/useData";
+import UserFolderInfo from "../components/SharedPage/UserFolderInfo";
+import App from "../components/App";
 
 function SharedPage() {
   const [folder, getFolder] = useData(getFolderData);

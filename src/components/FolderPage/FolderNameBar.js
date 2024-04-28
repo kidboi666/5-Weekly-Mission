@@ -1,11 +1,16 @@
-import styled from 'styled-components';
-import { GRAY2 } from '../color';
-import shareImg from '../../asset/share.svg';
-import penImg from '../../asset/pen.svg';
-import deleteImg from '../../asset/delete.svg';
+import styled from "styled-components";
+import { GRAY2 } from "../color";
+import shareImg from "../../asset/share.svg";
+import penImg from "../../asset/pen.svg";
+import deleteImg from "../../asset/delete.svg";
+import Portal from "../../Portal/Portal";
+import { useState } from "react";
+import ModalDeleteFolder from "../Modal/ModalDeleteFolder";
+import ModalEdit from "../Modal/ModalEdit";
+import ModalShare from "../Modal/ModalShare";
 
-const ICON_MARGIN = '4px';
-const ICON_H_W = '18px';
+const ICON_MARGIN = "4px";
+const ICON_H_W = "18px";
 
 const Bar = styled.div`
   display: flex;
@@ -25,7 +30,7 @@ const Name = styled.h3`
   font-weight: 600;
   line-height: normal;
   letter-spacing: -0.2px;
-  width @media (max-width: 767px) {
+  @media (max-width: 767px) {
     font-size: 20px;
   }
 `;
@@ -46,7 +51,7 @@ const Tool = styled.button`
 
 const ToolShared = styled(Tool)`
   &::before {
-    content: '';
+    content: "";
     background-image: url(${shareImg});
     background-size: cover;
     display: inline-block;
@@ -58,7 +63,7 @@ const ToolShared = styled(Tool)`
 
 const ToolNameChange = styled(Tool)`
   &::before {
-    content: '';
+    content: "";
     background-image: url(${penImg});
     background-size: cover;
     display: inline-block;
@@ -70,7 +75,7 @@ const ToolNameChange = styled(Tool)`
 
 const ToolDelete = styled(Tool)`
   &::before {
-    content: '';
+    content: "";
     background-image: url(${deleteImg});
     background-size: cover;
     display: inline-block;
@@ -81,22 +86,53 @@ const ToolDelete = styled(Tool)`
 `;
 
 function FolderNameBar({ selectedFolder }) {
+  const [deleteFolder, setDeleteFolder] = useState(false);
+  const [nameChange, setNameChange] = useState(false);
+  const [share, setShare] = useState(false);
+
+  const handleDel = () => {
+    setDeleteFolder(!deleteFolder);
+  };
+
+  const handleChange = () => {
+    setNameChange(!nameChange);
+  };
+
+  const handleShare = () => {
+    setShare(!share);
+  };
+
   return (
     <Bar>
-      <Name>{selectedFolder?.name ?? '전체'}</Name>
+      <Name>{selectedFolder?.name ?? "전체"}</Name>
       {selectedFolder?.name && (
         <Tools>
-          <ToolShared type="button" className="Tool_shared">
+          <ToolShared
+            type="button"
+            className="Tool_shared"
+            onClick={handleShare}
+          >
             공유
           </ToolShared>
-          <ToolNameChange type="button" className="Tool_nameChange">
+          <ToolNameChange
+            type="button"
+            className="Tool_nameChange"
+            onClick={handleChange}
+          >
             이름 변경
           </ToolNameChange>
-          <ToolDelete type="button" className="Tool_delete">
+          <ToolDelete type="button" className="Tool_delete" onClick={handleDel}>
             삭제
           </ToolDelete>
         </Tools>
       )}
+      <Portal elementId="modal-root">
+        {deleteFolder && (
+          <ModalDeleteFolder info={selectedFolder?.name} onClick={handleDel} />
+        )}
+        {nameChange && <ModalEdit onClick={handleChange} />}
+        {share && <ModalShare onClick={handleShare} info={selectedFolder} />}
+      </Portal>
     </Bar>
   );
 }

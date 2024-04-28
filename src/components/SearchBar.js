@@ -1,8 +1,9 @@
-import styled from 'styled-components';
-import searchIcon from '../asset/Search.svg';
+import styled from "styled-components";
+import searchIcon from "../asset/Search.svg";
+import { memo, useRef } from "react";
 
-const BAR_COLOR = '#f5f5f5';
-const BAR_BORDER_RADIUS = '10px';
+const BAR_COLOR = "#f5f5f5";
+const BAR_BORDER_RADIUS = "10px";
 
 const BarOfSearch = styled.form`
   display: flex;
@@ -12,7 +13,7 @@ const BarOfSearch = styled.form`
   overflow: hidden;
 
   &::before {
-    content: '';
+    content: "";
     background-image: url(${searchIcon});
     background-size: cover;
     display: inline-block;
@@ -53,19 +54,26 @@ const HiddenLabel = styled.label`
 `;
 
 const SearchBar = ({ palceholder }) => {
+  const search = useRef(null);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const searchingLink = document.querySelector(`#search`);
+    const searchingLink = search.current;
     console.log(searchingLink.value);
   };
 
   return (
     <BarOfSearch onSubmit={handleSubmit}>
       <HiddenLabel htmlFor="search">검색</HiddenLabel>
-      <SearchInput type="text" id="search" placeholder={palceholder} />
+      <SearchInput
+        type="text"
+        id="search"
+        placeholder={palceholder}
+        ref={search}
+      />
       <HiddenButton type="submit">검색하기</HiddenButton>
     </BarOfSearch>
   );
 };
 
-export default SearchBar;
+export default memo(SearchBar);
