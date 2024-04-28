@@ -1,5 +1,12 @@
 export const ALL_LINKS_TEXT = "전체";
 
+export const MODALS_ID = {
+  addFolder: "addFolder",
+  share: "share",
+  rename: "rename",
+  delete: "delete",
+};
+
 export const BUTTONS = [
   {
     iconSource: "images/icon/share.svg",

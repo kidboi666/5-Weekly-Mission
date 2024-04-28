@@ -42,3 +42,21 @@ export const WrapFolderList = styled.div`
   overflow-y: auto;
   row-gap: 0.4rem;
 `;
+
+export const ModalInput = styled.input`
+  width: 100%;
+  border: 0.1rem solid var(--Linkbrary-gray20);
+  border-radius: 0.8rem;
+  font-size: 1.6rem;
+  color: var(--Linkbrary-gray100);
+  padding: 1.8rem 1.5rem;
+  transition: border-color 0.2s ease-in-out;
+
+  &::placeholder {
+    color: var(--Linkbrary-gray60);
+  }
+
+  &:focus {
+    border-color: var(--Linkbrary-primary-color);
+  }
+`;

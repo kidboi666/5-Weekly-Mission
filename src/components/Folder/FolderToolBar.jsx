@@ -1,17 +1,30 @@
+import { useState } from "react";
 import { ALL_LINKS_ID } from "../../api/constant";
-import { ALL_LINKS_TEXT, BUTTONS } from "./constant";
+import { ALL_LINKS_TEXT, MODALS_ID, BUTTONS } from "./constant";
 import * as FolderToolBarLayout from "./FolderToolBar.style";
+import { AddFolderModal } from "../\bModals/AddFolderModal";
 
 export const FolderToolBar = ({
   folderList,
   selectedFolderId,
   onFolderClick,
 }) => {
+  const [currentModal, setCurrentModal] = useState(null);
   // 현재 폴더 이름
   const folderName =
     ALL_LINKS_ID === selectedFolderId
       ? ALL_LINKS_TEXT
       : folderList?.find(({ id }) => id === selectedFolderId)?.name;
+
+  const closeModal = () => {
+    setCurrentModal(null);
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Escape") {
+      closeModal();
+    }
+  };
   return (
     <FolderToolBarLayout.FolderToolBarWrap>
       {/* TooBar Button */}
@@ -35,10 +48,20 @@ export const FolderToolBar = ({
 
       {/* add Foler Button */}
       <FolderToolBarLayout.AddFolderButtonWrap>
-        <FolderToolBarLayout.AddFolderButton>
+        <FolderToolBarLayout.AddFolderButton
+          onClick={() => setCurrentModal(MODALS_ID.addFolder)}
+        >
           <span>폴더 추가</span>
           <FolderToolBarLayout.AddFolderSvg />
         </FolderToolBarLayout.AddFolderButton>
+        <AddFolderModal
+          isOpen={currentModal === MODALS_ID.addFolder}
+          title="폴더 추가"
+          placeholder="내용 입력"
+          buttonText="추가하기"
+          onCloseClick={closeModal}
+          onKeyDown={handleKeyDown}
+        />
       </FolderToolBarLayout.AddFolderButtonWrap>
 
       {/* 폴더 이름 */}

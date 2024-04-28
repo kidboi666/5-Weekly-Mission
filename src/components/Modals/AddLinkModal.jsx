@@ -2,7 +2,7 @@ import { Modal } from "../Modal/Modal";
 import { ModalContentBox } from "../Modal/ModalContentBox";
 import { ModalFolderItem } from "../Modal/ModalFolderItem";
 
-import * as S from "./AddLinkModal.style";
+import * as S from "./Modals.style";
 
 export const AddLinkModal = ({
   folderList,
