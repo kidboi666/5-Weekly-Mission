@@ -26,7 +26,7 @@ function CardListItem({ link }) {
           </button>
         </div>
         <div className="CardListItem__content">
-          <KebabMenu />
+          <KebabMenu url={url} />
           <div className="CardListItem__postTime">
             {calculatePostTimeElapsed(created_at)}
           </div>
