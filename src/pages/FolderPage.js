@@ -24,18 +24,19 @@ function FolderPage() {
     return array ? array.length === 0 : true;
   }
 
+  async function fetchData() {
+    if (selectedId) {
+      const newLinks = await getData(urlBySelectedId);
+      setLinks(newLinks.data);
+    } else setLinks(AllLinks.data);
+  }
+
   useEffect(() => {
     const newUrl = `${ApiUrl.usersLinks}?folderId=${selectedId}`;
     setUrlBySelectedId(newUrl);
   }, [selectedId]);
 
   useEffect(() => {
-    async function fetchData() {
-      if (selectedId) {
-        const newLinks = await getData(urlBySelectedId);
-        setLinks(newLinks.data);
-      } else setLinks(AllLinks.data);
-    }
     fetchData();
   }, [urlBySelectedId, selectedId]);
 
@@ -48,7 +49,7 @@ function FolderPage() {
         <SearchBar />
         <div>
           <Sorting
-            Folders={Folders.data}
+            folders={Folders.data}
             selectedId={selectedId}
             setSelectedId={setSelectedId}
             setUrl={setUrlBySelectedId}
