@@ -34,6 +34,7 @@ export const AddLinkModal = ({
                 />
               ))}
             </S.WrapFolderList>
+            <button className="btn-primary">추가하기</button>
           </S.ModalContent>
         }
       />

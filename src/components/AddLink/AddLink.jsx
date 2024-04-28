@@ -19,7 +19,6 @@ export const AddLink = ({ folderList }) => {
 
   const handleKeyDown = (event) => {
     if (event.key === "Escape") {
-      console.log("iii");
       closeModal();
     }
   };

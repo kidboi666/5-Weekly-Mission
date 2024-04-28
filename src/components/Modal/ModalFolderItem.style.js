@@ -10,8 +10,8 @@ export const FolderItem = styled.div`
   padding: 0.8rem;
   border-radius: 0.8rem;
   cursor: pointer;
-  background-color: ${({ isSelected }) =>
-    isSelected ? "var(--color-light-blue)" : "initial"};
+  background-color: ${(props) =>
+    props.$isSelected ? "var(--color-light-blue)" : "initial"};
 
   &:hover {
     background-color: var(--color-light-blue);
@@ -24,8 +24,10 @@ export const FolderItem = styled.div`
 
 export const FolderName = styled.span`
   font-size: 1.6rem;
-  color: ${({ isSelected }) =>
-    isSelected ? "var(--Linkbrary-primary-color)" : "var(--Linkbrary-gray100)"};
+  color: ${(props) =>
+    props.$isSelected
+      ? "var(--Linkbrary-primary-color)"
+      : "var(--Linkbrary-gray100)"};
 `;
 
 export const FolderCount = styled.span`

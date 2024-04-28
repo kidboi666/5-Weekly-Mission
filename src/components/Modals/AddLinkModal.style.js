@@ -26,6 +26,11 @@ export const ModalContent = styled.div`
   align-items: center;
   width: 100%;
   row-gap: 2.4rem;
+
+  button {
+    width: 100%;
+    font-size: 1.6rem;
+  }
 `;
 
 export const WrapFolderList = styled.div`
