@@ -87,13 +87,10 @@ input:focus {
 }
 
 .add_folder_btn {
-    width: auto;
-    height: 40px;
+    width: 79px;
+    height: 19px;
     border: none;
-    border-radius: 20px;
-    background-color: var(--primary);
-    color: var(--white);
-    padding: 0 10px;
+    color: var(--primary);
     font-size: 15px;
     cursor: pointer;
 }
@@ -121,9 +118,6 @@ input:focus {
     display: flex;
     align-items: center;
     gap: 4px;
-    color: #9fa6b2;
-    font-size: 14px;
-    font-weight: 600;
     cursor: pointer;
 }
 
@@ -153,6 +147,12 @@ input:focus {
     background-color: var(--gray4);
 }
 
+.icon_text {
+    color: #9fa6b2;
+    font-size: 14px;
+    font-weight: 500;
+}
+
 /* tablet */
 @media (min-width: 768px) and (max-width: 1199px) {
     .section {
@@ -172,5 +172,23 @@ input:focus {
         bottom: 101px;
         right: 20px;
         z-index: 999;
+        width: 127px;
+        height: 35px;
+        border-radius: 20px;
+        background-color: var(--primary);
+        color: var(--white);
+        border: 1px solid var(--white);
+        font-size: 16px;
+    }
+
+    .active_button {
+        width: 160px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .icon_text {
+        display: none;
     }
 }

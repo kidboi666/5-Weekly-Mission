@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { useFetch } from "../hooks/useFetch";
-import { BASE_URL } from "../constants/baseURL";
+import { useState, useEffect } from 'react';
+import { useFetch } from '../hooks/useFetch';
+import { BASE_URL } from '../constants/baseURL';
 
 export function SharedData() {
     const [data, setData] = useState([]);
@@ -13,9 +13,9 @@ export function SharedData() {
                 id: link.id,
                 created_at: link.created_at,
                 url: link.url,
-                title: link.title || "",
-                description: link.description || "",
-                image_source: link.imageSource || "",
+                title: link.title || '',
+                description: link.description || '',
+                image_source: link.imageSource || '',
                 showDot: false,
                 showStar: false,
             }));
@@ -38,9 +38,9 @@ export function FolderDataAll() {
                 id: link.id,
                 created_at: link.created_at,
                 url: link.url,
-                title: link.title || "",
-                description: link.description || "",
-                image_source: link.image_source || "",
+                title: link.title || '',
+                description: link.description || '',
+                image_source: link.image_source || '',
                 showDot: true,
                 showStar: true,
             }));
@@ -59,15 +59,17 @@ export function FolderData(folderId) {
 
     useEffect(() => {
         if (linksData) {
-            const parsedData = linksData.data.map((link) => ({
-                id: link.id,
-                created_at: link.created_at,
-                url: link.url,
-                title: link.title || "",
-                description: link.description || "",
-                image_source: link.image_source || "",
+            const parsedData = linksData.data.map((folder) => ({
+                id: folder.id,
+                created_at: folder.created_at,
+                url: folder.url,
+                title: folder.title || '',
+                description: folder.description || '',
+                image_source: folder.image_source || '',
                 showDot: true,
                 showStar: true,
+                count: folder.count,
+                favorite: folder.favorite,
             }));
             setData(parsedData);
         }
