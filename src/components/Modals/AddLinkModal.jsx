@@ -37,6 +37,7 @@ export const AddLinkModal = ({
             <button className="btn-primary">추가하기</button>
           </S.ModalContent>
         }
+        onCloseClick={onCloseClick}
       />
     </Modal>
   );
