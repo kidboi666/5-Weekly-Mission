@@ -100,7 +100,7 @@ function FolderMain() {
                     )}
                 </div>
                 <div className={styles.main_sub_nav}>
-                    <p>{activeButton}</p>
+                    <p className={styles.active_button}>{activeButton}</p>
                     {activeButton !== "전체" && (
                         <div className={styles.main_sub_nav_side}>
                             <button
@@ -108,8 +108,14 @@ function FolderMain() {
                                 id='shareFolderBtn'
                                 onClick={() => openModal("share")}
                             >
-                                <img src={share} width={18} height={18} alt='폴더 공유' />
-                                공유
+                                <img
+                                    src={share}
+                                    width={18}
+                                    height={18}
+                                    alt='폴더 공유'
+                                    className={styles.icons}
+                                />
+                                <span className={styles.icon_text}>공유</span>
                             </button>
                             {modalType === "share" && (
                                 <Modal
@@ -124,8 +130,14 @@ function FolderMain() {
                                 className={styles.main_sub_nav_side_items}
                                 onClick={() => openModal("edit")}
                             >
-                                <img src={pen} width={18} height={18} alt='폴더 이름 변경' />
-                                이름 변경
+                                <img
+                                    src={pen}
+                                    width={18}
+                                    height={18}
+                                    alt='폴더 이름 변경'
+                                    className={styles.icons}
+                                />
+                                <span className={styles.icon_text}>이름 변경</span>
                             </button>
                             {modalType === "edit" && (
                                 <Modal
@@ -143,7 +155,7 @@ function FolderMain() {
                                 onClick={() => openModal("deleteFolder")}
                             >
                                 <img src={delete_icon} width={18} height={18} alt='폴더 삭제' />
-                                삭제
+                                <span className={styles.icon_text}>삭제</span>
                             </button>
                             {modalType === "deleteFolder" && (
                                 <Modal
