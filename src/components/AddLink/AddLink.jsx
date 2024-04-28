@@ -40,6 +40,8 @@ export const AddLink = ({ folderList }) => {
       </AddLinkLayout.AddLinkForm>
       <AddLinkModal
         folderList={folderList}
+        selectedFolderId={selectedFolderId}
+        setSelectedFolderId={setSelectedFolderId}
         isOpen={isModalOpen}
         onCloseClick={closeModal}
         onKeyDown={(event) => handleKeyDown(event)}

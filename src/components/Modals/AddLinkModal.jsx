@@ -1,10 +1,13 @@
 import { Modal } from "../Modal/Modal";
 import { ModalContentBox } from "../Modal/ModalContentBox";
+import { ModalFolderItem } from "../Modal/ModalFolderItem";
 
 import * as S from "./AddLinkModal.style";
 
 export const AddLinkModal = ({
   folderList,
+  selectedFolderId,
+  setSelectedFolderId,
   isOpen,
   onCloseClick,
   onKeyDown,
@@ -22,9 +25,13 @@ export const AddLinkModal = ({
           <S.ModalContent>
             <S.WrapFolderList>
               {folderList?.map(({ id, name, link }) => (
-                <p>
-                  {name} / {link?.count}
-                </p>
+                <ModalFolderItem
+                  key={id}
+                  isSelected={id === selectedFolderId}
+                  folderName={name}
+                  linkCount={link?.count}
+                  onClick={() => setSelectedFolderId(id)}
+                />
               ))}
             </S.WrapFolderList>
           </S.ModalContent>

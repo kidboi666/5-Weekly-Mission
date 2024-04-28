@@ -15,7 +15,7 @@ export const ModalTitle = styled.div`
 
   p {
     color: var(--Linkbrary-gray60);
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     line-height: 2.2rem;
   }
 `;
