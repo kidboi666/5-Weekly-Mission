@@ -27,22 +27,11 @@ export const Popover = ({
     (event) => {
       const isPopover = popoverRef.current?.contains(event.target);
       const isAnchor = anchorRef.current?.contains(event.target);
-      if (
-        !isPopover &&
-        !isAnchor &&
-        !disableCloseWithBackgroundClick &&
-        isOpen
-      ) {
+      if (!isPopover && !isAnchor && !disableCloseWithBackgroundClick && isOpen) {
         onBackgroundClick();
       }
     },
-    [
-      popoverRef,
-      anchorRef,
-      disableCloseWithBackgroundClick,
-      isOpen,
-      onBackgroundClick,
-    ]
+    [popoverRef, anchorRef, disableCloseWithBackgroundClick, isOpen, onBackgroundClick]
   );
   useBackgroundClick(handleBackgroundClick);
 

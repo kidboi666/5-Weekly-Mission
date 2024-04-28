@@ -1,4 +1,4 @@
-import { useEffectOnce } from "../../sharing/util/useEffectOnce";
+import { useEffectOnce } from "./useEffectOnce";
 
 export const useKakaoSdk = () => {
   const shareKakao = ({ url, title, description, imageUrl }) => {

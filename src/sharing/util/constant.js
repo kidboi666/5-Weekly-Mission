@@ -1,7 +1,7 @@
 export const ROUTE = {
-  landing: "/",
-  login: "/signin",
-  privacy: "/privacy",
+  랜딩: "/",
+  로그인: "/signin",
+  개인정보처리방침: "/privacy",
   FAQ: "/faq",
 };
 
