@@ -38,7 +38,7 @@ function Card({ card }) {
             {location.pathname === "/folder" ? (
               <>
                 <KebabButton onClickKebabButton={onClickKebabButton} />
-                {display === true ? <KebabList /> : null}
+                {display === true ? <KebabList url={url} setDisplay={setDisplay} /> : null}
               </>
             ) : null}
           </div>
