@@ -1,12 +1,11 @@
 import styles from "./modalComponentStyle.module.css";
+import classNames from "classnames";
 
 function EditAndAddFolder({ madalTitle, alter, onClose }) {
   const onClosing = (e) => {
     e.preventDefault();
     onClose(false);
   };
-
-  const editButton = `${styles.modal__Button} ${styles.edit}`;
 
   return (
     <div className={styles.modalBackdrop} onClick={onClosing}>
@@ -27,7 +26,10 @@ function EditAndAddFolder({ madalTitle, alter, onClose }) {
             className={styles.modal__input}
             placeholder="내용을 입력해주세요."
           />
-          <button className={editButton} onClick={(e) => e.preventDefault()}>
+          <button
+            className={classNames(styles.modal__Button, styles.edit)}
+            onClick={(e) => e.preventDefault()}
+          >
             {alter}
           </button>
         </form>

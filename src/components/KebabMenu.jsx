@@ -1,13 +1,13 @@
 import "./KebabMenu.css";
 import KebabImg from "../assets/kebab.svg";
 import DeleteFolder from "../modals/DeleteFolder";
-import EditAndAddFolder from "../modals/EditAndAddFolder";
+import AddLinkToFolder from "../modals/AddLinkToFolder";
 import { useState, useEffect, useRef } from "react";
 
-function KebabMenu({ url }) {
+function KebabMenu({ url, folders }) {
   const [viewDropdown, setViewDropdown] = useState(false);
   const [deleteFolderOfen, setDeleteFolderOfen] = useState(false);
-  const [editFolderOfen, setEditFolderOfen] = useState(false);
+  const [addLinkToFolderOfen, setAddLinkToFolderOfen] = useState(false);
   const kebabButtonRefRef = useRef(null);
 
   /** handleClickOutside 마우스다운 이벤트 추가*/
@@ -60,16 +60,16 @@ function KebabMenu({ url }) {
               className="KebabMenu__option"
               onClick={(e) => {
                 e.preventDefault();
-                setEditFolderOfen(true);
+                setAddLinkToFolderOfen(true);
               }}
             >
               폴더에 추가
             </button>
-            {editFolderOfen && (
-              <EditAndAddFolder
-                madalTitle={"폴더 추가"}
-                onClose={setEditFolderOfen}
-                alter={"추가하기"}
+            {addLinkToFolderOfen && (
+              <AddLinkToFolder
+                title={url}
+                folders={folders}
+                onClose={setAddLinkToFolderOfen}
               />
             )}
           </li>

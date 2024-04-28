@@ -12,6 +12,7 @@ import CardListSection from "./CardListSection";
 function FolderList({ folders }) {
   const [deleteFolderOfen, setDeleteFolderOfen] = useState(false);
   const [editFolderOfen, setEditFolderOfen] = useState(false);
+  const [addFolderOfen, setAddFolderOfen] = useState(false);
   const [title, setTitle] = useState("전체");
   const [id, setId] = useState(0);
 
@@ -19,7 +20,6 @@ function FolderList({ folders }) {
     setTitle(folderName);
     setId(folderId);
   }
-
   const url = `https://bootcamp-api.codeit.kr/api/users/1/links?folderId=${id}`;
   const all_links_url = `https://bootcamp-api.codeit.kr/api/users/1/links`;
 
@@ -53,7 +53,13 @@ function FolderList({ folders }) {
             </button>
           ))}
         </div>
-        <button className="folderLinkList__addFolderButton">
+        <button
+          className="folderLinkList__addFolderButton"
+          onClick={(e) => {
+            e.preventDefault();
+            setAddFolderOfen(true);
+          }}
+        >
           폴더 추가
           <img
             className="folderLinkList__addFolderIcon"
@@ -69,6 +75,13 @@ function FolderList({ folders }) {
             alt="폴더추가"
           />
         </button>
+        {addFolderOfen && (
+          <EditAndAddFolder
+            madalTitle={"폴더 추가"}
+            onClose={setAddFolderOfen}
+            alter={"추가하기"}
+          />
+        )}
       </div>
       <div className="folderLinkList__folderMenu">
         <div className="folderLinkList__folderName" id={id}>
@@ -116,9 +129,9 @@ function FolderList({ folders }) {
       </div>
       <div>
         {title === "전체" ? (
-          <CardListSection url={all_links_url} />
+          <CardListSection folders={folders} url={all_links_url} />
         ) : (
-          <CardListSection url={url} />
+          <CardListSection folders={folders} url={url} />
         )}
       </div>
     </section>

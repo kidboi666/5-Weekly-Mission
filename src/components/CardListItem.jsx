@@ -5,9 +5,8 @@ import { Link } from "react-router-dom";
 import { formatDate, calculatePostTimeElapsed } from "../utils/PostDateUtility";
 import KebabMenu from "./KebabMenu";
 
-function CardListItem({ link }) {
+function CardListItem({ link, folders }) {
   const { created_at, description, image_source, title, url } = link;
-
   return (
     <Link to={url} target="_blank" rel="noopener noreferrer">
       <div className="CardListItem">
@@ -26,7 +25,7 @@ function CardListItem({ link }) {
           </button>
         </div>
         <div className="CardListItem__content">
-          <KebabMenu url={url} />
+          <KebabMenu url={url} folders={folders} />
           <div className="CardListItem__postTime">
             {calculatePostTimeElapsed(created_at)}
           </div>

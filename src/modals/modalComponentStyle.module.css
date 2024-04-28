@@ -3,6 +3,7 @@
   inset: 0;
   background-color: rgba(0, 0, 0, 0.4);
   cursor: default;
+  z-index: 1;
 }
 
 .modal {
@@ -80,6 +81,63 @@
   line-height: 24px;
 }
 
+.modal__linkList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.modal__link {
+  display: flex;
+  padding: 8px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal__linkInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal__linkName {
+  color: var(--Linkbrary-gray100, #373740);
+
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.selectList {
+  border-radius: 8px;
+  background: var(--Linkbrary-bg, #f0f6ff);
+}
+
+.selectName {
+  color: var(--Linkbrary-primary-color, #6d6afe);
+}
+
+.modal__link:hover .modal__linkName {
+  color: var(--Linkbrary-primary-color, #6d6afe);
+}
+
+.modal__linkCount {
+  color: var(--Linkbrary-gray60, #9fa6b2);
+
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.modal__checkIcon {
+  width: 14px;
+  height: 14px;
+}
 .modal__Button {
   display: flex;
   width: 280px;

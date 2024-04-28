@@ -1,13 +1,13 @@
 import "./CardList.css";
 import CardListItem from "./CardListItem";
 
-function CardList({ links }) {
+function CardList({ links, folders }) {
   return (
     <ul className="CardLinkList">
       {links &&
         links.map((link) => (
           <li key={link.id}>
-            <CardListItem link={link} />
+            <CardListItem folders={folders} link={link} />
           </li>
         ))}
     </ul>
