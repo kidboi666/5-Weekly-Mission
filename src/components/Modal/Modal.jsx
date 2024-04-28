@@ -4,15 +4,14 @@ import folderCheckImg from "../../assets/icon/svg/folder-check.svg";
 import { useContext } from "react";
 import ModalContext from "./ModalContext";
 
-function renderModal(modalType, modalTypeLabels, folderTabDataList, userFolderDataList) {
-  console.log(userFolderDataList);
+function renderModal(modalType, modalTypeLabels, folderTabDataList, cardUrl, folderTabName) {
   return (
     (modalType === "add" && (
       <div className="modal-form1">
         <h2>{modalTypeLabels[modalType]}</h2>
         <div className="con-wrap">
           <input type="text" className="modal-input" placeholder="내용 입력" />
-          <button className="btn-form01">변경하기</button>
+          <button className="btn-form01">추가하기</button>
         </div>
       </div>
     )) ||
@@ -20,9 +19,7 @@ function renderModal(modalType, modalTypeLabels, folderTabDataList, userFolderDa
       <div className="modal-form1">
         <h2>{modalTypeLabels[modalType]}</h2>
         <div className="con-wrap">
-          <div className="folder-link-wrap">
-            https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=u
-          </div>
+          <div className="folder-link-wrap">{cardUrl}</div>
           <ul className="add-folder-wrap">
             {folderTabDataList.map(({ id, link, name }) => {
               return (
@@ -42,22 +39,28 @@ function renderModal(modalType, modalTypeLabels, folderTabDataList, userFolderDa
       </div>
     )) ||
     (modalType === "edit" && (
-      <div className="modal-form2">
+      <div className="modal-form1">
         <h2>{modalTypeLabels[modalType]}</h2>
+        <div className="con-wrap">
+          <input type="text" className="modal-input" placeholder="내용 입력" />
+          <button className="btn-form01">변경하기</button>
+        </div>
       </div>
     )) ||
     (modalType === "folderDelete" && (
-      <div className="modal-form3">
+      <div className="modal-form1 modal-delete">
         <h2>{modalTypeLabels[modalType]}</h2>
+        <div className="con-wrap">
+          <div className="folder-link-wrap">{folderTabName}</div>
+        </div>
+        <button className="btn-form01">삭제하기</button>
       </div>
     )) ||
     (modalType === "linkDelete" && (
       <div className="modal-form1 modal-delete">
         <h2>{modalTypeLabels[modalType]}</h2>
         <div className="con-wrap">
-          <div className="folder-link-wrap">
-            https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=u
-          </div>
+          <div className="folder-link-wrap">{cardUrl}</div>
         </div>
         <button className="btn-form01">삭제하기</button>
       </div>
@@ -66,7 +69,7 @@ function renderModal(modalType, modalTypeLabels, folderTabDataList, userFolderDa
   );
 }
 
-function Modal({ modalType, folderTabDataList, userFolderDataList }) {
+function Modal({ modalType, folderTabDataList, cardUrl, folderTabName }) {
   const { isOpen, closeModal } = useContext(ModalContext);
 
   const modalTypeLabels = {
@@ -83,7 +86,7 @@ function Modal({ modalType, folderTabDataList, userFolderDataList }) {
         <div className="modal-wrap">
           <div className="modal-bg"></div>
           <div className="modal-con">
-            {renderModal(modalType, modalTypeLabels, folderTabDataList, userFolderDataList)}
+            {renderModal(modalType, modalTypeLabels, folderTabDataList, cardUrl, folderTabName)}
             <div className="modal-exit">
               <button>
                 <img src={CloseImg} alt="모달 닫기" onClick={closeModal} />

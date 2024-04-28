@@ -13,6 +13,8 @@ function Folder() {
   const [userFolderDataList, setUserFolderDataList] = useState([]);
   const { isOpen, openModal, closeModal } = useModal();
   const [modalType, setModalType] = useState("add");
+  const [cardUrl, setCardUrl] = useState("");
+  const [folderTabName, setFolderTabName] = useState("");
 
   useEffect(() => {
     async function fetchDataAndSetState() {
@@ -27,18 +29,20 @@ function Folder() {
 
   return (
     <div className="content-wrap">
-      <ModalContext.Provider value={{ isOpen, openModal, closeModal, setModalType }}>
+      <ModalContext.Provider value={{ isOpen, openModal, closeModal, setModalType, setCardUrl }}>
         <AddLinkForm />
         <Modal
           modalType={modalType}
           folderTabDataList={folderTabDataList}
-          userFolderDataList={userFolderDataList}
+          cardUrl={cardUrl}
+          folderTabName={folderTabName}
         />
         <div className="wrap">
           <Search />
           <FolderTabList
             folderTabDataList={folderTabDataList}
             setUserFolderDataList={setUserFolderDataList}
+            setFolderTabName={setFolderTabName}
           />
           <CardList userFolderDataList={userFolderDataList} />
         </div>

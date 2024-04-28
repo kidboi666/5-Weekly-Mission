@@ -6,7 +6,7 @@ import Button from "./Button";
 import CardTitleIcon from "../CardTitleIcon/CardTitleIcon";
 import FolderAddButton from "./FolderAddButton";
 
-function FolderTabList({ folderTabDataList, setUserFolderDataList }) {
+function FolderTabList({ folderTabDataList, setUserFolderDataList, setFolderTabName }) {
   const [buttonClass, setButtonClass] = useState(null);
   const [name, setName] = useState(null);
 
@@ -14,6 +14,7 @@ function FolderTabList({ folderTabDataList, setUserFolderDataList }) {
     async (id, name) => {
       setButtonClass(id);
       setName(name);
+      setFolderTabName(name);
       try {
         const data = await userFoldersTapData(id);
         setUserFolderDataList(data);
@@ -21,7 +22,7 @@ function FolderTabList({ folderTabDataList, setUserFolderDataList }) {
         alert(e.message);
       }
     },
-    [setUserFolderDataList]
+    [setUserFolderDataList, setFolderTabName]
   );
 
   return (

@@ -1,5 +1,6 @@
 .modal-wrap {
   position: fixed;
+  left: 0;
   top: 0;
   z-index: var(--zindex-fixed);
   width: 100%;
