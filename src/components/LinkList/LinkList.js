@@ -1,10 +1,11 @@
 import "./Linklist.css";
 import { calculatePastTime } from "../../util";
+
 function LinkItem({ link, createdAt, imageSource }) {
   console.log(createdAt);
   const base_image = "images/card-default.png";
   const url = link.url;
-  const linkImage = imageSource ? imageSource : base_image;
+  const linkImage = imageSource ?? base_image;
   return (
     <a href={url}>
       <div className="Link-card">
