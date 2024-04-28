@@ -72,6 +72,7 @@
   line-height: 1.57142857143;
   color: var(--grayColor400);
   margin: 8px 0 0;
+  text-align: center;
 }
 
 .add-folder-wrap {
@@ -133,4 +134,21 @@
 
 .modal-form1.modal-delete .btn-form01 {
   background: var(--redColor);
+}
+
+/* modal-share */
+
+.folder-share-wrap {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  margin: 24px 0 0;
+}
+
+.folder-share-wrap h3 {
+  font-size: 13px;
+  line-height: 1.15384615385;
+  font-weight: 400;
+  color: #373740;
+  margin: 10px 0 0;
 }

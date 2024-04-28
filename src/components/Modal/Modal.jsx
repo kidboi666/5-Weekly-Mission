@@ -3,6 +3,7 @@ import CloseImg from "../../assets/icon/close.png";
 import folderCheckImg from "../../assets/icon/svg/folder-check.svg";
 import { useContext } from "react";
 import ModalContext from "./ModalContext";
+import ShareModal from "./ShareModal";
 
 function renderModal(modalType, modalTypeLabels, folderTabDataList, cardUrl, folderTabName) {
   return (
@@ -65,6 +66,13 @@ function renderModal(modalType, modalTypeLabels, folderTabDataList, cardUrl, fol
         <button className="btn-form01">삭제하기</button>
       </div>
     )) ||
+    (modalType === "share" && (
+      <ShareModal
+        modalTypeLabels={modalTypeLabels}
+        modalType={modalType}
+        folderTabName={folderTabName}
+      />
+    )) ||
     null
   );
 }
@@ -78,6 +86,7 @@ function Modal({ modalType, folderTabDataList, cardUrl, folderTabName }) {
     edit: "폴더 이름 변경",
     folderDelete: "폴더 삭제",
     linkDelete: "링크 삭제",
+    share: "폴더 공유",
   };
 
   return (
