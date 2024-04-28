@@ -117,6 +117,7 @@ function FolderMain() {
                                     subtitle={activeButton}
                                     onClose={closeModal}
                                     share
+                                    folderId={activeButtonId}
                                 />
                             )}
                             <button

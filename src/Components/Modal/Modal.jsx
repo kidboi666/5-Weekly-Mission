@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import styles from "./Modal.module.css";
 import { useFetch } from "../../hooks/useFetch";
-import { BASE_URL } from "../../constants/baseURL";
+import { BASE_URL, DEPLOY_URL } from "../../constants/baseURL";
 import close from "../../assets/close.svg";
 import check from "../../assets/check.png";
 import kakaotalk from "../../assets/kakaotalk.png";
@@ -20,13 +20,14 @@ function Modal({
     btnText,
     btnColor,
     share,
+    folderId,
     onClose,
     onSubmit,
 }) {
     const [inputValue, setInputValue] = useState("");
     const folderList = useFetch(`${BASE_URL}users/1/folders`);
     const [isError, setIsError] = useState(false);
-    const URL = window.location.href;
+    const url = `${DEPLOY_URL}shared?user=1&folder=${folderId}`;
 
     const handleChange = (e) => {
         setInputValue(e.target.value);
@@ -45,13 +46,45 @@ function Modal({
 
     const handleCopyUrl = () => {
         navigator.clipboard
-            .writeText(URL)
+            .writeText(url)
             .then(() => {
                 toast.success("클립보드에 복사되었습니다!");
             })
             .catch((error) => {
                 toast.error("복사를 실패하였습니다!");
             });
+    };
+
+    const initKakaoSDK = () => {
+        if (!window.Kakao.isInitialized()) {
+            window.Kakao.init("bab4fbe2388df19be8aee73ca45a5cef");
+        }
+    };
+
+    const shareKakaoLink = (url) => {
+        initKakaoSDK();
+
+        window.Kakao.Link.sendDefault({
+            objectType: "feed",
+            content: {
+                title: "Linkbrary",
+                description: "세상의 모든 정보를 쉽게 저장하고 관리해 보세요.",
+                imageUrl: "https://ibb.co/cgDjBG1",
+                link: {
+                    mobileWebUrl: url,
+                    webUrl: url,
+                },
+            },
+            buttons: [
+                {
+                    title: "보러가기",
+                    link: {
+                        mobileWebUrl: url,
+                        webUrl: url,
+                    },
+                },
+            ],
+        });
     };
 
     const [selectedFolderIds, setSelectedFolderIds] = useState([]);
@@ -152,6 +185,7 @@ function Modal({
                                     height={42}
                                     alt='kakaotalk'
                                     tabIndex={0}
+                                    onClick={() => shareKakaoLink(url)}
                                 />
                                 <span className={styles.sns_text}>카카오톡</span>
                             </div>
