@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./Sorting.css";
 import { ApiUrl } from "../../util/url";
 
-export function Sorting({ Folders, selectedId, setSelectedId, setUrl }) {
+export function Sorting({ folders, selectedId, setSelectedId, setUrl }) {
   const [name, setName] = useState("");
 
   const onAllClick = () => {
@@ -13,10 +13,10 @@ export function Sorting({ Folders, selectedId, setSelectedId, setUrl }) {
 
   useEffect(() => {
     const nameById = selectedId
-      ? Folders.find((item) => item.id === selectedId)?.name
+      ? folders.find((item) => item.id === selectedId)?.name
       : "전체";
     setName(nameById);
-  }, [selectedId, Folders]); // selectedId가 변경될 때만 실행되도록 설정
+  }, [selectedId, folders]); // selectedId가 변경될 때만 실행되도록 설정
 
   return (
     <div className="sorting-wrapper">
@@ -24,10 +24,10 @@ export function Sorting({ Folders, selectedId, setSelectedId, setUrl }) {
         <button onClick={() => onAllClick()}>
           <p className="sort-name">전체</p>
         </button>
-        {Folders.map((Folder) => {
+        {folders.map((folder) => {
           return (
-            <button key={Folder.id} onClick={() => setSelectedId(Folder.id)}>
-              <p className="sort-name">{Folder.name}</p>
+            <button key={folder.id} onClick={() => setSelectedId(folder.id)}>
+              <p className="sort-name">{folder.name}</p>
             </button>
           );
         })}
