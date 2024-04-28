@@ -72,6 +72,7 @@ export default function FolderPage() {
         folders={folders}
         headerText={'폴더에 추가'}
         subHeaderText={link}
+        buttonText={'추가하기'}
       />
     );
   };
