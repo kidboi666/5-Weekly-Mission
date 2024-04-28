@@ -6,7 +6,7 @@ import Button from "./Button";
 import CardTitleIcon from "../CardTitleIcon/CardTitleIcon";
 import FolderAddButton from "./FolderAddButton";
 
-function FolderTabList({ folderTabDataList, setUserFolderDataList, openModal }) {
+function FolderTabList({ folderTabDataList, setUserFolderDataList }) {
   const [buttonClass, setButtonClass] = useState(null);
   const [name, setName] = useState(null);
 
@@ -44,7 +44,7 @@ function FolderTabList({ folderTabDataList, setUserFolderDataList, openModal }) 
             );
           })}
         </ul>
-        <FolderAddButton openModal={openModal} />
+        <FolderAddButton />
       </div>
       <div className="card-title-wrap">
         <h3 className="card-title">{buttonClass === null ? "전체" : name}</h3>

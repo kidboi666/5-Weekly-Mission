@@ -6,11 +6,13 @@ import FolderTabList from "../components/FolderTabList/FolderTabList";
 import CardList from "../components/CardList/CardList";
 import Modal from "../components/Modal/Modal";
 import useModal from "../hooks/useModal";
+import ModalContext from "../components/Modal/ModalContext";
 
 function Folder() {
   const [folderTabDataList, setFolderTabDataList] = useState([]);
   const [userFolderDataList, setUserFolderDataList] = useState([]);
   const { isOpen, openModal, closeModal } = useModal();
+  const [modalType, setModalType] = useState("add");
 
   useEffect(() => {
     async function fetchDataAndSetState() {
@@ -25,17 +27,18 @@ function Folder() {
 
   return (
     <div className="content-wrap">
-      <AddLinkForm />
-      <Modal isOpen={isOpen} closeModal={closeModal} type="add" />
-      <div className="wrap">
-        <Search />
-        <FolderTabList
-          folderTabDataList={folderTabDataList}
-          setUserFolderDataList={setUserFolderDataList}
-          openModal={openModal}
-        />
-        <CardList userFolderDataList={userFolderDataList} />
-      </div>
+      <ModalContext.Provider value={{ isOpen, openModal, closeModal }}>
+        <AddLinkForm />
+        <Modal modalType={modalType} />
+        <div className="wrap">
+          <Search />
+          <FolderTabList
+            folderTabDataList={folderTabDataList}
+            setUserFolderDataList={setUserFolderDataList}
+          />
+          <CardList userFolderDataList={userFolderDataList} />
+        </div>
+      </ModalContext.Provider>
     </div>
   );
 }

@@ -3,10 +3,10 @@ import catImg from "../../assets/images/cat.jpg";
 import GetDate from "../../utils/GetDate";
 import GetDaysAgo from "../../utils/GetDaysAgo";
 import useToggle from "../../hooks/useToggle";
-import KebobList from "./KebobList";
+import KebabList from "./KebabList";
 
 import EditableStarButton from "./EditableStarButton";
-import KebobButton from "./KebobButton";
+import KebabButton from "./KebabButton";
 import { useLocation } from "react-router-dom";
 
 function Card({ card }) {
@@ -14,7 +14,7 @@ function Card({ card }) {
   const [display, setDisplay] = useToggle();
   const location = useLocation();
 
-  const onClickKebobButton = (e) => {
+  const onClickKebabButton = (e) => {
     e.preventDefault();
     setDisplay();
   };
@@ -37,8 +37,8 @@ function Card({ card }) {
             </div>
             {location.pathname === "/folder" ? (
               <>
-                <KebobButton onClickKebobButton={onClickKebobButton} />
-                {display === true ? <KebobList /> : null}
+                <KebabButton onClickKebabButton={onClickKebabButton} />
+                {display === true ? <KebabList /> : null}
               </>
             ) : null}
           </div>
