@@ -87,6 +87,15 @@ function Modal({
         });
     };
 
+    const shareFacebook = (url) => {
+        let title = "Linkbrary";
+        window.open(
+            `http://www.facebook.com/sharer.php?u=${encodeURIComponent(url)}&t=${title}`,
+            "Linkbrary",
+            "width=400, height=400"
+        );
+    };
+
     const [selectedFolderIds, setSelectedFolderIds] = useState([]);
 
     const handleFolderClick = (folderId) => {
@@ -197,6 +206,7 @@ function Modal({
                                     height={42}
                                     alt='facebook'
                                     tabIndex={0}
+                                    onClick={() => shareFacebook(url)}
                                 />
                                 <span className={styles.sns_text}>페이스북</span>
                             </div>
