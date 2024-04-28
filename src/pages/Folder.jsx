@@ -27,9 +27,13 @@ function Folder() {
 
   return (
     <div className="content-wrap">
-      <ModalContext.Provider value={{ isOpen, openModal, closeModal }}>
+      <ModalContext.Provider value={{ isOpen, openModal, closeModal, setModalType }}>
         <AddLinkForm />
-        <Modal modalType={modalType} />
+        <Modal
+          modalType={modalType}
+          folderTabDataList={folderTabDataList}
+          userFolderDataList={userFolderDataList}
+        />
         <div className="wrap">
           <Search />
           <FolderTabList

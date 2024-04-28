@@ -44,6 +44,8 @@
 
 .modal-form1 .btn-form01 {
   width: 100%;
+  font-size: 16px;
+  line-height: 1.193125;
 }
 
 .modal-form1 h2 {
@@ -57,4 +59,77 @@
   position: absolute;
   right: 16px;
   top: 16px;
+}
+
+/* 모달에 추가 (folderAdd) */
+.folder-link-wrap {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  font-size: 14px;
+  line-height: 1.57142857143;
+  color: var(--grayColor400);
+  margin: 8px 0 0;
+}
+
+.add-folder-wrap {
+  max-height: 172px;
+  margin: 24px 0;
+  overflow-y: scroll;
+}
+
+.add-folder-wrap li {
+  margin: 0 0 4px;
+}
+
+.add-folder-wrap li:last-child {
+  margin: 0;
+}
+
+.add-folder-wrap li button {
+  width: 100%;
+  padding: 8px;
+}
+
+.add-folder-wrap h3 {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #373740;
+  position: relative;
+  text-align: left;
+}
+
+.add-folder-wrap li button:hover {
+  background: var(--grayColor100);
+  border-radius: 8px;
+}
+
+.add-folder-wrap li button.active h3 img {
+  display: block;
+}
+
+.add-folder-wrap h3 img {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+}
+
+.add-folder-wrap h3 span {
+  font-size: 14px;
+  line-height: 1.19357142857;
+  color: var(--grayColor400);
+}
+
+/* modal-delete */
+
+.modal-form1.modal-delete .folder-link-wrap {
+  margin: 8px 0 24px;
+}
+
+.modal-form1.modal-delete .btn-form01 {
+  background: var(--redColor);
 }
