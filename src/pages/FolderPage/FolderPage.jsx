@@ -83,7 +83,11 @@ export default function FolderPage() {
       (folder) => folder.id === currentFolderId
     );
     setModalContent(
-      <ShareModal headerText={'폴더 공유'} subHeaderText={currentFolder.name} />
+      <ShareModal
+        headerText={'폴더 공유'}
+        subHeaderText={currentFolder.name}
+        folderNum={currentFolder.id}
+      />
     );
   };
 
