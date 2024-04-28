@@ -1,19 +1,19 @@
 import styles from "./modalComponentStyle.module.css";
 
-function DeleteFolder({ madalTitle, title, onClose }) {
+function EditAndAddFolder({ madalTitle, alter, onClose }) {
   const onClosing = (e) => {
     e.preventDefault();
     onClose(false);
   };
 
-  const deleteButton = `${styles.modal__Button} ${styles.delete}`;
+  const editButton = `${styles.modal__Button} ${styles.edit}`;
 
   return (
     <div className={styles.modalBackdrop} onClick={onClosing}>
       <div
         className={styles.modal}
         onClick={(e) => {
-          e.preventDefault();
+          e.stopPropagation();
         }}
       >
         <button
@@ -21,13 +21,18 @@ function DeleteFolder({ madalTitle, title, onClose }) {
           onClick={onClosing}
         ></button>
         <div className={styles.modal__title}> {madalTitle}</div>
-        <div className={styles.modal__link}>{title}</div>
-        <button className={deleteButton} onClick={(e) => e.preventDefault()}>
-          삭제하기
-        </button>
+        <form className={styles.modal__form}>
+          <input
+            className={styles.modal__input}
+            placeholder="내용을 입력해주세요."
+          />
+          <button className={editButton} onClick={(e) => e.preventDefault()}>
+            {alter}
+          </button>
+        </form>
       </div>
     </div>
   );
 }
 
-export default DeleteFolder;
+export default EditAndAddFolder;
