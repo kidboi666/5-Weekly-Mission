@@ -11,13 +11,16 @@ export const BUTTONS = [
   {
     iconSource: "images/icon/share.svg",
     text: "공유",
+    modalId: MODALS_ID.share,
   },
   {
     iconSource: "images/icon/pen.svg",
     text: "이름 변경",
+    modalId: MODALS_ID.rename,
   },
   {
     iconSource: "images/icon/delete.svg",
     text: "삭제",
+    modalId: MODALS_ID.delete,
   },
 ];

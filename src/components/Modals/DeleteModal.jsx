@@ -3,16 +3,13 @@ import { ModalContentBox } from "../Modal/ModalContentBox";
 
 import * as S from "./Modals.style";
 
-export const AddFolderModal = ({
+export const DeleteModal = ({
   isOpen,
   title,
-  placeholder,
   description,
   buttonText,
   onCloseClick,
   onKeyDown,
-  value,
-  onChange,
 }) => {
   return (
     <Modal isOpen={isOpen} onCloseClick={onCloseClick} onKeyDown={onKeyDown}>
@@ -25,13 +22,7 @@ export const AddFolderModal = ({
         }
         content={
           <S.ModalContent>
-            <S.ModalInput
-              type="text"
-              value={value}
-              onChange={onChange}
-              placeholder={placeholder}
-            />
-            <button className="btn-primary">{buttonText}</button>
+            <button className="btn-primary red">{buttonText}</button>
           </S.ModalContent>
         }
         onCloseClick={onCloseClick}

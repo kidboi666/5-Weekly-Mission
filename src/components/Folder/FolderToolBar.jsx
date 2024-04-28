@@ -3,6 +3,7 @@ import { ALL_LINKS_ID } from "../../api/constant";
 import { ALL_LINKS_TEXT, MODALS_ID, BUTTONS } from "./constant";
 import * as FolderToolBarLayout from "./FolderToolBar.style";
 import { AddFolderModal } from "../\bModals/AddFolderModal";
+import { DeleteModal } from "../\bModals/DeleteModal";
 
 export const FolderToolBar = ({
   folderList,
@@ -72,8 +73,11 @@ export const FolderToolBar = ({
       {/* "전체" 일 때를 제외한 버튼 출력 */}
       {selectedFolderId !== ALL_LINKS_ID && (
         <FolderToolBarLayout.IconButtonWrap>
-          {BUTTONS.map(({ text, iconSource }, index) => (
-            <FolderToolBarLayout.IconButton key={index}>
+          {BUTTONS.map(({ text, iconSource, modalId }, index) => (
+            <FolderToolBarLayout.IconButton
+              key={index}
+              onClick={() => setCurrentModal(modalId)}
+            >
               <FolderToolBarLayout.IconImage
                 src={iconSource}
                 alt={`${text} 아이콘`}
@@ -83,6 +87,23 @@ export const FolderToolBar = ({
               </FolderToolBarLayout.IconText>
             </FolderToolBarLayout.IconButton>
           ))}
+          <AddFolderModal
+            isOpen={currentModal === MODALS_ID.rename}
+            title="폴더 이름 변경"
+            placeholder="내용 입력"
+            description={folderName}
+            buttonText="변경하기"
+            onCloseClick={closeModal}
+            onKeyDown={handleKeyDown}
+          />
+          <DeleteModal
+            isOpen={currentModal === MODALS_ID.delete}
+            title="폴더 삭제"
+            description={folderName}
+            buttonText="삭제하기"
+            onCloseClick={closeModal}
+            onKeyDown={handleKeyDown}
+          />
         </FolderToolBarLayout.IconButtonWrap>
       )}
     </FolderToolBarLayout.FolderToolBarWrap>
