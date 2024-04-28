@@ -3,12 +3,13 @@ import share from '../../assets/images/link.svg';
 import kakao from '../../assets/images/kakao.svg';
 import styles from './ModalContents.module.css';
 import { facebookShare } from '../../utils/shareFunctions/facebooShare';
+import { kakaoShare } from '../../utils/shareFunctions/kakaoshare';
 
 export default function ShareModal({ headerText, subHeaderText, folderNum }) {
   const shareUrl = `https://bk-part2.netlify.app/shared/${folderNum}`;
 
   const SHARE_BUTTONS_INFO = [
-    { text: '카카오톡', icon: kakao },
+    { text: '카카오톡', icon: kakao, onClick: () => kakaoShare(shareUrl) },
     {
       text: '페이스북',
       icon: facebook,
