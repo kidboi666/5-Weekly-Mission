@@ -6,6 +6,7 @@ import renameBtn from "../assets/pen.svg";
 import deleteBtn from "../assets/Group 36.svg";
 import DeleteFolder from "../modals/DeleteFolder";
 import EditAndAddFolder from "../modals/EditAndAddFolder";
+import ShareFolder from "../modals/ShareFolder";
 import { useState } from "react";
 import CardListSection from "./CardListSection";
 
@@ -13,6 +14,7 @@ function FolderList({ folders }) {
   const [deleteFolderOfen, setDeleteFolderOfen] = useState(false);
   const [editFolderOfen, setEditFolderOfen] = useState(false);
   const [addFolderOfen, setAddFolderOfen] = useState(false);
+  const [shareFolderOfen, setShareFolderOfen] = useState(false);
   const [title, setTitle] = useState("전체");
   const [id, setId] = useState(0);
 
@@ -89,9 +91,18 @@ function FolderList({ folders }) {
         </div>
         {title !== "전체" && (
           <div className="folderLinkList__folderEditBtns">
-            <button className="folderLinkList__folderEditBtn">
+            <button
+              className="folderLinkList__folderEditBtn"
+              onClick={(e) => {
+                e.preventDefault();
+                setShareFolderOfen(true);
+              }}
+            >
               <img src={shareBtn} alt="공유하기" /> 공유
             </button>
+            {shareFolderOfen && (
+              <ShareFolder title={title} id={id} onClose={setShareFolderOfen} />
+            )}
             <button
               className="folderLinkList__folderEditBtn"
               onClick={(e) => {

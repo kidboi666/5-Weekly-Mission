@@ -83,19 +83,25 @@
 
 .modal__linkList {
   display: flex;
+  width: 100%;
   flex-direction: column;
-  align-items: flex-start;
   gap: 4px;
 }
 
 .modal__link {
   display: flex;
   padding: 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.modal__linkItem {
+  display: flex;
+  padding: 8px;
   justify-content: space-between;
   align-items: center;
   gap: 8px;
 }
-
 .modal__linkInfo {
   display: flex;
   align-items: center;
@@ -121,7 +127,7 @@
   color: var(--Linkbrary-primary-color, #6d6afe);
 }
 
-.modal__link:hover .modal__linkName {
+.modal__linkItem:hover .modal__linkName {
   color: var(--Linkbrary-primary-color, #6d6afe);
 }
 
@@ -162,4 +168,46 @@
 
 .edit {
   background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg));
+}
+
+.shareIcons {
+  display: flex;
+  gap: 32px;
+}
+.shareText {
+  color: var(--Linkbrary-gray100, #373740);
+  text-align: center;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 15px; /* 115.385% */
+}
+
+.shareIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.kakaoShare {
+  background: url("../assets/kakoShare.svg") no-repeat center;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+}
+
+.facebookShare {
+  background: url("../assets/facebookShare.svg") no-repeat center;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+}
+
+.linkShare {
+  background: url("../assets/link.svg") no-repeat center;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
 }

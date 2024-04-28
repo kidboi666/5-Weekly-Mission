@@ -31,7 +31,7 @@ function AddLinkToFolder({ title, folders, onClose }) {
           {folders.map((folder) => (
             <div
               key={folder.id}
-              className={classNames(styles.modal__link, {
+              className={classNames(styles.modal__linkItem, {
                 [styles.selectList]: linkClick === folder.id,
               })}
               onClick={() => setLinkClick(folder.id)}
