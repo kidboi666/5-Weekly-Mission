@@ -18,7 +18,7 @@ function FolderPage() {
 
   return (
     <Layout isSticky={false} userId={userId}>
-      <AddLink />
+      <AddLink folderList={folderList} />
       <PageLayout.PageWrap>
         <SearchBar />
         <PageLayout.FolderBox>
