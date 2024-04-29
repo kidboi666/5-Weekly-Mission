@@ -4,10 +4,17 @@ import addBtnMobile from "../assets/add 2.svg";
 import shareBtn from "../assets/share.svg";
 import renameBtn from "../assets/pen.svg";
 import deleteBtn from "../assets/Group 36.svg";
+import DeleteFolder from "../modals/DeleteFolder";
+import EditAndAddFolder from "../modals/EditAndAddFolder";
+import ShareFolder from "../modals/ShareFolder";
 import { useState } from "react";
-import CardList from "./CardList";
+import CardListSection from "./CardListSection";
 
 function FolderList({ folders }) {
+  const [deleteFolderOfen, setDeleteFolderOfen] = useState(false);
+  const [editFolderOfen, setEditFolderOfen] = useState(false);
+  const [addFolderOfen, setAddFolderOfen] = useState(false);
+  const [shareFolderOfen, setShareFolderOfen] = useState(false);
   const [title, setTitle] = useState("전체");
   const [id, setId] = useState(0);
 
@@ -15,7 +22,6 @@ function FolderList({ folders }) {
     setTitle(folderName);
     setId(folderId);
   }
-
   const url = `https://bootcamp-api.codeit.kr/api/users/1/links?folderId=${id}`;
   const all_links_url = `https://bootcamp-api.codeit.kr/api/users/1/links`;
 
@@ -49,7 +55,13 @@ function FolderList({ folders }) {
             </button>
           ))}
         </div>
-        <button className="folderLinkList__addFolderButton">
+        <button
+          className="folderLinkList__addFolderButton"
+          onClick={(e) => {
+            e.preventDefault();
+            setAddFolderOfen(true);
+          }}
+        >
           폴더 추가
           <img
             className="folderLinkList__addFolderIcon"
@@ -65,28 +77,72 @@ function FolderList({ folders }) {
             alt="폴더추가"
           />
         </button>
+        {addFolderOfen && (
+          <EditAndAddFolder
+            madalTitle={"폴더 추가"}
+            onClose={setAddFolderOfen}
+            alter={"추가하기"}
+          />
+        )}
       </div>
       <div className="folderLinkList__folderMenu">
         <div className="folderLinkList__folderName" id={id}>
           {title}
         </div>
-        <div className="folderLinkList__folderEditBtns">
-          <button className="folderLinkList__folderEditBtn">
-            <img src={shareBtn} alt="공유하기" /> 공유
-          </button>
-          <button className="folderLinkList__folderEditBtn">
-            <img src={renameBtn} alt="이름변경" /> 이름 변경
-          </button>
-          <button className="folderLinkList__folderEditBtn">
-            <img src={deleteBtn} alt="삭제" /> 삭제
-          </button>
-        </div>
+        {title !== "전체" && (
+          <div className="folderLinkList__folderEditBtns">
+            <button
+              className="folderLinkList__folderEditBtn"
+              onClick={(e) => {
+                e.preventDefault();
+                setShareFolderOfen(true);
+              }}
+            >
+              <img src={shareBtn} alt="공유하기" /> 공유
+            </button>
+            {shareFolderOfen && (
+              <ShareFolder title={title} id={id} onClose={setShareFolderOfen} />
+            )}
+            <button
+              className="folderLinkList__folderEditBtn"
+              onClick={(e) => {
+                e.preventDefault();
+                setEditFolderOfen(true);
+              }}
+            >
+              <img src={renameBtn} alt="이름변경" /> 이름 변경
+            </button>
+            {editFolderOfen && (
+              <EditAndAddFolder
+                madalTitle={"폴더 추가"}
+                onClose={setEditFolderOfen}
+                alter={"추가하기"}
+              />
+            )}
+            <button
+              className="folderLinkList__folderEditBtn"
+              onClick={(e) => {
+                e.preventDefault();
+                setDeleteFolderOfen(true);
+              }}
+            >
+              <img src={deleteBtn} alt="삭제" /> 삭제
+            </button>
+            {deleteFolderOfen && (
+              <DeleteFolder
+                madalTitle={"폴더 삭제"}
+                title={title}
+                onClose={setDeleteFolderOfen}
+              />
+            )}
+          </div>
+        )}
       </div>
       <div>
         {title === "전체" ? (
-          <CardList url={all_links_url} />
+          <CardListSection folders={folders} url={all_links_url} />
         ) : (
-          <CardList url={url} />
+          <CardListSection folders={folders} url={url} />
         )}
       </div>
     </section>

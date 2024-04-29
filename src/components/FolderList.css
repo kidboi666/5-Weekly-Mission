@@ -158,4 +158,8 @@
     width: 16px;
     height: 16px;
   }
+
+  .folderLinkList__folderMenu {
+    flex-direction: column;
+  }
 }

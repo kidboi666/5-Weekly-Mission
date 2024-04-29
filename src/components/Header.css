@@ -17,7 +17,7 @@ header {
 
 .Header__profileArea__nickname {
   color: var(--text-color-light-mode, #000);
-  font-family: Pretendard
+  font-family: Pretendard;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;

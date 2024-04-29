@@ -1,0 +1,213 @@
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  cursor: default;
+  z-index: 1;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  padding: 32px 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  border-radius: 15px;
+  border: 1px solid var(--Stroke-light, #dee2e6);
+  background: var(---Gray-White, #fff);
+}
+
+.modal__closeButton {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  background: url(../assets/_close.svg) no-repeat;
+  width: 24px;
+  height: 24px;
+  border: none;
+  cursor: pointer;
+}
+
+.modal__title {
+  color: var(--Linkbrary-gray100, #373740);
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.modal__link {
+  color: var(--Linkbrary-gray60, #9fa6b2);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  width: 320px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.modal__input {
+  display: flex;
+  width: 250px;
+  padding: 18px 15px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--Linkbrary-gray20, #ccd5e3);
+  background: var(--Linkbrary-white, #fff);
+  color: var(--Linkbrary-gray60, #9fa6b2);
+
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.modal__linkList {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.modal__link {
+  display: flex;
+  padding: 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.modal__linkItem {
+  display: flex;
+  padding: 8px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.modal__linkInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal__linkName {
+  color: var(--Linkbrary-gray100, #373740);
+
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.selectList {
+  border-radius: 8px;
+  background: var(--Linkbrary-bg, #f0f6ff);
+}
+
+.selectName {
+  color: var(--Linkbrary-primary-color, #6d6afe);
+}
+
+.modal__linkItem:hover .modal__linkName {
+  color: var(--Linkbrary-primary-color, #6d6afe);
+}
+
+.modal__linkCount {
+  color: var(--Linkbrary-gray60, #9fa6b2);
+
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.modal__checkIcon {
+  width: 14px;
+  height: 14px;
+}
+.modal__Button {
+  display: flex;
+  width: 280px;
+  padding: 16px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  border-radius: 8px;
+  color: var(--Grey-Light, #f5f5f5);
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.delete {
+  background: var(--Linkbrary-red, #ff5b56);
+}
+
+.edit {
+  background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg));
+}
+
+.shareIcons {
+  display: flex;
+  gap: 32px;
+}
+.shareText {
+  color: var(--Linkbrary-gray100, #373740);
+  text-align: center;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 15px; /* 115.385% */
+}
+
+.shareIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.kakaoShare {
+  background: url("../assets/kakoShare.svg") no-repeat center;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+}
+
+.facebookShare {
+  background: url("../assets/facebookShare.svg") no-repeat center;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+}
+
+.linkShare {
+  background: url("../assets/link.svg") no-repeat center;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+}

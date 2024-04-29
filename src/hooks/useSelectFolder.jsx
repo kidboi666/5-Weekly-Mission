@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 /** 폴더리스트에서 url을 받아서 데이터를 리턴하는 함수 */
 function useSelectFolder({ url }) {
   const [data, setData] = useState(null);
 
-  async function getLinkData({ url }) {
+  const getLinkData = useCallback(async ({ url }) => {
     try {
       const response = await fetch(`${url}`, {
         method: "GET",
@@ -17,7 +17,7 @@ function useSelectFolder({ url }) {
     } catch (error) {
       console.log(error);
     }
-  }
+  }, []);
 
   useEffect(() => {
     async function fetchData() {
@@ -25,7 +25,7 @@ function useSelectFolder({ url }) {
       setData(result);
     }
     fetchData();
-  }, [url]);
+  }, [url, getLinkData]);
 
   return data;
 }
