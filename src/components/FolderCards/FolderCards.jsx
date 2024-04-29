@@ -58,7 +58,11 @@ export const FolderCards = ({ items, folders, folderName, setFolderName }) => {
     <div className={cx("container")}>
       <MainSearchBar />
 
-      <FolderToolBar folders={folders} setFolderName={setFolderName} />
+      <FolderToolBar
+        folders={folders}
+        folderName={folderName}
+        setFolderName={setFolderName}
+      />
 
       <LinkItems folderName={folderName} />
 

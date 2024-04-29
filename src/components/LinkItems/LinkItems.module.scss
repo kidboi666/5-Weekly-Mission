@@ -9,6 +9,10 @@
   @include font(1.5rem, $color-black, 600);
 }
 
+.title {
+  height: 4.8rem;
+}
+
 .items {
   display: flex;
   justify-content: center;

@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./FolderToolBar.module.scss";
 import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-export const FolderToolBar = ({ folders, setFolderName }) => {
+export const FolderToolBar = ({ folders, folderName, setFolderName }) => {
   const [button, setButton] = useState(true);
   const [buttonColor, setButtonColor] = useState();
 
@@ -14,8 +14,8 @@ export const FolderToolBar = ({ folders, setFolderName }) => {
     setButton(true);
   }
 
-  function clickButton(event, index) {
-    setFolderName(event.target.value);
+  function clickButton(item, index) {
+    setFolderName(item.name);
     setButtonColor(index);
     setButton(false);
   }
@@ -34,9 +34,8 @@ export const FolderToolBar = ({ folders, setFolderName }) => {
         return (
           <button
             key={item.id}
-            value={item.name}
             className={cx(buttonColor === index ? "buttonClick" : "button")}
-            onClick={(event) => clickButton(event, index)}
+            onClick={(event) => clickButton(item, index)}
             type="button"
           >
             <span>{item.name}</span>

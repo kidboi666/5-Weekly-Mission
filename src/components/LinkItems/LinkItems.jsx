@@ -25,7 +25,7 @@ const choiceItems = [
 export const LinkItems = ({ folderName }) => {
   return (
     <div className={cx("container")}>
-      <h1>{folderName}</h1>
+      <h1 className={cx("title")}>{folderName}</h1>
 
       <div className={cx("items")}>
         {choiceItems.map((item) => {
