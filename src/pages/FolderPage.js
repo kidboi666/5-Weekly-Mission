@@ -1,15 +1,18 @@
 import GlobalStyles from "../components/GlobalStyles";
-import { Header } from "../components/Header/Header";
-import { SearchBar } from "../components/SearchBar/SearchBar";
-import { Footer } from "../components/Footer/Footer";
+import {
+  Header,
+  SearchBar,
+  Footer,
+  LinkInput,
+  Sorting,
+  LinkList,
+  ErrorComponent,
+  FolderTitle,
+} from "../components";
 import { getData } from "../util/api";
 import "../components/SharedPage.css";
-import { LinkInput } from "../components/LinkInput/LinkInput";
-import { Sorting } from "../components/Sorting/Sorting";
 import { useEffect, useState } from "react";
 import { ApiUrl } from "../util/url";
-import { LinkList } from "../components/LinkList/LinkList";
-import { ErrorComponent } from "../components/ErrorComponent/ErrorComponent";
 
 const user = await getData(ApiUrl.sampleUser);
 const Folders = await getData(ApiUrl.usersFolders);
@@ -18,6 +21,7 @@ const AllLinks = await getData(ApiUrl.usersLinks);
 function FolderPage() {
   const [selectedId, setSelectedId] = useState();
   const [urlBySelectedId, setUrlBySelectedId] = useState("");
+  const [name, setName] = useState("");
   const [links, setLinks] = useState(AllLinks.data);
 
   function checkArrayBlank(array) {
@@ -37,7 +41,7 @@ function FolderPage() {
   }, [selectedId]);
 
   useEffect(() => {
-    fetchData();
+    fetchData(); // eslint-disable-next-line
   }, [urlBySelectedId, selectedId]);
 
   return (
@@ -47,13 +51,16 @@ function FolderPage() {
       <LinkInput />
       <div className="contents-wrapper">
         <SearchBar />
-        <div>
+        <div className="links-wrapper">
           <Sorting
             folders={Folders.data}
             selectedId={selectedId}
             setSelectedId={setSelectedId}
             setUrl={setUrlBySelectedId}
+            setName={setName}
+            name={name}
           />
+          <FolderTitle name={name} />
           {checkArrayBlank(links) ? (
             <ErrorComponent />
           ) : (

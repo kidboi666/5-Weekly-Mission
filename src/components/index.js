@@ -7,3 +7,5 @@ export * from "./LinkList";
 export * from "./SearchBar";
 export * from "./Sorting";
 export * from "./GlobalStyles";
+export * from "./ModalLayout";
+export * from "./FolderTitle";

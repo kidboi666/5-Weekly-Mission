@@ -1,9 +1,20 @@
 import { useEffect, useState } from "react";
 import "./Sorting.css";
 import { ApiUrl } from "../../util/url";
+import { ModalLayout } from "../ModalLayout";
 
-export function Sorting({ folders, selectedId, setSelectedId, setUrl }) {
-  const [name, setName] = useState("");
+export function Sorting({
+  folders,
+  selectedId,
+  setName,
+  setSelectedId,
+  setUrl,
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleHandler = () => {
+    setIsOpen(!isOpen);
+  };
 
   const onAllClick = () => {
     setUrl(ApiUrl.usersLinks);
@@ -16,23 +27,35 @@ export function Sorting({ folders, selectedId, setSelectedId, setUrl }) {
       ? folders.find((item) => item.id === selectedId)?.name
       : "전체";
     setName(nameById);
-  }, [selectedId, folders]); // selectedId가 변경될 때만 실행되도록 설정
+  }, [selectedId, folders, setName]); // eslint-disable-next-line
 
   return (
-    <div className="sorting-wrapper">
-      <div className="button-wrapper">
-        <button onClick={() => onAllClick()}>
-          <p className="sort-name">전체</p>
-        </button>
-        {folders.map((folder) => {
-          return (
-            <button key={folder.id} onClick={() => setSelectedId(folder.id)}>
-              <p className="sort-name">{folder.name}</p>
-            </button>
-          );
-        })}
+    <>
+      <div className="sorting-wrapper">
+        <div className="button-wrapper">
+          <button onClick={() => onAllClick()}>
+            <p className="sort-name">전체</p>
+          </button>
+          {folders.map((folder) => {
+            return (
+              <button key={folder.id} onClick={() => setSelectedId(folder.id)}>
+                <p className="sort-name">{folder.name}</p>
+              </button>
+            );
+          })}
+        </div>
+        <div className="folder-title-wrapper" onClick={toggleHandler}>
+          폴더추가<img src="images/add.svg" alt="addbutton"></img>
+        </div>
+        {isOpen && (
+          <ModalLayout toggleHandler={toggleHandler} title="폴더 추가">
+            <div className="modal-contents">
+              <input placeholder="내용 입력"></input>
+              <div className="add button">추가하기</div>
+            </div>
+          </ModalLayout>
+        )}
       </div>
-      <div className="folder-name">{name}</div>
-    </div>
+    </>
   );
 }
