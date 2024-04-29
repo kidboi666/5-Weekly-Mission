@@ -83,6 +83,7 @@
   font-weight: 400;
   width: 100px;
   text-align: center;
+  z-index: 3;
 }
 
 .popup-button {

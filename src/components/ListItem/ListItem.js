@@ -58,7 +58,7 @@ export function LinkItem({ link, createdAt, imageSource }) {
       {isOpen.delete && (
         <ModalLayout
           title="링크삭제"
-          description={url}
+          description={link.title}
           toggleHandler={() => toggleHandler("delete")}
         >
           <div className="button delete">삭제하기</div>
