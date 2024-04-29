@@ -1,16 +1,31 @@
 {
+<<<<<<< HEAD
   "name": "1-weekly-mission",
+=======
+  "name": "part2ts",
+>>>>>>> 4a49501b (Initialize project using Create React App)
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+<<<<<<< HEAD
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
+=======
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.96",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.9.5",
+>>>>>>> 4a49501b (Initialize project using Create React App)
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -36,9 +51,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+<<<<<<< HEAD
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "@types/node": "^20.12.7"
+=======
+>>>>>>> 4a49501b (Initialize project using Create React App)
   }
 }
