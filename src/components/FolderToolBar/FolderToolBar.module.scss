@@ -1,0 +1,25 @@
+@import "/src/styles/global.scss";
+
+.container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.button {
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  border: 1px solid $color-primary;
+  background: $color-white;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.buttonClick {
+  @extend .button;
+  color: $color-white;
+  border-color: $color-primary;
+  background: $color-primary;
+}

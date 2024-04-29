@@ -1,0 +1,9 @@
+@import "/src/styles/global.scss";
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 20rem;
+  background: var(--Linkbrary-bg, #f0f6ff);
+}

@@ -1,0 +1,37 @@
+@import "/src/styles/global.scss";
+
+.container {
+  padding: 8rem 40rem 10rem;
+  background: var(--Linkbrary-bg, #f0f6ff);
+}
+
+.SearchBar_block {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 1.25rem;
+
+  border-radius: 0.9375rem;
+  border: 1px solid var(--Linkbrary-primary-color, #6d6afe);
+  background: var(--Linkbrary-white, #fff);
+  border-radius: 1rem;
+}
+
+.link_block {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.input {
+  width: 100%;
+  padding: 2rem 0;
+}
+
+.button {
+  padding: 1rem;
+  background: var(--gra-purpleblue-to-skyblue, linear-gradient(91deg));
+  border-radius: 1rem;
+}
