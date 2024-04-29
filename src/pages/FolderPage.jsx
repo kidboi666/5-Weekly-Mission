@@ -6,13 +6,13 @@ import { Footer } from "../components/Footer";
 import { getUser } from "../util/api/getUsers";
 import { getFolders } from "../util/api/getFolders";
 import { getLinks } from "../util/api/getLinks";
-import { getFolderLink } from "../util/api/getFolderLink";
 
 export const FolderPage = () => {
   const [user, setUser] = useState([]);
   const [cards, setCards] = useState([]);
   const [folders, setFolders] = useState([]);
   const [folderName, setFolderName] = useState("전체");
+  const [folderId, setFolderId] = useState();
 
   async function fetchUser() {
     try {
@@ -41,19 +41,10 @@ export const FolderPage = () => {
     }
   }
 
-  // async function fetchFolderLink() {
-  //   try {
-  //     const data = await getFolderLink({ id });
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-
   useEffect(() => {
     fetchUser();
     fetchFolderLinks();
     fetchFolderFolders();
-    // fetchFolderLink();
   }, []);
 
   return (
@@ -65,6 +56,8 @@ export const FolderPage = () => {
         folders={folders}
         folderName={folderName}
         setFolderName={setFolderName}
+        folderId={folderId}
+        setFolderId={setFolderId}
       />
       <Footer />
     </div>

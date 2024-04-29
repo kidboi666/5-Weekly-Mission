@@ -6,11 +6,11 @@
   align-items: center;
   margin-top: 3rem;
   margin-bottom: 3rem;
-  @include font(1.5rem, $color-black, 600);
+  @include font(1.2rem, $color-black, 600);
 }
 
 .title {
-  height: 4.8rem;
+  height: 3.6rem;
 }
 
 .items {
