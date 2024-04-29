@@ -9,6 +9,12 @@ const LinkCardList = ({
   folders,
   folderNameOnClick,
   currentFolderId,
+  onFolderAddClick,
+  onFolderNameChangeClick,
+  onFolderDeleteClick,
+  onLinkDelete,
+  onAddtoFolder,
+  onShare,
 }) => {
   return (
     <div className={styles.linkCardListContainer}>
@@ -19,6 +25,10 @@ const LinkCardList = ({
             folders={folders}
             folderNameOnClick={folderNameOnClick}
             currentFolderId={currentFolderId}
+            onFolderAddClick={onFolderAddClick}
+            onFolderNameChangeClick={onFolderNameChangeClick}
+            onFolderDeleteClick={onFolderDeleteClick}
+            onShare={onShare}
           />
         )}
 
@@ -26,7 +36,11 @@ const LinkCardList = ({
           <ul className={styles.linkCardList}>
             {items.map((item) => (
               <li key={item.id}>
-                <LinkCard linkCardInfo={item} />
+                <LinkCard
+                  linkCardInfo={item}
+                  onAddToFolder={onAddtoFolder}
+                  onLinkDelete={onLinkDelete}
+                />
               </li>
             ))}
           </ul>

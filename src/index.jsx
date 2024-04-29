@@ -15,7 +15,7 @@ import Footer from './components/Footer/Footer';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Navigate to="/folder" replace />,
+    element: <Navigate to='/folder' replace />,
   },
   {
     path: '/folder',
@@ -23,6 +23,10 @@ const router = createBrowserRouter([
   },
   {
     path: '/shared',
+    element: <SharedPage />,
+  },
+  {
+    path: '*',
     element: <SharedPage />,
   },
 ]);
