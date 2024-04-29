@@ -48,7 +48,7 @@ function FolderPage() {
     <div>
       <GlobalStyles />
       <Header user={user} />
-      <LinkInput />
+      <LinkInput folders={Folders.data} />
       <div className="contents-wrapper">
         <SearchBar />
         <div className="links-wrapper">

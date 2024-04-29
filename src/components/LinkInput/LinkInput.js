@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./LinkInput.css";
 import { ModalLayout } from "../ModalLayout";
 
-export function LinkInput() {
+export function LinkInput({ folders }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleHandler = () => {
@@ -22,10 +22,17 @@ export function LinkInput() {
       </div>
       {isOpen && (
         <ModalLayout toggleHandler={toggleHandler} title="폴더 추가">
-          <div className="modal-contents">
-            <input placeholder="내용 입력"></input>
-            <div className="add button">추가하기</div>
-          </div>
+          <ol className="folder-select-wrapper">
+            {folders.map((item) => {
+              return (
+                <li className="folder-select">
+                  {item.name}
+                  <p>{item.link.count}</p>
+                </li>
+              );
+            })}
+          </ol>
+          <div className="add button">추가하기</div>
         </ModalLayout>
       )}
     </div>

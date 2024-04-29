@@ -47,3 +47,15 @@
 .modal-contents {
   width: 100%;
 }
+
+.folder-select-wrapper {
+  max-height: 172px;
+  overflow-y: auto;
+}
+
+.folder-select {
+  font-size: 16px;
+  display: flex;
+  padding: 8px;
+  font-weight: 400;
+}
