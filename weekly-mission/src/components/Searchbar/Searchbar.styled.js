@@ -23,3 +23,14 @@ export const Image = styled.img`
   left: 45px;
   transform: translateY(-50%);
 `;
+
+export const ClearButton = styled.img`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  right: 45px;
+  transform: translateY(-50%);
+  cursor: pointer;
+`;
