@@ -1,6 +1,6 @@
 import styles from "./EditableCard.module.scss";
 import classNames from "classnames/bind";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Card } from "sharing/ui-card";
 import { CardContent } from "sharing/ui-card-content";
 import { CardImage } from "sharing/ui-card-image";
@@ -16,10 +16,15 @@ export const EditableCard = ({
   description,
   createdAt,
 }) => {
+  const KebabButtonRef = useRef(null);
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const handleMouseOver = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
+  const handleKebabClick = (e) => {
+    e.preventDefault();
+    setIsPopoverOpen(true);
+  };
 
   return (
     <a href={url} target="_blank" rel="noopener noreferrer">
@@ -37,7 +42,15 @@ export const EditableCard = ({
         >
           <img src="images/star.svg" alt="즐겨찾기를 나타내는 별" />
         </button>
-        <Popover isOpen={isPopoverOpen}>
+
+        <button
+          ref={KebabButtonRef}
+          className={cx("kebab")}
+          onClick={handleKebabClick}
+        >
+          <img src="images/kebab.svg" alt="더보기를 나타내는 점 3개" />
+        </button>
+        <Popover isOpen={isPopoverOpen} anchorRef={KebabButtonRef}>
           <ul className={cx("popover-list")}>
             <li>삭제하기</li>
             <li>폴더에 추가</li>
