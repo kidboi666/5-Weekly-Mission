@@ -1,12 +1,12 @@
-import { ROUTE } from "util/constant";
+import { LINK, ROUTE } from "utils/constant";
 import "./Footer.css";
-import { TEXT } from "./constant";
+import TEXT from "./constant";
 
-export const Footer = () => {
+export default function Footer() {
   return (
     <footer className="Footer">
       <div className="Footer-items">
-        <span className="Footer-copyright">{TEXT.codeit}</span>
+        <span className="Footer-copyright">{TEXT.copyRight}</span>
         <div className="Footer-links">
           <a className="Footer-link" href={ROUTE.개인정보처리방침}>
             {TEXT.privacyPolicy}
@@ -16,20 +16,26 @@ export const Footer = () => {
           </a>
         </div>
         <div className="Footer-sns">
-          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-            <img src="images/facebook.svg" alt="facebook 홈페이지로 연결된 facebook 로고" />
+          <a href={LINK.facebook} rel="noopener noreferrer" target="_blank">
+            <img
+              src="images/facebook.svg"
+              alt="페이스북 홈페이지로 연결된 로고"
+            />
           </a>
-          <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
-            <img src="images/twitter.svg" alt="twitter 홈페이지로 연결된 twitter 로고" />
+          <a href={LINK.twitter} rel="noopener noreferrer" target="_blank">
+            <img src="images/twitter.svg" alt="트위터 홈페이지로 연결된 로고" />
           </a>
-          <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
-            <img src="images/youtube.svg" alt="youtube 홈페이지로 연결된 youtube 로고" />
+          <a href={LINK.youtube} rel="noopener noreferrer" target="_blank">
+            <img src="images/youtube.svg" alt="유투브 홈페이지로 연결된 로고" />
           </a>
-          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-            <img src="images/instagram.svg" alt="instagram 홈페이지로 연결된 instagram 로고" />
+          <a href={LINK.facebook} rel="noopener noreferrer" target="_blank">
+            <img
+              src="images/instagram.svg"
+              alt="인스타그램 홈페이지로 연결된 로고"
+            />
           </a>
         </div>
       </div>
     </footer>
   );
-};
+}

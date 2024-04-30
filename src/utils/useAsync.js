@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { useEffectOnce } from "./useEffectOnce";
+import { useState } from "react";
 
 export const useAsync = (asyncFunction) => {
   const [loading, setLoading] = useState(false);
@@ -12,10 +12,11 @@ export const useAsync = (asyncFunction) => {
     setData(null);
     try {
       const response = await asyncFunction();
-      setData(response?.data);
-      return response;
+      const body = await response.json();
+      setData(body);
     } catch (error) {
       setError(error);
+      throw new Error(error);
     } finally {
       setLoading(false);
     }

@@ -34,18 +34,3 @@
     height: 2.4rem;
   }
 }
-
-.NavigationBar-signin {
-  display: inline-block;
-  width: 8rem;
-  padding: 1rem 0;
-  font-size: 1.4rem;
-  font-weight: 600;
-  text-align: center;
-
-  @media (min-width: 768px) {
-    width: 12.8rem;
-    padding: 1.6rem 0;
-    font-size: 1.8rem;
-  }
-}

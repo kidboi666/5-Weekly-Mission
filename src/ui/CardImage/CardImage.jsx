@@ -1,14 +1,15 @@
 import "./CardImage.css";
-import { DEFAULT_IMAGE } from "./constant";
 
-export const CardImage = ({ imageSource, alt, isZoomedIn }) => {
-  const className = isZoomedIn ? "CardImage CardImage-zoom-in" : "CardImage";
+export const CardImage = ({ imageSource, alt, isZoomIn }) => {
+  const className = isZoomIn ? "CardImage CardImage-zoom-in" : "CardImage";
 
   return (
     <div
-      style={{ backgroundImage: `url(${imageSource ?? DEFAULT_IMAGE})` }}
-      className={className}
+      style={{
+        backgroundImage: `url(${imageSource ?? "images/card-default.png"})`,
+      }}
       alt={alt}
+      className={className}
     />
   );
 };

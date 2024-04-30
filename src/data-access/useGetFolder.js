@@ -1,12 +1,12 @@
-import { mapFolderData } from "util/mapFolderData";
-import { useAsync } from "../util/useAsync";
-import { axiosInstance } from "util/axiosInstance";
+import { BASE_URL } from "utils/constant";
+import { mapFolderData } from "utils/mapFolderData";
+import { useAsync } from "utils/useAsync";
 
 export const useGetFolder = () => {
-  const getUser = () => axiosInstance.get("sample/folder");
-  const { loading, error, data } = useAsync(getUser);
+  const getFolder = () => fetch(`${BASE_URL}/api/sample/folder`);
+  const { data, error, loading } = useAsync(getFolder);
 
   const folderData = mapFolderData(data?.folder);
 
-  return { loading, error, data: folderData };
+  return { folderData, error, loading };
 };

@@ -1,8 +1,8 @@
-import { useAsync } from "../util/useAsync";
-import { axiosInstance } from "util/axiosInstance";
+import { BASE_URL } from "utils/constant";
+import { useAsync } from "utils/useAsync";
 
 export const useGetUser = () => {
-  const getUser = () => axiosInstance.get("sample/user");
-  const { loading, error, data } = useAsync(getUser);
-  return { loading, error, data };
+  const getUser = () => fetch(`${BASE_URL}/api/sample/user`);
+  const { data, error, loading } = useAsync(getUser);
+  return { data, error, loading };
 };

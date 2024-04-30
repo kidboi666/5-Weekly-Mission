@@ -1,5 +1,5 @@
 import "./Cta.css";
 
-export const Cta = ({ children }) => {
-  return <div className="Cta">{children}</div>;
-};
+export default function Cta({ children }) {
+  return <div className="button">{children}</div>;
+}

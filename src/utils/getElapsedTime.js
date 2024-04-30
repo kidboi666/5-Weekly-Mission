@@ -1,37 +1,35 @@
 import { TIME_IN_MILLISECONDS } from "./constant";
 
 export const getElapsedTime = (createdAt) => {
-  const now = new Date();
-  const createdAtDate = new Date(createdAt);
-  const elapsedTime = now - createdAtDate;
   const { minute, hour, day, month, year } = TIME_IN_MILLISECONDS;
+  const elapsedTime = new Date() - new Date(createdAt);
 
-  if (year * 2 <= elapsedTime) {
+  if (elapsedTime >= year * 2) {
     return `${Math.floor(elapsedTime / year)} years ago`;
   }
-  if (year <= elapsedTime) {
+  if (elapsedTime >= year) {
     return `1 year ago`;
   }
-  if (month * 2 <= elapsedTime) {
+  if (elapsedTime >= month * 2) {
     return `${Math.floor(elapsedTime / month)} months ago`;
   }
-  if (month <= elapsedTime) {
+  if (elapsedTime >= month) {
     return `1 month ago`;
   }
-  if (day * 2 <= elapsedTime) {
+  if (elapsedTime >= day * 2) {
     return `${Math.floor(elapsedTime / day)} days ago`;
   }
-  if (day <= elapsedTime) {
+  if (elapsedTime >= day) {
     return `1 day ago`;
   }
-  if (hour * 2 <= elapsedTime) {
+  if (elapsedTime >= hour * 2) {
     return `${Math.floor(elapsedTime / hour)} hours ago`;
   }
-  if (hour <= elapsedTime) {
+  if (elapsedTime >= hour) {
     return `1 hour ago`;
   }
-  if (minute * 2 <= elapsedTime) {
+  if (elapsedTime >= minute * 2) {
     return `${Math.floor(elapsedTime / minute)} minutes ago`;
   }
-  return `1 minute ago`;
+  return "1 minute ago";
 };
