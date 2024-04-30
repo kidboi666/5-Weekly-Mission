@@ -1,0 +1,89 @@
+import styled from 'styled-components';
+
+export const NoFolder = styled.div`
+  color: black;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 41px;
+`;
+
+export const FolderImage = styled.div`
+  width: 100%;
+  min-height: 19.2rem;
+  height: 19.2rem;
+  border-radius: 1.5rem 1.5rem 0 0;
+  background-position: center;
+  background-size: 100%;
+  transition: background-size 0.3s ease-in-out;
+
+  @media (min-width: 768px) {
+    min-height: 20rem;
+    height: 20rem;
+  }
+
+  &:hover {
+    background-size: 130%;
+  }
+`;
+
+export const FolderContent = styled.article`
+  height: 100%;
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+`;
+
+export const FolderContentText = styled.p`
+  font-size: ${(props) => props.size}px;
+  color: ${(props) => `var(--${props.color})`};
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+`;
+
+export const FolderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 32.5rem;
+  height: 32.7rem;
+  box-shadow: 0 0.5rem 2.5rem 0 rgba(0, 0, 0, 0.08);
+  border-radius: 1.5rem;
+
+  @media (min-width: 768px) {
+    width: 34rem;
+    height: 33.4rem;
+  }
+`;
+
+export const Sort = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`;
+
+export const FolderGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(32.5rem);
+  justify-content: center;
+  width: 100%;
+  max-width: 106rem;
+  row-gap: 2rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(auto-fill, 34rem);
+    row-gap: 2.5rem;
+    column-gap: 2rem;
+  }
+`;
+
+export const ATag = styled.a`
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+`;
