@@ -1,6 +1,7 @@
 import * as S from "./Folder.styled";
 import { useState, useEffect, memo } from "react";
 import useFetchData from "../../hooks/useFetchData";
+import SearchBar from "../Searchbar/Searchbar";
 import FolderMenuList from "../FolderMenuList/FolderMenuList";
 import FolderContent from "../FolderContent/FolderContent";
 import AddButton from "../AddButton/AddButton";
@@ -13,6 +14,8 @@ const Folder = ({ folderId }) => {
   const { data: foldersData, isLoading } = useFetchData(
     `${import.meta.env.VITE_BASE_URL}/users/1/folders`
   );
+
+  const [search, setSearch] = useState("");
 
   const [activeButton, setActiveButton] = useState(null);
   const [allLinksData, setAllLinksData] = useState(null);
@@ -44,10 +47,38 @@ const Folder = ({ folderId }) => {
     setAllLinksData(data);
   };
 
+  const onChangeSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const getFilteredLink = () => {
+    if (!allLinksData) {
+      return [];
+    }
+
+    if (search === "") {
+      return allLinksData.data;
+    }
+
+    const lowerSearch = search.toLowerCase();
+
+    return allLinksData.data.filter((link) => {
+      return (
+        (link.url && link.url.toLowerCase().includes(lowerSearch)) ||
+        (link.title && link.title.toLowerCase().includes(lowerSearch)) ||
+        (link.description &&
+          link.description.toLowerCase().includes(lowerSearch))
+      );
+    });
+  };
+
+  const filteredLinks = getFilteredLink();
+
   if (!foldersData) return null;
 
   return (
     <>
+      <SearchBar value={search} onChange={onChangeSearch} />
       <S.FoldermenuToolbar>
         <FolderMenuList
           folders={foldersData.data}
@@ -58,7 +89,7 @@ const Folder = ({ folderId }) => {
       </S.FoldermenuToolbar>
 
       <FolderContent
-        allLinksData={allLinksData}
+        allLinksData={filteredLinks}
         activeFolderName={activeFolderName}
         activeFolderId={activeButton}
       />

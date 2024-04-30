@@ -9,7 +9,7 @@ const LinksContent = ({
   activeFolderId,
   onClick,
 }) => {
-  const isEmpty = !linksData || linksData.data.length === 0;
+  const isEmpty = !linksData || linksData.length === 0;
 
   return (
     <>
@@ -24,7 +24,7 @@ const LinksContent = ({
         {isEmpty ? (
           <NoLink />
         ) : (
-          linksData.data.map((link) => <Card key={link.id} link={link} />)
+          linksData.map((link) => <Card key={link.id} link={link} />)
         )}
       </S.FolderContainer>
     </>

@@ -1,7 +1,7 @@
 import SearchBar from "../Searchbar/Searchbar";
 import Folder from "../Folder/Folder";
 import useFetchData from "../../hooks/useFetchData";
-import { memo } from "react";
+import { useState, memo } from "react";
 import Card from "../Card/Card";
 
 import * as S from "./CardList.styled";
@@ -18,15 +18,17 @@ const CardList = ({ isFolderPage }) => {
 
   return (
     <S.CardListWrapper>
-      <SearchBar />
       {isFolderPage ? (
         <Folder folderId={folderId} />
       ) : (
-        <S.CardContainer>
-          {folderData.folder.links.map((link) => (
-            <Card key={link.id} link={link} />
-          ))}
-        </S.CardContainer>
+        <>
+          <SearchBar />
+          <S.CardContainer>
+            {folderData.folder.links.map((link) => (
+              <Card key={link.id} link={link} />
+            ))}
+          </S.CardContainer>
+        </>
       )}
     </S.CardListWrapper>
   );
