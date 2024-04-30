@@ -1,10 +1,11 @@
 import styles from "./FolderToolBar.module.scss";
 import classNames from "classnames/bind";
 import { FolderButton } from "folder/ui-folder-button";
-import { ALL_LINKS_TEXT, MODALS_ID } from "./constant";
+import { BUTTONS, ALL_LINKS_TEXT, MODALS_ID } from "./constant";
 import { ALL_LINKS_ID } from "link/data-access-link/constant";
 import { AddFolderButton } from "folder/ui-add-folder-button/AddFolderButton";
 import { useState } from "react";
+import { IconAndTextButton } from "sharing/ui-icon-and-text-button";
 
 const cx = classNames.bind(styles);
 
@@ -42,6 +43,15 @@ export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }) => {
         />
       </div>
       <h2 className={cx("folder-name")}>{folderName}</h2>
+      <div className={cx("buttons")}>
+        {BUTTONS.map(({ text, MODALS_ID, iconSource }) => (
+          <IconAndTextButton
+            text={text}
+            MODALS_ID={MODALS_ID}
+            iconSource={iconSource}
+          />
+        ))}
+      </div>
     </div>
   );
 };
