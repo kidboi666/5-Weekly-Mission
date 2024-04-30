@@ -1,6 +1,6 @@
 import styles from "./Modal.module.scss";
 import classNames from "classnames/bind";
-import { Portal } from "sharing/ui-portal";
+import { Portal } from "sharing/ui-portal/Portal";
 
 const cx = classNames.bind(styles);
 
