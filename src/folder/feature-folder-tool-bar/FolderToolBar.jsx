@@ -44,11 +44,11 @@ export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }) => {
       </div>
       <h2 className={cx("folder-name")}>{folderName}</h2>
       <div className={cx("buttons")}>
-        {BUTTONS.map(({ text, MODALS_ID, iconSource }) => (
+        {BUTTONS.map(({ text, iconSource, modalId }) => (
           <IconAndTextButton
             text={text}
-            MODALS_ID={MODALS_ID}
             iconSource={iconSource}
+            onClick={() => setCurrentModal(modalId)}
           />
         ))}
       </div>

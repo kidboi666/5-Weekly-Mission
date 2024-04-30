@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Card } from "sharing/ui-card";
 import { CardContent } from "sharing/ui-card-content";
 import { CardImage } from "sharing/ui-card-image";
+import { Popover } from "sharing/ui-popover/Popover";
 
 const cx = classNames.bind(styles);
 
@@ -15,6 +16,7 @@ export const EditableCard = ({
   description,
   createdAt,
 }) => {
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const handleMouseOver = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
@@ -35,6 +37,12 @@ export const EditableCard = ({
         >
           <img src="images/star.svg" alt="즐겨찾기를 나타내는 별" />
         </button>
+        <Popover isOpen={isPopoverOpen}>
+          <ul className={cx("popover-list")}>
+            <li>삭제하기</li>
+            <li>폴더에 추가</li>
+          </ul>
+        </Popover>
       </Card>
     </a>
   );
