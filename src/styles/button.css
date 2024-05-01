@@ -18,6 +18,10 @@
   }
 }
 
+.btn-primary.red {
+  background: var(--Linkbrary-red);
+}
+
 .btn-sm {
   width: 12.8rem;
 }
