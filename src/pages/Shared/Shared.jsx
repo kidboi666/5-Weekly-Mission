@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
-import * as S from "./Shared.styled.";
-import { getSampleFolder } from "../../api/api";
-import Card from "../../components/Card/Card";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import ContentsContainer from "../../components/ContentsContainer";
+import { useEffect, useState } from 'react';
+import * as S from './Shared.styled.';
+import { getSampleFolder } from '../../api/api';
+import Card from '../../components/Card/Card';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 function Shared() {
   const [folderInfo, setFolderInfo] = useState({});
@@ -34,11 +33,11 @@ function Shared() {
       </S.OwnerProfile>
       <S.SharedContent>
         <SearchBar />
-        <ContentsContainer>
+        <S.Container>
           {linkList.map((item) => (
             <Card item={item} key={item.id} />
           ))}
-        </ContentsContainer>
+        </S.Container>
       </S.SharedContent>
     </S.Shared>
   );

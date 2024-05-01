@@ -1,5 +1,6 @@
-import styled from "styled-components";
-import { Cta } from "../../components/Button/Button.styled";
+import styled from 'styled-components';
+import { Cta } from '../../components/Button/Button.styled';
+import { FolderName } from '../../components/FolderButton/FolderButton.styled';
 
 export const AddButton = styled(Cta)`
   position: absolute;
@@ -14,6 +15,7 @@ export const AddButton = styled(Cta)`
 `;
 
 export const EmptyFolder = styled.div`
+  height: 300px;
   font-size: 16px;
   margin: 0 auto;
   display: flex;
@@ -26,7 +28,7 @@ export const EmptyFolder = styled.div`
 export const AddLinkInput = styled.input`
   width: 100%;
   height: 69px;
-  padding: 16px 40px;
+  padding: 16px 45px;
   border-radius: 15px;
   border: 1px solid var(--Primary);
   background: #ffffff;
@@ -49,17 +51,14 @@ export const LinkIcon = styled.img`
 `;
 
 export const HeaderModal = styled.div`
-  width: 800px;
+  width: 100%;
+  max-width: 800px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
   position: relative;
   padding: 20px 0 60px 0;
-
-  @media (max-width: 1199px) {
-    width: 100%;
-  }
 `;
 
 export const Header = styled.div`
@@ -69,6 +68,8 @@ export const Header = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+
   @media (max-width: 1199px) {
     padding: 0 32px;
   }
@@ -80,7 +81,7 @@ export const FolderContents = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  width: fit-content;
+  max-width: 1060px;
 
   @media (max-width: 1199px) {
     padding: 0 32px;
@@ -93,6 +94,8 @@ export const FolderButtons = styled.div`
   gap: 12px;
   flex-wrap: wrap;
 `;
+
+export const TotalFolderButton = styled(FolderName)``;
 
 export const FolderMenu = styled.div`
   width: 100%;
@@ -109,17 +112,20 @@ export const AddFolderButton = styled.span`
   color: var(--Primary);
   white-space: nowrap;
   margin-left: 12px;
+  gap: 6px;
 
   @media (max-width: 768px) {
     background-color: var(--Primary);
     color: #fff;
     z-index: 3;
     position: fixed;
-    left: 40%;
+    left: 50%;
+    transform: translate(-50%, 0);
     bottom: 101px;
     padding: 8px 24px;
     border-radius: 20px;
     font-size: 1.6rem;
+    margin: 0;
   }
 `;
 

@@ -1,22 +1,24 @@
-import { useContext, useEffect, useState } from "react";
-import Footer from "../../components/Footer/Footer";
-import Nav from "../../components/Nav/Nav";
-import SearchModal from "../../components/SearchBar/SearchBar";
-import { getFolder, getFolderList, getUser } from "../../api/api";
-import FolderButton from "../../components/FolderButton/FolderButton";
-import ContentsContainer from "../../components/ContentsContainer";
-import Card from "../../components/Card/Card";
-import linkIcon from "../../assets/link.svg";
-import AddIcon from "../../assets/add.svg";
-import PenIcon from "../../assets/pen.svg";
-import SharedIcon from "../../assets/share.svg";
-import DeleteIcon from "../../assets/Group36.svg";
-import * as S from "./Folder.styled";
-import UserContext from "../../contexts/UserContext";
+import { useEffect, useState } from 'react';
+import Footer from '../../components/Footer/Footer';
+import Nav from '../../components/Nav/Nav';
+import SearchModal from '../../components/SearchBar/SearchBar';
+import ContentsContainer from '../../components/ContentsContainer';
+import Card from '../../components/Card/Card';
+import linkIcon from '../../assets/link.svg';
+import PenIcon from '../../assets/pen.svg';
+import SharedIcon from '../../assets/share.svg';
+import DeleteIcon from '../../assets/Group36.svg';
+import * as S from './Folder.styled';
+import useGetUser from '../../hooks/useGetUser';
+import useGetFolder from '../../hooks/useGetFolder';
+import useGetFolderList from '../../hooks/useGetFolderList';
+import FolderButtonContainer from '../../components/FolderButtonContainer/FolderButtonContainer';
+import { useParams } from 'react-router-dom';
+import Modals from '../../components/Modal/Modals/Modals';
 
-function FolderIcon({ image, children }) {
+function FolderIcon({ image, children, toggleModal, type }) {
   return (
-    <S.FolderModalIcon>
+    <S.FolderModalIcon onClick={() => toggleModal(`${type}`)}>
       <img src={image} alt={`${image}`} />
       {children}
     </S.FolderModalIcon>
@@ -24,37 +26,32 @@ function FolderIcon({ image, children }) {
 }
 
 function Folder() {
-  const [link, setLink] = useState([]);
-  const [linkList, setLinkList] = useState([]);
-  const [folderId, setFolderId] = useState("");
-  const [folderName, setFolderName] = useState("");
-  const [user, setUser] = useState();
-  const [linkSelected, setLinkSelected] = useState(false);
+  const { id } = useParams();
+  const [folderId, setFolderId] = useState('');
+  const [folderName, setFolderName] = useState('');
+  const { user } = useGetUser(id);
+  const { linkList } = useGetFolder(folderId, id);
+  const { link } = useGetFolderList(id);
+  const [modal, setModal] = useState(false);
+  const [modalType, setModalType] = useState('');
 
-  const userId = useContext(UserContext);
-
-  const loadFolder = async (options) => {
-    const links = await getFolder(options.userId);
-    const linkList = await getFolderList(options);
-    setLink(links.data);
-    setLinkList(linkList.data);
-  };
-
-  const loadUser = async (id) => {
-    const user = await getUser(id);
-    setUser(user.data[0]);
-  };
-
-  const handleMenuClick = (index) => {
-    const booleanArr = link.fill(false);
-    booleanArr[index] = true;
-    setLinkSelected(booleanArr);
+  const toggleModal = (type) => {
+    if (modal) {
+      setModal(false);
+      setModalType('');
+    }
+    setModal(true);
+    setModalType(`${type}`);
   };
 
   useEffect(() => {
-    loadFolder({ folderId, userId });
-    loadUser(userId);
-  }, [folderId, folderName, userId, linkSelected]);
+    if (modal) {
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [modal]);
 
   return (
     <>
@@ -68,49 +65,59 @@ function Folder() {
       </S.Header>
       <S.FolderContents>
         <SearchModal />
-        <S.FolderMenu>
-          <S.FolderButtons>
-            <FolderButton
-              setFolderId={setFolderId}
-              setFolderName={setFolderName}
-            />
-            {link
-              ? link.map((item, index) => (
-                  <FolderButton
-                    item={item}
-                    key={item.id}
-                    setFolderId={setFolderId}
-                    setFolderName={setFolderName}
-                    isSelected={linkSelected[index]}
-                    handleMenuClick={handleMenuClick}
-                    index={index}
-                  />
-                ))
-              : null}
-          </S.FolderButtons>
-          <S.AddFolderButton>
-            폴더 추가
-            <img src={AddIcon} alt="AddIcon" />
-          </S.AddFolderButton>
-        </S.FolderMenu>
+        <FolderButtonContainer
+          link={link}
+          setFolderId={setFolderId}
+          setFolderName={setFolderName}
+          toggleModal={toggleModal}
+        />
         <S.FolderModalContainer>
-          {folderName ? folderName : "전체"}
-          {folderId ? (
+          {folderName ? folderName : '전체'}
+          {folderId && (
             <S.FolderModal>
-              <FolderIcon image={SharedIcon}>공유</FolderIcon>
-              <FolderIcon image={PenIcon}>이름 변경</FolderIcon>
-              <FolderIcon image={DeleteIcon}>삭제</FolderIcon>
+              <FolderIcon
+                image={SharedIcon}
+                toggleModal={toggleModal}
+                type="share"
+              >
+                공유
+              </FolderIcon>
+              <FolderIcon image={PenIcon} toggleModal={toggleModal} type="edit">
+                이름 변경
+              </FolderIcon>
+              <FolderIcon
+                image={DeleteIcon}
+                toggleModal={toggleModal}
+                type="delete"
+              >
+                삭제
+              </FolderIcon>
             </S.FolderModal>
-          ) : null}
+          )}
         </S.FolderModalContainer>
-        <ContentsContainer>
+        <ContentsContainer content={linkList.length}>
           {linkList.length > 0 ? (
-            linkList.map((item) => <Card item={item} key={item.id} />)
+            linkList.map((item) => (
+              <Card
+                item={item}
+                key={item.id}
+                toggleModal={toggleModal}
+                setModal={setModal}
+              />
+            ))
           ) : (
             <S.EmptyFolder>저장된 링크가 없습니다.</S.EmptyFolder>
           )}
         </ContentsContainer>
       </S.FolderContents>
+      {modal && (
+        <Modals
+          modalType={modalType}
+          setModal={setModal}
+          folderName={folderName}
+          link={link}
+        />
+      )}
       <Footer />
     </>
   );
