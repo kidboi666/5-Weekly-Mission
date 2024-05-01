@@ -1,41 +1,20 @@
-import { createGlobalStyle } from "styled-components";
-import styled from "styled-components";
-import Nav from "../components/shared/Nav";
-import AddLinkSection from "../components/folderpage/header/AddLinkSection";
-import FolderLayout from "../components/folderpage/FolderLayout";
-import Footer from "../components/shared/Footer";
-
-const GlobalStyle = createGlobalStyle`
-* {
-  box-sizing: border-box;
-  font-family: 'Pretendard', sans-serif;
-  margin: 0;
-}
-`;
-
-const NavWrapper = styled.div`
-  position: relative;
-`;
-
-const FolderLayoutWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+import { ModalProvider } from "../components/Context/ModalContext";
+import Nav from "../components/Nav/Nav";
+import Header from "../components/Header/Header";
+import CardList from "../components/CardList/CardList";
+import Footer from "../components/Footer/Footer";
+import Layout from "../components/Layout/Layout";
 
 function FolderPage() {
   return (
-    <>
-      <GlobalStyle />
-      <NavWrapper>
+    <ModalProvider>
+      <Layout>
         <Nav />
-      </NavWrapper>
-      <AddLinkSection />
-      <FolderLayoutWrapper>
-        <FolderLayout />
-      </FolderLayoutWrapper>
-      <Footer />
-    </>
+        <Header isFolderPage={true} />
+        <CardList isFolderPage={true} />
+        <Footer />
+      </Layout>
+    </ModalProvider>
   );
 }
 

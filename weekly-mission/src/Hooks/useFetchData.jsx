@@ -1,28 +1,31 @@
 import { useState, useEffect } from "react";
 
 const useFetchData = (url) => {
-  const apiUrl = `${url}`;
   const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchData();
-  }, [apiUrl]);
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const data = await response.json();
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch(apiUrl);
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch folder data");
+        setData(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
       }
-      const data = await response.json();
-      setData(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+    };
 
-  return data;
+    fetchData();
+  }, [url]);
+
+  return { data, isLoading };
 };
 
 export default useFetchData;
