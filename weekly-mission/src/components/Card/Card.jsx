@@ -26,6 +26,7 @@ const Card = ({ link, isFolderPage }) => {
       <S.StarButton src={starbutton} alt="즐겨찾기" />
       <S.CardText>
         <S.CardTime>{generateTimeText(createdAt)}</S.CardTime>
+
         {isFolderPage && (
           <S.KebabButton
             src={kebab}
@@ -33,6 +34,7 @@ const Card = ({ link, isFolderPage }) => {
             onClick={handleTogglePopover}
           />
         )}
+
         {isPopoverOpen && (
           <S.PopoverContent>
             <Popover />

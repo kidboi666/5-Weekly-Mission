@@ -32,7 +32,9 @@ const LinksContent = ({
         {isEmpty ? (
           <NoLink />
         ) : (
-          linksData.map((link) => <Card key={link.id} link={link} />)
+          linksData.map((link) => (
+            <Card key={link.id} link={link} isFolderPage={true} />
+          ))
         )}
       </S.FolderContainer>
 

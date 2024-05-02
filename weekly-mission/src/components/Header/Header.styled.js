@@ -45,3 +45,15 @@ export const FolderName = styled.h1`
   line-height: 48px;
   text-align: center;
 `;
+
+export const StickyContainer = styled.div`
+  position: fixed;
+  bottom: 0;
+  z-index: 2;
+
+  width: 100%;
+  padding: 24px 320px;
+  display: flex;
+  gap: 8px;
+  background-color: #f0f6ff;
+`;

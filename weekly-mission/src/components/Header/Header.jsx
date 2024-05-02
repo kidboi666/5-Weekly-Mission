@@ -1,3 +1,4 @@
+import { useRef, useState, useEffect } from "react";
 import useFolderList from "../../hooks/useFolderList";
 import AddFolderLink from "../AddFolderLinkBar/AddFolderLink";
 import * as S from "./Header.styled";
@@ -5,8 +6,30 @@ import * as S from "./Header.styled";
 const Header = ({ isFolderPage }) => {
   const { data: folderData, isLoading } = useFolderList();
 
+  const [isSticky, setIsSticky] = useState(false);
+  const headerRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsSticky(!entry.isIntersecting);
+      },
+      { threshold: 0 }
+    );
+
+    if (headerRef.current) {
+      observer.observe(headerRef.current);
+    }
+
+    return () => {
+      if (headerRef.current) {
+        observer.unobserve(headerRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <S.HeaderContainer>
+    <S.HeaderContainer ref={headerRef}>
       {isFolderPage ? (
         <AddFolderLink />
       ) : (
@@ -22,6 +45,12 @@ const Header = ({ isFolderPage }) => {
             </S.FolderInfo>
           )}
         </S.FolderInfoContainer>
+      )}
+
+      {isSticky && (
+        <S.StickyContainer>
+          {isFolderPage && <AddFolderLink />}
+        </S.StickyContainer>
       )}
     </S.HeaderContainer>
   );
