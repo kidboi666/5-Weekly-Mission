@@ -16,7 +16,6 @@ function FolderButtonList({
   $btnActive,
   onClick,
 }: IButtonList) {
-  console.log($menu);
   const handleClick = (api: string, index: number) => {
     onClick(api, index);
   };

@@ -19,7 +19,7 @@ function bodyContent(body: string, data: IModal['$modalData']) {
   } else if (body === 'sns') {
     console.log(body, '여기');
     return <ShareModal />;
-  } else if (body === 'checkList') {
+  } else if (body === 'checkbox') {
     if (!data) return null;
     return <CheckBox $data={data} />;
   }
@@ -30,7 +30,7 @@ interface IModalInfo extends IModal {
   onClose: () => void;
 }
 
-function Index({
+function Modal({
   onOpen,
   onClose,
   $title,
@@ -73,4 +73,4 @@ function Index({
     </>
   );
 }
-export default Index;
+export default Modal;

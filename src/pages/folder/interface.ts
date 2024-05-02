@@ -1,7 +1,7 @@
 // folder menu button api
 export interface IFolderMenuButton {
   id: number;
-  created_at?: string;
+  created_at?: Date;
   name?: string;
   user_id?: number;
   favorite?: boolean;

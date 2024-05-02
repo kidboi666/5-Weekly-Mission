@@ -7,6 +7,7 @@ export const CheckBoxWrap = styled.div`
       &-type1 {
         max-height: 240px;
         overflow-y: auto;
+        text-align: left;
         .inner {
           cursor: pointer;
           input {

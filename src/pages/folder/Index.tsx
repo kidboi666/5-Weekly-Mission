@@ -3,7 +3,7 @@ import { BookmarkBox, BodyInner } from './folderStyle';
 
 import Button from '../../components/common/atoms/Button';
 import useFetch from '../../hook/useFetch';
-import Modal from '../../components/common/modal/Index';
+import Modal from '../../components/common/modal/Modal';
 import { FOLDERCONTANTLISTAPI, FOLDERMENULISTAPI } from '../../constant/api';
 import { IFolderContentApi, IFolderMenuButtonApi } from './interface';
 import { useState } from 'react';
@@ -55,6 +55,7 @@ function Index() {
     const result = menu?.data.filter((data) => +data.id === +api);
     result && setTitle(result[0]?.name as '');
   };
+
   const handleModalOpen = (type: string) => {
     let modalInfo = modalOrder[type];
     if (type === 'folderInAdd') {
