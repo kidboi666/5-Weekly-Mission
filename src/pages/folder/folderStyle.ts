@@ -120,6 +120,7 @@ export const ShareListBtn = styled(DFlaxAlignCenter)`
   }
 `;
 export const BoxLinkSearch = styled.div`
+  position: relative;
   margin-bottom: 40px;
   @media screen and (max-width: ${theme.screenSize.moLarge}) {
     margin-bottom: 32px;

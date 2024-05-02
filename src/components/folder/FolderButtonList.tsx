@@ -26,7 +26,7 @@ function FolderButtonList({
           <Button
             $id={'all'}
             $btnClass={`button--outlined ${$btnActive === -1 ? 'active' : ''}`}
-            $clickEvent={() => handleClick('all', -1)}
+            onclick={() => handleClick('all', -1)}
           >
             전체
           </Button>
@@ -38,7 +38,7 @@ function FolderButtonList({
                 $btnClass={`button--outlined ${
                   $btnActive === i ? 'active' : ''
                 }`}
-                $clickEvent={() => handleClick(`${item.id}`, i)}
+                onclick={() => handleClick(`${item.id}`, i)}
               >
                 {item.name}
               </Button>

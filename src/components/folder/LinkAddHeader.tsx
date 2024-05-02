@@ -10,9 +10,10 @@ function LinkAddHeader({ $inputIconImg }: { $inputIconImg: string }) {
         $placeholder={'링크를 추가해 보세요'}
         $beforeBgIcon={$inputIconImg}
         $btnShow={true}
-        $btnText={'추가하기'}
         $btnClass={'button--gradient mideum'}
-      />
+      >
+        추가하기
+      </Input>
     </LinkAddHeadInner>
   );
 }

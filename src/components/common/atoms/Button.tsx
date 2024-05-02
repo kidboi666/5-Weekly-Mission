@@ -6,7 +6,7 @@ interface IButtonModule {
   $id?: string;
   $afterButtonIcon?: string;
   $type?: 'button' | 'reset' | 'submit' | undefined;
-  $clickEvent?: () => void;
+  onclick?: () => void;
 }
 
 export default function Button({
@@ -15,7 +15,7 @@ export default function Button({
   $type = 'button',
   $BeforButtonIcon = '',
   $afterButtonIcon = '',
-  $clickEvent,
+  onclick,
 }: IButtonModule) {
   return (
     <ButtonModule
@@ -23,7 +23,7 @@ export default function Button({
       type={$type}
       $BeforButtonIcon={$BeforButtonIcon}
       $afterButtonIcon={$afterButtonIcon}
-      onClick={$clickEvent}
+      onClick={onclick}
     >
       {children}
     </ButtonModule>

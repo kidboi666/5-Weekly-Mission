@@ -40,10 +40,6 @@ export default function PostCard({
   const handelerBookMarkActive = () => setBookMark((prev) => !prev);
   const handelerCardDropdown = () => setCardMenuShow((prev) => !prev);
 
-  const handleMenuItemClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setCardMenuShow(false);
-  };
-
   const handleModalOpen = (type: string) => {
     let modalInfo = modalOrder[type];
     if (type === 'folderInAdd') {

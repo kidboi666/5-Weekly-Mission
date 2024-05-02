@@ -6,7 +6,7 @@ import useFetch from '../../hook/useFetch';
 import Modal from '../../components/common/modal/Modal';
 import { FOLDERCONTANTLISTAPI, FOLDERMENULISTAPI } from '../../constant/api';
 import { IFolderContentApi, IFolderMenuButtonApi } from './interface';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IModal } from '../../components/common/modal/interface';
 import { modalOrder } from '../../constant/modal';
 import ContantList from '../../components/folder/ContantList';
@@ -15,9 +15,9 @@ import SearchInputBox from '../../components/folder/SearchInputBox';
 import FolderButtonList from '../../components/folder/FolderButtonList';
 import FolderContentControll from '../../components/folder/FolderContentControll';
 
-const add = '/assets/icon/icon_primary_add.svg';
-const search = '/assets/icon/icon_search.svg';
-const link = '/assets/icon/icon_primaty_link.svg';
+const addImage = '/assets/icon/icon_primary_add.svg';
+const searchImage = '/assets/icon/icon_search.svg';
+const linkImage = '/assets/icon/icon_primaty_link.svg';
 
 function useFatchDataLoad<T>(api: string) {
   return useFetch<T>(api);
@@ -26,7 +26,7 @@ function useFatchDataLoad<T>(api: string) {
 function Index() {
   const [title, setTitle] = useState('전체');
   const [btnActive, setBtnActive] = useState<number>(-1);
-  const [dynamicAPI, setDynamicAPI] = useState<string>(FOLDERCONTANTLISTAPI);
+  const [dynamicAPI, setDynamicAPI] = useState<string>(FOLDERCONTANTLISTAPI); // 버튼리스트 클릭시 해당 컨텐트 노출
   const [modalShow, setModalShow] = useState(false);
   const [modalInfo, setModalInfo] = useState<IModal>({
     $title: '',
@@ -40,7 +40,9 @@ function Index() {
     useFatchDataLoad<IFolderMenuButtonApi>(FOLDERMENULISTAPI);
   const { value: contant, isLoading: contantLoading } =
     useFatchDataLoad<IFolderContentApi>(dynamicAPI);
+  const [search, setSearch] = useState<any>();
 
+  // 폴더리스트버튼
   const handleClick = (api: string, index: number) => {
     if (menu === undefined || api === '') return;
     if (index !== undefined) {
@@ -56,6 +58,7 @@ function Index() {
     result && setTitle(result[0]?.name as '');
   };
 
+  // 모달오픈
   const handleModalOpen = (type: string) => {
     let modalInfo = modalOrder[type];
     if (type === 'folderInAdd') {
@@ -68,18 +71,42 @@ function Index() {
     setModalShow(true);
   };
 
+  // 모달닫기
   const handleModalClose = () => {
     setModalShow(false);
   };
+
+  // 검색어 filter
+  const handelSearch = (value: string) => {
+    let filter;
+    if (value) {
+      filter = contant?.data.filter((con) => {
+        if (!con) return;
+        return (
+          con.description?.includes(value) ||
+          con.title?.includes(value) ||
+          con.url?.includes(value)
+        );
+      });
+      console.log(filter);
+      setSearch(filter);
+      return;
+    }
+    setSearch(contant?.data);
+  };
+
+  // contant list
+  const contantSearch = search ? search : contant?.data;
+
   return (
     <>
       <ContainHead>
-        <LinkAddHeader $inputIconImg={link} />
+        <LinkAddHeader $inputIconImg={linkImage} />
       </ContainHead>
       <ContainBody>
         <BodyInner>
           {/* 검색창 */}
-          <SearchInputBox $inputIconImg={search} />
+          <SearchInputBox $inputIconImg={searchImage} onchange={handelSearch} />
           {/* 폴더 리스트 버튼 */}
           <BookmarkBox>
             <FolderButtonList
@@ -91,8 +118,8 @@ function Index() {
             <div>
               <Button
                 $btnClass={'button--icon-after'}
-                $afterButtonIcon={add}
-                $clickEvent={() => handleModalOpen('folderAdd')}
+                $afterButtonIcon={addImage}
+                onclick={() => handleModalOpen('folderAdd')}
               >
                 폴더추가
               </Button>
@@ -101,7 +128,7 @@ function Index() {
           {/* 설정 버튼 */}
           <FolderContentControll $title={title} onclick={handleModalOpen} />
           {/* 컨텐츠 리스트 */}
-          <ContantList contant={contant?.data} loading={contantLoading} />
+          <ContantList contant={contantSearch} loading={contantLoading} />
         </BodyInner>
       </ContainBody>
       <Modal onOpen={modalShow} onClose={handleModalClose} {...modalInfo} />

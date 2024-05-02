@@ -57,14 +57,14 @@ function Modal({
           {$body && <ModalBody>{bodyContent($body, $modalData)}</ModalBody>}
           {$buttonStyle && (
             <ModalFoot>
-              <Button $btnClass={$buttonStyle} $clickEvent={() => modalClose()}>
+              <Button $btnClass={$buttonStyle} onclick={() => modalClose()}>
                 {$buttonText}
               </Button>
             </ModalFoot>
           )}
           <Button
             $btnClass={'button--modal-close'}
-            $clickEvent={() => modalClose()}
+            onclick={() => modalClose()}
           >
             <img src="/assets/icon/icon_close.svg" alt="닫기" />
           </Button>
