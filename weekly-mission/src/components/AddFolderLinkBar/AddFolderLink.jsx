@@ -4,7 +4,7 @@ import { useModal } from "../Context/ModalContext";
 import Modal from "../Modal/Modal";
 
 const AddFolderLink = () => {
-  const { isModalOpen, openModal, closeModal } = useModal();
+  const { modalState, openModal, closeModal } = useModal();
 
   const handleOpenAddLinkModal = () => {
     openModal("addLink");
@@ -24,7 +24,7 @@ const AddFolderLink = () => {
         <S.AddButton onClick={handleOpenAddLinkModal}>추가하기</S.AddButton>
       </S.AddFolderLink_Container>
 
-      {isModalOpen.addLink && (
+      {modalState.addLink && (
         <Modal
           text="폴더에 추가"
           showButton={true}

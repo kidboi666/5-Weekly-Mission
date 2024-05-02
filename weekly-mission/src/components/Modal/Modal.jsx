@@ -1,3 +1,4 @@
+import { useState } from "react";
 import * as S from "./Modal.styled";
 import closeButton from "../../../image/_close.svg";
 import Button from "../Button/Button";
@@ -12,11 +13,15 @@ const Modal = ({
   onClick,
   showInput,
   content,
+  folderMenu,
+  linkCount,
   showButton,
   buttonText,
   buttonType,
   showShareIcons,
 }) => {
+  const [selectedFolderIndex, setSelectedFolderIndex] = useState(null);
+
   const handleCopyUrlIconClick = () => {
     const shareLink = `${window.location.origin}/folder/${activeFolderId}`;
     //임시로 확인용
@@ -36,6 +41,26 @@ const Modal = ({
         <S.ModalName>{text}</S.ModalName>
         {showInput && <S.ModalInput placeholder="내용 입력" />}
         {content && <S.ModalInfo>{content}</S.ModalInfo>}
+        {folderMenu && linkCount && (
+          <S.AddFolderList>
+            {folderMenu.map((folder, index) => (
+              <S.AddFolderListContent
+                key={index}
+                onClick={() => setSelectedFolderIndex(index)}
+                selected={selectedFolderIndex === index}
+              >
+                <S.FolderName selected={selectedFolderIndex === index}>
+                  {folder}
+                </S.FolderName>
+                <S.LinkCount>{linkCount[index]}개 링크</S.LinkCount>
+                {selectedFolderIndex !== null &&
+                  selectedFolderIndex === index && (
+                    <S.CheckMark>✔️</S.CheckMark>
+                  )}
+              </S.AddFolderListContent>
+            ))}
+          </S.AddFolderList>
+        )}
         {showButton && <Button text={buttonText} type={buttonType} />}
         {showShareIcons && (
           <S.ShareIconsGroup>

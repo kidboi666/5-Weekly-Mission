@@ -1,13 +1,12 @@
 import * as S from "./Popover.styled";
 import { memo } from "react";
 import { useModal } from "../Context/ModalContext";
-import Modal from "../Modal/Modal";
 
 const Popover = () => {
-  const { isModalOpen, openModal, closeModal } = useModal();
+  const { modalState, openModal, closeModal } = useModal();
 
   const handleModalToggle = (modalType) => {
-    if (isModalOpen[modalType]) {
+    if (modalState[modalType]) {
       closeModal(modalType);
     } else {
       openModal(modalType);
@@ -18,7 +17,7 @@ const Popover = () => {
     <S.PopoverContainer>
       <S.PopoverButton
         onClick={() => {
-          handleModalToggle("deleteFolder");
+          handleModalToggle("deleteLink");
         }}
       >
         삭제하기

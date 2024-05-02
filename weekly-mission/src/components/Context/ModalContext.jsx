@@ -1,33 +1,31 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useContext, useReducer } from "react";
 
 const ModalContext = createContext();
 
+const modalReducer = (state, action) => {
+  switch (action.type) {
+    case "OPEN_MODAL":
+      return { ...state, [action.modalName]: true };
+    case "CLOSE_MODAL":
+      return { ...state, [action.modalName]: false };
+    default:
+      throw new Error(`Unhandled action type: ${action.type}`);
+  }
+};
+
 export const ModalProvider = ({ children }) => {
-  const [isModalOpen, setIsModalOpen] = useState({
-    addFolder: false,
-    renameFolder: false,
-    shareFolder: false,
-    deleteFolder: false,
-    deleteLink: false,
-    addLink: false,
-  });
+  const [modalState, dispatch] = useReducer(modalReducer, {});
 
   const openModal = (modalName) => {
-    setIsModalOpen((prev) => ({ ...prev, [modalName]: true }));
+    dispatch({ type: "OPEN_MODAL", modalName });
   };
 
   const closeModal = (modalName) => {
-    setIsModalOpen((prev) => ({ ...prev, [modalName]: false }));
+    dispatch({ type: "CLOSE_MODAL", modalName });
   };
 
   return (
-    <ModalContext.Provider
-      value={{
-        isModalOpen,
-        openModal,
-        closeModal,
-      }}
-    >
+    <ModalContext.Provider value={{ modalState, openModal, closeModal }}>
       {children}
     </ModalContext.Provider>
   );

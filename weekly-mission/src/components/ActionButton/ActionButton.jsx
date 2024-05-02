@@ -14,11 +14,11 @@ const CustomButton = ({ onClick, icon, text }) => {
   );
 };
 
-const ActionButton = ({ activeFolderId }) => {
-  const { isModalOpen, openModal, closeModal } = useModal();
+const ActionButton = ({ activeFolderName, activeFolderId }) => {
+  const { modalState, openModal, closeModal } = useModal();
 
   const handleModalToggle = (modalType) => {
-    if (isModalOpen[modalType]) {
+    if (modalState[modalType]) {
       closeModal(modalType);
     } else {
       openModal(modalType);
@@ -32,11 +32,11 @@ const ActionButton = ({ activeFolderId }) => {
         icon={shareIcon}
         text="공유"
       />
-      {isModalOpen.shareFolder && (
+      {modalState.shareFolder && (
         <Modal
           activeFolderId={activeFolderId}
           text="폴더 공유"
-          content="폴더명"
+          content={activeFolderName}
           showShareIcons={true}
           onClick={() => closeModal("shareFolder")}
         />
@@ -47,7 +47,7 @@ const ActionButton = ({ activeFolderId }) => {
         icon={renameIcon}
         text="이름 변경"
       />
-      {isModalOpen.renameFolder && (
+      {modalState.renameFolder && (
         <Modal
           text="폴더 이름 변경"
           showButton={true}
@@ -63,13 +63,13 @@ const ActionButton = ({ activeFolderId }) => {
         icon={deleteIcon}
         text="삭제"
       />
-      {isModalOpen.deleteFolder && (
+      {modalState.deleteFolder && (
         <Modal
           text="폴더 삭제"
           showButton={true}
           buttonText="삭제하기"
           buttonType="red"
-          content="폴더명"
+          content={activeFolderName}
           onClick={() => closeModal("deleteFolder")}
         />
       )}

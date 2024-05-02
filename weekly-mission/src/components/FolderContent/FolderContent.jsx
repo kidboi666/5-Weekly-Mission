@@ -1,8 +1,14 @@
 import LinksContent from "./LinksContent";
 
-const FolderContent = ({ allLinksData, activeFolderName, activeFolderId }) => {
+const FolderContent = ({
+  foldersData,
+  allLinksData,
+  activeFolderName,
+  activeFolderId,
+}) => {
   return (
     <LinksContent
+      foldersData={foldersData}
       linksData={allLinksData}
       activeFolderName={activeFolderName}
       activeFolderId={activeFolderId}

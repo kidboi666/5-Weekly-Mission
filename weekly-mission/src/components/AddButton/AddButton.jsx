@@ -15,7 +15,7 @@ const StyledAddButton = styled.button`
 `;
 
 const AddButton = () => {
-  const { isModalOpen, openModal, closeModal } = useModal();
+  const { modalState, openModal, closeModal } = useModal();
 
   const handleOpenAddFolderModal = () => {
     openModal("addFolder");
@@ -30,7 +30,7 @@ const AddButton = () => {
       <StyledAddButton onClick={handleOpenAddFolderModal}>
         폴더 추가 +
       </StyledAddButton>
-      {isModalOpen.addFolder && (
+      {modalState.addFolder && (
         <AddFolderModal
           text="폴더 추가"
           showButton={true}

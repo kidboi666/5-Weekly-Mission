@@ -16,7 +16,7 @@ export const ModalContainer = styled.div`
 export const ModalContent = styled.div`
   position: relative;
   width: 360px;
-  height: 238px;
+  height: auto;
   background-color: white;
   padding: 32px 40px;
   display: flex;
@@ -26,6 +26,44 @@ export const ModalContent = styled.div`
   gap: 24px;
   border-radius: 15px;
   border: 1px solid #ccd5e3;
+`;
+
+export const AddFolderList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`;
+
+export const AddFolderListContent = styled.div`
+  display: flex;
+  width: 280px;
+  gap: 8px;
+  padding: 8px;
+  position: relative;
+  border-radius: 8px;
+  cursor: pointer;
+
+  background-color: ${({ selected }) => (selected ? "#F0F6FF" : "white")};
+`;
+
+export const FolderName = styled.span`
+  font-size: 16px;
+  font-weight: 400;
+
+  color: ${({ selected }) => (selected ? "#6D6AFE" : "black")};
+`;
+
+export const LinkCount = styled.span`
+  font-size: 14px;
+  font-weight: 400;
+  color: #9fa6b2;
+`;
+
+export const CheckMark = styled.span`
+  width: 11.25px;
+  height: 9.5px;
+  position: absolute;
+  right: 20px;
 `;
 
 export const CloseButton = styled.img`
