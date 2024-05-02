@@ -1,19 +1,15 @@
 import * as S from "./Folder.styled";
 import { useState, useEffect, memo } from "react";
-import useFetchData from "../../hooks/useFetchData";
 import SearchBar from "../Searchbar/Searchbar";
 import FolderMenuList from "../FolderMenuList/FolderMenuList";
 import FolderContent from "../FolderContent/FolderContent";
 import AddButton from "../AddButton/AddButton";
-import Modal from "../Modal/Modal";
-import { useModal } from "../Context/ModalContext";
+import useFoldersByUserId from "../../hooks/useFoldersByUserId";
 
 import { fetchLinkData } from "../../services/fetchFolderLinksData";
 
 const Folder = ({ folderId }) => {
-  const { data: foldersData, isLoading } = useFetchData(
-    `${import.meta.env.VITE_BASE_URL}/users/1/folders`
-  );
+  const { data: foldersData, isLoading } = useFoldersByUserId();
 
   const [search, setSearch] = useState("");
 
@@ -72,6 +68,7 @@ const Folder = ({ folderId }) => {
 
   const filteredLinks = getFilteredLink();
 
+  if (isLoading) return <div>Loading...</div>;
   if (!foldersData) return null;
 
   return (

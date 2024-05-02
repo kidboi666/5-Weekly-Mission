@@ -1,12 +1,9 @@
-import useFetchData from "../../hooks/useFetchData";
+import useFolderList from "../../hooks/useFolderList";
 import AddFolderLink from "../AddFolderLinkBar/AddFolderLink";
 import * as S from "./Header.styled";
 
 const Header = ({ isFolderPage }) => {
-  const { data: folderData, isLoading } = useFetchData(
-    `${import.meta.env.VITE_BASE_URL}/sample/folder
-  `
-  );
+  const { data: folderData, isLoading } = useFolderList();
 
   return (
     <S.HeaderContainer>

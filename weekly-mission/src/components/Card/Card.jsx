@@ -7,7 +7,7 @@ import kebab from "../../../image/kebab.svg";
 import { generateTimeText, formatDate } from "../../utils/Function";
 import Popover from "../Popover/Popover";
 
-const Card = ({ link }) => {
+const Card = ({ link, isFolderPage }) => {
   const { url, title, description } = link;
   const createdAt = link.createdAt || link.created_at;
   const imageSource = link.imageSource || link.image_source;
@@ -26,7 +26,13 @@ const Card = ({ link }) => {
       <S.StarButton src={starbutton} alt="즐겨찾기" />
       <S.CardText>
         <S.CardTime>{generateTimeText(createdAt)}</S.CardTime>
-        <S.KebabButton src={kebab} alt="더보기" onClick={handleTogglePopover} />
+        {isFolderPage && (
+          <S.KebabButton
+            src={kebab}
+            alt="더보기"
+            onClick={handleTogglePopover}
+          />
+        )}
         {isPopoverOpen && (
           <S.PopoverContent>
             <Popover />
