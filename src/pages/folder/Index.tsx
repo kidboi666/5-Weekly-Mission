@@ -1,19 +1,7 @@
-import PostCard from '../../components/folder/PostCard';
-import { ContainBody, ContainHead, SubTitle } from '../../styles/commonStyle';
-import {
-  BookMarkBtnList,
-  BookmarkBox,
-  BodyInner,
-  ShareBox,
-  EmptyBox,
-  BoxLinkSearch,
-  ShareListBtn,
-  PostCardWrap,
-  LinkAddHeadInner,
-} from './folderStyle';
+import { ContainBody, ContainHead } from '../../styles/commonStyle';
+import { BookmarkBox, BodyInner } from './folderStyle';
 
 import Button from '../../components/common/atoms/Button';
-import Input from '../../components/common/atoms/Input';
 import useFetch from '../../hook/useFetch';
 import Modal from '../../components/common/modal/Index';
 import { FOLDERCONTANTLISTAPI, FOLDERMENULISTAPI } from '../../constant/api';
@@ -21,31 +9,15 @@ import { IFolderContentApi, IFolderMenuButtonApi } from './interface';
 import { useState } from 'react';
 import { IModal } from '../../components/common/modal/interface';
 import { modalOrder } from '../../constant/modal';
+import ContantList from '../../components/folder/ContantList';
+import LinkAddHeader from '../../components/folder/LinkAddHeader';
+import SearchInputBox from '../../components/folder/SearchInputBox';
+import FolderButtonList from '../../components/folder/FolderButtonList';
+import FolderContentControll from '../../components/folder/FolderContentControll';
 
 const add = '/assets/icon/icon_primary_add.svg';
 const search = '/assets/icon/icon_search.svg';
 const link = '/assets/icon/icon_primaty_link.svg';
-
-const folderControlBtn = [
-  {
-    id: 'fcb1',
-    name: '공유',
-    imgSrc: '/assets/icon/icon_gray_share.svg',
-    body: 'folderShare',
-  },
-  {
-    id: 'fcb2',
-    name: '이름 변경',
-    imgSrc: '/assets/icon/icon_gray_pen.svg',
-    body: 'folderChangeName',
-  },
-  {
-    id: 'fcb3',
-    name: '삭제',
-    imgSrc: '/assets/icon/icon_gray_delete.svg',
-    body: 'folderDelete',
-  },
-];
 
 function useFatchDataLoad<T>(api: string) {
   return useFetch<T>(api);
@@ -83,8 +55,7 @@ function Index() {
     const result = menu?.data.filter((data) => +data.id === +api);
     result && setTitle(result[0]?.name as '');
   };
-
-  const handleModalOpen = (type: any) => {
+  const handleModalOpen = (type: string) => {
     let modalInfo = modalOrder[type];
     if (type === 'folderInAdd') {
       modalInfo = {
@@ -102,57 +73,20 @@ function Index() {
   return (
     <>
       <ContainHead>
-        <LinkAddHeadInner>
-          <Input
-            $inputClass={'input__link--add'}
-            $placeholder={'링크를 추가해 보세요'}
-            $beforeBgIcon={link}
-            $btnShow={true}
-            $btnText={'추가하기'}
-            $btnClass={'button--gradient mideum'}
-          />
-        </LinkAddHeadInner>
+        <LinkAddHeader $inputIconImg={link} />
       </ContainHead>
       <ContainBody>
         <BodyInner>
           {/* 검색창 */}
-          <BoxLinkSearch>
-            <Input
-              $inputClass={'input__link--search'}
-              $placeholder={'링크를 검색해 보세요.'}
-              $beforeBgIcon={search}
-            />
-          </BoxLinkSearch>
-          {/* 폴더버튼 리스트 */}
+          <SearchInputBox $inputIconImg={search} />
+          {/* 폴더 리스트 버튼 */}
           <BookmarkBox>
-            <BookMarkBtnList>
-              {!menuLoading && (
-                <>
-                  <Button
-                    $id={'all'}
-                    $btnClass={`button--outlined ${
-                      btnActive === -1 ? 'active' : ''
-                    }`}
-                    $clickEvent={() => handleClick('bookmarkId', -1)}
-                  >
-                    전체
-                  </Button>
-                  {menu &&
-                    menu.data.map((menu: any, i) => (
-                      <Button
-                        key={menu.id}
-                        $id={menu.id}
-                        $btnClass={`button--outlined ${
-                          btnActive === i ? 'active' : ''
-                        }`}
-                        $clickEvent={() => handleClick('bookmarkId', i)}
-                      >
-                        {menu.name}
-                      </Button>
-                    ))}
-                </>
-              )}
-            </BookMarkBtnList>
+            <FolderButtonList
+              $menu={menu}
+              $loading={menuLoading}
+              $btnActive={btnActive}
+              onClick={handleClick}
+            />
             <div>
               <Button
                 $btnClass={'button--icon-after'}
@@ -163,36 +97,10 @@ function Index() {
               </Button>
             </div>
           </BookmarkBox>
-          {/* 버튼 수정 */}
-          <ShareBox>
-            <SubTitle>{title}</SubTitle>
-            {title === '전체' || (
-              <ShareListBtn>
-                {folderControlBtn.map((btn) => (
-                  <Button
-                    key={btn.id}
-                    $id={btn.id}
-                    $btnClass={'button--icon-before'}
-                    $BeforButtonIcon={btn.imgSrc}
-                    $clickEvent={() => handleModalOpen(`${btn.body}`)}
-                  >
-                    {btn.name}
-                  </Button>
-                ))}
-              </ShareListBtn>
-            )}
-          </ShareBox>
-          {contantLoading ? (
-            <EmptyBox>Loading...</EmptyBox>
-          ) : contant ? (
-            <PostCardWrap>
-              {/* {contant.data.map((data) => (
-                <PostCard key={data.id} {...data} />
-              ))} */}
-            </PostCardWrap>
-          ) : (
-            <EmptyBox>저장된 링크가 없습니다.</EmptyBox>
-          )}
+          {/* 설정 버튼 */}
+          <FolderContentControll $title={title} onclick={handleModalOpen} />
+          {/* 컨텐츠 리스트 */}
+          <ContantList contant={contant?.data} loading={contantLoading} />
         </BodyInner>
       </ContainBody>
       <Modal onOpen={modalShow} onClose={handleModalClose} {...modalInfo} />
