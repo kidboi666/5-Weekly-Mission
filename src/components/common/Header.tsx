@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from 'react-router-dom';
 import {
   Email,
   HeaderControl,
@@ -6,21 +6,21 @@ import {
   HeaderLogo,
   HeaderUserInfo,
   HeaderWrap,
-} from "./headerStyle";
-import { Profile } from "../../styles/commonStyle";
-import LinkButton from "./atoms/LinkButton";
-import useFetch from "../../hook/useFetch";
-import { USERLOGINAPI } from "../../constant/api";
-import { IHeaderUserLoginInfoApi } from "./interface";
-import { useEffect, useState } from "react";
-const logo = "/assets/logo/logo.svg";
+} from './headerStyle';
+import { Profile } from '../../styles/commonStyle';
+import LinkButton from './atoms/LinkButton';
+import useFetch from '../../hook/useFetch';
+import { USERLOGINAPI } from '../../constant/api';
+import { IHeaderUserLoginInfoApi } from './interface';
+import { useEffect, useState } from 'react';
+const logo = '/assets/logo/logo.svg';
 
 function Header() {
   const { pathname } = useLocation();
   const { value } = useFetch<IHeaderUserLoginInfoApi>(USERLOGINAPI);
   const [fixed, setFixed] = useState(true);
   useEffect(() => {
-    if (pathname === "/folder") {
+    if (pathname === '/folder') {
       setFixed(false);
     }
   }, [pathname]);
@@ -40,7 +40,7 @@ function Header() {
               <Email>{userInfo?.email}</Email>
             </HeaderUserInfo>
           ) : (
-            <LinkButton $link={"/signin"} $linkClass={"link--gradient large"}>
+            <LinkButton $link={'/signin'} $linkClass={'link--gradient large'}>
               로그인
             </LinkButton>
           )}

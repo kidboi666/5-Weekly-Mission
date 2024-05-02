@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export default function useFetch<T>(url: string) {
   const [value, setValue] = useState<T | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export default function useFetch<T>(url: string) {
       } catch (error: any) {
         setError(error);
       } finally {
-        setIsLoading(true);
+        setIsLoading(false);
       }
     }
     fromDate();
