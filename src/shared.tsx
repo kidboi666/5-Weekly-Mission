@@ -1,4 +1,5 @@
 // Shared.jsx
+import React from "react";
 import Header from "./Components/Header/Header";
 import Main from "./Components/SharedMain/SharedMain";
 import Footer from "./Components/Footer/Footer";

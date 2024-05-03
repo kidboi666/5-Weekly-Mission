@@ -1,4 +1,3 @@
-// Modal.jsx
 import React, { useState } from "react";
 import styles from "./Modal.module.css";
 import { useFetch } from "../../hooks/useFetch";
@@ -8,8 +7,30 @@ import check from "../../assets/check.png";
 import kakaotalk from "../../assets/kakaotalk.png";
 import facebook from "../../assets/facebook.png";
 import link from "../../assets/link.png";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+interface ModalProps {
+    title: string;
+    subtitle: string;
+    input?: boolean;
+    placeholder?: string;
+    list?: boolean;
+    btnText: string;
+    btnColor: "submit" | "delete";
+    share?: boolean;
+    folderId: string;
+    onClose: () => void;
+    onSubmit: (value: string) => void;
+}
+
+interface Link {
+    id: string;
+    created_at: string;
+    name: string;
+    user_id: number;
+    favorite: boolean;
+    link: {
+        count: number;
+    };
+}
 
 function Modal({
     title,
@@ -23,13 +44,13 @@ function Modal({
     folderId,
     onClose,
     onSubmit,
-}) {
-    const [inputValue, setInputValue] = useState("");
+}: ModalProps) {
+    const [inputValue, setInputValue] = useState<string>("");
     const folderList = useFetch(`${BASE_URL}users/1/folders`);
-    const [isError, setIsError] = useState(false);
+    const [isError, setIsError] = useState<boolean>(false);
     const url = `${DEPLOY_URL}shared?user=1&folder=${folderId}`;
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
     };
 
@@ -48,10 +69,10 @@ function Modal({
         navigator.clipboard
             .writeText(url)
             .then(() => {
-                toast.success("클립보드에 복사되었습니다!");
+                alert("클립보드에 복사하였습니다.");
             })
             .catch((error) => {
-                toast.error("복사를 실패하였습니다!");
+                alert("복사를 실패하였습니다.");
             });
     };
 
@@ -61,7 +82,7 @@ function Modal({
         }
     };
 
-    const shareKakaoLink = (url) => {
+    const shareKakaoLink = (url: string) => {
         initKakaoSDK();
 
         window.Kakao.Link.sendDefault({
@@ -87,7 +108,7 @@ function Modal({
         });
     };
 
-    const shareFacebook = (url) => {
+    const shareFacebook = (url: string) => {
         let title = "Linkbrary";
         window.open(
             `http://www.facebook.com/sharer.php?u=${encodeURIComponent(url)}&t=${title}`,
@@ -96,15 +117,16 @@ function Modal({
         );
     };
 
-    const [selectedFolderIds, setSelectedFolderIds] = useState([]);
+    const [selectedFolderIds, setSelectedFolderIds] = useState<string[]>([]);
 
-    const handleFolderClick = (folderId) => {
+    const handleFolderClick = (folderId: string) => {
         if (selectedFolderIds.includes(folderId)) {
             setSelectedFolderIds(selectedFolderIds.filter((id) => id !== folderId));
         } else {
             setSelectedFolderIds([...selectedFolderIds, folderId]);
         }
     };
+
     return (
         <div className={styles.modal_background} onClick={onClose}>
             <div className={styles.modal_container} onClick={(e) => e.stopPropagation()}>
@@ -126,7 +148,7 @@ function Modal({
                     {list && (
                         <ul className={styles.list}>
                             {folderList &&
-                                folderList.data.map((folder) => (
+                                folderList.data.map((folder: Link) => (
                                     <li
                                         key={folder.id}
                                         className={`${styles.list_content} ${
@@ -240,7 +262,6 @@ function Modal({
                     alt='close'
                 />
             </div>
-            <ToastContainer position='bottom-center' autoClose={3000} closeOnClick />
         </div>
     );
 }

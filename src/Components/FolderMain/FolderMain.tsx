@@ -16,14 +16,14 @@ function FolderMain() {
     const [activeButtonId, setActiveButtonId] = useState("");
     const folderList = useFetch(`${BASE_URL}users/1/folders`); // 개별 폴더
 
-    const handleFolderClick = (folderId, folderName) => {
+    const handleFolderClick = (folderId: string, folderName: string) => {
         setActiveButton(folderName);
         setActiveButtonId(folderId);
     };
 
     const [modalType, setModalType] = useState(null);
 
-    const openModal = (type) => {
+    const openModal = (type: string) => {
         setModalType(type);
     };
 

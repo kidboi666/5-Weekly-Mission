@@ -1,16 +1,17 @@
 // Article.jsx
-import { useState } from 'react';
-import link_icon from '../../assets/link.png';
-import styles from './Article.module.css';
-import Modal from '../Modal/Modal';
+import React from "react";
+import { useState } from "react";
+import link_icon from "../../assets/link.png";
+import styles from "./Article.module.css";
+import Modal from "../Modal/Modal";
 
 function Article() {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [linkInput, setLinkInput] = useState('');
+    const [linkInput, setLinkInput] = useState("");
 
     const handleOpenModal = () => {
         if (!linkInput.trim()) {
-            alert('링크를 입력해주세요.');
+            alert("링크를 입력해주세요.");
             return;
         }
         setIsModalOpen(true);
@@ -20,8 +21,8 @@ function Article() {
         setIsModalOpen(false);
     };
 
-    const handleSubmit = () => {
-        setLinkInput(''); // 입력값 초기화
+    const handleSubmit = (linkInput: string) => {
+        setLinkInput(""); // 입력값 초기화
         handleCloseModal();
     };
 
@@ -30,18 +31,18 @@ function Article() {
     };
 
     if (isModalOpen) {
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = "hidden";
     } else {
-        document.body.style.overflow = 'auto';
+        document.body.style.overflow = "auto";
     }
 
     return (
         <div className={styles.folder_info_container}>
             <div className={styles.search_div}>
-                <img src={link_icon} width={30} height={30} alt="link icon" />
+                <img src={link_icon} width={30} height={30} alt='link icon' />
                 <input
                     className={styles.search_input}
-                    placeholder="링크를 추가해 보세요"
+                    placeholder='링크를 추가해 보세요'
                     value={linkInput}
                     onChange={handleChange}
                 />
@@ -50,11 +51,11 @@ function Article() {
                 </button>
                 {isModalOpen && (
                     <Modal
-                        title="폴더에 추가"
+                        title='폴더에 추가'
                         subtitle={linkInput}
                         list
-                        btnText="추가하기"
-                        btnColor="submit"
+                        btnText='추가하기'
+                        btnColor='submit'
                         onClose={handleCloseModal}
                         onSubmit={() => handleSubmit(linkInput)}
                     />

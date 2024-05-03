@@ -1,4 +1,5 @@
 // FolderInfo.jsx
+import React from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { BASE_URL } from "../../constants/baseURL";
 import styles from "./FolderInfo.module.css";
@@ -12,7 +13,7 @@ function FolderInfo() {
                 <div className={styles.folder_info}>
                     <img
                         src={folderData.folder.owner.profileImageSource}
-                        alt="프로필"
+                        alt='프로필'
                         width={60}
                         height={60}
                     />
