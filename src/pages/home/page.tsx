@@ -3,15 +3,16 @@ import { Link } from 'react-router-dom'
 
 const HomePage = () => {
   return (
-    <div className='py-20 flex flex-col gap-y-5 justify-center items-center'>
-      <h1 className='text-5xl mt-20'>Home Page</h1>
-      <Button asChild>
-        <Link to={'/folder'}>folder page</Link>
-      </Button>
-      <Button asChild>
-        <Link to={'/shared'}>shared page</Link>
-      </Button>
-    </div>
+    <main className='pt-20 h-[100vh] flex justify-center items-center'>
+      <div className='flex gap-x-5'>
+        <Link to='/folder'>
+          <Button variant={'outline'}>folder page</Button>
+        </Link>
+        <Link to='/shared'>
+          <Button variant={'outline'}>shared page</Button>
+        </Link>
+      </div>
+    </main>
   )
 }
 

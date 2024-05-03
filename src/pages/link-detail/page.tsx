@@ -4,8 +4,8 @@ const LinkDetailPage = () => {
   const params = useParams<{ linkId: string }>()
 
   return (
-    <div className='pt-20 h-[90vh]'>
-      <h1 className='text-5xl font-bold flex justify-center mt-40'>
+    <div className='pt-20 h-[100vh] flex justify-center items-center'>
+      <h1 className='text-5xl font-bold'>
         link id: <span className='text-red-500'>{params.linkId}</span>
       </h1>
     </div>

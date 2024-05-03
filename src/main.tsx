@@ -6,10 +6,11 @@ import App from './App.tsx'
 import './index.css'
 import ErrorPage from './pages/error/page.tsx'
 import { Toaster } from '@/components/ui/sonner'
-import SharedPage from './pages/shared/page.tsx'
-import LinkDetailPage from './pages/link-detail/page.tsx'
-import FolderPage from './pages/folder/page.tsx'
 import HomePage from './pages/home/page.tsx'
+import { SWRProvider } from './components/provider/swr-provider.tsx'
+import { SharedPage } from './pages/shared/page.tsx'
+import { FolderPage } from './pages/folder/page.tsx'
+import LinkDetailPage from './pages/link-detail/page.tsx'
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Toaster position='top-center' />
-    <RouterProvider router={router} />
+    <SWRProvider>
+      <Toaster position='top-center' />
+      <RouterProvider router={router} />
+    </SWRProvider>
   </React.StrictMode>,
 )

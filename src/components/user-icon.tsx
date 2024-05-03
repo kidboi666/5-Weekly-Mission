@@ -1,30 +1,20 @@
-import { cva } from 'class-variance-authority'
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
+import { useUser } from '@/services/queries'
+import { Skeleton } from './ui/skeleton'
+import { cn } from '@/lib/utils'
 
 type Props = {
-  url: string
-  size?: 'sm' | 'lg' | 'xl'
+  className?: string
 }
 
-const avatarVariants = cva('cursor-pointer', {
-  variants: {
-    size: {
-      sm: 'h-6 w-6',
-      lg: 'h-12 w-12',
-      xl: 'h-16 w-16',
-      default: 'h-8 w-8',
-    },
-  },
-  defaultVariants: {
-    size: 'default',
-  },
-})
+export const UserIcon = ({ className }: Props) => {
+  const { user, isLoading } = useUser()
 
-export const UserIcon = ({ url, size }: Props) => {
+  if (isLoading)
+    return <Skeleton className={cn('rounded-full h-8 w-8', className)} />
+
   return (
-    <Avatar className={avatarVariants({ size })}>
-      <AvatarImage src={url} />
-      <AvatarFallback>U</AvatarFallback>
-    </Avatar>
+    <div className={cn('rounded-full h-8 w-8', className)}>
+      <img src={user?.image_source} alt='user-icon' />
+    </div>
   )
 }

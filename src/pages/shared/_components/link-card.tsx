@@ -1,25 +1,24 @@
-import { formatDate, getTimeDifference } from '@/lib/date'
-import { Skeleton } from '@/components/ui/skeleton'
+import { formatDate, getTimeDifference } from '@/lib/utils'
 import { ImageOff } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 type Props = {
   id: number
   content: string
-  url: string
+  imgUrl: string
   createdAt: string
 }
 
-export const ShardCard = ({ id, content, url, createdAt }: Props) => {
+export const LinkCard = ({ id, content, imgUrl, createdAt }: Props) => {
   const timeDifference = getTimeDifference(createdAt)
   const date = formatDate(createdAt)
   return (
     <Link to={`/links/${id}`}>
       <article className='group transition flex flex-col rounded-xl shadow-lg cursor-pointer'>
-        {url ? (
+        {imgUrl ? (
           <div className='overflow-hidden aspect-video rounded-t-xl flex items-center justify-center'>
             <img
-              src={url}
+              src={imgUrl}
               className='w-full h-full object-cover object-center group-hover:scale-125 transition duration-300 '
             />
           </div>
@@ -35,18 +34,5 @@ export const ShardCard = ({ id, content, url, createdAt }: Props) => {
         </div>
       </article>
     </Link>
-  )
-}
-
-export function SkeletonCard() {
-  return (
-    <div className='flex flex-col space-y-3'>
-      <Skeleton className='aspect-video' />
-      <div className='space-y-4'>
-        <Skeleton className='h-6' />
-        <Skeleton className='h-6' />
-        <Skeleton className='h-6' />
-      </div>
-    </div>
   )
 }
