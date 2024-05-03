@@ -11,6 +11,7 @@ import AddWhiteIcon from '../../assets/add_white_icon.png';
 import ShareIcon from '../../assets/share_icon.png';
 import PenIcon from '../../assets/pen_icon.png';
 import DeleteIcon from '../../assets/delete_icon.png';
+import Modal from '../../components/Modal/Modal';
 
 const CONTROLS = [
   {
@@ -56,6 +57,12 @@ export default function FolderPage() {
 
   return (
     <>
+      <Modal
+        width='360'
+        title='폴더 이름 변경'
+        input='즐겨찾기'
+        button='변경하기'
+      />
       <S.StyledTopWrap>
         <LinkInput />
       </S.StyledTopWrap>
