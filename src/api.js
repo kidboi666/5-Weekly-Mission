@@ -37,15 +37,15 @@ export async function getFoldersItems(id) {
     throw new Error('사용자 데이터를 불러오는데 실패했습니다.');
   }
   const body = await response.json();
-  const data = body.data;
-  const newData = data
-    ? data.map((item) => {
-        item.createdAt = item.created_at;
-        delete item.created_at;
-        item.imageSource = item.image_source;
-        delete item.image_source;
-        return item;
+  const datas = body.data;
+  const newData = datas
+    ? datas.map((data) => {
+        data.createdAt = data.created_at;
+        delete data.created_at;
+        data.imageSource = data.image_source;
+        delete data.image_source;
+        return data;
       })
-    : data;
+    : datas;
   return newData;
 }
