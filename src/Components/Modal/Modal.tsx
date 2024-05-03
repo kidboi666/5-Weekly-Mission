@@ -13,7 +13,7 @@ interface ModalProps {
     subtitle?: string;
     input?: boolean;
     placeholder?: string;
-    list?: string[];
+    list?: boolean;
     btnText?: string;
     btnColor?: "submit" | "delete";
     share?: boolean;

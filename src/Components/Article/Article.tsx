@@ -26,7 +26,7 @@ function Article() {
         handleCloseModal();
     };
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setLinkInput(e.target.value);
     };
 
