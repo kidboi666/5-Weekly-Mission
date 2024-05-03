@@ -97,7 +97,9 @@ export default function FolderPage() {
             </S.StyledControlWrap>
           </S.StyledTitleWrap>
         )}
-        {!items && <S.StyledNoData>저장된 링크가 없습니다</S.StyledNoData>}
+        {!items.length && (
+          <S.StyledNoData>저장된 링크가 없습니다</S.StyledNoData>
+        )}
         {items && <CardList items={items} />}
       </StyledSectionWrap>
       <S.StyledMobileAddButton>
