@@ -5,6 +5,7 @@ import search_icon from "../../assets/Search.svg";
 import share from "../../assets/share.svg";
 import pen from "../../assets/pen.svg";
 import delete_icon from "../../assets/deleteIcon.svg";
+import close_btn from "../../assets/_close.png";
 import styles from "./FolderMain.module.css";
 import { FolderDataAll, FolderData } from "../../api/parseData";
 import { useFetch } from "../../hooks/useFetch";
@@ -27,14 +28,15 @@ type ModalType = "addFolder" | "share" | "edit" | "deleteFolder" | null;
 function FolderMain() {
     const [activeButton, setActiveButton] = useState("전체");
     const [activeButtonId, setActiveButtonId] = useState("");
+    const [searchTerm, setSearchTerm] = useState<string>("");
+    const [modalType, setModalType] = useState<ModalType>(null);
+
     const folderList = useFetch(`${BASE_URL}users/1/folders`); // 개별 폴더
 
     const handleFolderClick = (folderId: string, folderName: string) => {
         setActiveButton(folderName);
         setActiveButtonId(folderId);
     };
-
-    const [modalType, setModalType] = useState<ModalType>(null);
 
     const openModal = (type: ModalType) => {
         setModalType(type);
@@ -57,14 +59,55 @@ function FolderMain() {
         }
     }, [modalType]);
 
+    const filteredLinks = activeButtonId === "" ? FolderDataAll() : FolderData(activeButtonId);
+
+    const handleClearSearch = () => {
+        setSearchTerm("");
+    };
+
+    // 검색어가 있을때만 필터링
+    const filteredLinksBySearchTerm = searchTerm
+        ? filteredLinks.filter((link) => {
+              const { url, title, description } = link;
+              return (
+                  url.includes(searchTerm) ||
+                  title!.includes(searchTerm) ||
+                  description!.includes(searchTerm)
+              );
+          })
+        : filteredLinks;
+
     return (
         <main className={styles.main}>
             <Article />
             <section className={styles.section}>
                 <div className={styles.search_div}>
                     <img src={search_icon} width='15' height='15' alt='search_icon' />
-                    <input className={styles.search_input} placeholder='링크를 검색해보세요' />
+                    <input
+                        className={styles.search_input}
+                        placeholder='링크를 검색해보세요'
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                    {searchTerm && (
+                        <img
+                            src={close_btn}
+                            className={styles.close_btn}
+                            width={24}
+                            height={24}
+                            alt='close'
+                            onClick={handleClearSearch}
+                            tabIndex={0}
+                        />
+                    )}
                 </div>
+                {searchTerm && (
+                    <div className={styles.search_result}>
+                        <span className={styles.search_result_keyword}>{`${searchTerm}`}</span>
+                        <span className={styles.search_result_txt}>으로 검색한 결과입니다.</span>
+                    </div>
+                )}
+
                 <div className={styles.main_btn_div}>
                     <ul className={styles.folder_name_list}>
                         <li>
@@ -183,9 +226,7 @@ function FolderMain() {
                         </div>
                     )}
                 </div>
-                <Cards
-                    items={activeButtonId === "" ? FolderDataAll() : FolderData(activeButtonId)}
-                />
+                <Cards items={filteredLinksBySearchTerm} />
             </section>
         </main>
     );
