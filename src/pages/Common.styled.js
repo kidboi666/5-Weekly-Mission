@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledTopWrap = styled.div`
   display: flex;
@@ -6,7 +6,7 @@ export const StyledTopWrap = styled.div`
   align-items: center;
   gap: 20px;
   padding: 20px 33px 60px;
-  background-color: var(--background-color);
+  background-color: var(--Linkbrary-bg);
 
   @media (max-width: 767px) {
     gap: 10px;

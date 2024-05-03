@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import Button from "../Button/Button";
-import LinkIcon from "../../assets/link_icon.png";
+import styled from 'styled-components';
+import Button from '../Button/Button';
+import LinkIcon from '../../assets/link_icon.png';
 
 export const StyledForm = styled.form`
   position: relative;
@@ -19,7 +19,7 @@ export const StyledInput = styled.input`
 
   padding-left: 52px;
   border-radius: 15px;
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--Linkbrary-primary);
   outline: none;
   font-size: 16px;
   background: #fff url(${LinkIcon}) no-repeat 20px 23px / 20px;

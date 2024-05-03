@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledButton = styled.button`
   display: flex;
@@ -7,11 +7,11 @@ export const StyledButton = styled.button`
   padding: 16px 5px;
   background: linear-gradient(
     90.99deg,
-    var(--primary-color) 0.12%,
+    var(--Linkbrary-primary) 0.12%,
     #6ae3fe 101.84%
   );
   border-radius: 8px;
-  color: var(--white-color);
+  color: var(--Linkbrary-white);
   font-weight: 600;
   font-size: 1.125rem;
 

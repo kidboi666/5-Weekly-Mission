@@ -1,11 +1,11 @@
-import styled from "styled-components";
-import Button from "../Button/Button";
+import styled from 'styled-components';
+import Button from '../Button/Button';
 
 export const StyledHeader = styled.header`
-  position: ${({ $isSticky }) => ($isSticky ? "sticky" : "relative")};
+  position: ${({ $isSticky }) => ($isSticky ? 'sticky' : 'relative')};
   top: 0;
   padding: 20px 200px;
-  background: var(--background-color);
+  background: var(--Linkbrary-bg);
   z-index: 1;
 
   @media (max-width: 1199px) {

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { StyledTopWrap as TopWrap } from "../../pages/Common.styled";
+import styled from 'styled-components';
+import { StyledTopWrap as TopWrap } from '../../pages/Common.styled';
 
 export const StyledTopWrap = styled(TopWrap)`
   padding: 60px 33px 90px;
@@ -36,7 +36,7 @@ export const StyledAddButton = styled.button`
   gap: 4px;
   font-size: 16px;
   font-weight: 500;
-  color: var(--primary-color);
+  color: var(--Linkbrary-primary);
 
   @media (max-width: 767px) {
     display: none;
@@ -59,7 +59,7 @@ export const StyledMobileAddButton = styled(StyledAddButton)`
     padding: 8px 24px;
     background: #6d6afe;
     border-radius: 20px;
-    color: var(--white-color);
+    color: var(--Linkbrary-white);
     z-index: 1;
   }
 `;

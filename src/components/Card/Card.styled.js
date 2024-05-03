@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledThumnail = styled.img`
   width: 100%;
@@ -17,7 +17,7 @@ export const StyledCard = styled.li`
   transition: background-color 0.2s;
 
   &:hover {
-    background-color: var(--background-color);
+    background-color: var(--Linkbrary-bg);
   }
   &:hover ${StyledThumnail} {
     transform: scale(1.3);
