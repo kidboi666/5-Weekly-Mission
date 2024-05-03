@@ -1,11 +1,11 @@
-import React from "react";
-import noImage from "../../assets/no-image.png";
-import { formatDateToString, formatDateToAgo } from "../../utils/date";
-import { Link } from "react-router-dom";
-import * as S from "./Card.styled";
-import star from "../../assets/star_icon.png";
+import React from 'react';
+import defaultImage from '../../assets/no-image.png';
+import { formatDateToString, formatDateToAgo } from '../../utils/date';
+import { Link } from 'react-router-dom';
+import * as S from './Card.styled';
+import star from '../../assets/star_icon.png';
 // import starActive from "../../assets/star_active_icon.png";
-import kebab from "../../assets/kebab_icon.png";
+import kebab from '../../assets/kebab_icon.png';
 
 export default function Card({ item }) {
   const { createdAt, url, title, imageSource } = item;
@@ -13,13 +13,17 @@ export default function Card({ item }) {
   const dateBetween = formatDateToAgo(createdAt);
   const date = formatDateToString(createdAt);
 
+  const addDefaultImage = (e) => {
+    e.currentTarget.src = defaultImage;
+  };
+
   const handleStarClick = (e) => {
     e.preventDefault();
-    console.log("별 클릭");
+    console.log('별 클릭');
   };
   const handleKebabClick = (e) => {
     e.preventDefault();
-    console.log("케밥 클릭");
+    console.log('케밥 클릭');
   };
 
   return (
@@ -27,8 +31,9 @@ export default function Card({ item }) {
       <Link to={url} target='_blank' rel='noreferrer'>
         <S.StyledThumnailWrap>
           <S.StyledThumnail
-            src={imageSource ? imageSource : noImage}
+            src={imageSource ? imageSource : defaultImage}
             alt={title}
+            onError={addDefaultImage}
           />
         </S.StyledThumnailWrap>
         <S.StyledTextWrap>
