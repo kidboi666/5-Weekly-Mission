@@ -11,6 +11,19 @@ import { useFetch } from "../../hooks/useFetch";
 import { BASE_URL } from "../../constants/baseURL";
 import Modal from "../Modal/Modal";
 
+interface Link {
+    id: string;
+    created_at: string;
+    name: string;
+    user_id: number;
+    favorite: boolean;
+    link: {
+        count: number;
+    };
+}
+
+type ModalType = "addFolder" | "share" | "edit" | "deleteFolder" | null;
+
 function FolderMain() {
     const [activeButton, setActiveButton] = useState("전체");
     const [activeButtonId, setActiveButtonId] = useState("");
@@ -21,9 +34,9 @@ function FolderMain() {
         setActiveButtonId(folderId);
     };
 
-    const [modalType, setModalType] = useState(null);
+    const [modalType, setModalType] = useState<ModalType>(null);
 
-    const openModal = (type: string) => {
+    const openModal = (type: ModalType) => {
         setModalType(type);
     };
 
@@ -66,7 +79,7 @@ function FolderMain() {
                             </button>
                         </li>
                         {folderList &&
-                            folderList.data.map((folder) => (
+                            folderList.data.map((folder: Link) => (
                                 <li key={folder.id}>
                                     <button
                                         className={`${styles.folder_btn_lg} ${

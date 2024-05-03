@@ -7,18 +7,19 @@ import check from "../../assets/check.png";
 import kakaotalk from "../../assets/kakaotalk.png";
 import facebook from "../../assets/facebook.png";
 import link from "../../assets/link.png";
+
 interface ModalProps {
     title: string;
-    subtitle: string;
+    subtitle?: string;
     input?: boolean;
     placeholder?: string;
-    list?: boolean;
-    btnText: string;
-    btnColor: "submit" | "delete";
+    list?: string[];
+    btnText?: string;
+    btnColor?: "submit" | "delete";
     share?: boolean;
-    folderId: string;
+    folderId?: string;
     onClose: () => void;
-    onSubmit: (value: string) => void;
+    onSubmit?: (value: string) => void;
 }
 
 interface Link {
@@ -32,7 +33,7 @@ interface Link {
     };
 }
 
-function Modal({
+const Modal: React.FC<ModalProps> = ({
     title,
     subtitle,
     input,
@@ -44,7 +45,7 @@ function Modal({
     folderId,
     onClose,
     onSubmit,
-}: ModalProps) {
+}: ModalProps) => {
     const [inputValue, setInputValue] = useState<string>("");
     const folderList = useFetch(`${BASE_URL}users/1/folders`);
     const [isError, setIsError] = useState<boolean>(false);
@@ -61,8 +62,15 @@ function Modal({
     };
 
     const handleSubmit = () => {
-        onSubmit(inputValue);
-        setInputValue("");
+        if (inputValue.trim() === "") {
+            setIsError(true);
+        } else {
+            setIsError(false);
+            if (onSubmit) {
+                onSubmit(inputValue);
+                setInputValue("");
+            }
+        }
     };
 
     const handleCopyUrl = () => {
@@ -264,6 +272,6 @@ function Modal({
             </div>
         </div>
     );
-}
+};
 
 export default Modal;
