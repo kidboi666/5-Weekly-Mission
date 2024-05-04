@@ -7,6 +7,7 @@ import { AddFolderButton } from "folder/ui-add-folder-button/AddFolderButton";
 import { useState } from "react";
 import { IconAndTextButton } from "sharing/ui-icon-and-text-button";
 import { InputModal } from "sharing/ui-input-modal/InputModal";
+import { DeleteModal } from "sharing/ui-delete-modal";
 
 const cx = classNames.bind(styles);
 
@@ -79,6 +80,14 @@ export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }) => {
           title="폴더 이름 변경"
           placeholder="유용한 팁"
           buttonText="변경하기"
+          onKeyDown={handleKeyDown}
+        />
+        <DeleteModal
+          isOpen={currentModal === MODALS_ID.delete}
+          onCloseClick={closeModal}
+          title="폴더 삭제"
+          folderName={folderName}
+          buttonText="삭제하기"
           onKeyDown={handleKeyDown}
         />
       </div>
