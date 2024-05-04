@@ -24,7 +24,7 @@ export function LinkItem({ link, createdAt, imageSource }) {
       <a href={url}>
         <div className="Link-card">
           <div className="Link-image-wrapper">
-            <img className="Link-image" src={linkImage} alt="링크이미지"></img>
+            <img className="Link-image" src={linkImage} alt="링크이미지" />
           </div>
           <div className="Link-info">
             <div className="kebab-wrapper">
@@ -40,7 +40,7 @@ export function LinkItem({ link, createdAt, imageSource }) {
           src="images/kebab.svg"
           alt="kebab-button"
           onClick={() => toggleHandler("open")}
-        ></img>
+        />
         {isOpen.open && (
           <div className="popup-wrapper">
             <div

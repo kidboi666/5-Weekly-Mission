@@ -14,7 +14,7 @@ export function ModalLayout({
           className="close-button"
           onClick={toggleHandler}
           alt="close-button"
-        ></img>
+        />
         <p className="title">{title}</p>
         {description && <p className="description">{description}</p>}
         {children}

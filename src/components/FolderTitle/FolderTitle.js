@@ -23,13 +23,16 @@ export function FolderTitle({ name }) {
         <div className="folder-name">{name}</div>
         <div className="title-button-wrapper">
           <p onClick={() => toggleHandler("share")}>
-            <img src="images/share.svg" alt="share-button"></img>공유
+            <img src="images/share.svg" alt="share-button" />
+            공유
           </p>
           <p onClick={() => toggleHandler("nameChange")}>
-            <img src="images/pen.svg" alt="nameChange-button"></img>이름 변경
+            <img src="images/pen.svg" alt="nameChange-button" />
+            이름 변경
           </p>
           <p onClick={() => toggleHandler("delete")}>
-            <img src="images/Group 36.svg" alt="delete-button"></img>삭제
+            <img src="images/Group 36.svg" alt="delete-button" />
+            삭제
           </p>
         </div>
       </div>

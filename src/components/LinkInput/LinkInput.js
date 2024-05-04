@@ -13,7 +13,7 @@ export function LinkInput({ folders }) {
     <div className="LinkInput-wrapper">
       <div className="LinkInput">
         <div className="input-icon-wrapper">
-          <img src="./images/link.svg" alt="link img"></img>
+          <img src="./images/link.svg" alt="link img" />
           <input value="링크를 추가해보세요"></input>
         </div>
         <div className="add-url-button" onClick={toggleHandler}>

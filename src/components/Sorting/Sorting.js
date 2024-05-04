@@ -45,12 +45,13 @@ export function Sorting({
           })}
         </div>
         <div className="folder-title-wrapper" onClick={toggleHandler}>
-          폴더추가<img src="images/add.svg" alt="addbutton"></img>
+          폴더추가
+          <img src="images/add.svg" alt="addbutton" />
         </div>
         {isOpen && (
           <ModalLayout toggleHandler={toggleHandler} title="폴더 추가">
             <div className="modal-contents">
-              <input placeholder="내용 입력"></input>
+              <input placeholder="내용 입력" />
               <div className="add button">추가하기</div>
             </div>
           </ModalLayout>
