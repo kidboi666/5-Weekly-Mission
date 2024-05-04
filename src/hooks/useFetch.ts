@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from 'react';
 
-export function useFetch(url) {
-  const [data, setData] = useState(null);
+export function useFetch<T>(url: string) {
+  const [data, setData] = useState<T | null>(null);
 
   const fetchData = useCallback(async () => {
     try {
@@ -13,7 +13,7 @@ export function useFetch(url) {
         setData(null);
       }
     } catch (error) {
-      console.error("fetch에 실패했습니다.");
+      console.error('fetch에 실패했습니다.');
       setData(null);
     }
   }, [url]);
@@ -21,5 +21,6 @@ export function useFetch(url) {
   useEffect(() => {
     fetchData();
   }, [fetchData]);
+
   return data;
 }

@@ -1,5 +1,5 @@
-import { useFetch } from '../../utils/hooks/useFetch';
-import { formatDate, generateTimeText } from '../../utils/hooks/date';
+import { useFetch } from '../../hooks/useFetch';
+import { formatDate, generateTimeText } from '../../hooks/date';
 import thumbnail from '../../assets/thumbnail.svg';
 import styles from './index.module.css';
 import starticon from '../../assets/staricon.svg';
@@ -8,13 +8,26 @@ import { useState } from 'react';
 import ModalFolder from '../../modal/ModalFolder';
 import ModalDelete from '../../modal/ModalDelete';
 
-function Cardsfolder(props) {
-  const CardData = useFetch(props.url);
+interface Link {
+  id: string;
+  url: string;
+  image_source?: string; // 이미지 소스는 옵셔널
+  title: string;
+  created_at: Date;
+  description: string;
+}
+
+function Cardsfolder({ url }: { url: string }) {
+  // props를 비구조화 할당하여 사용
+  const cardData = useFetch<{ data: Link[] }>(url);
   const [isHovering, setIsHovering] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
-  const [popoverStates, setPopoverStates] = useState({});
-  const [selectedCardDescription, setSelectedCardDescription] = useState('');
+  const [popoverStates, setPopoverStates] = useState<{
+    [key: string]: boolean;
+  }>({});
+  const [selectedCardDescription, setSelectedCardDescription] =
+    useState<string>('');
 
   const handleMouseOver = () => {
     setIsHovering(true);
@@ -24,68 +37,58 @@ function Cardsfolder(props) {
     setIsHovering(false);
   };
 
-  function handleCloseModal(isOpen) {
-    setIsModalOpen(isOpen);
-  }
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
-  function handleCloseDeleteModal(isOpen) {
-    setIsModalDeleteOpen(isOpen);
-  }
+  const handleCloseDeleteModal = () => {
+    setIsModalDeleteOpen(false);
+  };
 
-  function handleClickButton() {
+  const handleClickButton = () => {
     setIsModalOpen((prev) => !prev);
-  }
+  };
 
-  function handleDeleteClickButton(linkDescription) {
+  const handleDeleteClickButton = (linkDescription: string) => {
     setIsModalDeleteOpen(true);
-    setSelectedCardDescription(linkDescription); // 삭제할 링크의 description 설정
-  }
+    setSelectedCardDescription(linkDescription);
+  };
 
-  const handleOptionButtonClick = (linkId, linkDescription) => {
+  const handleOptionButtonClick = (linkId: string, linkDescription: string) => {
     setPopoverStates((prevState) => ({
       ...prevState,
       [linkId]: !prevState[linkId],
     }));
-    setSelectedCardDescription(linkDescription); // 팝오버가 열린 카드의 description 설정
+    setSelectedCardDescription(linkDescription);
   };
 
-  const handleFavoriteButtonClick = (e) => {
+  const handleFavoriteButtonClick = (
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => {
     e.stopPropagation();
   };
 
-  if (!CardData) {
-    return null; // CardData가 없으면 렌더링하지 않음
+  if (!cardData) {
+    return null;
   }
 
   return (
     <div className={styles.card_grid_container}>
-      {CardData.data.length ? (
-        CardData.data.map((link) => (
+      {cardData.data.length ? (
+        cardData.data.map((link) => (
           <div className={styles.card_container} key={link.id}>
             <a href={link.url}>
               <div className={styles.card}>
                 <div className={styles.card_img_div}>
-                  {link.image_source ? (
-                    <img
-                      src={link.image_source}
-                      className={`${styles.card_img} ${
-                        isHovering ? styles.zoomIn : ''
-                      }`}
-                      onMouseOver={handleMouseOver}
-                      onMouseOut={handleMouseOut}
-                      alt={link.title}
-                    />
-                  ) : (
-                    <img
-                      src={thumbnail}
-                      className={`${styles.card_img} ${
-                        isHovering ? styles.zoomIn : ''
-                      }`}
-                      onMouseOver={handleMouseOver}
-                      onMouseOut={handleMouseOut}
-                      alt="thumbnail_img"
-                    />
-                  )}
+                  <img
+                    src={link.image_source || thumbnail}
+                    className={`${styles.card_img} ${
+                      isHovering ? styles.zoomIn : ''
+                    }`}
+                    onMouseOver={handleMouseOver}
+                    onMouseOut={handleMouseOut}
+                    alt={link.title}
+                  />
                 </div>
                 <div
                   className={`${styles.card_txt_div} ${
@@ -146,6 +149,7 @@ function Cardsfolder(props) {
       {isModalOpen && (
         <ModalFolder
           title={'폴더 추가'}
+          folderName={''}
           buttonName={'추가하기'}
           onClose={handleCloseModal}
           isModalOpen={isModalOpen}

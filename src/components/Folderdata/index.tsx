@@ -1,12 +1,29 @@
-import { useFetch } from "../../utils/hooks/useFetch";
-import styles from "./index.module.css";
-import styled from "styled-components";
+import { useFetch } from '../../hooks/useFetch';
+import styles from './index.module.css';
+import styled from 'styled-components';
 
-const BASE_URL_FOLDER = "https://bootcamp-api.codeit.kr/api/sample/folder";
+// Folder 데이터의 타입 정의
+interface Owner {
+  profileImageSource: string;
+  name: string;
+}
+
+interface Folder {
+  owner: Owner;
+  name: string;
+}
+
+interface FolderDataResponse {
+  folder: Folder;
+}
+
+const BASE_URL_FOLDER = 'https://bootcamp-api.codeit.kr/api/sample/folder';
 
 function FolderData() {
-  const folderData = useFetch(BASE_URL_FOLDER);
+  // useFetch 훅을 이용하여 데이터 가져오기
+  const folderData = useFetch<FolderDataResponse>(BASE_URL_FOLDER);
 
+  // styled-components를 사용하여 스타일링된 컴포넌트 생성
   const Container = styled.div`
     display: flex;
     justify-content: center;

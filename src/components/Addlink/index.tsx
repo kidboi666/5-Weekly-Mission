@@ -1,8 +1,8 @@
+import styled from 'styled-components';
+import { useState, ChangeEvent } from 'react';
+import ModalAddToFolder from '../../modal/ModalAddToFolder';
 import styles from './index.module.css';
 import addLinkIcon from '../../assets/link.svg';
-import styled from 'styled-components';
-import { useState } from 'react';
-import ModalAddToFolder from '../../modal/ModalAddToFolder';
 
 const AddlinkContainer = styled.div`
   display: flex;
@@ -21,11 +21,11 @@ function Addlink() {
   function handleClickButton() {
     setIsModalOpen((prev) => !prev);
   }
-  function handleChange(event) {
+  function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setTargetName(event.target.value);
   }
-  function handleCloseModal(isOpen) {
-    setIsModalOpen(isOpen); // 모달을 닫습니다.
+  function handleCloseModal() {
+    setIsModalOpen(false); // 모달을 닫습니다.
   }
 
   return (

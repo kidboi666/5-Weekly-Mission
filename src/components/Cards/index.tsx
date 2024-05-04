@@ -1,15 +1,31 @@
-import { useFetch } from "../../utils/hooks/useFetch";
-import { formatDate, generateTimeText } from "../../utils/hooks/date";
-import thumbnail from "../../assets/thumbnail.svg";
-import styles from "./index.module.css";
+import { useFetch } from '../../hooks/useFetch';
+import { formatDate, generateTimeText } from '../../hooks/date';
+import thumbnail from '../../assets/thumbnail.svg';
+import styles from './index.module.css';
 
-function Cards(props) {
-  const CardData = useFetch(props.url);
+interface Link {
+  id: string;
+  url: string;
+  imageSource?: string;
+  title: string;
+  createdAt: Date;
+  description: string;
+}
+
+interface FolderData {
+  folder: {
+    links: Link[];
+  };
+}
+
+function Cards({ url }: { url: string }) {
+  // props를 비구조화 할당하여 사용
+  const CardData = useFetch<FolderData>(url);
 
   return (
     <div className={styles.card_grid_container}>
       {CardData ? (
-        CardData.folder.links.map((link) => (
+        CardData.folder.links.map((link: Link) => (
           <a href={link.url}>
             <div key={link.id} className={styles.card}>
               <div className={styles.card_img_div}>
