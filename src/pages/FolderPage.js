@@ -1,60 +1,80 @@
-import GlobalStyles from "../components/GlobalStyles"
-import { Header } from "../components/Header";
-import { SearchBar } from "../components/SearchBar";
-import { Footer } from "../components/Footer";
-import { getData } from "../components/api";
-import '../components/SharedPage.css'
-import { LinkInput } from "../components/LinkInput";
-import { Sorting } from "../components/Sorting";
+import GlobalStyles from "../components/GlobalStyles";
+import {
+  Header,
+  SearchBar,
+  Footer,
+  LinkInput,
+  Sorting,
+  LinkList,
+  ErrorComponent,
+  FolderTitle,
+} from "../components";
+import { getData } from "../util/api";
+import "../components/SharedPage.css";
 import { useEffect, useState } from "react";
-import { ApiUrl } from "../components/url";
-import { LinkList } from "../components/LinkList";
-import { ErrorComponent } from "../components/ErrorComponent";
+import { ApiUrl } from "../util/url";
 
 const user = await getData(ApiUrl.sampleUser);
 const Folders = await getData(ApiUrl.usersFolders);
 const AllLinks = await getData(ApiUrl.usersLinks);
 
 function FolderPage() {
-    const [selectedId, setSelectedId] = useState();
-    const [urlBySelectedId, setUrlBySelectedId ] = useState('');
-    const [links, setLinks] = useState(AllLinks.data);
-    
-    function checkArrayBlank(array) {
-        return array ? array.length === 0 : true;
-    }
+  const [selectedId, setSelectedId] = useState();
+  const [urlBySelectedId, setUrlBySelectedId] = useState("");
+  const [name, setName] = useState("");
+  const [links, setLinks] = useState(AllLinks.data);
 
-    useEffect(() => {
-        const newUrl = `${ApiUrl.usersLinks}?folderId=${selectedId}`;
-        setUrlBySelectedId(newUrl);
-    }, [selectedId]); // selectedId가 변경될 때만 실행되도록 설정
+  function checkArrayBlank(array) {
+    return array ? array.length === 0 : true;
+  }
 
-    useEffect(() => {
-        async function fetchData() {
-            if(selectedId){
-                const newLinks = await getData(urlBySelectedId);
-                setLinks(newLinks.data);
-            }
-            else setLinks(AllLinks.data);
-        }
-        fetchData();    
-    },[urlBySelectedId,selectedId]);
-    
-    return (
-        <div>
-            <GlobalStyles />
-            <Header user={user}/>
-            <LinkInput />
-            <div className='contents-wrapper'>
-                <SearchBar />
-                <div >
-                    <Sorting Folders={Folders.data} selectedId={selectedId} setSelectedId={setSelectedId} setUrl={setUrlBySelectedId}/>
-                    {checkArrayBlank(links) ? <ErrorComponent /> : <LinkList links={links} createdtime='created_at' image='image_source' />}
-                </div>
-            </div>
-            <Footer />
+  async function fetchData() {
+    if (selectedId) {
+      const newLinks = await getData(urlBySelectedId);
+      setLinks(newLinks.data);
+    } else setLinks(AllLinks.data);
+  }
+
+  useEffect(() => {
+    const newUrl = `${ApiUrl.usersLinks}?folderId=${selectedId}`;
+    setUrlBySelectedId(newUrl);
+  }, [selectedId]);
+
+  useEffect(() => {
+    fetchData(); // eslint-disable-next-line
+  }, [urlBySelectedId, selectedId]);
+
+  return (
+    <div>
+      <GlobalStyles />
+      <Header user={user} />
+      <LinkInput folders={Folders.data} />
+      <div className="contents-wrapper">
+        <SearchBar />
+        <div className="links-wrapper">
+          <Sorting
+            folders={Folders.data}
+            selectedId={selectedId}
+            setSelectedId={setSelectedId}
+            setUrl={setUrlBySelectedId}
+            setName={setName}
+            name={name}
+          />
+          <FolderTitle name={name} />
+          {checkArrayBlank(links) ? (
+            <ErrorComponent />
+          ) : (
+            <LinkList
+              links={links}
+              createdtime="created_at"
+              image="image_source"
+            />
+          )}
         </div>
-    );
+      </div>
+      <Footer />
+    </div>
+  );
 }
 
 export default FolderPage;
