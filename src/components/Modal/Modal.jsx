@@ -4,7 +4,6 @@ import CloseImage from '../../assets/close_button.svg';
 import KakaotalkIcon from '../../assets/share_kakaotalk.svg';
 import facebookIcon from '../../assets/share_facebook.svg';
 import linkIcon from '../../assets/share_link.svg';
-import { Link } from 'react-router-dom';
 
 export default function Modal({
   width,
@@ -13,6 +12,7 @@ export default function Modal({
   input,
   button,
   share,
+  folders,
 }) {
   const handleCloseClick = () => {};
 
@@ -25,6 +25,19 @@ export default function Modal({
         <S.Title>{title}</S.Title>
         {semiTitle && <S.SemiTitle>{semiTitle}</S.SemiTitle>}
         {input && <S.Input type='text' placeholder='내용 입력' value={input} />}
+        {folders && (
+          <S.FoldersList>
+            {folders.map((folder, index) => (
+              <li>
+                <input type='radio' id={index} name='folder' value={folder} />
+                <label htmlFor={index}>
+                  <h3>{folder}</h3>
+                  <span>7개 링크</span>
+                </label>
+              </li>
+            ))}
+          </S.FoldersList>
+        )}
         {button && <S.StyledButton text={button} mt={semiTitle} />}
         {share && (
           <S.ShareList>

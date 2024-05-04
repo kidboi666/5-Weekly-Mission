@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Button from '../Button/Button';
+import checkIcon from '../../assets/check_icon.svg';
 
 export const Layout = styled.div`
   position: fixed;
@@ -90,6 +91,56 @@ export const ShareList = styled.div`
 
     & img {
       width: 42px;
+    }
+  }
+`;
+
+export const FoldersList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  max-height: 172px;
+  overflow: auto;
+
+  & li {
+    & input {
+      display: none;
+    }
+    & input:checked ~ label {
+      border-radius: 8px;
+      background: var(--Linkbrary-bg);
+
+      & h3 {
+        color: var(--Linkbrary-primary);
+      }
+    }
+    & input:checked ~ label::after {
+      content: '';
+      position: absolute;
+      top: 13px;
+      right: 8px;
+      width: 14px;
+      height: 14px;
+      background: url(${checkIcon}) no-repeat center / contain;
+    }
+    & label {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      padding: 8px;
+      cursor: pointer;
+
+      & h3 {
+        font-weight: 400;
+        line-height: 150%;
+        color: var(--Linkbrary-gray100);
+      }
+      & span {
+        font-size: 14px;
+        color: var(--Linkbrary-gray60);
+      }
     }
   }
 `;

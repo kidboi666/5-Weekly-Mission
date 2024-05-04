@@ -61,9 +61,10 @@ export default function FolderPage() {
         width='360'
         title='폴더 이름 변경'
         // semiTitle='폴더명'
-        input='즐겨찾기'
+        // input='즐겨찾기'
         button='삭제하기'
-        share
+        // share
+        folders={['코딩팁', '유용', 'dd', 'ddd', 'ddd']}
       />
       <S.StyledTopWrap>
         <LinkInput />
