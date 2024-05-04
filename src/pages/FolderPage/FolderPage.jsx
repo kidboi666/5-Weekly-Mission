@@ -60,8 +60,10 @@ export default function FolderPage() {
       <Modal
         width='360'
         title='폴더 이름 변경'
+        // semiTitle='폴더명'
         input='즐겨찾기'
-        button='변경하기'
+        button='삭제하기'
+        share
       />
       <S.StyledTopWrap>
         <LinkInput />

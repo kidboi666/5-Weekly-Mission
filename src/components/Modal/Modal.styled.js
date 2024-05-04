@@ -37,6 +37,15 @@ export const Title = styled.h2`
   text-align: center;
 `;
 
+export const SemiTitle = styled.h3`
+  margin-top: 8px;
+  color: var(--Linkbrary-gray60);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 157.143%;
+`;
+
 export const Input = styled.input`
   width: 100%;
   margin-top: 24px;
@@ -62,6 +71,25 @@ export const Input = styled.input`
 export const StyledButton = styled(Button)`
   width: 100%;
   height: 51px;
-  margin-top: 15px;
+  margin-top: ${({ mt }) => (mt ? 24 : 15)}px;
   font-size: 16px;
+  ${({ text }) => text === '삭제하기' && 'background: var(--Linkbrary-red);'}
+`;
+
+export const ShareList = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 24px;
+
+  & button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    & img {
+      width: 42px;
+    }
+  }
 `;
