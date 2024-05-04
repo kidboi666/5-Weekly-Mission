@@ -50,6 +50,7 @@ export const TextWrap = styled.div`
 `;
 
 export const TextTopWrap = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -63,6 +64,27 @@ export const DateAgo = styled.p`
 
 export const Kebab = styled.button`
   width: 21px;
+`;
+
+export const KebabModal = styled.div`
+  position: absolute;
+  top: 17px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  background: var(--gray-light-gray-00, #fff);
+  box-shadow: 0px 2px 8px 0px rgba(51, 50, 54, 0.1);
+
+  & button {
+    width: 100%;
+    padding: 7px 0;
+  }
+
+  & button:hover {
+    background: var(--Linkbrary-gray10);
+    color: var(--Linkbrary-primary);
+  }
 `;
 
 export const Title = styled.h2`

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import defaultImage from '../../assets/no-image.png';
 import { formatDateToString, formatDateToAgo } from '../../utils/date';
 import { Link } from 'react-router-dom';
@@ -9,6 +9,7 @@ import kebab from '../../assets/kebab_icon.png';
 
 export default function Card({ item }) {
   const { createdAt, url, title, imageSource } = item;
+  const [visibleKebabModal, setVisibleKebabModal] = useState(false);
 
   const dateBetween = formatDateToAgo(createdAt);
   const date = formatDateToString(createdAt);
@@ -23,7 +24,7 @@ export default function Card({ item }) {
   };
   const handleKebabClick = (e) => {
     e.preventDefault();
-    console.log('케밥 클릭');
+    setVisibleKebabModal(!visibleKebabModal);
   };
 
   return (
@@ -42,6 +43,12 @@ export default function Card({ item }) {
             <S.Kebab onClick={handleKebabClick}>
               <img src={kebab} alt='더보기' />
             </S.Kebab>
+            {visibleKebabModal && (
+              <S.KebabModal>
+                <button>삭제하기</button>
+                <button>폴더에 추가</button>
+              </S.KebabModal>
+            )}
           </S.TextTopWrap>
           <S.Title>{title}</S.Title>
           <S.Date>{date}</S.Date>
