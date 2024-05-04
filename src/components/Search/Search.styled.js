@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import SearchIcon from "../../assets/search_icon.svg";
+import styled from 'styled-components';
+import SearchIcon from '../../assets/search_icon.svg';
 
-export const StyledInput = styled.input`
+export const Input = styled.input`
   width: 100%;
   height: 54px;
   padding-left: 42px;

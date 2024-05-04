@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Button from '../Button/Button';
 import LinkIcon from '../../assets/link_icon.png';
 
-export const StyledForm = styled.form`
+export const Form = styled.form`
   position: relative;
   width: 100%;
   max-width: 800px;
@@ -13,7 +13,7 @@ export const StyledForm = styled.form`
   }
 `;
 
-export const StyledInput = styled.input`
+export const Input = styled.input`
   width: 100%;
   height: 100%;
 

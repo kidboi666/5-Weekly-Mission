@@ -27,29 +27,29 @@ export default function Card({ item }) {
   };
 
   return (
-    <S.StyledCard>
+    <S.Card>
       <Link to={url} target='_blank' rel='noreferrer'>
-        <S.StyledThumnailWrap>
-          <S.StyledThumnail
+        <S.ThumnailWrap>
+          <S.Thumnail
             src={imageSource ? imageSource : defaultImage}
             alt={title}
             onError={addDefaultImage}
           />
-        </S.StyledThumnailWrap>
-        <S.StyledTextWrap>
-          <S.StyledTextTopWrap>
-            <S.StyledDateAgo>{dateBetween}</S.StyledDateAgo>
-            <S.StyledKebab onClick={handleKebabClick}>
+        </S.ThumnailWrap>
+        <S.TextWrap>
+          <S.TextTopWrap>
+            <S.DateAgo>{dateBetween}</S.DateAgo>
+            <S.Kebab onClick={handleKebabClick}>
               <img src={kebab} alt='더보기' />
-            </S.StyledKebab>
-          </S.StyledTextTopWrap>
-          <S.StyledTitle>{title}</S.StyledTitle>
-          <S.StyledDate>{date}</S.StyledDate>
-        </S.StyledTextWrap>
-        <S.StyleStar onClick={handleStarClick}>
+            </S.Kebab>
+          </S.TextTopWrap>
+          <S.Title>{title}</S.Title>
+          <S.Date>{date}</S.Date>
+        </S.TextWrap>
+        <S.Star onClick={handleStarClick}>
           <img src={star} alt='별' />
-        </S.StyleStar>
+        </S.Star>
       </Link>
-    </S.StyledCard>
+    </S.Card>
   );
 }

@@ -1,45 +1,45 @@
-import React from "react";
-import FooterSnsItem from "./FooterSnsItem";
-import { Link } from "react-router-dom";
-import * as S from "./Footer.styled";
+import React from 'react';
+import FooterSnsItem from './FooterSnsItem';
+import { Link } from 'react-router-dom';
+import * as S from './Footer.styled';
 
 const snsList = [
   {
     id: 1,
-    name: "facebook",
-    url: "https://www.facebook.com/",
+    name: 'facebook',
+    url: 'https://www.facebook.com/',
   },
   {
     id: 2,
-    name: "twitter",
-    url: "https://twitter.com/",
+    name: 'twitter',
+    url: 'https://twitter.com/',
   },
   {
     id: 3,
-    name: "youtube",
-    url: "https://www.youtube.com/",
+    name: 'youtube',
+    url: 'https://www.youtube.com/',
   },
   {
     id: 4,
-    name: "instagram",
-    url: "https://www.instagram.com/",
+    name: 'instagram',
+    url: 'https://www.instagram.com/',
   },
 ];
 
 export default function Footer() {
   return (
-    <S.StyledFooter>
-      <S.StyledInner>
-        <S.StyledAddress>©codeit - 2023</S.StyledAddress>
-        <S.StyledNavList>
+    <S.Footer>
+      <S.Inner>
+        <S.Address>©codeit - 2023</S.Address>
+        <S.NavList>
           <li>
             <Link to='/privacy'>Privacy Policy</Link>
           </li>
           <li>
             <Link to='/faq'>FAQ</Link>
           </li>
-        </S.StyledNavList>
-        <S.StyledSnsList>
+        </S.NavList>
+        <S.SnsList>
           {snsList.map((item) => (
             <FooterSnsItem
               key={item.id}
@@ -48,8 +48,8 @@ export default function Footer() {
               url={item.url}
             />
           ))}
-        </S.StyledSnsList>
-      </S.StyledInner>
-    </S.StyledFooter>
+        </S.SnsList>
+      </S.Inner>
+    </S.Footer>
   );
 }

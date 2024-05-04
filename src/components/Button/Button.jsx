@@ -4,8 +4,8 @@ import * as S from './Button.styled';
 
 export default function Button({ text, className = '', link }) {
   return (
-    <S.StyledButton className={className}>
+    <S.Button className={className}>
       {link ? <Link to={link}>{text}</Link> : <span>{text}</span>}
-    </S.StyledButton>
+    </S.Button>
   );
 }

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledTopWrap = styled.div`
+export const TopWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,7 +14,7 @@ export const StyledTopWrap = styled.div`
   }
 `;
 
-export const StyledSectionWrap = styled.section`
+export const SectionWrap = styled.section`
   max-width: 1060px;
   margin: 0 auto;
   padding: 0 32px 100px;

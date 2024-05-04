@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Button from '../Button/Button';
 
-export const StyledHeader = styled.header`
+export const Header = styled.header`
   position: ${({ $isSticky }) => ($isSticky ? 'sticky' : 'relative')};
   top: 0;
   padding: 20px 200px;
@@ -13,7 +13,7 @@ export const StyledHeader = styled.header`
   }
 `;
 
-export const StyledInner = styled.div`
+export const Inner = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,7 +25,7 @@ export const StyledInner = styled.div`
   }
 `;
 
-export const StyledLogo = styled.h1`
+export const Logo = styled.h1`
   width: 133px;
 
   @media (max-width: 767px) {

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { StyledSectionWrap } from '../Common.styled';
+import { SectionWrap } from '../Common.styled';
 import LinkInput from '../../components/LinkInput/LinkInput';
 import * as S from './FolderPage.styled';
 import { getFoldersItems, getFoldersMenu } from '../../api';
@@ -51,13 +51,15 @@ export default function FolderPage() {
     handleLoadMenu();
   }, []);
 
+  console.log(items);
+
   useEffect(() => {
     handleLoadItems();
   }, [folder, handleLoadItems]);
 
   return (
     <>
-      <Modal
+      {/* <Modal
         width='360'
         title='폴더 이름 변경'
         // semiTitle='폴더명'
@@ -65,14 +67,14 @@ export default function FolderPage() {
         button='삭제하기'
         // share
         folders={['코딩팁', '유용', 'dd', 'ddd', 'ddd']}
-      />
+      /> */}
       <S.StyledTopWrap>
         <LinkInput />
       </S.StyledTopWrap>
-      <StyledSectionWrap>
+      <SectionWrap>
         <Search />
-        <S.StyledMenuWrap>
-          <S.StyledMenuList>
+        <S.MenuWrap>
+          <S.MenuList>
             <MenuButton
               item='전체'
               value='전체'
@@ -88,34 +90,32 @@ export default function FolderPage() {
                 onClick={handleMenuButtonClick}
               />
             ))}
-          </S.StyledMenuList>
-          <S.StyledAddButton>
+          </S.MenuList>
+          <S.AddButton>
             폴더 추가
-            <S.StyledAddIcon src={AddIcon} alt='+' />
-          </S.StyledAddButton>
-        </S.StyledMenuWrap>
+            <S.AddIcon src={AddIcon} alt='+' />
+          </S.AddButton>
+        </S.MenuWrap>
         {folder !== '전체' && (
-          <S.StyledTitleWrap>
-            <S.StyledTitle>{folder}</S.StyledTitle>
-            <S.StyledControlWrap>
+          <S.TitleWrap>
+            <S.Title>{folder}</S.Title>
+            <S.ControlWrap>
               {CONTROLS.map((control, index) => (
-                <S.StyledControl key={index}>
-                  <S.StyledControlIcon src={control.icon} alt='' />
+                <S.Control key={index}>
+                  <S.ControlIcon src={control.icon} alt='' />
                   {control.name}
-                </S.StyledControl>
+                </S.Control>
               ))}
-            </S.StyledControlWrap>
-          </S.StyledTitleWrap>
+            </S.ControlWrap>
+          </S.TitleWrap>
         )}
-        {!items.length && (
-          <S.StyledNoData>저장된 링크가 없습니다</S.StyledNoData>
-        )}
+        {!items?.length && <S.NoData>저장된 링크가 없습니다</S.NoData>}
         {items && <CardList items={items} />}
-      </StyledSectionWrap>
-      <S.StyledMobileAddButton>
+      </SectionWrap>
+      <S.MobileAddButton>
         폴더 추가
-        <S.StyledAddIcon src={AddWhiteIcon} alt='+' />
-      </S.StyledMobileAddButton>
+        <S.AddIcon src={AddWhiteIcon} alt='+' />
+      </S.MobileAddButton>
     </>
   );
 }

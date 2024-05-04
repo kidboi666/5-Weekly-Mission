@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { StyledTopWrap as TopWrap } from '../../pages/Common.styled';
+import { TopWrap } from '../../pages/Common.styled';
 
 export const StyledTopWrap = styled(TopWrap)`
   padding: 60px 33px 90px;
@@ -9,7 +9,7 @@ export const StyledTopWrap = styled(TopWrap)`
   }
 `;
 
-export const StyledMenuWrap = styled.div`
+export const MenuWrap = styled.div`
   display: flex;
   justify-content: space-between;
   padding-bottom: 24px;
@@ -19,7 +19,7 @@ export const StyledMenuWrap = styled.div`
   }
 `;
 
-export const StyledMenuList = styled.ul`
+export const MenuList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 12px 8px;
@@ -30,7 +30,7 @@ export const StyledMenuList = styled.ul`
   }
 `;
 
-export const StyledAddButton = styled.button`
+export const AddButton = styled.button`
   display: flex;
   align-items: center;
   gap: 4px;
@@ -43,11 +43,11 @@ export const StyledAddButton = styled.button`
   }
 `;
 
-export const StyledAddIcon = styled.img`
+export const AddIcon = styled.img`
   width: 16px;
 `;
 
-export const StyledMobileAddButton = styled(StyledAddButton)`
+export const MobileAddButton = styled(AddButton)`
   display: none;
 
   @media (max-width: 767px) {
@@ -64,7 +64,7 @@ export const StyledMobileAddButton = styled(StyledAddButton)`
   }
 `;
 
-export const StyledTitleWrap = styled.div`
+export const TitleWrap = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0 0 24px;
@@ -76,7 +76,7 @@ export const StyledTitleWrap = styled.div`
   }
 `;
 
-export const StyledTitle = styled.h2`
+export const Title = styled.h2`
   font-size: 24px;
   font-weight: 600;
 
@@ -85,12 +85,12 @@ export const StyledTitle = styled.h2`
   }
 `;
 
-export const StyledControlWrap = styled.div`
+export const ControlWrap = styled.div`
   display: flex;
   gap: 12px;
 `;
 
-export const StyledControl = styled.button`
+export const Control = styled.button`
   display: flex;
   align-items: center;
   gap: 4px;
@@ -99,11 +99,11 @@ export const StyledControl = styled.button`
   color: #9fa6b2;
 `;
 
-export const StyledControlIcon = styled.img`
+export const ControlIcon = styled.img`
   width: 18px;
 `;
 
-export const StyledNoData = styled.p`
+export const NoData = styled.p`
   padding: 41px 0 35px;
   text-align: center;
 
