@@ -54,7 +54,7 @@ export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }) => {
             setCurrentModal(MODALS_ID.addFolder);
           }}
         />
-        {/* !!! 이런 식으로 팝업 시킬 모달창을 제어할 수 있음 */}
+        {/* !!! 이런 식으로 팝업 시킬 모달창을 제어할 수 있다 */}
         <InputModal
           isOpen={currentModal === MODALS_ID.addFolder}
           onCloseClick={closeModal}
@@ -73,6 +73,14 @@ export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }) => {
             onClick={() => setCurrentModal(modalId)}
           />
         ))}
+        <InputModal
+          isOpen={currentModal === MODALS_ID.rename}
+          onCloseClick={closeModal}
+          title="폴더 이름 변경"
+          placeholder="유용한 팁"
+          buttonText="변경하기"
+          onKeyDown={handleKeyDown}
+        />
       </div>
     </div>
   );
