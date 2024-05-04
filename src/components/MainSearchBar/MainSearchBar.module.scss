@@ -15,4 +15,5 @@
   width: 100%;
   padding: 2rem 0;
   background: #f5f5f5;
+  @include font(1.4rem, $color-text-content-gray, 400);
 }

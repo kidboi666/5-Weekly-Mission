@@ -8,7 +8,7 @@
   box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
 }
 
-.card_image_block {
+.card-image-block {
   width: 100%;
   height: 20rem;
   border-top-left-radius: 14px;
@@ -16,7 +16,7 @@
   overflow: hidden;
 }
 
-.card_image {
+.card-image {
   width: 100%;
   height: 100%;
 
@@ -31,29 +31,66 @@
   }
 }
 
-.cardText {
+.card-block {
   width: 100%;
   height: 12rem;
-  padding: 1.25rem;
+  padding: 1.5rem;
   background-color: white;
 
   border-bottom-left-radius: 14px;
   border-bottom-right-radius: 14px;
 }
 
-.center_text {
-  height: 6rem;
-  overflow: hidden;
+.time-text {
+  @include font(1.2rem, $color-text-content-gray, 400);
 }
 
-.star_icon {
+.center-text {
+  margin: 1rem 0;
+  height: 5.5rem;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  text-overflow: ellipsis;
+
+  @include font(1.4rem, $color-black, 400);
+}
+
+.date-text {
+  @include font(1.2rem, $color-text-content-black, 400);
+}
+
+.star-icon {
   position: absolute;
   top: 1rem;
   right: 1rem;
 }
 
-.kebab_icon {
+.kebab-icon {
   position: absolute;
-  bottom: 9rem;
+  bottom: 10.4rem;
   right: 1rem;
+}
+
+.kebab-menu {
+  z-index: 1;
+  position: absolute;
+  bottom: 3.8rem;
+  right: -4.8rem;
+
+  display: flex;
+  flex-direction: column;
+
+  background: $color-white;
+  box-shadow: 0px 2px 8px 0px rgba(51, 50, 54, 0.1);
+}
+
+.kebab-option {
+  padding: 0.8rem 1rem;
+
+  @include font(1.4rem, $color-gray100, 400);
+
+  &:hover {
+    @include font(1.4rem, $color-primary, 400);
+    background: $color-gray10;
+  }
 }

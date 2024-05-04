@@ -27,16 +27,18 @@ export const LinkItems = ({ folderName }) => {
     <div className={cx("container")}>
       <h1 className={cx("title")}>{folderName}</h1>
 
-      <div className={cx("items")}>
-        {choiceItems.map((item) => {
-          return (
-            <button className={cx("button")} key={item.id}>
-              <img src={item.image} alt={item.text} />
-              <p className={cx("text")}>{item.text}</p>
-            </button>
-          );
-        })}
-      </div>
+      {folderName !== "전체" && (
+        <div className={cx("items")}>
+          {choiceItems.map((item) => {
+            return (
+              <button className={cx("button")} key={item.id}>
+                <img src={item.image} alt={item.text} />
+                <p className={cx("text")}>{item.text}</p>
+              </button>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

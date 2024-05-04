@@ -7,6 +7,8 @@ import { Cards } from "../Cards/Cards";
 
 const cx = classNames.bind(styles);
 
+let hasCards = false;
+
 export const FolderCards = ({
   items,
   folders,
@@ -28,15 +30,20 @@ export const FolderCards = ({
 
       <LinkItems folderName={folderName} />
 
-      <ul className={cx("cards_block")}>
+      <ul className={cx("cards-block")}>
         {items.map((item) => {
-          return (
-            (folderId === item.folder_id || folderName === "전체") && (
-              <Cards key={item.id} item={item} />
-            )
-          );
+          if (folderId === item.folder_id || folderName === "전체") {
+            hasCards = true;
+            return <Cards key={item.id} item={item} />;
+          }
         })}
       </ul>
+
+      {!hasCards && (
+        <div className={cx("text-container")}>
+          <p className={cx("text")}>저장된 링크가 없습니다</p>
+        </div>
+      )}
     </div>
   );
 };

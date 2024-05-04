@@ -2,8 +2,54 @@
 
 .container {
   display: flex;
-  gap: 1rem;
+  justify-content: space-between;
   margin-top: 3rem;
+}
+
+.add-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  @include tablet {
+    width: 9rem;
+    height: 2rem;
+  }
+
+  @include mobile {
+    width: 100%;
+    z-index: 1;
+    position: fixed;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: 6.3125rem;
+  }
+}
+
+.text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  @include font(1.4rem, $color-primary, 500);
+
+  @include mobile {
+    padding: 0.6rem 1.6rem;
+    border-radius: 1.5rem;
+    border: 1px solid var(--Linkbrary-white, #fff);
+    background: var(--Linkbrary-primary-color, #6d6afe);
+
+    @include font(1.4rem, $color-white, 500);
+  }
+}
+
+.toolBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .button {
@@ -11,6 +57,7 @@
   border-radius: 0.5rem;
   border: 1px solid $color-primary;
   background: $color-white;
+  @include font(1.4rem, $color-black, 400);
 
   &:hover {
     cursor: pointer;

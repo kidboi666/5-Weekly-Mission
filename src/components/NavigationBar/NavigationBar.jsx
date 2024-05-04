@@ -10,7 +10,9 @@ const cx = classNames.bind(styles);
 export const NavigationBar = ({ user }) => {
   return (
     <div className={cx("container")}>
-      <img src={LOGO_ICON} alt="로고 이미지 Linkbrary" />
+      <Link to="/">
+        <img src={LOGO_ICON} alt="로고 이미지 Linkbrary" />
+      </Link>
       <NavUserProfile user={user} />
     </div>
   );

@@ -1,11 +1,15 @@
-@mixin desktop {
-  @media (min-width: 1200px) {
+/**
+  사용방법: @include tablet { width: 1rem; }
+*/
+
+@mixin tablet {
+  @media (max-width: 1248px) {
     @content;
   }
 }
 
-@mixin tablet {
-  @media (min-width: 768px) {
+@mixin mobile {
+  @media (max-width: 768px) {
     @content;
   }
 }

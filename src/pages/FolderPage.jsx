@@ -50,7 +50,9 @@ export const FolderPage = () => {
   return (
     <div>
       <NavigationBar user={user} />
+
       <CenterSearchBar />
+
       <FolderCards
         items={cards}
         folders={folders}
@@ -59,6 +61,7 @@ export const FolderPage = () => {
         folderId={folderId}
         setFolderId={setFolderId}
       />
+
       <Footer />
     </div>
   );

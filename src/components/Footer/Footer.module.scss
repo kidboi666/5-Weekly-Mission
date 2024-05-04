@@ -1,8 +1,8 @@
 @import "/src/styles/global.scss";
 
 .container {
-  display: flex;
   position: relative;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   background: #111322;
@@ -13,6 +13,11 @@
 
 .date_text {
   width: 12rem;
+
+  @include mobile {
+    position: absolute;
+    top: 6rem;
+  }
 }
 
 .link_text {
