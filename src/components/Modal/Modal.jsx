@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import styles from "./Modal.module.scss";
 import classNames from "classnames/bind";
 
@@ -7,13 +7,11 @@ const cx = classNames.bind(styles);
 export const Modal = ({ modal, setModal, link }) => {
   const modalRef = useRef(null);
 
-  useEffect(() => {
-    function handleTest(event) {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
-        console.log("zz");
-      }
+  const handleTest = (event) => {
+    if (modalRef.current && !modalRef.current.contains(event.target)) {
+      console.log("zz");
     }
-  });
+  };
 
   return (
     <div className={cx("container")} onClick={handleTest}>
