@@ -4,8 +4,8 @@ import { time } from "../../util/time";
 import { contentDate } from "../../util/contentDate";
 import { Link } from "react-router-dom";
 import { NO_IMAGE, STAR_ICON, COLOR_STAR_ICON, KEBAB_ICON } from "./constant";
-import { useState } from "react";
-import { Modal } from "../Modal";
+import { useEffect, useRef, useState } from "react";
+import { DeleteModal } from "../DeleteModal";
 
 const cx = classNames.bind(styles);
 
@@ -14,6 +14,7 @@ export const Cards = ({ item }) => {
   const folderImageData = item.image_source;
   const [kebab, setKebab] = useState(false);
   const [modal, setModal] = useState(false);
+  const kebabRef = useRef(null);
 
   const handleKebab = () => {
     setKebab(!kebab);
@@ -24,6 +25,21 @@ export const Cards = ({ item }) => {
   const handleDelete = () => {
     setModal(true);
   };
+
+  // 케밥 영역 밖 클릭 시 닫기
+  useEffect(() => {
+    const handleKebabTest = (event) => {
+      if (kebab && !kebabRef.current.contains(event.target)) {
+        setKebab(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleKebabTest);
+
+    return () => {
+      document.removeEventListener("mousedown", handleKebabTest);
+    };
+  }, [kebab, kebabRef]);
 
   return (
     <div className={cx("card")}>
@@ -61,13 +77,15 @@ export const Cards = ({ item }) => {
         <img className={cx("kebab-icon")} src={KEBAB_ICON} alt="케밥 아이콘" />
       </button>
       {kebab && (
-        <div className={cx("kebab-menu")}>
+        <div className={cx("kebab-menu")} ref={kebabRef}>
           <button className={cx("kebab-option")} onClick={handleDelete}>
             삭제하기
           </button>
           <button className={cx("kebab-option")}>폴더에 추가</button>
 
-          {modal && <Modal modal={modal} setModal={setModal} link={item.url} />}
+          {modal && (
+            <DeleteModal modal={modal} setModal={setModal} link={item.url} />
+          )}
         </div>
       )}
     </div>
