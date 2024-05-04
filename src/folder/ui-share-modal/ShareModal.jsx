@@ -4,7 +4,7 @@ import { Modal } from "sharing/ui-modal";
 import { ModalContentBox } from "sharing/ui-modal-content-box";
 import { ModalContentDescription } from "sharing/ui-modal-content-description";
 import { ModalContentTitle } from "sharing/ui-modal-content-title";
-import { ReactComponent as KakaoIcon } from "./kakao.svg";
+import { ReactComponent as KaKaoIcon } from "./kakao.svg";
 import { ReactComponent as FacebookIcon } from "./facebook.svg";
 import { ReactComponent as LinkIcon } from "./link.svg";
 
@@ -30,15 +30,15 @@ export const ShareModal = ({
         }
         content={
           <div className={cx("modal-content")}>
-            <button className={cx("button")} onClick={onKakaoClick}>
-              <KakaoIcon />
+            <button onClick={onKakaoClick} className={cx("button")}>
+              <KaKaoIcon />
               <span>카카오톡</span>
             </button>
-            <button className={cx("button")} onClick={onFacebookClick}>
+            <button onClick={onFacebookClick} className={cx("button")}>
               <FacebookIcon />
               <span>페이스북</span>
             </button>
-            <button className={cx("button")} onClick={onLinkCopyClick}>
+            <button onClick={onLinkCopyClick} className={cx("button")}>
               <LinkIcon />
               <span>링크 복사</span>
             </button>

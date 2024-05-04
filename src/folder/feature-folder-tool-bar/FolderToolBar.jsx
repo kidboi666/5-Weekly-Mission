@@ -8,6 +8,7 @@ import { useState } from "react";
 import { IconAndTextButton } from "sharing/ui-icon-and-text-button";
 import { InputModal } from "sharing/ui-input-modal/InputModal";
 import { DeleteModal } from "sharing/ui-delete-modal";
+import { ShareModal } from "folder/ui-share-modal";
 
 const cx = classNames.bind(styles);
 
@@ -74,6 +75,13 @@ export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }) => {
             onClick={() => setCurrentModal(modalId)}
           />
         ))}
+        <ShareModal
+          isOpen={currentModal === MODALS_ID.share}
+          onCloseClick={closeModal}
+          folderName={folderName}
+          title="폴더 공유"
+          onKeyDown={handleKeyDown}
+        />
         <InputModal
           isOpen={currentModal === MODALS_ID.rename}
           onCloseClick={closeModal}
