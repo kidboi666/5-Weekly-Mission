@@ -1,4 +1,4 @@
-import { calculatePastTime } from "../../util";
+import { calculatePastTime } from "util";
 import { useState } from "react";
 import { ModalLayout } from "../ModalLayout";
 

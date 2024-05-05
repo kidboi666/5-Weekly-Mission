@@ -4,11 +4,11 @@ import {
   SearchBar,
   Footer,
   LinkInput,
-  Sorting,
   LinkList,
+  Sorting,
   ErrorComponent,
   FolderTitle,
-} from "../components";
+} from "components";
 import { getData } from "../util/api";
 import "../components/SharedPage.css";
 import { useEffect, useState } from "react";
