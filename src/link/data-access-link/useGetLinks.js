@@ -17,7 +17,14 @@ export const useGetLinks = (folderId = ALL_LINKS_ID) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [folderId]);
 
-  const mapDataFormat = ({ id, created_at, url, image_source, title, description }) => ({
+  const mapDataFormat = ({
+    id,
+    created_at,
+    url,
+    image_source,
+    title,
+    description,
+  }) => ({
     id,
     createdAt: created_at,
     imageSource: image_source,

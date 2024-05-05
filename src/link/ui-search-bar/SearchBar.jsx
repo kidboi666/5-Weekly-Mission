@@ -1,17 +1,26 @@
 import styles from "./SearchBar.module.scss";
 import classNames from "classnames/bind";
 import { SEARCH_IMAGE } from "./constant";
+import { useState } from "react";
 
 const cx = classNames.bind(styles);
 
-export const SearchBar = ({ onSubmit, searchKeyword, setSearchKeyword }) => {
+export const SearchBar = ({ onKeywordSubmit }) => {
+  const [input, setInput] = useState("");
+
+  const handleSearchLink = (e) => {
+    e.preventDefault();
+    onKeywordSubmit(input);
+    setInput("");
+  };
+
   return (
-    <form onSubmit={onSubmit} className={cx("container")}>
+    <form onSubmit={handleSearchLink} className={cx("container")}>
       <input
         className={cx("input")}
         type="search"
-        value={searchKeyword}
-        onChange={(e) => setSearchKeyword(e.target.value)}
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
         placeholder="링크를 검색해 보세요."
       />
       <img

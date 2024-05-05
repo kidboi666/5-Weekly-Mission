@@ -12,7 +12,12 @@ import { ShareModal } from "folder/ui-share-modal";
 
 const cx = classNames.bind(styles);
 
-export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }) => {
+export const FolderToolBar = ({
+  folders,
+  selectedFolderId,
+  setSelectedFolderId,
+  setKeyword,
+}) => {
   const [currentModal, setCurrentModal] = useState(null);
   const folderName =
     ALL_LINKS_ID === selectedFolderId
@@ -35,14 +40,20 @@ export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }) => {
         <FolderButton
           key={ALL_LINKS_ID}
           text={ALL_LINKS_TEXT}
-          onClick={() => onFolderClick(ALL_LINKS_ID)}
+          onClick={() => {
+            setSelectedFolderId(ALL_LINKS_ID);
+            setKeyword("");
+          }}
           isSelected={ALL_LINKS_ID === selectedFolderId}
         />
         {folders?.map(({ id, name }) => (
           <FolderButton
             key={id}
             text={name}
-            onClick={() => onFolderClick(id)}
+            onClick={() => {
+              setSelectedFolderId(id);
+              setKeyword("");
+            }}
             isSelected={id === selectedFolderId}
           />
         ))}
