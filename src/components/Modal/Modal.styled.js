@@ -101,6 +101,14 @@ export const FoldersList = styled.ul`
   margin-top: 24px;
   max-height: 172px;
   overflow: auto;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #cccccc;
+    border-radius: 30px;
+    cursor: pointer;
+  }
 
   & li {
     & input {

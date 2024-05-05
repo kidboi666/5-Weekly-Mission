@@ -13,6 +13,7 @@ export default function Modal({
   button,
   share,
   folders,
+  counts,
 }) {
   const handleCloseClick = () => {};
 
@@ -28,11 +29,11 @@ export default function Modal({
         {folders && (
           <S.FoldersList>
             {folders.map((folder, index) => (
-              <li>
+              <li key={index}>
                 <input type='radio' id={index} name='folder' value={folder} />
                 <label htmlFor={index}>
                   <h3>{folder}</h3>
-                  <span>7개 링크</span>
+                  <span>{counts[index]}개 링크</span>
                 </label>
               </li>
             ))}

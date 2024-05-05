@@ -32,14 +32,23 @@ export default function FolderPage() {
   const [menus, setMenus] = useState();
   const [folder, setFolder] = useState('전체');
   const [items, setItems] = useState([]);
+  const [itemCount, setItemCount] = useState();
+
+  console.log('menus', menus);
+  console.log('folder', folder);
+  console.log('items', items);
+  console.log('itemCount', itemCount);
 
   const handleMenuButtonClick = async (e) => {
     setFolder(e.target.value);
   };
 
   const handleLoadMenu = async () => {
-    const nextMenu = await getFoldersMenu();
+    const data = await getFoldersMenu();
+    const nextMenu = data.map((item) => item.name);
+    const nextItemCount = data.map((item) => item.link.count);
     setMenus(nextMenu);
+    setItemCount(nextItemCount);
   };
 
   const handleLoadItems = useCallback(async () => {
@@ -50,8 +59,6 @@ export default function FolderPage() {
   useEffect(() => {
     handleLoadMenu();
   }, []);
-
-  console.log(items);
 
   useEffect(() => {
     handleLoadItems();
@@ -69,7 +76,7 @@ export default function FolderPage() {
         folders={['코딩팁', '유용', 'dd', 'ddd', 'ddd']}
       /> */}
       <S.StyledTopWrap>
-        <LinkInput />
+        <LinkInput folders={menus} counts={itemCount} />
       </S.StyledTopWrap>
       <SectionWrap>
         <Search />
