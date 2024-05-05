@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '../../../styles/theme';
+import { theme } from '../../styles/theme';
 
 export const ModalWrap = styled.section`
   position: fixed;
@@ -30,6 +30,9 @@ export const ModalContainer = styled.div`
   transform: translate(-50%, -50%);
   background-color: ${theme.color.white};
   z-index: 2;
+  .button--modal-close {
+    top: 30px;
+  }
 `;
 export const ModalHead = styled.div`
   .desc {

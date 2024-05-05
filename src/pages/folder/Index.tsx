@@ -1,19 +1,19 @@
 import { ContainBody, ContainHead } from '../../styles/commonStyle';
-import { BookmarkBox, BodyInner } from './folderStyle';
+import { BookmarkBox, BodyInner, LinkAddHeadInner, FolderContainHead } from './folderStyle';
 
 import Button from '../../components/common/atoms/Button';
 import useFetch from '../../hook/useFetch';
-import Modal from '../../components/common/modal/Modal';
-import { FOLDERCONTANTLISTAPI, FOLDERMENULISTAPI } from '../../constant/api';
+import { FOLDER_CONTANT_LIST_API, FOLDER_MENU_LIST_API } from '../../constant/api';
 import { IFolderContentApi, IFolderMenuButtonApi } from './interface';
-import { useEffect, useState } from 'react';
-import { IModal } from '../../components/common/modal/interface';
+import { useState } from 'react';
 import { modalOrder } from '../../constant/modal';
 import ContantList from '../../components/folder/ContantList';
 import LinkAddHeader from '../../components/folder/LinkAddHeader';
 import SearchInputBox from '../../components/folder/SearchInputBox';
 import FolderButtonList from '../../components/folder/FolderButtonList';
 import FolderContentControll from '../../components/folder/FolderContentControll';
+import { IModal } from '../../components/modal/interface';
+import Modal from '../../components/modal/Modal';
 
 const addImage = '/assets/icon/icon_primary_add.svg';
 const searchImage = '/assets/icon/icon_search.svg';
@@ -26,7 +26,7 @@ function useFatchDataLoad<T>(api: string) {
 function Index() {
   const [title, setTitle] = useState('전체');
   const [btnActive, setBtnActive] = useState<number>(-1);
-  const [dynamicAPI, setDynamicAPI] = useState<string>(FOLDERCONTANTLISTAPI); // 버튼리스트 클릭시 해당 컨텐트 노출
+  const [dynamicAPI, setDynamicAPI] = useState<string>(FOLDER_CONTANT_LIST_API); // 버튼리스트 클릭시 해당 컨텐트 노출
   const [modalShow, setModalShow] = useState(false);
   const [modalInfo, setModalInfo] = useState<IModal>({
     $title: '',
@@ -37,28 +37,28 @@ function Index() {
     $modalData: null,
   });
   const { value: menu, isLoading: menuLoading } =
-    useFatchDataLoad<IFolderMenuButtonApi>(FOLDERMENULISTAPI);
+    useFatchDataLoad<IFolderMenuButtonApi>(FOLDER_MENU_LIST_API);
   const { value: contant, isLoading: contantLoading } =
     useFatchDataLoad<IFolderContentApi>(dynamicAPI);
   const [search, setSearch] = useState<any>();
 
   // 폴더리스트버튼
-  const handleClick = (api: string, index: number) => {
-    if (menu === undefined || api === '') return;
-    if (index !== undefined) {
-      setBtnActive(index);
+  const handleClick = (id: number) => {
+    if (!menu) return;
+    if (id > 0) {
+      setBtnActive(id);
     }
-    if (api === 'all') {
-      setDynamicAPI(FOLDERCONTANTLISTAPI);
+    if (id < 0) {
+      setDynamicAPI(FOLDER_CONTANT_LIST_API);
       setTitle('전체');
       return;
     }
-    setDynamicAPI(`${FOLDERCONTANTLISTAPI}?folderId=${api}`);
-    const result = menu?.data.filter((data) => +data.id === +api);
+    setDynamicAPI(`${FOLDER_CONTANT_LIST_API}?folderId=${id}`);
+    const result = menu?.data.filter((data) => +data.id === +id);
     result && setTitle(result[0]?.name as '');
   };
 
-  // 모달오픈
+  // modal open
   const handleModalOpen = (type: string) => {
     let modalInfo = modalOrder[type];
     if (type === 'folderInAdd') {
@@ -71,12 +71,12 @@ function Index() {
     setModalShow(true);
   };
 
-  // 모달닫기
+  // modal close
   const handleModalClose = () => {
     setModalShow(false);
   };
 
-  // 검색어 filter
+  // Search
   const handelSearch = (value: string) => {
     let filter;
     if (value) {
@@ -100,10 +100,10 @@ function Index() {
 
   return (
     <>
-      <ContainHead>
+      <FolderContainHead className='folder--header'>
         <LinkAddHeader $inputIconImg={linkImage} />
-      </ContainHead>
-      <ContainBody>
+      </FolderContainHead>
+      <ContainBody className='folder__dody'>
         <BodyInner>
           {/* 검색창 */}
           <SearchInputBox $inputIconImg={searchImage} onchange={handelSearch} />
@@ -115,15 +115,13 @@ function Index() {
               $btnActive={btnActive}
               onClick={handleClick}
             />
-            <div>
-              <Button
-                $btnClass={'button--icon-after'}
-                $afterButtonIcon={addImage}
-                onclick={() => handleModalOpen('folderAdd')}
-              >
-                폴더추가
-              </Button>
-            </div>
+            <Button
+              $btnClass={'button--icon-after button--folder-add'}
+              $afterButtonIcon={addImage}
+              onclick={() => handleModalOpen('folderAdd')}
+            >
+              폴더추가
+            </Button>
           </BookmarkBox>
           {/* 설정 버튼 */}
           <FolderContentControll $title={title} onclick={handleModalOpen} />
@@ -131,7 +129,7 @@ function Index() {
           <ContantList contant={contantSearch} loading={contantLoading} />
         </BodyInner>
       </ContainBody>
-      <Modal onOpen={modalShow} onClose={handleModalClose} {...modalInfo} />
+      <Modal onOpen={modalShow} onClose={handleModalClose} $folderId= {btnActive} {...modalInfo} />
     </>
   );
 }

@@ -97,8 +97,9 @@ export const BookMarkBtn = styled.button`
 
 export const CardMenu = styled.div`
   position: absolute;
-  right: 20px;
-  top: 215px;
+  right: 10px;
+  top: 205px;
+  padding: 10px;
   cursor: pointer;
   z-index: 2;
   .card {

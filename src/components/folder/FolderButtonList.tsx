@@ -7,7 +7,7 @@ interface IButtonList {
   $menu: IFolderMenuButtonApi | null;
   $loading: boolean;
   $btnActive: number;
-  onClick: (api: string, index: number) => void;
+  onClick: (id:number) => void;
 }
 
 function FolderButtonList({
@@ -16,9 +16,7 @@ function FolderButtonList({
   $btnActive,
   onClick,
 }: IButtonList) {
-  const handleClick = (api: string, index: number) => {
-    onClick(api, index);
-  };
+
   return (
     <BookMarkBtnList>
       {$loading ? null : (
@@ -26,7 +24,7 @@ function FolderButtonList({
           <Button
             $id={'all'}
             $btnClass={`button--outlined ${$btnActive === -1 ? 'active' : ''}`}
-            onclick={() => handleClick('all', -1)}
+            onclick={() => onClick(-1)}
           >
             전체
           </Button>
@@ -38,7 +36,7 @@ function FolderButtonList({
                 $btnClass={`button--outlined ${
                   $btnActive === i ? 'active' : ''
                 }`}
-                onclick={() => handleClick(`${item.id}`, i)}
+                onclick={() => onClick(item.id)}
               >
                 {item.name}
               </Button>

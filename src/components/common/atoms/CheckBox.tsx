@@ -1,5 +1,5 @@
+import { IModal } from '../../modal/interface';
 import { CheckBoxWrap } from './checkBoxStyle';
-import { IModal } from '../modal/interface';
 
 interface ICheckBoxData {
   $data: IModal['$modalData'];

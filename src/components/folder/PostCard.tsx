@@ -7,11 +7,11 @@ import {
   IFolderContent,
   IFolderMenuButtonApi,
 } from '../../pages/folder/interface';
-import Modal from '../common/modal/Modal';
+import Modal from '../modal/Modal';
 import { modalOrder } from '../../constant/modal';
-import { IModal } from '../common/modal/interface';
-import { FOLDERMENULISTAPI } from '../../constant/api';
+import { FOLDER_MENU_LIST_API } from '../../constant/api';
 import useFetch from '../../hook/useFetch';
+import { IModal } from '../modal/interface';
 const emptyImg = '/assets/logo/logo.svg';
 
 function useFatchDataLoad<T>(api: string) {
@@ -35,7 +35,7 @@ export default function PostCard({
     $modalData: null,
   });
   const { value: menu, isLoading: menuLoading } =
-    useFatchDataLoad<IFolderMenuButtonApi>(FOLDERMENULISTAPI);
+    useFatchDataLoad<IFolderMenuButtonApi>(FOLDER_MENU_LIST_API);
 
   const handelerBookMarkActive = () => setBookMark((prev) => !prev);
   const handelerCardDropdown = () => setCardMenuShow((prev) => !prev);

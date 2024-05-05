@@ -10,14 +10,14 @@ import {
 import { Profile } from '../../styles/commonStyle';
 import LinkButton from './atoms/LinkButton';
 import useFetch from '../../hook/useFetch';
-import { USERLOGINAPI } from '../../constant/api';
+import { BASE_URL } from '../../constant/api';
 import { IHeaderUserLoginInfoApi } from './interface';
 import { useEffect, useState } from 'react';
 const logo = '/assets/logo/logo.svg';
 
 function Header() {
   const { pathname } = useLocation();
-  const { value } = useFetch<IHeaderUserLoginInfoApi>(USERLOGINAPI);
+  const { value } = useFetch<IHeaderUserLoginInfoApi>(BASE_URL);
   const [fixed, setFixed] = useState(true);
   useEffect(() => {
     if (pathname === '/folder') {
@@ -40,7 +40,7 @@ function Header() {
               <Email>{userInfo?.email}</Email>
             </HeaderUserInfo>
           ) : (
-            <LinkButton $link={'/signin'} $linkClass={'link--gradient large'}>
+            <LinkButton $link={'/signin'} $linkClass={'link--gradient link--login large'}>
               로그인
             </LinkButton>
           )}

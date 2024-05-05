@@ -46,18 +46,6 @@ export const ButtonModule = styled.button<{
       text-align: center;
       background: ${theme.bgColor.gradient};
       border-radius: 8px;
-      /* &.full {
-        width: 100% !important;
-      }
-      &.large {
-        width: 128px;
-        @media screen and (max-width: ${theme.screenSize.moLarge}) {
-          width: 80px;
-        }
-      }
-      &.mideum {
-        width: 80px;
-      } */
     }
     &--red {
       width: 100%;
@@ -68,8 +56,9 @@ export const ButtonModule = styled.button<{
     &--modal-close {
       position: absolute;
       width: auto;
-      top: 16px;
+      top: 50%;
       right: 16px;
+      transform: translateY(-50%);
     }
     &--sns-share {
       display: flex;

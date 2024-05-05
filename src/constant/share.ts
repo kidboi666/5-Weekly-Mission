@@ -3,17 +3,17 @@ const faceBookImg = '/assets/icon/icon_share_face.svg';
 const linkImg = '/assets/icon/icon_share_link.svg';
 export const snsShare = [
   {
-    id:'sns1',
+    id:'sh_kakao',
     name:'카카오톡',
     src:kakaoImg,
   },
   {
-    id:'sns2',
+    id:'sh_face',
     name:'페이스북',
     src:faceBookImg,
   },
   {
-    id:'sns3',
+    id:'sh_link',
     name:'링크 복사',
     src:linkImg,
   },
