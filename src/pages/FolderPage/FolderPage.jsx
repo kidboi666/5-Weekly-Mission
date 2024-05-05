@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { SectionWrap } from '../Common.styled';
 import LinkInput from '../../components/LinkInput/LinkInput';
 import * as S from './FolderPage.styled';
@@ -72,10 +72,10 @@ export default function FolderPage() {
     setItemCount(nextItemCount);
   };
 
-  const handleLoadItems = async () => {
+  const handleLoadItems = useCallback(async () => {
     const nextItems = await getFoldersItems(currentFolder.id);
     setItems(nextItems);
-  };
+  }, [currentFolder.id]);
 
   const handleAddFolderButtonClick = () => {
     setAddFolderModalVisible(true);
@@ -87,7 +87,7 @@ export default function FolderPage() {
 
   useEffect(() => {
     handleLoadItems();
-  }, [currentFolder]);
+  }, [currentFolder, handleLoadItems]);
 
   return (
     <>
