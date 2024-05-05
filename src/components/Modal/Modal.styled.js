@@ -45,6 +45,15 @@ export const SemiTitle = styled.h3`
   font-size: 14px;
   font-weight: 400;
   line-height: 157.143%;
+  overflow: auto;
+  padding-bottom: 5px;
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #cccccc;
+    border-radius: 30px;
+  }
 `;
 
 export const Input = styled.input`
