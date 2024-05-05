@@ -6,7 +6,6 @@ import facebookIcon from '../../assets/share_facebook.svg';
 import linkIcon from '../../assets/share_link.svg';
 
 export default function Modal({
-  width,
   title,
   semiTitle,
   input,
@@ -22,13 +21,19 @@ export default function Modal({
 
   return (
     <S.Layout>
-      <S.Modal width={width}>
+      <S.Modal>
         <S.CloseButton onClick={handleCloseClick}>
           <img src={CloseImage} alt='모달 닫기' />
         </S.CloseButton>
         <S.Title>{title}</S.Title>
         {semiTitle && <S.SemiTitle>{semiTitle}</S.SemiTitle>}
-        {input && <S.Input type='text' placeholder='내용 입력' />}
+        {input && (
+          <S.Input
+            type='text'
+            placeholder='내용 입력'
+            value={input !== true ? input : null}
+          />
+        )}
         {folders && (
           <S.FoldersList>
             {folders.map((folder, index) => (

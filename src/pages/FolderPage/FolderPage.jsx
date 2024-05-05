@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SectionWrap } from '../Common.styled';
 import LinkInput from '../../components/LinkInput/LinkInput';
 import * as S from './FolderPage.styled';
@@ -13,21 +13,6 @@ import PenIcon from '../../assets/pen_icon.png';
 import DeleteIcon from '../../assets/delete_icon.png';
 import Modal from '../../components/Modal/Modal';
 
-const CONTROLS = [
-  {
-    name: '공유',
-    icon: ShareIcon,
-  },
-  {
-    name: '이름 변경',
-    icon: PenIcon,
-  },
-  {
-    name: '삭제',
-    icon: DeleteIcon,
-  },
-];
-
 export default function FolderPage() {
   const [menus, setMenus] = useState();
   const [folders, setFolders] = useState();
@@ -37,8 +22,34 @@ export default function FolderPage() {
   const [items, setItems] = useState([]);
   const [itemCount, setItemCount] = useState();
   const [addFolderModalVisible, setAddFolderModalVisible] = useState(false);
+  const [shareFolderModalVisible, setShareFolderModalVisible] = useState(false);
+  const [changeFolderNameModalVisible, setChangeFolderNameModalVisible] =
+    useState(false);
+  const [deleteFolderModalVisible, setDeleteFolderVisible] = useState(false);
 
-  console.log(currentFolder);
+  const CONTROLS = [
+    {
+      name: '공유',
+      icon: ShareIcon,
+      onClick: () => {
+        setShareFolderModalVisible(true);
+      },
+    },
+    {
+      name: '이름 변경',
+      icon: PenIcon,
+      onClick: () => {
+        setChangeFolderNameModalVisible(true);
+      },
+    },
+    {
+      name: '삭제',
+      icon: DeleteIcon,
+      onClick: () => {
+        setDeleteFolderVisible(true);
+      },
+    },
+  ];
 
   const handleMenuButtonClick = async (e) => {
     if (e.target.value === '전체') {
@@ -114,10 +125,10 @@ export default function FolderPage() {
             <S.Title>{currentFolder?.name}</S.Title>
             <S.ControlWrap>
               {CONTROLS.map((control, index) => (
-                <S.Control key={index}>
+                <S.ControlButton key={index} onClick={control.onClick}>
                   <S.ControlIcon src={control.icon} alt='' />
                   {control.name}
-                </S.Control>
+                </S.ControlButton>
               ))}
             </S.ControlWrap>
           </S.TitleWrap>
@@ -127,11 +138,34 @@ export default function FolderPage() {
       </SectionWrap>
       {addFolderModalVisible && (
         <Modal
-          width='360'
           title='폴더 추가'
           input
           button='추가하기'
           setVisible={setAddFolderModalVisible}
+        />
+      )}
+      {shareFolderModalVisible && (
+        <Modal
+          title='폴더 공유'
+          semiTitle={currentFolder.name}
+          share
+          setVisible={setShareFolderModalVisible}
+        />
+      )}
+      {changeFolderNameModalVisible && (
+        <Modal
+          title='폴더 이름 변경'
+          input={currentFolder.name}
+          button='변경하기'
+          setVisible={setChangeFolderNameModalVisible}
+        />
+      )}
+      {deleteFolderModalVisible && (
+        <Modal
+          title='폴더 삭제'
+          semiTitle={currentFolder.name}
+          button='삭제하기'
+          setVisible={setDeleteFolderVisible}
         />
       )}
     </>

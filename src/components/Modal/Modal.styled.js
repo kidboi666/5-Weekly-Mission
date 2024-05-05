@@ -17,7 +17,7 @@ export const Layout = styled.div`
 
 export const Modal = styled.div`
   position: relative;
-  width: ${({ width }) => (width ? width : 360)}px;
+  width: 360px;
   padding: 32px 40px;
   border-radius: 15px;
   border: 1px solid var(--Linkbrary-gray20);

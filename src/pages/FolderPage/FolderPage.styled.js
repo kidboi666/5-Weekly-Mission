@@ -93,7 +93,7 @@ export const ControlWrap = styled.div`
   gap: 12px;
 `;
 
-export const Control = styled.button`
+export const ControlButton = styled.button`
   display: flex;
   align-items: center;
   gap: 4px;

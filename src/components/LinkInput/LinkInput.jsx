@@ -29,9 +29,7 @@ export default function LinkInput({ folders, counts }) {
         <Modal
           title='폴더에 추가'
           semiTitle={link}
-          // input='즐겨찾기'
           button='추가하기'
-          // share
           folders={folders}
           counts={counts}
           setVisible={setModalVisible}
