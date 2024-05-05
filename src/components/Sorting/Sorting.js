@@ -23,11 +23,13 @@ export function Sorting({
   };
 
   useEffect(() => {
-    const nameById = selectedId
-      ? folders.find((item) => item.id === selectedId)?.name
-      : "전체";
+    onChangeName(selectedId);
+  }, [selectedId, folders, setName]);
+
+  const onChangeName = (id) => {
+    const nameById = id ? folders.find((item) => item.id === id)?.name : "전체";
     setName(nameById);
-  }, [selectedId, folders, setName]); // eslint-disable-next-line
+  };
 
   return (
     <>
