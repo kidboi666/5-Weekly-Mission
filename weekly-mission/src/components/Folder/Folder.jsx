@@ -30,6 +30,8 @@ const Folder = ({ folderId }) => {
     fetchData();
   }, [folderId]);
 
+  console.log("folderId type:", typeof folderId);
+
   const handleButtonClick = async (folderId, folderName) => {
     if (folderId === activeButton) {
       return;

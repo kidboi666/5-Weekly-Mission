@@ -15,6 +15,8 @@ const LinksContent = ({
   const isEmpty = !linksData || linksData.length === 0;
   const { modalState, openModal, closeModal } = useModal();
 
+  console.log(typeof modalState.deleteLink);
+
   return (
     <>
       <S.FoldermenuToolbar>
