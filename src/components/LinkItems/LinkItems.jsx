@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./LinkItems.module.scss";
 import classNames from "classnames/bind";
-import { DeleteModal, AddModal } from "../";
+import { DeleteModal, AddModal, ShareModal } from "../";
 import { SEARCH_ICON, PEN_ICON, WASTEBASKET_ICON } from "./constant";
 
 const cx = classNames.bind(styles);
@@ -26,11 +26,13 @@ const choiceItems = [
 
 export const LinkItems = ({ folderName }) => {
   const [deletemodal, setDeleteModal] = useState(false);
-  const [addemodal, setAddModal] = useState(false);
+  const [addModal, setAddModal] = useState(false);
+  const [shareModal, setShareModal] = useState(false);
 
   const handleClick = (text) => {
     text === "삭제" && setDeleteModal(true);
     text === "이름 변경" && setAddModal(true);
+    text === "공유" && setShareModal(true);
   };
 
   return (
@@ -63,12 +65,19 @@ export const LinkItems = ({ folderName }) => {
         </DeleteModal>
       )}
 
-      {addemodal && (
-        <AddModal modal={addemodal} setModal={setAddModal}>
+      {addModal && (
+        <AddModal modal={addModal} setModal={setAddModal}>
           <h2>폴더 이름 변경</h2>
           <input type="text" placeholder={folderName} />
           <button type="button">변경하기</button>
         </AddModal>
+      )}
+
+      {shareModal && (
+        <ShareModal modal={shareModal} setModal={setShareModal}>
+          <h2>폴더 공유</h2>
+          <p>{folderName}</p>
+        </ShareModal>
       )}
     </div>
   );
