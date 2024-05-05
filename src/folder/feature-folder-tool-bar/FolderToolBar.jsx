@@ -19,12 +19,10 @@ export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }) => {
       ? ALL_LINKS_TEXT
       : folders?.find(({ id }) => id === selectedFolderId)?.name;
 
-  // 아이콘 클릭 시 모달창 닫기
   const closeModal = () => {
     setCurrentModal(null);
   };
 
-  // Esc 키로 모달창 닫기
   const handleKeyDown = (e) => {
     if (e.key === "escape") {
       closeModal();

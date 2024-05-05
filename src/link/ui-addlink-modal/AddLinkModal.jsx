@@ -17,6 +17,7 @@ export const AddLinkModal = ({
   selectedLinkUrl,
   selectedFolderId,
   setSelectedFolderId,
+  onAddClick,
   onCloseClick,
   onKeyDown,
 }) => {
@@ -32,7 +33,7 @@ export const AddLinkModal = ({
         content={
           <div className={cx("modal-content")}>
             <div className={cx("folder-list")}>
-              {folders.map(({ id, name, link }) => {
+              {folders?.map(({ id, name, link }) => {
                 return (
                   <FolderItem
                     key={id}
@@ -46,7 +47,7 @@ export const AddLinkModal = ({
                 );
               })}
             </div>
-            <ModalContentButton themeColor="red">
+            <ModalContentButton onClick={onAddClick}>
               {buttonText}
             </ModalContentButton>
           </div>
