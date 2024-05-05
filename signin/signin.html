@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
   <head>
     <meta charset="utf-8" />
     <title>signin</title>
@@ -14,10 +14,12 @@
     <div class="sign-container">
       <header>
         <a class="logo-link" href="../index.html">
-          <img class="header-logo" src="../image/Linkbrary.svg"/>
+          <img class="header-logo" src="../image/Linkbrary.svg" />
         </a>
         <p class="header-message">
-          회원이 아니신가요?<a class="header-link" href="../signup/signup.html">회원 가입하기</a>
+          회원이 아니신가요?<a class="header-link" href="../signup/signup.html"
+            >회원 가입하기</a
+          >
         </p>
       </header>
       <div class="sign-box">
@@ -38,22 +40,30 @@
               </button>
             </div>
           </div>
-          <button class="login-button" type="submit">로그인</button>
+          <button class="btn-primary" id="loginButton" type="submit">
+            로그인
+          </button>
         </form>
         <div class="social-login_group">
           <span class="social-login-text">소셜 로그인</span>
           <div class="social-login-buttons">
-            <a class="social-login-button google-link" href="https://www.google.com/">
-              <img src="../image/google icon.png" />
+            <a
+              class="social-login-button google-link"
+              href="https://www.google.com/"
+            >
+              <img src="../image/google-icon.png" />
             </a>
-            <a class="social-login-button kakao-link" href="https://www.kakaocorp.com/page/">
-              <img src="../image/kakao icon.png" />
+            <a
+              class="social-login-button kakao-link"
+              href="https://www.kakaocorp.com/page/"
+            >
+              <img src="../image/kakao-icon.png" />
             </a>
           </div>
         </div>
       </div>
 
-    <script src="./signin.js"></script>
-  </div>
+      <script src="./signin.js"></script>
+    </div>
   </body>
 </html>
