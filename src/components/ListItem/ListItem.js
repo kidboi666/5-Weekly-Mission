@@ -2,6 +2,8 @@ import { calculatePastTime } from "../../util";
 import { useState } from "react";
 import { ModalLayout } from "../ModalLayout";
 
+const base_image = "images/card-default.png";
+
 export function LinkItem({ link, createdAt, imageSource }) {
   const [isOpen, setIsOpen] = useState({
     open: false,
@@ -16,7 +18,6 @@ export function LinkItem({ link, createdAt, imageSource }) {
     }));
   };
 
-  const base_image = "images/card-default.png";
   const url = link.url;
   const linkImage = imageSource ?? base_image;
   return (
