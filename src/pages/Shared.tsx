@@ -30,10 +30,10 @@ interface CardListData {
   url: string;
   title: string;
   description: string;
-  imageSource: string;
+  imageSource?: string;
 }
 
-interface FetchDataResponse {
+interface FetchSharedResponse {
   cardListData: CardListData[];
   folderData: FolderData[];
 }
@@ -42,10 +42,9 @@ function Shared() {
   const [folderData, setFolderData] = useState<FolderData[]>([]);
   const [cardListData, setCardListData] = useState<CardListData[]>([]);
 
-  console.log(cardListData);
   useEffect(() => {
     async function fetchDataAndSetState() {
-      const response: FetchDataResponse | undefined = await fetchData();
+      const response: FetchSharedResponse | undefined = await fetchData();
       if (response) {
         const { cardListData, folderData } = response;
         setFolderData(folderData);
