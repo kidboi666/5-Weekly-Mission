@@ -33,6 +33,7 @@ export default function FolderPage() {
   const [folder, setFolder] = useState('전체');
   const [items, setItems] = useState([]);
   const [itemCount, setItemCount] = useState();
+  const [addFolderModalVisible, setAddFolderModalVisible] = useState(false);
 
   console.log('menus', menus);
   console.log('folder', folder);
@@ -56,7 +57,9 @@ export default function FolderPage() {
     setItems(nextItems);
   }, [folder]);
 
-  const handleAddFolderButtonClick = () => {};
+  const handleAddFolderButtonClick = () => {
+    setAddFolderModalVisible(true);
+  };
 
   useEffect(() => {
     handleLoadMenu();
@@ -68,15 +71,6 @@ export default function FolderPage() {
 
   return (
     <>
-      {/* <Modal
-        width='360'
-        title='폴더 이름 변경'
-        // semiTitle='폴더명'
-        // input='즐겨찾기'
-        button='삭제하기'
-        // share
-        folders={['코딩팁', '유용', 'dd', 'ddd', 'ddd']}
-      /> */}
       <S.StyledTopWrap>
         <LinkInput folders={menus} counts={itemCount} />
       </S.StyledTopWrap>
@@ -122,6 +116,9 @@ export default function FolderPage() {
         {!items?.length && <S.NoData>저장된 링크가 없습니다</S.NoData>}
         {items && <CardList items={items} />}
       </SectionWrap>
+      {addFolderModalVisible && (
+        <Modal width='360' title='폴더 추가' input button='추가하기' />
+      )}
     </>
   );
 }

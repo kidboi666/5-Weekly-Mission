@@ -25,7 +25,7 @@ export default function Modal({
         </S.CloseButton>
         <S.Title>{title}</S.Title>
         {semiTitle && <S.SemiTitle>{semiTitle}</S.SemiTitle>}
-        {input && <S.Input type='text' placeholder='내용 입력' value={input} />}
+        {input && <S.Input type='text' placeholder='내용 입력' />}
         {folders && (
           <S.FoldersList>
             {folders.map((folder, index) => (
