@@ -5,13 +5,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #111322;
-  color: #ffffff;
+  background: $color-black;
+  color: $color-white;
   margin-top: 6.25rem;
   padding: 2rem 6.5rem 4rem;
 }
 
-.date_text {
+.date-text {
   width: 12rem;
 
   @include mobile {
@@ -20,7 +20,7 @@
   }
 }
 
-.link_text {
+.link-text {
   display: flex;
   gap: 2rem;
 }

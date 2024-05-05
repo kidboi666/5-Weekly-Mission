@@ -1,14 +1,11 @@
 import styles from "./FolderCards.module.scss";
 import classNames from "classnames/bind";
-import { MainSearchBar } from "../MainSearchBar/MainSearchBar";
-import { LinkItems } from "../LinkItems/LinkItems";
-import { FolderToolBar } from "../FolderToolBar";
-import { Cards } from "../Cards/Cards";
+import { MainSearchBar, LinkItems, FolderToolBar, Cards } from "../";
 
 const cx = classNames.bind(styles);
 
 export const FolderCards = ({
-  items,
+  links,
   folders,
   folderName,
   setFolderName,
@@ -31,16 +28,18 @@ export const FolderCards = ({
       <LinkItems folderName={folderName} />
 
       <ul className={cx("cards-block")}>
-        {items.map((item) => {
+        {links.map((item) => {
           if (folderId === item.folder_id || folderName === "전체") {
             hasCards = true;
             return <Cards key={item.id} item={item} folders={folders} />;
+          } else {
+            return null;
           }
         })}
       </ul>
 
       {!hasCards && (
-        <div className={cx("text-container")}>
+        <div className={cx("text-block")}>
           <p className={cx("text")}>저장된 링크가 없습니다</p>
         </div>
       )}

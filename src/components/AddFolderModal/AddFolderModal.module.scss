@@ -7,7 +7,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
+  background: $modal-gray;
 }
 
 .content {
@@ -72,33 +72,20 @@
     width: 100%;
     text-align: left;
     padding: 0.8rem;
+    @include font(1.4rem, $color-black, 400);
 
     &:hover {
       border-radius: 0.5rem;
-      background: var(--Linkbrary-bg, #f0f6ff);
-      color: var(--Linkbrary-primary-color, #6d6afe);
-
-      /* Linkbrary/body1-regular */
-      font-family: Pretendard;
-      font-size: 1.2rem;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 1.5rem; /* 150% */
+      background: $color-light-blue;
+      @include font(1.4rem, $color-primary, 400);
     }
   }
 }
 
 .button-click {
   border-radius: 0.5rem;
-  background: var(--Linkbrary-bg, #f0f6ff);
-  color: var(--Linkbrary-primary-color, #6d6afe);
-
-  /* Linkbrary/body1-regular */
-  font-family: Pretendard;
-  font-size: 1.2rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.5rem; /* 150% */
+  background: $color-light-blue;
+  @include font(1.4rem, $color-primary, 400);
 }
 
 .add-button {

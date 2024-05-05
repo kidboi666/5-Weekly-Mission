@@ -1,21 +1,14 @@
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Cards.module.scss";
 import classNames from "classnames/bind";
-import { time } from "../../util/time";
-import { contentDate } from "../../util/contentDate";
-import { Link } from "react-router-dom";
+import { time, contentDate } from "../../util";
+import { DeleteModal, AddFolderModal } from "../";
 import { NO_IMAGE, STAR_ICON, COLOR_STAR_ICON, KEBAB_ICON } from "./constant";
-import { useEffect, useRef, useState } from "react";
-import { DeleteModal } from "../DeleteModal/DeleteModal";
-import { AddModal } from "../AddModal/AddModal";
-import { AddFolderModal } from "../AddFolderModal";
 
 const cx = classNames.bind(styles);
 
 export const Cards = ({ item, folders }) => {
-  console.log("?", item);
-
-  const imageData = item.imageSource;
-  const folderImageData = item.image_source;
   const [starImage, setStarImage] = useState(STAR_ICON);
   const [kebab, setKebab] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
@@ -28,32 +21,33 @@ export const Cards = ({ item, folders }) => {
       : setStarImage(STAR_ICON);
   };
 
+  // 케밥 클릭 시
   const handleKebabToggle = () => {
     setKebab(!kebab);
   };
 
-  const handleKebabBlur = () => {};
-
+  // 삭제하기 클릭 시 모달
   const handleDelete = () => {
     setDeleteModal(true);
   };
 
+  // 폴더에 추가 클릭 시 모달
   const handleAdd = () => {
     setAddModal(true);
   };
 
   // 케밥 영역 밖 클릭 시 닫기
   useEffect(() => {
-    const handleKebabTest = (event) => {
+    const handleKebab = (event) => {
       if (kebab && !kebabRef.current.contains(event.target)) {
         setKebab(false);
       }
     };
 
-    document.addEventListener("mousedown", handleKebabTest);
+    document.addEventListener("mousedown", handleKebab);
 
     return () => {
-      document.removeEventListener("mousedown", handleKebabTest);
+      document.removeEventListener("mousedown", handleKebab);
     };
   }, [kebab, kebabRef]);
 
@@ -63,7 +57,7 @@ export const Cards = ({ item, folders }) => {
         <div className={cx("card-image-block")}>
           <img
             className={cx("card-image")}
-            src={imageData ?? folderImageData ?? NO_IMAGE}
+            src={item.imageSource ?? item.image_source ?? NO_IMAGE}
             alt={item.title}
           />
         </div>
@@ -89,13 +83,10 @@ export const Cards = ({ item, folders }) => {
         />
       </button>
 
-      <button
-        type="button"
-        onClick={handleKebabToggle}
-        onBlur={handleKebabBlur}
-      >
+      <button type="button" onClick={handleKebabToggle}>
         <img className={cx("kebab-icon")} src={KEBAB_ICON} alt="케밥 아이콘" />
       </button>
+
       {kebab && (
         <div className={cx("kebab-menu")} ref={kebabRef}>
           <button className={cx("kebab-option")} onClick={handleDelete}>

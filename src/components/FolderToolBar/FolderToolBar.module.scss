@@ -37,8 +37,8 @@
   @include mobile {
     padding: 0.8rem 1.6rem;
     border-radius: 1.8rem;
-    border: 1px solid var(--Linkbrary-white, #fff);
-    background: var(--Linkbrary-primary-color, #6d6afe);
+    border: 1px solid $color-white;
+    background: $color-primary;
   }
 }
 
@@ -50,7 +50,7 @@
   }
 }
 
-.toolBar {
+.folders-block {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;

@@ -1,9 +1,8 @@
+import { useState } from "react";
 import styles from "./LinkItems.module.scss";
 import classNames from "classnames/bind";
+import { DeleteModal, AddModal } from "../";
 import { SEARCH_ICON, PEN_ICON, WASTEBASKET_ICON } from "./constant";
-import { DeleteModal } from "../DeleteModal/DeleteModal";
-import { AddModal } from "../AddModal/AddModal";
-import { useState } from "react";
 
 const cx = classNames.bind(styles);
 

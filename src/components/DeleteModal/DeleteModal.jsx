@@ -10,18 +10,18 @@ export const DeleteModal = ({ modal, setModal, children }) => {
 
   // 모달 영역 밖 클릭 시 닫기
   useEffect(() => {
-    const handleTest = (event) => {
+    const handleModal = (event) => {
       if (modal && !modalRef.current.contains(event.target)) {
         setModal(false);
       }
     };
 
-    document.addEventListener("mousedown", handleTest);
+    document.addEventListener("mousedown", handleModal);
 
     return () => {
-      document.removeEventListener("mousedown", handleTest);
+      document.removeEventListener("mousedown", handleModal);
     };
-  }, [modal, modalRef]);
+  }, [modal, setModal, modalRef]);
 
   return (
     <div className={cx("container")}>
@@ -29,7 +29,6 @@ export const DeleteModal = ({ modal, setModal, children }) => {
 
       <div className={cx("content")} ref={modalRef}>
         <div className={cx("title")}>{children}</div>
-
         <button type="button">삭제하기</button>
       </div>
     </div>

@@ -5,7 +5,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 2rem 20rem;
-  background: var(--Linkbrary-bg, #f0f6ff);
+  background: $color-light-blue;
 
   @include tablet {
     padding: 2rem 4rem;

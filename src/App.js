@@ -1,6 +1,6 @@
 import "./styles/reset.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { FolderPage } from "./pages/FolderPage";
+import { FolderPage } from "./pages";
 
 function App() {
   return (

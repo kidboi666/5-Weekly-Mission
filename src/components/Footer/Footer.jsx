@@ -10,34 +10,29 @@ import {
 
 const cx = classNames.bind(styles);
 
-const facebook = "https://www.facebook.com/";
-const twitter = "https://twitter.com/?lang=ko";
-const youtube = "https://www.youtube.com/?app=desktop&hl=ko&gl=KR";
-const instagram = "https://www.instagram.com/";
-
 const iconItems = [
   {
     id: 1,
     image: FACEBOOK_ICON,
-    link: facebook,
+    link: "https://www.facebook.com/",
     text: "페이스북 바로가기 아이콘",
   },
   {
     id: 2,
     image: TWITTER_ICON,
-    link: twitter,
+    link: "https://twitter.com/?lang=ko",
     text: "트위터 바로가기 아이콘",
   },
   {
     id: 3,
     image: YOUTUBE_ICON,
-    link: youtube,
+    link: "https://www.youtube.com/?app=desktop&hl=ko&gl=KR",
     text: "유튜브 바로가기 아이콘",
   },
   {
     id: 4,
     image: INSTAGRAM_ICON,
-    link: instagram,
+    link: "https://www.instagram.com/",
     text: "인스타그램 바로가기 아이콘",
   },
 ];
@@ -45,12 +40,13 @@ const iconItems = [
 export const Footer = () => {
   return (
     <div className={cx("container")}>
-      <p className={cx("date_text")}>©codeit - 2023</p>
+      <p className={cx("date-text")}>©codeit - 2023</p>
 
-      <div className={cx("link_text")}>
+      <div className={cx("link-text")}>
         <Link to="PrivacyPolicy">
           <span>Privacy Policy</span>
         </Link>
+
         <Link to="FAQ">
           <span>FAQ</span>
         </Link>

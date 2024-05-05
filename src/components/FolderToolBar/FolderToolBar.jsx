@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styles from "./FolderToolBar.module.scss";
 import classNames from "classnames/bind";
-import { ADD_ICON, WHITE_ADD_ICON } from "./constant";
-import { AddModal } from "../AddModal/AddModal";
+import { AddModal } from "../";
+import { ADD_ICON } from "./constant";
 
 const cx = classNames.bind(styles);
 
@@ -31,7 +31,7 @@ export const FolderToolBar = ({ folders, setFolderName, setFolderId }) => {
 
   return (
     <div className={cx("container")}>
-      <div className={cx("toolBar")}>
+      <div className={cx("folders-block")}>
         <button
           className={cx(button ? "button-click" : "button")}
           onClick={onClick}
