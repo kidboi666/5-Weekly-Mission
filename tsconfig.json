@@ -1,5 +1,5 @@
 {
-  "name": "section9",
+  "name": "5-WEEKLY-MISSION",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,5 +12,9 @@
   "license": "ISC",
   "dependencies": {
     "@types/node": "^20.12.7"
+  },
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "jsx": "react"
   }
 }
