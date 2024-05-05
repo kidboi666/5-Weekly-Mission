@@ -3,7 +3,7 @@ import styles from "./modalComponentStyle.module.css";
 const ShareFolder = ({ title, id, onClose, }) => {
     const onClosing = (e) => {
         e.preventDefault();
-        onClose(false);
+        onClose("");
     };
     const sendUrl = `https://linkbrary-hakyoung.netlify.app/shared/${id}`;
     function shareFacebook() {

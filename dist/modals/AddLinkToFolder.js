@@ -7,7 +7,7 @@ const AddLinkToFolder = ({ title, folders, onClose, }) => {
     const [linkClick, setLinkClick] = useState(null);
     const onClosing = (e) => {
         e.preventDefault();
-        onClose(false);
+        onClose("");
     };
     return (_jsx("div", { className: styles.modalBackdrop, onClick: onClosing, children: _jsxs("div", { className: styles.modal, onClick: (e) => {
                 e.stopPropagation();

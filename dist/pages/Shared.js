@@ -4,17 +4,17 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import CardList from "../components/CardList";
 import { getSampleFolderData } from "../api/Api";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useData from "../hooks/useData";
-import SearchInput from "../components/SearchInput";
 import PropTypes from "prop-types";
 function Shared() {
     const linkData = useData(getSampleFolderData);
     const links = linkData?.folder?.links;
+    const [searchTerm, setSearchTerm] = useState("");
     useEffect(() => {
         console.log(linkData);
     }, [linkData]);
-    return (_jsxs(_Fragment, { children: [_jsx(Nav, {}), _jsx(Header, {}), _jsx(SearchInput, {}), links && _jsx(CardList, { links: links, folders: [] }), _jsx(Footer, {})] }));
+    return (_jsxs(_Fragment, { children: [_jsx(Nav, {}), _jsx(Header, {}), links && _jsx(CardList, { links: links, folders: [], searchTerm: "" }), _jsx(Footer, {})] }));
 }
 Shared.protoTypes = {
     links: PropTypes.array,

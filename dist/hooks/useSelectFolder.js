@@ -16,14 +16,14 @@ function useSelectFolder({ url }) {
         catch (error) {
             console.log(error);
         }
-    }, []);
+    }, [url]);
     useEffect(() => {
         async function fetchData() {
             const result = await getLinkData();
             setData(result || null);
         }
         fetchData();
-    }, [url, getLinkData]);
+    }, [getLinkData]);
     return data;
 }
 export default useSelectFolder;
