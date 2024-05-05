@@ -5,7 +5,27 @@ import { Link } from "react-router-dom";
 import { formatDate, calculatePostTimeElapsed } from "../utils/PostDateUtility";
 import KebabMenu from "./KebabMenu";
 
-function CardListItem({ link, folders }) {
+interface CardListItemProps {
+  link: {
+    created_at: string;
+    description: string;
+    image_source: string;
+    title: string;
+    url: string;
+  };
+  folders: Array<{
+    created_at: string;
+    favorite: boolean;
+    id: number;
+    link: {
+      count: number; // 링크의 수
+    };
+    name: string;
+    user_id: number;
+  }>;
+}
+
+const CardListItem: React.FC<CardListItemProps> = ({ link, folders }) => {
   const { created_at, description, image_source, title, url } = link;
   return (
     <Link to={url} target="_blank" rel="noopener noreferrer">
@@ -39,6 +59,6 @@ function CardListItem({ link, folders }) {
       </div>
     </Link>
   );
-}
+};
 
 export default CardListItem;

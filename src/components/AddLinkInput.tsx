@@ -1,8 +1,8 @@
 import addImg from "../assets/link.svg";
 import "./AddLinkInput.css";
-import Btn from "./Btn";
+import InputBtn from "./InputBtn";
 
-function AddLinkInput() {
+const AddLinkInput: React.FC = () => {
   return (
     <div className="AddLinkFormWrap">
       <form className="AddLinkForm">
@@ -14,12 +14,12 @@ function AddLinkInput() {
             placeholder="링크를 추가해 보세요."
           />
           <button className="AddLinkForm__addBtn">
-            <Btn>추가하기</Btn>
+            <InputBtn>추가하기</InputBtn>
           </button>
         </div>
       </form>
     </div>
   );
-}
+};
 
 export default AddLinkInput;

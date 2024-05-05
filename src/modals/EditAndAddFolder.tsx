@@ -1,10 +1,21 @@
 import styles from "./modalComponentStyle.module.css";
 import classNames from "classnames";
+import { MouseEvent } from "react";
 
-function EditAndAddFolder({ madalTitle, alter, onClose }) {
-  const onClosing = (e) => {
+interface EditAndAddFolderProps {
+  madalTitle: string;
+  alter: string;
+  onClose: (close: string) => void;
+}
+
+const EditAndAddFolder: React.FC<EditAndAddFolderProps> = ({
+  madalTitle,
+  alter,
+  onClose,
+}) => {
+  const onClosing = (e: MouseEvent) => {
     e.preventDefault();
-    onClose(false);
+    onClose("");
   };
 
   return (
@@ -36,6 +47,6 @@ function EditAndAddFolder({ madalTitle, alter, onClose }) {
       </div>
     </div>
   );
-}
+};
 
 export default EditAndAddFolder;

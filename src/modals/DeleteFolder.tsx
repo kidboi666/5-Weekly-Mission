@@ -1,10 +1,21 @@
 import styles from "./modalComponentStyle.module.css";
 import classNames from "classnames";
+import { MouseEvent } from "react";
 
-function DeleteFolder({ madalTitle, title, onClose }) {
-  const onClosing = (e) => {
+interface DeleteFolderProps {
+  madalTitle: string;
+  title: string;
+  onClose: (close: string) => void;
+}
+
+const DeleteFolder: React.FC<DeleteFolderProps> = ({
+  madalTitle,
+  title,
+  onClose,
+}) => {
+  const onClosing = (e: MouseEvent) => {
     e.preventDefault();
-    onClose(false);
+    onClose("");
   };
 
   return (
@@ -31,6 +42,6 @@ function DeleteFolder({ madalTitle, title, onClose }) {
       </div>
     </div>
   );
-}
+};
 
 export default DeleteFolder;

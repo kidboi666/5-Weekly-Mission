@@ -10,15 +10,27 @@ import ShareFolder from "../modals/ShareFolder";
 import { useState } from "react";
 import CardListSection from "./CardListSection";
 
-function FolderList({ folders }) {
-  const [deleteFolderOfen, setDeleteFolderOfen] = useState(false);
-  const [editFolderOfen, setEditFolderOfen] = useState(false);
-  const [addFolderOfen, setAddFolderOfen] = useState(false);
-  const [shareFolderOfen, setShareFolderOfen] = useState(false);
-  const [title, setTitle] = useState("전체");
-  const [id, setId] = useState(0);
+interface Folder {
+  created_at: string;
+  favorite: boolean;
+  id: number;
+  link: {
+    count: number; // 링크의 수
+  };
+  name: string;
+  user_id: number;
+}
 
-  function handleTitle(folderName, folderId) {
+interface FolderListProp {
+  folders: Folder[];
+}
+
+const FolderList: React.FC<FolderListProp> = ({ folders }) => {
+  const [modalOpen, setModalOpen] = useState<string>("");
+  const [title, setTitle] = useState<string>("전체");
+  const [id, setId] = useState<number>(0);
+
+  function handleTitle(folderName: string, folderId: number) {
     setTitle(folderName);
     setId(folderId);
   }
@@ -47,7 +59,7 @@ function FolderList({ folders }) {
                   ? "folderLinkList__folder--active"
                   : "folderLinkList__folder"
               }
-              id={folder.id}
+              id={id?.toString()}
               key={folder.id}
               onClick={() => handleTitle(folder.name, folder.id)}
             >
@@ -59,7 +71,7 @@ function FolderList({ folders }) {
           className="folderLinkList__addFolderButton"
           onClick={(e) => {
             e.preventDefault();
-            setAddFolderOfen(true);
+            setModalOpen("addFolder");
           }}
         >
           폴더 추가
@@ -69,7 +81,13 @@ function FolderList({ folders }) {
             alt="폴더추가"
           />
         </button>
-        <button className="folderLinkList__addFolderButton--mobile">
+        <button
+          className="folderLinkList__addFolderButton--mobile"
+          onClick={(e) => {
+            e.preventDefault();
+            setModalOpen("addFolder");
+          }}
+        >
           폴더 추가
           <img
             className="folderLinkList__addFolderIcon"
@@ -77,16 +95,16 @@ function FolderList({ folders }) {
             alt="폴더추가"
           />
         </button>
-        {addFolderOfen && (
+        {modalOpen === "addFolder" && (
           <EditAndAddFolder
             madalTitle={"폴더 추가"}
-            onClose={setAddFolderOfen}
+            onClose={setModalOpen}
             alter={"추가하기"}
           />
         )}
       </div>
       <div className="folderLinkList__folderMenu">
-        <div className="folderLinkList__folderName" id={id}>
+        <div className="folderLinkList__folderName" id={id?.toString()}>
           {title}
         </div>
         {title !== "전체" && (
@@ -95,49 +113,35 @@ function FolderList({ folders }) {
               className="folderLinkList__folderEditBtn"
               onClick={(e) => {
                 e.preventDefault();
-                setShareFolderOfen(true);
+                setModalOpen("shareLink");
               }}
             >
               <img src={shareBtn} alt="공유하기" /> 공유
             </button>
-            {shareFolderOfen && (
-              <ShareFolder title={title} id={id} onClose={setShareFolderOfen} />
-            )}
+
             <button
               className="folderLinkList__folderEditBtn"
               onClick={(e) => {
                 e.preventDefault();
-                setEditFolderOfen(true);
+                setModalOpen("alterName");
               }}
             >
               <img src={renameBtn} alt="이름변경" /> 이름 변경
             </button>
-            {editFolderOfen && (
-              <EditAndAddFolder
-                madalTitle={"폴더 추가"}
-                onClose={setEditFolderOfen}
-                alter={"추가하기"}
-              />
-            )}
+
             <button
               className="folderLinkList__folderEditBtn"
               onClick={(e) => {
                 e.preventDefault();
-                setDeleteFolderOfen(true);
+                setModalOpen("delete");
               }}
             >
               <img src={deleteBtn} alt="삭제" /> 삭제
             </button>
-            {deleteFolderOfen && (
-              <DeleteFolder
-                madalTitle={"폴더 삭제"}
-                title={title}
-                onClose={setDeleteFolderOfen}
-              />
-            )}
           </div>
         )}
       </div>
+
       <div>
         {title === "전체" ? (
           <CardListSection folders={folders} url={all_links_url} />
@@ -145,8 +149,26 @@ function FolderList({ folders }) {
           <CardListSection folders={folders} url={url} />
         )}
       </div>
+
+      {modalOpen === "shareLink" && (
+        <ShareFolder title={title} id={id} onClose={setModalOpen} />
+      )}
+      {modalOpen === "alterName" && (
+        <EditAndAddFolder
+          madalTitle={"폴더 추가"}
+          onClose={setModalOpen}
+          alter={"추가하기"}
+        />
+      )}
+      {modalOpen === "delete" && (
+        <DeleteFolder
+          madalTitle={"폴더 삭제"}
+          title={title}
+          onClose={setModalOpen}
+        />
+      )}
     </section>
   );
-}
+};
 
 export default FolderList;

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { getUserData } from "../api/Api";
 import useData from "../hooks/useData";
-import Btn from "./Btn";
+import Btn from "./InputBtn";
 
 function Profile() {
   const userData = useData(getUserData);

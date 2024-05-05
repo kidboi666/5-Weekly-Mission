@@ -1,17 +1,36 @@
 import styles from "./modalComponentStyle.module.css";
 import classNames from "classnames";
 import checkIcon from "../assets/check.svg";
-import { useState } from "react";
+import { useState, MouseEvent } from "react";
 
-function AddLinkToFolder({ title, folders, onClose }) {
-  const [linkClick, setLinkClick] = useState(null);
-
-  const onClosing = (e) => {
-    e.preventDefault();
-    onClose(false);
+interface Folder {
+  created_at: string;
+  favorite: boolean;
+  id: number;
+  link: {
+    count: number;
   };
+  name: string;
+  user_id: number;
+}
 
-  const addButton = `${styles.modal__Button} ${styles.edit}`;
+interface AddLinkToFolderProps {
+  title: string;
+  folders: Folder[];
+  onClose: (close: string) => void;
+}
+
+const AddLinkToFolder: React.FC<AddLinkToFolderProps> = ({
+  title,
+  folders,
+  onClose,
+}) => {
+  const [linkClick, setLinkClick] = useState<number | null>(null);
+
+  const onClosing = (e: MouseEvent): void => {
+    e.preventDefault();
+    onClose("");
+  };
   return (
     <div className={styles.modalBackdrop} onClick={onClosing}>
       <div
@@ -67,6 +86,6 @@ function AddLinkToFolder({ title, folders, onClose }) {
       </div>
     </div>
   );
-}
+};
 
 export default AddLinkToFolder;

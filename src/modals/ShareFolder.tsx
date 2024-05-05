@@ -1,9 +1,20 @@
 import styles from "./modalComponentStyle.module.css";
+import { MouseEvent } from "react";
 
-function ShareFolder({ title, id, onClose }) {
-  const onClosing = (e) => {
+interface EditAndAddFolderProps {
+  title: string;
+  id: number;
+  onClose: (close: string) => void;
+}
+
+const ShareFolder: React.FC<EditAndAddFolderProps> = ({
+  title,
+  id,
+  onClose,
+}) => {
+  const onClosing = (e: MouseEvent) => {
     e.preventDefault();
-    onClose(false);
+    onClose("");
   };
 
   const sendUrl = `https://linkbrary-hakyoung.netlify.app/shared/${id}`;
@@ -61,6 +72,6 @@ function ShareFolder({ title, id, onClose }) {
       </div>
     </div>
   );
-}
+};
 
 export default ShareFolder;
