@@ -1,5 +1,5 @@
-import { ContainBody, ContainHead } from '../../styles/commonStyle';
-import { BookmarkBox, BodyInner, LinkAddHeadInner, FolderContainHead } from './folderStyle';
+import { ContainBody } from '../../styles/commonStyle';
+import { BookmarkBox, BodyInner, FolderContainHead } from './folderStyle';
 
 import Button from '../../components/common/atoms/Button';
 import useFetch from '../../hook/useFetch';
@@ -14,6 +14,7 @@ import FolderButtonList from '../../components/folder/FolderButtonList';
 import FolderContentControll from '../../components/folder/FolderContentControll';
 import { IModal } from '../../components/modal/interface';
 import Modal from '../../components/modal/Modal';
+import Loading from '../../components/loading/Loading';
 
 const addImage = '/assets/icon/icon_primary_add.svg';
 const searchImage = '/assets/icon/icon_search.svg';
@@ -40,19 +41,20 @@ function Index() {
     useFatchDataLoad<IFolderMenuButtonApi>(FOLDER_MENU_LIST_API);
   const { value: contant, isLoading: contantLoading } =
     useFatchDataLoad<IFolderContentApi>(dynamicAPI);
-  const [search, setSearch] = useState<any>();
+  const [searchContatn, setSearchContant] = useState<any>();
 
   // 폴더리스트버튼
   const handleClick = (id: number) => {
-    if (!menu) return;
-    if (id > 0) {
-      setBtnActive(id);
-    }
+    if (!id) return;
+
     if (id < 0) {
       setDynamicAPI(FOLDER_CONTANT_LIST_API);
       setTitle('전체');
+      setBtnActive(id)
       return;
     }
+
+    setBtnActive(id);
     setDynamicAPI(`${FOLDER_CONTANT_LIST_API}?folderId=${id}`);
     const result = menu?.data.filter((data) => +data.id === +id);
     result && setTitle(result[0]?.name as '');
@@ -88,48 +90,52 @@ function Index() {
           con.url?.includes(value)
         );
       });
-      console.log(filter);
-      setSearch(filter);
+      setSearchContant(filter);
       return;
     }
-    setSearch(contant?.data);
+    setSearchContant(contant?.data);
   };
 
   // contant list
-  const contantSearch = search ? search : contant?.data;
+  const contantSearch = searchContatn ? searchContatn : contant?.data;
+  const loading = menuLoading === false && contantLoading === false;
 
   return (
     <>
       <FolderContainHead className='folder--header'>
         <LinkAddHeader $inputIconImg={linkImage} />
       </FolderContainHead>
-      <ContainBody className='folder__dody'>
-        <BodyInner>
-          {/* 검색창 */}
-          <SearchInputBox $inputIconImg={searchImage} onchange={handelSearch} />
-          {/* 폴더 리스트 버튼 */}
-          <BookmarkBox>
-            <FolderButtonList
-              $menu={menu}
-              $loading={menuLoading}
-              $btnActive={btnActive}
-              onClick={handleClick}
-            />
-            <Button
-              $btnClass={'button--icon-after button--folder-add'}
-              $afterButtonIcon={addImage}
-              onclick={() => handleModalOpen('folderAdd')}
-            >
-              폴더추가
-            </Button>
-          </BookmarkBox>
-          {/* 설정 버튼 */}
-          <FolderContentControll $title={title} onclick={handleModalOpen} />
-          {/* 컨텐츠 리스트 */}
-          <ContantList contant={contantSearch} loading={contantLoading} />
-        </BodyInner>
-      </ContainBody>
-      <Modal onOpen={modalShow} onClose={handleModalClose} $folderId= {btnActive} {...modalInfo} />
+      
+      {loading ? 
+        <ContainBody className='folder__dody'>
+          <BodyInner>
+            {/* 검색창 */}
+            <SearchInputBox $inputIconImg={searchImage} onchange={handelSearch} />
+            {/* 폴더 리스트 버튼 */}
+            <BookmarkBox>
+              <FolderButtonList
+                $menu={menu}
+                $btnActive={btnActive}
+                onClick={handleClick}
+              />
+              <Button
+                $btnClass={'button--icon-after button--folder-add'}
+                $afterButtonIcon={addImage}
+                onclick={() => handleModalOpen('folderAdd')}
+              >
+                폴더추가
+              </Button>
+            </BookmarkBox>
+            {/* 설정 버튼 */}
+            <FolderContentControll $title={title} onclick={handleModalOpen} />
+            {/* 컨텐츠 리스트 */}
+            <ContantList contant={contantSearch}/>
+          </BodyInner>
+        </ContainBody>
+        : <Loading/>  
+      }
+
+      <Modal onOpen={modalShow} onClose={handleModalClose} $folderId={btnActive} {...modalInfo} />
     </>
   );
 }

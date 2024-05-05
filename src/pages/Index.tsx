@@ -9,7 +9,7 @@ function Index() {
         <br/><br/><br/>
         <LinkButton $link="/folder" $linkClass="link--gradient large">폴더 페이지</LinkButton>
         <br/>
-        <LinkButton $link="/share" $linkClass="link--gradient large">쉐어 페이지</LinkButton>
+        <LinkButton $link="/share/14" $linkClass="link--gradient large">쉐어 (즐겨찾기)페이지</LinkButton>
       </InnerLarge>
  
     </MainWrap>

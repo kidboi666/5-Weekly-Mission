@@ -1,11 +1,10 @@
-import { FOLDER_SHARED_BASE_URL } from '../../constant/api';
 import { snsShare } from '../../constant/share';
 import Button from '../common/atoms/Button';
 import { ShareBox } from './shareStyle';
 
 const handleLinkCopy = async (id:number) => {
   try {
-    navigator.clipboard.writeText(`${FOLDER_SHARED_BASE_URL}/shared?user=${1}&folder=${id}`)
+    navigator.clipboard.writeText(`${window.location.host}/shared/${id}`)
   } catch (e) {
     console.log(e)
   }
@@ -15,6 +14,7 @@ function ShareModal({sharedId}:{sharedId:number | null}) {
   const handlerSns = (snsId:string) => {
     if(sharedId && snsId === 'sh_link') {
       handleLinkCopy(sharedId);
+      alert('주소를 복사하였습니다.');
     } else if (snsId === 'sh_kakao') {
       // 추후 작업 예정..
     } else if (snsId === 'sh_face') {

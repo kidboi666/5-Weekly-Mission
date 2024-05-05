@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { ShareBox, ShareListBtn } from '../../pages/folder/folderStyle';
-import { SubTitle } from '../../styles/commonStyle';
 import Button from '../common/atoms/Button';
+import { Link } from 'react-router-dom';
 
 const folderControlBtn = [
   {
@@ -27,15 +27,16 @@ const folderControlBtn = [
 interface iControll {
   $title: string;
   onclick: (type: any) => void;
+  $id?:number
 }
 
-function FolderContentControll({ $title, onclick }: iControll) {
+function FolderContentControll({ $title, onclick, $id }: iControll) {
   const handleModalOpen = (type: any) => {
     onclick(type);
   };
   return (
     <ShareBox>
-      <SubTitle>{$title}</SubTitle>
+      <Link to={`/shared/${$id}`} target='_blank'>{$title}</Link>
       {$title === '전체' || (
         <ShareListBtn>
           {folderControlBtn.map((btn) => (

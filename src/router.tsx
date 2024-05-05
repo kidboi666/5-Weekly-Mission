@@ -19,10 +19,7 @@ export const router = createBrowserRouter([
         path: "folder",
         element: <Folder />,
       },
-      {
-        path: "Shared",
-        element: <Shared />,
-      },
+   
       {
         path: "privacy",
         element: <Privacy />,
@@ -30,6 +27,10 @@ export const router = createBrowserRouter([
       {
         path: "faq",
         element: <Faq />,
+      },
+      {
+        path: "shared/:id",
+        element: <Shared />,
       },
     ],
   },

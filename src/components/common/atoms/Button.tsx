@@ -3,7 +3,7 @@ interface IButtonModule {
   children: React.ReactNode;
   $btnClass: string;
   $BeforButtonIcon?: string;
-  $id?: string;
+  $id?: string | number;
   $afterButtonIcon?: string;
   $type?: 'button' | 'reset' | 'submit' | undefined;
   onclick?: () => void;

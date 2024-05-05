@@ -131,7 +131,14 @@ export const BookmarkBox = styled.div`
 
 export const ShareBox = styled.div`
   ${FolderBtnBox}
-
+  a {
+    font-size: 1.5rem;
+    line-height: 1.8125rem;
+    font-weight: 600;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
   @media screen and (max-width: ${theme.screenSize.moLarge}) {
     flex-direction: column;
     align-items: flex-start;
@@ -168,3 +175,14 @@ export const BoxLinkSearch = styled.div`
     margin-bottom: 32px;
   }
 `;
+
+export const SearchResults = styled.div`
+  margin-top: 40px;
+  color: ${theme.color.grayc};
+  text-align: left;
+  font-size: 32px;
+  font-weight: 600;
+  span {
+    font-weight: 600;
+  }
+`
