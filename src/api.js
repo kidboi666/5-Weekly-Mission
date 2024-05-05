@@ -31,7 +31,7 @@ export async function getFoldersMenu() {
 }
 
 export async function getFoldersItems(id) {
-  const queryParam = id === '전체' ? '' : `?folderId=${id}`;
+  const queryParam = id === undefined ? '' : `?folderId=${id}`;
   const response = await fetch(`${BASIC_URL}/api/users/1/links${queryParam}`);
   if (!response.ok) {
     throw new Error('사용자 데이터를 불러오는데 실패했습니다.');

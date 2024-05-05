@@ -30,27 +30,41 @@ const CONTROLS = [
 
 export default function FolderPage() {
   const [menus, setMenus] = useState();
-  const [folder, setFolder] = useState('전체');
+  const [folders, setFolders] = useState();
+  const [currentFolder, setCurrentFolder] = useState({
+    name: '전체',
+  });
   const [items, setItems] = useState([]);
   const [itemCount, setItemCount] = useState();
   const [addFolderModalVisible, setAddFolderModalVisible] = useState(false);
 
+  console.log(currentFolder);
+
   const handleMenuButtonClick = async (e) => {
-    setFolder(e.target.value);
+    if (e.target.value === '전체') {
+      setCurrentFolder({
+        name: '전체',
+      });
+      return;
+    }
+    setCurrentFolder(
+      folders.filter((folder) => folder.name === e.target.value).splice(0, 1)[0]
+    );
   };
 
   const handleLoadMenu = async () => {
     const data = await getFoldersMenu();
+    setFolders(data);
     const nextMenu = data.map((item) => item.name);
     const nextItemCount = data.map((item) => item.link.count);
     setMenus(nextMenu);
     setItemCount(nextItemCount);
   };
 
-  const handleLoadItems = useCallback(async () => {
-    const nextItems = await getFoldersItems(folder);
+  const handleLoadItems = async () => {
+    const nextItems = await getFoldersItems(currentFolder.id);
     setItems(nextItems);
-  }, [folder]);
+  };
 
   const handleAddFolderButtonClick = () => {
     setAddFolderModalVisible(true);
@@ -62,7 +76,7 @@ export default function FolderPage() {
 
   useEffect(() => {
     handleLoadItems();
-  }, [folder, handleLoadItems]);
+  }, [currentFolder]);
 
   return (
     <>
@@ -76,13 +90,13 @@ export default function FolderPage() {
             <MenuButton
               item='전체'
               value='전체'
-              currentFolder={folder}
+              currentFolder={currentFolder}
               onClick={handleMenuButtonClick}
             />
             {menus?.map((menu, index) => (
               <MenuButton
                 key={index}
-                currentFolder={folder}
+                currentFolder={currentFolder}
                 item={menu}
                 value={menu}
                 onClick={handleMenuButtonClick}
@@ -95,9 +109,9 @@ export default function FolderPage() {
             <img src={AddWhiteIcon} alt='+' />
           </S.AddButton>
         </S.MenuWrap>
-        {folder !== '전체' && (
+        {currentFolder?.name !== '전체' && (
           <S.TitleWrap>
-            <S.Title>{folder}</S.Title>
+            <S.Title>{currentFolder?.name}</S.Title>
             <S.ControlWrap>
               {CONTROLS.map((control, index) => (
                 <S.Control key={index}>

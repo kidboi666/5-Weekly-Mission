@@ -5,7 +5,7 @@ export default function MenuButton({ item, onClick, value, currentFolder }) {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    setIsActive(value === currentFolder);
+    setIsActive(value === currentFolder?.name);
   }, [currentFolder, value]);
 
   return (
