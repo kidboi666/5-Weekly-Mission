@@ -9,13 +9,14 @@ import EditAndAddFolder from "../modals/EditAndAddFolder";
 import ShareFolder from "../modals/ShareFolder";
 import { useState } from "react";
 import CardListSection from "./CardListSection";
+import SearchInput from "./SearchInput";
 
 interface Folder {
   created_at: string;
   favorite: boolean;
   id: number;
   link: {
-    count: number; // 링크의 수
+    count: number;
   };
   name: string;
   user_id: number;
@@ -24,21 +25,29 @@ interface Folder {
 interface FolderListProp {
   folders: Folder[];
 }
-
 const FolderList: React.FC<FolderListProp> = ({ folders }) => {
   const [modalOpen, setModalOpen] = useState<string>("");
   const [title, setTitle] = useState<string>("전체");
-  const [id, setId] = useState<number>(0);
+  const [id, setId] = useState<number>(null);
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   function handleTitle(folderName: string, folderId: number) {
     setTitle(folderName);
     setId(folderId);
   }
-  const url = `https://bootcamp-api.codeit.kr/api/users/1/links?folderId=${id}`;
-  const all_links_url = `https://bootcamp-api.codeit.kr/api/users/1/links`;
+
+  const url =
+    id === null
+      ? "https://bootcamp-api.codeit.kr/api/users/1/links"
+      : `https://bootcamp-api.codeit.kr/api/users/1/links?folderId=${id}`;
+
+  const handleSearch = (term: string): void => {
+    setSearchTerm(term);
+  };
 
   return (
     <section className="folderLayout">
+      <SearchInput onSearch={handleSearch} />
       <div className="folderLinkList">
         <div className="folderLinkList__folders">
           <button
@@ -61,7 +70,9 @@ const FolderList: React.FC<FolderListProp> = ({ folders }) => {
               }
               id={id?.toString()}
               key={folder.id}
-              onClick={() => handleTitle(folder.name, folder.id)}
+              onClick={() => {
+                handleTitle(folder.name, folder.id);
+              }}
             >
               {folder.name}
             </button>
@@ -103,50 +114,64 @@ const FolderList: React.FC<FolderListProp> = ({ folders }) => {
           />
         )}
       </div>
-      <div className="folderLinkList__folderMenu">
-        <div className="folderLinkList__folderName" id={id?.toString()}>
-          {title}
-        </div>
-        {title !== "전체" && (
-          <div className="folderLinkList__folderEditBtns">
-            <button
-              className="folderLinkList__folderEditBtn"
-              onClick={(e) => {
-                e.preventDefault();
-                setModalOpen("shareLink");
-              }}
-            >
-              <img src={shareBtn} alt="공유하기" /> 공유
-            </button>
-
-            <button
-              className="folderLinkList__folderEditBtn"
-              onClick={(e) => {
-                e.preventDefault();
-                setModalOpen("alterName");
-              }}
-            >
-              <img src={renameBtn} alt="이름변경" /> 이름 변경
-            </button>
-
-            <button
-              className="folderLinkList__folderEditBtn"
-              onClick={(e) => {
-                e.preventDefault();
-                setModalOpen("delete");
-              }}
-            >
-              <img src={deleteBtn} alt="삭제" /> 삭제
-            </button>
-          </div>
-        )}
-      </div>
 
       <div>
         {title === "전체" ? (
-          <CardListSection folders={folders} url={all_links_url} />
+          <>
+            <div className="folderLinkList__folderMenu">
+              <div className="folderLinkList__folderName" id={id?.toString()}>
+                {title}
+              </div>
+            </div>
+            <CardListSection
+              folders={folders}
+              url={url}
+              searchTerm={searchTerm}
+            />
+          </>
         ) : (
-          <CardListSection folders={folders} url={url} />
+          <>
+            <div className="folderLinkList__folderMenu">
+              <div className="folderLinkList__folderName" id={id?.toString()}>
+                {title}
+              </div>
+              <div className="folderLinkList__folderEditBtns">
+                <button
+                  className="folderLinkList__folderEditBtn"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setModalOpen("shareLink");
+                  }}
+                >
+                  <img src={shareBtn} alt="공유하기" /> 공유
+                </button>
+                <button
+                  className="folderLinkList__folderEditBtn"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setModalOpen("alterName");
+                  }}
+                >
+                  <img src={renameBtn} alt="이름변경" /> 이름 변경
+                </button>
+
+                <button
+                  className="folderLinkList__folderEditBtn"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setModalOpen("delete");
+                  }}
+                >
+                  <img src={deleteBtn} alt="삭제" /> 삭제
+                </button>
+              </div>
+            </div>
+            <CardListSection
+              folders={folders}
+              url={url}
+              searchTerm={searchTerm}
+            />
+          </>
         )}
       </div>
 

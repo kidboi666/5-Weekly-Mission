@@ -6,7 +6,7 @@ interface UseSelectFolderProps {
 
 /** 폴더리스트에서 url을 받아서 데이터를 리턴하는 함수 */
 function useSelectFolder<T>({ url }: UseSelectFolderProps): T | null {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<T | null>(null);
 
   const getLinkData = useCallback(async (): Promise<T | undefined> => {
     try {
@@ -21,7 +21,7 @@ function useSelectFolder<T>({ url }: UseSelectFolderProps): T | null {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [url]);
 
   useEffect(() => {
     async function fetchData() {
@@ -29,7 +29,7 @@ function useSelectFolder<T>({ url }: UseSelectFolderProps): T | null {
       setData(result || null);
     }
     fetchData();
-  }, [url, getLinkData]);
+  }, [getLinkData]);
 
   return data;
 }

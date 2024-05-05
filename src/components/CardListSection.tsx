@@ -13,11 +13,6 @@ interface Folder {
   user_id: number;
 }
 
-interface CardListSectionProps {
-  url: string;
-  folders: Folder[];
-}
-
 interface Link {
   created_at: string;
   description: string;
@@ -34,7 +29,17 @@ interface UseSelectFolderResult {
   data: Link[];
 }
 
-const CardListSection: React.FC<CardListSectionProps> = ({ url, folders }) => {
+interface CardListSectionProps {
+  url: string;
+  folders: Folder[];
+  searchTerm: string;
+}
+
+const CardListSection: React.FC<CardListSectionProps> = ({
+  url,
+  folders,
+  searchTerm,
+}) => {
   const result = useSelectFolder<UseSelectFolderResult>({ url });
   const links = result?.data;
   return (
@@ -42,7 +47,7 @@ const CardListSection: React.FC<CardListSectionProps> = ({ url, folders }) => {
       {links && links.length === 0 ? (
         <NoPage />
       ) : (
-        <CardList folders={folders} links={links} />
+        <CardList folders={folders} links={links} searchTerm={searchTerm} />
       )}
     </>
   );

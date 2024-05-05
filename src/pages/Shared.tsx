@@ -3,9 +3,8 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import CardList from "../components/CardList";
 import { getSampleFolderData } from "../api/Api";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useData from "../hooks/useData";
-import SearchInput from "../components/SearchInput";
 import PropTypes from "prop-types";
 
 interface Link {
@@ -23,16 +22,17 @@ interface Link {
 function Shared() {
   const linkData = useData(getSampleFolderData);
   const links: Link[] | undefined = linkData?.folder?.links;
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   useEffect(() => {
     console.log(linkData);
   }, [linkData]);
+
   return (
     <>
       <Nav />
       <Header />
-      <SearchInput />
-      {links && <CardList links={links} folders={[]} />}
+      {links && <CardList links={links} folders={[]} searchTerm={""} />}
       <Footer />
     </>
   );

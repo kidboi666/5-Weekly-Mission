@@ -27,13 +27,22 @@ interface Folder {
 interface CardListProps {
   links: Link[];
   folders: Folder[];
+  searchTerm: string;
 }
 
-const CardList: React.FC<CardListProps> = ({ links, folders }) => {
+const CardList: React.FC<CardListProps> = ({ links, folders, searchTerm }) => {
+  if (!links) return;
+  const filteredFolders = links.filter((link) => {
+    return (
+      link.title?.includes(searchTerm) ||
+      link.url?.includes(searchTerm) ||
+      link.description?.includes(searchTerm)
+    );
+  });
   return (
     <ul className="CardLinkList">
-      {links &&
-        links.map((link) => (
+      {filteredFolders &&
+        filteredFolders.map((link) => (
           <li key={link.id}>
             <CardListItem folders={folders} link={link} />
           </li>

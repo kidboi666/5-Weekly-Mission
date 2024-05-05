@@ -33,6 +33,17 @@
   text-indent: 27px;
 }
 
+.closeButton {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  background: url(../assets/_close.svg) no-repeat;
+  width: 24px;
+  height: 24px;
+  border: none;
+  cursor: pointer;
+}
+
 @media (max-width: 1124px) {
   .SearchForm__searchWrap {
     width: 704px;
