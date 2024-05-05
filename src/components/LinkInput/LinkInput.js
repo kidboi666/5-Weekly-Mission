@@ -23,9 +23,9 @@ export function LinkInput({ folders }) {
       {isOpen && (
         <ModalLayout toggleHandler={toggleHandler} title="폴더 추가">
           <ol className="folder-select-wrapper">
-            {folders.map((item) => {
+            {folders.map((item, i) => {
               return (
-                <li className="folder-select">
+                <li className="folder-select" key={i}>
                   {item.name}
                   <p>{item.link.count}</p>
                 </li>
