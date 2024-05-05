@@ -1,6 +1,9 @@
 import styles from "./LinkItems.module.scss";
 import classNames from "classnames/bind";
 import { SEARCH_ICON, PEN_ICON, WASTEBASKET_ICON } from "./constant";
+import { DeleteModal } from "../DeleteModal/DeleteModal";
+import { AddModal } from "../AddModal/AddModal";
+import { useState } from "react";
 
 const cx = classNames.bind(styles);
 
@@ -23,21 +26,50 @@ const choiceItems = [
 ];
 
 export const LinkItems = ({ folderName }) => {
-  return (
-    <div className={cx("container")}>
-      <h1 className={cx("title")}>{folderName}</h1>
+  const [deletemodal, setDeleteModal] = useState(false);
+  const [addemodal, setAddModal] = useState(false);
 
-      {folderName !== "전체" && (
-        <div className={cx("items")}>
-          {choiceItems.map((item) => {
-            return (
-              <button className={cx("button")} key={item.id}>
-                <img src={item.image} alt={item.text} />
-                <p className={cx("text")}>{item.text}</p>
-              </button>
-            );
-          })}
-        </div>
+  const handleClick = (text) => {
+    text === "삭제" && setDeleteModal(true);
+    text === "이름 변경" && setAddModal(true);
+  };
+
+  return (
+    <div>
+      <div className={cx("container")}>
+        <h1 className={cx("title")}>{folderName}</h1>
+
+        {folderName !== "전체" && (
+          <div className={cx("items")}>
+            {choiceItems.map((item) => {
+              return (
+                <button
+                  className={cx("button")}
+                  key={item.id}
+                  onClick={() => handleClick(item.text)}
+                >
+                  <img src={item.image} alt={item.text} />
+                  <p className={cx("text")}>{item.text}</p>
+                </button>
+              );
+            })}
+          </div>
+        )}
+      </div>
+
+      {deletemodal && (
+        <DeleteModal modal={deletemodal} setModal={setDeleteModal}>
+          <h2>폴더 삭제</h2>
+          <p>{folderName}</p>
+        </DeleteModal>
+      )}
+
+      {addemodal && (
+        <AddModal modal={addemodal} setModal={setAddModal}>
+          <h2>폴더 이름 변경</h2>
+          <input type="text" placeholder={folderName} />
+          <button type="button">변경하기</button>
+        </AddModal>
       )}
     </div>
   );

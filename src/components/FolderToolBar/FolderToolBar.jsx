@@ -2,17 +2,19 @@ import { useState } from "react";
 import styles from "./FolderToolBar.module.scss";
 import classNames from "classnames/bind";
 import { ADD_ICON, WHITE_ADD_ICON } from "./constant";
+import { AddModal } from "../AddModal/AddModal";
 
 const cx = classNames.bind(styles);
 
 export const FolderToolBar = ({ folders, setFolderName, setFolderId }) => {
   const [button, setButton] = useState(true);
-  const [buttonIndex, setButtonIndex] = useState();
+  const [buttonIndex, setButtonIndex] = useState(null);
+  const [addemodal, setAddModal] = useState(false);
 
   function onClick() {
     setFolderName("전체");
-    setFolderId();
-    setButtonIndex();
+    setFolderId(null);
+    setButtonIndex(null);
     setButton(true);
   }
 
@@ -23,22 +25,26 @@ export const FolderToolBar = ({ folders, setFolderName, setFolderId }) => {
     setButton(false);
   }
 
+  const handleClick = () => {
+    setAddModal(true);
+  };
+
   return (
     <div className={cx("container")}>
       <div className={cx("toolBar")}>
         <button
-          className={cx(button ? "buttonClick" : "button")}
+          className={cx(button ? "button-click" : "button")}
           onClick={onClick}
           type="button"
         >
-          <span>전체</span>
+          전체
         </button>
 
         {folders.map((item, index) => {
           return (
             <button
               key={item.id}
-              className={cx(buttonIndex === index ? "buttonClick" : "button")}
+              className={cx(buttonIndex === index ? "button-click" : "button")}
               onClick={() => clickButton(item, index)}
               type="button"
             >
@@ -48,12 +54,22 @@ export const FolderToolBar = ({ folders, setFolderName, setFolderId }) => {
         })}
       </div>
 
-      <button className={cx("add-button")}>
-        <div className={cx("text")}>
-          <span>폴더 추가</span>
-          <img src={ADD_ICON} alt="폴더 추가" />
-        </div>
-      </button>
+      <div className={cx("add-button")}>
+        <button className={cx("text")} onClick={handleClick}>
+          <p className={cx("button-text")} type="button">
+            폴더 추가
+            <img src={ADD_ICON} alt="폴더 추가" />
+          </p>
+        </button>
+      </div>
+
+      {addemodal && (
+        <AddModal modal={addemodal} setModal={setAddModal}>
+          <h2>폴더 추가</h2>
+          <input type="text" placeholder="내용 입력" />
+          <button type="button">추가하기</button>
+        </AddModal>
+      )}
     </div>
   );
 };

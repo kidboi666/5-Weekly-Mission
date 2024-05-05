@@ -34,14 +34,18 @@
   align-items: center;
   gap: 0.5rem;
 
+  @include mobile {
+    padding: 0.8rem 1.6rem;
+    border-radius: 1.8rem;
+    border: 1px solid var(--Linkbrary-white, #fff);
+    background: var(--Linkbrary-primary-color, #6d6afe);
+  }
+}
+
+.button-text {
   @include font(1.4rem, $color-primary, 500);
 
   @include mobile {
-    padding: 0.6rem 1.6rem;
-    border-radius: 1.5rem;
-    border: 1px solid var(--Linkbrary-white, #fff);
-    background: var(--Linkbrary-primary-color, #6d6afe);
-
     @include font(1.4rem, $color-white, 500);
   }
 }
@@ -64,7 +68,7 @@
   }
 }
 
-.buttonClick {
+.button-click {
   @extend .button;
   color: $color-white;
   border-color: $color-primary;

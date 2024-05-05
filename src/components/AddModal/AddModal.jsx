@@ -1,11 +1,11 @@
-import { useEffect, useRef } from "react";
-import styles from "./DeleteModal.module.scss";
-import classNames from "classnames/bind";
+import { useEffect, useRef, useState } from "react";
 import { COLSE_ICON } from "./constant";
+import styles from "./AddModal.module.scss";
+import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-export const DeleteModal = ({ modal, setModal, children }) => {
+export const AddModal = ({ modal, setModal, folderName, children }) => {
   const modalRef = useRef(null);
 
   // 모달 영역 밖 클릭 시 닫기
@@ -29,8 +29,6 @@ export const DeleteModal = ({ modal, setModal, children }) => {
 
       <div className={cx("content")} ref={modalRef}>
         <div className={cx("title")}>{children}</div>
-
-        <button type="button">삭제하기</button>
       </div>
     </div>
   );

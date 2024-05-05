@@ -7,8 +7,6 @@ import { Cards } from "../Cards/Cards";
 
 const cx = classNames.bind(styles);
 
-let hasCards = false;
-
 export const FolderCards = ({
   items,
   folders,
@@ -17,6 +15,8 @@ export const FolderCards = ({
   folderId,
   setFolderId,
 }) => {
+  let hasCards = false;
+
   return (
     <div className={cx("container")}>
       <MainSearchBar />
@@ -34,7 +34,7 @@ export const FolderCards = ({
         {items.map((item) => {
           if (folderId === item.folder_id || folderName === "전체") {
             hasCards = true;
-            return <Cards key={item.id} item={item} />;
+            return <Cards key={item.id} item={item} folders={folders} />;
           }
         })}
       </ul>
