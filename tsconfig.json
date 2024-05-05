@@ -1,25 +1,13 @@
 {
-  "name": "5-WEEKLY-MISSION",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@types/node": "^20.12.7"
-  },
   "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "outDir": "dist",
+    "strict": true,
+    "moduleDetection": "force",
+    "moduleResolution": "bundler",
+    "allowJs": true,
     "esModuleInterop": true,
-    "jsx": "react",
-    "baseUrl": "",
-    "paths": {
-      "@components/*": ["./src/components/*"],
-      "@assets/*": ["./src/assets/*"]
-    }
+    "jsx": "react"
   }
 }
