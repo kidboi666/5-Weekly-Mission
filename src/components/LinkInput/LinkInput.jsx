@@ -34,6 +34,7 @@ export default function LinkInput({ folders, counts }) {
           // share
           folders={folders}
           counts={counts}
+          setVisible={setModalVisible}
         />
       )}
     </>

@@ -14,8 +14,11 @@ export default function Modal({
   share,
   folders,
   counts,
+  setVisible,
 }) {
-  const handleCloseClick = () => {};
+  const handleCloseClick = () => {
+    setVisible(false);
+  };
 
   return (
     <S.Layout>

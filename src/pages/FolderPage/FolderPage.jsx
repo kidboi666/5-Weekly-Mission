@@ -35,11 +35,6 @@ export default function FolderPage() {
   const [itemCount, setItemCount] = useState();
   const [addFolderModalVisible, setAddFolderModalVisible] = useState(false);
 
-  console.log('menus', menus);
-  console.log('folder', folder);
-  console.log('items', items);
-  console.log('itemCount', itemCount);
-
   const handleMenuButtonClick = async (e) => {
     setFolder(e.target.value);
   };
@@ -117,7 +112,13 @@ export default function FolderPage() {
         {items && <CardList items={items} />}
       </SectionWrap>
       {addFolderModalVisible && (
-        <Modal width='360' title='폴더 추가' input button='추가하기' />
+        <Modal
+          width='360'
+          title='폴더 추가'
+          input
+          button='추가하기'
+          setVisible={setAddFolderModalVisible}
+        />
       )}
     </>
   );
