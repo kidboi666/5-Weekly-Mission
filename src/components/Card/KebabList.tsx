@@ -1,11 +1,12 @@
 import "./KebabList.css";
 import { useContext } from "react";
 import ModalContext from "../Modal/ModalContext";
+import React from "react";
 
 function KebabList({ url, setDisplay }) {
   const { openModal, setModalType, setCardUrl } = useContext(ModalContext);
 
-  const onClickDeleteLinkModalOpen = (e) => {
+  const onClickDeleteLinkModalOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setModalType("linkDelete");
     setCardUrl(url);
@@ -13,7 +14,7 @@ function KebabList({ url, setDisplay }) {
     setDisplay();
   };
 
-  const onClickAddFolderModalOpen = (e) => {
+  const onClickAddFolderModalOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setModalType("folderAdd");
     setCardUrl(url);
