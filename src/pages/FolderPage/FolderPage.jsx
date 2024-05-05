@@ -6,8 +6,8 @@ import { getFoldersItems, getFoldersMenu } from '../../api';
 import Search from '../../components/Search/Search';
 import CardList from '../../components/CardList/CardList';
 import MenuButton from '../../components/MenuButton/MenuButton';
-import AddIcon from '../../assets/add_icon.png';
-import AddWhiteIcon from '../../assets/add_white_icon.png';
+import AddIcon from '../../assets/add_icon.svg';
+import AddWhiteIcon from '../../assets/add_white_icon.svg';
 import ShareIcon from '../../assets/share_icon.png';
 import PenIcon from '../../assets/pen_icon.png';
 import DeleteIcon from '../../assets/delete_icon.png';
@@ -56,6 +56,8 @@ export default function FolderPage() {
     setItems(nextItems);
   }, [folder]);
 
+  const handleAddFolderButtonClick = () => {};
+
   useEffect(() => {
     handleLoadMenu();
   }, []);
@@ -98,9 +100,10 @@ export default function FolderPage() {
               />
             ))}
           </S.MenuList>
-          <S.AddButton>
+          <S.AddButton onClick={handleAddFolderButtonClick}>
             폴더 추가
-            <S.AddIcon src={AddIcon} alt='+' />
+            <img src={AddIcon} alt='+' />
+            <img src={AddWhiteIcon} alt='+' />
           </S.AddButton>
         </S.MenuWrap>
         {folder !== '전체' && (
@@ -119,10 +122,6 @@ export default function FolderPage() {
         {!items?.length && <S.NoData>저장된 링크가 없습니다</S.NoData>}
         {items && <CardList items={items} />}
       </SectionWrap>
-      <S.MobileAddButton>
-        폴더 추가
-        <S.AddIcon src={AddWhiteIcon} alt='+' />
-      </S.MobileAddButton>
     </>
   );
 }

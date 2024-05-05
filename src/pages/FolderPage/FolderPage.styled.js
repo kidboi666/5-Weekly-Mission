@@ -38,17 +38,13 @@ export const AddButton = styled.button`
   font-weight: 500;
   color: var(--Linkbrary-primary);
 
-  @media (max-width: 767px) {
-    display: none;
+  & img:first-of-type {
+    width: 16px;
   }
-`;
-
-export const AddIcon = styled.img`
-  width: 16px;
-`;
-
-export const MobileAddButton = styled(AddButton)`
-  display: none;
+  & img:last-of-type {
+    display: none;
+    width: 16px;
+  }
 
   @media (max-width: 767px) {
     display: flex;
@@ -57,10 +53,17 @@ export const MobileAddButton = styled(AddButton)`
     left: 50%;
     transform: translateX(-50%);
     padding: 8px 24px;
-    background: #6d6afe;
+    background: var(--Linkbrary-primary);
     border-radius: 20px;
     color: var(--Linkbrary-white);
     z-index: 1;
+
+    & img:first-of-type {
+      display: none;
+    }
+    & img:last-of-type {
+      display: block;
+    }
   }
 `;
 
