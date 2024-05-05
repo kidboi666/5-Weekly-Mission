@@ -1,19 +1,23 @@
-import styles from "./AlertModal.module.scss";
+import styles from "./AddLink.module.scss";
 import classNames from "classnames/bind";
 import { Modal } from "sharing/ui-modal";
 import { ModalContentBox } from "sharing/ui-modal-content-box";
 import { ModalContentButton } from "sharing/ui-modal-content-button";
 import { ModalContentTitle } from "sharing/ui-modal-content-title";
 import { ModalContentDescription } from "sharing/ui-modal-content-description";
+import { FolderItem } from "folder/ui-folder-item";
 
 const cx = classNames.bind(styles);
 
-export const AlertModal = ({
+export const AddLinkModal = ({
   isOpen,
+  folders,
   title,
   buttonText,
-  onCloseClick,
   selectedLinkUrl,
+  selectedFolderId,
+  setSelectedFolderId,
+  onCloseClick,
   onKeyDown,
 }) => {
   return (
@@ -27,6 +31,21 @@ export const AlertModal = ({
         }
         content={
           <div className={cx("modal-content")}>
+            <div className={cx("folder-list")}>
+              {folders.map(({ id, name, link }) => {
+                return (
+                  <FolderItem
+                    key={id}
+                    isSelected={id === selectedFolderId}
+                    folderName={name}
+                    linkCount={link?.count}
+                    onClick={() => {
+                      setSelectedFolderId(id);
+                    }}
+                  />
+                );
+              })}
+            </div>
             <ModalContentButton themeColor="red">
               {buttonText}
             </ModalContentButton>

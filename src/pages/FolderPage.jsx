@@ -26,7 +26,7 @@ export const FolderPage = () => {
             onFolderClick={setSelectedFolderId}
           />
         }
-        cardList={loading ? null : <CardList links={links} />}
+        cardList={loading ? null : <CardList links={links} folders={folders} />}
       />
     </Layout>
   );

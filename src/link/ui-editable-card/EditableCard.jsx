@@ -16,6 +16,7 @@ export const EditableCard = ({
   description,
   createdAt,
   onDeleteClick,
+  onAddLinkClick,
 }) => {
   const KebabButtonRef = useRef(null);
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
@@ -30,6 +31,11 @@ export const EditableCard = ({
   const handleDeleteClick = (e) => {
     e.preventDefault();
     onDeleteClick();
+    setIsPopoverOpen(false);
+  };
+  const handleAddLinkClick = (e) => {
+    e.preventDefault();
+    onAddLinkClick();
     setIsPopoverOpen(false);
   };
 
@@ -60,9 +66,7 @@ export const EditableCard = ({
         <Popover isOpen={isPopoverOpen} anchorRef={KebabButtonRef}>
           <ul className={cx("popover-list")}>
             <li onClick={handleDeleteClick}>삭제하기</li>
-            <li>
-              <button>폴더에 추가</button>
-            </li>
+            <li onClick={handleAddLinkClick}>폴더에 추가</li>
           </ul>
         </Popover>
       </Card>
