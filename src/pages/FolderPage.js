@@ -47,7 +47,7 @@ function FolderPage() {
   return (
     <div>
       <GlobalStyles />
-      <Header user={user} />
+      <Header userEmail={user.email} />
       <LinkInput folders={Folders.data} />
       <div className="contents-wrapper">
         <SearchBar />

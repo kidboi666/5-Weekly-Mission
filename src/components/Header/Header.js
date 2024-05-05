@@ -1,6 +1,6 @@
 import "./Header.css";
 
-export function Header({ user }) {
+export function Header({ userEmail }) {
   return (
     <header className="header">
       <div className="header-contents">
@@ -16,7 +16,7 @@ export function Header({ user }) {
               alt="myprofile"
             />
           </div>
-          <p>{user.email ?? "로그인"}</p>
+          <p>{userEmail ?? "로그인"}</p>
         </div>
       </div>
     </header>
