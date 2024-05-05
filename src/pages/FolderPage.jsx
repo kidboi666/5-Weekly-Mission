@@ -13,12 +13,23 @@ export const FolderPage = () => {
   const { data: folders } = useGetFolders();
   const [selectedFolderId, setSelectedFolderId] = useState(ALL_LINKS_ID);
   const { data: links, loading } = useGetLinks(selectedFolderId);
+  const [searchKeyword, setSearchKeyword] = useState("");
+
+  const handleSearch = () => {
+    setSearchKeyword("");
+  };
 
   return (
     <Layout isSticky={false}>
       <FolderLayout
         linkForm={<LinkForm />}
-        searchBar={<SearchBar />}
+        searchBar={
+          <SearchBar
+            onSubmit={handleSearch}
+            searchKeyword={searchKeyword}
+            setSearchKeyword={setSearchKeyword}
+          />
+        }
         folderToolBar={
           <FolderToolBar
             folders={folders}
@@ -26,7 +37,7 @@ export const FolderPage = () => {
             onFolderClick={setSelectedFolderId}
           />
         }
-        cardList={loading ? null : <CardList links={links} folders={folders} />}
+        cardList={loading ? null : <CardList links={links} />}
       />
     </Layout>
   );
