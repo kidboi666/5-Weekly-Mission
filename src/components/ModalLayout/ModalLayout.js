@@ -15,8 +15,10 @@ export function ModalLayout({
           onClick={toggleHandler}
           alt="close-button"
         />
-        <p className="title">{title}</p>
-        {description && <p className="description">{description}</p>}
+        <div>
+          <p className="title">{title}</p>
+          {description && <p className="description">{description}</p>}
+        </div>
         {children}
       </div>
       <div className="modal-background"></div>

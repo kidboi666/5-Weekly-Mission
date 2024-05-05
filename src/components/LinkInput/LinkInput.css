@@ -12,7 +12,6 @@
   padding: 16px 20px;
   display: flex;
   justify-content: space-between;
-
   @media (max-width: 1000px) {
     width: 100%;
   }
@@ -26,7 +25,6 @@
 }
 
 .LinkInput input {
-  color: #9fa6b2;
   font-family: Pretendard;
   font-size: 16px;
   font-weight: 400;
@@ -51,11 +49,57 @@
 .folder-select-wrapper {
   max-height: 172px;
   overflow-y: auto;
+  width: 100%;
+}
+
+.folder-select-wrapper input {
+  display: none;
 }
 
 .folder-select {
   font-size: 16px;
   display: flex;
   padding: 8px;
-  font-weight: 400;
+  justify-content: space-between;
+}
+
+.folder-select p {
+  display: flex;
+  align-items: center;
+  height: 24px;
+}
+
+.background {
+  background-color: #f0f6ff;
+}
+
+.folder-select .link-text {
+  color: #9fa6b2;
+}
+
+.LinkInput input::placeholder {
+  color: #9fa6b2;
+}
+
+.selected-style {
+  color: red;
+}
+
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  border-radius: 0;
+  outline: none;
+}
+
+input[type="radio"] label:checked {
+  background-color: blue;
+}
+
+.folder-select .text-wrapper {
+  display: flex;
+  gap: 8px;
 }
