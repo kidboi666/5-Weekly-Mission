@@ -1,5 +1,6 @@
 import "./CardList.css";
 import CardListItem from "./CardListItem";
+import NoPage from "./NoPage";
 
 interface Link {
   created_at: string;
@@ -39,15 +40,21 @@ const CardList: React.FC<CardListProps> = ({ links, folders, searchTerm }) => {
       link.description?.includes(searchTerm)
     );
   });
+
   return (
-    <ul className="CardLinkList">
-      {filteredFolders &&
-        filteredFolders.map((link) => (
-          <li key={link.id}>
-            <CardListItem folders={folders} link={link} />
-          </li>
-        ))}
-    </ul>
+    <>
+      {filteredFolders.length === 0 ? (
+        <NoPage text="검색 결과가 없습니다." />
+      ) : (
+        <ul className="CardLinkList">
+          {filteredFolders.map((link) => (
+            <li key={link.id}>
+              <CardListItem folders={folders} link={link} />
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
   );
 };
 

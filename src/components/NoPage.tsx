@@ -1,7 +1,9 @@
 import "./NoPage.css";
-
-function NoPage() {
-  return <div className="notFoundPage">저장된 링크가 없습니다</div>;
+interface NoPageProps {
+  text: string;
 }
+const NoPage: React.FC<NoPageProps> = ({ text }) => {
+  return <div className="notFoundPage">{text}</div>;
+};
 
 export default NoPage;

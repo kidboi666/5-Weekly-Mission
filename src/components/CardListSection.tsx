@@ -45,7 +45,7 @@ const CardListSection: React.FC<CardListSectionProps> = ({
   return (
     <>
       {links && links.length === 0 ? (
-        <NoPage />
+        <NoPage text="저장된 링크가 없습니다." />
       ) : (
         <CardList folders={folders} links={links} searchTerm={searchTerm} />
       )}
