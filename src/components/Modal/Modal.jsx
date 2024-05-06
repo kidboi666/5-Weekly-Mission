@@ -15,9 +15,30 @@ export default function Modal({
   counts,
   setVisible,
 }) {
+
   const handleCloseClick = () => {
     setVisible(false);
   };
+
+  const SHARES = [
+    {
+      name: '카카오톡',
+      imageSrc: KakaotalkIcon,
+      onClick: () => {}
+    },
+    {
+      name: '페이스북',
+      imageSrc: facebookIcon,
+      onClick: () => {}
+    },
+    {
+      name: '링크 복사',
+      imageSrc: linkIcon,
+      onClick: () => {}
+    },
+
+  ]
+  
 
   return (
     <S.Layout>
@@ -50,18 +71,10 @@ export default function Modal({
         {button && <S.StyledButton text={button} mt={semiTitle} />}
         {share && (
           <S.ShareList>
-            <button>
-              <img src={KakaotalkIcon} alt='카카오톡 공유' />
-              <p>카카오톡</p>
-            </button>
-            <button>
-              <img src={facebookIcon} alt='페이스북 공유' />
-              <p>페이스북</p>
-            </button>
-            <button>
-              <img src={linkIcon} alt='링크 복사' />
-              <p>링크 복사</p>
-            </button>
+            {SHARES.map((share) => <button onClick={share.onClick}>
+              <img src={share.imageSrc} alt={share.name + '공유'} />
+              <p>{share.name}</p>
+            </button>)}
           </S.ShareList>
         )}
       </S.Modal>
