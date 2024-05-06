@@ -155,7 +155,7 @@ export default function FolderPage() {
         <Modal
           title='폴더 공유'
           semiTitle={currentFolder.name}
-          share={currentFolder.id}
+          folderId={currentFolder.id}
           setVisible={setShareFolderModalVisible}
         />
       )}

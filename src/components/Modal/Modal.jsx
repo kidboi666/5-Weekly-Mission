@@ -16,7 +16,7 @@ import shareKakao from '../../apis/shareKakao';
  * 2. 폴더 공유
  * @param {string} title - '폴더 공유'
  * @param {string} semiTitle - 폴더 name
- * @param {number} share - 폴더 id
+ * @param {number} folderId - 폴더 id
  * @param {function} setVisible - 모달을 열고 닫을 수 있는 setter 함수
  *
  * 3. 폴더 삭제, 링크 삭제
@@ -38,7 +38,7 @@ export default function Modal({
   semiTitle,
   input,
   button,
-  share,
+  folderId,
   folders,
   counts,
   setVisible,
@@ -56,7 +56,7 @@ export default function Modal({
       name: '카카오톡',
       imageSrc: KakaotalkIcon,
       onClick: (e) => {
-        shareKakao(e, folders, share);
+        shareKakao(e, semiTitle, folderId);
       },
     },
     {
@@ -101,7 +101,7 @@ export default function Modal({
           </S.FoldersList>
         )}
         {button && <S.StyledButton text={button} mt={semiTitle} />}
-        {share && (
+        {folderId && (
           <S.ShareList>
             {SHARES.map((share, index) => (
               <button key={index} onClick={share.onClick}>
