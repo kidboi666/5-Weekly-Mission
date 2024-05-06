@@ -1,11 +1,18 @@
+import React from "react";
 import FaceBookIco from "../../assets/icon/share-facebook-ico.png";
 import KakaoIco from "../../assets/icon/share-kakao-ico.png";
 import LinkIco from "../../assets/icon/share-link-ico.png";
 
-function ShareModal({ modalTypeLabels, modalType, folderTabName }) {
+interface ShareModalType {
+  modalType: string;
+  modalTypeLabels?: Record<string, string>;
+  folderTabName: string;
+}
+
+function ShareModal({ modalTypeLabels, modalType, folderTabName }: ShareModalType) {
   return (
     <div className="modal-form1">
-      <h2>{modalTypeLabels[modalType]}</h2>
+      <h2>{modalTypeLabels && modalTypeLabels[modalType]}</h2>
       <div className="con-wrap">
         <div className="folder-link-wrap">{folderTabName}</div>
         <ul className="folder-share-wrap">

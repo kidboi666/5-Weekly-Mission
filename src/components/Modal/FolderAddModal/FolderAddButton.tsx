@@ -1,7 +1,15 @@
 import React from "react";
 import folderCheckImg from "../../../assets/icon/svg/folder-check.svg";
 
-function FolderAddButton({ name, linkCount, id, activeId, handleClick }) {
+interface FolderAddButtonType {
+  id: number;
+  name: string;
+  linkCount: number;
+  activeId: number | null;
+  handleClick: (folderId: number) => void;
+}
+
+function FolderAddButton({ name, linkCount, id, activeId, handleClick }: FolderAddButtonType) {
   const onClick = () => {
     handleClick(id);
   };

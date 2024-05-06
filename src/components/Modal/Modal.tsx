@@ -1,3 +1,4 @@
+import React from "react";
 import "./Modal.css";
 import CloseImg from "../../assets/icon/close.png";
 import { useContext } from "react";
@@ -5,11 +6,35 @@ import ModalContext from "./ModalContext";
 import ShareModal from "./ShareModal";
 import FolderAddModal from "./FolderAddModal/FolderAddModal";
 
-function renderModal(modalType, modalTypeLabels, folderTabDataList, cardUrl, folderTabName) {
+interface UserFolderdataList {
+  data: {
+    id: number;
+    name: string;
+    link: {
+      count: number;
+    };
+  };
+}
+
+interface RenderModalType {
+  modalType: string;
+  modalTypeLabels?: Record<string, string>;
+  folderTabDataList: UserFolderdataList["data"][];
+  cardUrl: string;
+  folderTabName: string;
+}
+
+function renderModal(
+  modalType: string,
+  modalTypeLabels: Record<string, string>,
+  folderTabDataList: UserFolderdataList["data"][],
+  cardUrl: string,
+  folderTabName: string
+) {
   return (
     (modalType === "add" && (
       <div className="modal-form1">
-        <h2>{modalTypeLabels[modalType]}</h2>
+        <h2>{modalTypeLabels && modalTypeLabels[modalType]}</h2>
         <div className="con-wrap">
           <input type="text" className="modal-input" placeholder="내용 입력" />
           <button className="btn-form01">추가하기</button>
@@ -26,7 +51,7 @@ function renderModal(modalType, modalTypeLabels, folderTabDataList, cardUrl, fol
     )) ||
     (modalType === "edit" && (
       <div className="modal-form1">
-        <h2>{modalTypeLabels[modalType]}</h2>
+        <h2>{modalTypeLabels && modalTypeLabels[modalType]}</h2>
         <div className="con-wrap">
           <input type="text" className="modal-input" placeholder="내용 입력" />
           <button className="btn-form01">변경하기</button>
@@ -35,7 +60,7 @@ function renderModal(modalType, modalTypeLabels, folderTabDataList, cardUrl, fol
     )) ||
     (modalType === "folderDelete" && (
       <div className="modal-form1 modal-delete">
-        <h2>{modalTypeLabels[modalType]}</h2>
+        <h2>{modalTypeLabels && modalTypeLabels[modalType]}</h2>
         <div className="con-wrap">
           <div className="folder-link-wrap">{folderTabName}</div>
         </div>
@@ -44,7 +69,7 @@ function renderModal(modalType, modalTypeLabels, folderTabDataList, cardUrl, fol
     )) ||
     (modalType === "linkDelete" && (
       <div className="modal-form1 modal-delete">
-        <h2>{modalTypeLabels[modalType]}</h2>
+        <h2>{modalTypeLabels && modalTypeLabels[modalType]}</h2>
         <div className="con-wrap">
           <div className="folder-link-wrap">{cardUrl}</div>
         </div>
@@ -62,8 +87,8 @@ function renderModal(modalType, modalTypeLabels, folderTabDataList, cardUrl, fol
   );
 }
 
-function Modal({ modalType, folderTabDataList, cardUrl, folderTabName }) {
-  const { isOpen, closeModal } = useContext(ModalContext);
+function Modal({ modalType, folderTabDataList, cardUrl, folderTabName }: RenderModalType) {
+  const { isOpen, closeModal } = useContext(ModalContext)!;
 
   const modalTypeLabels = {
     add: "폴더 추가",
