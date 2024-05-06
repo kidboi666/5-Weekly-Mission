@@ -4,6 +4,7 @@ import CloseImage from '../../assets/images/close_button.svg';
 import KakaotalkIcon from '../../assets/images/share_kakaotalk.svg';
 import facebookIcon from '../../assets/images/share_facebook.svg';
 import linkIcon from '../../assets/images/share_link.svg';
+import shareKakao from '../../apis/shareKakao';
 
 export default function Modal({
   title,
@@ -23,7 +24,9 @@ export default function Modal({
     {
       name: '카카오톡',
       imageSrc: KakaotalkIcon,
-      onClick: () => {},
+      onClick: () => {
+        shareKakao(folders, share);
+      },
     },
     {
       name: '페이스북',

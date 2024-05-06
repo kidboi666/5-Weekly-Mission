@@ -49,17 +49,17 @@ const GlobalStyle = createGlobalStyle`
 
   @font-face {
     font-family: 'Abel';
-    src: url('../fonts/Abel-Regular.ttf') format('woff');
+    src: url('../fonts/Abel-Regular.ttf') format('font-woff2');
   }
 
   @font-face {
     font-family: 'Acme';
-    src: url('../fonts/Acme-Regular.ttf') format('woff');
+    src: url('../fonts/Acme-Regular.ttf') format('font-woff2');
   }
 
   @font-face {
     font-family: 'Pretendard';
-    src: url('../fonts/PretendardVariable.ttf') format('woff');
+    src: url('../fonts/PretendardVariable.ttf') format('font-woff2');
   }
 
 
