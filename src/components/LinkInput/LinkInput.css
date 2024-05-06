@@ -95,10 +95,6 @@ input[type="radio"] {
   outline: none;
 }
 
-input[type="radio"] label:checked {
-  background-color: blue;
-}
-
 .folder-select .text-wrapper {
   display: flex;
   gap: 8px;

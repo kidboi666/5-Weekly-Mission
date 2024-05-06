@@ -1,17 +1,22 @@
 import { LinkItem } from "../ListItem";
+import { useSearch } from "hooks";
 import "./Linklist.css";
 
-export function LinkList({ links, createdtime, image }) {
+export function LinkList({ searchKeyWord, links, createdtime, image }) {
+  const filteredLinks = useSearch(searchKeyWord, links);
+
   return (
     <div className="Link-container">
       <ul className="LinkList">
-        {links.map((link) => {
+        {filteredLinks.map((link) => {
           return (
             <li key={link.id}>
               <LinkItem
-                link={link}
+                url={link.url}
                 createdAt={link[createdtime]}
                 imageSource={link[image]}
+                description={link.description}
+                title={link.title}
               />
             </li>
           );

@@ -4,7 +4,7 @@ import { ModalLayout } from "../ModalLayout";
 
 const base_image = "images/card-default.png";
 
-export function LinkItem({ link, createdAt, imageSource }) {
+export function LinkItem({ url, createdAt, imageSource, description, title }) {
   const [isOpen, setIsOpen] = useState({
     open: false,
     add: false,
@@ -18,7 +18,6 @@ export function LinkItem({ link, createdAt, imageSource }) {
     }));
   };
 
-  const url = link.url;
   const linkImage = imageSource ?? base_image;
   return (
     <div className="linkItem-wrapper">
@@ -31,7 +30,7 @@ export function LinkItem({ link, createdAt, imageSource }) {
             <div className="kebab-wrapper">
               <p className="creation-time">{calculatePastTime(createdAt)}</p>
             </div>
-            <p className="link-description">{link.description}</p>
+            <p className="link-description">{description}</p>
             <p>2023. 3. 15</p>
           </div>
         </div>
@@ -59,7 +58,7 @@ export function LinkItem({ link, createdAt, imageSource }) {
       {isOpen.delete && (
         <ModalLayout
           title="링크삭제"
-          description={link.title}
+          description={title}
           toggleHandler={() => toggleHandler("delete")}
         >
           <div className="button delete">삭제하기</div>

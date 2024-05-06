@@ -16,7 +16,6 @@ export function FolderTitle({ name }) {
     }));
   };
 
-  console.log(isOpen.share);
   return (
     <>
       <div className="folderTitle-wrapper">

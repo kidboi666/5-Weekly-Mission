@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./LinkInput.css";
 import { ModalLayout } from "../ModalLayout";
-import { getSelectionRange } from "@testing-library/user-event/dist/utils";
 
 export function LinkInput({ folders }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,8 +18,6 @@ export function LinkInput({ folders }) {
   const getValue = (e) => {
     setUrl(e.target.value);
   };
-
-  console.log(selectedFolder);
 
   return (
     <div className="LinkInput-wrapper">

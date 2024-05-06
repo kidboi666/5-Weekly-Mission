@@ -23,6 +23,10 @@ function FolderPage() {
   const [urlBySelectedId, setUrlBySelectedId] = useState("");
   const [name, setName] = useState("");
   const [links, setLinks] = useState(AllLinks.data);
+  const [searchKeyWord, setSearchKeyWord] = useState();
+
+  console.log(Folders);
+  console.log(AllLinks);
 
   function checkArrayBlank(array) {
     return array ? array.length === 0 : true;
@@ -50,7 +54,10 @@ function FolderPage() {
       <Header userEmail={user.email} />
       <LinkInput folders={Folders.data} />
       <div className="contents-wrapper">
-        <SearchBar />
+        <SearchBar
+          searchKeyWord={searchKeyWord}
+          setSearchKeyWord={setSearchKeyWord}
+        />
         <div className="links-wrapper">
           <Sorting
             folders={Folders.data}
@@ -65,6 +72,7 @@ function FolderPage() {
             <ErrorComponent />
           ) : (
             <LinkList
+              searchKeyWord={searchKeyWord}
               links={links}
               createdtime="created_at"
               image="image_source"
