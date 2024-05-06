@@ -1,5 +1,5 @@
 import React from 'react';
-import profileInit from '../../assets/profile_init.png';
+import profileInit from '../../assets/images/profile_init.png';
 import * as S from './Profile.styled';
 
 export default function Profile({ user, src, $size = 's', $flextype = 'row' }) {

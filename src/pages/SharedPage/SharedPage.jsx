@@ -12,7 +12,6 @@ export default function SharedPage() {
   const [user, setUser] = useState();
 
   const { folderId } = useParams();
-  console.log(folderId);
 
   const handleLoad = async () => {
     const nextFolder = await getLinks(folderId);

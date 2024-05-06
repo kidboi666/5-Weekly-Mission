@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import logoImg from '../../assets/logo.svg';
+import logoImg from '../../assets/images/logo.svg';
 import { UserContext } from '../../contexts/UserContext';
 import Profile from '../Profile/Profile';
 import { Link, useLocation } from 'react-router-dom';

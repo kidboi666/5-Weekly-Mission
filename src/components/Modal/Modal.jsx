@@ -1,9 +1,9 @@
 import React from 'react';
 import * as S from './Modal.styled';
-import CloseImage from '../../assets/close_button.svg';
-import KakaotalkIcon from '../../assets/share_kakaotalk.svg';
-import facebookIcon from '../../assets/share_facebook.svg';
-import linkIcon from '../../assets/share_link.svg';
+import CloseImage from '../../assets/images/close_button.svg';
+import KakaotalkIcon from '../../assets/images/share_kakaotalk.svg';
+import facebookIcon from '../../assets/images/share_facebook.svg';
+import linkIcon from '../../assets/images/share_link.svg';
 
 export default function Modal({
   title,
@@ -15,7 +15,6 @@ export default function Modal({
   counts,
   setVisible,
 }) {
-
   const handleCloseClick = () => {
     setVisible(false);
   };
@@ -24,21 +23,19 @@ export default function Modal({
     {
       name: '카카오톡',
       imageSrc: KakaotalkIcon,
-      onClick: () => {}
+      onClick: () => {},
     },
     {
       name: '페이스북',
       imageSrc: facebookIcon,
-      onClick: () => {}
+      onClick: () => {},
     },
     {
       name: '링크 복사',
       imageSrc: linkIcon,
-      onClick: () => {}
+      onClick: () => {},
     },
-
-  ]
-  
+  ];
 
   return (
     <S.Layout>
@@ -71,10 +68,12 @@ export default function Modal({
         {button && <S.StyledButton text={button} mt={semiTitle} />}
         {share && (
           <S.ShareList>
-            {SHARES.map((share) => <button onClick={share.onClick}>
-              <img src={share.imageSrc} alt={share.name + '공유'} />
-              <p>{share.name}</p>
-            </button>)}
+            {SHARES.map((share) => (
+              <button onClick={share.onClick}>
+                <img src={share.imageSrc} alt={share.name + '공유'} />
+                <p>{share.name}</p>
+              </button>
+            ))}
           </S.ShareList>
         )}
       </S.Modal>

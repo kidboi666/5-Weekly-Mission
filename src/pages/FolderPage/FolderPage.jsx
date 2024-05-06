@@ -6,11 +6,11 @@ import { getLinks, getFolders } from '../../api';
 import Search from '../../components/Search/Search';
 import CardList from '../../components/CardList/CardList';
 import MenuButton from '../../components/MenuButton/MenuButton';
-import AddIcon from '../../assets/add_icon.svg';
-import AddWhiteIcon from '../../assets/add_white_icon.svg';
-import ShareIcon from '../../assets/share_icon.png';
-import PenIcon from '../../assets/pen_icon.png';
-import DeleteIcon from '../../assets/delete_icon.png';
+import AddIcon from '../../assets/images/add_icon.svg';
+import AddWhiteIcon from '../../assets/images/add_white_icon.svg';
+import ShareIcon from '../../assets/images/share_icon.png';
+import PenIcon from '../../assets/images/pen_icon.png';
+import DeleteIcon from '../../assets/images/delete_icon.png';
 import Modal from '../../components/Modal/Modal';
 
 export default function FolderPage() {
