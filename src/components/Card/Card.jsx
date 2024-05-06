@@ -8,7 +8,7 @@ import star from '../../assets/images/star_icon.png';
 import kebab from '../../assets/images/kebab_icon.png';
 import Modal from '../Modal/Modal';
 
-export default function Card({ item }) {
+export default function Card({ item, folderNames, itemCountsInEachFolder }) {
   const { createdAt, url, title, imageSource } = item;
   const [KebabModalVisible, setKebabModalVisible] = useState(false);
   const [deleteCardModalVisible, setDeleteCardModalVisible] = useState(false);
@@ -85,7 +85,8 @@ export default function Card({ item }) {
         <Modal
           title='폴더에 추가'
           semiTitle={url}
-          share
+          folders={folderNames}
+          counts={itemCountsInEachFolder}
           button='추가하기'
           setVisible={setAddInFolderModalVisible}
         />

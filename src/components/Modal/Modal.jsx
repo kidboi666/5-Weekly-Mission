@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from './Modal.styled';
 import CloseImage from '../../assets/images/close_button.svg';
 import KakaotalkIcon from '../../assets/images/share_kakaotalk.svg';
@@ -6,6 +6,33 @@ import facebookIcon from '../../assets/images/share_facebook.svg';
 import linkIcon from '../../assets/images/share_link.svg';
 import shareKakao from '../../apis/shareKakao';
 
+/**
+ * 1. 폴더 이름 변경, 폴더 추가
+ * @param {string} title - '폴더 이름 변경' / '폴더 추가'
+ * @param {null} input
+ * @param {string} button - '변경하기' / '추가하기'
+ * @param {function} setVisible - 모달을 열고 닫을 수 있는 setter 함수
+ *
+ * 2. 폴더 공유
+ * @param {string} title - '폴더 공유'
+ * @param {string} semiTitle - 폴더 name
+ * @param {number} share - 폴더 id
+ * @param {function} setVisible - 모달을 열고 닫을 수 있는 setter 함수
+ *
+ * 3. 폴더 삭제, 링크 삭제
+ * @param {string} title - '폴더 삭제' / '링크 삭제'
+ * @param {string} semiTitle - 폴더 name / link url
+ * @param {string} button - '삭제하기'
+ * @param {function} setVisible - 모달을 열고 닫을 수 있는 setter 함수
+ *
+ * 4. 폴더에 추가
+ * @param {string} title - '폴더에 추가'
+ * @param {string} semiTitle - link url
+ * @param {array} folders - 폴더 name 배열
+ * @param {array} counts - 각 폴더별 아이템 개수 배열
+ * @param {string} button - '추가하기'
+ * @param {function} setVisible - 모달을 열고 닫을 수 있는 setter 함수
+ */
 export default function Modal({
   title,
   semiTitle,
@@ -16,6 +43,10 @@ export default function Modal({
   counts,
   setVisible,
 }) {
+  const [text, setText] = useState(input !== true ? input : '');
+  const handleTextChange = (e) => {
+    setText(e.target.value);
+  };
   const handleCloseClick = () => {
     setVisible(false);
   };
@@ -24,8 +55,8 @@ export default function Modal({
     {
       name: '카카오톡',
       imageSrc: KakaotalkIcon,
-      onClick: () => {
-        shareKakao(folders, share);
+      onClick: (e) => {
+        shareKakao(e, folders, share);
       },
     },
     {
@@ -52,7 +83,8 @@ export default function Modal({
           <S.Input
             type='text'
             placeholder='내용 입력'
-            value={input !== true ? input : null}
+            value={text}
+            onChange={handleTextChange}
           />
         )}
         {folders && (
@@ -71,8 +103,8 @@ export default function Modal({
         {button && <S.StyledButton text={button} mt={semiTitle} />}
         {share && (
           <S.ShareList>
-            {SHARES.map((share) => (
-              <button onClick={share.onClick}>
+            {SHARES.map((share, index) => (
+              <button key={index} onClick={share.onClick}>
                 <img src={share.imageSrc} alt={share.name + '공유'} />
                 <p>{share.name}</p>
               </button>

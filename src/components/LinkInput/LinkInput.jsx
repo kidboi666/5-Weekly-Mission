@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as S from './LinkInput.styled';
 import Modal from '../Modal/Modal';
 
-export default function LinkInput({ folders, counts }) {
+export default function LinkInput({ folderNames, itemCountsInEachFolder }) {
   const [text, setText] = useState('');
   const [link, setLink] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
@@ -30,8 +30,8 @@ export default function LinkInput({ folders, counts }) {
           title='폴더에 추가'
           semiTitle={link}
           button='추가하기'
-          folders={folders}
-          counts={counts}
+          folders={folderNames}
+          counts={itemCountsInEachFolder}
           setVisible={setModalVisible}
         />
       )}

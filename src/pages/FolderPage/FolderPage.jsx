@@ -14,13 +14,13 @@ import DeleteIcon from '../../assets/images/delete_icon.png';
 import Modal from '../../components/Modal/Modal';
 
 export default function FolderPage() {
-  const [menus, setMenus] = useState();
+  const [folderNames, setFolderNames] = useState();
   const [folders, setFolders] = useState();
   const [currentFolder, setCurrentFolder] = useState({
     name: '전체',
   });
   const [items, setItems] = useState([]);
-  const [itemCount, setItemCount] = useState();
+  const [itemCountsInEachFolder, setItemCountsInEachFolder] = useState();
   const [addFolderModalVisible, setAddFolderModalVisible] = useState(false);
   const [shareFolderModalVisible, setShareFolderModalVisible] = useState(false);
   const [changeFolderNameModalVisible, setChangeFolderNameModalVisible] =
@@ -66,10 +66,10 @@ export default function FolderPage() {
   const handleLoadMenu = async () => {
     const data = await getFolders();
     setFolders(data);
-    const nextMenu = data.map((item) => item.name);
-    const nextItemCount = data.map((item) => item.link.count);
-    setMenus(nextMenu);
-    setItemCount(nextItemCount);
+    const nextFolderNames = data.map((item) => item.name);
+    const nextItemCounts = data.map((item) => item.link.count);
+    setFolderNames(nextFolderNames);
+    setItemCountsInEachFolder(nextItemCounts);
   };
 
   const handleLoadItems = useCallback(async () => {
@@ -92,24 +92,25 @@ export default function FolderPage() {
   return (
     <>
       <S.StyledTopWrap>
-        <LinkInput folders={menus} counts={itemCount} />
+        <LinkInput
+          folderNames={folderNames}
+          itemCountsInEachFolder={itemCountsInEachFolder}
+        />
       </S.StyledTopWrap>
       <SectionWrap>
         <Search />
         <S.MenuWrap>
           <S.MenuList>
             <MenuButton
-              item='전체'
-              value='전체'
               currentFolder={currentFolder}
+              folderName='전체'
               onClick={handleMenuButtonClick}
             />
-            {menus?.map((menu, index) => (
+            {folderNames?.map((folderName, index) => (
               <MenuButton
                 key={index}
                 currentFolder={currentFolder}
-                item={menu}
-                value={menu}
+                folderName={folderName}
                 onClick={handleMenuButtonClick}
               />
             ))}
@@ -134,7 +135,13 @@ export default function FolderPage() {
           </S.TitleWrap>
         )}
         {!items?.length && <S.NoData>저장된 링크가 없습니다</S.NoData>}
-        {items && <CardList items={items} />}
+        {items && (
+          <CardList
+            items={items}
+            folderNames={folderNames}
+            itemCountsInEachFolder={itemCountsInEachFolder}
+          />
+        )}
       </SectionWrap>
       {addFolderModalVisible && (
         <Modal
