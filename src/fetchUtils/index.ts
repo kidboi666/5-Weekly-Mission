@@ -14,7 +14,9 @@ export const fetchData = async () => {
     const { links } = folder;
     return { folderData: folder, cardListData: links };
   } catch (e) {
-    alert(e.message);
+    if (e instanceof Error) {
+      alert(e.message);
+    }
   }
 };
 
@@ -28,7 +30,9 @@ export const loginFetchData = async () => {
 
     return data;
   } catch (e) {
-    alert(e.message);
+    if (e instanceof Error) {
+      alert(e.message);
+    }
   }
 };
 
@@ -42,7 +46,9 @@ export const tabDataList = async () => {
 
     return data;
   } catch (e) {
-    alert(e.message);
+    if (e instanceof Error) {
+      alert(e.message);
+    }
   }
 };
 
@@ -60,11 +66,13 @@ export const userFoldersData = async () => {
 
     return data;
   } catch (e) {
-    alert(e.message);
+    if (e instanceof Error) {
+      alert(e.message);
+    }
   }
 };
 
-export const userFoldersTapData = async (id) => {
+export const userFoldersTapData = async (id: number | null) => {
   try {
     let response;
     id === null
@@ -82,6 +90,8 @@ export const userFoldersTapData = async (id) => {
 
     return data;
   } catch (e) {
-    alert(e.message);
+    if (e instanceof Error) {
+      alert(e.message);
+    }
   }
 };
