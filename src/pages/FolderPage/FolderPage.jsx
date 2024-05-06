@@ -27,8 +27,6 @@ export default function FolderPage() {
     useState(false);
   const [deleteFolderModalVisible, setDeleteFolderVisible] = useState(false);
 
-  console.log('test');
-
   const CONTROLS = [
     {
       name: '공유',
