@@ -15,10 +15,10 @@ interface UserFolderdataList {
   data: {
     id: number;
     createdAt: string;
-    description: string;
-    folderId: number;
-    title: string;
-    updatedAt: string;
+    description?: string;
+    folderId?: number;
+    title?: string;
+    updatedAt?: string;
     url: string;
     imageSource?: string;
   };
@@ -29,8 +29,7 @@ interface CardData {
   userFolderDataList?: UserFolderdataList;
 }
 
-function renderCardList(cardData: CardListData[] | UserFolderdataList["data"]) {
-  console.log(cardData);
+function renderCardList(cardData: CardListData[] | UserFolderdataList["data"][]) {
   return (
     <ul className="card-list">
       {Array.isArray(cardData) &&
