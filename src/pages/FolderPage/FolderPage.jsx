@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { SectionWrap } from '../Common.styled';
 import LinkInput from '../../components/LinkInput/LinkInput';
 import * as S from './FolderPage.styled';
-import { getFoldersItems, getFoldersMenu } from '../../api';
+import { getLinks, getFolders } from '../../api';
 import Search from '../../components/Search/Search';
 import CardList from '../../components/CardList/CardList';
 import MenuButton from '../../components/MenuButton/MenuButton';
@@ -64,7 +64,7 @@ export default function FolderPage() {
   };
 
   const handleLoadMenu = async () => {
-    const data = await getFoldersMenu();
+    const data = await getFolders();
     setFolders(data);
     const nextMenu = data.map((item) => item.name);
     const nextItemCount = data.map((item) => item.link.count);
@@ -73,7 +73,7 @@ export default function FolderPage() {
   };
 
   const handleLoadItems = useCallback(async () => {
-    const nextItems = await getFoldersItems(currentFolder.id);
+    const nextItems = await getLinks(currentFolder.id);
     setItems(nextItems);
   }, [currentFolder.id]);
 

@@ -1,15 +1,5 @@
 const BASIC_URL = 'https://bootcamp-api.codeit.kr';
 
-export async function getSharedList() {
-  const response = await fetch(`${BASIC_URL}/api/sample/folder`);
-  if (!response.ok) {
-    throw new Error('리스트를 불러오는데 실패했습니다.');
-  }
-  const body = await response.json();
-  const folder = body.folder;
-  return folder;
-}
-
 export async function getUser() {
   const response = await fetch(`${BASIC_URL}/api/users/1`);
   if (!response.ok) {
@@ -20,7 +10,7 @@ export async function getUser() {
   return data;
 }
 
-export async function getFoldersMenu() {
+export async function getFolders() {
   const response = await fetch(`${BASIC_URL}/api/users/1/folders`);
   if (!response.ok) {
     throw new Error('사용자 데이터를 불러오는데 실패했습니다.');
@@ -30,8 +20,8 @@ export async function getFoldersMenu() {
   return result;
 }
 
-export async function getFoldersItems(id) {
-  const queryParam = id === undefined ? '' : `?folderId=${id}`;
+export async function getLinks(folderId) {
+  const queryParam = folderId === undefined ? '' : `?folderId=${folderId}`;
   const response = await fetch(`${BASIC_URL}/api/users/1/links${queryParam}`);
   if (!response.ok) {
     throw new Error('사용자 데이터를 불러오는데 실패했습니다.');
