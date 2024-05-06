@@ -5,6 +5,10 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import FolderList from "../FolderList/FolderList";
 import "../Folder/FolderPage.css";
 import addImg from "../../assets/add.svg";
+import share from "../../assets/share.svg";
+import pen from "../../assets/pen.svg";
+import deleteIcon from "../../assets/delete.svg";
+import { Layout } from "../../sharing/ui-layout/Layout";
 
 function FolderPage() {
   const userdata = useUsersFolder();
@@ -17,7 +21,7 @@ function FolderPage() {
     setActiveButtonId(folderId);
   };
   return (
-    <div className="container">
+    <Layout isSticky={false}>
       <LinkBar />
       <SearchBar />
       <div className="folder-container">
@@ -45,19 +49,32 @@ function FolderPage() {
                 </div>
               ))}
           </div>
-          <div className="folder-btn-box">
-            <button className="folder-btn">폴더 추가</button>
-            <img src={addImg} alt="폴더 추가 이미지" />
+          <div className="add-btn-box">
+            <button className="add-btn">폴더 추가</button>
+            <img className="add-icon" src={addImg} alt="폴더 추가 이미지" />
           </div>
+          {activeButton !== "전체" ? (
+            <div className="btns-box">
+              <img src={share} alt="share" />
+              <button>공유</button>
+              <img src={pen} alt="pen" />
+              <button>이름 변경</button>
+              <img src={deleteIcon} alt="delete" />
+              <button>삭제</button>
+            </div>
+          ) : (
+            ""
+          )}
+
+          <span className="folder-name">{activeButton}</span>
         </div>
-        <span className="folder-name">{activeButton}</span>
         {activeButtonId === "" ? (
           <FolderList />
         ) : (
           <span className="no-link-msg">저장된 링크가 없습니다</span>
         )}
       </div>
-    </div>
+    </Layout>
   );
 }
 

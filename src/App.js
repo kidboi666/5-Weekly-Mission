@@ -1,15 +1,22 @@
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
-import "./App.css";
-import { Outlet } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/Home/HomePage";
+import SharedPage from "./pages/Shared/SharedPage";
+import FolderPage from "./pages/Folder/FolderPage";
+import "./styles/resets.css";
 
 function App() {
   return (
-    <div>
-      <Header />
-      <Outlet />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/shared">
+          <Route index element={<SharedPage />} />
+        </Route>
+        <Route path="/folder">
+          <Route index element={<FolderPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

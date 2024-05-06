@@ -8,6 +8,8 @@
 
 .folder-container {
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 2.4rem;
   width: 100%;
   max-width: 106rem;
@@ -16,11 +18,12 @@
 
 .toolbar-container {
   display: grid;
+  width: 100%;
   grid-template-areas:
     "folders folders add-button"
-    "folder-name buttons buttons";
+    "folder-name . buttons";
   justify-content: space-between;
-  gap: 1.2rem;
+  gap: 2.4rem;
 }
 
 .toolbar-box {
@@ -56,16 +59,28 @@
   font-size: 1.6rem;
 }
 
-.folder-btn-box {
+.add-btn-box {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  align-items: center;
   gap: 0.4rem;
   height: 3.5rem;
   grid-area: add-button;
 }
 
-.folder-btn {
+.add-btn {
   font-size: 1.6rem;
   font-weight: 500;
   color: #6d6afe;
+}
+
+.add-icon {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.btns-box {
+  display: flex;
+  justify-content: center;
+  grid-area: buttons;
 }

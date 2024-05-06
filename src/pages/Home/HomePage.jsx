@@ -1,8 +1,10 @@
+import { Layout } from "../../sharing/ui-layout/Layout";
+
 function HomePage() {
-  return(
-    <div>
+  return (
+    <Layout>
       <h1>Home</h1>
-    </div>
+    </Layout>
   );
 }
 
