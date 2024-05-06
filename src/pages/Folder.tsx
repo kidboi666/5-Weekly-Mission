@@ -13,10 +13,10 @@ interface UserFolderdataList {
   data: {
     id: number;
     createdAt: string;
-    description: string;
-    folderId: number;
-    title: string;
-    updatedAt: string;
+    description?: string;
+    folderId?: number;
+    title?: string;
+    updatedAt?: string;
     url: string;
     imageSource?: string;
   };
@@ -24,11 +24,11 @@ interface UserFolderdataList {
 
 function Folder() {
   const [folderTabDataList, setFolderTabDataList] = useState([]);
-  const [userFolderDataList, setUserFolderDataList] = useState<UserFolderdataList>();
+  const [userFolderDataList, setUserFolderDataList] = useState<UserFolderdataList[]>([]);
   const { isOpen, openModal, closeModal } = useModal();
   const [modalType, setModalType] = useState("add");
   const [cardUrl, setCardUrl] = useState("");
-  const [folderTabName, setFolderTabName] = useState("");
+  const [folderTabName, setFolderTabName] = useState<string | null>("");
 
   useEffect(() => {
     async function fetchDataAndSetState() {
