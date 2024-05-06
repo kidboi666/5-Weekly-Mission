@@ -1,0 +1,27 @@
+.kebab-container {
+  position: relative;
+}
+
+.kebab-popover {
+  background: #fff;
+  box-shadow: 0 0.2rem 0.8rem 0 rgba(51, 50, 54, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  row-gap: 0.2rem;
+  width: 10rem;
+  position: absolute;
+}
+
+.kebab-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  height: 3.1rem;
+  cursor: pointer;
+  &:hover {
+    background-color: #e7effb;
+    color: #6d6afe;
+  }
+}
