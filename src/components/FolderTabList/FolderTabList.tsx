@@ -33,7 +33,7 @@ interface UserFolderdataList {
 
 interface FolderTabListInterface {
   folderTabDataList: FolderTabDataList[];
-  setUserFolderDataList: (data: UserFolderdataList["data"][]) => void;
+  setUserFolderDataList: (data: UserFolderdataList[]) => void;
   setFolderTabName: (name: string | null) => void;
 }
 

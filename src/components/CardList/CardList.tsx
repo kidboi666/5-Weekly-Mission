@@ -11,7 +11,7 @@ interface CardListData {
   imageSource?: string;
 }
 
-interface UserFolderdataList {
+interface UserFolderCardDataList {
   data: {
     id: number;
     createdAt: string;
@@ -24,12 +24,7 @@ interface UserFolderdataList {
   };
 }
 
-interface CardData {
-  cardListData?: CardListData[];
-  userFolderDataList?: UserFolderdataList;
-}
-
-function renderCardList(cardData: CardListData[] | UserFolderdataList["data"][]) {
+function renderCardList(cardData: CardListData[] | UserFolderCardDataList["data"][]) {
   return (
     <ul className="card-list">
       {Array.isArray(cardData) &&
@@ -40,12 +35,17 @@ function renderCardList(cardData: CardListData[] | UserFolderdataList["data"][])
   );
 }
 
-function CardList({ cardListData, userFolderDataList }: CardData) {
+function CardList({
+  cardListData,
+  userFolderDataList,
+}: {
+  cardListData?: CardListData[];
+  userFolderDataList?: UserFolderCardDataList;
+}) {
   return (
     <>
       {cardListData && cardListData.length > 0 && renderCardList(cardListData)}
       {userFolderDataList &&
-        userFolderDataList.data &&
         Array.isArray(userFolderDataList.data) &&
         userFolderDataList.data.length > 0 &&
         renderCardList(userFolderDataList.data)}

@@ -20,8 +20,8 @@ interface FolderData {
   count: number;
 }
 
-function ConHeader({ folderData }: { folderData: FolderData }) {
-  const owner = folderData.owner;
+function ConHeader({ folderData }: { folderData: FolderData | null }) {
+  const owner = folderData?.owner;
 
   return (
     <div className="con-header-wrap">
@@ -29,7 +29,7 @@ function ConHeader({ folderData }: { folderData: FolderData }) {
         <img src={owner?.profileImageSource} alt="" />
         <h3>{owner?.name}</h3>
       </div>
-      <h2>{folderData.name}</h2>
+      <h2>{folderData?.name}</h2>
     </div>
   );
 }
