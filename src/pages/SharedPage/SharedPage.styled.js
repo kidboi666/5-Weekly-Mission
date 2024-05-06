@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const StyledTitle = styled.h2`
+export const Title = styled.h2`
   font-size: 40px;
   font-weight: 600;
 
@@ -9,7 +9,7 @@ export const StyledTitle = styled.h2`
   }
 `;
 
-export const StyledList = styled.ul`
+export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 20px;

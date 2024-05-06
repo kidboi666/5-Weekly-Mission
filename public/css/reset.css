@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Pretendard";
+  font-family: 'Pretendard';
 }
 
 a {
@@ -29,10 +29,4 @@ img {
 
 address {
   font-style: normal;
-}
-
-#root {
-  position: relative;
-  min-height: 100vh;
-  padding-bottom: 160px;
 }

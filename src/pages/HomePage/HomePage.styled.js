@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const StyledWrap = styled.div`
+export const Wrap = styled.div`
   display: flex;
   justify-content: center;
   gap: 50px;

@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const StyledThumnail = styled.img`
+export const Thumnail = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -8,7 +8,7 @@ export const StyledThumnail = styled.img`
   transition: transform 0.2s;
 `;
 
-export const StyledCard = styled.li`
+export const Card = styled.li`
   position: relative;
   width: calc((100% - 40px) / 3);
   border-radius: 15px;
@@ -17,9 +17,9 @@ export const StyledCard = styled.li`
   transition: background-color 0.2s;
 
   &:hover {
-    background-color: var(--background-color);
+    background-color: var(--Linkbrary-bg);
   }
-  &:hover ${StyledThumnail} {
+  &:hover ${Thumnail} {
     transform: scale(1.3);
   }
 
@@ -32,7 +32,7 @@ export const StyledCard = styled.li`
   }
 `;
 
-export const StyledThumnailWrap = styled.div`
+export const ThumnailWrap = styled.div`
   width: 100%;
   height: 200px;
   overflow: hidden;
@@ -42,30 +42,52 @@ export const StyledThumnailWrap = styled.div`
   }
 `;
 
-export const StyledTextWrap = styled.div`
+export const TextWrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 15px 20px;
 `;
 
-export const StyledTextTopWrap = styled.div`
+export const TextTopWrap = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-export const StyledDateAgo = styled.p`
+export const DateAgo = styled.p`
   font-size: 13px;
   font-weight: 400;
   color: #666666;
 `;
 
-export const StyledKebab = styled.button`
+export const Kebab = styled.button`
   width: 21px;
 `;
 
-export const StyledTitle = styled.h2`
+export const KebabModal = styled.div`
+  position: absolute;
+  top: 17px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  background: var(--gray-light-gray-00, #fff);
+  box-shadow: 0px 2px 8px 0px rgba(51, 50, 54, 0.1);
+
+  & button {
+    width: 100%;
+    padding: 7px 0;
+  }
+
+  & button:hover {
+    background: var(--Linkbrary-gray10);
+    color: var(--Linkbrary-primary);
+  }
+`;
+
+export const Title = styled.h2`
   font-size: 16px;
   font-weight: 400;
   color: #000000;
@@ -80,13 +102,13 @@ export const StyledTitle = styled.h2`
   -webkit-box-orient: vertical;
 `;
 
-export const StyledDate = styled.p`
+export const Date = styled.p`
   font-size: 14px;
   font-weight: 400;
   color: #333333;
 `;
 
-export const StyleStar = styled.button`
+export const Star = styled.button`
   position: absolute;
   top: 15px;
   right: 15px;

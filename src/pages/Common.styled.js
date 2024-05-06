@@ -1,12 +1,12 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const StyledTopWrap = styled.div`
+export const TopWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
   padding: 20px 33px 60px;
-  background-color: var(--background-color);
+  background-color: var(--Linkbrary-bg);
 
   @media (max-width: 767px) {
     gap: 10px;
@@ -14,7 +14,7 @@ export const StyledTopWrap = styled.div`
   }
 `;
 
-export const StyledSectionWrap = styled.section`
+export const SectionWrap = styled.section`
   max-width: 1060px;
   margin: 0 auto;
   padding: 0 32px 100px;

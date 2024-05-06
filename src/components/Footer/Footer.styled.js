@@ -1,12 +1,12 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const StyledFooter = styled.footer`
+export const Footer = styled.footer`
   position: absolute;
   bottom: 0;
   width: 100%;
   padding: 32px 104px 108px;
-  background-color: var(--black-color);
-  font-family: "Arial", sans-serif;
+  background-color: var(--Linkbrary-black);
+  font-family: 'Arial', sans-serif;
   font-size: 1rem;
 
   @media (max-width: 767px) {
@@ -15,7 +15,7 @@ export const StyledFooter = styled.footer`
   }
 `;
 
-export const StyledInner = styled.div`
+export const Inner = styled.div`
   display: flex;
   justify-content: space-between;
   max-width: 1712px;
@@ -26,7 +26,7 @@ export const StyledInner = styled.div`
   }
 `;
 
-export const StyledAddress = styled.address`
+export const Address = styled.address`
   flex-basis: 120px;
   color: #676767;
 
@@ -37,7 +37,7 @@ export const StyledAddress = styled.address`
   }
 `;
 
-export const StyledNavList = styled.ul`
+export const NavList = styled.ul`
   display: flex;
   gap: 30px;
   color: #cfcfcf;
@@ -48,7 +48,7 @@ export const StyledNavList = styled.ul`
   }
 `;
 
-export const StyledSnsList = styled.ul`
+export const SnsList = styled.ul`
   flex-basis: 120px;
   display: flex;
   gap: 12px;
