@@ -23,8 +23,8 @@ export function Sorting({
   };
 
   useEffect(() => {
-    onChangeName(selectedId);
-  }, [selectedId, folders, setName]);
+    onChangeName(selectedId); // eslint-disable-next-line
+  }, [selectedId]);
 
   const onChangeName = (id) => {
     const nameById = id ? folders.find((item) => item.id === id)?.name : "전체";
