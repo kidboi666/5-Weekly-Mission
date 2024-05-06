@@ -44,6 +44,28 @@ input:focus {
     outline: none;
 }
 
+.close_btn {
+    cursor: pointer;
+}
+
+.search_result {
+    width: 90%;
+    height: 38px;
+    margin: 40px 0;
+}
+
+.search_result_keyword {
+    font-weight: 600;
+    font-size: 32px;
+    color: #373740;
+}
+
+.search_result_txt {
+    font-weight: 600;
+    font-size: 32px;
+    color: #9fa6b2;
+}
+
 .main_btn_div {
     width: 90%;
     height: auto;
