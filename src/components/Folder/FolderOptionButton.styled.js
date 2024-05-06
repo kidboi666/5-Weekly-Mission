@@ -17,6 +17,14 @@ export const OptionBox = styled.div`
   align-items: center;
   gap: 4px;
   cursor: pointer;
+  padding: 5px 8px;
+  border-radius: 8px;
+  transition: color 0.3s, background 0.3s;
+
+  &:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+  }
 `;
 
 export const SelectedFolder = styled.h1`
@@ -38,4 +46,12 @@ export const FolderOptionButtonLayout = styled.div`
   @media (max-width: 767px) {
     width: 100%;
   }
+`;
+
+export const ToastContainer = styled.div`
+  position: fixed;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 70;
 `;

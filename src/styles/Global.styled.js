@@ -76,7 +76,6 @@ a {
   --gray4-color: #e7effb;
   --gray5-color: #f0f6ff;
 }
-
 `;
 
 export default GlobalStyle;

@@ -2,12 +2,13 @@ import { useCallback, useEffect, useState } from 'react';
 import { getAllLinksRequest, getLinksRequest } from '../../api';
 import * as S from './Folder.styled';
 import useAsync from '../../hooks/useAsync';
-import FolderSelectButton from './FolderSelectButton.styled';
 import FolderOptionButton from './FolderOptionButton';
+import Button from '../Button/Button';
+import Modal from '../Modal/Modal';
 
-const AllItems = ({ setLinks, onClick, currentFolder }) => {
+const ItemList = ({ setLinks, onClick, currentFolder }) => {
   const { requestFunction: getAllLinks } = useAsync(getAllLinksRequest);
-  const isActive = currentFolder === '전체' ? true : false;
+  const isActive = currentFolder === '전체';
 
   const getLinks = useCallback(async () => {
     const result = await getAllLinks();
@@ -27,15 +28,18 @@ const AllItems = ({ setLinks, onClick, currentFolder }) => {
   }, [onChangeFolder]);
 
   return (
-    <FolderSelectButton $isActive={isActive} onClick={onChangeFolder}>
-      전체
-    </FolderSelectButton>
+    <Button
+      variant={'folderButton'}
+      isActive={isActive}
+      onClick={onChangeFolder}
+      text={'전체'}
+    />
   );
 };
 
 const Item = ({ folder, onClick, setLinks, currentFolder }) => {
   const { requestFunction: getFolderLink } = useAsync(getLinksRequest);
-  const isActive = folder.name === currentFolder ? true : false;
+  const isActive = folder.name === currentFolder;
 
   const getLinks = useCallback(
     async (id) => {
@@ -50,49 +54,58 @@ const Item = ({ folder, onClick, setLinks, currentFolder }) => {
 
   const onChangeFolder = () => {
     getLinks(folder.id);
-    onClick(folder.name);
+    onClick(folder.name, folder.id);
   };
 
   return (
-    <FolderSelectButton $isActive={isActive} onClick={onChangeFolder}>
-      {folder.name}
-    </FolderSelectButton>
+    <Button
+      variant={'folderButton'}
+      isActive={isActive}
+      onClick={onChangeFolder}
+      text={folder.name}
+    />
   );
 };
 
-const Folder = ({ folders, setLinks }) => {
+const Folder = ({ folderList, setLinks }) => {
   const [folder, setFolder] = useState('');
   const [currentFolder, setCurrentFolder] = useState('');
+  const [currentFolderId, setCurrentFolderId] = useState(0);
+  const [isModalTrigger, setModalTrigger] = useState(false);
 
-  const onChangeFolderTitle = useCallback((value) => {
+  const onChangeFolderTitle = useCallback((value, id) => {
     setFolder(value);
     setCurrentFolder(value);
+    setCurrentFolderId(id);
   }, []);
 
   return (
     <S.FolderLayout>
       <S.FolderContainer>
         <S.FolderBox>
-          <AllItems
+          <ItemList
             currentFolder={currentFolder}
             setLinks={setLinks}
             onClick={onChangeFolderTitle}
           />
-          {folders.map((item) => (
+          {folderList.map((folderItem) => (
             <Item
               currentFolder={currentFolder}
-              key={item.id}
-              folder={item}
+              key={folderItem.id}
+              folder={folderItem}
               onClick={onChangeFolderTitle}
               setLinks={setLinks}
             />
           ))}
         </S.FolderBox>
-        <div>
-          <S.AddButton>폴더 추가 +</S.AddButton>
+        <div onClick={() => setModalTrigger((prev) => !prev)}>
+          <Button variant={'addFolder'} text='폴더 추가' />
         </div>
       </S.FolderContainer>
-      <FolderOptionButton folderTitle={folder} />
+      <FolderOptionButton folderTitle={folder} folderId={currentFolderId} />
+      {isModalTrigger && (
+        <Modal variant='addFolder' closeModal={setModalTrigger} />
+      )}
     </S.FolderLayout>
   );
 };
