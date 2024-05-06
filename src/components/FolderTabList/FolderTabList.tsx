@@ -1,3 +1,4 @@
+import React from "react";
 import { useCallback, useState } from "react";
 import { userFoldersTapData } from "../../fetchUtils";
 
@@ -6,12 +7,46 @@ import Button from "./Button";
 import CardTitleIcon from "../CardTitleIcon/CardTitleIcon";
 import FolderAddButton from "./FolderAddButton";
 
-function FolderTabList({ folderTabDataList, setUserFolderDataList, setFolderTabName }) {
-  const [buttonClass, setButtonClass] = useState(null);
-  const [name, setName] = useState(null);
+interface FolderTabDataList {
+  id: number;
+  createdAt: string;
+  favorite: boolean;
+  link: {
+    count: number;
+  };
+  name: string;
+  user_id: number;
+}
+
+interface UserFolderdataList {
+  data: {
+    id: number;
+    createdAt: string;
+    description?: string;
+    folderId?: number;
+    title?: string;
+    updatedAt?: string;
+    url: string;
+    imageSource?: string;
+  };
+}
+
+interface FolderTabListInterface {
+  folderTabDataList: FolderTabDataList[];
+  setUserFolderDataList: (data: UserFolderdataList["data"][]) => void;
+  setFolderTabName: (name: string | null) => void;
+}
+
+function FolderTabList({
+  folderTabDataList,
+  setUserFolderDataList,
+  setFolderTabName,
+}: FolderTabListInterface) {
+  const [buttonClass, setButtonClass] = useState<number | null>(null);
+  const [name, setName] = useState<string | null>(null);
 
   const onClickButton = useCallback(
-    async (id, name) => {
+    async (id: number | null, name: string | null) => {
       setButtonClass(id);
       setName(name);
       setFolderTabName(name);
@@ -19,7 +54,9 @@ function FolderTabList({ folderTabDataList, setUserFolderDataList, setFolderTabN
         const data = await userFoldersTapData(id);
         setUserFolderDataList(data);
       } catch (e) {
-        alert(e.message);
+        if (e instanceof Error) {
+          alert(e.message);
+        }
       }
     },
     [setUserFolderDataList, setFolderTabName]
