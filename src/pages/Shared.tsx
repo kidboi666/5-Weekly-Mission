@@ -35,11 +35,11 @@ interface CardListData {
 
 interface FetchSharedResponse {
   cardListData: CardListData[];
-  folderData: FolderData[];
+  folderData: FolderData;
 }
 
 function Shared() {
-  const [folderData, setFolderData] = useState<FolderData[]>([]);
+  const [folderData, setFolderData] = useState<FolderData | null>(null);
   const [cardListData, setCardListData] = useState<CardListData[]>([]);
 
   useEffect(() => {
