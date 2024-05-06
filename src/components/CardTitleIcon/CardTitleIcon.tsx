@@ -1,3 +1,4 @@
+import React from "react";
 import "./CardTitleIcon.css";
 import shareIcon from "../../assets/svg/share.svg";
 import penIcon from "../../assets/svg/pen.svg";
@@ -7,7 +8,7 @@ import ModalContext from "../Modal/ModalContext";
 import { useContext } from "react";
 
 function CardTitleIcon() {
-  const { setModalType, openModal } = useContext(ModalContext);
+  const { setModalType, openModal } = useContext(ModalContext)!;
 
   const cardTitleIcon = [
     {
