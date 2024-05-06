@@ -21,7 +21,7 @@ interface RenderModalType {
   modalTypeLabels?: Record<string, string>;
   folderTabDataList: UserFolderdataList["data"][];
   cardUrl: string;
-  folderTabName: string;
+  folderTabName: string | null;
 }
 
 function renderModal(
@@ -29,7 +29,7 @@ function renderModal(
   modalTypeLabels: Record<string, string>,
   folderTabDataList: UserFolderdataList["data"][],
   cardUrl: string,
-  folderTabName: string
+  folderTabName: string | null
 ) {
   return (
     (modalType === "add" && (

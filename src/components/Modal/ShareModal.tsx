@@ -6,7 +6,7 @@ import LinkIco from "../../assets/icon/share-link-ico.png";
 interface ShareModalType {
   modalType: string;
   modalTypeLabels?: Record<string, string>;
-  folderTabName: string;
+  folderTabName: string | null;
 }
 
 function ShareModal({ modalTypeLabels, modalType, folderTabName }: ShareModalType) {
