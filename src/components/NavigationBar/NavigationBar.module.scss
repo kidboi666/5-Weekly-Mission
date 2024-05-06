@@ -1,0 +1,17 @@
+@import "/src/styles/global.scss";
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 20rem;
+  background: $color-light-blue;
+
+  @include tablet {
+    padding: 2rem 4rem;
+  }
+
+  @include mobile {
+    padding: 2rem 6rem;
+  }
+}

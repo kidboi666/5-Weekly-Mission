@@ -14,7 +14,7 @@ export const TIME_IN_MILLISECONDS = {
   year,
 };
 
-export const Time = (createdAt) => {
+export const time = (createdAt) => {
   const now = new Date();
   const createdAtDate = new Date(createdAt);
   const elapsedTime = now - createdAtDate;

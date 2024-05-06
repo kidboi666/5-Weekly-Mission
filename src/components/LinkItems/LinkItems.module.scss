@@ -1,0 +1,30 @@
+@import "/src/styles/global.scss";
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  @include font(1.2rem, $color-black, 600);
+}
+
+.title {
+  height: 3.6rem;
+}
+
+.items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.button {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.text {
+  @include font(1.4rem, $color-gray60, 600);
+}

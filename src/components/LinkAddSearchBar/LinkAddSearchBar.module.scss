@@ -1,0 +1,48 @@
+@import "/src/styles/global.scss";
+
+.container {
+  padding: 8rem 40rem 10rem;
+  background: $color-light-blue;
+
+  @include tablet {
+    padding: 8rem 4rem 10rem;
+  }
+
+  @include mobile {
+    padding: 8rem 6rem 10rem;
+  }
+}
+
+.searchBar-block {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 1.25rem;
+
+  border-radius: 0.9375rem;
+  border: 1px solid $color-primary;
+  background: $color-white;
+  border-radius: 1rem;
+}
+
+.link-block {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.input-text {
+  width: 100%;
+  padding: 2rem 0;
+  @include font(1.4rem, $color-gray60, 400);
+}
+
+.button-text {
+  padding: 1rem 1.5rem;
+  margin-left: 1rem;
+  background: $color-linear-gradient;
+  border-radius: 1rem;
+  @include font(1.4rem, $color-white, 600);
+}

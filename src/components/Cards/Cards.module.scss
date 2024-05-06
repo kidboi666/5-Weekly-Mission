@@ -1,0 +1,95 @@
+@import "/src/styles/global.scss";
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  box-shadow: $card-box-shadow;
+}
+
+.card-image-block {
+  width: 100%;
+  height: 20rem;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  overflow: hidden;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+
+  // 크기가 안 맞는 이미지를 위해 cover 추가
+  object-fit: cover;
+  transition: all 0.2s linear;
+  padding: 0;
+  margin: 0;
+
+  &:hover {
+    transform: scale(1.4);
+  }
+}
+
+.card-block {
+  width: 100%;
+  height: 12rem;
+  padding: 1.5rem;
+  background-color: $color-white;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+.time-text {
+  @include font(1.2rem, $color-text-content-gray, 400);
+}
+
+.center-text {
+  margin: 1rem 0;
+  height: 5.5rem;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  text-overflow: ellipsis;
+
+  @include font(1.4rem, $color-black, 400);
+}
+
+.date-text {
+  @include font(1.2rem, $color-text-content-black, 400);
+}
+
+.star-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.kebab-icon {
+  position: absolute;
+  bottom: 10.4rem;
+  right: 1rem;
+}
+
+.kebab-menu {
+  z-index: 1;
+  position: absolute;
+  bottom: 3.8rem;
+  right: -4.8rem;
+
+  display: flex;
+  flex-direction: column;
+
+  background: $color-white;
+  box-shadow: $menu-box-shadow;
+}
+
+.kebab-option {
+  padding: 0.8rem 1rem;
+
+  @include font(1.4rem, $color-gray100, 400);
+
+  &:hover {
+    background: $color-gray10;
+    @include font(1.4rem, $color-primary, 400);
+  }
+}

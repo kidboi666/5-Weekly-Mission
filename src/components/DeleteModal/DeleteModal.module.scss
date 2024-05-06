@@ -1,0 +1,69 @@
+@import "/src/styles/global.scss";
+
+.container {
+  z-index: 4;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $modal-gray;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transform: translate(-50%, -50%);
+  gap: 1.5rem;
+
+  padding: 2.2rem 2.5rem;
+
+  width: 25rem;
+  height: 15rem;
+
+  border-radius: 0.9375rem;
+  border: 1px solid $color-gray-light;
+  background: $color-white;
+
+  h2 {
+    @include font(1.5rem, $color-gray100, 700);
+  }
+
+  button {
+    display: flex;
+    width: 100%;
+    padding: 1rem 1.25rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+
+    border-radius: 0.5rem;
+    background: $color-red;
+
+    @include font(1.2rem, $color-gray-light, 600);
+  }
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.8rem;
+
+  @include font(1.2rem, $color-gray60, 400);
+
+  p {
+    width: 20rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+  }
+}
