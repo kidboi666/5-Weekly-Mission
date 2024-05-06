@@ -1,32 +1,27 @@
-import { useState, useEffect } from "react";
+import { useCallback, useState } from "react";
 
-export function useAsync(asyncFuction) {
-  const [data, setData] = useState(null);
+function useAsync(asyncFuction) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [data, setData] = useState(null);
 
-  const wrappedFuction = async () => {
-    setData(null);
-    setLoading(true);
-    setError(null);
-
-    try {
-      const response = await asyncFuction();
-      if (response.ok) {
-        const data = await response.json();
-        setData(data);
+  const wrappedFunction = useCallback(
+    async (...args) => {
+      setLoading(true);
+      setError(null);
+      setData(null);
+      try {
+        return await asyncFuction(...args);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+    },
+    [asyncFuction]
+  );
 
-  useEffect(() => {
-    wrappedFuction(data, loading, error);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  return { data, loading, error };
+  return [loading, error, data, wrappedFunction];
 }
+
+export default useAsync;

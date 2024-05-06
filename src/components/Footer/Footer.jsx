@@ -1,9 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import FacebookLogo from "../../assets/facebook.svg";
-import TwitterLogo from "../../assets/twitter.svg";
-import YoutubeLogo from "../../assets/youtube.svg";
-import InstagramLogo from "../../assets/instagram.svg";
+
 import "../Footer/Footer.css";
+import footerLogoList from "./constant";
 
 function Footer() {
   return (
@@ -15,10 +13,16 @@ function Footer() {
           <a>FAQ</a>
         </div>
         <div className="footer-logos">
-          <img src={FacebookLogo} alt="facebook-logo" />
-          <img src={TwitterLogo} alt="twitter-logo" />
-          <img src={YoutubeLogo} alt="youtube-logo" />
-          <img src={InstagramLogo} alt="instagram-logo" />
+          {footerLogoList.map((item) => (
+            <a
+              href={item.link}
+              rel="noreferrer"
+              target="_blank"
+              key={item.name}
+            >
+              <img src={item.url} alt={item.name} />
+            </a>
+          ))}
         </div>
       </div>
     </div>
