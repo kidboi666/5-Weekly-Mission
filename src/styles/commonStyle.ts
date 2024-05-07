@@ -2,7 +2,6 @@
 
 import styled, { css } from "styled-components";
 import { theme } from "./theme";
-import { NavLink } from "react-router-dom";
 
 // ====  정렬  =====
 
@@ -49,6 +48,12 @@ export const TitleMs = styled.h3`
       line-height: 1.79rem;
   }
 `
+export const ModlaTitle = styled.h2`
+  font-size: ${theme.font.l};
+  font-weight: 700;
+  text-align: center;
+`
+
 export const SubTitle = styled.h3`
   font-size: 1.5rem;
   line-height: 1.8125rem;
