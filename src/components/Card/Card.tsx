@@ -24,9 +24,11 @@ export default function Card({
   itemCountsInEachFolder,
 }: Props) {
   const { createdAt, url, title, imageSource } = item;
-  const [KebabModalVisible, setKebabModalVisible] = useState(false);
-  const [deleteCardModalVisible, setDeleteCardModalVisible] = useState(false);
-  const [addInFolderModalVisible, setAddInFolderModalVisible] = useState(false);
+  const [isVisibleKebabModal, setIsVisibleKebabModal] = useState(false);
+  const [isVisibledeleteCardModal, setIsVisibleDeleteCardModal] =
+    useState(false);
+  const [isVisibleAddInFolderModal, setIsVisibleAddInFolderModal] =
+    useState(false);
 
   const dateBetween = formatDateToAgo(createdAt);
   const date = formatDateToString(createdAt);
@@ -45,16 +47,16 @@ export default function Card({
   };
   const handleKebabClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    setKebabModalVisible(!KebabModalVisible);
+    setIsVisibleKebabModal(!isVisibleKebabModal);
   };
 
   const handleDeleteButtonClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    setDeleteCardModalVisible(true);
+    setIsVisibleDeleteCardModal(true);
   };
   const handleAddFolderButtonClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    setAddInFolderModalVisible(true);
+    setIsVisibleAddInFolderModal(true);
   };
 
   return (
@@ -74,7 +76,7 @@ export default function Card({
               <S.Kebab onClick={handleKebabClick}>
                 <img src={kebab} alt='더보기' />
               </S.Kebab>
-              {KebabModalVisible && (
+              {isVisibleKebabModal && (
                 <S.KebabModal>
                   <button onClick={handleDeleteButtonClick}>삭제하기</button>
                   <button onClick={handleAddFolderButtonClick}>
@@ -91,22 +93,22 @@ export default function Card({
           </S.Star>
         </Link>
       </S.Card>
-      {deleteCardModalVisible && (
+      {isVisibledeleteCardModal && (
         <Modal
           title='링크 삭제'
           semiTitle={url}
           button='삭제하기'
-          setVisible={setDeleteCardModalVisible}
+          onClose={setIsVisibleDeleteCardModal}
         />
       )}
-      {addInFolderModalVisible && (
+      {isVisibleAddInFolderModal && (
         <Modal
           title='폴더에 추가'
           semiTitle={url}
           folders={folderNames}
           counts={itemCountsInEachFolder}
           button='추가하기'
-          setVisible={setAddInFolderModalVisible}
+          onClose={setIsVisibleAddInFolderModal}
         />
       )}
     </>

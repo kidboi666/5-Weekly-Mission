@@ -11,19 +11,19 @@ import shareKakao from '../../apis/shareKakao';
  * @param {string} title - '폴더 이름 변경' / '폴더 추가'
  * @param {string} input - 폴더 명 / undefined
  * @param {string} button - '변경하기' / '추가하기'
- * @param {function} setVisible - 모달을 열고 닫을 수 있는 setter 함수
+ * @param {function} onClose - 모달을 열고 닫을 수 있는 setter 함수
  *
  * 2. 폴더 공유
  * @param {string} title - '폴더 공유'
  * @param {string} semiTitle - 폴더 name
  * @param {number} folderId - 폴더 id
- * @param {function} setVisible - 모달을 열고 닫을 수 있는 setter 함수
+ * @param {function} onClose - 모달을 열고 닫을 수 있는 setter 함수
  *
  * 3. 폴더 삭제, 링크 삭제
  * @param {string} title - '폴더 삭제' / '링크 삭제'
  * @param {string} semiTitle - 폴더 name / link url
  * @param {string} button - '삭제하기'
- * @param {function} setVisible - 모달을 열고 닫을 수 있는 setter 함수
+ * @param {function} onClose - 모달을 열고 닫을 수 있는 setter 함수
  *
  * 4. 폴더에 추가
  * @param {string} title - '폴더에 추가'
@@ -31,7 +31,7 @@ import shareKakao from '../../apis/shareKakao';
  * @param {string[]} folders - 폴더 name 배열
  * @param {number[]} counts - 각 폴더별 아이템 개수 배열
  * @param {string} button - '추가하기'
- * @param {function} setVisible - 모달을 열고 닫을 수 있는 setter 함수
+ * @param {function} onClose - 모달을 열고 닫을 수 있는 setter 함수
  */
 
 interface Props {
@@ -42,7 +42,7 @@ interface Props {
   folderId?: number;
   folders?: string[];
   counts?: number[];
-  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  onClose: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function Modal({
@@ -53,14 +53,14 @@ export default function Modal({
   folderId,
   folders,
   counts,
-  setVisible,
+  onClose,
 }: Props) {
   const [text, setText] = useState(input);
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
   const handleCloseClick = () => {
-    setVisible(false);
+    onClose(false);
   };
 
   const SHARES = [

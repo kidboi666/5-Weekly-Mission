@@ -5,11 +5,11 @@ import Modal from '../Modal/Modal';
 export default function LinkInput({ folderNames, itemCountsInEachFolder }) {
   const [text, setText] = useState('');
   const [link, setLink] = useState('');
-  const [modalVisible, setModalVisible] = useState(false);
+  const [isVisibleModal, setIsVisibleModal] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
     setLink(text);
-    setModalVisible(true);
+    setIsVisibleModal(true);
   };
   const handleChange = (e) => {
     setText(e.target.value);
@@ -25,14 +25,14 @@ export default function LinkInput({ folderNames, itemCountsInEachFolder }) {
         />
         <S.StyledButton text='추가하기' type='submit' />
       </S.Form>
-      {modalVisible && (
+      {isVisibleModal && (
         <Modal
           title='폴더에 추가'
           semiTitle={link}
           button='추가하기'
           folders={folderNames}
           counts={itemCountsInEachFolder}
-          setVisible={setModalVisible}
+          onClose={setIsVisibleModal}
         />
       )}
     </>

@@ -21,32 +21,34 @@ export default function FolderPage() {
   });
   const [items, setItems] = useState([]);
   const [itemCountsInEachFolder, setItemCountsInEachFolder] = useState();
-  const [addFolderModalVisible, setAddFolderModalVisible] = useState(false);
-  const [shareFolderModalVisible, setShareFolderModalVisible] = useState(false);
-  const [changeFolderNameModalVisible, setChangeFolderNameModalVisible] =
+  const [isVisibleAddFolderModal, setIsVisibleAddFolderModal] = useState(false);
+  const [isVisibleShareFolderModal, setIsVisibleShareFolderModal] =
     useState(false);
-  const [deleteFolderModalVisible, setDeleteFolderVisible] = useState(false);
+  const [isVisibleChangeFolderNameModal, setIsVisibleChangeFolderNameModal] =
+    useState(false);
+  const [isVisibleDeleteFolderModal, setIsVisibleDeleteFolder] =
+    useState(false);
 
   const CONTROLS = [
     {
       name: '공유',
       icon: ShareIcon,
       onClick: () => {
-        setShareFolderModalVisible(true);
+        setIsVisibleShareFolderModal(true);
       },
     },
     {
       name: '이름 변경',
       icon: PenIcon,
       onClick: () => {
-        setChangeFolderNameModalVisible(true);
+        setIsVisibleChangeFolderNameModal(true);
       },
     },
     {
       name: '삭제',
       icon: DeleteIcon,
       onClick: () => {
-        setDeleteFolderVisible(true);
+        setIsVisibleDeleteFolder(true);
       },
     },
   ];
@@ -78,7 +80,7 @@ export default function FolderPage() {
   }, [currentFolder.id]);
 
   const handleAddFolderButtonClick = () => {
-    setAddFolderModalVisible(true);
+    setIsVisibleAddFolderModal(true);
   };
 
   useEffect(() => {
@@ -143,36 +145,36 @@ export default function FolderPage() {
           />
         )}
       </SectionWrap>
-      {addFolderModalVisible && (
+      {isVisibleAddFolderModal && (
         <Modal
           title='폴더 추가'
           input
           button='추가하기'
-          setVisible={setAddFolderModalVisible}
+          onClose={setIsVisibleAddFolderModal}
         />
       )}
-      {shareFolderModalVisible && (
+      {isVisibleShareFolderModal && (
         <Modal
           title='폴더 공유'
           semiTitle={currentFolder.name}
           folderId={currentFolder.id}
-          setVisible={setShareFolderModalVisible}
+          onClose={setIsVisibleShareFolderModal}
         />
       )}
-      {changeFolderNameModalVisible && (
+      {isVisibleChangeFolderNameModal && (
         <Modal
           title='폴더 이름 변경'
           input={currentFolder.name}
           button='변경하기'
-          setVisible={setChangeFolderNameModalVisible}
+          onClose={setIsVisibleChangeFolderNameModal}
         />
       )}
-      {deleteFolderModalVisible && (
+      {isVisibleDeleteFolderModal && (
         <Modal
           title='폴더 삭제'
           semiTitle={currentFolder.name}
           button='삭제하기'
-          setVisible={setDeleteFolderVisible}
+          onClose={setIsVisibleDeleteFolder}
         />
       )}
     </>
