@@ -1,5 +1,7 @@
+import React from 'react';
+
 export default function shareKakao(
-  e: Event,
+  e: React.MouseEvent,
   folderName: string,
   folderId: number
 ) {
@@ -11,13 +13,12 @@ export default function shareKakao(
   Kakao.cleanup();
   Kakao.init('d433130307621ad24713cbacf6a9f93b');
 
-  const shareKakao = (e: Event) => {
+  const shareKakao = (e: React.MouseEvent) => {
     Kakao.Share.sendDefault({
       objectType: 'feed',
       content: {
         title: folderName,
         description: `${folderName} 폴더 페이지입니다.`,
-        //   imageUrl: ,
         link: {
           mobileWebUrl: url,
           webUrl: url,

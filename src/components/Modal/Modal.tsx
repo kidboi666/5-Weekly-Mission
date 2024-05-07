@@ -9,7 +9,7 @@ import shareKakao from '../../apis/shareKakao';
 /**
  * 1. 폴더 이름 변경, 폴더 추가
  * @param {string} title - '폴더 이름 변경' / '폴더 추가'
- * @param {null} input
+ * @param {string} input - 폴더 명 / undefined
  * @param {string} button - '변경하기' / '추가하기'
  * @param {function} setVisible - 모달을 열고 닫을 수 있는 setter 함수
  *
@@ -28,11 +28,23 @@ import shareKakao from '../../apis/shareKakao';
  * 4. 폴더에 추가
  * @param {string} title - '폴더에 추가'
  * @param {string} semiTitle - link url
- * @param {array} folders - 폴더 name 배열
- * @param {array} counts - 각 폴더별 아이템 개수 배열
+ * @param {string[]} folders - 폴더 name 배열
+ * @param {number[]} counts - 각 폴더별 아이템 개수 배열
  * @param {string} button - '추가하기'
  * @param {function} setVisible - 모달을 열고 닫을 수 있는 setter 함수
  */
+
+interface Props {
+  title: string;
+  semiTitle?: string;
+  input?: string | undefined;
+  button?: string;
+  folderId?: number;
+  folders?: string[];
+  counts?: number[];
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 export default function Modal({
   title,
   semiTitle,
@@ -42,9 +54,9 @@ export default function Modal({
   folders,
   counts,
   setVisible,
-}) {
-  const [text, setText] = useState(input !== true ? input : '');
-  const handleTextChange = (e) => {
+}: Props) {
+  const [text, setText] = useState(input);
+  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
   const handleCloseClick = () => {
@@ -55,8 +67,10 @@ export default function Modal({
     {
       name: '카카오톡',
       imageSrc: KakaotalkIcon,
-      onClick: (e) => {
-        shareKakao(e, semiTitle, folderId);
+      onClick: (e: React.MouseEvent) => {
+        if (semiTitle && folderId) {
+          shareKakao(e, semiTitle, folderId);
+        }
       },
     },
     {

@@ -4,11 +4,25 @@ import { formatDateToString, formatDateToAgo } from '../../utils/date';
 import { Link } from 'react-router-dom';
 import * as S from './Card.styled';
 import star from '../../assets/images/star_icon.png';
-// import starActive from "../../assets/star_active_icon.png";
 import kebab from '../../assets/images/kebab_icon.png';
 import Modal from '../Modal/Modal';
 
-export default function Card({ item, folderNames, itemCountsInEachFolder }) {
+interface Props {
+  item: {
+    createdAt: string;
+    url: string;
+    title: string;
+    imageSource: string;
+  };
+  folderNames: string[];
+  itemCountsInEachFolder: number[];
+}
+
+export default function Card({
+  item,
+  folderNames,
+  itemCountsInEachFolder,
+}: Props) {
   const { createdAt, url, title, imageSource } = item;
   const [KebabModalVisible, setKebabModalVisible] = useState(false);
   const [deleteCardModalVisible, setDeleteCardModalVisible] = useState(false);
@@ -17,24 +31,28 @@ export default function Card({ item, folderNames, itemCountsInEachFolder }) {
   const dateBetween = formatDateToAgo(createdAt);
   const date = formatDateToString(createdAt);
 
-  const addDefaultImage = (e) => {
+  const addDefaultImage = (e: {
+    currentTarget: {
+      src: string;
+    };
+  }) => {
     e.currentTarget.src = defaultImage;
   };
 
-  const handleStarClick = (e) => {
+  const handleStarClick = (e: React.MouseEvent) => {
     e.preventDefault();
     console.log('별 클릭');
   };
-  const handleKebabClick = (e) => {
+  const handleKebabClick = (e: React.MouseEvent) => {
     e.preventDefault();
     setKebabModalVisible(!KebabModalVisible);
   };
 
-  const handleDeleteButtonClick = (e) => {
+  const handleDeleteButtonClick = (e: React.MouseEvent) => {
     e.preventDefault();
     setDeleteCardModalVisible(true);
   };
-  const handleAddFolderButtonClick = (e) => {
+  const handleAddFolderButtonClick = (e: React.MouseEvent) => {
     e.preventDefault();
     setAddInFolderModalVisible(true);
   };
