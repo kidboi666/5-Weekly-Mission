@@ -1,11 +1,18 @@
-import logoImg from "../../assets/logo.svg";
-import styles from "./index.module.css";
-import { useFetch } from "../../utils/hooks/useFetch";
+import logoImg from '../../assets/logo.svg';
+import styles from './index.module.css';
+import { useFetch } from '../../hooks/useFetch';
 
-const BASE_URL_USER = "https://bootcamp-api.codeit.kr/api/users/1";
+interface UserProfile {
+  data: {
+    email: string;
+    image_source: string;
+  }[];
+}
+
+const BASE_URL_USER = 'https://bootcamp-api.codeit.kr/api/users/1';
 
 function Navigation() {
-  const Userprofile = useFetch(BASE_URL_USER);
+  const userProfile = useFetch<UserProfile>(BASE_URL_USER);
 
   return (
     <div className={styles.Navigation}>
@@ -17,15 +24,15 @@ function Navigation() {
             alt="Linkbrary 로고"
           />
         </a>
-        {Userprofile ? (
+        {userProfile ? (
           <div className={styles.userProfile}>
             <img
-              src={Userprofile.data[0].image_source}
+              src={userProfile.data[0].image_source}
               alt="유저 프로필사진"
               className={styles.userProfileImg}
             />
             <span className={styles.userProfileId}>
-              {Userprofile.data[0].email}
+              {userProfile.data[0].email}
             </span>
           </div>
         ) : (

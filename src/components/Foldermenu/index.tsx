@@ -1,5 +1,4 @@
-// Foldermenu.jsx
-import { useFetch } from '../../utils/hooks/useFetch';
+import { useFetch } from '../../hooks/useFetch';
 import styled from 'styled-components';
 import './index.css';
 import addfolderIcon from '../../assets/addfolder.svg';
@@ -7,10 +6,26 @@ import deleteicon from '../../assets/deleteicon.svg';
 import changenameicon from '../../assets/changenameicon.svg';
 import shareicon from '../../assets/shareicon.svg';
 import { useState } from 'react';
-import Cardsfolder from '../../components/Cardsfolder';
+import Cardsfolder from '../Cardsfolder';
 import ModalFolder from '../../modal/ModalFolder';
-import ModalShare from '../../modal/ModalShare'; // ModalShare import 추가
+import ModalShare from '../../modal/ModalShare';
 import ModalDelete from '../../modal/ModalDelete';
+import SearchableBar from '../SearchableBar';
+
+interface Link {
+  id: string;
+  url: string;
+  title: string;
+  description: string;
+}
+interface Folder {
+  id: string;
+  name: string;
+}
+
+interface FolderResponse {
+  data: Folder[];
+}
 
 const BASE_URL_FOLDER = 'https://bootcamp-api.codeit.kr/api/users/1/folders';
 const BASE_URL_ALL_FOLDER = 'https://bootcamp-api.codeit.kr/api/users/1/links';
@@ -40,59 +55,62 @@ const ImageContainer = styled.div`
 `;
 
 function Foldermenu() {
-  const FolderlistData = useFetch(BASE_URL_FOLDER);
+  const folderData = useFetch<FolderResponse>(BASE_URL_FOLDER);
   const [activeButton, setActiveButton] = useState('전체');
   const [url, setUrl] = useState(BASE_URL_ALL_FOLDER);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalShareOpen, setIsModalShareOpen] = useState(false);
   const [isModalRenameOpen, setIsModalRenameOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
-  const [currentFolderId, setCurrentFolderId] = useState(null); // 현재 폴더의 ID 추가
+  const [currentFolderId, setCurrentFolderId] = useState<string | null>(null);
+  const [filteredLinks, setFilteredLinks] = useState<Link[]>([]);
 
-  function handleCloseModal(isOpen) {
-    setIsModalOpen(isOpen);
+  function handleCloseModal() {
+    setIsModalOpen(false);
   }
   function handleClickButton() {
     setIsModalOpen(true);
   }
 
-  function handleCloseShareModal(isOpen) {
-    setIsModalShareOpen(isOpen);
+  function handleCloseShareModal() {
+    setIsModalShareOpen(false);
   }
   function handleClickShareButton() {
     setIsModalShareOpen(true);
   }
 
-  function handleCloseRenameModal(isOpen) {
-    setIsModalRenameOpen(isOpen);
+  function handleCloseRenameModal() {
+    setIsModalRenameOpen(false);
   }
   function handleClickRenameButton() {
     setIsModalRenameOpen(true);
   }
 
-  function handleCloseDeleteModal(isOpen) {
-    setIsModalDeleteOpen(isOpen);
+  function handleCloseDeleteModal() {
+    setIsModalDeleteOpen(false);
   }
   function handleClickDeleteButton() {
     setIsModalDeleteOpen(true);
   }
 
-  const handleOnClick = (e) => {
-    const folderId = e.currentTarget.id; // 클릭된 버튼의 ID 가져오기
-    const folderName = e.currentTarget.textContent; // 클릭된 버튼의 텍스트 가져오기
+  const handleSearch = (filteredLinks: Link[]) => {
+    setFilteredLinks(filteredLinks);
+  };
 
-    // 클릭된 버튼에 active 클래스 추가하기
-    const btns = document.querySelectorAll('.folderButtons');
+  const handleOnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const folderId = e.currentTarget.id;
+    const folderName = e.currentTarget.textContent || '';
+    const btns = document.querySelectorAll<HTMLButtonElement>('.folderButtons');
     btns.forEach((btn) => {
       btn.classList.remove('active');
     });
     e.currentTarget.classList.add('active');
 
-    setActiveButton(folderName); // 선택된 폴더의 이름 설정하기
-    setCurrentFolderId(folderId); // 현재 폴더의 ID 설정하기
+    setActiveButton(folderName);
+    setCurrentFolderId(folderId);
 
     if (folderId !== 'all') {
-      setUrl(`${BASE_URL_ALL_FOLDER}?folderId=${folderId}`); // 선택된 폴더에 해당하는 URL 설정하기
+      setUrl(`${BASE_URL_ALL_FOLDER}?folderId=${folderId}`);
     } else {
       setUrl(BASE_URL_ALL_FOLDER);
     }
@@ -100,6 +118,7 @@ function Foldermenu() {
 
   return (
     <div>
+      <SearchableBar links={filteredLinks} onSearch={handleSearch} />
       <div className="buttonContainer">
         <FolderListContainer>
           <button
@@ -109,8 +128,8 @@ function Foldermenu() {
           >
             전체
           </button>
-          {FolderlistData &&
-            FolderlistData.data.map((folderdata) => (
+          {folderData?.data &&
+            folderData?.data.map((folderdata) => (
               <button
                 className="folderButtons"
                 key={folderdata.id}
@@ -150,7 +169,7 @@ function Foldermenu() {
       {isModalOpen && (
         <ModalFolder
           title={'폴더 추가'}
-          targetName={''}
+          folderName={''}
           onClose={handleCloseModal}
           buttonName={'추가하기'}
           isModalOpen={isModalOpen}
@@ -162,7 +181,7 @@ function Foldermenu() {
           targetName={activeButton}
           onClose={handleCloseShareModal}
           isModalOpen={isModalShareOpen}
-          currentFolderId={currentFolderId} // currentFolderId 전달
+          currentFolderId={currentFolderId || undefined}
         />
       )}
       {isModalRenameOpen && (
