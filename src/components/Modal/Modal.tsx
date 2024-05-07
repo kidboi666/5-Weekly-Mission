@@ -101,12 +101,17 @@ export default function Modal({
             onChange={handleTextChange}
           />
         )}
-        {folders && (
+        {folders && counts && (
           <S.FoldersList>
             {folders.map((folder, index) => (
               <li key={index}>
-                <input type='radio' id={index} name='folder' value={folder} />
-                <label htmlFor={index}>
+                <input
+                  type='radio'
+                  id={'' + index}
+                  name='folder'
+                  value={folder}
+                />
+                <label htmlFor={'' + index}>
                   <h3>{folder}</h3>
                   <span>{counts[index]}개 링크</span>
                 </label>
@@ -114,7 +119,7 @@ export default function Modal({
             ))}
           </S.FoldersList>
         )}
-        {button && <S.StyledButton text={button} mt={semiTitle} />}
+        {button && semiTitle && <S.StyledButton text={button} mt={semiTitle} />}
         {folderId && (
           <S.ShareList>
             {SHARES.map((share, index) => (
