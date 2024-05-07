@@ -78,7 +78,7 @@ export const Input = styled.input`
   }
 `;
 
-export const StyledButton = styled(Button)<{ mt: string }>`
+export const StyledButton = styled(Button)<{ mt?: string }>`
   width: 100%;
   height: 51px;
   margin-top: ${({ mt }) => (mt ? 24 : 15)}px;

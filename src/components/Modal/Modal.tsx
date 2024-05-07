@@ -119,7 +119,7 @@ export default function Modal({
             ))}
           </S.FoldersList>
         )}
-        {button && semiTitle && <S.StyledButton text={button} mt={semiTitle} />}
+        {button && <S.StyledButton text={button} mt={semiTitle} />}
         {folderId && (
           <S.ShareList>
             {SHARES.map((share, index) => (
