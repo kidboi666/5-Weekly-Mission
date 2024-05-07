@@ -22,10 +22,10 @@ export const Input = styled.input`
   border: 1px solid var(--Linkbrary-primary);
   outline: none;
   font-size: 16px;
-  background: #fff url(${LinkIcon}) no-repeat 20px 23px / 20px;
+  background: var(--Linkbrary-white) url(${LinkIcon}) no-repeat 20px 23px / 20px;
 
   &::placeholder {
-    color: #9fa6b2;
+    color: var(--Linkbrary-gray60);
   }
 
   @media (max-width: 767px) {

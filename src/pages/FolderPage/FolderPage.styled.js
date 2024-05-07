@@ -99,7 +99,7 @@ export const ControlButton = styled.button`
   gap: 4px;
   font-size: 14px;
   font-weight: 600;
-  color: #9fa6b2;
+  color: var(--Linkbrary-gray60);
 `;
 
 export const ControlIcon = styled.img`

@@ -13,7 +13,7 @@ export const Card = styled.li`
   width: calc((100% - 40px) / 3);
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0px 5px 25px 0px #00000014;
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.08);
   transition: background-color 0.2s;
 
   &:hover {
@@ -73,7 +73,7 @@ export const KebabModal = styled.div`
   display: flex;
   flex-direction: column;
   width: 100px;
-  background: var(--gray-light-gray-00, #fff);
+  background: var(--Linkbrary-white);
   box-shadow: 0px 2px 8px 0px rgba(51, 50, 54, 0.1);
 
   & button {

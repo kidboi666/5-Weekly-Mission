@@ -35,11 +35,11 @@ export const Img = styled.img`
 `;
 
 export const Text = styled.p`
-  font-$size: ${({ $flextype }) => ($flextype === 'row' ? 14 : 16)}px;
+  font-size: ${({ $flextype }) => ($flextype === 'row' ? 14 : 16)}px;
   color: ${({ $flextype }) => ($flextype === 'row' ? '#373740' : 'inherit')};
 
   @media (max-width: 767px) {
     display: ${({ $flextype }) => ($flextype === 'row' ? 'none' : 'block')};
-    font-$size: 14px;
+    font-size: 14px;
   }
 `;

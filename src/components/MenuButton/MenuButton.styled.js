@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Button = styled.button`
   height: 35px;
   padding: 0 12px;
-  background-color: #fff;
+  background-color: var(--Linkbrary-white);
   border: 1px solid var(--Linkbrary-primary);
   border-radius: 5px;
 

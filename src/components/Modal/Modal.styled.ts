@@ -51,7 +51,7 @@ export const SemiTitle = styled.h3`
     height: 6px;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: #cccccc;
+    background-color: var(--Linkbrary-gray20);
     border-radius: 30px;
   }
 `;
@@ -114,7 +114,7 @@ export const FoldersList = styled.ul`
     width: 8px;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: #cccccc;
+    background-color: var(--Linkbrary-gray20);
     border-radius: 30px;
     cursor: pointer;
   }
