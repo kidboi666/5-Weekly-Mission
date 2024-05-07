@@ -1,7 +1,8 @@
 export default function shareKakao(e, folderName, folderId) {
-  const { Kakao } = window;
   const url = 'https://linkbrary-oh.netlify.app/';
   const folderUrl = `${url}/${folderId}`;
+
+  const { Kakao } = window;
 
   Kakao.cleanup();
   Kakao.init('d433130307621ad24713cbacf6a9f93b');
