@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import styled, { css } from 'styled-components';
 
-export const Button = styled.button`
+const StyledButton = css`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,4 +20,12 @@ export const Button = styled.button`
     padding: 10px 0;
     font-size: 0.875rem;
   }
+`;
+
+export const Button = styled.button`
+  ${StyledButton}
+`;
+
+export const StyledLink = styled(Link)`
+  ${StyledButton}
 `;

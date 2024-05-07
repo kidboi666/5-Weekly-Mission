@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import * as S from './Button.styled';
 
 interface Props {
@@ -10,8 +9,14 @@ interface Props {
 
 export default function Button({ text, className = '', link }: Props) {
   return (
-    <S.Button className={className}>
-      {link ? <Link to={link}>{text}</Link> : <span>{text}</span>}
-    </S.Button>
+    <>
+      {link ? (
+        <S.StyledLink to={link} className={className}>
+          {text}
+        </S.StyledLink>
+      ) : (
+        <S.Button className={className}>{text}</S.Button>
+      )}
+    </>
   );
 }
