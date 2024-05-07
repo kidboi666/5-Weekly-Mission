@@ -1,8 +1,4 @@
-import { ModlaTitle } from '../../../styles/commonStyle';
-import ShareModal from '../../share/ShareModal';
-import Button from '../atoms/Button';
-import Input from '../atoms/Input';
-import CheckBox from '../atoms/CheckBox';
+
 import {
   ModalWrap,
   ModalContainer,
@@ -12,27 +8,33 @@ import {
   ModalDim,
 } from './modalStyle';
 import { IModal } from './interface';
+import Input from '../common/atoms/Input';
+import ShareModal from '../share/ShareModal';
+import CheckBox from '../common/atoms/CheckBox';
+import { ModlaTitle } from '../../styles/commonStyle';
+import Button from '../common/atoms/Button';
 
-function bodyContent(body: string, data: IModal['$modalData']) {
+interface IModalInfo extends IModal {
+  onOpen: boolean;
+  onClose: () => void;
+  $folderId?:number | null
+}
+
+function bodyContent(body: string, data: IModal['$modalData'], id :number|null = null) {
   if (body === 'input') {
     return <Input />;
   } else if (body === 'sns') {
-    console.log(body, '여기');
-    return <ShareModal />;
+    return <ShareModal sharedId={id} />;
   } else if (body === 'checkbox') {
     if (!data) return null;
     return <CheckBox $data={data} />;
   }
 }
 
-interface IModalInfo extends IModal {
-  onOpen: boolean;
-  onClose: () => void;
-}
-
 function Modal({
   onOpen,
   onClose,
+  $folderId = null,
   $title,
   $titleDescText,
   $body,
@@ -40,6 +42,7 @@ function Modal({
   $buttonText,
   $modalData,
 }: IModalInfo) {
+
   const modalClose = () => {
     onClose();
   };
@@ -54,7 +57,9 @@ function Modal({
             <ModlaTitle>{$title}</ModlaTitle>
             {$titleDescText && <div className="desc">{$titleDescText}</div>}
           </ModalHead>
-          {$body && <ModalBody>{bodyContent($body, $modalData)}</ModalBody>}
+          {$body && 
+            <ModalBody>{bodyContent($body, $modalData, $folderId)}</ModalBody>
+          }
           {$buttonStyle && (
             <ModalFoot>
               <Button $btnClass={$buttonStyle} onclick={() => modalClose()}>

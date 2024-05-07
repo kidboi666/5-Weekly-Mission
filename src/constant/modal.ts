@@ -1,4 +1,4 @@
-import { IModal } from '../components/common/modal/interface';
+import { IModal } from '../components/modal/interface';
 
 interface IModalItem {
   [key: string]: IModal;

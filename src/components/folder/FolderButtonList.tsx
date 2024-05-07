@@ -5,46 +5,38 @@ import { IFolderMenuButtonApi } from '../../pages/folder/interface';
 
 interface IButtonList {
   $menu: IFolderMenuButtonApi | null;
-  $loading: boolean;
-  $btnActive: number;
-  onClick: (api: string, index: number) => void;
+  $btnActive: number | string;
+  onClick: (id:number) => void;
 }
 
 function FolderButtonList({
   $menu,
-  $loading,
   $btnActive,
   onClick,
 }: IButtonList) {
-  const handleClick = (api: string, index: number) => {
-    onClick(api, index);
-  };
+
   return (
     <BookMarkBtnList>
-      {$loading ? null : (
-        <>
+      <Button
+        $id={-1}
+        $btnClass={`button--outlined ${$btnActive === -1 ? 'active' : ''}`}
+        onclick={() => onClick(-1)}
+      >
+        전체
+      </Button>
+      {$menu &&
+        $menu.data?.map((item) => (
           <Button
-            $id={'all'}
-            $btnClass={`button--outlined ${$btnActive === -1 ? 'active' : ''}`}
-            onclick={() => handleClick('all', -1)}
+            key={item.id}
+            $id={`${item.id}`}
+            $btnClass={`button--outlined ${
+              $btnActive === item.id ? 'active' : ''
+            }`}
+            onclick={() => onClick(item.id)}
           >
-            전체
+            {item.name}
           </Button>
-          {$menu &&
-            $menu.data?.map((item, i) => (
-              <Button
-                key={item.id}
-                $id={`${item.id}`}
-                $btnClass={`button--outlined ${
-                  $btnActive === i ? 'active' : ''
-                }`}
-                onclick={() => handleClick(`${item.id}`, i)}
-              >
-                {item.name}
-              </Button>
-            ))}
-        </>
-      )}
+        ))}
     </BookMarkBtnList>
   );
 }

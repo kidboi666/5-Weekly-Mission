@@ -1,6 +1,7 @@
 import { ChangeEvent, ReactNode, useEffect, useRef, useState } from 'react';
 import Button from './Button';
 import { InputModule } from './inputStyle';
+import { SearchResults } from '../../../pages/folder/folderStyle';
 interface IButtonModule {
   $type?: string;
   $inputClass?: string;
@@ -44,22 +45,25 @@ function Input({
   };
 
   return (
-    <>
-      <InputModule
-        type={$type}
-        className={$inputClass}
-        placeholder={$placeholder}
-        value={value}
-        onChange={handleChangInput}
-        $beforeBgIcon={$beforeBgIcon}
-        ref={refInput}
-      />
-      {$btnShow && (
-        <Button $btnClass={$btnClass} onclick={() => handleButtonEvent(value)}>
-          {children}
-        </Button>
-      )}
-    </>
+   <>
+     <div style={{position:'relative'}}>
+        <InputModule
+          type={$type}
+          className={$inputClass}
+          placeholder={$placeholder}
+          value={value}
+          onChange={handleChangInput}
+          $beforeBgIcon={$beforeBgIcon}
+          ref={refInput}
+        />
+        {$btnShow && (
+          <Button $btnClass={$btnClass} onclick={() => handleButtonEvent(value)}>
+            {children}
+          </Button>
+        )}
+      </div>
+    {value && <SearchResults><span>{value}</span>으로 검색한 결과입니다.</SearchResults>}
+   </>
   );
 }
 export default Input;

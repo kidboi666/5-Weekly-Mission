@@ -2,10 +2,12 @@ import { ContainBody, ContainHead } from '../../styles/commonStyle';
 import { BodyInner, ShareHeadInner, BoxLinkSearch } from './folderStyle';
 import { TitleMs } from '../../styles/commonStyle';
 import Input from '../../components/common/atoms/Input';
-import { SHAREDCONTANTAPI } from '../../constant/api';
+import { FOLDER_CONTANT_LIST_API, FOLDER_MENU_LIST_API } from '../../constant/api';
 import useFetch from '../../hook/useFetch';
-import { IFolderContent } from './interface';
+import { IFolderContentApi, IFolderMenuButtonApi } from './interface';
 import ContantList from '../../components/folder/ContantList';
+import { useNavigate, useParams } from 'react-router-dom';
+import Loading from '../../components/loading/Loading';
 const logo = '/assets/logo/logo_codeit.svg';
 const search = '/assets/icon/icon_search.svg';
 
@@ -30,19 +32,35 @@ function useFatchDataLoad<T>(api: string) {
 }
 
 function Shared() {
-  const { value, isLoading } =
-    useFatchDataLoad<IFolderContent[]>(SHAREDCONTANTAPI);
+  const {id} = useParams();
+  const navigate = useNavigate();
+  const { value: menus, isLoading: menusLoading } =
+  useFatchDataLoad<IFolderMenuButtonApi>(`${FOLDER_MENU_LIST_API}`);
+  const { value: title } =
+  useFatchDataLoad<IFolderMenuButtonApi>(`${FOLDER_MENU_LIST_API}/${id}`);
+  const { value: contant, isLoading: contantLoading } =
+  useFatchDataLoad<IFolderContentApi>(`${FOLDER_CONTANT_LIST_API}?folderId=${id}`);
+
+  const filter = menus?.data.some(data => `${data.id}` === id)
+  if(filter === false) {
+    navigate('/not-found');
+    return null;
+  } 
+
+  const loading = menusLoading === false || contantLoading === false;
 
   return (
     <>
       <ContainHead>
-        <FolderHead
-          $title={'⭐️ 즐겨찾기'}
+      <FolderHead
+          $title={title?.data[0]?.name}
           $folderLogo={logo}
           $folderLogoAlt={'@코드잇'}
         />
       </ContainHead>
-      <ContainBody>
+      {
+        loading ?
+        <ContainBody>
         <BodyInner>
           <BoxLinkSearch>
             <Input
@@ -51,9 +69,12 @@ function Shared() {
               $beforeBgIcon={search}
             />
           </BoxLinkSearch>
-          <ContantList contant={value} loading={isLoading} />
+          <ContantList contant={contant?.data} />
         </BodyInner>
       </ContainBody>
+      : <Loading/>
+      }
+     
     </>
   );
 }
