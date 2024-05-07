@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Search from '../../components/Search/Search';
-import { getLinks, getUser } from '../../api';
+import { getLinks, getUser } from '../../apis/api';
 import { SectionWrap, TopWrap } from '../Common.styled';
 import * as S from './SharedPage.styled';
 import Profile from '../../components/Profile/Profile';
