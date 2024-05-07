@@ -3,8 +3,20 @@ import styles from "./etcModal.module.css";
 import { useEffect } from "react";
 import CloseImg from "../../assets/_close.svg";
 
-function EtcModal({ modalAbout, onClick }) {
-  const { about, btn, isDelete } = modalAbout;
+interface ModalAbout {
+  about: string;
+  btn: string;
+  isDelete: boolean;
+  folderName: string;
+}
+
+interface EtcModalProps {
+  modalAbout: ModalAbout;
+  onClick: () => void;
+}
+
+function EtcModal({ modalAbout, onClick } : EtcModalProps) {
+  const { about, btn, isDelete, folderName } = modalAbout;
 
   useEffect(() => {
     // 모달이 열렸을 때 스크롤 방지
@@ -22,11 +34,13 @@ function EtcModal({ modalAbout, onClick }) {
         <div className={styles.ModalBackground}></div>
         <div className={styles.ModalContent}>
           <span className={styles.text}>{about}</span>
+          <span className={styles.folderName}> {folderName} </span>
+          {!isDelete &&
           <input
             type="text"
             placeholder="내용 입력"
             className={styles.input}
-          ></input>
+          ></input>}
           {!isDelete ? (
             <button className={styles.Okbtn} onClick={onClick}>
               {btn}

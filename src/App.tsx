@@ -7,7 +7,7 @@ import './App.css';
 function App() {
   return (
     <>
-      <Header />
+      <Header/>
       <div className="PageMain">
         <FolderTitle />
         <MainSection />

@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 
-export function useFetch(url) {
-    const [data, setData] = useState(null);
+export function useFetch<T>(url : string) {
+    const [data, setData] = useState<any>(null);
 
     const fetchData = useCallback(async () => {
         try {

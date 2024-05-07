@@ -15,7 +15,7 @@ function FolderPlusLink() {
     setShowModal(true);
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputLink(e.target.value);
   };
 
@@ -44,7 +44,6 @@ function FolderPlusLink() {
       </div>
       {showModal && (
         <FolderPlusModal
-          isOpen={showModal}
           onClick={closeModal}
           link={inputLink}
         />

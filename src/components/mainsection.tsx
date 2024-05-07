@@ -5,7 +5,7 @@ function MainSection() {
   return (
     <div className="mainSection">
       <SearchBar />
-      <CardList />
+      <CardList url ="https://bootcamp-api.codeit.kr/api/sample/folder"/>
     </div>
   );
 }

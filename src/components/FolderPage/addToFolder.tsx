@@ -5,7 +5,20 @@ import { useFetch } from "../../usefetch";
 import CheckImg from "../../assets/check.svg";
 import CloseImg from "../../assets/_close.svg";
 
-function Link({ name, counts, id, onClick, isSelected }) {
+interface LinkProps {
+  name : string;
+  counts : number;
+  id : number;
+  onClick : any;
+  isSelected : boolean;
+}
+
+interface FolderPlusModalProps {
+  onClick : () => void;
+  link : string;
+}
+
+function Link({ name, counts, id, onClick, isSelected } : LinkProps) {
   return (
     <div className={`${isSelected ? styles.selectedFolder : styles.folder}`} onClick={() => onClick(id)}>
       <span className={styles.folderName}>{name}</span>
@@ -15,12 +28,12 @@ function Link({ name, counts, id, onClick, isSelected }) {
   );
 }
 
-function FolderPlusModal({ onClick, link }) {
+function FolderPlusModal({ onClick, link }: FolderPlusModalProps) {
   const Folders = "https://bootcamp-api.codeit.kr/api/users/1/folders";
   const FoldersData = useFetch(Folders);
-  const [selectedFolder, setSelectedFolder] = useState(null);
+  const [selectedFolder, setSelectedFolder] = useState<number | null>(null);
 
-  const handleFolder = (id) => {
+  const handleFolder = (id: number) => {
     setSelectedFolder(id);
   }
 
@@ -43,7 +56,7 @@ function FolderPlusModal({ onClick, link }) {
           <span className={styles.text}>폴더에 추가</span>
           <span className={styles.Linkurl}>{link}</span>
           <div>
-            {FoldersData?.data?.slice(1).map((folder) => (
+            {FoldersData?.data?.slice(1).map((folder : any) => (
               <Link key={folder?.id}name={folder?.name} counts={folder?.link?.count}id={folder?.id} onClick={handleFolder} isSelected={selectedFolder === folder?.id}></Link>
             ))}
           </div>

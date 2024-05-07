@@ -1,8 +1,9 @@
-import Icon from "../assets/icon.ico";
+import Icon from "../assets/icon.png";
 import { Link } from "react-router-dom";
 import Profile from "./profile";
 import { useFetch } from "../usefetch";
 import './header.css';
+
 function Header() {
   const profileData
    = useFetch("https://bootcamp-api.codeit.kr/api/sample/user");

@@ -23,9 +23,9 @@ export const TIME_IN_MILLISECONDS = {
   year,
 };
 
-export const getElapsedTime = (createdAt) => {
-  const now = new Date();
-  const createdAtDate = new Date(createdAt);
+export const getElapsedTime = (createdAt : number) => {
+  const now: number = Date.now();
+  const createdAtDate: number = new Date(createdAt).getTime();
   const elapsedTime = now - createdAtDate;
   const { minute, hour, day, month, year } = TIME_IN_MILLISECONDS;
 
@@ -59,7 +59,7 @@ export const getElapsedTime = (createdAt) => {
   return `1 minute ago`;
 };
 
-function CardListItem({ item }) {
+function CardListItem({ item }: any) {
   const [showKebab, setShowkebab] = useState(false);
   const creatTime = item.createdAt ? item.createdAt : item.created_at;
   const creatDate = new Date(creatTime);
@@ -69,7 +69,7 @@ function CardListItem({ item }) {
   
   const thumbnail = item.imageSource ? item.imageSource : item.image_source;
 
-  const onErrorImg = (e) => {
+  const onErrorImg = (e : any) => {
     e.target.src = DefaultImgae;
   };
   const closeKebab = () => {
@@ -130,16 +130,21 @@ function CardListItem({ item }) {
   );
 }
 
-function CardList({ url, folder = false }) {
+interface CardListProps {
+  url : string;
+  folder? : boolean;
+}
+
+function CardList({ url , folder = false } : CardListProps) {
   const cardListItems = useFetch(url);
 
   return (
     <div className="cardList">
-      {cardListItems?.folder?.links.map((link) => (
+      {cardListItems?.folder?.links.map((link: any) => (
         <CardListItem key={link.id} item={link} />
       ))}
       {cardListItems?.data?.length > 0
-        ? cardListItems?.data?.map((link) => (
+        ? cardListItems?.data?.map((link : any) => (
             <CardListItem key={link.id} item={link} />
           ))
         : folder && <div className="NoDataList">저장된 링크가 없습니다.</div>}

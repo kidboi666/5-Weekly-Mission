@@ -1,11 +1,15 @@
-import { useRef } from "react";
+import { useRef, MouseEventHandler, MouseEvent} from "react";
 import styles from "./CardKebab.module.css";
 
-function CardKebab({ closeKebab }) {
-  const kebabRef = useRef(null);
+interface Props {
+  closeKebab : () => void;
+}
 
-  const handleClickOutside = (e) => {
-    if (kebabRef.current && !kebabRef.current.contains(e.target)) {
+function CardKebab({ closeKebab} : Props) {
+  const kebabRef = useRef<HTMLDivElement>(null);
+
+  const handleClickOutside = (e: MouseEvent<HTMLDivElement>): void => {
+    if (kebabRef.current && !kebabRef.current.contains(e.target as HTMLElement)) {
       closeKebab(); // 케밥 창을 닫는 함수 호출
     }
   };

@@ -1,4 +1,3 @@
-import React from "react";
 import ShareKakaotalk from "../../assets/ShareKakaotalk.svg";
 import ShareFacebook from "../../assets/ShareFacebook.svg";
 import linkImg from "../../assets/link.svg";
@@ -6,8 +5,13 @@ import CloseImg from "../../assets/_close.svg";
 import styles from "./shareModal.module.css";
 import Portal from "../../Portal";
 
+interface Props {
+  onClick : () => void;
+  folderName : string;
+  currentFolderId : number | null;
+}
 
-function ShareModal({ onClick, folderName, currentFolderId }) {
+function ShareModal({ onClick, folderName, currentFolderId } : Props) {
   
   const shareToKakaoTalk = () => {
     const shareUrl = `${window.location.origin}/shared/${currentFolderId}`;
