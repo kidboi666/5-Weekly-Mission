@@ -1,6 +1,6 @@
 import "./Header.css";
 
-export function Header({ user }) {
+export function Header({ userEmail }) {
   return (
     <header className="header">
       <div className="header-contents">
@@ -9,14 +9,14 @@ export function Header({ user }) {
         </a>
         <div className="user-container">
           <div className="icon">
-            <img src="images/Ellipse21.svg" alt="myicon"></img>
+            <img src="images/Ellipse21.svg" alt="myicon" />
             <img
               className="profile"
               src="images/myprofile.png"
               alt="myprofile"
-            ></img>
+            />
           </div>
-          <p>{user.email ?? "로그인"}</p>
+          <p>{userEmail ?? "로그인"}</p>
         </div>
       </div>
     </header>

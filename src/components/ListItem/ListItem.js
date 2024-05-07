@@ -1,8 +1,10 @@
-import { calculatePastTime } from "../../util";
+import { calculatePastTime } from "util";
 import { useState } from "react";
 import { ModalLayout } from "../ModalLayout";
 
-export function LinkItem({ link, createdAt, imageSource }) {
+const base_image = "images/card-default.png";
+
+export function LinkItem({ url, createdAt, imageSource, description, title }) {
   const [isOpen, setIsOpen] = useState({
     open: false,
     add: false,
@@ -16,21 +18,19 @@ export function LinkItem({ link, createdAt, imageSource }) {
     }));
   };
 
-  const base_image = "images/card-default.png";
-  const url = link.url;
   const linkImage = imageSource ?? base_image;
   return (
     <div className="linkItem-wrapper">
       <a href={url}>
         <div className="Link-card">
           <div className="Link-image-wrapper">
-            <img className="Link-image" src={linkImage} alt="링크이미지"></img>
+            <img className="Link-image" src={linkImage} alt="링크이미지" />
           </div>
           <div className="Link-info">
             <div className="kebab-wrapper">
               <p className="creation-time">{calculatePastTime(createdAt)}</p>
             </div>
-            <p className="link-description">{link.description}</p>
+            <p className="link-description">{description}</p>
             <p>2023. 3. 15</p>
           </div>
         </div>
@@ -40,7 +40,7 @@ export function LinkItem({ link, createdAt, imageSource }) {
           src="images/kebab.svg"
           alt="kebab-button"
           onClick={() => toggleHandler("open")}
-        ></img>
+        />
         {isOpen.open && (
           <div className="popup-wrapper">
             <div
@@ -58,7 +58,7 @@ export function LinkItem({ link, createdAt, imageSource }) {
       {isOpen.delete && (
         <ModalLayout
           title="링크삭제"
-          description={link.title}
+          description={title}
           toggleHandler={() => toggleHandler("delete")}
         >
           <div className="button delete">삭제하기</div>

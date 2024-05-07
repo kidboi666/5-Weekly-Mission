@@ -23,11 +23,13 @@ export function Sorting({
   };
 
   useEffect(() => {
-    const nameById = selectedId
-      ? folders.find((item) => item.id === selectedId)?.name
-      : "전체";
+    onChangeName(selectedId); // eslint-disable-next-line
+  }, [selectedId]);
+
+  const onChangeName = (id) => {
+    const nameById = id ? folders.find((item) => item.id === id)?.name : "전체";
     setName(nameById);
-  }, [selectedId, folders, setName]); // eslint-disable-next-line
+  };
 
   return (
     <>
@@ -45,12 +47,13 @@ export function Sorting({
           })}
         </div>
         <div className="folder-title-wrapper" onClick={toggleHandler}>
-          폴더추가<img src="images/add.svg" alt="addbutton"></img>
+          폴더추가
+          <img src="images/add.svg" alt="addbutton" />
         </div>
         {isOpen && (
           <ModalLayout toggleHandler={toggleHandler} title="폴더 추가">
             <div className="modal-contents">
-              <input placeholder="내용 입력"></input>
+              <input placeholder="내용 입력" />
               <div className="add button">추가하기</div>
             </div>
           </ModalLayout>

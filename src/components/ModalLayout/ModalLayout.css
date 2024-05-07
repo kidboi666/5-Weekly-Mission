@@ -26,9 +26,11 @@
   gap: 24px;
   border-radius: 15px;
   border: 1px solid var(--Linkbrary-gray20, #ccd5e3);
+  max-height: 389px;
 }
 
 .modal-container .title {
+  margin-bottom: 8px;
   font-size: 20px;
   font-weight: 700;
 }
