@@ -1,6 +1,16 @@
 import styled from 'styled-components';
 
-const SIZES = {
+interface Responsive {
+  pc: number;
+  mo: number;
+}
+
+interface Size {
+  s: Responsive;
+  m: Responsive;
+}
+
+const SIZES: Size = {
   s: {
     pc: 28,
     mo: 28,
@@ -11,7 +21,7 @@ const SIZES = {
   },
 };
 
-export const Wrap = styled.div`
+export const Wrap = styled.div<{ $flextype: string }>`
   display: flex;
   flex-direction: ${({ $flextype }) => $flextype};
   align-items: center;
@@ -22,19 +32,19 @@ export const Wrap = styled.div`
   }
 `;
 
-export const Img = styled.img`
+export const Img = styled.img<{ $size: string }>`
   border-radius: 50%;
   object-fit: cover;
-  width: ${({ $size }) => SIZES[$size].pc}px;
-  height: ${({ $size }) => SIZES[$size].pc}px;
+  width: ${({ $size }) => (SIZES as any)[$size].pc}px;
+  height: ${({ $size }) => (SIZES as any)[$size].pc}px;
 
   @media (max-width: 767px) {
-    width: ${({ $size }) => SIZES[$size].mo}px;
-    height: ${({ $size }) => SIZES[$size].mo}px;
+    width: ${({ $size }) => (SIZES as any)[$size].mo}px;
+    height: ${({ $size }) => (SIZES as any)[$size].mo}px;
   }
 `;
 
-export const Text = styled.p`
+export const Text = styled.p<{ $flextype: string }>`
   font-size: ${({ $flextype }) => ($flextype === 'row' ? 14 : 16)}px;
   color: ${({ $flextype }) => ($flextype === 'row' ? '#373740' : 'inherit')};
 
