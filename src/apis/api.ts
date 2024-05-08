@@ -21,7 +21,7 @@ export async function getFolders() {
 }
 
 export async function getLinks(folderId: number) {
-  const queryParam = folderId === undefined ? '' : `?folderId=${folderId}`;
+  const queryParam = folderId === 0 ? '' : `?folderId=${folderId}`;
   const response = await fetch(`${BASIC_URL}/api/users/1/links${queryParam}`);
   if (!response.ok) {
     throw new Error('사용자 데이터를 불러오는데 실패했습니다.');
