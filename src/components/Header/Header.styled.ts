@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Button from '../Button/Button';
 
-export const Header = styled.header`
+export const Header = styled.header<{ $isSticky: boolean }>`
   position: ${({ $isSticky }) => ($isSticky ? 'sticky' : 'relative')};
   top: 0;
   padding: 20px 200px;
