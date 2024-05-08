@@ -176,7 +176,7 @@ export default function FolderPage() {
       {isVisibleAddFolderModal && (
         <Modal
           title='폴더 추가'
-          input=''
+          input
           button='추가하기'
           onClose={setIsVisibleAddFolderModal}
         />
@@ -192,7 +192,8 @@ export default function FolderPage() {
       {isVisibleChangeFolderNameModal && (
         <Modal
           title='폴더 이름 변경'
-          input={currentFolder.name}
+          input
+          inputValue={currentFolder.name}
           button='변경하기'
           onClose={setIsVisibleChangeFolderNameModal}
         />

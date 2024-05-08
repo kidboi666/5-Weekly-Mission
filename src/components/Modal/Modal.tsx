@@ -37,7 +37,8 @@ import shareKakao from '../../apis/shareKakao';
 interface Props {
   title: string;
   semiTitle?: string;
-  input?: string;
+  input?: boolean;
+  inputValue?: string;
   button?: string;
   folderId?: number;
   folders?: string[];
@@ -49,13 +50,14 @@ export default function Modal({
   title,
   semiTitle,
   input,
+  inputValue,
   button,
   folderId,
   folders,
   counts,
   onClose,
 }: Props) {
-  const [text, setText] = useState(input);
+  const [text, setText] = useState(inputValue);
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
