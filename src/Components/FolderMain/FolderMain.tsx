@@ -12,6 +12,16 @@ import { useFetch } from "../../hooks/useFetch";
 import { BASE_URL } from "../../constants/baseURL";
 import Modal from "../Modal/Modal";
 
+interface Card {
+    id: string;
+    url: string;
+    showStar?: boolean;
+    image_source?: string;
+    title?: string;
+    description?: string;
+    created_at: string;
+}
+
 interface Link {
     id: string;
     created_at: string;
@@ -23,11 +33,19 @@ interface Link {
     };
 }
 
-type ModalType = "addFolder" | "share" | "edit" | "deleteFolder" | null;
+const ALL_FOLDERS: string = "전체";
+const MODAL_TYPES = {
+    ADD_FOLDER: "ADD_FOLDER",
+    SHARE: "SHARE",
+    EDIT: "EDIT",
+    DELETE_FOLDER: "DELETE_FOLDER",
+} as const;
+
+type ModalType = keyof typeof MODAL_TYPES | null;
 
 function FolderMain() {
-    const [activeButton, setActiveButton] = useState("전체");
-    const [activeButtonId, setActiveButtonId] = useState("");
+    const [activeButton, setActiveButton] = useState<string>(ALL_FOLDERS);
+    const [activeButtonId, setActiveButtonId] = useState<string>("");
     const [searchTerm, setSearchTerm] = useState<string>("");
     const [modalType, setModalType] = useState<ModalType>(null);
 
@@ -59,23 +77,24 @@ function FolderMain() {
         }
     }, [modalType]);
 
-    const filteredLinks = activeButtonId === "" ? FolderDataAll() : FolderData(activeButtonId);
+    const filteredCards: Card[] =
+        activeButtonId === "" ? FolderDataAll() : FolderData(activeButtonId);
 
     const handleClearSearch = () => {
         setSearchTerm("");
     };
 
-    // 검색어가 있을때만 필터링
-    const filteredLinksBySearchTerm = searchTerm
-        ? filteredLinks.filter((link) => {
-              const { url, title, description } = link;
+    // 검색어가 있을 때만 필터링
+    const filteredCardsBySearchTerm: Card[] = searchTerm
+        ? filteredCards.filter((card) => {
+              const { url, title, description } = card;
               return (
                   url.includes(searchTerm) ||
                   title!.includes(searchTerm) ||
                   description!.includes(searchTerm)
               );
           })
-        : filteredLinks;
+        : filteredCards;
 
     return (
         <main className={styles.main}>
@@ -113,12 +132,12 @@ function FolderMain() {
                         <li>
                             <button
                                 className={`${styles.folder_btn_lg} ${
-                                    activeButton === "전체" && styles.active
+                                    activeButton === ALL_FOLDERS && styles.active
                                 }`}
-                                onClick={() => handleFolderClick("", "전체")}
+                                onClick={() => handleFolderClick("", ALL_FOLDERS)}
                                 id='all'
                             >
-                                전체
+                                {ALL_FOLDERS}
                             </button>
                         </li>
                         {folderList &&
@@ -139,11 +158,11 @@ function FolderMain() {
                     <button
                         className={styles.add_folder_btn}
                         id='addFolderBtn'
-                        onClick={() => openModal("addFolder")}
+                        onClick={() => openModal("ADD_FOLDER")}
                     >
                         폴더 추가+
                     </button>
-                    {modalType === "addFolder" && (
+                    {modalType === "ADD_FOLDER" && (
                         <Modal
                             title='폴더 추가'
                             input
@@ -162,7 +181,7 @@ function FolderMain() {
                             <button
                                 className={styles.main_sub_nav_side_items}
                                 id='shareFolderBtn'
-                                onClick={() => openModal("share")}
+                                onClick={() => openModal("SHARE")}
                             >
                                 <img
                                     src={share}
@@ -173,7 +192,7 @@ function FolderMain() {
                                 />
                                 <span className={styles.icon_text}>공유</span>
                             </button>
-                            {modalType === "share" && (
+                            {modalType === "SHARE" && (
                                 <Modal
                                     title='폴더 공유'
                                     subtitle={activeButton}
@@ -184,7 +203,7 @@ function FolderMain() {
                             )}
                             <button
                                 className={styles.main_sub_nav_side_items}
-                                onClick={() => openModal("edit")}
+                                onClick={() => openModal("EDIT")}
                             >
                                 <img
                                     src={pen}
@@ -195,7 +214,7 @@ function FolderMain() {
                                 />
                                 <span className={styles.icon_text}>이름 변경</span>
                             </button>
-                            {modalType === "edit" && (
+                            {modalType === "EDIT" && (
                                 <Modal
                                     title='폴더 이름 변경'
                                     input
@@ -208,12 +227,12 @@ function FolderMain() {
                             )}
                             <button
                                 className={styles.main_sub_nav_side_items}
-                                onClick={() => openModal("deleteFolder")}
+                                onClick={() => openModal("DELETE_FOLDER")}
                             >
                                 <img src={delete_icon} width={18} height={18} alt='폴더 삭제' />
                                 <span className={styles.icon_text}>삭제</span>
                             </button>
-                            {modalType === "deleteFolder" && (
+                            {modalType === "DELETE_FOLDER" && (
                                 <Modal
                                     title='폴더 삭제'
                                     subtitle={activeButton}
@@ -226,7 +245,7 @@ function FolderMain() {
                         </div>
                     )}
                 </div>
-                <Cards items={filteredLinksBySearchTerm} />
+                <Cards items={filteredCardsBySearchTerm} />
             </section>
         </main>
     );

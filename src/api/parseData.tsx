@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useFetch } from "../hooks/useFetch";
 import { BASE_URL } from "../constants/baseURL";
 
-export interface Link {
+export interface Card {
     id: string;
     created_at: string;
     url: string;
@@ -10,9 +10,11 @@ export interface Link {
     description?: string;
     image_source?: string;
     imageSource?: string;
+    showDot?: boolean;
+    showStar?: boolean;
 }
 
-export interface Folder extends Link {
+export interface Folder extends Card {
     favorite: boolean;
     link: {
         count: number;
@@ -20,13 +22,13 @@ export interface Folder extends Link {
 }
 
 export function SharedData() {
-    const [data, setData] = useState<Link[]>([]);
+    const [data, setData] = useState<Card[]>([]);
 
     const folderData = useFetch(`${BASE_URL}sample/folder`);
 
     useEffect(() => {
         if (folderData && folderData.folder) {
-            const parsedData = folderData.folder.links.map((link: Link) => ({
+            const parsedData = folderData.folder.links.map((link: Card) => ({
                 id: link.id,
                 created_at: link.created_at,
                 url: link.url,
@@ -45,13 +47,13 @@ export function SharedData() {
 
 // 폴더 전체
 export function FolderDataAll() {
-    const [data, setData] = useState<Link[]>([]);
+    const [data, setData] = useState<Card[]>([]);
 
     const linksData = useFetch(`${BASE_URL}users/1/links`);
 
     useEffect(() => {
         if (linksData) {
-            const parsedData = linksData.data.map((link: Link) => ({
+            const parsedData = linksData.data.map((link: Card) => ({
                 id: link.id,
                 created_at: link.created_at,
                 url: link.url,

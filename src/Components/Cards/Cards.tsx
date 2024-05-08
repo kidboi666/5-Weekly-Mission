@@ -9,25 +9,49 @@ import formatDate from "../../utils/formatDate";
 import styles from "./Cards.module.css";
 import Modal from "../Modal/Modal";
 
-function Cards({ items }) {
-    const [popoverIndex, setPopoverIndex] = useState(null); // 각 카드의 index
-    const popoverRef = useRef(null);
+interface Link {
+    id: string;
+    created_at: string;
+    name: string;
+    user_id: number;
+    favorite: boolean;
+    link: {
+        count: number;
+    };
+}
 
-    const handleKebabClick = (index) => {
+interface Card {
+    id: string;
+    url: string;
+    showStar?: boolean;
+    image_source?: string;
+    title?: string;
+    description?: string;
+    created_at: string;
+}
+
+interface CardsProps {
+    items: Card[];
+}
+
+function Cards({ items }: CardsProps) {
+    const [popoverIndex, setPopoverIndex] = useState<number | null>(null); // 각 카드의 index
+    const popoverRef = useRef<HTMLDivElement>(null);
+    const [modalType, setModalType] = useState<"DELETE_LINK" | "ADD" | null>(null);
+
+    const handleKebabClick = (index: number) => {
         setPopoverIndex(index);
     };
 
-    const handleClosePopover = (e) => {
+    const handleClosePopover = (e: React.MouseEvent<HTMLDivElement, MouseEvent> | MouseEvent) => {
         if (!popoverRef.current) return;
 
-        if (!popoverRef.current.contains(e.target)) {
+        if (!(e.target instanceof Node) || !popoverRef.current.contains(e.target as Node)) {
             setPopoverIndex(null);
         }
     };
 
-    const [modalType, setModalType] = useState(null);
-
-    const openModal = (type) => {
+    const openModal = (type: "DELETE_LINK" | "ADD") => {
         setModalType(type);
     };
 
@@ -38,6 +62,22 @@ function Cards({ items }) {
     const handleSubmit = () => {
         closeModal();
     };
+
+    useEffect(() => {
+        const handleClickOutside = (e: MouseEvent) => {
+            handleClosePopover(e);
+        };
+
+        if (popoverIndex !== null) {
+            document.addEventListener("click", handleClickOutside);
+        } else {
+            document.removeEventListener("click", handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+    }, [popoverIndex]);
 
     // 모달 오픈 시 스크롤 막기
     useEffect(() => {
@@ -53,7 +93,7 @@ function Cards({ items }) {
     const DAYS = 30;
     const MONTHS = 12;
 
-    const generateTimeText = (createdAt) => {
+    const generateTimeText = (createdAt: string) => {
         const timeDiff = moment().diff(moment(createdAt), "minutes");
 
         if (timeDiff < 2) {
@@ -133,16 +173,16 @@ function Cards({ items }) {
                                                 role='button'
                                                 tabIndex={0}
                                                 className={styles.popover_content}
-                                                onClick={() => openModal("deleteLink")}
+                                                onClick={() => openModal("DELETE_LINK")}
                                                 onKeyDown={(e) => {
                                                     if (e.key === "Enter" || e.key === " ") {
-                                                        openModal("deleteLink");
+                                                        openModal("DELETE_LINK");
                                                     }
                                                 }}
                                             >
                                                 삭제하기
                                             </div>
-                                            {modalType === "deleteLink" && (
+                                            {modalType === "DELETE_LINK" && (
                                                 <Modal
                                                     title='링크 삭제'
                                                     subtitle={link.url}
@@ -156,16 +196,16 @@ function Cards({ items }) {
                                                 role='button'
                                                 tabIndex={0}
                                                 className={styles.popover_content}
-                                                onClick={() => openModal("add")}
+                                                onClick={() => openModal("ADD")}
                                                 onKeyDown={(e) => {
                                                     if (e.key === "Enter" || e.key === " ") {
-                                                        openModal("add");
+                                                        openModal("ADD");
                                                     }
                                                 }}
                                             >
                                                 폴더에 추가
                                             </div>
-                                            {modalType === "add" && (
+                                            {modalType === "ADD" && (
                                                 <Modal
                                                     title='폴더에 추가'
                                                     subtitle={link.url}
