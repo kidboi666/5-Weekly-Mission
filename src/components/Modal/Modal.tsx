@@ -37,7 +37,7 @@ import shareKakao from '../../apis/shareKakao';
 interface Props {
   title: string;
   semiTitle?: string;
-  input?: string | undefined;
+  input?: string;
   button?: string;
   folderId?: number;
   folders?: string[];

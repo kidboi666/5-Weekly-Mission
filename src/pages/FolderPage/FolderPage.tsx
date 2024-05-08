@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { MouseEvent, useCallback, useEffect, useState } from 'react';
 import { SectionWrap } from '../Common.styled';
 import LinkInput from '../../components/LinkInput/LinkInput';
 import * as S from './FolderPage.styled';
@@ -14,13 +14,25 @@ import DeleteIcon from '../../assets/images/delete_icon.png';
 import Modal from '../../components/Modal/Modal';
 
 export default function FolderPage() {
-  const [folderNames, setFolderNames] = useState();
-  const [folders, setFolders] = useState();
+  const [folderNames, setFolderNames] = useState(['']);
+  const [folders, setFolders] = useState([
+    {
+      id: 0,
+      createdAt: '',
+      name: '',
+      userId: 0,
+      favorite: false,
+      link: {
+        count: 0,
+      },
+    },
+  ]);
   const [currentFolder, setCurrentFolder] = useState({
+    id: 0,
     name: '전체',
   });
   const [items, setItems] = useState([]);
-  const [itemCountsInEachFolder, setItemCountsInEachFolder] = useState();
+  const [itemCountsInEachFolder, setItemCountsInEachFolder] = useState([0]);
   const [isVisibleAddFolderModal, setIsVisibleAddFolderModal] = useState(false);
   const [isVisibleShareFolderModal, setIsVisibleShareFolderModal] =
     useState(false);
@@ -53,20 +65,36 @@ export default function FolderPage() {
     },
   ];
 
-  const handleMenuButtonClick = async (e) => {
-    if (e.target.value === '전체') {
+  const handleMenuButtonClick = async (e: MouseEvent<HTMLButtonElement>) => {
+    if ((e.target as HTMLButtonElement).value === '전체') {
       setCurrentFolder({
+        id: 0,
         name: '전체',
       });
       return;
     }
     setCurrentFolder(
-      folders.filter((folder) => folder.name === e.target.value).splice(0, 1)[0]
+      folders
+        .filter(
+          (folder) => folder.name === (e.target as HTMLButtonElement).value
+        )
+        .splice(0, 1)[0]
     );
   };
 
   const handleLoadMenu = async () => {
-    const data = await getFolders();
+    const data: [
+      {
+        id: 0;
+        createdAt: '';
+        name: '';
+        userId: 0;
+        favorite: false;
+        link: {
+          count: 0;
+        };
+      }
+    ] = await getFolders();
     setFolders(data);
     const nextFolderNames = data.map((item) => item.name);
     const nextItemCounts = data.map((item) => item.link.count);
@@ -148,7 +176,7 @@ export default function FolderPage() {
       {isVisibleAddFolderModal && (
         <Modal
           title='폴더 추가'
-          input
+          input=''
           button='추가하기'
           onClose={setIsVisibleAddFolderModal}
         />
