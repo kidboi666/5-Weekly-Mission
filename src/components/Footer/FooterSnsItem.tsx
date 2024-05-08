@@ -7,7 +7,13 @@ import { Link } from 'react-router-dom';
 
 const imgList = [facebookImg, twitterImg, youtubeImg, instagramImg];
 
-export default function FooterSnsItem({ id, name, url }) {
+interface Props {
+  id: number;
+  name: string;
+  url: string;
+}
+
+export default function FooterSnsItem({ id, name, url }: Props) {
   return (
     <li>
       <Link to={url} target='_blank' rel='noreferrer'>

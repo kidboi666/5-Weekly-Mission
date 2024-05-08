@@ -3,7 +3,7 @@ import FooterSnsItem from './FooterSnsItem';
 import { Link } from 'react-router-dom';
 import * as S from './Footer.styled';
 
-const snsList = [
+const SNS_LIST = [
   {
     id: 1,
     name: 'facebook',
@@ -40,12 +40,12 @@ export default function Footer() {
           </li>
         </S.NavList>
         <S.SnsList>
-          {snsList.map((item) => (
+          {SNS_LIST.map((sns) => (
             <FooterSnsItem
-              key={item.id}
-              id={item.id}
-              name={item.name}
-              url={item.url}
+              key={sns.id}
+              id={sns.id}
+              name={sns.name}
+              url={sns.url}
             />
           ))}
         </S.SnsList>
