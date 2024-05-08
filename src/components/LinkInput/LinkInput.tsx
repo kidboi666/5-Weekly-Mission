@@ -2,16 +2,24 @@ import React, { useState } from 'react';
 import * as S from './LinkInput.styled';
 import Modal from '../Modal/Modal';
 
-export default function LinkInput({ folderNames, itemCountsInEachFolder }) {
+interface Props {
+  folderNames: string[];
+  itemCountsInEachFolder: number[];
+}
+
+export default function LinkInput({
+  folderNames,
+  itemCountsInEachFolder,
+}: Props) {
   const [text, setText] = useState('');
   const [link, setLink] = useState('');
   const [isVisibleModal, setIsVisibleModal] = useState(false);
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLink(text);
     setIsVisibleModal(true);
   };
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
   return (

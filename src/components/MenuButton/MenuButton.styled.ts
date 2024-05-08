@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Button = styled.button`
+export const Button = styled.button<{ $isActive: boolean }>`
   height: 35px;
   padding: 0 12px;
   background-color: var(--Linkbrary-white);
