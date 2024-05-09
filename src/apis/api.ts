@@ -28,22 +28,6 @@ export async function getLinks(folderId?: number) {
     throw new Error('사용자 데이터를 불러오는데 실패했습니다.');
   }
   const body = await response.json();
-  const rawData = body.data;
-  const newData = rawData
-    ? rawData.map(
-        (data: {
-          createdAt?: string;
-          created_at?: string;
-          imageSource?: string;
-          image_source?: string;
-        }) => {
-          data.createdAt = data.created_at;
-          delete data.created_at;
-          data.imageSource = data.image_source;
-          delete data.image_source;
-          return data;
-        }
-      )
-    : rawData;
-  return newData;
+  const data = body.data;
+  return data;
 }

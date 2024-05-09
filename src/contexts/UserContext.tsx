@@ -12,9 +12,9 @@ interface UserContextValue {
   user:
     | {
         id: number;
-        createdAt: string;
+        created_at: string;
         name: string;
-        imageSource: string;
+        image_source: string;
         email: string;
         auth_id: string;
       }

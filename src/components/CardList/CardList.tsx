@@ -5,10 +5,10 @@ import Card from '../Card/Card';
 interface Props {
   items: {
     id: number;
-    createdAt: string;
+    created_at: string;
     url: string;
     title: string;
-    imageSource: string;
+    image_source: string;
   }[];
   folderNames?: string[];
   itemCountsInEachFolder?: number[];

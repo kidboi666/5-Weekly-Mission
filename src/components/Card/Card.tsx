@@ -9,10 +9,10 @@ import Modal from '../Modal/Modal';
 
 interface Props {
   item: {
-    createdAt: string;
+    created_at: string;
     url: string;
     title: string;
-    imageSource: string;
+    image_source: string;
   };
   folderNames?: string[];
   itemCountsInEachFolder?: number[];
@@ -23,15 +23,15 @@ export default function Card({
   folderNames,
   itemCountsInEachFolder,
 }: Props) {
-  const { createdAt, url, title, imageSource } = item;
+  const { created_at, url, title, image_source } = item;
   const [isVisibleKebabModal, setIsVisibleKebabModal] = useState(false);
   const [isVisibledeleteCardModal, setIsVisibleDeleteCardModal] =
     useState(false);
   const [isVisibleAddInFolderModal, setIsVisibleAddInFolderModal] =
     useState(false);
 
-  const dateBetween = formatDateToAgo(createdAt);
-  const date = formatDateToString(createdAt);
+  const dateBetween = formatDateToAgo(created_at);
+  const date = formatDateToString(created_at);
 
   const addDefaultImage = (e: {
     currentTarget: {
@@ -65,7 +65,7 @@ export default function Card({
         <Link to={url} target='_blank' rel='noreferrer'>
           <S.ThumnailWrap>
             <S.Thumnail
-              src={imageSource ? imageSource : defaultImage}
+              src={image_source ? image_source : defaultImage}
               alt={title}
               onError={addDefaultImage}
             />

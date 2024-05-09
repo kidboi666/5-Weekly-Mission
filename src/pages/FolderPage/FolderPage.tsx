@@ -18,7 +18,7 @@ export default function FolderPage() {
   const [folders, setFolders] = useState([
     {
       id: 0,
-      createdAt: '',
+      created_at: '',
       name: '',
       userId: 0,
       favorite: false,
@@ -86,7 +86,7 @@ export default function FolderPage() {
     const data: [
       {
         id: 0;
-        createdAt: '';
+        created_at: '';
         name: '';
         userId: 0;
         favorite: false;
