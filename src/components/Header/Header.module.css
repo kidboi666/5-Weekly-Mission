@@ -1,0 +1,50 @@
+.header {
+  margin: -5.8125rem 0 0;
+  padding: 2rem 12.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: var(--zindex-sticky);
+  background: rgba(240, 246, 255, 0.4);
+  backdrop-filter: blur(10px);
+}
+
+.header.headerStatic {
+  position: relative;
+  margin: 0;
+  background: rgba(240, 246, 255);
+}
+
+.header > h1.logo > a {
+  position: relative;
+  display: flex;
+  width: 133px;
+  height: 24px;
+}
+
+@media (max-width: 1199px) {
+  /* 타블렛 */
+  .header {
+    padding: 1.25rem 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  /* 모바일 */
+
+  .header {
+    padding: 0.8125rem 2rem;
+    margin: -3.9375rem 0 0;
+  }
+
+  .header > h1.logo > a {
+    width: 88.67px;
+    height: 1rem;
+  }
+
+  .header .header-profile .header-email {
+    display: none;
+  }
+}
