@@ -1,0 +1,33 @@
+.folderAddButton {
+  min-width: 80px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.193125;
+  color: #6d6afe;
+  letter-spacing: -0.003em;
+}
+
+@media (max-width: 767px) {
+  /* 모바일 */
+
+  .folderAddButton {
+    min-width: 127px;
+    position: fixed;
+    bottom: 101px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 24px;
+    color: #fff;
+    background: #6d6afe;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: 400;
+    z-index: var(--zindex-fixed);
+  }
+  .addIcon path {
+    fill: #fff;
+  }
+}

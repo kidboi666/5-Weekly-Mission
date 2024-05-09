@@ -19,6 +19,7 @@
 
 .btnForm01 {
   width: 21.875rem;
+  max-width: 100%;
   font-size: 1.125rem;
   font-weight: 600;
   line-height: 1.193333333;

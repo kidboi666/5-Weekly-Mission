@@ -13,6 +13,9 @@ const nextConfig = {
       "testing-library.com",
       "static.cdninstagram.com",
       "s.pstatic.net",
+      "ssl.pstatic.net",
+      "data1.pokemonkorea.co.kr",
+      "jasonwatmore.com",
     ],
   },
 };
