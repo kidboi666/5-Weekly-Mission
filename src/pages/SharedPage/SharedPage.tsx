@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom';
 
 export default function SharedPage() {
   const [links, setLinks] = useState([]);
-  const [folderName, setFolderName] = useState('');
+  const [folderName, setFolderName] = useState();
   const [user, setUser] = useState({
     id: 0,
     created_at: '',
@@ -26,7 +26,7 @@ export default function SharedPage() {
   const { folderId } = useParams() as unknown as ParamsType;
 
   const handleLoad = useCallback(async () => {
-    const nextLinks = await getLinks(folderId);
+    const nextLinks = await getLinks(folderId || 0);
     const { name: nextFolderName } = await getFolders(folderId);
     const nextUser = await getUser();
     setLinks(nextLinks);
