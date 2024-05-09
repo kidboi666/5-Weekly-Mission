@@ -31,7 +31,7 @@ export default function FolderPage() {
     id: 0,
     name: '전체',
   });
-  const [items, setItems] = useState([]);
+  const [links, setLinks] = useState([]);
   const [itemCountsInEachFolder, setItemCountsInEachFolder] = useState([0]);
   const [isVisibleAddFolderModal, setIsVisibleAddFolderModal] = useState(false);
   const [isVisibleShareFolderModal, setIsVisibleShareFolderModal] =
@@ -94,7 +94,7 @@ export default function FolderPage() {
           count: 0;
         };
       }
-    ] = await getFolders();
+    ] = await getFolders(0);
     setFolders(data);
     const nextFolderNames = data.map((item) => item.name);
     const nextItemCounts = data.map((item) => item.link.count);
@@ -103,8 +103,8 @@ export default function FolderPage() {
   };
 
   const handleLoadItems = useCallback(async () => {
-    const nextItems = await getLinks(currentFolder.id);
-    setItems(nextItems);
+    const nextLinks = await getLinks(currentFolder.id);
+    setLinks(nextLinks);
   }, [currentFolder.id]);
 
   const handleAddFolderButtonClick = () => {
@@ -164,10 +164,10 @@ export default function FolderPage() {
             </S.ControlWrap>
           </S.TitleWrap>
         )}
-        {!items?.length && <S.NoData>저장된 링크가 없습니다</S.NoData>}
-        {items && (
+        {!links?.length && <S.NoData>저장된 링크가 없습니다</S.NoData>}
+        {links && (
           <CardList
-            items={items}
+            items={links}
             folderNames={folderNames}
             itemCountsInEachFolder={itemCountsInEachFolder}
           />

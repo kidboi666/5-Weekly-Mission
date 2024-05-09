@@ -10,8 +10,8 @@ interface Props {
     title: string;
     imageSource: string;
   }[];
-  folderNames: string[];
-  itemCountsInEachFolder: number[];
+  folderNames?: string[];
+  itemCountsInEachFolder?: number[];
 }
 
 export default function CardList({

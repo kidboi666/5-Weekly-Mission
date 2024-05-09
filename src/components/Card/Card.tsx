@@ -14,8 +14,8 @@ interface Props {
     title: string;
     imageSource: string;
   };
-  folderNames: string[];
-  itemCountsInEachFolder: number[];
+  folderNames?: string[];
+  itemCountsInEachFolder?: number[];
 }
 
 export default function Card({
@@ -73,9 +73,11 @@ export default function Card({
           <S.TextWrap>
             <S.TextTopWrap>
               <S.DateAgo>{dateBetween}</S.DateAgo>
-              <S.Kebab onClick={handleKebabClick}>
-                <img src={kebab} alt='더보기' />
-              </S.Kebab>
+              {folderNames && (
+                <S.Kebab onClick={handleKebabClick}>
+                  <img src={kebab} alt='더보기' />
+                </S.Kebab>
+              )}
               {isVisibleKebabModal && (
                 <S.KebabModal>
                   <button onClick={handleDeleteButtonClick}>삭제하기</button>
@@ -88,9 +90,11 @@ export default function Card({
             <S.Title>{title}</S.Title>
             <S.Date>{date}</S.Date>
           </S.TextWrap>
-          <S.Star onClick={handleStarClick}>
-            <img src={star} alt='별' />
-          </S.Star>
+          {folderNames && (
+            <S.Star onClick={handleStarClick}>
+              <img src={star} alt='별' />
+            </S.Star>
+          )}
         </Link>
       </S.Card>
       {isVisibledeleteCardModal && (

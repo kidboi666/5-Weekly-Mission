@@ -3,8 +3,8 @@ import profileInit from '../../assets/images/profile_init.png';
 import * as S from './Profile.styled';
 
 interface Props {
-  user: string;
-  src: string;
+  user: string | undefined;
+  src: string | undefined;
   $size?: string;
   $flextype?: string;
 }
