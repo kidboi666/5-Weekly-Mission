@@ -2,6 +2,7 @@ import logoImg from '@/public/logo.svg';
 import styles from './index.module.css';
 import { useFetch } from '@/hooks/useFetch';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface UserProfile {
   data: {
@@ -18,13 +19,13 @@ function Navigation() {
   return (
     <div className={styles.Navigation}>
       <div className={styles.Container}>
-        <a href="/shared">
+        <Link href="/">
           <Image
             className={styles.NavigationLogo}
             src={logoImg}
             alt="Linkbrary 로고"
           />
-        </a>
+        </Link>
         {userProfile ? (
           <div className={styles.userProfile}>
             <img
