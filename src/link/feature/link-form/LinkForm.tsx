@@ -2,7 +2,7 @@ import styles from "./LinkForm.module.scss";
 import classNames from "classnames/bind";
 import { useGetFolders } from "@/src/folder/data-access/folder";
 import { AddLinkModal } from "@/src/link/ui/add-link-modal";
-import { LinkForm as UiLinkForm } from "@/src/link/ui/link-form";
+import { UILinkForm as UiLinkForm } from "@/src/link/ui/link-form";
 import { ChangeEvent, KeyboardEventHandler, useState } from "react";
 import { useIntersectionObserver } from "@/src/util";
 

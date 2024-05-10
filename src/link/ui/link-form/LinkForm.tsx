@@ -1,7 +1,12 @@
 import { Cta } from "@/src/ui-component";
 import styles from "./LinkForm.module.scss";
 import classNames from "classnames/bind";
-import { ChangeEventHandler, FormEvent, FormEventHandler, forwardRef } from "react";
+import {
+  ChangeEventHandler,
+  FormEvent,
+  FormEventHandler,
+  forwardRef,
+} from "react";
 
 const cx = classNames.bind(styles);
 
@@ -11,7 +16,7 @@ type LinkFormProps = {
   onSubmit: FormEventHandler<HTMLFormElement>;
 };
 
-export const LinkForm = forwardRef<HTMLFormElement, LinkFormProps>(
+export const UILinkForm = forwardRef<HTMLFormElement, LinkFormProps>(
   ({ value, onChange, onSubmit }: LinkFormProps, ref) => {
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
