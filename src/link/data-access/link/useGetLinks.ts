@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from "react";
 import { axiosInstance } from "@/src/sharing/util";
-import { mapLinksData } from "@/src/link/util-map/mapLinksData";
+import { mapLinksData } from "@/src/link/util/map/mapLinksData";
 import { useAsync } from "@/src/sharing/util";
 import { ALL_LINKS_ID } from "./constant";
 import { SelectedFolderId } from "@/src/folder/type";

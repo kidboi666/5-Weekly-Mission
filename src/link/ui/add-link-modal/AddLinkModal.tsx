@@ -1,7 +1,7 @@
 import styles from "./AddLinkModal.module.scss";
 import classNames from "classnames/bind";
 import { Folder } from "@/src/folder/type";
-import { FolderItem } from "@/src/folder/ui-folder-item";
+import { FolderItem } from "@/src/folder/ui/folder-item";
 import { Dispatch, KeyboardEventHandler, SetStateAction } from "react";
 import { Modal } from "@/src/sharing/ui-modal";
 import { ModalContentBox } from "@/src/sharing/ui-modal-content-box";

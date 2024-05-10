@@ -1,4 +1,4 @@
-import { mapLinksData } from "@/src/link/util-map";
+import { mapLinksData } from "@/src/link/util/map";
 import { DEFAULT_FOLDER_DATA } from "./constant";
 import { SampleFolderRawData } from "@/src/folder/type";
 

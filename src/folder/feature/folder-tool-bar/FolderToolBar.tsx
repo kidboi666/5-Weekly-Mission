@@ -1,12 +1,12 @@
 import styles from "./FolderToolBar.module.scss";
 import classNames from "classnames/bind";
-import { AddFolderButton } from "@/src/folder/ui-add-folder-button";
-import { FolderButton } from "@/src/folder/ui-folder-button";
+import { AddFolderButton } from "@/src/folder/ui/add-folder-button";
+import { FolderButton } from "@/src/folder/ui/folder-button";
 import { IconAndTextButton } from "@/src/sharing/ui-icon-and-text-button";
 import { ALL_LINKS_TEXT, BUTTONS, KAKAO_SHARE_DATA, MODALS_ID } from "./constant";
-import { ALL_LINKS_ID } from "@/src/link/data-access-link/constant";
+import { ALL_LINKS_ID } from "@/src/link/data-access/link/constant";
 import { KeyboardEvent, useState } from "react";
-import { ShareModal } from "@/src/folder/ui-share-modal";
+import { ShareModal } from "@/src/folder/ui/share-modal";
 import { InputModal } from "@/src/sharing/ui-input-modal";
 import { AlertModal } from "@/src/sharing/ui-alert-modal";
 import { Folder, SelectedFolderId } from "@/src/folder/type";

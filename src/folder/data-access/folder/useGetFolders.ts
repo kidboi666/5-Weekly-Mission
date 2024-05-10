@@ -1,5 +1,5 @@
 import { FolderRawData } from "@/src/folder/type";
-import { mapFoldersData } from "@/src/folder/util-map/mapFoldersData";
+import { mapFoldersData } from "@/src/folder/util/map/mapFoldersData";
 import { axiosInstance } from "@/src/sharing/util";
 import { useAsync } from "@/src/sharing/util";
 
