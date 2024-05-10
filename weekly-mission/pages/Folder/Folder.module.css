@@ -1,0 +1,6 @@
+.foldermenu_toolbar {
+  display: flex;
+  padding: 0 32px;
+  justify-content: space-between;
+  align-items: center;
+}
