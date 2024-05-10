@@ -4,20 +4,11 @@ import useFolderList from "../api/useFolderList";
 import { memo } from "react";
 import Card from "../Card/Card";
 import styles from "./CardList.module.css";
+import axios from "@/lib/axios";
 
-export async function getStaticProps() {
-  const folderData = await useFolderList();
-
-  return {
-    props: {
-      folderData,
-    },
-  };
-}
-
-const CardList = ({ isFolderPage, folderData }) => {
-  //if (isLoading) return <div>Loading...</div>;
-  if (!folderData) return null;
+const CardList = ({ isFolderPage }) => {
+  const folderData = useFolderList();
+  if (!folderData || !folderData.folder) return null;
 
   const folderId = null;
 

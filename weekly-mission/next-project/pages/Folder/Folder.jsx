@@ -3,21 +3,13 @@ import SearchBar from "../Searchbar/Searchbar";
 import FolderMenuList from "../FolderMenuList/FolderMenuList";
 import FolderContent from "../FolderContent/FolderContent";
 import AddButton from "../AddButton/AddButton";
-import useFoldersByUserId from "../api/useFoldersByUserId";
 import { fetchLinkData } from "../fetchFolderLinksData";
+import useFoldersByUserId from "../api/useFoldersByUserId";
 import styles from "./Folder.module.css";
+import axios from "@/lib/axios";
 
-export async function getStaticPaths() {
-  const foldersData = await useFoldersByUserId();
-
-  return {
-    props: {
-      foldersData,
-    },
-  };
-}
-
-const Folder = ({ folderId, foldersData }) => {
+const Folder = ({ folderId }) => {
+  const foldersData = useFoldersByUserId();
   const [search, setSearch] = useState("");
 
   const [activeButton, setActiveButton] = useState(null);
@@ -77,7 +69,7 @@ const Folder = ({ folderId, foldersData }) => {
 
   const filteredLinks = getFilteredLink();
 
-  if (isLoading) return <div>Loading...</div>;
+  //if (isLoading) return <div>Loading...</div>;
   if (!foldersData) return null;
 
   return (

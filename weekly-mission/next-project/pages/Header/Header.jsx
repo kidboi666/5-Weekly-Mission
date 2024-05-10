@@ -3,9 +3,11 @@ import Image from "next/image";
 import useFolderList from "../api/useFolderList";
 import AddFolderLink from "../AddFolderLinkBar/AddFolderLink";
 import styles from "./Header.module.css";
+import axios from "@/lib/axios";
 
 export async function getStaticProps() {
-  const folderData = useFolderList();
+  const res = await axios.get("/sample/folder");
+  const folderData = res.data.results ?? [];
 
   return {
     props: {
