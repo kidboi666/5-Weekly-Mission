@@ -11,19 +11,17 @@ import KebabButton from "./KebabButton";
 import { useRouter } from "next/router";
 
 interface FolderCardData {
-  card: {
-    id: number;
-    createdAt: string;
-    description?: string;
-    folderId?: number;
-    title?: string;
-    updatedAt?: string;
-    url: string;
-    imageSource?: string;
-  };
+  id: number;
+  createdAt: string;
+  description?: string;
+  folderId?: number;
+  title?: string;
+  updatedAt?: string;
+  url: string;
+  imageSource?: string;
 }
 
-function Card({ card }: FolderCardData) {
+function Card({ card }: { card: FolderCardData }) {
   const { description, id, title, url, imageSource, createdAt } = card;
   const [display, setDisplay] = useToggle();
   const location = useRouter();

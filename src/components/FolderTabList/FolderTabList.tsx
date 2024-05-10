@@ -1,10 +1,9 @@
 import { useCallback, useState } from "react";
-import { userFoldersTapData } from "@/src/fetchUtils/index";
+import { userFoldersTapData, userFoldersData } from "@/src/fetchUtils/index";
 
 import Button from "./Button";
 import CardTitleIcon from "../CardTitleIcon/CardTitleIcon";
 import FolderAddButton from "./FolderAddButton";
-
 import styles from "@/src/components/FolderTabList/FolderTabList.module.css";
 
 interface FolderTabDataList {
@@ -19,16 +18,14 @@ interface FolderTabDataList {
 }
 
 interface UserFolderdataList {
-  data: {
-    id: number;
-    createdAt: string;
-    description?: string;
-    folderId?: number;
-    title?: string;
-    updatedAt?: string;
-    url: string;
-    imageSource?: string;
-  };
+  id: number;
+  createdAt: string;
+  description?: string;
+  folderId?: number;
+  title?: string;
+  updatedAt?: string;
+  url: string;
+  imageSource?: string;
 }
 
 interface FolderTabListInterface {
@@ -42,16 +39,18 @@ function FolderTabList({
   setUserFolderDataList,
   setFolderTabName,
 }: FolderTabListInterface) {
-  const [buttonClass, setButtonClass] = useState<number | null>(null);
-  const [name, setName] = useState<string | null>(null);
+  const [buttonClass, setButtonClass] = useState<number>(0);
+  const [name, setName] = useState<string>();
 
   const onClickButton = useCallback(
-    async (id: number | null, name: string | null) => {
+    async (id: number, name: string) => {
       setButtonClass(id);
       setName(name);
       setFolderTabName(name);
       try {
-        const data = await userFoldersTapData(id);
+        const response = await userFoldersTapData(id);
+
+        const data = response.data;
         setUserFolderDataList(data);
       } catch (e) {
         if (e instanceof Error) {
@@ -62,6 +61,19 @@ function FolderTabList({
     [setUserFolderDataList, setFolderTabName]
   );
 
+  const onClickTotalButton = useCallback(async () => {
+    setButtonClass(0);
+    try {
+      const response = await userFoldersData();
+      const data = response.data;
+      setUserFolderDataList(data);
+    } catch (e) {
+      if (e instanceof Error) {
+        alert(e.message);
+      }
+    }
+  }, [setUserFolderDataList]);
+
   return (
     <>
       <div className={styles.tabWrap}>
@@ -69,11 +81,9 @@ function FolderTabList({
           <li>
             <button
               className={
-                buttonClass === null
-                  ? `${styles.select} ${styles.tabListBtn}`
-                  : `${styles.tabListBtn}`
+                buttonClass === 0 ? `${styles.select} ${styles.tabListBtn}` : `${styles.tabListBtn}`
               }
-              onClick={() => onClickButton(null, null)}
+              onClick={() => onClickTotalButton()}
             >
               전체
             </button>

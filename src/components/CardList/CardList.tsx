@@ -1,6 +1,6 @@
 import styles from "@/src/components/CardList/CardList.module.css";
-import Image from "next/image";
 import Card from "../Card/Card";
+import { useRouter } from "next/router";
 
 interface CardListData {
   id: number;
@@ -11,26 +11,23 @@ interface CardListData {
   imageSource?: string;
 }
 
-interface UserFolderCardDataList {
-  data: {
-    id: number;
-    createdAt: string;
-    description?: string;
-    folderId?: number;
-    title?: string;
-    updatedAt?: string;
-    url: string;
-    imageSource?: string;
-  };
+interface UserFolderCardData {
+  id: number;
+  createdAt: string;
+  description?: string;
+  folderId?: number;
+  title?: string;
+  updatedAt?: string;
+  url: string;
+  imageSource?: string;
 }
 
-function renderCardList(cardData: CardListData[] | UserFolderCardDataList["data"][]) {
+function renderCardList(cardData: CardListData[] | UserFolderCardData[]) {
   return (
     <ul className={styles.cardList}>
-      {Array.isArray(cardData) &&
-        cardData.map((card) => {
-          return <Card card={card} key={card.id} />;
-        })}
+      {cardData.map((card) => {
+        return <Card card={card} key={card.id} />;
+      })}
     </ul>
   );
 }
@@ -40,15 +37,15 @@ function CardList({
   userFolderDataList,
 }: {
   cardListData?: CardListData[];
-  userFolderDataList?: UserFolderCardDataList;
+  userFolderDataList?: UserFolderCardData[];
 }) {
+  const router = useRouter();
+  const isFolder = router.pathname === "/folder";
+
   return (
     <>
-      {cardListData && cardListData.length > 0 && renderCardList(cardListData)}
-      {userFolderDataList &&
-        Array.isArray(userFolderDataList.data) &&
-        userFolderDataList.data.length > 0 &&
-        renderCardList(userFolderDataList.data)}
+      {cardListData && !isFolder && renderCardList(cardListData)}
+      {userFolderDataList && isFolder && renderCardList(userFolderDataList)}
       {!cardListData && !userFolderDataList && (
         <div className={styles.emptyLink}>저장된 링크가 없습니다.</div>
       )}
