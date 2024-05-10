@@ -1,4 +1,4 @@
-import { mapLinksData } from "link/util-map";
+import { mapLinksData } from "@/link/util-map";
 
 export const mapFolderData = (folder) => {
   if (!folder) return [];

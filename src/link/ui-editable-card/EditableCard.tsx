@@ -1,10 +1,10 @@
 import styles from "./EditableCard.module.scss";
 import classNames from "classnames/bind";
 import { useCallback, useRef, useState } from "react";
-import { Card } from "sharing/ui-card";
-import { CardContent } from "sharing/ui-card-content";
-import { CardImage } from "sharing/ui-card-image";
-import { Popover } from "sharing/ui-popover/Popover";
+import { Card } from "@/sharing/ui-card";
+import { CardContent } from "@/sharing/ui-card-content";
+import { CardImage } from "@/sharing/ui-card-image";
+import { Popover } from "@/sharing/ui-popover/Popover";
 
 const cx = classNames.bind(styles);
 

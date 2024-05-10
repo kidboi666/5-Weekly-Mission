@@ -5,7 +5,11 @@ const cx = classNames.bind(styles);
 
 export const Card = ({ children, onMouseOver, onMouseLeave }) => {
   return (
-    <div className={cx("container")} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
+    <div
+      className={cx("container")}
+      onMouseOver={onMouseOver}
+      onMouseLeave={onMouseLeave}
+    >
       {children}
     </div>
   );

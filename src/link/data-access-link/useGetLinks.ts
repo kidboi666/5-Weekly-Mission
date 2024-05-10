@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react";
-import { axiosInstance } from "sharing/util";
-import { mapLinksData } from "link/util-map/mapLinksData";
-import { useAsync } from "sharing/util";
+import { axiosInstance } from "@/sharing/util";
+import { mapLinksData } from "@/link/util-map/mapLinksData";
+import { useAsync } from "@/sharing/util";
 import { ALL_LINKS_ID } from "./constant";
 
 export const useGetLinks = (folderId = ALL_LINKS_ID) => {

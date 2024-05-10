@@ -1,14 +1,14 @@
 import styles from "./FolderToolBar.module.scss";
 import classNames from "classnames/bind";
-import { FolderButton } from "folder/ui-folder-button";
+import { FolderButton } from "@/folder/ui-folder-button";
 import { BUTTONS, ALL_LINKS_TEXT, MODALS_ID } from "./constant";
-import { ALL_LINKS_ID } from "link/data-access-link/constant";
-import { AddFolderButton } from "folder/ui-add-folder-button/AddFolderButton";
+import { ALL_LINKS_ID } from "@/link/data-access-link/constant";
+import { AddFolderButton } from "@/folder/ui-add-folder-button/AddFolderButton";
 import { useState } from "react";
-import { IconAndTextButton } from "sharing/ui-icon-and-text-button";
-import { InputModal } from "sharing/ui-input-modal/InputModal";
-import { DeleteModal } from "sharing/ui-delete-modal";
-import { ShareModal } from "folder/ui-share-modal";
+import { IconAndTextButton } from "@/sharing/ui-icon-and-text-button";
+import { InputModal } from "@/sharing/ui-input-modal/InputModal";
+import { DeleteModal } from "@/sharing/ui-delete-modal";
+import { ShareModal } from "@/folder/ui-share-modal";
 
 const cx = classNames.bind(styles);
 

@@ -1,8 +1,8 @@
 import styles from "./NavigationBar.module.scss";
 import classNames from "classnames/bind";
-import { ROUTE } from "sharing/util";
-import { Cta } from "sharing/ui-cta";
-import { Profile } from "user/ui-profile";
+import { ROUTE } from "@/sharing/util";
+import { Cta } from "@/sharing/ui-cta";
+import { Profile } from "@/user/ui-profile";
 import { LOGO_IMAGE, TEXT } from "./constant";
 
 const cx = classNames.bind(styles);

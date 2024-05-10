@@ -3,7 +3,14 @@ import { Card } from "sharing/ui-card";
 import { CardContent } from "sharing/ui-card-content";
 import { CardImage } from "sharing/ui-card-image";
 
-export const ReadOnlyCard = ({ url, imageSource, alt, elapsedTime, description, createdAt }) => {
+export const ReadOnlyCard = ({
+  url,
+  imageSource,
+  alt,
+  elapsedTime,
+  description,
+  createdAt,
+}) => {
   const [isHovered, setIsHovered] = useState(false);
   const handleMouseOver = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);

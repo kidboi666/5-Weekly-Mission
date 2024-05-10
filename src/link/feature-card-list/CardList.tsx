@@ -1,11 +1,11 @@
-import { EditableCard } from "link/ui-editable-card";
-import { NoLink } from "link/ui-no-link";
+import { EditableCard } from "@/link/ui-editable-card";
+import { NoLink } from "@/link/ui-no-link";
 import { useCallback, useRef, useState } from "react";
-import { CardList as UiCardList } from "link/ui-card-list";
+import { CardList as UiCardList } from "@/link/ui-card-list";
 import { MODALS_ID } from "./constant";
-import { AlertModal } from "link/ui-alert-modal";
-import { AddLinkModal } from "link/ui-addlink-modal";
-import { useGetFolders } from "folder/data-access-folder";
+import { AlertModal } from "@/link/ui-alert-modal";
+import { AddLinkModal } from "@/link/ui-addlink-modal";
+import { useGetFolders } from "@/folder/data-access-folder";
 
 export const CardList = ({ links }) => {
   const { data: folders } = useGetFolders;
