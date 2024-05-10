@@ -8,7 +8,7 @@ import {
   useGetLinks,
   useSearchLink,
 } from "@/src/link";
-import { Layout } from "@/src/sharing/feature-layout";
+import { Layout } from "@/src/ui-component";
 import { FolderLayout } from "@/src/page-layout/FolderLayout";
 import { useIntersectionObserver } from "@/src/util";
 

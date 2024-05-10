@@ -1,5 +1,5 @@
 import { useGetFolder, FolderInfo } from "@/src/folder";
-import { Layout } from "@/src/sharing/feature-layout";
+import { Layout } from "@/src/ui-component";
 import { SharedLayout } from "@/src/page-layout/SharedLayout";
 import { UICardList, useSearchLink, SearchBar, ReadOnlyCard } from "@/src/link";
 
