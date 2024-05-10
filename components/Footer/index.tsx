@@ -68,8 +68,8 @@ function Footer() {
             >
               <Image
                 src={snsList.img}
-                height={snsList.height}
-                width={snsList.width}
+                height={Number(snsList.height)}
+                width={Number(snsList.width)}
                 alt={snsList.alt}
               />
             </a>

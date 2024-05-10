@@ -1,6 +1,6 @@
 import { useFetch } from '@/hooks/useFetch';
 import { formatDate, generateTimeText } from '../../hooks/date';
-import thumbnail from '@/public//thumbnail.svg';
+import thumbnail from '@/public/thumbnail.svg';
 import styles from '@/components/Cardsfolder/index.module.css';
 import starticon from '@/public/staricon.svg';
 import moreoptionicon from '@/public/moreoptionicon.svg';
@@ -21,7 +21,7 @@ interface Link {
 function Cardsfolder({ url }: { url: string }) {
   // props를 비구조화 할당하여 사용
   const cardData = useFetch<{ data: Link[] }>(url);
-  const [isHovering, setIsHovering] = useState(false);
+  const [hoverStates, setHoverStates] = useState<boolean[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [popoverStates, setPopoverStates] = useState<{
@@ -30,12 +30,20 @@ function Cardsfolder({ url }: { url: string }) {
   const [selectedCardDescription, setSelectedCardDescription] =
     useState<string>('');
 
-  const handleMouseOver = () => {
-    setIsHovering(true);
+  const handleMouseOver = (index: number) => {
+    setHoverStates((prevStates) => {
+      const updatedStates = [...prevStates];
+      updatedStates[index] = true;
+      return updatedStates;
+    });
   };
 
-  const handleMouseOut = () => {
-    setIsHovering(false);
+  const handleMouseOut = (index: number) => {
+    setHoverStates((prevStates) => {
+      const updatedStates = [...prevStates];
+      updatedStates[index] = false;
+      return updatedStates;
+    });
   };
 
   const handleCloseModal = () => {
@@ -76,19 +84,22 @@ function Cardsfolder({ url }: { url: string }) {
   return (
     <div className={styles.card_grid_container}>
       {cardData.data.length ? (
-        cardData.data.map((link) => (
-          <div className={styles.card_container} key={link.id}>
+        cardData.data.map((link, index) => (
+          <div
+            className={`${styles.card_container} ${
+              hoverStates[index] ? styles.isHovering : ''
+            }`}
+            key={link.id}
+            onMouseOver={() => handleMouseOver(index)}
+            onMouseOut={() => handleMouseOut(index)}
+          >
             <a href={link.url}>
               <div className={styles.card}>
                 <div className={styles.card_img_div}>
                   {link.image_source ? (
                     <img
                       src={link.image_source}
-                      className={`${styles.card_img} ${
-                        isHovering ? styles.zoomIn : ''
-                      }`}
-                      onMouseOver={handleMouseOver}
-                      onMouseOut={handleMouseOut}
+                      className={styles.card_img}
                       alt={link.title}
                     />
                   ) : (
@@ -96,22 +107,12 @@ function Cardsfolder({ url }: { url: string }) {
                       width="320"
                       height="200"
                       src={thumbnail}
-                      className={`${styles.card_img} ${
-                        isHovering ? styles.zoomIn : ''
-                      }`}
-                      onMouseOver={handleMouseOver}
-                      onMouseOut={handleMouseOut}
+                      className={styles.card_img}
                       alt={link.title}
                     />
                   )}
                 </div>
-                <div
-                  className={`${styles.card_txt_div} ${
-                    isHovering ? styles.coloredText : ''
-                  }`}
-                  onMouseOver={handleMouseOver}
-                  onMouseOut={handleMouseOut}
-                >
+                <div className={styles.card_txt_div}>
                   <div className={styles.card_txt_div_top}>
                     <p className={styles.left_time_p}>
                       {generateTimeText(link.created_at)}

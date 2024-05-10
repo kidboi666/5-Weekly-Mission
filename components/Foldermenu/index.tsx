@@ -101,14 +101,15 @@ function Foldermenu() {
   const handleOnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const folderId = e.currentTarget.id;
     const folderName = e.currentTarget.textContent || '';
-    const btns = document.querySelectorAll<HTMLButtonElement>('.folderButtons');
-    btns.forEach((btn) => {
-      btn.classList.remove('{styles.active}');
-    });
-    e.currentTarget.classList.add('{styles.active}');
-
     setActiveButton(folderName);
     setCurrentFolderId(folderId);
+
+    const btns = document.querySelectorAll<HTMLButtonElement>('.folderButtons');
+
+    btns.forEach((btn) => {
+      btn.classList.remove(styles.active);
+    });
+    e.currentTarget.classList.add(styles.active);
 
     if (folderId !== 'all') {
       setUrl(`${BASE_URL_ALL_FOLDER}?folderId=${folderId}`);

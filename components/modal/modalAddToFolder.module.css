@@ -58,7 +58,7 @@
   background-color: var(--light-blue);
 }
 
-.options::after {
+.selected::after {
   content: url(../../public/check.svg);
   position: absolute;
   right: 0.8rem;

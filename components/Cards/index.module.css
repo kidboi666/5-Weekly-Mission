@@ -44,13 +44,14 @@
   grid-column: span 3;
 }
 .card_img_div {
+  position: relative;
   width: 34rem;
   height: 20rem;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
 
-.card img {
+.card_img {
   width: 34rem;
   height: 20rem;
   object-fit: cover;

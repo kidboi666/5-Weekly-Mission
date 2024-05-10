@@ -37,7 +37,7 @@ function Cards({ url }: { url: string }) {
                     alt={link.title}
                   />
                 ) : (
-                  <img
+                  <Image
                     src={thumbnail}
                     className={styles.card_img}
                     alt="thumbnail_img"
