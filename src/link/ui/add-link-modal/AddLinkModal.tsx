@@ -3,11 +3,13 @@ import classNames from "classnames/bind";
 import { Folder } from "@/src/folder/type";
 import { FolderItem } from "@/src/folder/ui/folder-item";
 import { Dispatch, KeyboardEventHandler, SetStateAction } from "react";
-import { Modal } from "@/src/sharing/ui-modal";
-import { ModalContentBox } from "@/src/sharing/ui-modal-content-box";
-import { ModalContentButton } from "@/src/sharing/ui-modal-content-button";
-import { ModalContentDescription } from "@/src/sharing/ui-modal-content-description";
-import { ModalContentTitle } from "@/src/sharing/ui-modal-content-title";
+import {
+  ModalTemplate,
+  ModalContentBox,
+  ModalContentButton,
+  ModalContentDescription,
+  ModalContentTitle,
+} from "@/src/ui-component";
 
 const cx = classNames.bind(styles);
 
@@ -33,7 +35,11 @@ export const AddLinkModal = ({
   onKeyDown,
 }: AddLinkModalProps) => {
   return (
-    <Modal isOpen={isOpen} onBackdropClick={onCloseClick} onKeyDown={onKeyDown}>
+    <ModalTemplate
+      isOpen={isOpen}
+      onBackdropClick={onCloseClick}
+      onKeyDown={onKeyDown}
+    >
       <ModalContentBox
         header={
           <div className={cx("modal-header")}>
@@ -54,11 +60,13 @@ export const AddLinkModal = ({
                 />
               ))}
             </div>
-            <ModalContentButton onClick={onAddClick}>추가하기</ModalContentButton>
+            <ModalContentButton onClick={onAddClick}>
+              추가하기
+            </ModalContentButton>
           </div>
         }
         onCloseClick={onCloseClick}
       />
-    </Modal>
+    </ModalTemplate>
   );
 };

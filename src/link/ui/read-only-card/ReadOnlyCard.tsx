@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { Card } from "@/src/sharing/ui-card";
-import { CardContent } from "@/src/sharing/ui-card-content";
-import { CardImage } from "@/src/sharing/ui-card-image";
+import { CardTemplate, CardContent, CardImage } from "@/src/ui-component";
 
 type ReadOnlyCardProps = {
   url: string;
@@ -26,7 +24,10 @@ export const ReadOnlyCard = ({
 
   return (
     <a href={url} target="_blank" rel="noopener noreferrer">
-      <Card onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
+      <CardTemplate
+        onMouseOver={handleMouseOver}
+        onMouseLeave={handleMouseLeave}
+      >
         <CardImage imageSource={imageSource} alt={alt} isZoomedIn={isHovered} />
         <CardContent
           elapsedTime={elapsedTime}
@@ -34,7 +35,7 @@ export const ReadOnlyCard = ({
           createdAt={createdAt}
           isHovered={isHovered}
         />
-      </Card>
+      </CardTemplate>
     </a>
   );
 };

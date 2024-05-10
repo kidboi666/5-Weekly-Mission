@@ -10,9 +10,17 @@ type CardProps = {
   onMouseLeave: MouseEventHandler<HTMLDivElement>;
 };
 
-export const Card = ({ children, onMouseOver, onMouseLeave }: CardProps) => {
+export const CardTemplate = ({
+  children,
+  onMouseOver,
+  onMouseLeave,
+}: CardProps) => {
   return (
-    <div className={cx("container")} onMouseOver={onMouseOver} onMouseLeave={onMouseLeave}>
+    <div
+      className={cx("container")}
+      onMouseOver={onMouseOver}
+      onMouseLeave={onMouseLeave}
+    >
       {children}
     </div>
   );

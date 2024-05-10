@@ -3,7 +3,7 @@ import { AddLinkModal } from "@/src/link/ui/add-link-modal";
 import { EditableCard } from "@/src/link/ui/editable-card";
 import { NoLink } from "@/src/link/ui/no-link";
 import { KeyboardEventHandler, useCallback, useRef, useState } from "react";
-import { CardList as UiCardList } from "@/src/link/ui/card-list";
+import { UICardList as UiCardList } from "@/src/link/ui/card-list";
 import { AlertModal } from "@/src/sharing/ui-alert-modal";
 import { MODALS_ID } from "./constant";
 import { Link } from "@/src/link/type";

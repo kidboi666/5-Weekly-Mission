@@ -20,7 +20,7 @@ type ModalProps = {
   onKeyDown?: KeyboardEventHandler<HTMLDivElement>;
 };
 
-export const Modal = ({
+export const ModalTemplate = ({
   children,
   isOpen = false,
   disableScrollLock = false,

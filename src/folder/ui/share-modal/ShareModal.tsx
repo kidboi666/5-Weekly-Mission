@@ -1,9 +1,11 @@
 import styles from "./ShareModal.module.scss";
 import classNames from "classnames/bind";
-import { Modal } from "@/src/sharing/ui-modal";
-import { ModalContentBox } from "@/src/sharing/ui-modal-content-box";
-import { ModalContentDescription } from "@/src/sharing/ui-modal-content-description";
-import { ModalContentTitle } from "@/src/sharing/ui-modal-content-title";
+import {
+  ModalTemplate,
+  ModalContentBox,
+  ModalContentDescription,
+  ModalContentTitle,
+} from "@/src/ui-component";
 import KakaoIcon from "./kakao.svg";
 import FacebookIcon from "./facebook.svg";
 import LinkIcon from "./link.svg";
@@ -31,7 +33,11 @@ export const ShareModal = ({
   onKeyDown,
 }: ShareModalProps) => {
   return (
-    <Modal isOpen={isOpen} onBackdropClick={onCloseClick} onKeyDown={onKeyDown}>
+    <ModalTemplate
+      isOpen={isOpen}
+      onBackdropClick={onCloseClick}
+      onKeyDown={onKeyDown}
+    >
       <ModalContentBox
         header={
           <div className={cx("modal-header")}>
@@ -57,6 +63,6 @@ export const ShareModal = ({
         }
         onCloseClick={onCloseClick}
       />
-    </Modal>
+    </ModalTemplate>
   );
 };
