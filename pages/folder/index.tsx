@@ -1,4 +1,4 @@
-import { useGetFolders } from "@/src/folder/data-access-folder";
+import { useGetFolders } from "@/src/folder/data-access/folder";
 import { useGetLinks } from "@/src/link/data-access-link";
 import { Layout } from "@/src/sharing/feature-layout";
 import { FolderLayout } from "@/src/page-layout/FolderLayout";
@@ -14,9 +14,11 @@ import { useIntersectionObserver } from "@/src/sharing/util";
 
 const FolderPage = () => {
   const { data: folders } = useGetFolders();
-  const [selectedFolderId, setSelectedFolderId] = useState<SelectedFolderId>(ALL_LINKS_ID);
+  const [selectedFolderId, setSelectedFolderId] =
+    useState<SelectedFolderId>(ALL_LINKS_ID);
   const { data: links, loading } = useGetLinks(selectedFolderId);
-  const { searchValue, handleChange, handleCloseClick, result } = useSearchLink(links);
+  const { searchValue, handleChange, handleCloseClick, result } =
+    useSearchLink(links);
   const { ref, isIntersecting } = useIntersectionObserver<HTMLDivElement>();
 
   return (
@@ -24,7 +26,11 @@ const FolderPage = () => {
       <FolderLayout
         linkForm={<LinkForm hideFixedLinkForm={isIntersecting} />}
         searchBar={
-          <SearchBar value={searchValue} onChange={handleChange} onCloseClick={handleCloseClick} />
+          <SearchBar
+            value={searchValue}
+            onChange={handleChange}
+            onCloseClick={handleCloseClick}
+          />
         }
         folderToolBar={
           <FolderToolBar
