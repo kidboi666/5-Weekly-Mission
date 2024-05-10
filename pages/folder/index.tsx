@@ -3,7 +3,7 @@ import { useGetFolders, FolderToolBar, SelectedFolderId } from "@/src/folder";
 import {
   SearchBar,
   CardList,
-  UILinkForm,
+  LinkForm,
   ALL_LINKS_ID,
   useGetLinks,
   useSearchLink,
@@ -24,7 +24,7 @@ const FolderPage = () => {
   return (
     <Layout isSticky={false} footerRef={ref}>
       <FolderLayout
-        linkForm={<UILinkForm hideFixedLinkForm={isIntersecting} />}
+        linkForm={<LinkForm hideFixedLinkForm={isIntersecting} />}
         searchBar={
           <SearchBar
             value={searchValue}
