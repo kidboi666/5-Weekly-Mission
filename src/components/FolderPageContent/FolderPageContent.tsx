@@ -1,14 +1,14 @@
-import AddLinkBar from '../../components/AddLinkBar/AddLinkBar';
-import LinkCardList from '../../components/LinkCardList/LinkCardList';
-import { getUserFolders, getUserLinks } from '../../utils/api';
+import LinkCardList from '@components/LinkCardList/LinkCardList';
+import { getUserFolders, getUserLinks } from '@utils/api';
 import { useEffect, useState, useCallback } from 'react';
-import './FolderPage.css';
-import { convertObjectKeysToCamelCase } from '../../utils/convertObjectKeysToCamelCase';
-import Modal from '../../components/Modal/Modal';
-import DeleteModal from '../../components/ModalContents/DeleteModal';
-import FolderInputModal from '../../components/ModalContents/FolderInputModal';
-import ShareModal from '../../components/ModalContents/ShareModal';
-import AddToFolderModal from '../../components/ModalContents/AddToFolderModal';
+import './FolderPageContent.css';
+import { convertObjectKeysToCamelCase } from '@utils/convertObjectKeysToCamelCase';
+import Modal from '@components/Modal/Modal';
+import DeleteModal from '@components/ModalContents/DeleteModal';
+import FolderInputModal from '@components/ModalContents/FolderInputModal';
+import ShareModal from '@components/ModalContents/ShareModal';
+import AddToFolderModal from '@components/ModalContents/AddToFolderModal';
+import { FolderObject } from '@utils/interfaces';
 const allFolder = {
   id: 0,
   name: '전체',
@@ -17,10 +17,12 @@ const allFolder = {
 
 export default function FolderPage() {
   const [currentFolderId, setCurrentFolderId] = useState(0);
-  const [folders, setFolders] = useState([allFolder]);
-  const [links, setLinks] = useState([]);
+  const [folders, setFolders] = useState<FolderObject[]>([allFolder]);
+  const [links, setLinks] = useState<{ [key: string]: any }[]>([]);
   const [showModal, setShowModal] = useState(false);
-  const [modalContent, setModalContent] = useState(null);
+  const [modalContent, setModalContent] = useState<React.ReactElement | null>(
+    null
+  );
 
   const handleFolderAddClick = () => {
     setShowModal(true);
@@ -30,10 +32,11 @@ export default function FolderPage() {
   };
 
   const handleFolderNameChangeClick = () => {
-    setShowModal(true);
     const currentFolder = folders.find(
       (folder) => folder.id === currentFolderId
     );
+    if (!currentFolder) return;
+    setShowModal(true);
     setModalContent(
       <FolderInputModal
         initialValue={currentFolder.name}
@@ -44,10 +47,11 @@ export default function FolderPage() {
   };
 
   const handleFolderDeleteClick = () => {
-    setShowModal(true);
     const currentFolder = folders.find(
       (folder) => folder.id === currentFolderId
     );
+    if (!currentFolder) return;
+    setShowModal(true);
     setModalContent(
       <DeleteModal
         headerText={'폴더 삭제'}
@@ -56,7 +60,7 @@ export default function FolderPage() {
     );
   };
 
-  const handleLinkDeleteClick = (link) => {
+  const handleLinkDeleteClick = (link: string) => {
     setShowModal(true);
 
     setModalContent(
@@ -64,7 +68,7 @@ export default function FolderPage() {
     );
   };
 
-  const handleAddToFolder = (link) => {
+  const handleAddToFolder = (link: string) => {
     setShowModal(true);
 
     setModalContent(
@@ -78,10 +82,11 @@ export default function FolderPage() {
   };
 
   const handleShareClick = () => {
-    setShowModal(true);
     const currentFolder = folders.find(
       (folder) => folder.id === currentFolderId
     );
+    if (!currentFolder) return;
+    setShowModal(true);
     setModalContent(
       <ShareModal
         headerText={'폴더 공유'}
@@ -95,25 +100,32 @@ export default function FolderPage() {
     let result;
     try {
       result = await getUserFolders();
-    } catch (error) {}
-    setFolders([allFolder, ...result]);
+      setFolders([allFolder, ...result]);
+    } catch (error) {
+      return;
+    }
+
+    let links = [];
     try {
       result = await getUserLinks(0);
-    } catch (error) {}
-    let links = [];
-    for (const link of result) {
-      links.push(convertObjectKeysToCamelCase(link));
+      for (const link of result) {
+        links.push(convertObjectKeysToCamelCase(link));
+      }
+    } catch (error) {
+      return;
     }
     setLinks(links);
     setCurrentFolderId(0);
   }, []);
 
-  const handleFolderNameButtonClick = async (id) => {
+  const handleFolderNameButtonClick = async (id: number) => {
     setCurrentFolderId(id);
     let result;
     try {
       result = await getUserLinks(id);
-    } catch (error) {}
+    } catch (error) {
+      return;
+    }
     let links = [];
     for (const link of result) {
       links.push(convertObjectKeysToCamelCase(link));
@@ -133,7 +145,6 @@ export default function FolderPage() {
           <div className={'overlay'} onClick={() => setShowModal(false)}></div>
         </>
       )}
-      <AddLinkBar />
       <LinkCardList
         folders={folders}
         items={links}
