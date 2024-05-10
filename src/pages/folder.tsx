@@ -1,13 +1,13 @@
-import { useGetFolders } from "@/folder/data-access-folder";
-import { useGetLinks } from "@/link/data-access-link";
-import { Layout } from "@/sharing/feature-layout";
+import { useGetFolders } from "@/components-FolderPage/data-access-folder";
+import { useGetLinks } from "@/components-SharedPage/data-access-link";
+import { Layout } from "@/common/feature-layout";
 import { FolderLayout } from "@/page-layout/FolderLayout";
-import { FolderToolBar } from "@/folder/feature-folder-tool-bar";
-import { SearchBar } from "@/link/ui-search-bar";
+import { FolderToolBar } from "@/components-FolderPage/feature-folder-tool-bar";
+import { SearchBar } from "@/components-SharedPage/ui-search-bar";
 import { useState } from "react";
-import { ALL_LINKS_ID } from "@/link/data-access-link/constant";
-import { LinkForm } from "@/link/feature-link-form";
-import { CardList } from "@/link/feature-card-list";
+import { ALL_LINKS_ID } from "@/components-SharedPage/data-access-link/constant";
+import { LinkForm } from "@/components-SharedPage/feature-link-form";
+import { CardList } from "@/components-SharedPage/feature-card-list";
 
 export const FolderPage = () => {
   const { data: folders } = useGetFolders();
