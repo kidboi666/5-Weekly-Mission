@@ -1,3 +1,4 @@
+import React from "react";
 import Search from "../components/Search/Search";
 import { useEffect, useState } from "react";
 import AddLinkForm from "../components/AddLinkForm/AddLinkForm";
@@ -8,13 +9,26 @@ import Modal from "../components/Modal/Modal";
 import useModal from "../hooks/useModal";
 import ModalContext from "../components/Modal/ModalContext";
 
+interface UserFolderdataList {
+  data: {
+    id: number;
+    createdAt: string;
+    description?: string;
+    folderId?: number;
+    title?: string;
+    updatedAt?: string;
+    url: string;
+    imageSource?: string;
+  };
+}
+
 function Folder() {
   const [folderTabDataList, setFolderTabDataList] = useState([]);
-  const [userFolderDataList, setUserFolderDataList] = useState([]);
+  const [userFolderDataList, setUserFolderDataList] = useState<UserFolderdataList[]>([]);
   const { isOpen, openModal, closeModal } = useModal();
   const [modalType, setModalType] = useState("add");
   const [cardUrl, setCardUrl] = useState("");
-  const [folderTabName, setFolderTabName] = useState("");
+  const [folderTabName, setFolderTabName] = useState<string | null>("");
 
   useEffect(() => {
     async function fetchDataAndSetState() {

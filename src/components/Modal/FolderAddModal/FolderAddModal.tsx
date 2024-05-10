@@ -1,10 +1,32 @@
 import React, { useState } from "react";
 import FolderAddButton from "./FolderAddButton";
 
-function FolderAddModal({ modalTypeLabels, modalType, cardUrl, folderTabDataList }) {
-  const [activeId, setActiveId] = useState(null);
+interface UserFolderdataList {
+  data: {
+    id: number;
+    name: string;
+    link: {
+      count: number;
+    };
+  };
+}
 
-  const handleClick = (folderId) => {
+interface FolderAddModalType {
+  modalType: string;
+  modalTypeLabels: Record<string, string>;
+  folderTabDataList: UserFolderdataList["data"][];
+  cardUrl: string;
+}
+
+function FolderAddModal({
+  modalTypeLabels,
+  modalType,
+  cardUrl,
+  folderTabDataList,
+}: FolderAddModalType) {
+  const [activeId, setActiveId] = useState<number | null>(null);
+
+  const handleClick = (folderId: number) => {
     setActiveId(folderId === activeId ? null : folderId);
   };
 

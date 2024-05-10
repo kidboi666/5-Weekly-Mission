@@ -1,4 +1,5 @@
 import "./Card.css";
+import React from "react";
 import catImg from "../../assets/images/cat.jpg";
 import GetDate from "../../utils/GetDate";
 import GetDaysAgo from "../../utils/GetDaysAgo";
@@ -9,14 +10,27 @@ import EditableStarButton from "./EditableStarButton";
 import KebabButton from "./KebabButton";
 import { useLocation } from "react-router-dom";
 
-function Card({ card }) {
+interface FolderCardData {
+  card: {
+    id: number;
+    createdAt: string;
+    description?: string;
+    folderId?: number;
+    title?: string;
+    updatedAt?: string;
+    url: string;
+    imageSource?: string;
+  };
+}
+
+function Card({ card }: FolderCardData) {
   const { description, id, title, url, imageSource, createdAt } = card;
   const [display, setDisplay] = useToggle();
   const location = useLocation();
 
-  const onClickKebabButton = (e) => {
+  const onClickKebabButton = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setDisplay();
+    if (typeof setDisplay === "function") setDisplay();
   };
 
   return (
