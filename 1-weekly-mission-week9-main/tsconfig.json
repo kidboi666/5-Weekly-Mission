@@ -1,0 +1,24 @@
+{
+  "include": ["src"],
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "CommonJS",
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "allowJs": true,
+    "declaration": true,
+    "removeComments": true,
+    "noUnusedLocals": true,
+    "jsx": "react-jsx",
+    "baseUrl": "./src",
+    "paths": {
+      "folder/*": ["folder/*"],
+      "link/*": ["link/*"],
+      "page-layout/*": ["page-layout/*"],
+      "pages/*": ["pages/*"],
+      "sharing/*": ["sharing/*"],
+      "user/*": ["user/*"]
+    }
+  }
+}

@@ -1,11 +1,11 @@
-import { useGetFolders } from "folder/data-access-folder";
-import { AddLinkModal } from "link/ui-add-link-modal";
-import { EditableCard } from "link/ui-editable-card";
-import { NoLink } from "link/ui-no-link";
-import { useCallback, useRef, useState } from "react";
-import { CardList as UiCardList } from "link/ui-card-list";
-import { AlertModal } from "sharing/ui-alert-modal";
-import { MODALS_ID } from "./constant";
+import { useGetFolders } from 'folder/data-access-folder';
+import { AddLinkModal } from 'link/ui-add-link-modal';
+import { EditableCard } from 'link/ui-editable-card';
+import { NoLink } from 'link/ui-no-link';
+import { useCallback, useRef, useState } from 'react';
+import { CardList as UiCardList } from 'link/ui-card-list';
+import { AlertModal } from 'sharing/ui-alert-modal';
+import { MODALS_ID } from './constant';
 
 export const CardList = ({ links }) => {
   const { data: folders } = useGetFolders();
@@ -16,19 +16,19 @@ export const CardList = ({ links }) => {
 
   const closeModal = () => setCurrentModal(null);
   const handleKeyDown = (event) => {
-    if (event.key === "Escape") {
+    if (event.key === 'Escape') {
       closeModal(null);
     }
   };
 
   const getPopoverPosition = useCallback(
-    (cardIndex) => {
+    (cardIndex: number) => {
       const count =
         cardListRef?.current !== null
           ? window
               .getComputedStyle(cardListRef?.current)
-              .getPropertyValue("grid-template-columns")
-              .split(" ").length
+              .getPropertyValue('grid-template-columns')
+              .split(' ').length
           : 1;
       if ((cardIndex + 1) % count === 0) {
         return { right: 0 };

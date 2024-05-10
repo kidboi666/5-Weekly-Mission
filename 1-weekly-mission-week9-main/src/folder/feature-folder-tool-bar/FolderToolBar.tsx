@@ -1,18 +1,28 @@
-import styles from "./FolderToolBar.module.scss";
-import classNames from "classnames/bind";
-import { AddFolderButton } from "folder/ui-add-folder-button";
-import { FolderButton } from "folder/ui-folder-button";
-import { IconAndTextButton } from "sharing/ui-icon-and-text-button";
-import { ALL_LINKS_TEXT, BUTTONS, KAKAO_SHARE_DATA, MODALS_ID } from "./constant";
-import { ALL_LINKS_ID } from "link/data-access-link/constant";
-import { useState } from "react";
-import { ShareModal } from "folder/ui-share-modal";
-import { InputModal } from "sharing/ui-input-modal";
-import { AlertModal } from "sharing/ui-alert-modal";
-import { copyToClipboard } from "sharing/util/copyToClipboard";
-import { useKakaoSdk } from "sharing/util/useKakaoSdk";
+import styles from './FolderToolBar.module.scss';
+import classNames from 'classnames/bind';
+import { AddFolderButton } from 'folder/ui-add-folder-button';
+import { FolderButton } from 'folder/ui-folder-button';
+import { IconAndTextButton } from 'sharing/ui-icon-and-text-button';
+import {
+  ALL_LINKS_TEXT,
+  BUTTONS,
+  KAKAO_SHARE_DATA,
+  MODALS_ID,
+} from './constant';
+import { ALL_LINKS_ID } from 'link/data-access-link/constant';
+import { useState } from 'react';
+import { ShareModal } from 'folder/ui-share-modal';
+import { InputModal } from 'sharing/ui-input-modal';
+import { AlertModal } from 'sharing/ui-alert-modal';
+import { copyToClipboard } from 'sharing/util/copyToClipboard';
+import { useKakaoSdk } from 'sharing/util/useKakaoSdk';
 
 const cx = classNames.bind(styles);
+interface FolderToolBar {
+  folders: ;
+  selectedFolderId: string;
+  onFolderClick: React.SetStateAction<string>;
+}
 
 export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }) => {
   const { shareKakao } = useKakaoSdk();
@@ -25,8 +35,8 @@ export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }) => {
   const shareLink = `${window.location.origin}/shared?user=1&folder=${selectedFolderId}`;
 
   const closeModal = () => setCurrentModal(null);
-  const handleKeyDown = (event) => {
-    if (event.key === "Escape") {
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape') {
       closeModal();
     }
   };
@@ -38,8 +48,8 @@ export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }) => {
   const handleLinkCopyClick = () => copyToClipboard(shareLink);
 
   return (
-    <div className={cx("container")}>
-      <div className={cx("folders")}>
+    <div className={cx('container')}>
+      <div className={cx('folders')}>
         <FolderButton
           key={ALL_LINKS_ID}
           text={ALL_LINKS_TEXT}
@@ -55,7 +65,7 @@ export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }) => {
           />
         ))}
       </div>
-      <div className={cx("add-button")}>
+      <div className={cx('add-button')}>
         <AddFolderButton onClick={() => setCurrentModal(MODALS_ID.addFolder)} />
         <InputModal
           isOpen={currentModal === MODALS_ID.addFolder}
@@ -66,9 +76,9 @@ export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }) => {
           onKeyDown={handleKeyDown}
         />
       </div>
-      <h2 className={cx("folder-name")}>{folderName}</h2>
+      <h2 className={cx('folder-name')}>{folderName}</h2>
       {selectedFolderId !== ALL_LINKS_ID && (
-        <div className={cx("buttons")}>
+        <div className={cx('buttons')}>
           {BUTTONS.map(({ text, iconSource, modalId }) => (
             <IconAndTextButton
               key={text}

@@ -1,10 +1,10 @@
-import styles from "./EditableCard.module.scss";
-import classNames from "classnames/bind";
-import { useCallback, useRef, useState } from "react";
-import { Card } from "sharing/ui-card";
-import { CardContent } from "sharing/ui-card-content";
-import { CardImage } from "sharing/ui-card-image";
-import { Popover } from "sharing/ui-popover";
+import styles from './EditableCard.module.scss';
+import classNames from 'classnames/bind';
+import { useCallback, useRef, useState } from 'react';
+import { Card } from 'sharing/ui-card';
+import { CardContent } from 'sharing/ui-card-content';
+import { CardImage } from 'sharing/ui-card-image';
+import { Popover } from 'sharing/ui-popover';
 
 const cx = classNames.bind(styles);
 
@@ -28,9 +28,11 @@ export const EditableCard = ({
     event.preventDefault();
     setIsPopoverOpen(true);
   };
+
   const handleBackgroundClick = useCallback(() => {
     setIsPopoverOpen(false);
   }, []);
+
   const handleDeleteClick = (event) => {
     event.preventDefault();
     onDeleteClick();
@@ -52,10 +54,17 @@ export const EditableCard = ({
           createdAt={createdAt}
           isHovered={isHovered}
         />
-        <button className={cx("star")} onClick={(event) => event.preventDefault()}>
+        <button
+          className={cx('star')}
+          onClick={(event) => event.preventDefault()}
+        >
           <img src="images/star.svg" alt="즐겨찾기를 나타내는 별" />
         </button>
-        <button ref={kebabButtonRef} className={cx("kebab")} onClick={handleKebabClick}>
+        <button
+          ref={kebabButtonRef}
+          className={cx('kebab')}
+          onClick={handleKebabClick}
+        >
           <img src="images/kebab.svg" alt="더보기를 나타내는 점 3개" />
         </button>
         <Popover
@@ -64,7 +73,7 @@ export const EditableCard = ({
           anchorPosition={popoverPosition}
           onBackgroundClick={handleBackgroundClick}
         >
-          <ul className={cx("popover-list")}>
+          <ul className={cx('popover-list')}>
             <li onClick={handleDeleteClick}>삭제하기</li>
             <li onClick={handleAddToFolderClick}>폴더에 추가</li>
           </ul>

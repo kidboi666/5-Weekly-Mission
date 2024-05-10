@@ -1,10 +1,10 @@
-export const copyToClipboard = (text, callback) => {
+export const copyToClipboard = (text: string, callback?: () => void) => {
   if (!navigator?.clipboard) {
-    const tempElement = document.createElement("textarea");
+    const tempElement = document.createElement('textarea');
     tempElement.value = text;
     document.body.appendChild(tempElement);
     tempElement.select();
-    document.execCommand("copy");
+    document.execCommand('copy');
     document.body.removeChild(tempElement);
     callback?.();
     return;

@@ -1,5 +1,5 @@
-import { useLayoutEffect, useState } from "react";
-import { createPortal } from "react-dom";
+import { useLayoutEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 export const Portal = ({ children, container }) => {
   const [mountNode, setMountNode] = useState(null);
