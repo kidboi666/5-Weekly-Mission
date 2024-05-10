@@ -1,35 +1,44 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import useAsync from "../../../../services/useAsync";
-import { getLinksByUserIdAndFolderId } from "../../../../services/api";
-import styles from "./FoldersController.module.css";
-import SearchBar from "../../../../globalComponents/SearchBar";
+import {
+  FolderData,
+  LinkData,
+  getLinksByUserIdAndFolderId,
+} from "services/api";
+import useAsync from "services/useAsync";
+import SearchBar from "globalComponents/SearchBar";
 import FoldersList from "../FoldersList";
 import FolderLinkCards from "../FolderLinkCards";
+import styles from "./FoldersController.module.css";
 
-function FoldersController({ folders, userId }) {
+interface FoldersControllerProps {
+  folders: FolderData[];
+  userId: number;
+}
+
+function FoldersController({ folders, userId }: FoldersControllerProps) {
   const [loading, setLoading] = useState(true);
-  const [selectedFolderName, setSelectedFolderName] = useState("전체");
+  const [selectedFolderId, setSelectedFolderId] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
-  const selectedFolderId = searchParams.get("folderId");
   const {
     value: links,
     isLoading,
     error,
-  } = useAsync(getLinksByUserIdAndFolderId, userId, selectedFolderId);
+  } = useAsync<LinkData[]>(
+    getLinksByUserIdAndFolderId,
+    userId,
+    parseInt(selectedFolderId)
+  );
 
-  const handleClick = (e, folderId) => {
-    const selectedFolder = e.target.textContent;
+  const handleClick = (folderId?: string) => {
     const newSearchParams = new URLSearchParams(searchParams);
 
     if (folderId) {
-      newSearchParams.set("folderId", folderId);
+      setSelectedFolderId(folderId);
+      setSearchParams(newSearchParams);
     } else {
       newSearchParams.delete("folderId");
     }
-
-    setSelectedFolderName(selectedFolder);
-    setSearchParams(newSearchParams);
   };
 
   useEffect(() => {
@@ -37,6 +46,10 @@ function FoldersController({ folders, userId }) {
       setLoading(false);
     }
   }, [isLoading, links]);
+
+  if (!links) {
+    return <div>No Data Available</div>;
+  }
 
   return (
     <section className={styles.container}>
@@ -50,7 +63,6 @@ function FoldersController({ folders, userId }) {
           <FoldersList
             handleClick={handleClick}
             folders={folders}
-            selectedFolderName={selectedFolderName}
             selectedFolderId={selectedFolderId}
           />
           <FolderLinkCards links={links} />

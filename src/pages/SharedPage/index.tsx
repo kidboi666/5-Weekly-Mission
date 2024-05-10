@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import "../../global.css";
-import useAsync from "../../services/useAsync";
-import { getFolder, getUser } from "../../services/api";
-import Header from "../../globalComponents/Header";
+import { SampleFolder, SampleUser, getFolder, getUser } from "services/api";
+import useAsync from "services/useAsync";
+import Header from "globalComponents/Header";
+import Footer from "globalComponents/Footer";
 import UserProfileAndTitle from "./components/UserProfileAndTitle";
 import SharedLinkCards from "./components/SharedLinkCards/SharedLinkCards";
-import Footer from "../../globalComponents/Footer";
+import "global.css";
 
 function SharedPage() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
@@ -13,12 +13,12 @@ function SharedPage() {
     value: userProfileData,
     isLoading: isLoadingUser,
     error: userError,
-  } = useAsync(getUser);
+  } = useAsync<SampleUser>(getUser);
   const {
     value: folderData,
     isLoading: isLoadingFolders,
     error: foldersError,
-  } = useAsync(getFolder);
+  } = useAsync<SampleFolder>(getFolder);
 
   useEffect(() => {
     if (!isLoadingUser && userProfileData) {
@@ -34,6 +34,10 @@ function SharedPage() {
     return <div>Error loading data.</div>;
   }
 
+  if (!userProfileData || !folderData) {
+    return <div>No Data Available</div>;
+  }
+
   return (
     <>
       <Header
@@ -42,16 +46,14 @@ function SharedPage() {
         userLogInSuccess={isUserLoggedIn}
       />
       {isUserLoggedIn ? (
-        <UserProfileAndTitle
-          userName={userProfileData.name}
-          folderName={folderData.name}
-          folderImage={folderData.owner.profileImageSource}
-        />
-      ) : (
-        <div>로그인해주세요.</div>
-      )}
-      {isUserLoggedIn ? (
-        <SharedLinkCards links={folderData.links} />
+        <>
+          <UserProfileAndTitle
+            userName={userProfileData.name}
+            folderName={folderData.name}
+            folderImage={folderData.owner.profileImageSource}
+          />
+          <SharedLinkCards links={folderData.links || []} />
+        </>
       ) : (
         <div>로그인해주세요.</div>
       )}

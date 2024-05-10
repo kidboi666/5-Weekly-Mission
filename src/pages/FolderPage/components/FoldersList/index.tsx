@@ -1,25 +1,35 @@
-import { useState } from "react";
-import styles from "./FoldersList.module.css";
-import { FaPencilAlt, FaRegShareSquare, FaRegTrashAlt } from "react-icons/fa";
-import Modal from "../../../../globalComponents/Modal";
+import { ReactElement, useState } from "react";
+import { FolderData } from "services/api";
+import Modal from "globalComponents/Modal";
 import FolderAddForm from "./components/FolderAddForm";
 import SocialShareBox from "./components/SocialShareBox";
 import FolderEditForm from "./components/FolderEditForm";
 import FolderDeleteForm from "./components/FolderDeleteForm";
+import { FaPencilAlt, FaRegShareSquare, FaRegTrashAlt } from "react-icons/fa";
+import styles from "./FoldersList.module.css";
+
+interface FoldersListProps {
+  handleClick: (folderId?: string) => void;
+  folders: FolderData[];
+  selectedFolderId: string;
+}
+
+interface ActionTypes {
+  [actionType: string]: ReactElement;
+}
 
 function FoldersList({
   handleClick,
   folders,
-  selectedFolderName,
   selectedFolderId,
-}) {
+}: FoldersListProps) {
   const [onModal, setOnModal] = useState(false);
-  const [modalContent, setModalContent] = useState(null);
+  const [modalContent, setModalContent] = useState<ReactElement | null>(null);
 
-  const handleClickModal = (actionType) => {
-    const actionTypes = {
+  const handleClickModal = (actionType: string) => {
+    const actionTypes: ActionTypes = {
       add: <FolderAddForm />,
-      share: <SocialShareBox title={selectedFolderName} />,
+      share: <SocialShareBox title="폴더명" />,
       modify: <FolderEditForm />,
       delete: <FolderDeleteForm />,
     };
@@ -33,11 +43,11 @@ function FoldersList({
       <div className={styles.listContainer}>
         <ul className={styles.folderButtonList}>
           <li>
-            <button onClick={(e) => handleClick(e)}>전체</button>
+            <button onClick={() => handleClick()}>전체</button>
           </li>
           {folders.map((folder) => (
             <li key={folder.id}>
-              <button onClick={(e) => handleClick(e, folder.id)}>
+              <button onClick={() => handleClick(String(folder.id))}>
                 {folder.name}
               </button>
             </li>
@@ -51,7 +61,7 @@ function FoldersList({
         </button>
       </div>
       <div className={styles.controlContainer}>
-        <div className={styles.selectedFolderName}>{selectedFolderName}</div>
+        <div className={styles.selectedFolderName}>폴더명</div>
         {selectedFolderId && (
           <div className={styles.folderControl}>
             <button onClick={() => handleClickModal("share")}>
