@@ -5,6 +5,7 @@ export * from "./footer";
 export * from "./icon-and-text-button";
 export * from "./input";
 export * from "./input-modal";
+export * from "./layout";
 export * from "./modal";
 export * from "./navigation-bar";
 export * from "./password-input";
