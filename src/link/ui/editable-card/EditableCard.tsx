@@ -7,8 +7,12 @@ import {
   useRef,
   useState,
 } from "react";
-import { CardTemplate, CardContent, CardImage } from "@/src/ui-component";
-import { Popover } from "@/src/sharing/ui-popover";
+import {
+  CardTemplate,
+  CardContent,
+  CardImage,
+  Popover,
+} from "@/src/ui-component";
 
 const cx = classNames.bind(styles);
 

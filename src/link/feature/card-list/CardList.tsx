@@ -1,10 +1,12 @@
 import { useGetFolders } from "@/src/folder/data-access/folder";
-import { AddLinkModal } from "@/src/link/ui/add-link-modal";
-import { EditableCard } from "@/src/link/ui/editable-card";
-import { NoLink } from "@/src/link/ui/no-link";
 import { KeyboardEventHandler, useCallback, useRef, useState } from "react";
-import { UICardList as UiCardList } from "@/src/link/ui/card-list";
-import { AlertModal } from "@/src/sharing/ui-alert-modal";
+import {
+  UICardList as UiCardList,
+  AddLinkModal,
+  EditableCard,
+  NoLink,
+} from "@/src/link";
+import { AlertModal } from "@/src/ui-component";
 import { MODALS_ID } from "./constant";
 import { Link } from "@/src/link/type";
 

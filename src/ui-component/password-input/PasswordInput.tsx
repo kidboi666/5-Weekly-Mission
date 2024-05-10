@@ -1,7 +1,7 @@
 import { ChangeEventHandler, HTMLInputTypeAttribute, useMemo, useState } from "react";
 import styles from "./PasswordInput.module.scss";
 import classNames from "classnames/bind";
-import { Input, InputProps } from "../ui-input";
+import { Input, InputProps } from "@/src/ui-component";
 import EyeOnIcon from "./eye-on.svg";
 import EyeOffIcon from "./eye-off.svg";
 

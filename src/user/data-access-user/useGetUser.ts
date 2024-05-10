@@ -1,5 +1,4 @@
-import { useAsync } from "@/src/sharing/util";
-import { axiosInstance } from "@/src/sharing/util";
+import { useAsync, axiosInstance } from "@/src/util";
 import { UserRawData } from "@/src/user/type";
 
 export const useGetUser = () => {

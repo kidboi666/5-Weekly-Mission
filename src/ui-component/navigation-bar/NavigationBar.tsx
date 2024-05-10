@@ -1,7 +1,7 @@
 import styles from "./NavigationBar.module.scss";
 import classNames from "classnames/bind";
-import { ROUTE } from "@/src/sharing/util";
-import { Cta } from "@/src/sharing/ui-cta";
+import { ROUTE } from "@/src/util";
+import { Cta } from "@/src/ui-component";
 import { Profile } from "@/src/user/ui-profile";
 import { LOGO_IMAGE, TEXT } from "./constant";
 import Link from "next/link";

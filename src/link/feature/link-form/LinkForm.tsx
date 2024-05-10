@@ -4,7 +4,7 @@ import { useGetFolders } from "@/src/folder/data-access/folder";
 import { AddLinkModal } from "@/src/link/ui/add-link-modal";
 import { LinkForm as UiLinkForm } from "@/src/link/ui/link-form";
 import { ChangeEvent, KeyboardEventHandler, useState } from "react";
-import { useIntersectionObserver } from "@/src/sharing/util/useIntersectionObserver";
+import { useIntersectionObserver } from "@/src/util";
 
 const cx = classNames.bind(styles);
 

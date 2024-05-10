@@ -1,7 +1,5 @@
-import { FolderRawData } from "@/src/folder/type";
-import { mapFoldersData } from "@/src/folder/util/map/mapFoldersData";
-import { axiosInstance } from "@/src/sharing/util";
-import { useAsync } from "@/src/sharing/util";
+import { FolderRawData, mapFoldersData } from "@/src/folder";
+import { axiosInstance, useAsync } from "@/src/util";
 
 export const useGetFolders = () => {
   const getFolders = () => axiosInstance.get<{ data: FolderRawData[] }>("users/1/folders");

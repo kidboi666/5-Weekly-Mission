@@ -10,7 +10,7 @@ import {
 } from "@/src/link";
 import { Layout } from "@/src/sharing/feature-layout";
 import { FolderLayout } from "@/src/page-layout/FolderLayout";
-import { useIntersectionObserver } from "@/src/sharing/util";
+import { useIntersectionObserver } from "@/src/util";
 
 const FolderPage = () => {
   const { data: folders } = useGetFolders();
