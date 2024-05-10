@@ -1,8 +1,8 @@
 import { useFetch } from '@/hooks/useFetch';
 import { formatDate, generateTimeText } from '@/hooks/date';
-import thumbnail from '@/public/thumbnail.svg';
 import styles from '@/components/Cards/index.module.css';
 import Image from 'next/image';
+import { SyntheticEvent } from 'react';
 
 export interface Link {
   id: string;
@@ -18,6 +18,10 @@ interface FolderData {
     links: Link[];
   };
 }
+
+const AddThumbnail = (e: SyntheticEvent<HTMLImageElement, Event>) => {
+  e.currentTarget.src = '/thumbnail.svg';
+};
 
 function Cards({ url }: { url: string }) {
   // props를 비구조화 할당하여 사용
@@ -35,10 +39,13 @@ function Cards({ url }: { url: string }) {
                     src={link.imageSource}
                     className={styles.card_img}
                     alt={link.title}
+                    onError={AddThumbnail}
                   />
                 ) : (
                   <Image
-                    src={thumbnail}
+                    width="320"
+                    height="200"
+                    src={'/thumbnail.svg'}
                     className={styles.card_img}
                     alt="thumbnail_img"
                   />

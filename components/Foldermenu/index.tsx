@@ -13,6 +13,8 @@ import ModalDelete from '@/components/modal/ModalDelete';
 import SearchableBar from '@/components/SearchableBar';
 import Image from 'next/image';
 
+const BASE_FOLDER_ID = 'all';
+
 interface Link {
   id: string;
   url: string;
@@ -63,7 +65,9 @@ function Foldermenu() {
   const [isModalShareOpen, setIsModalShareOpen] = useState(false);
   const [isModalRenameOpen, setIsModalRenameOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
-  const [currentFolderId, setCurrentFolderId] = useState<string | null>(null);
+  const [currentFolderId, setCurrentFolderId] = useState<string | null>(
+    BASE_FOLDER_ID
+  );
   const [filteredLinks, setFilteredLinks] = useState<Link[]>([]);
 
   function handleCloseModal() {
@@ -104,14 +108,7 @@ function Foldermenu() {
     setActiveButton(folderName);
     setCurrentFolderId(folderId);
 
-    const btns = document.querySelectorAll<HTMLButtonElement>('.folderButtons');
-
-    btns.forEach((btn) => {
-      btn.classList.remove(styles.active);
-    });
-    e.currentTarget.classList.add(styles.active);
-
-    if (folderId !== 'all') {
+    if (folderId !== BASE_FOLDER_ID) {
       setUrl(`${BASE_URL_ALL_FOLDER}?folderId=${folderId}`);
     } else {
       setUrl(BASE_URL_ALL_FOLDER);
@@ -124,16 +121,20 @@ function Foldermenu() {
       <div className={styles.buttonContainer}>
         <FolderListContainer>
           <button
-            className={`${styles.folderButtons} ${styles.allFolders} ${styles.active}`}
+            className={`${styles.folderButtons} ${styles.allFolders} ${
+              currentFolderId == BASE_FOLDER_ID ? styles.active : ''
+            }`}
             onClick={handleOnClick}
-            id="all"
+            id={BASE_FOLDER_ID}
           >
             전체
           </button>
           {folderData?.data &&
             folderData?.data.map((folderdata) => (
               <button
-                className={styles.folderButtons}
+                className={`${styles.folderButtons} ${
+                  currentFolderId == folderdata.id ? styles.active : ''
+                }`}
                 key={folderdata.id}
                 onClick={handleOnClick}
                 id={folderdata.id}
