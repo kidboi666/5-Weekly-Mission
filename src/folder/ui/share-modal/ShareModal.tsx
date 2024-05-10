@@ -6,9 +6,9 @@ import {
   ModalContentDescription,
   ModalContentTitle,
 } from "@/src/ui-component";
-import KakaoIcon from "./kakao.svg";
-import FacebookIcon from "./facebook.svg";
-import LinkIcon from "./link.svg";
+import KakaoIcon from "./imgSrc/kakao.svg";
+import FacebookIcon from "./imgSrc/facebook.svg";
+import LinkIcon from "./imgSrc/link.svg";
 import { KeyboardEventHandler, MouseEventHandler } from "react";
 
 const cx = classNames.bind(styles);
