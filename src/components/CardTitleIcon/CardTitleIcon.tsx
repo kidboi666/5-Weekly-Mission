@@ -6,6 +6,7 @@ import styles from "@/src/components/CardTitleIcon/CardTitleIcon.module.css";
 
 import ModalContext from "../Modal/ModalContext";
 import { useContext } from "react";
+import Image from "next/image";
 
 function CardTitleIcon() {
   const { setModalType, openModal } = useContext(ModalContext)!;
@@ -43,7 +44,7 @@ function CardTitleIcon() {
         return (
           <li key={text}>
             <button onClick={onClick}>
-              <img src={url} alt="" />
+              <Image src={url} alt="" />
               <span>{text}</span>
             </button>
           </li>

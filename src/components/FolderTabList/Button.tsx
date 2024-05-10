@@ -6,7 +6,7 @@ interface buttonData {
     name: string;
   };
   onClickButton: (id: number, name: string) => void;
-  buttonClass: number | null;
+  buttonClass: number;
 }
 
 function Button({ data, onClickButton, buttonClass }: buttonData) {

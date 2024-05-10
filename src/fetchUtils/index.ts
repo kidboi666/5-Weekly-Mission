@@ -72,12 +72,9 @@ export const userFoldersData = async () => {
   }
 };
 
-export const userFoldersTapData = async (id: number | null) => {
+export const userFoldersTapData = async (id: number) => {
   try {
-    let response;
-    id === null
-      ? (response = await axios.get(`${BASE_URL}api/users/1/links`))
-      : (response = await axios.get(`${BASE_URL}api/users/1/links?folderId=${id}`));
+    const response = await axios.get(`${BASE_URL}api/users/1/links?folderId=${id}`);
 
     if (response.status !== 200) {
       throw new Error("서버에서 유저 폴더 정보를 가져오는데 실패 했습니다.");

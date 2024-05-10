@@ -26,7 +26,9 @@ function ConHeader({ folderData }: { folderData: FolderData | null }) {
   return (
     <div className={styles.conHeaderWrap}>
       <div className={styles.conHeader}>
-        <Image width={60} height={60} src={owner?.profileImageSource || ""} alt="" />
+        {owner?.profileImageSource && (
+          <Image width={60} height={60} src={owner.profileImageSource} alt={owner.name} />
+        )}
         <h3 className={styles.h3}>{owner?.name}</h3>
       </div>
       <h2 className={styles.h2}>{folderData?.name}</h2>

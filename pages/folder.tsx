@@ -9,21 +9,20 @@ import useModal from "@/src/hooks/useModal";
 import ModalContext from "@/src/components/Modal/ModalContext";
 
 interface UserFolderdataList {
-  data: {
-    id: number;
-    createdAt: string;
-    description?: string;
-    folderId?: number;
-    title?: string;
-    updatedAt?: string;
-    url: string;
-    imageSource?: string;
-  };
+  id: number;
+  createdAt: string;
+  description?: string;
+  folderId?: number;
+  title?: string;
+  updatedAt?: string;
+  url: string;
+  imageSource?: string;
 }
 
 function Folder() {
   const [folderTabDataList, setFolderTabDataList] = useState([]);
-  const [userFolderDataList, setUserFolderDataList] = useState<UserFolderdataList[]>([]);
+  const [userFolderDataList, setUserFolderDataList] = useState<UserFolderdataList[]>();
+
   const { isOpen, openModal, closeModal } = useModal();
   const [modalType, setModalType] = useState("add");
   const [cardUrl, setCardUrl] = useState("");
@@ -32,10 +31,17 @@ function Folder() {
   useEffect(() => {
     async function fetchDataAndSetState() {
       const folderTabDataList = await tabDataList();
-      const userFolderDataList = await userFoldersData();
       const { data } = folderTabDataList;
       setFolderTabDataList(data);
-      setUserFolderDataList(userFolderDataList);
+    }
+    fetchDataAndSetState();
+  }, []);
+
+  useEffect(() => {
+    async function fetchDataAndSetState() {
+      const userFolderDataList = await userFoldersData();
+      const { data } = userFolderDataList;
+      setUserFolderDataList(data);
     }
     fetchDataAndSetState();
   }, []);
