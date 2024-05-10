@@ -1,4 +1,4 @@
-import format from "date-fns/format";
+import { format } from "date-fns";
 import { getElapsedTime } from "@/src/util";
 
 export const mapLinksData = (link: {
