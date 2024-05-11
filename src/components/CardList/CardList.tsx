@@ -80,7 +80,7 @@ function CardList({
     <>
       {cardListData && !isFolder && renderCardList(renderFilteredCardData)}
       {userFolderDataList && isFolder && renderCardList(renderFilteredCardData)}
-      {!cardListData && !userFolderDataList && (
+      {renderFilteredCardData?.length === 0 && (
         <div className={styles.emptyLink}>저장된 링크가 없습니다.</div>
       )}
     </>
