@@ -7,7 +7,12 @@ import { LOGO_IMAGE, TEXT } from "./constant";
 
 const cx = classNames.bind(styles);
 
-export const NavigationBar = ({ profile, isSticky }) => {
+interface Props {
+  profile: { email: string; profileImageSource: string } | null;
+  isSticky: boolean;
+}
+
+export const NavigationBar = ({ profile, isSticky }: Props) => {
   return (
     <nav className={cx("container", { sticky: isSticky })}>
       <div className={cx("items")}>

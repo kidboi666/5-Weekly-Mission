@@ -3,13 +3,19 @@ import classNames from "classnames/bind";
 import { useGetUser } from "@/components-user/data-access-user";
 import { Footer } from "@/common/ui-footer";
 import { NavigationBar } from "@/common/ui-navigation-bar";
+import { ReactNode } from "react";
 
 const cx = classNames.bind(styles);
 
-export const Layout = ({ children, isSticky = true }) => {
-  const { data } = useGetUser();
-  const { email, profileImageSource } = data || {};
-  const profile = data ? { email, profileImageSource } : null;
+interface Props {
+  children: ReactNode;
+  isSticky: boolean;
+}
+
+export const Layout = ({ children, isSticky = true }: Props) => {
+  const { userData } = useGetUser();
+  const { email, profileImageSource } = userData || {};
+  const profile = userData ? { email, profileImageSource } : null;
 
   return (
     <div>

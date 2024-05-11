@@ -3,12 +3,19 @@ import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
+interface Props {
+  elapsedTime: string;
+  description: string;
+  createdAt: string;
+  isHovered: boolean;
+}
+
 export const CardContent = ({
   elapsedTime,
   description,
   createdAt,
   isHovered,
-}) => {
+}: Props) => {
   return (
     <div className={cx("container", { hovered: isHovered })}>
       <span className={cx("elapsed-time")}>{elapsedTime}</span>

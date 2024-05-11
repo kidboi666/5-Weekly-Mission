@@ -25,7 +25,7 @@ export const CardList = ({ links }) => {
   };
 
   const getPopoverPosition = useCallback(
-    (cardIndex) => {
+    (cardIndex: number): { [position: string]: number } => {
       const count =
         cardListRef?.current !== null
           ? window

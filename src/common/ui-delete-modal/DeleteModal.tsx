@@ -5,8 +5,18 @@ import { ModalContentBox } from "@/common/ui-modal-content-box";
 import { ModalContentButton } from "@/common/ui-modal-content-button";
 import { ModalContentTitle } from "@/common/ui-modal-content-title";
 import { ModalContentDescription } from "@/common/ui-modal-content-description";
+import { KeyboardEvent, MouseEventHandler } from "react";
 
 const cx = classNames.bind(styles);
+
+interface Props {
+  isOpen: boolean;
+  title: string;
+  buttonText: string;
+  onCloseClick: MouseEventHandler;
+  folderName: string;
+  onKeyDown: (e: KeyboardEvent<HTMLElement>) => void;
+}
 
 export const DeleteModal = ({
   isOpen,
@@ -15,7 +25,7 @@ export const DeleteModal = ({
   onCloseClick,
   folderName,
   onKeyDown,
-}) => {
+}: Props) => {
   return (
     <Modal isOpen={isOpen} onBackdropClick={onCloseClick} onKeyDown={onKeyDown}>
       <ModalContentBox

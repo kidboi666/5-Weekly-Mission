@@ -4,9 +4,15 @@ import { DEFAULT_IMAGE } from "./constant";
 
 const cx = classNames.bind(styles);
 
-export const CardImage = ({ imageSource, alt, isZoomedIn }) => {
+interface Props {
+  imageSource: string;
+  alt: string;
+  isZoomedIn: boolean;
+}
+
+export const CardImage = ({ imageSource, alt, isZoomedIn }: Props) => {
   return (
-    <div
+    <img
       style={{ backgroundImage: `url(${imageSource ?? DEFAULT_IMAGE})` }}
       className={cx("container", { zoomin: isZoomedIn })}
       alt={alt}
