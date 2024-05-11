@@ -6,14 +6,10 @@ import styles from "@/src/components/Modal/Modal.module.css";
 import Image from "next/image";
 import { RenderModalType } from "./Modal";
 
-function ShareModal({
-  modalTypeLabels,
-  modalType,
-  folderTabName,
-}: Omit<RenderModalType, "folderTabDataList" | "cardUrl">) {
+function ShareModal({ folderTabName }: Partial<RenderModalType>) {
   return (
     <div className={styles.modalForm1}>
-      <h2>{modalTypeLabels && modalTypeLabels[modalType]}</h2>
+      <h2>폴더 공유</h2>
       <div className={styles.conWrap}>
         <div className={styles.folderLinkWrap}>{folderTabName}</div>
         <ul className={styles.folderShareWrap}>

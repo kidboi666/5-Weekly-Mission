@@ -4,22 +4,7 @@ import styles from "@/src/components/Modal/Modal.module.css";
 import FolderAddButton from "./FolderAddButton";
 import { RenderModalType } from "../Modal";
 
-interface UserFolderdataList {
-  data: {
-    id: number;
-    name: string;
-    link: {
-      count: number;
-    };
-  };
-}
-
-function FolderAddModal({
-  modalTypeLabels,
-  modalType,
-  cardUrl,
-  folderTabDataList,
-}: Omit<RenderModalType, "folderTabName">) {
+function FolderAddModal({ cardUrl, folderTabDataList }: Omit<RenderModalType, "folderTabName">) {
   const [activeId, setActiveId] = useState<number | null>(null);
 
   const handleClick = (folderId: number) => {
@@ -28,7 +13,7 @@ function FolderAddModal({
 
   return (
     <div className={styles.modalForm1}>
-      <h2>{modalTypeLabels[modalType]}</h2>
+      <h2>폴더에 추가</h2>
       <div className={styles.conWrap}>
         <div className={styles.folderLinkWrap}>{cardUrl}</div>
         <ul className={styles.addFolderWrap}>
