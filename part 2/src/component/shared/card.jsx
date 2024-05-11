@@ -1,7 +1,7 @@
-import "./card.css";
+import "../card.css";
+import noImg from "../../img/이미지 없을 때 배경.svg";
 
 const Card = ({ date, title, url, img }) => {
-
   function displayedAt(date) {
     const milliSeconds = new Date() - new Date(date);
     const seconds = milliSeconds / 1000;
@@ -24,12 +24,16 @@ const Card = ({ date, title, url, img }) => {
 
   return (
     <>
-      <a href={url} className="card" target="_blank">
-        <img src={img}></img>
+      <a href={url} className="card" target="_blank" rel="noopener noreferrer">
+        <img
+          className="cardImg"
+          alt="cardImg"
+          src={img !== null ? img : noImg}
+        />
         <div className={"card-text"}>
           <p>{displayedAt(date)}</p>
           <h4>{title}</h4>
-          <h6>{date.slice(0, 10).replaceAll("-", ".")}</h6>
+          <h6>{date?.slice(0, 10).replaceAll("-", ".")}</h6>
         </div>
       </a>
     </>

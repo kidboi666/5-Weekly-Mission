@@ -1,9 +1,9 @@
 import "./header.css";
 import { useState, useEffect } from "react";
-import { getUserData } from "./userApi";
+import { getUserData } from "./api/userApi";
 
 const Header = () => {
-  const [userData, setUserData] = useState({userProfile: {}});
+  const [userData, setUserData] = useState({ userProfile: {} });
 
   useEffect(() => {
     const resData = async () => {

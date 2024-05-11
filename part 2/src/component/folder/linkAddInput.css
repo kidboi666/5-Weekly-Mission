@@ -1,0 +1,38 @@
+.linkAdd {
+  position: relative;
+  width: 800px;
+}
+
+.linkIcon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin: 24.5px 20px;
+}
+
+.linkInput {
+  width: 800px;
+  height: 69px;
+  padding: 16px 108px 16px 52px;
+  gap: 8px;
+  border-radius: 15px;
+  border: 1px;
+  border-radius: 15px;
+  border: 1px solid var(--Linkbrary-primary-color, #6d6afe);
+  background: var(--Linkbrary-white, #fff);
+}
+
+.linkAdd .header-btn {
+  position: absolute;
+  right: 20px;
+  top: 16px;
+  width: 80px;
+  height: 37px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  
+}
+
+.linkInput ::placeholder {
+  color: var(--text-content-gray);
+}

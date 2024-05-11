@@ -1,0 +1,45 @@
+.filterButtonListWrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filterButtonList {
+  display: flex;
+  gap: 8px;
+  position: relative;
+}
+
+.filterBtn {
+  height: 35px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(109, 106, 254, 1);
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 400;
+  display: flex;
+  text-align: center;
+  text-align: justify;
+  align-items: center;
+}
+
+.filterBtn:hover {
+  background: rgba(109, 106, 254, 1);
+  color: #fff;
+}
+
+.folerAddButton {
+  background: none;
+  border: none;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  gap: 4px;
+
+  color: rgba(109, 106, 254, 1);
+}

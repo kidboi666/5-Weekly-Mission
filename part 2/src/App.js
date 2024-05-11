@@ -1,19 +1,17 @@
 import "./reset.css";
 import "./globalStyle.css";
-import { createContext } from "react";
-import Footer from "./component/footer";
-import Header from "./component/header";
-import Main from "./component/main";
-
-export const userContext = createContext();
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Shared from "./pages/shared";
+import Folder from "./pages/folder";
 
 function App() {
   return (
-    <div className="App">
-        <Header />
-        <Main />
-        <Footer />
-    </div>
+<BrowserRouter>
+<Routes>
+  <Route path="/shared" element={<Shared/>}></Route>
+  <Route path="/folder" element={<Folder/>}></Route>
+</Routes>
+</BrowserRouter>
   );
 }
 
