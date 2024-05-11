@@ -26,6 +26,8 @@ const Card = ({ link, isFolderPage }) => {
           className={styles.card_image}
           src={imageSource || noImage}
           alt={title || "No Image"}
+          width={220}
+          height={200}
         />
       </Link>
       <Image className={styles.starbutton} src={starbutton} alt="즐겨찾기" />

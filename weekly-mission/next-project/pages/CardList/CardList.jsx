@@ -4,11 +4,12 @@ import useFolderList from "../api/useFolderList";
 import { memo } from "react";
 import Card from "../Card/Card";
 import styles from "./CardList.module.css";
-import axios from "@/lib/axios";
 
 const CardList = ({ isFolderPage }) => {
-  const folderData = useFolderList();
-  if (!folderData || !folderData.folder) return null;
+  const { data: folderData, isLoading } = useFolderList();
+
+  if (isLoading) return <div>Loading...</div>;
+  if (!folderData) return null;
 
   const folderId = null;
 

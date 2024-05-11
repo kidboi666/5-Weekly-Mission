@@ -62,7 +62,7 @@ const Header = ({ isFolderPage, folderData }) => {
       )}
 
       {isSticky && (
-        <div className={sticky_container}>
+        <div className={styles.sticky_container}>
           {isFolderPage && <AddFolderLink />}
         </div>
       )}
