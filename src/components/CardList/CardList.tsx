@@ -22,7 +22,9 @@ interface UserFolderCardData {
   imageSource?: string;
 }
 
-function renderCardList(cardData: CardListData[] | UserFolderCardData[]) {
+function renderCardList(cardData: CardListData[] | UserFolderCardData[] | undefined) {
+  if (!cardData) return null;
+
   return (
     <ul className={styles.cardList}>
       {cardData.map((card) => {
@@ -35,17 +37,49 @@ function renderCardList(cardData: CardListData[] | UserFolderCardData[]) {
 function CardList({
   cardListData,
   userFolderDataList,
+  searchInputValue,
 }: {
   cardListData?: CardListData[];
   userFolderDataList?: UserFolderCardData[];
+  searchInputValue: string;
 }) {
   const router = useRouter();
   const isFolder = router.pathname === "/folder";
+  const searchValue = searchInputValue.toLowerCase();
+
+  const filteredCardData = () => {
+    if (userFolderDataList && searchValue === "") userFolderDataList;
+    if (cardListData && searchValue === "") cardListData;
+
+    // folder page
+    if (userFolderDataList) {
+      return userFolderDataList.filter((card) => {
+        return (
+          card.title?.includes(searchValue) ||
+          card.url.includes(searchValue) ||
+          card.description?.includes(searchValue)
+        );
+      });
+    }
+
+    // shared page
+    if (cardListData) {
+      return cardListData.filter((card) => {
+        return (
+          card.title?.includes(searchValue) ||
+          card.url.includes(searchValue) ||
+          card.description?.includes(searchValue)
+        );
+      });
+    }
+  };
+
+  const renderFilteredCardData = filteredCardData();
 
   return (
     <>
-      {cardListData && !isFolder && renderCardList(cardListData)}
-      {userFolderDataList && isFolder && renderCardList(userFolderDataList)}
+      {cardListData && !isFolder && renderCardList(renderFilteredCardData)}
+      {userFolderDataList && isFolder && renderCardList(renderFilteredCardData)}
       {!cardListData && !userFolderDataList && (
         <div className={styles.emptyLink}>저장된 링크가 없습니다.</div>
       )}

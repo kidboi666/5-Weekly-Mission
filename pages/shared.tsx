@@ -41,6 +41,7 @@ interface FetchSharedResponse {
 function Shared() {
   const [folderData, setFolderData] = useState<FolderData | null>(null);
   const [cardListData, setCardListData] = useState<CardListData[]>([]);
+  const [searchInputValue, setSearchInputValue] = useState<string>("");
 
   useEffect(() => {
     async function fetchDataAndSetState() {
@@ -54,12 +55,16 @@ function Shared() {
     fetchDataAndSetState();
   }, []);
 
+  const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchInputValue(e.target.value);
+  };
+
   return (
     <div className="content-wrap">
       <ConHeader folderData={folderData} />
       <div className="wrap">
-        <Search />
-        <CardList cardListData={cardListData} />
+        <Search searchInputValue={searchInputValue} onChangeValue={onChangeValue} />
+        <CardList cardListData={cardListData} searchInputValue={searchInputValue} />
       </div>
     </div>
   );
