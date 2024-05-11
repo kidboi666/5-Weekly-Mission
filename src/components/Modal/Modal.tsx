@@ -6,6 +6,9 @@ import FolderAddModal from "./FolderAddModal/FolderAddModal";
 import styles from "@/src/components/Modal/Modal.module.css";
 import Image from "next/image";
 import AddModal from "./AddModal";
+import EditModal from "./EditModal";
+import FolderDeleteModal from "./FolderDeleteModal";
+import LinkDeleteModal from "./LinkDeleteModal";
 
 interface UserFolderdataList {
   data: {
@@ -43,31 +46,17 @@ function renderModal({
       />
     )) ||
     (modalType === "edit" && (
-      <div className={styles.modalForm1}>
-        <h2>{modalTypeLabels && modalTypeLabels[modalType]}</h2>
-        <div className={styles.conWrap}>
-          <input type="text" className={styles.modalInput} placeholder="내용 입력" />
-          <button className="btnForm01">변경하기</button>
-        </div>
-      </div>
+      <EditModal modalTypeLabels={modalTypeLabels} modalType={modalType} />
     )) ||
     (modalType === "folderDelete" && (
-      <div className={`${styles.modalForm1} ${styles.modalDelete}`}>
-        <h2>{modalTypeLabels && modalTypeLabels[modalType]}</h2>
-        <div className={styles.conWrap}>
-          <div className={styles.folderLinkWrap}>{folderTabName}</div>
-        </div>
-        <button className="btnForm01">삭제하기</button>
-      </div>
+      <FolderDeleteModal
+        modalTypeLabels={modalTypeLabels}
+        modalType={modalType}
+        folderTabName={folderTabName}
+      />
     )) ||
     (modalType === "linkDelete" && (
-      <div className={`${styles.modalForm1} ${styles.modalDelete}`}>
-        <h2>{modalTypeLabels && modalTypeLabels[modalType]}</h2>
-        <div className={styles.conWrap}>
-          <div className={styles.folderLinkWrap}>{cardUrl}</div>
-        </div>
-        <button className="btnForm01">삭제하기</button>
-      </div>
+      <LinkDeleteModal modalType={modalType} modalTypeLabels={modalTypeLabels} cardUrl={cardUrl} />
     )) ||
     (modalType === "share" && (
       <ShareModal
