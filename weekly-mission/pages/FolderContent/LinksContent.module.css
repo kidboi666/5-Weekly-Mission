@@ -1,0 +1,30 @@
+.foldermenu_toolbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 32px;
+}
+
+.foldermenu_selectedfolder {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.folder_containter {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin: 20px auto;
+  padding: 0 32px;
+}
+
+@media (max-width: 1124px) {
+  .folder_containter {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 769px) {
+  .folder_containter {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
