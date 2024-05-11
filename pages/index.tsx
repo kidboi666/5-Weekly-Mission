@@ -1,10 +1,18 @@
 import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
+import Link from "next/link";
 import styles from "@/styles/Home.module.css";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Home() {
-  return <>안녕 next.js</>;
+  return (
+    <>
+      <div className={styles.mainList}>
+        <Link href="shared" className="btn-primary btn-sm">
+          공유
+        </Link>
+        <Link href="/folder" className="btn-primary btn-sm">
+          폴더
+        </Link>
+      </div>
+    </>
+  );
 }
