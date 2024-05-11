@@ -1,0 +1,26 @@
+.searchBar {
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  padding: 15px 16px;
+  margin-bottom: 40px;
+  gap: 10px;
+}
+
+.searchBar .searchIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.searchBar .searchInput {
+  flex-grow: 1;
+  background-color: transparent;
+  border: none;
+}
+
+.searchBar .searchInput::placeholder {
+  font-family: Pretendard;
+  color: #666;
+  line-height: 24px;
+}

@@ -1,0 +1,16 @@
+.logo {
+  background-image: url(../../assets/logo.svg);
+  flex: 0 0 133px;
+  height: 24px;
+  background-size: cover;
+  border: none;
+  cursor: pointer;
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .logo {
+    flex-basis: 88px;
+    height: 16px;
+  }
+}
