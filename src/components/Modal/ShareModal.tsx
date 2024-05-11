@@ -4,14 +4,13 @@ import KakaoIco from "../../assets/icon/share-kakao-ico.png";
 import LinkIco from "../../assets/icon/share-link-ico.png";
 import styles from "@/src/components/Modal/Modal.module.css";
 import Image from "next/image";
+import { RenderModalType } from "./Modal";
 
-interface ShareModalType {
-  modalType: string;
-  modalTypeLabels?: Record<string, string>;
-  folderTabName: string | null;
-}
-
-function ShareModal({ modalTypeLabels, modalType, folderTabName }: ShareModalType) {
+function ShareModal({
+  modalTypeLabels,
+  modalType,
+  folderTabName,
+}: Omit<RenderModalType, "folderTabDataList" | "cardUrl">) {
   return (
     <div className={styles.modalForm1}>
       <h2>{modalTypeLabels && modalTypeLabels[modalType]}</h2>

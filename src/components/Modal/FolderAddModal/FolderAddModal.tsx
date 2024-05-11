@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "@/src/components/Modal/Modal.module.css";
 
 import FolderAddButton from "./FolderAddButton";
+import { RenderModalType } from "../Modal";
 
 interface UserFolderdataList {
   data: {
@@ -13,19 +14,12 @@ interface UserFolderdataList {
   };
 }
 
-interface FolderAddModalType {
-  modalType: string;
-  modalTypeLabels: Record<string, string>;
-  folderTabDataList: UserFolderdataList["data"][];
-  cardUrl: string;
-}
-
 function FolderAddModal({
   modalTypeLabels,
   modalType,
   cardUrl,
   folderTabDataList,
-}: FolderAddModalType) {
+}: Omit<RenderModalType, "folderTabName">) {
   const [activeId, setActiveId] = useState<number | null>(null);
 
   const handleClick = (folderId: number) => {

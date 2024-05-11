@@ -16,21 +16,21 @@ interface UserFolderdataList {
   };
 }
 
-interface RenderModalType {
+export interface RenderModalType {
   modalType: string;
-  modalTypeLabels?: Record<string, string>;
+  modalTypeLabels: Record<string, string>;
   folderTabDataList: UserFolderdataList["data"][];
   cardUrl: string;
   folderTabName: string | null;
 }
 
-function renderModal(
-  modalType: string,
-  modalTypeLabels: Record<string, string>,
-  folderTabDataList: UserFolderdataList["data"][],
-  cardUrl: string,
-  folderTabName: string | null
-) {
+function renderModal({
+  modalType,
+  modalTypeLabels,
+  folderTabDataList,
+  cardUrl,
+  folderTabName,
+}: RenderModalType) {
   return (
     (modalType === "add" && (
       <div className={styles.modalForm1}>
@@ -87,7 +87,12 @@ function renderModal(
   );
 }
 
-function Modal({ modalType, folderTabDataList, cardUrl, folderTabName }: RenderModalType) {
+function Modal({
+  modalType,
+  folderTabDataList,
+  cardUrl,
+  folderTabName,
+}: Omit<RenderModalType, "modalTypeLabels">) {
   const { isOpen, closeModal } = useContext(ModalContext)!;
 
   const modalTypeLabels = {
@@ -105,7 +110,7 @@ function Modal({ modalType, folderTabDataList, cardUrl, folderTabName }: RenderM
         <div className={styles.modalWrap}>
           <div className={styles.modalBg}></div>
           <div className={styles.modalCon}>
-            {renderModal(modalType, modalTypeLabels, folderTabDataList, cardUrl, folderTabName)}
+            {renderModal({ modalType, modalTypeLabels, folderTabDataList, cardUrl, folderTabName })}
             <div className={styles.modalExit}>
               <button>
                 <Image width={24} height={24} src={CloseImg} alt="모달 닫기" onClick={closeModal} />
