@@ -1,15 +1,17 @@
 import { mapFolderData } from "@/components-FolderPage/util-map";
 import { useAsync } from "@/common/util";
 import { axiosInstance } from "@/common/util";
-import { AxiosError, AxiosResponse } from "axios";
-import { FolderResponse } from "@/common/types/data-access-types";
+import { Response, SampleFolder } from "@/common/types/data-access-types";
+import { AxiosResponse } from "axios";
 
 export const useGetFolder = () => {
-  const getFolder = (): Promise<AxiosResponse<FolderResponse, AxiosError>> =>
+  const getFolder: () => Promise<AxiosResponse<Response, any>> = () =>
     axiosInstance.get("sample/folder");
   const { loading, error, data } = useAsync(getFolder);
 
-  const folderData = mapFolderData(data?.folder);
+  const folderData = data as SampleFolder;
 
-  return { loading, error, data: folderData };
+  const folder = mapFolderData(folderData?.folder);
+
+  return { loading, error, data: folder };
 };

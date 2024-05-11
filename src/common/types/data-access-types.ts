@@ -1,7 +1,7 @@
 //user
 export type User = {
   id: number;
-  created_at: string;
+  created_at: Date;
   name: string;
   image_source: string;
   email: string;
@@ -11,13 +11,13 @@ export type User = {
 //link
 export type Link = {
   id: number;
-  created_at: string;
-  updated_at: null;
+  created_at: Date;
+  updated_at?: Date;
   url: string;
   title: string;
   description: string;
   image_source: string;
-  folder_id: number;
+  folder_id?: number;
 };
 
 export type Links = {
@@ -27,7 +27,7 @@ export type Links = {
 //folder
 export type Folder = {
   id: number;
-  created_at: string;
+  created_at: Date;
   name: string;
   user_id: number;
   favorite: boolean;
@@ -41,43 +41,50 @@ export type Folders = {
 };
 
 //sample
-export type sampleUser = {
+export type SampleUser = {
   id: number;
   name: string;
   email?: string;
   profileImageSource: string;
 };
 
-export type sampleLink = {
+export type SampleLink = {
   id: number;
-  createdAt: string;
+  createdAt: Date;
   url: string;
   title: string;
   description: string;
   imageSource: string;
 };
 
-export type sampleFolder = {
+export interface EditedSampleLink
+  extends Omit<SampleLink, "title" | "createdAt"> {
+  createdAt: string;
+  alt: string;
+  elapsedTime: string;
+}
+
+export type SampleFolder = {
   folder: {
     id: number;
     name: string;
-    owner: sampleUser;
-    links: sampleLink[];
+    owner: SampleUser;
+    links: SampleLink[];
   };
 };
 
-export type DataTypes =
+//
+export type Types =
   | User
   | Link
   | Links
-  | Folder
   | Folders
-  | sampleUser
-  | sampleLink
-  | sampleFolder;
+  | SampleUser
+  | SampleLink
+  | SampleFolder;
 
 //response
-export type FolderResponse = {
-  data: DataTypes;
+export type Response = {
+  data: Types;
   headers: any;
 };
