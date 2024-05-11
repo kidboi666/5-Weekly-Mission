@@ -24,7 +24,7 @@ function Folder() {
   const [userFolderDataList, setUserFolderDataList] = useState<UserFolderdataList[]>();
 
   const { isOpen, openModal, closeModal } = useModal();
-  const [modalType, setModalType] = useState("add");
+  const [modalType, setModalType] = useState("");
   const [cardUrl, setCardUrl] = useState("");
   const [folderTabName, setFolderTabName] = useState<string | null>("");
   const [searchInputValue, setSearchInputValue] = useState<string>("");

@@ -1,5 +1,4 @@
 import styles from "@/src/components/Modal/Modal.module.css";
-import { RenderModalType } from "./Modal";
 
 function AddModal() {
   return (
