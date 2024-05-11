@@ -13,9 +13,14 @@ const AddFolderLink = () => {
   return (
     <div className={styles.addfolderlink_container}>
       <div className={styles.inputwrapper}>
-        <div className={styles.linkiconimage}>
-          <Image src={linkIcon} alt="Link Icon" />
-        </div>
+        <Image
+          className={styles.linkicon_image}
+          src={linkIcon}
+          alt="Link Icon"
+          width={20}
+          height={20}
+        />
+
         <input
           className={styles.textinput}
           type="text"

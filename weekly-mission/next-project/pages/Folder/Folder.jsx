@@ -9,7 +9,7 @@ import styles from "./Folder.module.css";
 import axios from "@/lib/axios";
 
 const Folder = ({ folderId }) => {
-  const foldersData = useFoldersByUserId();
+  const { data: foldersData, isLoading } = useFoldersByUserId();
   const [search, setSearch] = useState("");
 
   const [activeButton, setActiveButton] = useState(null);

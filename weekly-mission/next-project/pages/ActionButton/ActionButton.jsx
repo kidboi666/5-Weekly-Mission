@@ -1,19 +1,15 @@
 import { useState, memo } from "react";
 import Image from "next/image";
-import shareIcon from "../../public/images/share.png";
-import deleteIcon from "../../public/images/delete.png";
-import renameIcon from "../../public/images/pen.png";
+import shareIcon from "@/public/images/share.svg";
+import deleteIcon from "@/public/images/delete.png";
+import renameIcon from "@/public/images/pen.png";
 import Modal from "../Modal/Modal";
 import { useModal } from "../Context/ModalContext";
 import styles from "./ActionButton.module.css";
 
-const CustomButton = ({ onClick, icon, text }) => {
+const CustomButton = ({ onClick, text }) => {
   return (
-    <button
-      className={styles.custombutton}
-      onClick={onClick}
-      style={{ backgroundImage: `url(${icon})` }}
-    >
+    <button className={styles.custombutton} onClick={onClick}>
       {text}
     </button>
   );
@@ -32,11 +28,18 @@ const ActionButton = ({ activeFolderName, activeFolderId }) => {
 
   return (
     <div className={styles.buttonwrapper}>
-      <CustomButton
-        onClick={() => handleModalToggle("shareFolder")}
-        icon={shareIcon}
-        text="공유"
-      />
+      <div className={styles.actionbutton}>
+        <Image
+          className={styles.actionbutton_image}
+          src={shareIcon}
+          width={18}
+          height={18}
+        />
+        <CustomButton
+          onClick={() => handleModalToggle("shareFolder")}
+          text="공유"
+        />
+      </div>
       {modalState.shareFolder && (
         <Modal
           activeFolderId={activeFolderId}
@@ -47,11 +50,18 @@ const ActionButton = ({ activeFolderName, activeFolderId }) => {
         />
       )}
 
-      <CustomButton
-        onClick={() => handleModalToggle("renameFolder")}
-        icon={renameIcon}
-        text="이름 변경"
-      />
+      <div className={styles.actionbutton}>
+        <Image
+          className={styles.actionbutton_image}
+          src={renameIcon}
+          width={18}
+          height={18}
+        />
+        <CustomButton
+          onClick={() => handleModalToggle("renameFolder")}
+          text="이름 변경"
+        />
+      </div>
       {modalState.renameFolder && (
         <Modal
           text="폴더 이름 변경"
@@ -63,11 +73,18 @@ const ActionButton = ({ activeFolderName, activeFolderId }) => {
         />
       )}
 
-      <CustomButton
-        onClick={() => handleModalToggle("deleteFolder")}
-        icon={deleteIcon}
-        text="삭제"
-      />
+      <div className={styles.actionbutton}>
+        <Image
+          className={styles.actionbutton_image}
+          src={deleteIcon}
+          width={18}
+          height={18}
+        />
+        <CustomButton
+          onClick={() => handleModalToggle("deleteFolder")}
+          text="삭제"
+        />
+      </div>
       {modalState.deleteFolder && (
         <Modal
           text="폴더 삭제"

@@ -5,18 +5,9 @@ import AddFolderLink from "../AddFolderLinkBar/AddFolderLink";
 import styles from "./Header.module.css";
 import axios from "@/lib/axios";
 
-export async function getStaticProps() {
-  const res = await axios.get("/sample/folder");
-  const folderData = res.data.results ?? [];
+const Header = ({ isFolderPage }) => {
+  const { data: folderData, isLoading } = useFolderList();
 
-  return {
-    props: {
-      folderData,
-    },
-  };
-}
-
-const Header = ({ isFolderPage, folderData }) => {
   const [isSticky, setIsSticky] = useState(false);
   const headerRef = useRef(null);
 
@@ -51,6 +42,8 @@ const Header = ({ isFolderPage, folderData }) => {
                 className={styles.profileimage}
                 src={folderData.folder.owner.profileImageSource}
                 alt="폴더 소유자 프로필"
+                width={60}
+                height={60}
               />
               <span className={styles.ownername}>
                 {folderData.folder.owner.name}
@@ -61,7 +54,7 @@ const Header = ({ isFolderPage, folderData }) => {
         </div>
       )}
 
-      {isSticky && (
+      {isFolderPage && isSticky && (
         <div className={styles.sticky_container}>
           {isFolderPage && <AddFolderLink />}
         </div>

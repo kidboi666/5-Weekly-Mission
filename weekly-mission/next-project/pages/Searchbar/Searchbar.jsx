@@ -10,9 +10,14 @@ const SearchBar = ({ value, onChange }) => {
 
   return (
     <div className={styles.searchbarcontainer}>
-      <div className={styles.searchimage}>
-        <Image src={searchIcon} alt="Search Icon" />
-      </div>
+      <Image
+        className={styles.searchimage}
+        src={searchIcon}
+        alt="Search Icon"
+        width={20}
+        height={20}
+      />
+
       <input
         className={styles.searchinput}
         type="text"

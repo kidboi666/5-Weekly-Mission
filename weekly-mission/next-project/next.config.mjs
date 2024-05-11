@@ -77,6 +77,12 @@ const nextConfig = {
         port: "",
         pathname: "/rsrc.php/**",
       },
+      {
+        protocol: "https",
+        hostname: "codeit-images.codeit.com",
+        port: "",
+        pathname: "/badges/**",
+      },
     ],
   },
 };

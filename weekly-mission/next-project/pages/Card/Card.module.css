@@ -40,6 +40,11 @@
   flex-direction: column;
 }
 
+.card_time_container {
+  display: flex;
+  position: relative;
+}
+
 .card_time {
   font-size: 13px;
   line-height: 15.51px;
@@ -49,10 +54,13 @@
 }
 
 .kebabbutton {
+  width: 21px;
+  height: 17px;
   position: absolute;
   top: 215px;
   right: 20px;
   cursor: pointer;
+  text-align: right;
 }
 
 .popover_content {

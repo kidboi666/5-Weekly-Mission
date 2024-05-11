@@ -52,7 +52,7 @@ const Modal = ({
           <div className={styles.addfolderlist_wrapper}>
             {folderMenu.map((folder, index) => (
               <div
-                className={`${styles.addFolderListContent} ${
+                className={`${styles.addfolderlist_content} ${
                   selectedFolderIndex === index ? styles.selected : ""
                 }`}
                 key={index}

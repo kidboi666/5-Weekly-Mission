@@ -26,7 +26,7 @@ const Card = ({ link, isFolderPage }) => {
           className={styles.card_image}
           src={imageSource || noImage}
           alt={title || "No Image"}
-          width={220}
+          width={340}
           height={200}
         />
       </Link>
@@ -35,7 +35,7 @@ const Card = ({ link, isFolderPage }) => {
         <p className={styles.card_time}>{generateTimeText(createdAt)}</p>
         {isFolderPage && (
           <Image
-            className={styles.kababbutton}
+            className={styles.kebabbutton}
             src={kebab}
             alt="더보기"
             onClick={handleTogglePopover}
