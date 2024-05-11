@@ -4,7 +4,17 @@ import { defaultImage } from "./constant";
 
 const cx = classNames.bind(styles);
 
-export const CardImage = ({ imageSource, alt, isZoomedIn }) => {
+interface CardImageProps {
+  imageSource: string;
+  alt: string;
+  isZoomedIn: boolean;
+}
+
+export const CardImage: React.FC<CardImageProps> = ({
+  imageSource,
+  alt,
+  isZoomedIn,
+}) => {
   return (
     <img
       style={{ backgroundImage: `url(${imageSource ?? defaultImage})` }}

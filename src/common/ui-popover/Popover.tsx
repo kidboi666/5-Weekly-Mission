@@ -6,15 +6,23 @@ import { useBackgroundClick } from "@/common/util/useBackgroundClick";
 
 const cx = classNames.bind(styles);
 
-export const Popover = ({
+type PopoverProps = React.PropsWithChildren<{
+  isOpen: Boolean;
+  anchorRef: React.RefObject<HTMLElement>;
+  anchorPosition: { [position: string]: number }; // TODO: 맞는지 나중에 한번 더 확인할 것
+  onBackgroundClick: () => void;
+  disableCloseWithBackgroundClick?: boolean;
+}>;
+
+export const Popover: React.FC<PopoverProps> = ({
   children,
   isOpen,
   anchorRef,
   anchorPosition,
-  disableCloseWithBackgroundClick = false,
   onBackgroundClick,
+  disableCloseWithBackgroundClick = false,
 }) => {
-  const popoverRef = useRef(null);
+  const popoverRef = useRef<HTMLDivElement>(null);
   const positionStyle = useMemo(() => {
     return {
       top: anchorPosition?.top ?? "unset",
@@ -24,9 +32,10 @@ export const Popover = ({
     };
   }, [anchorPosition]);
   const handleBackgroundClick = useCallback(
-    (event) => {
-      const isPopover = popoverRef.current?.contains(event.target);
-      const isAnchor = anchorRef.current?.contains(event.target);
+    (event: MouseEvent): void => {
+      const target = event.target as HTMLElement | null;
+      const isPopover = popoverRef.current?.contains(target);
+      const isAnchor = anchorRef.current?.contains(target);
       if (
         !isPopover &&
         !isAnchor &&
@@ -51,8 +60,17 @@ export const Popover = ({
   }
 
   return (
+    /* TODO : 타입 지정 맞는지 확인 필요
+    anchorRef 타입 : React.RefObject<HTMLElement>;
+    anchorRef.current 타입 : HTMLElement | null
+    아마 맞는 것 같다. RefObject 의 current 프로퍼티 타입에 HTMLElement | null 이라고 지정되어 있음.
+    */
     <Portal container={anchorRef.current}>
-      <div className={cx("popover")} style={{ ...positionStyle }}>
+      <div
+        className={cx("popover")}
+        style={{ ...positionStyle }}
+        ref={popoverRef}
+      >
         {children}
       </div>
     </Portal>

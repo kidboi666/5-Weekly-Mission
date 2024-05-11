@@ -44,7 +44,7 @@ export type Folders = {
 export type SampleUser = {
   id: number;
   name: string;
-  email?: string;
+  email: string;
   profileImageSource: string;
 };
 

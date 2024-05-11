@@ -6,18 +6,20 @@ import { ModalContentDescription } from "@/common/ui-modal-content-description";
 import { ModalContentTitle } from "@/common/ui-modal-content-title";
 import { ReactComponent as KaKaoIcon } from "./kakao.svg";
 import { ReactComponent as FacebookIcon } from "./facebook.svg";
-import { ReactComponent as LinkIcon } from "./link.svg";
+import { ReactComponent as LinkIcon } from "./link.svg"; // TODO: IMAGE 컴포넌트로 수정할 것
+import React from "react";
+import { ShareModalProps } from "@/common/types/modal-prop-types";
 
 const cx = classNames.bind(styles);
 
-export const ShareModal = ({
+export const ShareModal: React.FC<ShareModalProps> = ({
   isOpen,
+  onCloseClick,
   folderName,
+  onKeyDown,
   onKakaoClick,
   onFacebookClick,
   onLinkCopyClick,
-  onCloseClick,
-  onKeyDown,
 }) => {
   return (
     <Modal isOpen={isOpen} onBackdropClick={onCloseClick} onKeyDown={onKeyDown}>

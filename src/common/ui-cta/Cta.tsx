@@ -3,6 +3,8 @@ import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-export const Cta = ({ children }) => {
+type CtaProps = React.PropsWithChildren<{}>;
+
+export const Cta: React.FC<CtaProps> = ({ children }) => {
   return <div className={cx("container")}>{children}</div>;
 };

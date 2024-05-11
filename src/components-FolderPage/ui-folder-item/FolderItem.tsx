@@ -1,9 +1,17 @@
+import React from "react";
 import styles from "./FolderItem.module.scss";
 import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-export const FolderItem = ({
+interface FolderItemProps {
+  folderName: string;
+  linkCount: number;
+  isSelected: boolean;
+  onClick: () => void;
+}
+
+export const FolderItem: React.FC<FolderItemProps> = ({
   folderName,
   linkCount,
   isSelected = false,

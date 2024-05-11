@@ -1,15 +1,23 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Card } from "@/common/ui-card";
 import { CardContent } from "@/common/ui-card-content";
 import { CardImage } from "@/common/ui-card-image";
+import { EditedSampleLink, SampleLink } from "@/common/types/data-access-types";
 
-export const ReadOnlyCard = ({
+interface ReadOnlyCardProps
+  extends Omit<SampleLink, "title" | "createdAt" | "id"> {
+  createdAt: string;
+  alt: string;
+  elapsedTime: string;
+}
+
+export const ReadOnlyCard: React.FC<ReadOnlyCardProps> = ({
+  createdAt,
   url,
+  description,
   imageSource,
   alt,
   elapsedTime,
-  description,
-  createdAt,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const handleMouseOver = () => setIsHovered(true);

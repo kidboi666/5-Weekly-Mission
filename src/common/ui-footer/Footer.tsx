@@ -2,10 +2,13 @@ import styles from "./Footer.module.scss";
 import classNames from "classnames/bind";
 import { route } from "@/common/util";
 import { footerText } from "./constant";
+import React from "react";
 
 const cx = classNames.bind(styles);
 
-export const Footer = () => {
+type FooterProps = React.PropsWithChildren<{}>;
+
+export const Footer: React.FC<FooterProps> = () => {
   return (
     <footer className={cx("container")}>
       <div className={cx("items")}>

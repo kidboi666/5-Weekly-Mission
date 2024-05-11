@@ -1,14 +1,18 @@
 import styles from "./SearchBar.module.scss";
 import classNames from "classnames/bind";
 import { searchImage } from "./constant";
-import { useState } from "react";
+import React, { useState } from "react";
 
 const cx = classNames.bind(styles);
 
-export const SearchBar = ({ onKeywordSubmit }) => {
+interface SearchBarProps {
+  onKeywordSubmit: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export const SearchBar: React.FC<SearchBarProps> = ({ onKeywordSubmit }) => {
   const [input, setInput] = useState("");
 
-  const handleSearchLink = (e) => {
+  const handleSearchLink = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onKeywordSubmit(input);
     setInput("");

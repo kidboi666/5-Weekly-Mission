@@ -3,6 +3,10 @@ import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-export const ModalContentDescription = ({ children }) => {
+type ModalContentDescriptionProps = React.PropsWithChildren<{}>;
+
+export const ModalContentDescription: React.FC<
+  ModalContentDescriptionProps
+> = ({ children }) => {
   return <span className={cx("description")}>{children}</span>;
 };

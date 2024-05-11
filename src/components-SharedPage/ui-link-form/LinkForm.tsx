@@ -4,8 +4,12 @@ import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-export const LinkForm = ({ onSubmit }) => {
-  const handleSubmit = (event) => {
+interface LinkFormProps {
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+}
+
+export const LinkForm: React.FC<LinkFormProps> = ({ onSubmit }) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     onSubmit(event);
   };

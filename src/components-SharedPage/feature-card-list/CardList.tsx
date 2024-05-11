@@ -1,31 +1,36 @@
 import { EditableCard } from "@/components-SharedPage/ui-editable-card";
 import { NoLink } from "@/components-SharedPage/ui-no-link";
-import { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { CardList as UiCardList } from "@/components-SharedPage/ui-card-list";
 import { modalsId } from "./constant";
 import { AlertModal } from "@/components-SharedPage/ui-alert-modal";
 import { AddLinkModal } from "@/components-SharedPage/ui-addlink-modal";
 import { useGetFolders } from "@/components-FolderPage/data-access-folder";
+import { EditedSampleLink } from "@/common/types/data-access-types";
 
-export const CardList = ({ links }) => {
-  const { data: folders } = useGetFolders;
+interface CardListProps {
+  links: EditedSampleLink[];
+}
+
+export const CardList: React.FC<CardListProps> = ({ links }) => {
+  const { data: folders } = useGetFolders();
   const cardListRef = useRef(null);
-  const [selectedFolderId, setSelectedFolderId] = useState(null);
-  const [currentModal, setCurrentModal] = useState(null);
-  const [selectedLinkUrl, setSelectedLinkUrl] = useState(null);
+  const [selectedFolderId, setSelectedFolderId] = useState<number | null>(null);
+  const [currentModal, setCurrentModal] = useState<string | null>(null);
+  const [selectedLinkUrl, setSelectedLinkUrl] = useState<string | null>(null);
 
   const closeModal = () => {
     setCurrentModal(null);
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
     if (e.key === "escape") {
       closeModal();
     }
   };
 
   const getPopoverPosition = useCallback(
-    (cardIndex) => {
+    (cardIndex: number): { [position: string]: number } => {
       const count =
         cardListRef?.current !== null
           ? window
@@ -69,15 +74,15 @@ export const CardList = ({ links }) => {
       />
       <AddLinkModal
         isOpen={currentModal === modalsId.addToFolder}
-        folders={folders}
         title="폴더에 추가"
         buttonText="추가하기"
         selectedLinkUrl={selectedLinkUrl}
-        selectedFolderId={selectedFolderId}
-        setSelectedFolderId={setSelectedFolderId}
-        onAddClick={() => {}}
         onCloseClick={closeModal}
         onKeyDown={handleKeyDown}
+        selectedFolderId={selectedFolderId}
+        setSelectedFolderId={setSelectedFolderId}
+        folders={folders}
+        onAddClick={() => {}} //TODO: 링크추가 기능 구현 시 완성할 것
       />
     </UiCardList>
   );

@@ -3,7 +3,14 @@ import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-export const CardContent = ({
+interface CardContentProps {
+  elapsedTime: string;
+  description: string;
+  createdAt: string;
+  isHovered: boolean;
+}
+
+export const CardContent: React.FC<CardContentProps> = ({
   elapsedTime,
   description,
   createdAt,

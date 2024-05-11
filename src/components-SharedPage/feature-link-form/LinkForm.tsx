@@ -1,9 +1,10 @@
 import { LinkForm as UiLinkForm } from "@/components-SharedPage/ui-link-form";
 
-export const LinkForm = () => {
+// TODO: 링크추가 기능은 추가할 예정. 우선 UI 부분만 작성.
+export const LinkForm: React.FC<{}> = () => {
   return (
     <>
-      <UiLinkForm />
+      <UiLinkForm onSubmit={() => {}} />
     </>
   );
 };

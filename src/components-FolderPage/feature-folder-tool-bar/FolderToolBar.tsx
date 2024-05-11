@@ -4,31 +4,39 @@ import { FolderButton } from "@/components-FolderPage/ui-folder-button";
 import { buttons, allLinksText, modalsId } from "./constant";
 import { allLinksId } from "@/components-SharedPage/data-access-link/constant";
 import { AddFolderButton } from "@/components-FolderPage/ui-add-folder-button/AddFolderButton";
-import { useState } from "react";
+import React, { useState } from "react";
 import { IconAndTextButton } from "@/common/ui-icon-and-text-button";
 import { InputModal } from "@/common/ui-input-modal/InputModal";
 import { DeleteModal } from "@/common/ui-delete-modal";
 import { ShareModal } from "@/components-FolderPage/ui-share-modal";
+import { Folder } from "@/common/types/data-access-types";
 
 const cx = classNames.bind(styles);
 
-export const FolderToolBar = ({
+interface FolderToolBarProps {
+  folders: Folder[];
+  selectedFolderId: number | string;
+  setSelectedFolderId: React.Dispatch<React.SetStateAction<number | string>>;
+  setKeyword: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export const FolderToolBar: React.FC<FolderToolBarProps> = ({
   folders,
   selectedFolderId,
   setSelectedFolderId,
   setKeyword,
 }) => {
-  const [currentModal, setCurrentModal] = useState(null);
+  const [currentModal, setCurrentModal] = useState<string | null>(null);
   const folderName =
     allLinksId === selectedFolderId
       ? allLinksText
-      : folders?.find(({ id }) => id === selectedFolderId)?.name;
+      : (folders?.find(({ id }) => id === selectedFolderId)?.name as string);
 
   const closeModal = () => {
     setCurrentModal(null);
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
     if (e.key === "escape") {
       closeModal();
     }
@@ -65,7 +73,7 @@ export const FolderToolBar = ({
             setCurrentModal(modalsId.addFolder);
           }}
         />
-        {/* !!! 이런 식으로 팝업 시킬 모달창을 제어할 수 있다 */}
+        {/* REMIND: 이런 식으로 팝업 시킬 모달창을 제어할 수 있다 */}
         <InputModal
           isOpen={currentModal === modalsId.addFolder}
           onCloseClick={closeModal}
@@ -79,6 +87,7 @@ export const FolderToolBar = ({
       <div className={cx("buttons")}>
         {buttons.map(({ text, iconSource, modalId }) => (
           <IconAndTextButton
+            key={modalId}
             text={text}
             iconSource={iconSource}
             onClick={() => setCurrentModal(modalId)}
@@ -86,26 +95,26 @@ export const FolderToolBar = ({
         ))}
         <ShareModal
           isOpen={currentModal === modalsId.share}
-          onCloseClick={closeModal}
-          folderName={folderName}
           title="폴더 공유"
+          onCloseClick={closeModal}
           onKeyDown={handleKeyDown}
+          folderName={folderName}
         />
         <InputModal
           isOpen={currentModal === modalsId.rename}
-          onCloseClick={closeModal}
           title="폴더 이름 변경"
+          onCloseClick={closeModal}
+          onKeyDown={handleKeyDown}
           placeholder="유용한 팁"
           buttonText="변경하기"
-          onKeyDown={handleKeyDown}
         />
         <DeleteModal
           isOpen={currentModal === modalsId.delete}
-          onCloseClick={closeModal}
           title="폴더 삭제"
-          folderName={folderName}
-          buttonText="삭제하기"
+          onCloseClick={closeModal}
           onKeyDown={handleKeyDown}
+          buttonText="삭제하기"
+          folderName={folderName}
         />
       </div>
     </div>

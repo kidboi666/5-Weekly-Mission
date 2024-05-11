@@ -3,7 +3,17 @@ import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-export const ModalContentBox = ({ header, content, onCloseClick }) => {
+interface ModalContentBoxProps {
+  header: React.ReactNode;
+  content: React.ReactNode;
+  onCloseClick: () => void;
+}
+
+export const ModalContentBox: React.FC<ModalContentBoxProps> = ({
+  header,
+  content,
+  onCloseClick,
+}) => {
   return (
     <div className={cx("container")}>
       <button onClick={onCloseClick}>
