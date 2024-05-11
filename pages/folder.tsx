@@ -4,9 +4,9 @@ import AddLinkForm from "@/src/components/AddLinkForm/AddLinkForm";
 import { tabDataList, userFoldersData } from "@/src/fetchUtils/index";
 import FolderTabList from "@/src/components/FolderTabList/FolderTabList";
 import CardList from "@/src/components/CardList/CardList";
-import Modal from "@/src/components/Modal/Modal";
 import useModal from "@/src/hooks/useModal";
 import ModalContext from "@/src/components/Modal/ModalContext";
+import ModalContainer from "@/src/components/Modal/ModalContainer";
 
 interface UserFolderdataList {
   id: number;
@@ -55,7 +55,7 @@ function Folder() {
     <div className="content-wrap">
       <ModalContext.Provider value={{ isOpen, openModal, closeModal, setModalType, setCardUrl }}>
         <AddLinkForm />
-        <Modal
+        <ModalContainer
           modalType={modalType}
           folderTabDataList={folderTabDataList}
           cardUrl={cardUrl}
