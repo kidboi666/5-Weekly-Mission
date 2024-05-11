@@ -1,4 +1,4 @@
-import './CardList.css';
+import styles from '@/styles/CardList.module.css';
 import styled from 'styled-components';
 import noImageBackground from '../../assets/card_no_image_background.svg';
 import starIcon from '../../assets/star.svg';
@@ -92,12 +92,12 @@ function Card({ link, isFolderPage = false }) {
   };
 
   return (
-    <button className="card" onClick={handleClick}>
-      <LinkImage className="image-wrapper" $img={imgUrl}></LinkImage>
-      <div className="linkInfo">
-        <p className="times">{calculateTime(link.createdAt || link.created_at)}</p>
-        <p className="paragraph">{link.description}</p>
-        <p className="createdAt">{formatDate(link.createdAt || link.created_at)}</p>
+    <button className={styles.card} onClick={handleClick}>
+      <LinkImage className={styles.image - wrapper} $img={imgUrl}></LinkImage>
+      <div className={styles.linkInfo}>
+        <p className={styles.times}>{calculateTime(link.createdAt || link.created_at)}</p>
+        <p className={styles.paragraph}>{link.description}</p>
+        <p className={styles.createdAt}>{formatDate(link.createdAt || link.created_at)}</p>
       </div>
       {isFolderPage ? <Icon width="34" height="34" $top="15" $img={starIcon} /> : null}
       {isFolderPage ? <Icon width="21" height="17" $top="215" $img={kebabIcon} /> : null}
@@ -108,7 +108,7 @@ function Card({ link, isFolderPage = false }) {
 function CardList({ links, isFolderPage = false }) {
   if (!links) return;
   return (
-    <ul className="cardList">
+    <ul className={styles.cardList}>
       {Object.values(links).map((link) => {
         return (
           <li key={link.id}>

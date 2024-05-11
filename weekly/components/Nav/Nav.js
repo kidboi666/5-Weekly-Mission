@@ -1,4 +1,4 @@
-import './Nav.css';
+import styles from '@/styles/Nav.module.css';
 import GradientButton from '../Button/GradientButton';
 import Profile from '../Profile/Profile';
 import styled from 'styled-components';
@@ -9,7 +9,7 @@ function Nav({ userInfo, isfixed = true }) {
 
   return (
     <StyledNav $isfixed={isfixed}>
-      <button className="logo"></button>
+      <button className={styles.logo}></button>
       {!isSingin ? <GradientButton size="medium">로그인</GradientButton> : null}
       {isSingin ? <Profile email={email} imgUrl={imgUrl} /> : null}
     </StyledNav>

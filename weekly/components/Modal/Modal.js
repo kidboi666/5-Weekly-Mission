@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useState, useRef } from 'react';
 import addIcon from '../../assets/plus.svg';
 import addIconWhite from '../../assets/plus-white.svg';
-import './Modal.css';
+import styles from '@/styles/Modal.module.css';
 import GradientButton from '../Button/GradientButton';
 import ModalTitle from './ModalTitle';
 import ModalInput from './ModalInput';
@@ -13,14 +13,14 @@ function Modal({ children, title, content, buttonMessage }) {
 
   return (
     <>
-      <div className={'btn-wrapper'}>
-        <ModalOpenButton className={'modal-open-btn'} onClick={() => setModalOpen(true)}>
+      <div className={styles.btn - wrapper}>
+        <ModalOpenButton className={styles.modal - open - btn} onClick={() => setModalOpen(true)}>
           {children}
         </ModalOpenButton>
       </div>
       {modalOpen && (
         <div
-          className={'modal-container'}
+          className={styles.modal - container}
           ref={modalBackground}
           onClick={(e) => {
             if (e.target === modalBackground.current) {
@@ -28,10 +28,10 @@ function Modal({ children, title, content, buttonMessage }) {
             }
           }}
         >
-          <div className={'modal-content'}>
+          <div className={styles.modal - content}>
             <ModalTitle>{title}</ModalTitle>
             <ModalInput placeholder="내용 입력" />
-            <GradientButton className={'modal-close-btn'} size="auto" onClick={() => setModalOpen(false)}>
+            <GradientButton className={styles.modal - close - btn} size="auto" onClick={() => setModalOpen(false)}>
               {buttonMessage}
             </GradientButton>
           </div>

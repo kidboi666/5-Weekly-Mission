@@ -7,7 +7,7 @@ import FolderToolBar from '../components/FolderToolBar';
 import NoLink from '../components/NoLink';
 import CardList from '../components/CardList/CardList';
 import Footer from '../components/Footer/Footer';
-import '../components/MainContent.css';
+import styles from '@/styles/MainContent.module.css';
 
 function FolderPage({ userInfo, folderList }) {
   const id = 1;
@@ -29,8 +29,8 @@ function FolderPage({ userInfo, folderList }) {
     <>
       <Nav userInfo={userInfo} isfixed="false" />
       <AddLink />
-      <div className="mainContent-wrapper">
-        <div className="mainContent">
+      <div className={styles.mainContent - wrapper}>
+        <div className={styles.mainContent}>
           <Search />
           <FolderToolBar folderList={folderList.data} setFolderId={setFolderId} />
           {linkList.data.length === 0 ? <NoLink /> : <CardList links={linkList.data} isFolderPage={true} />}
