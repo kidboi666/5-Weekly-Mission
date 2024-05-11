@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useEffectOnce } from './useEffectOnce';
 import { AxiosError, AxiosResponse } from 'axios';
 
-interface Folder {
+export interface Folder {
   folder: {
     id: number;
     name: string;
@@ -29,7 +29,7 @@ interface User {
   email: string;
   profileImageSource: string;
 }
-interface Link {
+export interface Link {
   id: number;
   createdAt: string;
   imageSource: string;
@@ -39,17 +39,18 @@ interface Link {
 }
 
 type AsyncData = Folder | User | Link;
-export const useAsync = (
+
+export function useAsync<T>(
   asyncFunction: () => Promise<AxiosResponse<any, any>>
-) => {
+) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>('');
-  const [data, setData] = useState<AsyncData | null>(null);
+  const [data, setData] = useState<T | null>(null);
 
   const execute = async () => {
     setLoading(true);
     setError('');
-    // setData(null);
+    setData(null);
     try {
       const response = await asyncFunction();
       setData(response.data);
@@ -64,4 +65,4 @@ export const useAsync = (
   useEffectOnce(execute);
 
   return { execute, loading, error, data };
-};
+}

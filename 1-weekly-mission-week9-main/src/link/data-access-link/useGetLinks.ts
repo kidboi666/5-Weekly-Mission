@@ -4,13 +4,14 @@ import { mapLinksData } from 'link/util-map/mapLinksData';
 import { useAsync } from 'sharing/util';
 import { ALL_LINKS_ID } from './constant';
 import { Link } from 'sharing/util';
+
 export const useGetLinks = (folderId = ALL_LINKS_ID) => {
   const queryString = folderId === ALL_LINKS_ID ? '' : `?folderId=${folderId}`;
   const getLinks = useCallback(
     () => axiosInstance.get(`users/1/links${queryString}`),
     [queryString]
   );
-  const { execute, loading, error, data } = useAsync(getLinks);
+  const { execute, loading, error, data } = useAsync<Link[]>(getLinks);
 
   useEffect(() => {
     execute();
@@ -32,9 +33,9 @@ export const useGetLinks = (folderId = ALL_LINKS_ID) => {
     title,
     description,
   });
+  if (data) {
+    const linksData = data.map(mapDataFormat).map(mapLinksData) ?? [];
 
-  const linksData =
-    data && (data.data.map(mapDataFormat).map(mapLinksData) ?? []);
-  console.log(data);
-  return { execute, loading, error, data: linksData };
+    return { execute, loading, error, data: linksData };
+  }
 };

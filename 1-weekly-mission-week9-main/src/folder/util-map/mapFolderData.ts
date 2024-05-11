@@ -1,27 +1,7 @@
 import { mapLinksData } from 'link/util-map';
+import { Folder } from 'sharing/util';
 
-interface FolderData {
-  folder: {
-    id: number;
-    name: string;
-    owner: {
-      id: number;
-      name: string;
-      profileImageSource: string;
-    };
-  };
-  links: {
-    id: number;
-    createdAt: string;
-    url: string;
-    title: string;
-    description: string;
-    imageSource: string;
-  }[];
-  count: number;
-}
-
-export const mapFolderData = (folder: FolderData) => {
+export const mapFolderData = (folder: Folder) => {
   const { name, owner } = folder.folder;
   const { links } = folder;
   return {
