@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import useFolderList from "../api/useFolderList";
+import useFolderList from "@/pages/api/useFolderList";
 import AddFolderLink from "../AddFolderLinkBar/AddFolderLink";
 import styles from "./Header.module.css";
 import axios from "@/lib/axios";

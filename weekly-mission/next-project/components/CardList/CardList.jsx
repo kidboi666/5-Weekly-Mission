@@ -1,6 +1,6 @@
 import SearchBar from "../Searchbar/Searchbar";
 import Folder from "../Folder/Folder";
-import useFolderList from "../api/useFolderList";
+import useFolderList from "@/pages/api/useFolderList";
 import { memo } from "react";
 import Card from "../Card/Card";
 import styles from "./CardList.module.css";

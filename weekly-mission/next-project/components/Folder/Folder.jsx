@@ -3,10 +3,9 @@ import SearchBar from "../Searchbar/Searchbar";
 import FolderMenuList from "../FolderMenuList/FolderMenuList";
 import FolderContent from "../FolderContent/FolderContent";
 import AddButton from "../AddButton/AddButton";
-import { fetchLinkData } from "../fetchFolderLinksData";
-import useFoldersByUserId from "../api/useFoldersByUserId";
+import { fetchLinkData } from "@/pages/api/fetchFolderLinksData";
+import useFoldersByUserId from "@/pages/api/useFoldersByUserId";
 import styles from "./Folder.module.css";
-import axios from "@/lib/axios";
 
 const Folder = ({ folderId }) => {
   const { data: foldersData, isLoading } = useFoldersByUserId();

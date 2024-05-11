@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import profileImage from "../../public/images/profileimg.jpg";
-import LinkbraryImage from "../../public/images/Linkbrary.png";
-import useProfileData from "../api/useProfileData";
+import profileImage from "@/public/images/profileimg.jpg";
+import LinkbraryImage from "@/public/images/Linkbrary.png";
+import useProfileData from "@/pages/api/useProfileData";
 import styles from "./Nav.module.css";
 
 const Nav = () => {
