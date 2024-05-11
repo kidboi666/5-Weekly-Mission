@@ -1,6 +1,7 @@
 import styles from "./Profile.module.css";
+import { ProfileData } from "@/types";
 
-export const Profile = ({ profile }) => {
+export const Profile = ({ profile }: { profile: ProfileData }) => {
   return (
     <div className={styles.wrapProfile}>
       <img

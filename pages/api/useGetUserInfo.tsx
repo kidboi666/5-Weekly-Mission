@@ -10,7 +10,7 @@ import { mapUserData } from "@/utils/mapUserData";
  * @param
  * @return { email, id, name, profileImageSource}
  */
-export const useGetUserInfo = (userId = null) => {
+export const useGetUserInfo = (userId: number | null = null) => {
   const url = userId ? `users/${userId}` : "sample/user";
   const getUserInfo = () => axiosInstance.get(url);
   const { error, data } = useAsync(getUserInfo);

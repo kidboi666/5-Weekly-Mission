@@ -1,10 +1,10 @@
 import styles from "./Nav.module.css";
 import Link from "next/link";
 import { Profile } from "../Profile/Profile";
-import { ROUTE } from "@/utils/constant";
 import { LOGO_IMAGE, TEXT } from "./constant";
+import { ProfileData } from "@/types";
 
-export const Nav = ({ profile }) => {
+export const Nav = ({ profile }: { profile?: ProfileData | null }) => {
   return (
     <div className={styles.wrapNav}>
       <div className={styles.navItems}>
@@ -14,7 +14,7 @@ export const Nav = ({ profile }) => {
         {profile ? (
           <Profile profile={profile} />
         ) : (
-          <Link href={ROUTE.로그인} className="btn-primary btn-sm">
+          <Link href="/signin" className="btn-primary btn-sm">
             {TEXT.login}
           </Link>
         )}
