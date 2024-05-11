@@ -21,21 +21,21 @@ export const Footer = () => {
           </Link>
           <Link
             href="https://twitter.com/"
-            target="blank"
+            target="_blank"
             rel="noopener noreferrer"
           >
             <img src="images/icon/twitter.svg" alt="twitter 로고" />
           </Link>
           <Link
             href="https://www.youtube.com/"
-            target="blank"
+            target="_blank"
             rel="noopener noreferrer"
           >
             <img src="images/icon/youtube.svg" alt="youtube 로고" />
           </Link>
           <Link
             href="https://www.instagram.com/"
-            target="blank"
+            target="_blank"
             rel="noopener noreferrer"
           >
             <img src="images/icon/instagram.svg" alt="instagram 로고" />
