@@ -1,12 +1,17 @@
 import { useState, useEffect } from "react";
+import { AxiosResponse } from "axios";
 
-export const useAsync = (asyncFunction: () => Promise<any>) => {
-  const [error, setError] = useState<any>(null);
-  const [data, setData] = useState<any>(null);
+export const useAsync = <T,>(
+  asyncFunction: () => Promise<AxiosResponse<T>>
+) => {
+  const [data, setData] = useState<null | T>(null);
+  const [error, setError] = useState<null | any>(null);
+  const [loading, setLoading] = useState(false);
 
   const asyncData = async () => {
-    setError(null); // 에러 초기화
     setData(null); // 데이터 초기화
+    setError(null); // 에러 초기화
+    setLoading(true);
 
     try {
       const response = await asyncFunction();
@@ -14,6 +19,8 @@ export const useAsync = (asyncFunction: () => Promise<any>) => {
       return response;
     } catch (error) {
       setError(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -23,5 +30,5 @@ export const useAsync = (asyncFunction: () => Promise<any>) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return { asyncData, error, data };
+  return { asyncData, loading, error, data };
 };

@@ -1,6 +1,7 @@
 import { useAsync } from "@/hooks/useAsync";
 import { axiosInstance } from "@/utils/axios";
 import { mapFolderData } from "@/utils/mapFolderData";
+import { SampleFolderRawData } from "@/types/folder.interface";
 
 /**
  * 유저 폴더 정보 불러오기
@@ -11,10 +12,11 @@ import { mapFolderData } from "@/utils/mapFolderData";
  * @return { profileImage, ownerName, folderName, links}
  */
 export const useGetFolderInfo = () => {
-  const getFolderInfo = () => axiosInstance.get("sample/folder");
-  const { error, data } = useAsync(getFolderInfo);
+  const getFolderInfo = () =>
+    axiosInstance.get<{ folder: SampleFolderRawData }>("sample/folder");
+  const { loading, error, data } = useAsync(getFolderInfo);
 
   const folderData = mapFolderData(data?.folder);
 
-  return { error, data: folderData };
+  return { loading, error, data: folderData };
 };
