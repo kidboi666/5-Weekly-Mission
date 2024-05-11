@@ -5,6 +5,7 @@ import ShareModal from "./ShareModal";
 import FolderAddModal from "./FolderAddModal/FolderAddModal";
 import styles from "@/src/components/Modal/Modal.module.css";
 import Image from "next/image";
+import AddModal from "./AddModal";
 
 interface UserFolderdataList {
   data: {
@@ -32,15 +33,7 @@ function renderModal({
   folderTabName,
 }: RenderModalType) {
   return (
-    (modalType === "add" && (
-      <div className={styles.modalForm1}>
-        <h2>{modalTypeLabels && modalTypeLabels[modalType]}</h2>
-        <div className={styles.conWrap}>
-          <input type="text" className={styles.modalInput} placeholder="내용 입력" />
-          <button className="btnForm01">추가하기</button>
-        </div>
-      </div>
-    )) ||
+    (modalType === "add" && <AddModal modalTypeLabels={modalTypeLabels} modalType={modalType} />) ||
     (modalType === "folderAdd" && (
       <FolderAddModal
         modalTypeLabels={modalTypeLabels}
