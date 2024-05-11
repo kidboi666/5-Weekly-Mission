@@ -1,9 +1,9 @@
 import "./FolderList.css";
-import addBtn from "../assets/add.svg";
-import addBtnMobile from "../assets/add 2.svg";
-import shareBtn from "../assets/share.svg";
-import renameBtn from "../assets/pen.svg";
-import deleteBtn from "../assets/Group 36.svg";
+import addBtn from "@/public//add.svg";
+import addBtnMobile from "@/public//add 2.svg";
+import shareBtn from "@/public//share.svg";
+import renameBtn from "@/public//pen.svg";
+import deleteBtn from "@/public//Group 36.svg";
 import DeleteFolder from "../modals/DeleteFolder";
 import EditAndAddFolder from "../modals/EditAndAddFolder";
 import ShareFolder from "../modals/ShareFolder";
@@ -28,7 +28,7 @@ interface FolderListProp {
 const FolderList: React.FC<FolderListProp> = ({ folders }) => {
   const [modalOpen, setModalOpen] = useState<string>("");
   const [title, setTitle] = useState<string>("전체");
-  const [id, setId] = useState<number>(null);
+  const [id, setId] = useState<number>();
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   function handleTitle(folderName: string, folderId: number) {

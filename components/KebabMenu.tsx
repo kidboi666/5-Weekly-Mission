@@ -1,7 +1,7 @@
 import "./KebabMenu.css";
-import KebabImg from "../assets/kebab.svg";
-import DeleteFolder from "../modals/DeleteFolder";
-import AddLinkToFolder from "../modals/AddLinkToFolder";
+import KebabImg from "@/public/kebab.svg";
+import DeleteFolder from "@/modals/DeleteFolder";
+import AddLinkToFolder from "@/modals/AddLinkToFolder";
 import { useState, useEffect, useRef, MouseEvent } from "react";
 
 interface Folder {

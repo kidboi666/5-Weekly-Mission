@@ -1,8 +1,8 @@
 import "./Footer.css";
-import facebook from "../assets/akar-icons_facebook-fill.svg";
-import twitter from "../assets/akar-icons_twitter-fill.svg";
-import youtube from "../assets/akar-icons_youtube-fill.svg";
-import instagram from "../assets/ant-design_instagram-filled.svg";
+import facebook from "@/public/akar-icons_facebook-fill.svg";
+import twitter from "@/public/akar-icons_twitter-fill.svg";
+import youtube from "@/public/akar-icons_youtube-fill.svg";
+import instagram from "@/public/ant-design_instagram-filled.svg";
 
 function Footer() {
   return (

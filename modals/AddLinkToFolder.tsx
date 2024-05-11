@@ -1,7 +1,8 @@
 import styles from "./modalComponentStyle.module.css";
 import classNames from "classnames";
-import checkIcon from "../assets/check.svg";
+import checkIcon from "@/public/check.svg";
 import { useState, MouseEvent } from "react";
+import Image from "next/image";
 
 interface Folder {
   created_at: string;
@@ -68,7 +69,7 @@ const AddLinkToFolder: React.FC<AddLinkToFolderProps> = ({
                 </div>
               </div>
               {linkClick === folder.id && (
-                <img
+                <Image
                   src={checkIcon}
                   className={styles.modal__checkIcon}
                   alt="체크아이콘"

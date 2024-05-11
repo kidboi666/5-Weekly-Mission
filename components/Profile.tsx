@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import { getUserData } from "../api/Api";
-import useData from "../hooks/useData";
+import Link from "next/link";
+import { getUserData } from "@/api/Api";
+import useData from "@/hooks/useData";
 import Btn from "./InputBtn";
 
 function Profile() {
@@ -16,7 +16,7 @@ function Profile() {
       <span className="nav__ProfileEmail">{userData?.data[0].email}</span>
     </div>
   ) : (
-    <Link to={"/signin.html"}>
+    <Link href={"/signin.html"}>
       <Btn> 로그인</Btn>
     </Link>
   );

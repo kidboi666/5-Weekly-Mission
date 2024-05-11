@@ -1,4 +1,4 @@
-import "./CardList.css";
+import styles from "./CardList.module.css";
 import CardListItem from "./CardListItem";
 import NoPage from "./NoPage";
 
@@ -19,7 +19,7 @@ interface Folder {
   favorite: boolean;
   id: number;
   link: {
-    count: number; // 링크의 수
+    count: number;
   };
   name: string;
   user_id: number;

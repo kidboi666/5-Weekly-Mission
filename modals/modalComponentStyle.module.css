@@ -26,7 +26,7 @@
   position: absolute;
   right: 16px;
   top: 16px;
-  background: url(../assets/_close.svg) no-repeat;
+  background: url(../public/_close.svg) no-repeat;
   width: 24px;
   height: 24px;
   border: none;
@@ -192,21 +192,21 @@
 }
 
 .kakaoShare {
-  background: url("../assets/kakoShare.svg") no-repeat center;
+  background: url("../public/kakoShare.svg") no-repeat center;
   width: 30px;
   height: 30px;
   background-size: contain;
 }
 
 .facebookShare {
-  background: url("../assets/facebookShare.svg") no-repeat center;
+  background: url("../public/facebookShare.svg") no-repeat center;
   width: 30px;
   height: 30px;
   background-size: contain;
 }
 
 .linkShare {
-  background: url("../assets/link.svg") no-repeat center;
+  background: url("../public/link.svg") no-repeat center;
   width: 30px;
   height: 30px;
   background-size: contain;

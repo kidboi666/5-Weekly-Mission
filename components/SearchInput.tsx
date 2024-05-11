@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import "./SearchInput.css";
-import SearchImg from "../assets/Search.svg";
+import SearchImg from "@/public/Search.svg";
 
 interface SearchInputProps {
   onSearch: (term: string) => void;

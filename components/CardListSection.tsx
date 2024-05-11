@@ -1,5 +1,5 @@
 import NoPage from "./NoPage";
-import useSelectFolder from "../hooks/useSelectFolder";
+import useSelectFolder from "@/hooks/useSelectFolder";
 import CardList from "./CardList";
 
 interface Folder {

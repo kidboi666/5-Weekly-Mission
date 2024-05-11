@@ -1,8 +1,8 @@
 import "./CardListItem.css";
-import NonBgImg from "../assets/noBackgroundImage.png";
-import BookmarkIcon from "../assets/star.svg";
-import { Link } from "react-router-dom";
-import { formatDate, calculatePostTimeElapsed } from "../utils/PostDateUtility";
+import NonBgImg from "@/public/noBackgroundImage.png";
+import BookmarkIcon from "@/public//star.svg";
+import Link from "next/link";
+import { formatDate, calculatePostTimeElapsed } from "@/utils/PostDateUtility";
 import KebabMenu from "./KebabMenu";
 
 interface CardListItemProps {
@@ -18,7 +18,7 @@ interface CardListItemProps {
     favorite: boolean;
     id: number;
     link: {
-      count: number; // 링크의 수
+      count: number;
     };
     name: string;
     user_id: number;
@@ -28,7 +28,7 @@ interface CardListItemProps {
 const CardListItem: React.FC<CardListItemProps> = ({ link, folders }) => {
   const { created_at, description, image_source, title, url } = link;
   return (
-    <Link to={url} target="_blank" rel="noopener noreferrer">
+    <Link href={url} target="_blank" rel="noopener noreferrer">
       <div className="CardListItem">
         <div className="CardListItem__imageWrap">
           <img
