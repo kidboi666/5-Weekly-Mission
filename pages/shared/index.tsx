@@ -3,6 +3,8 @@ import { useGetFolderInfo } from "../api/useGetFolderInfo";
 import { Layout } from "@/components/Layout/Layout";
 import { FolderInfo } from "@/components/FolderInfo/FolderInfo";
 import { SearchBar } from "@/components/SearchBar/SearchBar";
+import { CardList } from "@/components/Card/CardList";
+import { CardContainer } from "@/components/Card/CardContainer";
 
 const SharedPage = () => {
   const { data } = useGetFolderInfo();
@@ -17,6 +19,15 @@ const SharedPage = () => {
       />
       <div className={styles.wrapPageLayout}>
         <SearchBar />
+        <CardList>
+          {links?.map((link) => (
+            <CardContainer
+              key={link?.id}
+              {...link}
+              isEdit={false}
+            ></CardContainer>
+          ))}
+        </CardList>
       </div>
     </Layout>
   );
