@@ -2,6 +2,7 @@ import styles from "@/src/components/Card/KebabList.module.css";
 import ModalContext from "../Modal/ModalContext";
 import React from "react";
 import { useContext } from "react";
+import { ModalTypeLabels } from "../Modal/ModalTypeLabels";
 
 interface KebabListInterface {
   url: string;
@@ -13,7 +14,7 @@ function KebabList({ url, setDisplay }: KebabListInterface) {
 
   const onClickDeleteLinkModalOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setModalType("linkDelete");
+    setModalType(ModalTypeLabels.LINK_DELETE);
     setCardUrl(url);
     openModal();
     if (typeof setDisplay === "function") setDisplay();
@@ -21,7 +22,7 @@ function KebabList({ url, setDisplay }: KebabListInterface) {
 
   const onClickAddFolderModalOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setModalType("folderAdd");
+    setModalType(ModalTypeLabels.FOLDER_ADD);
     setCardUrl(url);
     openModal();
     if (typeof setDisplay === "function") setDisplay();

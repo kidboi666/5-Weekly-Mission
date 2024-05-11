@@ -3,12 +3,13 @@ import ModalContext from "../Modal/ModalContext";
 import { useContext } from "react";
 import styles from "@/src/components/FolderTabList/FolderAddButton.module.css";
 import Image from "next/image";
+import { ModalTypeLabels } from "../Modal/ModalTypeLabels";
 
 function FolderAddButton() {
   const { openModal, setModalType } = useContext(ModalContext)!;
 
   const onClickButton = () => {
-    setModalType("add");
+    setModalType(ModalTypeLabels.ADD);
     openModal();
   };
 

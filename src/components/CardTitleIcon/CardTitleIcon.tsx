@@ -7,6 +7,7 @@ import styles from "@/src/components/CardTitleIcon/CardTitleIcon.module.css";
 import ModalContext from "../Modal/ModalContext";
 import { useContext } from "react";
 import Image from "next/image";
+import { ModalTypeLabels } from "../Modal/ModalTypeLabels";
 
 function CardTitleIcon() {
   const { setModalType, openModal } = useContext(ModalContext)!;
@@ -16,7 +17,7 @@ function CardTitleIcon() {
       url: shareIcon,
       text: "공유",
       onClick: () => {
-        setModalType("share");
+        setModalType(ModalTypeLabels.SHARE);
         openModal();
       },
     },
@@ -24,7 +25,7 @@ function CardTitleIcon() {
       url: penIcon,
       text: "이름 변경",
       onClick: () => {
-        setModalType("edit");
+        setModalType(ModalTypeLabels.EDIT);
         openModal();
       },
     },
@@ -32,7 +33,7 @@ function CardTitleIcon() {
       url: deleteIcon,
       text: "삭제",
       onClick: () => {
-        setModalType("folderDelete");
+        setModalType(ModalTypeLabels.FOLDER_DELETE);
         openModal();
       },
     },

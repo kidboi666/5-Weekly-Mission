@@ -3,13 +3,14 @@ import { useContext } from "react";
 import ModalContext from "../Modal/ModalContext";
 import styles from "@/src/components/AddLinkForm/AddLinkForm.module.css";
 import Image from "next/image";
+import { ModalTypeLabels } from "../Modal/ModalTypeLabels";
 
 function AddLinkForm() {
   const { openModal, setModalType } = useContext(ModalContext)!;
   const onClickModalOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     openModal();
-    setModalType("folderAdd");
+    setModalType(ModalTypeLabels.FOLDER_ADD);
   };
   return (
     <div className={styles.linkWrap}>
