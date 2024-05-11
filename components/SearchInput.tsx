@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import "./SearchInput.css";
+import styles from "./SearchInput.module.css";
 import SearchImg from "@/public/Search.svg";
 
 interface SearchInputProps {
@@ -30,9 +30,9 @@ const SearchInput: React.FC<SearchInputProps> = ({ onSearch }) => {
   };
 
   return (
-    <form className="SearchForm">
-      <div className="SearchForm__searchWrap">
-        <img className="SearchForm__Img" src={SearchImg} alt="돋보기" />
+    <form className={styles.SearchForm}>
+      <div className={styles.SearchForm__searchWrap}>
+        <img className={styles.SearchForm__Img} src={SearchImg} alt="돋보기" />
         <input
           id="SearchForm__Input"
           type="text"
@@ -41,7 +41,10 @@ const SearchInput: React.FC<SearchInputProps> = ({ onSearch }) => {
           onChange={handleInputChange}
           onKeyPress={handleKeyPress}
         />
-        <button className="closeButton" onClick={handleClearInput}></button>
+        <button
+          className={styles.closeButton}
+          onClick={handleClearInput}
+        ></button>
       </div>
     </form>
   );

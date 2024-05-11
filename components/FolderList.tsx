@@ -1,4 +1,4 @@
-import "./FolderList.css";
+import styles from "./FolderList.module.css";
 import addBtn from "@/public//add.svg";
 import addBtnMobile from "@/public//add 2.svg";
 import shareBtn from "@/public//share.svg";
@@ -46,15 +46,15 @@ const FolderList: React.FC<FolderListProp> = ({ folders }) => {
   };
 
   return (
-    <section className="folderLayout">
+    <section className={styles.folderLayout}>
       <SearchInput onSearch={handleSearch} />
-      <div className="folderLinkList">
-        <div className="folderLinkList__folders">
+      <div className={styles.folderLinkList}>
+        <div className={styles.folderLinkList__folders}>
           <button
             className={
               "전체" === title
-                ? "folderLinkList__folder--active"
-                : "folderLinkList__folder"
+                ? "styles.folderLinkList__folder--active"
+                : "styles.folderLinkList__folder"
             }
             id="0"
             onClick={() => handleTitle("전체", null)}
@@ -65,8 +65,8 @@ const FolderList: React.FC<FolderListProp> = ({ folders }) => {
             <button
               className={
                 folder.name === title
-                  ? "folderLinkList__folder--active"
-                  : "folderLinkList__folder"
+                  ? "styles.folderLinkList__folder--active"
+                  : "styles.folderLinkList__folder"
               }
               id={id?.toString()}
               key={folder.id}
@@ -79,7 +79,7 @@ const FolderList: React.FC<FolderListProp> = ({ folders }) => {
           ))}
         </div>
         <button
-          className="folderLinkList__addFolderButton"
+          className={styles.folderLinkList__addFolderButton}
           onClick={(e) => {
             e.preventDefault();
             setModalOpen("addFolder");
@@ -87,13 +87,13 @@ const FolderList: React.FC<FolderListProp> = ({ folders }) => {
         >
           폴더 추가
           <img
-            className="folderLinkList__addFolderIcon"
+            className={styles.folderLinkList__addFolderIcon}
             src={addBtn}
             alt="폴더추가"
           />
         </button>
         <button
-          className="folderLinkList__addFolderButton--mobile"
+          className={styles.folderLinkList__addFolderButton__mobile}
           onClick={(e) => {
             e.preventDefault();
             setModalOpen("addFolder");
@@ -101,7 +101,7 @@ const FolderList: React.FC<FolderListProp> = ({ folders }) => {
         >
           폴더 추가
           <img
-            className="folderLinkList__addFolderIcon"
+            className={styles.folderLinkList__addFolderIcon}
             src={addBtnMobile}
             alt="폴더추가"
           />
@@ -118,8 +118,11 @@ const FolderList: React.FC<FolderListProp> = ({ folders }) => {
       <div>
         {title === "전체" ? (
           <>
-            <div className="folderLinkList__folderMenu">
-              <div className="folderLinkList__folderName" id={id?.toString()}>
+            <div className={styles.folderLinkList__folderMenu}>
+              <div
+                className={styles.folderLinkList__folderName}
+                id={id?.toString()}
+              >
                 {title}
               </div>
             </div>
@@ -131,13 +134,16 @@ const FolderList: React.FC<FolderListProp> = ({ folders }) => {
           </>
         ) : (
           <>
-            <div className="folderLinkList__folderMenu">
-              <div className="folderLinkList__folderName" id={id?.toString()}>
+            <div className={styles.folderLinkList__folderMenu}>
+              <div
+                className={styles.folderLinkList__folderName}
+                id={id?.toString()}
+              >
                 {title}
               </div>
-              <div className="folderLinkList__folderEditBtns">
+              <div className={styles.folderLinkList__folderEditBtns}>
                 <button
-                  className="folderLinkList__folderEditBtn"
+                  className={styles.folderLinkList__folderEditBtn}
                   onClick={(e) => {
                     e.preventDefault();
                     setModalOpen("shareLink");
@@ -146,7 +152,7 @@ const FolderList: React.FC<FolderListProp> = ({ folders }) => {
                   <img src={shareBtn} alt="공유하기" /> 공유
                 </button>
                 <button
-                  className="folderLinkList__folderEditBtn"
+                  className={styles.folderLinkList__folderEditBtn}
                   onClick={(e) => {
                     e.preventDefault();
                     setModalOpen("alterName");
@@ -156,7 +162,7 @@ const FolderList: React.FC<FolderListProp> = ({ folders }) => {
                 </button>
 
                 <button
-                  className="folderLinkList__folderEditBtn"
+                  className={styles.folderLinkList__folderEditBtn}
                   onClick={(e) => {
                     e.preventDefault();
                     setModalOpen("delete");

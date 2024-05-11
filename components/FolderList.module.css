@@ -64,7 +64,7 @@
   flex-shrink: 0;
 }
 
-.folderLinkList__addFolderButton--mobile {
+.folderLinkList__addFolderButton__mobile {
   display: none;
 }
 

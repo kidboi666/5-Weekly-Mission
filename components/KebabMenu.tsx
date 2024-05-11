@@ -1,4 +1,4 @@
-import "./KebabMenu.css";
+import styles from "./KebabMenu.module.css";
 import KebabImg from "@/public/kebab.svg";
 import DeleteFolder from "@/modals/DeleteFolder";
 import AddLinkToFolder from "@/modals/AddLinkToFolder";
@@ -49,15 +49,15 @@ const KebabMenu: React.FC<KebabMenuProps> = ({ url, folders }) => {
   };
 
   return (
-    <div className="KebabMenu" ref={kebabButtonRefRef}>
-      <button className="KebabMenu__btn" onClick={dropdownToggle}>
-        <img className="KebabMenu__img" src={KebabImg} alt="케밥버튼" />
+    <div className={styles.KebabMenu} ref={kebabButtonRefRef}>
+      <button className={styles.KebabMenu__btn} onClick={dropdownToggle}>
+        <img className={styles.KebabMenu__img} src={KebabImg} alt="케밥버튼" />
       </button>
       {viewDropdown && (
-        <ul className="KebabMenu__options">
+        <ul className={styles.KebabMenu__options}>
           <li>
             <button
-              className="KebabMenu__option"
+              className={styles.KebabMenu__option}
               onClick={(e) => {
                 e.preventDefault();
                 setModalOpen("delete");
@@ -68,7 +68,7 @@ const KebabMenu: React.FC<KebabMenuProps> = ({ url, folders }) => {
           </li>
           <li>
             <button
-              className="KebabMenu__option"
+              className={styles.KebabMenu__option}
               onClick={(e) => {
                 e.preventDefault();
                 setModalOpen("addFolder");

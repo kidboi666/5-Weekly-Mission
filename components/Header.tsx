@@ -1,22 +1,22 @@
-import useData from "../../hooks/hooks/useData";
+import useData from "@/hooks/useData";
 import { getSampleUserData } from "../api/Api";
-import "./Header.css";
+import styles from "./Header.module.css";
 
 function Header() {
   const folderData = useData(getSampleUserData);
   return (
-    <header>
+    <header className={styles.header}>
       {folderData && (
-        <div className="Header__profileArea">
+        <div className={styles.Header__profileArea}>
           <img
-            className="Header__profileArea__profileImg"
+            className={styles.Header__profileArea__profileImg}
             src={folderData.folder.owner.profileImageSource}
             alt="프로필사진"
           />
-          <div className="Header__profileArea__nickname">
+          <div className={styles.Header__profileArea__nickname}>
             {folderData.folder.owner.name}
           </div>
-          <div className="Header__profileArea__folderName">
+          <div className={styles.Header__profileArea__folderName}>
             {folderData.folder.name}
           </div>
         </div>

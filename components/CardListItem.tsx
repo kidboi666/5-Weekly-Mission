@@ -1,4 +1,4 @@
-import "./CardListItem.css";
+import styles from "./CardListItem.module.css";
 import NonBgImg from "@/public/noBackgroundImage.png";
 import BookmarkIcon from "@/public//star.svg";
 import Link from "next/link";
@@ -29,32 +29,34 @@ const CardListItem: React.FC<CardListItemProps> = ({ link, folders }) => {
   const { created_at, description, image_source, title, url } = link;
   return (
     <Link href={url} target="_blank" rel="noopener noreferrer">
-      <div className="CardListItem">
-        <div className="CardListItem__imageWrap">
+      <div className={styles.CardListItem}>
+        <div className={styles.CardListItem__imageWrap}>
           <img
-            className="CardListItem__previewImg"
+            className={styles.CardListItem__previewImg}
             src={image_source ? image_source : NonBgImg}
             alt={title}
           />
           <button disabled>
             <img
-              className="CardListItem__bookmarkIcon"
+              className={styles.CardListItem__bookmarkIcon}
               src={BookmarkIcon}
               alt="북마크아이콘"
             />
           </button>
         </div>
-        <div className="CardListItem__content">
+        <div className={styles.CardListItem__content}>
           <KebabMenu url={url} folders={folders} />
-          <div className="CardListItem__postTime">
+          <div className={styles.CardListItem__postTime}>
             {calculatePostTimeElapsed(created_at)}
           </div>
-          <div className="CardListItem__description">
+          <div className={styles.CardListItem__description}>
             {title}
             <br />
             {description}
           </div>
-          <div className="CardListItem__postDate">{formatDate(created_at)}</div>
+          <div className={styles.CardListItem__postDate}>
+            {formatDate(created_at)}
+          </div>
         </div>
       </div>
     </Link>

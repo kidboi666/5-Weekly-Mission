@@ -46,7 +46,7 @@ const CardList: React.FC<CardListProps> = ({ links, folders, searchTerm }) => {
       {filteredFolders.length === 0 ? (
         <NoPage text="검색 결과가 없습니다." />
       ) : (
-        <ul className="CardLinkList">
+        <ul className={styles.CardLinkList}>
           {filteredFolders.map((link) => (
             <li key={link.id}>
               <CardListItem folders={folders} link={link} />

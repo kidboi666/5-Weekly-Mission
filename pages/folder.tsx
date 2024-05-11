@@ -1,4 +1,4 @@
-import "./folder.css";
+import styles from "./folder.module.css";
 import Nav from "@/components/Nav";
 import FolderList from "@/components/FolderList";
 import Footer from "@/components/Footer";
@@ -13,7 +13,7 @@ function Folder() {
     <>
       <Nav />
       <AddLinkInput />
-      <section className="folderContent">
+      <section className={styles.folderContent}>
         {folders && <FolderList folders={folders} />}
       </section>
       <Footer />

@@ -37,7 +37,7 @@
   position: absolute;
   right: 16px;
   top: 16px;
-  background: url(../assets/_close.svg) no-repeat;
+  background: url(../public/_close.svg) no-repeat;
   width: 24px;
   height: 24px;
   border: none;
