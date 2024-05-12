@@ -1,0 +1,35 @@
+.btn-primary {
+  padding: 1.6rem 2rem;
+  border-radius: 0.8rem;
+  background: linear-gradient(
+    91deg,
+    var(--Linkbrary-primary-color) 0.12%,
+    #6ae3fe 101.84%
+  );
+  border: none;
+  color: var(--Grey-Light);
+  font-size: 1.8rem;
+  line-height: 2.1rem;
+  font-weight: 600;
+  text-align: center;
+
+  @media (max-width: 767px) {
+    padding: 1rem 1.6rem;
+  }
+}
+
+.btn-primary.red {
+  background: var(--Linkbrary-red);
+}
+
+.btn-sm {
+  width: 12.8rem;
+}
+
+.btn-md {
+  width: 35rem;
+}
+
+.btn-lg {
+  width: 40rem;
+}
