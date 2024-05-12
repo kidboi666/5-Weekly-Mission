@@ -1,9 +1,9 @@
 import styles from "./FolderList.module.css";
-import addBtn from "@/public//add.svg";
-import addBtnMobile from "@/public//add 2.svg";
-import shareBtn from "@/public//share.svg";
-import renameBtn from "@/public//pen.svg";
-import deleteBtn from "@/public//Group 36.svg";
+import addBtn from "@/public/add.svg";
+import addBtnMobile from "@/public/add 2.svg";
+import shareBtn from "@/public/share.svg";
+import renameBtn from "@/public/pen.svg";
+import deleteBtn from "@/public/Group 36.svg";
 import DeleteFolder from "../modals/DeleteFolder";
 import EditAndAddFolder from "../modals/EditAndAddFolder";
 import ShareFolder from "../modals/ShareFolder";
@@ -28,10 +28,12 @@ interface FolderListProp {
 const FolderList: React.FC<FolderListProp> = ({ folders }) => {
   const [modalOpen, setModalOpen] = useState<string>("");
   const [title, setTitle] = useState<string>("전체");
-  const [id, setId] = useState<number>();
+  const [id, setId] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>("");
 
-  function handleTitle(folderName: string, folderId: number) {
+  console.log(folders);
+
+  function handleTitle(folderName: string, folderId: number | null) {
     setTitle(folderName);
     setId(folderId);
   }
@@ -53,8 +55,8 @@ const FolderList: React.FC<FolderListProp> = ({ folders }) => {
           <button
             className={
               "전체" === title
-                ? "styles.folderLinkList__folder--active"
-                : "styles.folderLinkList__folder"
+                ? styles.folderLinkList__folder__active
+                : styles.folderLinkList__folder
             }
             id="0"
             onClick={() => handleTitle("전체", null)}
@@ -65,8 +67,8 @@ const FolderList: React.FC<FolderListProp> = ({ folders }) => {
             <button
               className={
                 folder.name === title
-                  ? "styles.folderLinkList__folder--active"
-                  : "styles.folderLinkList__folder"
+                  ? styles.folderLinkList__folder__active
+                  : styles.folderLinkList__folder
               }
               id={id?.toString()}
               key={folder.id}
@@ -102,7 +104,7 @@ const FolderList: React.FC<FolderListProp> = ({ folders }) => {
           폴더 추가
           <img
             className={styles.folderLinkList__addFolderIcon}
-            src={addBtnMobile}
+            src="{addBtnMobile}"
             alt="폴더추가"
           />
         </button>
@@ -181,7 +183,7 @@ const FolderList: React.FC<FolderListProp> = ({ folders }) => {
         )}
       </div>
 
-      {modalOpen === "shareLink" && (
+      {modalOpen === "shareLink" && id && (
         <ShareFolder title={title} id={id} onClose={setModalOpen} />
       )}
       {modalOpen === "alterName" && (

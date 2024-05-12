@@ -23,12 +23,12 @@ interface KebabMenuProps {
 const KebabMenu: React.FC<KebabMenuProps> = ({ url, folders }) => {
   const [viewDropdown, setViewDropdown] = useState(false);
   const [modalOpen, setModalOpen] = useState<string>("");
-  const kebabButtonRefRef = useRef<HTMLDivElement | null>(null);
+  const kebabButtonRefRef = useRef<HTMLDivElement>(null);
 
   /** 드롭다운 메뉴 이외의 영역을 클릭시 드롭다운 메뉴 닫힘 */
   const handleClickOutside = (e: MouseEvent | Event): void => {
     if (
-      kebabButtonRefRef &&
+      kebabButtonRefRef.current &&
       !kebabButtonRefRef.current.contains(e.target as Node)
     ) {
       setViewDropdown(false);

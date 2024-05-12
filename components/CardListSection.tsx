@@ -26,7 +26,7 @@ interface Link {
 }
 
 interface UseSelectFolderResult {
-  data: Link[];
+  data?: Link[];
 }
 
 interface CardListSectionProps {
@@ -44,10 +44,10 @@ const CardListSection: React.FC<CardListSectionProps> = ({
   const links = result?.data;
   return (
     <>
-      {links && links.length === 0 ? (
-        <NoPage text="저장된 링크가 없습니다." />
-      ) : (
+      {links ? (
         <CardList folders={folders} links={links} searchTerm={searchTerm} />
+      ) : (
+        <NoPage text="저장된 링크가 없습니다." />
       )}
     </>
   );

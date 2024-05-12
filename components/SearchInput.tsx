@@ -34,7 +34,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ onSearch }) => {
       <div className={styles.SearchForm__searchWrap}>
         <img className={styles.SearchForm__Img} src={SearchImg} alt="돋보기" />
         <input
-          id="SearchForm__Input"
+          id={styles.SearchForm__Input}
           type="text"
           placeholder="링크를 검색해 보세요."
           value={searchTerm}
