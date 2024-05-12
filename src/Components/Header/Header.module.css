@@ -1,0 +1,71 @@
+/* h e a d e r */
+.navbar {
+    padding: 0 200px;
+    top: 0;
+    left: 0;
+    height: 94px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: var(--gray5);
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+/* 로고와 버튼 스타일 */
+.logo {
+    cursor: pointer;
+    position: relative;
+    width: 133px;
+    height: 24px;
+    overflow: clip;
+}
+
+.login_button {
+    width: 128px;
+    height: 53px;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(to right, #6d6afe, #6ae3fe);
+    color: var(--white);
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #373740;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.profile_img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+}
+
+/* tablet */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .navbar {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+}
+
+/* mobile */
+@media (min-width: 375px) and (max-width: 767px) {
+    .navbar {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .email {
+        display: none;
+    }
+}
