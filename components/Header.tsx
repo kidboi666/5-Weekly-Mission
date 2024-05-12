@@ -11,6 +11,7 @@ function Header() {
         <div className={styles.Header__profileArea}>
           <div className={styles.Header__profileArea__profileImg}>
             <Image
+              fill
               src={folderData.folder.owner.profileImageSource}
               alt="프로필사진"
             />

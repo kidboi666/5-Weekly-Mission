@@ -1,5 +1,6 @@
 import styles from "./FolderList.module.css";
 import addBtn from "@/public/add.svg";
+import addBtnMobile from "@/public/add 2.svg";
 import shareBtn from "@/public/share.svg";
 import renameBtn from "@/public/pen.svg";
 import deleteBtn from "@/public/Group 36.svg";
@@ -30,8 +31,6 @@ const FolderList: React.FC<FolderListProp> = ({ folders }) => {
   const [title, setTitle] = useState<string>("전체");
   const [id, setId] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>("");
-
-  console.log(folders);
 
   function handleTitle(folderName: string, folderId: number | null) {
     setTitle(folderName);
@@ -89,7 +88,7 @@ const FolderList: React.FC<FolderListProp> = ({ folders }) => {
         >
           폴더 추가
           <div className={styles.folderLinkList__addFolderIcon}>
-            <Image src={addBtn} alt="폴더추가" />
+            <Image fill src={addBtn} alt="폴더추가" />
           </div>
         </button>
         <button
@@ -101,7 +100,7 @@ const FolderList: React.FC<FolderListProp> = ({ folders }) => {
         >
           폴더 추가
           <div className={styles.folderLinkList__addFolderIcon}>
-            <Image src={addBtn} alt="폴더추가" />
+            <Image fill src={addBtnMobile} alt="폴더추가" />
           </div>
         </button>
         {modalOpen === "addFolder" && (
@@ -147,7 +146,10 @@ const FolderList: React.FC<FolderListProp> = ({ folders }) => {
                     setModalOpen("shareLink");
                   }}
                 >
-                  <Image src={shareBtn} alt="공유하기" /> 공유
+                  <div className={styles.folderLinkList__folderEditIcon}>
+                    <Image fill src={shareBtn} alt="공유하기" />
+                  </div>
+                  공유
                 </button>
                 <button
                   className={styles.folderLinkList__folderEditBtn}
@@ -156,7 +158,10 @@ const FolderList: React.FC<FolderListProp> = ({ folders }) => {
                     setModalOpen("alterName");
                   }}
                 >
-                  <Image src={renameBtn} alt="이름변경" /> 이름 변경
+                  <div className={styles.folderLinkList__folderEditIcon}>
+                    <Image fill src={renameBtn} alt="이름변경" />
+                  </div>
+                  이름 변경
                 </button>
 
                 <button
@@ -166,7 +171,10 @@ const FolderList: React.FC<FolderListProp> = ({ folders }) => {
                     setModalOpen("delete");
                   }}
                 >
-                  <Image src={deleteBtn} alt="삭제" /> 삭제
+                  <div className={styles.folderLinkList__folderEditIcon}>
+                    <Image fill src={deleteBtn} alt="삭제" />
+                  </div>
+                  삭제
                 </button>
               </div>
             </div>

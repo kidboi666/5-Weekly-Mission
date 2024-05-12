@@ -101,6 +101,12 @@
   line-height: normal;
 }
 
+.folderLinkList__folderEditIcon {
+  position: relative;
+  width: 18px;
+  height: 18px;
+}
+
 .folderLinkList__folderName {
   color: #000;
   font-family: Pretendard;
@@ -131,7 +137,7 @@
     display: none;
   }
 
-  .folderLinkList__addFolderButton--mobile {
+  .folderLinkList__addFolderButton__mobile {
     cursor: pointer;
     position: fixed;
     left: 50%;

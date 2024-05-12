@@ -8,11 +8,9 @@ const AddLinkInput: React.FC = () => {
     <div className={styles.AddLinkFormWrap}>
       <form className={styles.AddLinkForm}>
         <div className={styles.AddLinkForm__wrap}>
-          <Image
-            className={styles.AddLinkForm__Img}
-            src={addImg}
-            alt="링크추가"
-          />
+          <div className={styles.AddLinkForm__Img}>
+            <Image src={addImg} alt="링크추가" />
+          </div>
           <input
             id={styles.AddLinkForm__Input}
             type="text"

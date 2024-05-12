@@ -28,20 +28,22 @@ interface CardListItemProps {
 
 const CardListItem: React.FC<CardListItemProps> = ({ link, folders }) => {
   const { created_at, description, image_source, title, url } = link;
-  console.log(image_source);
   return (
     <Link href={url} target="_blank" rel="noopener noreferrer">
       <div className={styles.CardListItem}>
         <div className={styles.CardListItem__imageWrap}>
           <div className={styles.CardListItem__previewImg}>
-            <Image fill src={image_source || NonBgImg} alt={title} />
+            <Image
+              fill
+              src={image_source || NonBgImg}
+              alt={title}
+              sizes="340px 200px"
+            />
           </div>
           <button disabled>
-            <Image
-              className={styles.CardListItem__bookmarkIcon}
-              src={BookmarkIcon}
-              alt="북마크아이콘"
-            />
+            <div className={styles.CardListItem__bookmarkIcon}>
+              <Image fill src={BookmarkIcon} alt="북마크아이콘" />
+            </div>
           </button>
         </div>
         <div className={styles.CardListItem__content}>

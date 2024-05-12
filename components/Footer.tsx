@@ -22,28 +22,36 @@ function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image src={facebook} alt="페이스북 바로가기" />
+              <div className={styles.footer__snsIcon}>
+                <Image fill src={facebook} alt="페이스북 바로가기" />
+              </div>
             </Link>
             <Link
               href="https://twitter.com/?lang=ko"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image src={twitter} alt="트위터 바로가기" />
+              <div className={styles.footer__snsIcon}>
+                <Image fill src={twitter} alt="트위터 바로가기" />
+              </div>
             </Link>
             <Link
               href="https://www.youtube.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image src={youtube} alt="유튜브 바로가기" />
+              <div className={styles.footer__snsIcon}>
+                <Image fill src={youtube} alt="유튜브 바로가기" />
+              </div>
             </Link>
             <Link
               href="https://www.instagram.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image src={instagram} alt="인스타그램 바로가기" />
+              <div className={styles.footer__snsIcon}>
+                <Image fill src={instagram} alt="인스타그램 바로가기" />
+              </div>
             </Link>
           </div>
         </div>

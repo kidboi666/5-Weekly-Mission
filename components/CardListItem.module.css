@@ -16,13 +16,14 @@
   width: 100%;
   height: 200px;
   overflow: hidden;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 .CardListItem__previewImg {
   position: relative;
   width: 340px;
   height: 200px;
-  flex-shrink: 0;
 }
 
 .CardListItem:hover .CardListItem__previewImg {
@@ -34,6 +35,8 @@
   position: absolute;
   top: 15px;
   right: 15px;
+  width: 34px;
+  height: 34px;
 }
 
 .CardListItem__content {
@@ -76,19 +79,4 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-}
-
-@media (max-width: 1199px) {
-  .CardLinkList {
-    grid-template-columns: repeat(2, 340px);
-  }
-}
-
-@media (max-width: 767px) {
-  .CardLinkList {
-    grid-template-columns: repeat(1, 325px);
-  }
-  .CardListItem {
-    height: 327px;
-  }
 }

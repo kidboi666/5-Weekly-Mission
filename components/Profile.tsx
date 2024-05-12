@@ -11,7 +11,12 @@ function Profile() {
   return userData ? (
     <div className={styles.nav__profile}>
       <div className={styles.nav__ProfileImg}>
-        <Image fill src={userData?.data[0].image_source} alt="Profile Info" />
+        <Image
+          fill
+          src={userData?.data[0].image_source}
+          alt="Profile Info"
+          sizes="28px"
+        />
       </div>
       <span className={styles.nav__ProfileEmail}>
         {userData?.data[0].email}

@@ -6,6 +6,7 @@ import { getSampleFolderData } from "../api/Api";
 import { useEffect, useState } from "react";
 import useData from "../hooks/useData";
 import PropTypes from "prop-types";
+import SearchInput from "@/components/SearchInput";
 
 interface Link {
   created_at: string;
@@ -24,15 +25,16 @@ function Shared() {
   const links: Link[] | undefined = linkData?.folder?.links;
   const [searchTerm, setSearchTerm] = useState<string>("");
 
-  useEffect(() => {
-    console.log(linkData);
-  }, [linkData]);
+  const handleSearch = (term: string): void => {
+    setSearchTerm(term);
+  };
 
   return (
     <>
       <Nav />
       <Header />
-      {links && <CardList links={links} folders={[]} searchTerm={""} />}
+      <SearchInput onSearch={handleSearch} />
+      {links && <CardList links={links} folders={[]} searchTerm={searchTerm} />}
       <Footer />
     </>
   );

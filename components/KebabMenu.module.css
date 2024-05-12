@@ -5,9 +5,12 @@
 }
 
 .KebabMenu__btn {
+  position: relative;
   cursor: pointer;
   background: none;
   border: none;
+  width: 21px;
+  height: 17px;
 }
 
 .KebabMenu__options {

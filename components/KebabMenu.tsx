@@ -53,6 +53,7 @@ const KebabMenu: React.FC<KebabMenuProps> = ({ url, folders }) => {
     <div className={styles.KebabMenu} ref={kebabButtonRefRef}>
       <button className={styles.KebabMenu__btn} onClick={dropdownToggle}>
         <Image
+          fill
           className={styles.KebabMenu__img}
           src={KebabImg}
           alt="케밥버튼"

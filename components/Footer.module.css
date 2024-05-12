@@ -52,6 +52,11 @@
   align-items: flex-start;
   gap: 12px;
 }
+.footer__snsIcon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
 
 .footer__snsLink > * {
   width: 20px;

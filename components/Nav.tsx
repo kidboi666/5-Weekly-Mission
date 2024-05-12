@@ -9,9 +9,9 @@ function Nav() {
     <nav className={styles.nav}>
       <ul>
         <li>
-          <Link href="/shared">
+          <Link href="/">
             <div className={styles.nav__logo}>
-              <Image fill src={logoImg} alt="로고 이미지" />
+              <Image fill src={logoImg} alt="로고 이미지" priority />
             </div>
           </Link>
         </li>
