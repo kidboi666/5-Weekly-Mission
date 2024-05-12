@@ -33,6 +33,7 @@ interface CardListProps {
 
 const CardList: React.FC<CardListProps> = ({ links, folders, searchTerm }) => {
   if (!links) return;
+
   const filteredFolders = links.filter((link) => {
     return (
       link.title?.includes(searchTerm) ||
