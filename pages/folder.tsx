@@ -6,9 +6,32 @@ import useData from "@/hooks/useData";
 import { getFolderListData } from "@/api/Api";
 import AddLinkInput from "@/components/AddLinkInput";
 
-function Folder() {
-  const foldersData = useData(getFolderListData);
-  const folders = foldersData?.data;
+interface FolderProps {
+  created_at: string;
+  favorite: boolean;
+  id: number;
+  link: {
+    count: number;
+  };
+  name: string;
+  user_id: number;
+}
+
+interface FolderProps {
+  folders: FolderProps[];
+}
+
+export async function getStaticProps() {
+  const res = await getFolderListData();
+  const folders = res.data ?? [];
+  return {
+    props: {
+      folders,
+    },
+  };
+}
+
+function Folder({ folders }: FolderProps) {
   return (
     <>
       <Nav />

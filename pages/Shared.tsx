@@ -20,9 +20,21 @@ interface Link {
   [key: string]: any;
 }
 
-function Shared() {
-  const linkData = useData(getSampleFolderData);
-  const links: Link[] | undefined = linkData?.folder?.links;
+interface LinkProps {
+  links: Link[];
+}
+
+export async function getStaticProps() {
+  const res = await getSampleFolderData();
+  const links: Link[] | undefined = res?.folder?.links;
+  return {
+    props: {
+      links,
+    },
+  };
+}
+
+function Shared({ links }: LinkProps) {
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   const handleSearch = (term: string): void => {
