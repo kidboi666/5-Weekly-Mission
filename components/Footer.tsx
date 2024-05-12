@@ -3,6 +3,8 @@ import facebook from "@/public/akar-icons_facebook-fill.svg";
 import twitter from "@/public/akar-icons_twitter-fill.svg";
 import youtube from "@/public/akar-icons_youtube-fill.svg";
 import instagram from "@/public/ant-design_instagram-filled.svg";
+import Link from "next/link";
+import Image from "next/image";
 
 function Footer() {
   return (
@@ -11,38 +13,38 @@ function Footer() {
         <div className={styles.footer__content}>
           <div className={styles.footer__history}>©codeit - 2023</div>
           <div className={styles.footer__supportLink}>
-            <a href="/privacy">Privacy Policy</a>
-            <a href="/faq">FAQ</a>
+            <Link href="/privacy">Privacy Policy</Link>
+            <Link href="/faq">FAQ</Link>
           </div>
           <div className={styles.footer__snsLink}>
-            <a
+            <Link
               href="https://www.facebook.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={facebook} alt="페이스북 바로가기" />
-            </a>
-            <a
+              <Image src={facebook} alt="페이스북 바로가기" />
+            </Link>
+            <Link
               href="https://twitter.com/?lang=ko"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={twitter} alt="트위터 바로가기" />
-            </a>
-            <a
+              <Image src={twitter} alt="트위터 바로가기" />
+            </Link>
+            <Link
               href="https://www.youtube.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={youtube} alt="유튜브 바로가기" />
-            </a>
-            <a
+              <Image src={youtube} alt="유튜브 바로가기" />
+            </Link>
+            <Link
               href="https://www.instagram.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={instagram} alt="인스타그램 바로가기" />
-            </a>
+              <Image src={instagram} alt="인스타그램 바로가기" />
+            </Link>
           </div>
         </div>
       </div>

@@ -69,6 +69,9 @@
 }
 
 .folderLinkList__addFolderIcon {
+  position: relative;
+  width: 16px;
+  height: 16px;
   align-items: center;
   margin-left: 4px;
 }
@@ -152,11 +155,6 @@
     border: 1px solid var(--Linkbrary-white, #fff);
     background: var(--Linkbrary-primary-color, #6d6afe);
     z-index: 9999;
-  }
-
-  .folderLinkList__addFolderIcon {
-    width: 16px;
-    height: 16px;
   }
 
   .folderLinkList__folderMenu {

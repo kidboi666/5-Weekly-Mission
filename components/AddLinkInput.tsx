@@ -1,13 +1,14 @@
 import addImg from "@/public/link.svg";
 import styles from "./AddLinkInput.module.css";
 import InputBtn from "./InputBtn";
+import Image from "next/image";
 
 const AddLinkInput: React.FC = () => {
   return (
     <div className={styles.AddLinkFormWrap}>
       <form className={styles.AddLinkForm}>
         <div className={styles.AddLinkForm__wrap}>
-          <img
+          <Image
             className={styles.AddLinkForm__Img}
             src={addImg}
             alt="링크추가"

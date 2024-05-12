@@ -3,6 +3,7 @@ import KebabImg from "@/public/kebab.svg";
 import DeleteFolder from "@/modals/DeleteFolder";
 import AddLinkToFolder from "@/modals/AddLinkToFolder";
 import { useState, useEffect, useRef, MouseEvent } from "react";
+import Image from "next/image";
 
 interface Folder {
   created_at: string;
@@ -51,7 +52,11 @@ const KebabMenu: React.FC<KebabMenuProps> = ({ url, folders }) => {
   return (
     <div className={styles.KebabMenu} ref={kebabButtonRefRef}>
       <button className={styles.KebabMenu__btn} onClick={dropdownToggle}>
-        <img className={styles.KebabMenu__img} src={KebabImg} alt="케밥버튼" />
+        <Image
+          className={styles.KebabMenu__img}
+          src={KebabImg}
+          alt="케밥버튼"
+        />
       </button>
       {viewDropdown && (
         <ul className={styles.KebabMenu__options}>

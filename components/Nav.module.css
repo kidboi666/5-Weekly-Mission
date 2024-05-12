@@ -16,6 +16,7 @@
 }
 
 .nav__logo {
+  position: relative;
   width: 133px;
   height: 24px;
 }
@@ -40,17 +41,6 @@
   font-weight: 600;
   line-height: normal;
   text-decoration: none;
-}
-
-.nav__profile {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.nav__ProfileImg {
-  width: 28px;
-  height: 28px;
 }
 
 /* 태블릿 사이즈 */

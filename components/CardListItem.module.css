@@ -19,6 +19,7 @@
 }
 
 .CardListItem__previewImg {
+  position: relative;
   width: 340px;
   height: 200px;
   flex-shrink: 0;

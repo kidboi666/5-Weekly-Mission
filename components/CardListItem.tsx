@@ -4,6 +4,7 @@ import BookmarkIcon from "@/public/star.svg";
 import Link from "next/link";
 import { formatDate, calculatePostTimeElapsed } from "@/utils/PostDateUtility";
 import KebabMenu from "./KebabMenu";
+import Image from "next/image";
 
 interface CardListItemProps {
   link: {
@@ -32,13 +33,11 @@ const CardListItem: React.FC<CardListItemProps> = ({ link, folders }) => {
     <Link href={url} target="_blank" rel="noopener noreferrer">
       <div className={styles.CardListItem}>
         <div className={styles.CardListItem__imageWrap}>
-          <img
-            className={styles.CardListItem__previewImg}
-            src={image_source || NonBgImg}
-            alt={title}
-          />
+          <div className={styles.CardListItem__previewImg}>
+            <Image fill src={image_source || NonBgImg} alt={title} />
+          </div>
           <button disabled>
-            <img
+            <Image
               className={styles.CardListItem__bookmarkIcon}
               src={BookmarkIcon}
               alt="북마크아이콘"

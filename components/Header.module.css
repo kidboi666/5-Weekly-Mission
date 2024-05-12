@@ -10,6 +10,7 @@
 }
 
 .Header__profileArea__profileImg {
+  position: relative;
   width: 60px;
   height: 60px;
   padding: 16px 17px 16px 12px;

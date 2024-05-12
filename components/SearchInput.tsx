@@ -1,6 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import styles from "./SearchInput.module.css";
 import SearchImg from "@/public/Search.svg";
+import Image from "next/image";
 
 interface SearchInputProps {
   onSearch: (term: string) => void;
@@ -32,7 +33,11 @@ const SearchInput: React.FC<SearchInputProps> = ({ onSearch }) => {
   return (
     <form className={styles.SearchForm}>
       <div className={styles.SearchForm__searchWrap}>
-        <img className={styles.SearchForm__Img} src={SearchImg} alt="돋보기" />
+        <Image
+          className={styles.SearchForm__Img}
+          src={SearchImg}
+          alt="돋보기"
+        />
         <input
           id={styles.SearchForm__Input}
           type="text"
