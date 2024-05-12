@@ -1,7 +1,13 @@
-import { useGetFolder, FolderInfo } from "@/src/folder";
-import { Layout } from "@/src/ui-component";
+import { useGetFolder } from "@/src/data-access";
+import {
+  CardList,
+  Layout,
+  ReadOnlyCard,
+  SearchBar,
+  FolderInfo,
+} from "@/src/ui";
 import { SharedLayout } from "@/src/page-layout/SharedLayout";
-import { UICardList, useSearchLink, SearchBar, ReadOnlyCard } from "@/src/link";
+import { useSearchLink } from "@/src/util";
 
 const SharedPage = () => {
   const { data } = useGetFolder();
@@ -27,11 +33,11 @@ const SharedPage = () => {
           />
         }
         cardList={
-          <UICardList>
+          <CardList>
             {result?.map((link) => (
               <ReadOnlyCard key={link?.id} {...link} />
             ))}
-          </UICardList>
+          </CardList>
         }
       />
     </Layout>

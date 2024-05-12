@@ -1,16 +1,10 @@
 import { useState } from "react";
-import { useGetFolders, FolderToolBar, SelectedFolderId } from "@/src/folder";
-import {
-  SearchBar,
-  CardList,
-  LinkForm,
-  ALL_LINKS_ID,
-  useGetLinks,
-  useSearchLink,
-} from "@/src/link";
-import { Layout } from "@/src/ui-component";
+import { CardList, FolderToolBar, LinkForm } from "@/src/feature";
+import { Layout, SearchBar } from "@/src/ui";
 import { FolderLayout } from "@/src/page-layout/FolderLayout";
-import { useIntersectionObserver } from "@/src/util";
+import { useIntersectionObserver, useSearchLink, ALL_LINKS_ID } from "@/src/util";
+import { SelectedFolderId } from "@/src/type";
+import { useGetLinks, useGetFolders } from "@/src/data-access";
 
 const FolderPage = () => {
   const { data: folders } = useGetFolders();

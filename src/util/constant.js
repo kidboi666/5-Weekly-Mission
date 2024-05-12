@@ -22,3 +22,12 @@ export const TIME_IN_MILLISECONDS = {
 };
 
 export const ROOT_ID = "root";
+
+export const DEFAULT_FOLDER_DATA = {
+  profileImage: "",
+  ownerName: "",
+  folderName: "",
+  links: [],
+};
+
+export const ALL_LINKS_ID = "all";
