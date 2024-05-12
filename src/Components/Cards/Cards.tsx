@@ -1,13 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import moment from "moment";
-import thumbnail from "../../assets/thumbnail.svg";
-import dot from "../../assets/dot.svg";
-import star from "../../assets/star_empty.png";
 import formatDate from "../../utils/formatDate";
 import styles from "./Cards.module.css";
 import Modal from "../Modal/Modal";
+import Link from "next/link";
+import Image from "next/image";
 
 interface Link {
     id: string;
@@ -36,7 +34,7 @@ interface CardsProps {
 
 function Cards({ items }: CardsProps) {
     const [popoverIndex, setPopoverIndex] = useState<number | null>(null); // 각 카드의 index
-    const popoverRef = useRef<HTMLDivElement>(null);
+    const popoverRef = useRef<HTMLDivElement | null>(null);
     const [modalType, setModalType] = useState<"DELETE_LINK" | "ADD" | null>(null);
 
     const handleKebabClick = (index: number) => {
@@ -44,9 +42,11 @@ function Cards({ items }: CardsProps) {
     };
 
     const handleClosePopover = (e: React.MouseEvent<HTMLDivElement, MouseEvent> | MouseEvent) => {
-        if (!popoverRef.current) return;
-
-        if (!(e.target instanceof Node) || !popoverRef.current.contains(e.target as Node)) {
+        if (
+            popoverIndex !== null &&
+            popoverRef.current &&
+            !popoverRef.current.contains(e.target as Node)
+        ) {
             setPopoverIndex(null);
         }
     };
@@ -63,22 +63,6 @@ function Cards({ items }: CardsProps) {
         closeModal();
     };
 
-    useEffect(() => {
-        const handleClickOutside = (e: MouseEvent) => {
-            handleClosePopover(e);
-        };
-
-        if (popoverIndex !== null) {
-            document.addEventListener("click", handleClickOutside);
-        } else {
-            document.removeEventListener("click", handleClickOutside);
-        }
-
-        return () => {
-            document.removeEventListener("click", handleClickOutside);
-        };
-    }, [popoverIndex]);
-
     // 모달 오픈 시 스크롤 막기
     useEffect(() => {
         if (modalType) {
@@ -86,6 +70,10 @@ function Cards({ items }: CardsProps) {
         } else {
             document.body.style.overflow = "auto";
         }
+
+        return () => {
+            document.body.style.overflow = "auto";
+        };
     }, [modalType]);
 
     const MINUTES = 60;
@@ -126,24 +114,29 @@ function Cards({ items }: CardsProps) {
                         <div key={link.id} className={styles.card}>
                             {link.showStar && (
                                 <div className={styles.star}>
-                                    <img src={star} width={34} height={34} alt='star' />
+                                    <Image
+                                        src='/assets/star_empty.png'
+                                        width={34}
+                                        height={34}
+                                        alt='star'
+                                    />
                                 </div>
                             )}
-                            <Link to={link.url} target='_blank'>
+                            <Link href={link.url} target='_blank'>
                                 <div className={styles.card_img_div}>
                                     {link.image_source ? (
-                                        <img
+                                        <Image
                                             src={link.image_source}
                                             className={styles.card_img}
-                                            alt={link.title}
+                                            alt={link.title || ""}
                                             width={450}
                                             height={350}
                                         />
                                     ) : (
-                                        <img
-                                            src={thumbnail}
+                                        <Image
+                                            src='/assets/thumbnail.svg'
                                             className={styles.card_img}
-                                            alt=''
+                                            alt='thumbnail'
                                             width={450}
                                             height={350}
                                         />
@@ -152,13 +145,11 @@ function Cards({ items }: CardsProps) {
                             </Link>
                             <div className={styles.card_info}>
                                 <div className={styles.card_info_top}>
-                                    <p className={styles.card_info_time}>
+                                    <p className={`${styles.card_info_time} p`}>
                                         {generateTimeText(link.created_at)}
                                     </p>
-                                    <img
-                                        src={dot}
+                                    <div
                                         className={styles.dot_menu_button}
-                                        alt='dot'
                                         tabIndex={0}
                                         onClick={() => handleKebabClick(index)}
                                         onKeyDown={(e) => {
@@ -166,7 +157,14 @@ function Cards({ items }: CardsProps) {
                                                 handleKebabClick(index);
                                             }
                                         }}
-                                    />
+                                    >
+                                        <Image
+                                            src='/assets/dot.svg'
+                                            alt='dot'
+                                            width={21}
+                                            height={17}
+                                        />
+                                    </div>
                                     {popoverIndex === index && (
                                         <div className={styles.popover} ref={popoverRef}>
                                             <div
@@ -219,10 +217,8 @@ function Cards({ items }: CardsProps) {
                                         </div>
                                     )}
                                 </div>
-                                <Link to={link.url} target='_blank'>
-                                    <p className={styles.card_info_body}>{link.description}</p>
-                                </Link>
-                                <p className={styles.card_info_date}>
+                                <p className={`${styles.card_info_body} p`}>{link.description}</p>
+                                <p className={`${styles.card_info_date} p`}>
                                     {formatDate(link.created_at)}
                                 </p>
                             </div>

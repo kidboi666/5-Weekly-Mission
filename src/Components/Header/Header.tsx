@@ -2,29 +2,31 @@
 import React from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { BASE_URL } from "../../constants/baseURL";
-import { Link } from "react-router-dom";
-import logo from "../../assets/logo.svg";
 import styles from "./Header.module.css";
+import Link from "next/link";
+import Image from "next/image";
 
 function Header() {
     const profileData = useFetch(`${BASE_URL}users/1`);
 
     return (
         <header className={styles.navbar}>
-            <Link to='/' className={styles.logo} tabIndex={0}>
-                <img src={logo} width='133' height='24' alt='Linkbrary' />
+            <Link href='/' className={styles.logo} tabIndex={0}>
+                <Image src='/assets/logo.svg' width={133} height={24} alt='Linkbrary' />
             </Link>
             {profileData ? (
                 <div className={styles.profile}>
-                    <img
+                    <Image
                         src={profileData.data[0].image_source}
+                        width={28}
+                        height={28}
                         alt='profile'
                         className={styles.profile_img}
                     />
                     <span className={styles.email}>{profileData.data[0].email}</span>
                 </div>
             ) : (
-                <Link to='../sign/signin.html' className={styles.login_button}>
+                <Link href='../sign/signin.html' className={styles.login_button}>
                     로그인
                 </Link>
             )}

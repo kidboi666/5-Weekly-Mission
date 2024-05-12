@@ -1,9 +1,9 @@
 // Article.jsx
 import React from "react";
-import { useState } from "react";
-import link_icon from "../../assets/link.png";
+import { useState, useEffect } from "react";
 import styles from "./Article.module.css";
 import Modal from "../Modal/Modal";
+import Image from "next/image";
 
 function Article() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,23 +30,29 @@ function Article() {
         setLinkInput(e.target.value);
     };
 
-    if (isModalOpen) {
-        document.body.style.overflow = "hidden";
-    } else {
-        document.body.style.overflow = "auto";
-    }
+    useEffect(() => {
+        if (isModalOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [isModalOpen]);
 
     return (
         <div className={styles.folder_info_container}>
             <div className={styles.search_div}>
-                <img src={link_icon} width={30} height={30} alt='link icon' />
+                <Image src='/assets/link.png' width={30} height={30} alt='link icon' />
                 <input
-                    className={styles.search_input}
+                    className={`${styles.search_input} input`}
                     placeholder='링크를 추가해 보세요'
                     value={linkInput}
                     onChange={handleChange}
                 />
-                <button className={styles.btn} onClick={handleOpenModal}>
+                <button className={`${styles.btn} button`} onClick={handleOpenModal}>
                     추가하기
                 </button>
                 {isModalOpen && (

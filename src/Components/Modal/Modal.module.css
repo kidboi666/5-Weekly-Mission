@@ -25,6 +25,7 @@
     border-radius: 15px;
     border: 1px solid #dee2e6;
     position: relative;
+    box-sizing: border-box;
 }
 
 .close_btn {
@@ -87,6 +88,7 @@
     cursor: pointer;
     gap: 8px;
     position: relative;
+    box-sizing: border-box;
 }
 
 .list_content:hover {

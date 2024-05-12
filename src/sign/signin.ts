@@ -1,3 +1,45 @@
+export {};
+
+interface User {
+    email: string;
+    password: string;
+}
+
+const TEST_USER: User = {
+    email: "test@codeit.com",
+    password: "codeit101",
+};
+
+const EMAIL_VALIDATE = /\S+@\S+\.\S+/;
+const PW_VALIDATE = /^.*(?=.{8,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
+
+// 이메일 및 비밀번호 검사 함수
+function hasInput(inputValue: string, errorElement: HTMLElement | null, errorMessage: string) {
+    const trimmedValue = inputValue.trim();
+
+    if (!trimmedValue) {
+        if (errorElement) {
+            errorElement.textContent = errorMessage;
+        }
+        return false;
+    }
+
+    if (errorElement) {
+        errorElement.textContent = "";
+    }
+    return true;
+}
+
+// 이메일 검사
+function validateEmail(email: string) {
+    return EMAIL_VALIDATE.test(email);
+}
+
+// 비밀번호 검사
+function validatePassword(password: string) {
+    return PW_VALIDATE.test(password);
+}
+
 // 이메일 검사
 const emailCheck = document.getElementById("email") as HTMLInputElement;
 emailCheck.addEventListener("focusout", function () {

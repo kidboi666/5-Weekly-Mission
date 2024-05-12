@@ -3,6 +3,7 @@ import React from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { BASE_URL } from "../../constants/baseURL";
 import styles from "./FolderInfo.module.css";
+import Image from "next/image";
 
 function FolderInfo() {
     const folderData = useFetch(`${BASE_URL}sample/folder`);
@@ -11,14 +12,16 @@ function FolderInfo() {
         <div className={styles.folder_info_container}>
             {folderData && (
                 <div className={styles.folder_info}>
-                    <img
+                    <Image
                         src={folderData.folder.owner.profileImageSource}
                         alt='프로필'
                         width={60}
                         height={60}
                     />
-                    <span className={styles.owner_name}>{folderData.folder.owner.name}</span>
-                    <h1 className={styles.folder_name}>{folderData.folder.name}</h1>
+                    <span className={`${styles.owner_name} span`}>
+                        {folderData.folder.owner.name}
+                    </span>
+                    <h2 className={`${styles.folder_name} h2`}>{folderData.folder.name}</h2>
                 </div>
             )}
         </div>

@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import styles from "./Modal.module.css";
 import { useFetch } from "../../hooks/useFetch";
 import { BASE_URL, DEPLOY_URL } from "../../constants/baseURL";
-import close from "../../assets/close.svg";
-import check from "../../assets/check.png";
-import kakaotalk from "../../assets/kakaotalk.png";
-import facebook from "../../assets/facebook.png";
-import link from "../../assets/link.png";
+import Image from "next/image";
 
 interface ModalProps {
     title: string;
@@ -139,13 +135,13 @@ const Modal: React.FC<ModalProps> = ({
         <div className={styles.modal_background} onClick={onClose}>
             <div className={styles.modal_container} onClick={(e) => e.stopPropagation()}>
                 <div className={styles.title_container}>
-                    <h1 className={styles.title}>{title}</h1>
-                    <span className={styles.subtitle}>{subtitle}</span>
+                    <h2 className={`${styles.title} h2`}>{title}</h2>
+                    <span className={`${styles.subtitle} span`}>{subtitle}</span>
                 </div>
                 <div className={styles.submit_container}>
                     {input && (
                         <input
-                            className={`${styles.input} ${isError ? styles.error : ""}`}
+                            className={`${styles.input} ${isError ? styles.error : ""} input`}
                             type='text'
                             placeholder={placeholder}
                             value={inputValue}
@@ -154,7 +150,7 @@ const Modal: React.FC<ModalProps> = ({
                         />
                     )}
                     {list && (
-                        <ul className={styles.list}>
+                        <ul className={`${styles.list} ul`}>
                             {folderList &&
                                 folderList.data.map((folder: Link) => (
                                     <li
@@ -176,8 +172,8 @@ const Modal: React.FC<ModalProps> = ({
                                             {folder.link.count}개 링크
                                         </div>
                                         {selectedFolderIds.includes(folder.id) && (
-                                            <img
-                                                src={check}
+                                            <Image
+                                                src='/assets/check.png'
                                                 width={14}
                                                 height={14}
                                                 alt='check'
@@ -190,7 +186,10 @@ const Modal: React.FC<ModalProps> = ({
                     )}
                     {btnColor === "submit" && (
                         <button
-                            className={`${styles.submit_button} ${isError ? styles.disabled : ""}`}
+                            className={`${styles.submit_button} ${
+                                isError ? styles.disabled : ""
+                            } button
+                            `}
                             onClick={handleSubmit}
                             onKeyDown={(e) => {
                                 if (e.key === "Enter" || e.key === " ") {
@@ -203,7 +202,7 @@ const Modal: React.FC<ModalProps> = ({
                     )}
                     {btnColor === "delete" && (
                         <button
-                            className={styles.delete_button}
+                            className={`${styles.delete_button} button`}
                             onClick={handleSubmit}
                             onKeyDown={(e) => {
                                 if (e.key === "Enter" || e.key === " ") {
@@ -217,9 +216,9 @@ const Modal: React.FC<ModalProps> = ({
                     {share && folderList && (
                         <div className={styles.sns_container}>
                             <div className={styles.sns}>
-                                <img
+                                <Image
                                     className={styles.sns_image}
-                                    src={kakaotalk}
+                                    src='/assets/kakaotalk.png'
                                     width={42}
                                     height={42}
                                     alt='kakaotalk'
@@ -229,9 +228,9 @@ const Modal: React.FC<ModalProps> = ({
                                 <span className={styles.sns_text}>카카오톡</span>
                             </div>
                             <div className={styles.sns}>
-                                <img
+                                <Image
                                     className={styles.sns_image}
-                                    src={facebook}
+                                    src='/assets/facebook.png'
                                     width={42}
                                     height={42}
                                     alt='facebook'
@@ -241,9 +240,9 @@ const Modal: React.FC<ModalProps> = ({
                                 <span className={styles.sns_text}>페이스북</span>
                             </div>
                             <div className={styles.sns}>
-                                <img
+                                <Image
                                     className={styles.sns_image}
-                                    src={link}
+                                    src='/assets/link.png'
                                     width={42}
                                     height={42}
                                     alt='link'
@@ -255,8 +254,8 @@ const Modal: React.FC<ModalProps> = ({
                         </div>
                     )}
                 </div>
-                <img
-                    src={close}
+                <Image
+                    src='/assets/close.svg'
                     width={24}
                     height={24}
                     className={styles.close_btn}

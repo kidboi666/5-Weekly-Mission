@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Cards from "../Cards/Cards";
 import Article from "../Article/Article";
-import search_icon from "../../assets/Search.svg";
-import share from "../../assets/share.svg";
-import pen from "../../assets/pen.svg";
-import delete_icon from "../../assets/deleteIcon.svg";
-import close_btn from "../../assets/_close.png";
 import styles from "./FolderMain.module.css";
 import { FolderDataAll, FolderData } from "../../api/parseData";
 import { useFetch } from "../../hooks/useFetch";
 import { BASE_URL } from "../../constants/baseURL";
 import Modal from "../Modal/Modal";
+import Image from "next/image";
 
 interface Card {
     id: string;
@@ -75,6 +71,10 @@ function FolderMain() {
         } else {
             document.body.style.overflow = "auto";
         }
+
+        return () => {
+            document.body.style.overflow = "auto";
+        };
     }, [modalType]);
 
     const filteredCards: Card[] =
@@ -101,16 +101,16 @@ function FolderMain() {
             <Article />
             <section className={styles.section}>
                 <div className={styles.search_div}>
-                    <img src={search_icon} width='15' height='15' alt='search_icon' />
+                    <Image src='/assets/Search.svg' width='15' height='15' alt='search_icon' />
                     <input
-                        className={styles.search_input}
+                        className={`${styles.search_input} input`}
                         placeholder='링크를 검색해보세요'
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
                     {searchTerm && (
-                        <img
-                            src={close_btn}
+                        <Image
+                            src='/assets/_close.png'
                             className={styles.close_btn}
                             width={24}
                             height={24}
@@ -128,12 +128,12 @@ function FolderMain() {
                 )}
 
                 <div className={styles.main_btn_div}>
-                    <ul className={styles.folder_name_list}>
+                    <ul className={`${styles.folder_name_list} ul`}>
                         <li>
                             <button
                                 className={`${styles.folder_btn_lg} ${
                                     activeButton === ALL_FOLDERS && styles.active
-                                }`}
+                                } button`}
                                 onClick={() => handleFolderClick("", ALL_FOLDERS)}
                                 id='all'
                             >
@@ -146,7 +146,7 @@ function FolderMain() {
                                     <button
                                         className={`${styles.folder_btn_lg} ${
                                             activeButton === folder.name && styles.active
-                                        }`}
+                                        } button`}
                                         onClick={() => handleFolderClick(folder.id, folder.name)}
                                         id={folder.id}
                                     >
@@ -156,7 +156,7 @@ function FolderMain() {
                             ))}
                     </ul>
                     <button
-                        className={styles.add_folder_btn}
+                        className={`${styles.add_folder_btn} button`}
                         id='addFolderBtn'
                         onClick={() => openModal("ADD_FOLDER")}
                     >
@@ -179,12 +179,12 @@ function FolderMain() {
                     {activeButton !== "전체" && (
                         <div className={styles.main_sub_nav_side}>
                             <button
-                                className={styles.main_sub_nav_side_items}
+                                className={`${styles.main_sub_nav_side_items} button`}
                                 id='shareFolderBtn'
                                 onClick={() => openModal("SHARE")}
                             >
-                                <img
-                                    src={share}
+                                <Image
+                                    src='/assets/share.svg'
                                     width={18}
                                     height={18}
                                     alt='폴더 공유'
@@ -202,11 +202,11 @@ function FolderMain() {
                                 />
                             )}
                             <button
-                                className={styles.main_sub_nav_side_items}
+                                className={`${styles.main_sub_nav_side_items} button`}
                                 onClick={() => openModal("EDIT")}
                             >
-                                <img
-                                    src={pen}
+                                <Image
+                                    src='/assets/pen.svg'
                                     width={18}
                                     height={18}
                                     alt='폴더 이름 변경'
@@ -226,10 +226,15 @@ function FolderMain() {
                                 />
                             )}
                             <button
-                                className={styles.main_sub_nav_side_items}
+                                className={`${styles.main_sub_nav_side_items} button`}
                                 onClick={() => openModal("DELETE_FOLDER")}
                             >
-                                <img src={delete_icon} width={18} height={18} alt='폴더 삭제' />
+                                <Image
+                                    src='/assets/deleteIcon.svg'
+                                    width={18}
+                                    height={18}
+                                    alt='폴더 삭제'
+                                />
                                 <span className={styles.icon_text}>삭제</span>
                             </button>
                             {modalType === "DELETE_FOLDER" && (
