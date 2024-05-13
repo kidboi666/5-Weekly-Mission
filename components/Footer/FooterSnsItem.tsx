@@ -18,7 +18,7 @@ export default function FooterSnsItem({ id, name, url }: Props) {
   return (
     <li>
       <Link href={url} target='_blank' rel='noreferrer'>
-        <Image src={imgList[id - 1]} alt={name} />
+        <Image src={imgList[id - 1]} alt={name} fill />
       </Link>
     </li>
   );

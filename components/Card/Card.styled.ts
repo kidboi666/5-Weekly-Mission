@@ -34,6 +34,7 @@ export const Card = styled.li`
 `;
 
 export const ThumnailWrap = styled.div`
+  position: relative;
   width: 100%;
   height: 200px;
   overflow: hidden;
@@ -114,6 +115,7 @@ export const Star = styled.button`
   top: 15px;
   right: 15px;
   width: 34px;
+  height: 34px;
 
   @media (max-width: 767px) {
     width: 30px;

@@ -69,6 +69,8 @@ export default function Card({
               src={image_source ? image_source : defaultImage}
               alt={title}
               onError={addDefaultImage}
+              fill
+              objectFit='cover'
             />
           </S.ThumnailWrap>
           <S.TextWrap>
@@ -76,7 +78,7 @@ export default function Card({
               <S.DateAgo>{dateBetween}</S.DateAgo>
               {folderNames && (
                 <S.Kebab onClick={handleKebabClick}>
-                  <Image src={kebab} alt='더보기' />
+                  <Image src={kebab} alt='더보기' fill />
                 </S.Kebab>
               )}
               {isVisibleKebabModal && (
@@ -93,7 +95,7 @@ export default function Card({
           </S.TextWrap>
           {folderNames && (
             <S.Star onClick={handleStarClick}>
-              <Image src={star} alt='별' />
+              <Image src={star} alt='별' fill />
             </S.Star>
           )}
         </Link>

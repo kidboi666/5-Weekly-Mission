@@ -9,7 +9,7 @@ export const Input = styled.input`
   border: none;
   outline: none;
   border-radius: 10px;
-  background: #f5f5f5 url(${SearchIcon}) no-repeat 15px 18px / 16px;
+  background: #f5f5f5 url(${SearchIcon.src}) no-repeat 15px 18px / 16px;
   font-size: 16px;
   color: #666;
 
