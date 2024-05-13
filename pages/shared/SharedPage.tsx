@@ -5,7 +5,7 @@ import { SectionWrap, TopWrap } from '../CommonPage.styled';
 import * as S from './SharedPage.styled';
 import Profile from '../../components/Profile/Profile';
 import CardList from '../../components/CardList/CardList';
-import { useParams } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 export default function SharedPage() {
   const [links, setLinks] = useState([]);
@@ -23,7 +23,8 @@ export default function SharedPage() {
     folderId: number;
   }
 
-  const { folderId } = useParams() as unknown as ParamsType;
+  const router = useRouter();
+  const { folderId } = router.query as unknown as ParamsType;
 
   const handleLoad = useCallback(async () => {
     const nextLinks = await getLinks(folderId || 0);

@@ -2,15 +2,15 @@ import React, { useContext } from 'react';
 import logoImg from '../../src/images/logo.svg';
 import { UserContext } from '../../contexts/UserContext';
 import Profile from '../Profile/Profile';
-import { useLocation } from 'react-router-dom';
 import * as S from './Header.styled';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function Header() {
   const { user } = useContext(UserContext);
-  const location = useLocation();
+  const router = useRouter();
 
-  const $isSticky = location.pathname !== '/folder';
+  const $isSticky = router.pathname !== '/folder';
 
   return (
     <S.Header $isSticky={$isSticky}>
