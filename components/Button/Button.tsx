@@ -10,7 +10,7 @@ export default function Button({ text, className = '', link }: Props) {
   return (
     <>
       {link ? (
-        <S.StyledLink to={link} className={className}>
+        <S.StyledLink href={link} className={className}>
           {text}
         </S.StyledLink>
       ) : (

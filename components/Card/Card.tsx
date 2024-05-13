@@ -62,7 +62,7 @@ export default function Card({
   return (
     <>
       <S.Card>
-        <Link to={url} target='_blank' rel='noreferrer'>
+        <Link href={url} target='_blank' rel='noreferrer'>
           <S.ThumnailWrap>
             <S.Thumnail
               src={image_source ? image_source : defaultImage}
