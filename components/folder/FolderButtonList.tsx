@@ -5,21 +5,21 @@ import { IFolderMenuButtonApi } from '@/pages/folder/interface';
 
 interface IButtonList {
   $menu: IFolderMenuButtonApi | null;
-  $btnActive: number | string;
+  $activeBtnId: number;
   onClick: (id:number) => void;
 }
 
 function FolderButtonList({
   $menu,
-  $btnActive,
+  $activeBtnId,
   onClick,
 }: IButtonList) {
 
   return (
     <BookMarkBtnList>
       <Button
-        $id={-1}
-        $btnClass={`button--outlined ${$btnActive === -1 ? 'active' : ''}`}
+        $id={`-1`}
+        $btnClass={`button--outlined ${$activeBtnId === -1 ? 'active' : ''}`}
         onclick={() => onClick(-1)}
       >
         전체
@@ -30,7 +30,7 @@ function FolderButtonList({
             key={item.id}
             $id={`${item.id}`}
             $btnClass={`button--outlined ${
-              $btnActive === item.id ? 'active' : ''
+              $activeBtnId === item.id ? 'active' : ''
             }`}
             onclick={() => onClick(item.id)}
           >

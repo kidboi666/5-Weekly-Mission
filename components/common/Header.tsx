@@ -1,28 +1,53 @@
-import { useState } from "react";
-import useFetch from "@/src/hook/useFetch";
-import { IHeaderUserLoginInfoApi } from "./interface";
-import { BASE_URL } from "@/src/constant/api";
+import { useEffect, useState } from "react";
+import axios from "@/lib/axios";
 import { Email, HeaderControl, HeaderInner, HeaderLogo, HeaderUserInfo, HeaderWrap } from "./headerStyle";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import { Profile } from "@/styles/commonStyle";
 import LinkButton from "./atoms/LinkButton";
+import Link from "next/link";
 
 const logo = '/assets/logo/logo.svg';
 
-function Header() {
-  // const { pathname } = useLocation();
-  const { value } = useFetch<IHeaderUserLoginInfoApi>(BASE_URL);
+export interface IHeaderUser {
+  id:number,
+  email:string,
+  name?:string,
+  image_source?:string,
+  created_at?:string,
+  auth_id:string
+}
+
+export interface IHeaderUserLoginInfoApi {
+  userInfo?: {
+    data: IHeaderUser[];
+  };
+}
+
+export async function getStaticProps() {
+  const res = await axios.get(``);
+  const userInfo = res.data;
+
+  return {
+    props:{
+      userInfo,
+    }
+  }
+}
+
+function Header({userInfo}:IHeaderUserLoginInfoApi) {
+  const {pathname} = useRouter();
   const [fixed, setFixed] = useState(true);
-  // useEffect(() => {
-  //   if (pathname === '/folder') {
-  //     setFixed(false);
-  //   }
-  // }, [pathname]);
-  const userInfo = value?.data[0] ?? undefined;
+
+  useEffect(() => {
+    if (pathname === '/folder') {
+      setFixed(false);
+    }
+  }, [pathname]);
+
   return (
     <HeaderWrap className="head__wrap" $position={fixed}>
       <HeaderInner>
-        <HeaderLogo>
+        <HeaderLogo className="head__logo">
           <Link href="/">
             <img src={logo} alt="linkbrary" />
           </Link>
@@ -31,7 +56,7 @@ function Header() {
           {userInfo ? (
             <HeaderUserInfo>
               <Profile></Profile>
-              <Email>{userInfo?.email}</Email>
+              <Email>{userInfo?.data[0].email}</Email>
             </HeaderUserInfo>
           ) : (
             <LinkButton $link={'/signin'} $linkClass={'link--gradient link--login large'}>

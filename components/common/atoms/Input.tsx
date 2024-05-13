@@ -2,6 +2,7 @@ import { ChangeEvent, ReactNode, useEffect, useRef, useState } from 'react';
 import { InputModule } from './inputStyle';
 import Button from './Button';
 import { SearchResults } from '@/pages/folder/folderStyle';
+import { Relative } from '@/styles/commonStyle';
 
 interface IButtonModule {
   $type?: string;
@@ -47,7 +48,7 @@ function Input({
 
   return (
    <>
-     <div style={{position:'relative'}}>
+     <Relative>
         <InputModule
           type={$type}
           className={$inputClass}
@@ -62,7 +63,7 @@ function Input({
             {children}
           </Button>
         )}
-      </div>
+      </Relative>
     {value && <SearchResults><span>{value}</span>으로 검색한 결과입니다.</SearchResults>}
    </>
   );

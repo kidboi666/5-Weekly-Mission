@@ -73,7 +73,7 @@ export const BodyInner = styled(ContainBodyInner)`
 
 export const PostCardWrap = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(33.3333%, 1fr));
   gap: 1.5625rem 1.25rem;
 
   @media screen and (max-width: 1124px) {

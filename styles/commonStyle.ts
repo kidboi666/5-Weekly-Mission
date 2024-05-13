@@ -45,7 +45,7 @@ export const TitleMs = styled.h3`
   font-weight: 700;
   @media screen and (max-width: ${theme.screenSize.moLarge}) {
     font-size: calc(${theme.title.ms} / 2);
-      line-height: 1.79rem;
+    line-height: 1.79rem;
   }
 `
 export const ModlaTitle = styled.h2`
@@ -53,37 +53,47 @@ export const ModlaTitle = styled.h2`
   font-weight: 700;
   text-align: center;
 `
+// ====  폰트  ====
 
-export const SubTitle = styled.h3`
+export const bold = css`
+  font-weight: 700;
+`
+
+export const font24 = css`
   font-size: 1.5rem;
   line-height: 1.8125rem;
   font-weight: 600;
+  @media screen and (max-width: ${theme.screenSize.moLarge}) {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+  }
 `
-
-// ====  폰트  ====
 
 export const Font = styled.div`
   &.font--size {
+    &-ls {
+      font-size: ${theme.font.ls};
+    }
     &-l {
-      font-size: ${({ theme }) => theme.font.l};
+      font-size: ${theme.font.l};
     }
 
     &-ms {
-      font-size: ${({ theme }) => theme.font.lm};
+      font-size: ${theme.font.lm};
     }
 
     &-m {
-      font-size: ${({ theme }) => theme.font.m};
+      font-size: ${theme.font.m};
       line-height: 1.5rem;
     }
 
     &-s {
-      font-size: ${({ theme }) => theme.font.sm};
+      font-size: ${theme.font.sm};
       line-height: 1.375rem;
     }
 
     &-ss {
-      font-size: ${({ theme }) => theme.font.s};
+      font-size: ${theme.font.s};
     }
   }
 `;
@@ -179,4 +189,10 @@ export const ContainBodyInner = styled.div`
   @media screen and (max-width: ${theme.screenSize.moLarge}) {
     padding: 1.25rem 2rem 3.75rem;
   }
+`
+
+
+// ====  position  ====
+export const Relative = styled.div`
+  position: relative;
 `

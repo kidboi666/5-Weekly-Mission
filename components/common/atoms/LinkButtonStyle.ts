@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
 import Link from "next/link";
+import { font24 } from "@/styles/commonStyle";
 
 
 export const LinkModule = styled(Link)`
@@ -19,6 +20,11 @@ export const LinkModule = styled(Link)`
       font-size: 18px;
       @media screen and (max-width: ${theme.screenSize.moLarge}) {
         width: 80px;
+      }
+    }
+    &--title {
+      &-text {
+        ${font24}
       }
     }
   }

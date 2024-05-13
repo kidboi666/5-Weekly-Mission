@@ -1,8 +1,9 @@
 import { memo } from 'react';
 import Button from '../common/atoms/Button';
-import Link from 'next/link';
 import { ShareBox } from '../share/shareStyle';
 import { ShareListBtn } from '@/pages/folder/folderStyle';
+import LinkButton from '../common/atoms/LinkButton';
+import { Font } from '@/styles/commonStyle';
 
 const folderControlBtn = [
   {
@@ -27,7 +28,7 @@ const folderControlBtn = [
 
 interface iControll {
   $title: string;
-  onclick: (type: any) => void;
+  onclick: (type: string) => void;
   $id?:number
 }
 
@@ -35,9 +36,14 @@ function FolderContentControll({ $title, onclick, $id }: iControll) {
   const handleModalOpen = (type: any) => {
     onclick(type);
   };
+
   return (
     <ShareBox>
-      <Link href={`/shared/${$id}`} target='_blank'>{$title}</Link>
+      {
+        $id &&
+        $id === -1 ? <Font as='strong' className='font--size-ls tab-title'>{$title}</Font>:
+        <LinkButton $link={`/shared/${$id}`} $linkClass="link--title-text tab-title" $target='_blank'>{$title}</LinkButton>  
+      }
       {$title === '전체' || (
         <ShareListBtn>
           {folderControlBtn.map((btn) => (

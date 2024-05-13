@@ -10,6 +10,7 @@ const theme : DefaultTheme  = {
   },
   /* 폰트 사이트(px)- 13,14,16,18,20 */
   font: {
+    ls: "1.5rem",
     l: "1.25rem",
     lm: "1.125rem",
     m: "1rem",

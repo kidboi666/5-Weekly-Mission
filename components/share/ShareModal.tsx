@@ -1,4 +1,4 @@
-import { snsShare } from '../../constant/share';
+import { snsShare } from '@/src/constant/share';
 import Button from '../common/atoms/Button';
 import { ShareBox } from './shareStyle';
 

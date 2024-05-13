@@ -6,7 +6,7 @@ interface ICheckBoxData {
 }
 
 function CheckBox({ $data }: ICheckBoxData) {
-  if (typeof $data) {
+  if ($data?.data) {
     return (
       <CheckBoxWrap className="chk--list-type1">
         {$data &&

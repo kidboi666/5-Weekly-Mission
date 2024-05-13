@@ -1,11 +1,12 @@
+import { ButtonHTMLAttributes } from 'react';
 import { ButtonModule } from './buttonStyle';
 interface IButtonModule {
   children: React.ReactNode;
   $btnClass: string;
   $BeforButtonIcon?: string;
-  $id?: string | number;
+  $id?: string;
   $afterButtonIcon?: string;
-  $type?: 'button' | 'reset' | 'submit' | undefined;
+  $type?: ButtonHTMLAttributes<HTMLButtonElement>['type'];
   onclick?: () => void;
 }
 

@@ -28,7 +28,7 @@ section {
 
 html,
 body {
-  /* min-width: $ {theme.screenSize.minWidth}; */
+  min-width: 18.75rem;
   font-size: 16px;
   line-height: 1;
   font-family: 'Pretendard-Regular',

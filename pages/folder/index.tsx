@@ -1,32 +1,58 @@
-import { IModal } from "@/components/modal/interface";
-import { FOLDER_CONTANT_LIST_API, FOLDER_MENU_LIST_API } from "@/src/constant/api";
-import useFetch from "@/src/hook/useFetch";
-import { useState } from "react";
-import { IFolderContentApi, IFolderMenuButtonApi } from "./interface";
-import { modalOrder } from "@/src/constant/modal";
-import { BodyInner, BookmarkBox, FolderContainHead } from "./folderStyle";
-import LinkAddHeader from "@/components/folder/LinkAddHeader";
+import { useEffect, useState } from "react";
 import { ContainBody } from "@/styles/commonStyle";
+import { modalOrder } from "@/src/constant/modal";
+import LinkAddHeader from "@/components/folder/LinkAddHeader";
 import SearchInputBox from "@/components/folder/SearchInputBox";
 import FolderButtonList from "@/components/folder/FolderButtonList";
 import Button from "@/components/common/atoms/Button";
 import FolderContentControll from "@/components/folder/FolderContentControll";
-import ContantList from "@/components/folder/ContantList";
-import Loading from "@/components/loading/Loading";
+import PostCardList from "@/components/folder/PostCardList";
 import Modal from "@/components/modal/Modal";
+import { IModal } from "@/components/modal/interface";
+import Loading from "@/components/loading/Loading";
+import { BodyInner, BookmarkBox, FolderContainHead } from "./folderStyle";
+import { IFolderContentApi, IFolderMenuButtonApi} from "./interface";
+import axios from "@/lib/axios";
+import { useRouter } from "next/router";
+import { GetServerSidePropsContext } from "next";
 
 const addImage = '/assets/icon/icon_primary_add.svg';
 const searchImage = '/assets/icon/icon_search.svg';
 const linkImage = '/assets/icon/icon_primaty_link.svg';
 
-function useFatchDataLoad<T>(api: string) {
-  return useFetch<T>(api);
+export async function getServerSideProps(contaxt:GetServerSidePropsContext) {
+  let $menu;
+  let $content;
+  const { query } = contaxt;
+  try {
+    let resContent ;
+    const resMenu = await axios.get(`/folders`);
+    if(query.id) {
+      resContent = await axios.get(`/links?folderId=${query.id}`);
+    } else {
+      resContent = await axios.get(`/links`);
+    }
+    $menu = resMenu.data;
+    $content = resContent.data;
+
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props:{
+      $menu,
+      $content,
+    }
+  }
 }
 
-export default function Folder() {
-  const [title, setTitle] = useState('전체');
-  const [btnActive, setBtnActive] = useState<number>(-1);
-  const [dynamicAPI, setDynamicAPI] = useState<string>(FOLDER_CONTANT_LIST_API); // 버튼리스트 클릭시 해당 컨텐트 노출
+export default function Folder({$menu, $content}: {$menu:IFolderMenuButtonApi, $content:IFolderContentApi}) {
+  const router = useRouter();
+  const [tabTitle, setTabTitle] = useState('전체');
+  const [activeBtn, setActiveBtn] = useState<number>(-1);
   const [modalShow, setModalShow] = useState(false);
   const [modalInfo, setModalInfo] = useState<IModal>({
     $title: '',
@@ -36,27 +62,21 @@ export default function Folder() {
     $buttonText: null,
     $modalData: null,
   });
-  const { value: menu, isLoading: menuLoading } =
-    useFatchDataLoad<IFolderMenuButtonApi>(FOLDER_MENU_LIST_API);
-  const { value: contant, isLoading: contantLoading } =
-    useFatchDataLoad<IFolderContentApi>(dynamicAPI);
-  const [searchContatn, setSearchContant] = useState<any>();
+  const [searchContatn, setSearchContent] = useState<any>();
 
   // 폴더리스트버튼
   const handleClick = (id: number) => {
     if (!id) return;
 
-    if (id < 0) {
-      setDynamicAPI(FOLDER_CONTANT_LIST_API);
-      setTitle('전체');
-      setBtnActive(id)
-      return;
+    if(id === -1) {
+      router.push(``)
+      setTabTitle('전체');
+    } else{
+      router.push(`?id=${id}`)
+      let title = $menu.data.filter(data => `${data.id}` === `${id}`);
+      setTabTitle(`${title[0].name}`);
     }
-
-    setBtnActive(id);
-    setDynamicAPI(`${FOLDER_CONTANT_LIST_API}?folderId=${id}`);
-    const result = menu?.data.filter((data) => +data.id === +id);
-    result && setTitle(result[0]?.name as '');
+    setActiveBtn(id)
   };
 
   // modal open
@@ -65,7 +85,7 @@ export default function Folder() {
     if (type === 'folderInAdd') {
       modalInfo = {
         ...modalInfo,
-        $modalData: menu,
+        $modalData: $menu,
       };
     }
     setModalInfo(modalInfo);
@@ -81,7 +101,7 @@ export default function Folder() {
   const handelSearch = (value: string) => {
     let filter;
     if (value) {
-      filter = contant?.data.filter((con) => {
+      filter = $content?.data.filter((con) => {
         if (!con) return;
         return (
           con.description?.includes(value) ||
@@ -89,23 +109,37 @@ export default function Folder() {
           con.url?.includes(value)
         );
       });
-      setSearchContant(filter);
+      setSearchContent(filter);
       return;
     }
-    setSearchContant(contant?.data);
+    setSearchContent($content?.data);
   };
 
-  // contant list
-  const contantSearch = searchContatn ? searchContatn : contant?.data;
-  const loading = menuLoading === false && contantLoading === false;
+  // search
+  const contentSearch = searchContatn ?? $content?.data;
 
+  useEffect(()=>{
+    let idExists ;
+    
+    if(router.query.id){ // folder가 있을때
+      idExists = $menu.data.some((item:any) => `${item.id}` === `${router.query.id}`);
+    } else if (router.query.id === '-1') { // 전체 일때
+      router.push(`/folder`)
+    }
+
+    if (idExists === false) { // folder가 없을때
+      alert('페이지가 없습니다.');
+      router.push(`/folder`)
+    }
+  },[])
+
+  if(!$menu || !$content) return <Loading />
   return (
     <>
       <FolderContainHead className='folder--header'>
         <LinkAddHeader $inputIconImg={linkImage} />
       </FolderContainHead>
-      
-      {loading ? 
+
         <ContainBody className='folder__dody'>
           <BodyInner>
             {/* 검색창 */}
@@ -113,8 +147,8 @@ export default function Folder() {
             {/* 폴더 리스트 버튼 */}
             <BookmarkBox>
               <FolderButtonList
-                $menu={menu}
-                $btnActive={btnActive}
+                $menu={$menu}
+                $activeBtnId={activeBtn}
                 onClick={handleClick}
               />
               <Button
@@ -125,16 +159,14 @@ export default function Folder() {
                 폴더추가
               </Button>
             </BookmarkBox>
-            {/* 설정 버튼 */}
-            <FolderContentControll $title={title} onclick={handleModalOpen} />
+            {/* 탭 타이틀, 설정 버튼 */}
+            <FolderContentControll $id={activeBtn} $title={tabTitle} onclick={handleModalOpen} />
             {/* 컨텐츠 리스트 */}
-            <ContantList contant={contantSearch}/>
+            <PostCardList $content={contentSearch}/>
           </BodyInner>
         </ContainBody>
-        : <Loading/>  
-      }
 
-      <Modal onOpen={modalShow} onClose={handleModalClose} $folderId={btnActive} {...modalInfo} />
+      <Modal onOpen={modalShow} onClose={handleModalClose} $folderId={activeBtn} {...modalInfo} />
     </>
   );
 }

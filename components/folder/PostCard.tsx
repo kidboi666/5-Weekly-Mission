@@ -1,20 +1,13 @@
-import { IFolderContent, IFolderMenuButtonApi } from "@/pages/folder/interface";
-import useFetch from "@/src/hook/useFetch";
 import { useMemo, useState } from "react";
-import { IModal } from "../modal/interface";
-import { FOLDER_MENU_LIST_API } from "@/src/constant/api";
-import { BookMarkBtn, CardMenu, CardWrap } from "./PostCardStyle";
 import Link from "next/link";
-import { DFlaxAlignCenterBtw, EllipsisLine } from "@/styles/commonStyle";
+import { IFolderContent} from "@/pages/folder/interface";
+import { IModal } from "../modal/interface";
+import { BookMarkBtn, CardMenu, CardWrap } from "./PostCardStyle";
 import { calculateTimeAgo } from "@/src/utils/calcTilmAgo";
 import Modal from "../modal/Modal";
-import { modalOrder } from "@/src/constant/modal";
+import { DFlaxAlignCenterBtw, EllipsisLine } from "@/styles/commonStyle";
 
 const emptyImg = '/assets/logo/logo.svg';
-
-function useFatchDataLoad<T>(api: string) {
-  return useFetch<T>(api);
-}
 
 export default function PostCard({ image_source, description, created_at}: IFolderContent) {
   const [bookMark, setBookMark] = useState(false);
@@ -28,24 +21,9 @@ export default function PostCard({ image_source, description, created_at}: IFold
     $buttonText: null,
     $modalData: null,
   });
-  const { value: menu, isLoading: menuLoading } =
-    useFatchDataLoad<IFolderMenuButtonApi>(FOLDER_MENU_LIST_API);
 
   const handelerBookMarkActive = () => setBookMark((prev) => !prev);
   const handelerCardDropdown = () => setCardMenuShow((prev) => !prev);
-
-  const handleModalOpen = (type: string) => {
-    let modalInfo = modalOrder[type];
-    if (type === 'folderInAdd') {
-      modalInfo = {
-        ...modalInfo,
-        $modalData: menu,
-      };
-    }
-    setModalInfo(modalInfo);
-    setModalShow(true);
-    setCardMenuShow(false);
-  };
 
   const handleModalClose = () => {
     setModalShow(false);
@@ -93,7 +71,7 @@ export default function PostCard({ image_source, description, created_at}: IFold
           </button>
           {cardMenuShow && (
             <div className="card__dropdown-menu">
-              <button
+              {/* <button
                 className="card__menu-btn"
                 onClick={() => handleModalOpen('folderDelete')}
               >
@@ -104,7 +82,7 @@ export default function PostCard({ image_source, description, created_at}: IFold
                 onClick={() => handleModalOpen('folderInAdd')}
               >
                 폴더에 추가
-              </button>
+              </button> */}
             </div>
           )}
         </CardMenu>

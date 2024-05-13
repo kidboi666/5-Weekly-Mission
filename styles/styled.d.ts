@@ -7,6 +7,7 @@ declare module 'styled-components' {
       ms: string,
     },
     font: {
+      ls: string,
       l: string,
       lm: string,
       m: string,
