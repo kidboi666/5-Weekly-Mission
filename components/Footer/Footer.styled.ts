@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const Footer = styled.footer`
-  position: absolute;
-  bottom: 0;
   width: 100%;
   padding: 32px 104px 108px;
   background-color: var(--Linkbrary-black);
