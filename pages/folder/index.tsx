@@ -20,7 +20,7 @@ const FolderPage = () => {
   const { ref, isIntersecting } = useIntersectionObserver<HTMLDivElement>();
 
   return (
-    <Layout isSticky={false} footerRef={ref}>
+    <Layout isSticky={false} footerRef={ref} children={undefined}>
       <FolderLayout
         linkForm={<LinkForm hideFixedLinkForm={isIntersecting} />}
         searchBar={

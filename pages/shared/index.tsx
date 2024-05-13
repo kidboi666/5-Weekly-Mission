@@ -13,7 +13,7 @@ const SharedPage = () => {
   const { searchValue, handleChange, handleCloseClick, result } = useSearchLink(links);
 
   return (
-    <Layout>
+    <Layout children={undefined}>
       <SharedLayout
         folderInfo={
           <FolderInfo profileImage={profileImage} ownerName={ownerName} folderName={folderName} />
