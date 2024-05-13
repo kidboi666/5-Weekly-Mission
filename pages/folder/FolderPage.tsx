@@ -12,6 +12,7 @@ import ShareIcon from '../../src/images/share_icon.png';
 import PenIcon from '../../src/images/pen_icon.png';
 import DeleteIcon from '../../src/images/delete_icon.png';
 import Modal from '../../components/Modal/Modal';
+import Image from 'next/image';
 
 export default function FolderPage() {
   const [folderNames, setFolderNames] = useState(['']);
@@ -147,8 +148,8 @@ export default function FolderPage() {
           </S.MenuList>
           <S.AddButton onClick={handleAddFolderButtonClick}>
             폴더 추가
-            <img src={AddIcon} alt='+' />
-            <img src={AddWhiteIcon} alt='+' />
+            <Image src={AddIcon} alt='+' />
+            <Image src={AddWhiteIcon} alt='+' />
           </S.AddButton>
         </S.MenuWrap>
         {currentFolder?.name !== '전체' && (

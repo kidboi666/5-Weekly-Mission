@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styled from 'styled-components';
 
 interface Responsive {
@@ -32,7 +33,7 @@ export const Wrap = styled.div<{ $flextype: string }>`
   }
 `;
 
-export const Img = styled.img<{ $size: string }>`
+export const Img = styled(Image)<{ $size: string }>`
   border-radius: 50%;
   object-fit: cover;
   width: ${({ $size }) => (SIZES as any)[$size].pc}px;

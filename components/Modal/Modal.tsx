@@ -5,6 +5,7 @@ import KakaotalkIcon from '../../src/images/share_kakaotalk.svg';
 import facebookIcon from '../../src/images/share_facebook.svg';
 import linkIcon from '../../src/images/share_link.svg';
 import shareKakao from '../../apis/shareKakao';
+import Image from 'next/image';
 
 /**
  * 1. 폴더 이름 변경, 폴더 추가
@@ -91,7 +92,7 @@ export default function Modal({
     <S.Layout>
       <S.Modal>
         <S.CloseButton onClick={handleCloseClick}>
-          <img src={CloseImage} alt='모달 닫기' />
+          <Image src={CloseImage} alt='모달 닫기' />
         </S.CloseButton>
         <S.Title>{title}</S.Title>
         {semiTitle && <S.SemiTitle>{semiTitle}</S.SemiTitle>}
@@ -126,7 +127,7 @@ export default function Modal({
           <S.ShareList>
             {SHARES.map((share, index) => (
               <button key={index} onClick={share.onClick}>
-                <img src={share.imageSrc} alt={share.name + '공유'} />
+                <Image src={share.imageSrc} alt={share.name + '공유'} />
                 <p>{share.name}</p>
               </button>
             ))}

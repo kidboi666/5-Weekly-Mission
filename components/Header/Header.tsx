@@ -5,6 +5,7 @@ import Profile from '../Profile/Profile';
 import * as S from './Header.styled';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 export default function Header() {
   const { user } = useContext(UserContext);
@@ -17,7 +18,7 @@ export default function Header() {
       <S.Inner>
         <S.Logo>
           <Link href='/'>
-            <img src={logoImg} alt='linkbrary logo' />
+            <Image src={logoImg} alt='linkbrary logo' />
           </Link>
         </S.Logo>
         {!user && <S.StyledButton link='/signin.html' text='로그인' />}

@@ -6,6 +6,7 @@ import * as S from './Card.styled';
 import star from '../../src/images/star_icon.png';
 import kebab from '../../src/images/kebab_icon.png';
 import Modal from '../Modal/Modal';
+import Image from 'next/image';
 
 interface Props {
   item: {
@@ -75,7 +76,7 @@ export default function Card({
               <S.DateAgo>{dateBetween}</S.DateAgo>
               {folderNames && (
                 <S.Kebab onClick={handleKebabClick}>
-                  <img src={kebab} alt='더보기' />
+                  <Image src={kebab} alt='더보기' />
                 </S.Kebab>
               )}
               {isVisibleKebabModal && (
@@ -92,7 +93,7 @@ export default function Card({
           </S.TextWrap>
           {folderNames && (
             <S.Star onClick={handleStarClick}>
-              <img src={star} alt='별' />
+              <Image src={star} alt='별' />
             </S.Star>
           )}
         </Link>
