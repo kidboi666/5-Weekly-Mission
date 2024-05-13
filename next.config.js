@@ -26,4 +26,5 @@ module.exports = {
             "cdn-icons-png.flaticon.com",
         ],
     },
+    distDir: "out",
 };
