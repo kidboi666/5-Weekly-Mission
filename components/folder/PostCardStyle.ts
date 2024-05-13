@@ -14,7 +14,7 @@ export const CardWrap = styled.div`
       border: 1px solid ${theme.color.primary};
       .card__image {
         img {
-          transform: scale(1.3) translate(-40%,-40%);
+          transform: scale(1.3)
         }
       }
     }
@@ -22,22 +22,18 @@ export const CardWrap = styled.div`
   .card {
     &__image {
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 100%;
       height: 12.5rem;
       overflow: hidden;
       background-color: #DDDFFF;
       img {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 100%;
-        transform: translate(-50%,-50%);
+        object-fit: cover;
         transition: transform 0.3s;
         &.empty {
-          left: 50%;
-          width: 133px;
-          opacity:.18;
-          transform: translateX(-50%);
+          opacity: 0.5;
         }
       }
     }

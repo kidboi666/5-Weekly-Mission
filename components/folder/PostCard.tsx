@@ -2,10 +2,11 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { IFolderContent} from "@/pages/folder/interface";
 import { IModal } from "../modal/interface";
-import { BookMarkBtn, CardMenu, CardWrap } from "./PostCardStyle";
 import { calculateTimeAgo } from "@/src/utils/calcTilmAgo";
 import Modal from "../modal/Modal";
+import { BookMarkBtn, CardMenu, CardWrap } from "./PostCardStyle";
 import { DFlaxAlignCenterBtw, EllipsisLine } from "@/styles/commonStyle";
+import Image from "next/image";
 
 const emptyImg = '/assets/logo/logo.svg';
 
@@ -46,7 +47,7 @@ export default function PostCard({ image_source, description, created_at}: IFold
           <figure>
             <div className="card__image">
               {image_source ? (
-                <img src={image_source} alt={image_source} />
+                <Image fill src={image_source} alt={image_source} />
               ) : (
                 <img className="empty" src={emptyImg} alt="" />
               )}

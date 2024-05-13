@@ -64,7 +64,7 @@ function Input({
           </Button>
         )}
       </Relative>
-    {value && <SearchResults><span>{value}</span>으로 검색한 결과입니다.</SearchResults>}
+    {value && <SearchResults><span>{value} </span>으로 검색한 결과입니다.</SearchResults>}
    </>
   );
 }

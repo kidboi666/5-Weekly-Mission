@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { Profile } from "@/styles/commonStyle";
 import LinkButton from "./atoms/LinkButton";
 import Link from "next/link";
+import Image from "next/image";
 
 const logo = '/assets/logo/logo.svg';
 
