@@ -33,7 +33,8 @@ export const Wrap = styled.div<{ $flextype: string }>`
   }
 `;
 
-export const Img = styled(Image)<{ $size: string }>`
+export const ImgBox = styled.div<{ $size: string }>`
+  position: relative;
   border-radius: 50%;
   object-fit: cover;
   width: ${({ $size }) => (SIZES as any)[$size].pc}px;
@@ -44,6 +45,8 @@ export const Img = styled(Image)<{ $size: string }>`
     height: ${({ $size }) => (SIZES as any)[$size].mo}px;
   }
 `;
+
+export const Img = styled(Image)<{ $size: string }>``;
 
 export const Text = styled.p<{ $flextype: string }>`
   font-size: ${({ $flextype }) => ($flextype === 'row' ? 14 : 16)}px;

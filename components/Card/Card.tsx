@@ -69,8 +69,8 @@ export default function Card({
               src={image_source ? image_source : defaultImage}
               alt={title}
               onError={addDefaultImage}
-              fill
               objectFit='cover'
+              fill
             />
           </S.ThumnailWrap>
           <S.TextWrap>

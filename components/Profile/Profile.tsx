@@ -17,7 +17,14 @@ export default function Profile({
 }: Props) {
   return (
     <S.Wrap $flextype={$flextype}>
-      <S.Img $size={$size} src={src ? src : profileInit} alt='프로필 이미지' />
+      <S.ImgBox>
+        <S.Img
+          $size={$size}
+          src={src ? src : profileInit}
+          alt='프로필 이미지'
+          fill
+        />
+      </S.ImgBox>
       <S.Text $flextype={$flextype}>{user}</S.Text>
     </S.Wrap>
   );

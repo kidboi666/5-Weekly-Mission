@@ -65,7 +65,9 @@ export const DateAgo = styled.p`
 `;
 
 export const Kebab = styled.button`
+  position: relative;
   width: 21px;
+  height: 17px;
 `;
 
 export const KebabModal = styled.div`
