@@ -41,7 +41,7 @@ export const TitleLs = styled.h2`
 `
 export const TitleMs = styled.h3`
   font-size: ${theme.title.ms};
-  line-height: 5rem;
+  line-height: 3.56rem;
   font-weight: 700;
   @media screen and (max-width: ${theme.screenSize.moLarge}) {
     font-size: calc(${theme.title.ms} / 2);
@@ -58,45 +58,50 @@ export const ModlaTitle = styled.h2`
 export const bold = css`
   font-weight: 700;
 `
-
-export const font24 = css`
-  font-size: 1.5rem;
+export const fonts = css`
+  font-size: ${theme.font.s};
+`
+export const fontsm = css`
+  font-size: ${theme.font.sm};
+`
+export const fontm = css`
+  font-size: ${theme.font.m};
+  line-height: 1.5rem;
+`
+export const fontlm = css`
+  font-size: ${theme.font.lm};
+  line-height: 1.375rem;
+`
+export const fontl = css`
+  font-size: ${theme.font.l};
+`
+export const fontls = css`
+  font-size: ${theme.font.ls};
   line-height: 1.8125rem;
   font-weight: 600;
   @media screen and (max-width: ${theme.screenSize.moLarge}) {
-    font-size: 1.25rem;
+    font-size: ${theme.font.l};
     line-height: 1.5rem;
   }
 `
-
-export const Font = styled.div`
-  &.font--size {
-    &-ls {
-      font-size: ${theme.font.ls};
-    }
-    &-l {
-      font-size: ${theme.font.l};
-    }
-
-    &-ms {
-      font-size: ${theme.font.lm};
-    }
-
-    &-m {
-      font-size: ${theme.font.m};
-      line-height: 1.5rem;
-    }
-
-    &-s {
-      font-size: ${theme.font.sm};
-      line-height: 1.375rem;
-    }
-
-    &-ss {
-      font-size: ${theme.font.s};
-    }
-  }
-`;
+export const Font13 = styled.div`
+  ${fonts};
+`
+export const Font14 = styled.div`
+  ${fontsm};
+`
+export const Font16 = styled.div`
+  ${fontm};
+`
+export const Font18 = styled.div`
+  ${fontlm};
+`
+export const Font20 = styled.div`
+  ${fontl};
+`
+export const Font24 = styled.div`
+  ${fontls};
+`
 
 export interface IFont {
   $fontSize?: number,

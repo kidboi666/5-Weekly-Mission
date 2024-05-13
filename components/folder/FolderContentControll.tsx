@@ -3,7 +3,7 @@ import Button from '../common/atoms/Button';
 import { ShareBox } from '../share/shareStyle';
 import { ShareListBtn } from '@/pages/folder/folderStyle';
 import LinkButton from '../common/atoms/LinkButton';
-import { Font } from '@/styles/commonStyle';
+import { Font24 } from '@/styles/commonStyle';
 
 const folderControlBtn = [
   {
@@ -41,7 +41,7 @@ function FolderContentControll({ $title, onclick, $id }: iControll) {
     <ShareBox>
       {
         $id &&
-        $id === -1 ? <Font as='strong' className='font--size-ls tab-title'>{$title}</Font>:
+        $id === -1 ? <Font24 as='strong' className='font--size-ls tab-title'>{$title}</Font24>:
         <LinkButton $link={`/shared/${$id}`} $linkClass="link--title-text tab-title" $target='_blank'>{$title}</LinkButton>  
       }
       {$title === '전체' || (

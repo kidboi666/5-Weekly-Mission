@@ -34,8 +34,8 @@ const theme : DefaultTheme  = {
   },
   /* 
   window size(px)
-  pc:1200이상(1200), table: 768~1199(1199)
-  mobile: 375~767(767), mobile2: 375이하
+  pc:1200이상(1200), tablet: 768~1199(1199)
+  moLarge: 375~767(767), moSmall: 375이하, minWidth: 300
   */
   screenSize: {
     pc: "75rem",

@@ -41,7 +41,7 @@ function Footer() {
       <FootInner className="foot__inner">
         <FootSign className="foot__sign">
           <Link href="https://www.codeit.kr/" target="_blank">
-            ©codeit - 2023
+            ©codeit - 2024
           </Link>
         </FootSign>
 
