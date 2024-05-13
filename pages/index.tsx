@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../components/Button/Button';
-import * as S from '../styles/HomePage.styled';
+import * as S from './HomePage.styled';
 
 export default function HomePage() {
   return (

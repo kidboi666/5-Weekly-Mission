@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { TopWrap } from './CommonPage.styled';
+import { TopWrap } from '../CommonPage.styled';
 
 export const StyledTopWrap = styled(TopWrap)`
   padding: 60px 33px 90px;
