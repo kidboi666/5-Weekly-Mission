@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import styled from 'styled-components';
 
-export const Thumnail = styled(Image)`
+export const thumbnail = styled(Image)`
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -20,7 +20,7 @@ export const Card = styled.li`
   &:hover {
     background-color: var(--Linkbrary-bg);
   }
-  &:hover ${Thumnail} {
+  &:hover ${thumbnail} {
     transform: scale(1.3);
   }
 
@@ -33,7 +33,7 @@ export const Card = styled.li`
   }
 `;
 
-export const ThumnailWrap = styled.div`
+export const thumbnailWrap = styled.div`
   position: relative;
   width: 100%;
   height: 200px;
@@ -62,12 +62,6 @@ export const DateAgo = styled.p`
   font-size: 13px;
   font-weight: 400;
   color: #666666;
-`;
-
-export const Kebab = styled.button`
-  position: relative;
-  width: 21px;
-  height: 17px;
 `;
 
 export const KebabModal = styled.div`
@@ -121,5 +115,6 @@ export const Star = styled.button`
 
   @media (max-width: 767px) {
     width: 30px;
+    height: 30px;
   }
 `;

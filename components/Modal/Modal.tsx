@@ -127,7 +127,12 @@ export default function Modal({
           <S.ShareList>
             {SHARES.map((share, index) => (
               <button key={index} onClick={share.onClick}>
-                <Image src={share.imageSrc} alt={share.name + '공유'} />
+                <Image
+                  src={share.imageSrc}
+                  alt={share.name + '공유'}
+                  width='42'
+                  height='42'
+                />
                 <p>{share.name}</p>
               </button>
             ))}

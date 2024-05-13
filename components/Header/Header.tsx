@@ -18,7 +18,14 @@ export default function Header() {
       <S.Inner>
         <S.Logo>
           <Link href='/'>
-            <Image src={logoImg} alt='linkbrary logo' />
+            <Image
+              src={logoImg}
+              alt='linkbrary logo'
+              width='133'
+              height='24'
+              sizes='(max-width: 767px) 89px, 133px'
+              priority={true}
+            />
           </Link>
         </S.Logo>
         {!user && <S.StyledButton link='/signin.html' text='로그인' />}

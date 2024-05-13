@@ -19,7 +19,12 @@ export default function Profile({
   return (
     <S.Wrap $flextype={$flextype}>
       <S.ImgBox $size={$size}>
-        <Image src={src ? src : profileInit} alt='프로필 이미지' fill />
+        <Image
+          src={src ? src : profileInit}
+          alt='프로필 이미지'
+          fill
+          sizes='60px'
+        />
       </S.ImgBox>
       <S.Text $flextype={$flextype}>{user}</S.Text>
     </S.Wrap>

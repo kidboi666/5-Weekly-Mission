@@ -148,23 +148,28 @@ export default function FolderPage() {
           </S.MenuList>
           <S.AddButton onClick={handleAddFolderButtonClick}>
             폴더 추가
-            <Image src={AddIcon} alt='+' />
-            <Image src={AddWhiteIcon} alt='+' />
+            <Image src={AddIcon} alt='더하기' width='16' height='16' />
+            <Image src={AddWhiteIcon} alt='더하기' width='16' height='16' />
           </S.AddButton>
         </S.MenuWrap>
-        {currentFolder?.name !== '전체' && (
-          <S.TitleWrap>
-            <S.Title>{currentFolder?.name}</S.Title>
+        <S.TitleWrap>
+          <S.Title>{currentFolder?.name}</S.Title>
+          {currentFolder?.name !== '전체' && (
             <S.ControlWrap>
               {CONTROLS.map((control, index) => (
                 <S.ControlButton key={index} onClick={control.onClick}>
-                  <S.ControlIcon src={control.icon} alt='' />
+                  <S.ControlIcon
+                    src={control.icon}
+                    alt='아이콘'
+                    width='18'
+                    height='18'
+                  />
                   {control.name}
                 </S.ControlButton>
               ))}
             </S.ControlWrap>
-          </S.TitleWrap>
-        )}
+          )}
+        </S.TitleWrap>
         {!links?.length && <S.NoData>저장된 링크가 없습니다</S.NoData>}
         {links && (
           <CardList

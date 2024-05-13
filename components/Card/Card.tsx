@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactEventHandler, useState } from 'react';
 import defaultImage from '../../src/images/no-image.png';
 import { formatDateToString, formatDateToAgo } from '../../utils/date';
 import Link from 'next/link';
@@ -34,10 +34,8 @@ export default function Card({
   const dateBetween = formatDateToAgo(created_at);
   const date = formatDateToString(created_at);
 
-  const addDefaultImage = (e: {
-    currentTarget: {
-      src: StaticImageData;
-    };
+  const addDefaultImage: ReactEventHandler<HTMLImageElement> = (e: {
+    currentTarget: { src: string | StaticImageData };
   }) => {
     e.currentTarget.src = defaultImage;
   };
@@ -64,22 +62,22 @@ export default function Card({
     <>
       <S.Card>
         <Link href={url} target='_blank' rel='noreferrer'>
-          <S.ThumnailWrap>
-            <S.Thumnail
+          <S.thumbnailWrap>
+            <S.thumbnail
               src={image_source ? image_source : defaultImage}
-              alt={title}
+              alt='썸네일'
               onError={addDefaultImage}
-              objectFit='cover'
               fill
+              sizes='(max-width: 767px) 100vw, (max-width: 1124px) 50vw, 33vw'
             />
-          </S.ThumnailWrap>
+          </S.thumbnailWrap>
           <S.TextWrap>
             <S.TextTopWrap>
               <S.DateAgo>{dateBetween}</S.DateAgo>
               {folderNames && (
-                <S.Kebab onClick={handleKebabClick}>
-                  <Image src={kebab} alt='더보기' fill />
-                </S.Kebab>
+                <button onClick={handleKebabClick}>
+                  <Image src={kebab} alt='더보기' width='21' height='17' />
+                </button>
               )}
               {isVisibleKebabModal && (
                 <S.KebabModal>
@@ -95,7 +93,7 @@ export default function Card({
           </S.TextWrap>
           {folderNames && (
             <S.Star onClick={handleStarClick}>
-              <Image src={star} alt='별' fill />
+              <Image src={star} alt='별' fill sizes='34px' />
             </S.Star>
           )}
         </Link>

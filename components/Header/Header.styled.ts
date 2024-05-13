@@ -27,9 +27,11 @@ export const Inner = styled.div`
 
 export const Logo = styled.h1`
   width: 133px;
+  height: 24px;
 
   @media (max-width: 767px) {
     width: 89px;
+    height: 16px;
   }
 `;
 
