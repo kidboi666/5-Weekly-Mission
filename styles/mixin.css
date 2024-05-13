@@ -1,0 +1,27 @@
+/* Desktop media query */
+@media (min-width: 1200px) {
+  /* @content를 여기에 넣어주세요 */
+}
+
+/* Tablet media query */
+@media (min-width: 768px) {
+  /* @content를 여기에 넣어주세요 */
+}
+
+/* .ellipsis 믹스인 */
+/* $line 매개변수를 이용한 text-overflow: ellipsis; 속성 적용 */
+/* @if 블록을 이용하여 라인 수가 1보다 큰 경우 더 많은 스타일 적용 */
+.overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap !important;
+}
+
+/* $line 매개변수를 이용한 text-overflow: ellipsis; 속성 적용 및 라인 수 제한 */
+/* @if 블록을 이용하여 라인 수가 1보다 큰 경우 더 많은 스타일 적용 */
+.ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  white-space: initial !important;
+  -webkit-box-orient: vertical;
+}

@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  align-items: center;
+  column-gap: 0.4rem;
+}
+
+.icon {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.text {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #9fa6b2; /* 값이 주어진 $color-gray60에 대한 색상 코드 */
+}

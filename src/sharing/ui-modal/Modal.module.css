@@ -1,0 +1,26 @@
+.container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: none;
+  z-index: 1000; /* 값이 주어진 $z-index-modal에 대한 숫자 값 */
+  animation: fadeIn 0.2s;
+}
+
+.container.backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+@keyframes fadeIn {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
