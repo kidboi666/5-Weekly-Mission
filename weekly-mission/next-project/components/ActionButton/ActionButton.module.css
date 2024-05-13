@@ -1,0 +1,27 @@
+.custombutton {
+  font-size: 14px;
+  font-weight: 600;
+  color: #9fa6b2;
+  background-color: white;
+  border: none;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.buttonwrapper {
+  display: flex;
+  gap: 12px;
+}
+
+.actionbutton {
+  display: flex;
+  gap: 4px;
+  position: relative;
+}
+
+.actionbutton_image {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 25%;
+}

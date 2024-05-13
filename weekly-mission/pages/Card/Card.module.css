@@ -1,0 +1,81 @@
+.card_container {
+  width: 340px;
+  height: 334px;
+  box-shadow: 0px 5px 25px 0px #00000014;
+  text-align: center;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.card_container:hover {
+  transform: scale(1.3);
+  position: relative;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.card_image {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.starbutton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.card_text {
+  width: 100%;
+  padding: 15px 20px;
+  gap: 10px;
+  border-radius: 0px 0px 15px 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card_time {
+  font-size: 13px;
+  line-height: 15.51px;
+  color: #666666;
+  font-weight: 400;
+  text-align: left;
+}
+
+.kebabbutton {
+  position: absolute;
+  top: 215px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.popover_content {
+  position: absolute;
+  top: 230px;
+  right: -50px;
+}
+
+.card_description {
+  width: 300px;
+  height: 48px;
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #333333;
+  text-align: left;
+}
+
+.card_date {
+  font-size: 14px;
+  line-height: 16.71px;
+  color: #333333;
+  font-weight: 400;
+  text-align: left;
+}
