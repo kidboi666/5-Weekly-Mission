@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import Search from '../../components/Search/Search';
+import Search from '../components/Search/Search';
 import { getFolders, getLinks, getUser } from '../../apis/api';
-import { SectionWrap, TopWrap } from '../Common.styled';
-import * as S from './SharedPage.styled';
-import Profile from '../../components/Profile/Profile';
-import CardList from '../../components/CardList/CardList';
+import { SectionWrap, TopWrap } from '../styles/CommonPage.styled';
+import * as S from '../styles/SharedPage.styled';
+import Profile from '../components/Profile/Profile';
+import CardList from '../components/CardList/CardList';
 import { useParams } from 'react-router-dom';
 
 export default function SharedPage() {

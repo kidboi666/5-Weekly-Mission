@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import defaultImage from '../../assets/images/no-image.png';
 import { formatDateToString, formatDateToAgo } from '../../utils/date';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import * as S from './Card.styled';
 import star from '../../assets/images/star_icon.png';
 import kebab from '../../assets/images/kebab_icon.png';

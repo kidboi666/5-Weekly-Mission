@@ -3,7 +3,7 @@ import facebookImg from '../../assets/images/sns_facebook.png';
 import twitterImg from '../../assets/images/sns_twitter.png';
 import youtubeImg from '../../assets/images/sns_youtube.png';
 import instagramImg from '../../assets/images/sns_instagram.png';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const imgList = [facebookImg, twitterImg, youtubeImg, instagramImg];
 
