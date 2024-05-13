@@ -1,13 +1,12 @@
-import "./cardListSearch.css"
-import Search from "./search";
+import "./cardListSearch.css";
+import Search from "../search";
 import CardList from "./cardList";
-
 
 const CardListSearch = () => {
   return (
     <section className="cardListSearch">
-    <Search/>
-    <CardList/>
+      <Search />
+      <CardList />
     </section>
   );
 };

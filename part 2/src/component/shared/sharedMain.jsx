@@ -1,9 +1,9 @@
-import "./main.css";
+import "../main.css";
 import Title from "./title";
 import CardListSearch from "./cardListSearch";
 
 import { useState, useEffect, createContext } from "react";
-import { getFolder } from "./folderApi";
+import { getFolder } from "../api/folderApi";
 
 export const folderContext = createContext();
 
