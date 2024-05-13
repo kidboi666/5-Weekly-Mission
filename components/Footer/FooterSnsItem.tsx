@@ -1,8 +1,8 @@
 import React from 'react';
-import facebookImg from '../../assets/images/sns_facebook.png';
-import twitterImg from '../../assets/images/sns_twitter.png';
-import youtubeImg from '../../assets/images/sns_youtube.png';
-import instagramImg from '../../assets/images/sns_instagram.png';
+import facebookImg from '../../src/images/sns_facebook.png';
+import twitterImg from '../../src/images/sns_twitter.png';
+import youtubeImg from '../../src/images/sns_youtube.png';
+import instagramImg from '../../src/images/sns_instagram.png';
 import Link from 'next/link';
 
 const imgList = [facebookImg, twitterImg, youtubeImg, instagramImg];

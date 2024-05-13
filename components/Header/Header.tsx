@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
-import logoImg from '../../assets/images/logo.svg';
+import logoImg from '../../src/images/logo.svg';
 import { UserContext } from '../../contexts/UserContext';
 import Profile from '../Profile/Profile';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import * as S from './Header.styled';
+import Link from 'next/link';
 
 export default function Header() {
   const { user } = useContext(UserContext);
@@ -15,7 +16,7 @@ export default function Header() {
     <S.Header $isSticky={$isSticky}>
       <S.Inner>
         <S.Logo>
-          <Link to='/'>
+          <Link href='/'>
             <img src={logoImg} alt='linkbrary logo' />
           </Link>
         </S.Logo>

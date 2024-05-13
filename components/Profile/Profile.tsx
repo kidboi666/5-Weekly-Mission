@@ -1,5 +1,5 @@
 import React from 'react';
-import profileInit from '../../assets/images/profile_init.png';
+import profileInit from '../../src/images/profile_init.png';
 import * as S from './Profile.styled';
 
 interface Props {
