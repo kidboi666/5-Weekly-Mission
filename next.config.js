@@ -23,6 +23,7 @@ module.exports = {
             "storybook.js.org",
             "testing-library.com",
             "static.cdninstagram.com",
+            "cdn-icons-png.flaticon.com",
         ],
     },
 };
