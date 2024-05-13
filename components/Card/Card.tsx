@@ -6,7 +6,7 @@ import * as S from './Card.styled';
 import star from '../../src/images/star_icon.png';
 import kebab from '../../src/images/kebab_icon.png';
 import Modal from '../Modal/Modal';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 interface Props {
   item: {
@@ -36,7 +36,7 @@ export default function Card({
 
   const addDefaultImage = (e: {
     currentTarget: {
-      src: string;
+      src: StaticImageData;
     };
   }) => {
     e.currentTarget.src = defaultImage;

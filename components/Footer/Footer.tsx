@@ -33,10 +33,10 @@ export default function Footer() {
         <S.Address>©codeit - 2023</S.Address>
         <S.NavList>
           <li>
-            <Link to='/privacy'>Privacy Policy</Link>
+            <Link href='/privacy'>Privacy Policy</Link>
           </li>
           <li>
-            <Link to='/faq'>FAQ</Link>
+            <Link href='/faq'>FAQ</Link>
           </li>
         </S.NavList>
         <S.SnsList>

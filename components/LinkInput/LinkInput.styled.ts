@@ -22,7 +22,8 @@ export const Input = styled.input`
   border: 1px solid var(--Linkbrary-primary);
   outline: none;
   font-size: 16px;
-  background: var(--Linkbrary-white) url(${LinkIcon}) no-repeat 20px 23px / 20px;
+  background: var(--Linkbrary-white) url(${LinkIcon.src}) no-repeat 20px 23px /
+    20px;
 
   &::placeholder {
     color: var(--Linkbrary-gray60);

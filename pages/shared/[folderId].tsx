@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Search from '../../components/Search/Search';
 import { getFolders, getLinks, getUser } from '../../apis/api';
-import { SectionWrap, TopWrap } from '../CommonPage.styled';
-import * as S from './SharedPage.styled';
+import { SectionWrap, TopWrap } from '../../styles/CommonPage.styled';
+import * as S from '../../styles/SharedPage.styled';
 import Profile from '../../components/Profile/Profile';
 import CardList from '../../components/CardList/CardList';
 import { useRouter } from 'next/router';

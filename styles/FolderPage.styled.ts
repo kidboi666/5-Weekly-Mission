@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { TopWrap } from '../CommonPage.styled';
+import { TopWrap } from './CommonPage.styled';
+import Image from 'next/image';
 
 export const StyledTopWrap = styled(TopWrap)`
   padding: 60px 33px 90px;
@@ -102,7 +103,7 @@ export const ControlButton = styled.button`
   color: var(--Linkbrary-gray60);
 `;
 
-export const ControlIcon = styled.img`
+export const ControlIcon = styled(Image)`
   width: 18px;
 `;
 

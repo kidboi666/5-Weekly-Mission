@@ -1,7 +1,7 @@
 import React, { MouseEvent, useCallback, useEffect, useState } from 'react';
-import { SectionWrap } from '../CommonPage.styled';
+import { SectionWrap } from '../../styles/CommonPage.styled';
 import LinkInput from '../../components/LinkInput/LinkInput';
-import * as S from './FolderPage.styled';
+import * as S from '../../styles/FolderPage.styled';
 import { getLinks, getFolders } from '../../apis/api';
 import Search from '../../components/Search/Search';
 import CardList from '../../components/CardList/CardList';
