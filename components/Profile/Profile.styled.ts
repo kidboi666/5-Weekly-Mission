@@ -37,16 +37,14 @@ export const ImgBox = styled.div<{ $size: string }>`
   position: relative;
   border-radius: 50%;
   object-fit: cover;
-  width: ${({ $size }) => $size && `${(SIZES as any)[$size].pc}px`};
-  height: ${({ $size }) => $size && `${(SIZES as any)[$size].pc}px`};
+  width: ${({ $size }) => `${(SIZES as any)[$size].pc}px`};
+  height: ${({ $size }) => `${(SIZES as any)[$size].pc}px`};
 
   @media (max-width: 767px) {
-    width: ${({ $size }) => $size && `${(SIZES as any)[$size].mo}px`};
-    height: ${({ $size }) => $size && `${(SIZES as any)[$size].mo}px`};
+    width: ${({ $size }) => `${(SIZES as any)[$size].mo}px`};
+    height: ${({ $size }) => `${(SIZES as any)[$size].mo}px`};
   }
 `;
-
-export const Img = styled(Image)<{ $size: string }>``;
 
 export const Text = styled.p<{ $flextype: string }>`
   font-size: ${({ $flextype }) => ($flextype === 'row' ? 14 : 16)}px;
