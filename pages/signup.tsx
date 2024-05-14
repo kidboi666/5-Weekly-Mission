@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 export default function signup() {
@@ -5,7 +6,7 @@ export default function signup() {
 
   return (
     <div className="flex items-center justify-center h-screen bg-[#F0F6FF]">
-      <div className="flex flex-col items-center w-[400px]">
+      <div className="flex flex-col items-center w-full px-[32px] md:w-[400px]">
         <img
           src="/images/logo.svg"
           alt="logo"
@@ -30,6 +31,7 @@ export default function signup() {
           </label>
           <input
             id="email"
+            name="email"
             placeholder="이메일을 입력해 주세요."
             className="w-full mt-3 px-[15px] py-[18px] rounded-md"
           />
@@ -40,6 +42,7 @@ export default function signup() {
           </label>
           <input
             id="password"
+            name="password"
             placeholder="비밀번호를 입력해 주세요."
             className="w-full mt-3 px-[15px] py-[18px] rounded-md"
           />
@@ -50,6 +53,7 @@ export default function signup() {
           </label>
           <input
             id="passwordcheck"
+            name="passwordcheck"
             placeholder="비밀번호를 확인해 주세요."
             className="w-full mt-3 px-[15px] py-[18px] rounded-md"
           />
@@ -60,20 +64,24 @@ export default function signup() {
         <div className="w-full flex justify-between items-center mt-8 px-6 py-3 border border-[#CCD5E3] rounded-md">
           <div>다른 방식으로 가입하기</div>
           <div className="flex gap-6">
-            <div className="bg-[white] rounded-full cursor-pointer">
-              <img
-                src="/images/google.png"
-                alt="google"
-                className="p-[10px] w-[42px] h-[42px]"
-              />
-            </div>
-            <div className="bg-[#F5E14B] rounded-full cursor-pointer">
-              <img
-                src="/images/kakao.svg"
-                alt="kakao"
-                className="p-[10px] w-[42px] h-[42px]"
-              />
-            </div>
+            <Link href="https://www.google.com">
+              <div className="bg-[white] rounded-full cursor-pointer">
+                <img
+                  src="/images/google.png"
+                  alt="google"
+                  className="p-[10px] w-[42px] h-[42px]"
+                />
+              </div>
+            </Link>
+            <Link href="https://www.kakaocorp.com/page">
+              <div className="bg-[#F5E14B] rounded-full cursor-pointer">
+                <img
+                  src="/images/kakao.svg"
+                  alt="kakao"
+                  className="p-[10px] w-[42px] h-[42px]"
+                />
+              </div>
+            </Link>
           </div>
         </div>
       </div>
