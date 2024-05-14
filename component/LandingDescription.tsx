@@ -1,10 +1,13 @@
 export default function LandingDescription() {
   return (
-    <div className="px-[32px]">
+    <div className="hidden md:block px-[32px]">
       <div className="flex justify-center items-center mt-[120px]">
         <div>
           <div className="text-4xl font-bold">
-            원하는 링크를 <br />
+            <span className="bg-gradient-to-r from-[#FE8A8A] to-[#A4CEFF] bg-clip-text text-transparent">
+              원하는 링크
+            </span>
+            를 <br />
             저장하세요.
           </div>
           <p className="text-sm text-[#6B6B6B] mr-[150px] ">
@@ -23,7 +26,10 @@ export default function LandingDescription() {
         <div className="pl-[50px]">
           <div className="text-4xl font-bold">
             링크를 폴더로 <br />
-            관리하세요.
+            <span className="bg-gradient-to-r from-[#6FBAFF] to-[#FFD88B] bg-clip-text text-transparent">
+              관리
+            </span>
+            하세요.
           </div>
           <p className="text-sm text-[#6B6B6B]">
             나만의 폴더를 무제한으로 만들고 <br />
@@ -35,7 +41,10 @@ export default function LandingDescription() {
         <div>
           <div className="text-4xl font-bold">
             저장한 링크를 <br />
-            공유해 보세요.
+            <span className="bg-gradient-to-r from-[#6D7CCD] to-[rgba(82, 136, 133, 0.22) 52.69%] bg-clip-text text-transparent">
+              공유
+            </span>
+            해 보세요.
           </div>
           <p className="text-sm text-[#6B6B6B] mr-[150px]">
             여러 링크를 폴더에 담고 공유할 수 있습니다. <br />
@@ -58,7 +67,10 @@ export default function LandingDescription() {
         <div>
           <div className="text-4xl font-bold">
             저장한 링크를 <br />
-            검색해 보세요.
+            <span className="bg-gradient-to-r from-[#FE578F] to-[#68E8F9] bg-clip-text text-transparent">
+              검색
+            </span>
+            해 보세요.
           </div>
           <p className="text-sm text-[#6B6B6B]">
             중요한 정보들을 검색으로 쉽게 찾아보세요.
