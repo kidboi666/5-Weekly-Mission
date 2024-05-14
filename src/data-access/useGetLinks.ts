@@ -1,12 +1,11 @@
 import { useCallback, useEffect } from "react";
-import { axiosInstance, useAsync, mapLinksData, ALL_LINKS_ID } from "@/src/util";
+import { instance, useAsync, mapLinksData, ALL_LINKS_ID } from "@/src/util";
 import { SelectedFolderId, LinkRawData } from "@/src/type";
 
 export const useGetLinks = (folderId: SelectedFolderId = ALL_LINKS_ID) => {
   const queryString = folderId === ALL_LINKS_ID ? "" : `?folderId=${folderId}`;
   const getLinks = useCallback(
-    () =>
-      axiosInstance.get<{ data: LinkRawData[] }>(`users/1/links${queryString}`),
+    () => instance.get<{ data: LinkRawData[] }>(`users/1/links${queryString}`),
     [queryString]
   );
   const { execute, loading, error, data } = useAsync(getLinks);

@@ -2,12 +2,12 @@ import styles from "./ShareModal.module.scss";
 import classNames from "classnames/bind";
 import {
   ModalTemplate,
-  ModalContentBox,
+  ContentBox,
   ModalContentDescription,
   ModalContentTitle,
 } from "../parts";
 import { KeyboardEventHandler, MouseEventHandler } from "react";
-import {KakaoIcon, FacebookIcon, LinkIcon} from "./constant"
+import { KakaoIcon, FacebookIcon, LinkIcon } from "./constant";
 
 const cx = classNames.bind(styles);
 
@@ -36,7 +36,7 @@ export const ShareModal = ({
       onBackdropClick={onCloseClick}
       onKeyDown={onKeyDown}
     >
-      <ModalContentBox
+      <ContentBox
         header={
           <div className={cx("modal-header")}>
             <ModalContentTitle>폴더 공유</ModalContentTitle>

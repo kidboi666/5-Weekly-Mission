@@ -1,1 +1,1 @@
-export * from "./ModalContentButton";
+export * from "./ContentButton";

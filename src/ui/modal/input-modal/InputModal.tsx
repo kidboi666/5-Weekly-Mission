@@ -7,8 +7,8 @@ import {
 } from "react";
 import {
   ModalTemplate,
-  ModalContentBox,
-  ModalContentButton,
+  ContentBox,
+  ContentButton,
   ModalContentTitle,
 } from "../parts";
 import { Input } from "@/src/ui";
@@ -42,7 +42,7 @@ export const InputModal = ({
       onBackdropClick={onCloseClick}
       onKeyDown={onKeyDown}
     >
-      <ModalContentBox
+      <ContentBox
         header={<ModalContentTitle>{title}</ModalContentTitle>}
         content={
           <div className={cx("modal-content")}>
@@ -51,9 +51,7 @@ export const InputModal = ({
               onChange={onChange}
               placeholder={placeholder}
             />
-            <ModalContentButton onClick={() => {}}>
-              {buttonText}
-            </ModalContentButton>
+            <ContentButton onClick={() => {}}>{buttonText}</ContentButton>
           </div>
         }
         onCloseClick={onCloseClick}

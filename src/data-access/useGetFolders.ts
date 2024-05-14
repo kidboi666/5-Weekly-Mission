@@ -1,8 +1,9 @@
-import { axiosInstance, useAsync, mapFoldersData } from "@/src/util";
+import { instance, useAsync, mapFoldersData } from "@/src/util";
 import { FolderRawData } from "@/src/type";
 
 export const useGetFolders = () => {
-  const getFolders = () => axiosInstance.get<{ data: FolderRawData[] }>("users/1/folders");
+  const getFolders = () =>
+    instance.get<{ data: FolderRawData[] }>("users/1/folders");
   const { loading, error, data } = useAsync(getFolders);
 
   const folders = mapFoldersData(data?.data);

@@ -3,8 +3,8 @@ import classNames from "classnames/bind";
 import { KeyboardEventHandler, MouseEventHandler } from "react";
 import {
   ModalTemplate,
-  ModalContentBox,
-  ModalContentButton,
+  ContentBox,
+  ContentButton,
   ModalContentDescription,
   ModalContentTitle,
 } from "../parts";
@@ -35,7 +35,7 @@ export const AlertModal = ({
       onBackdropClick={onCloseClick}
       onKeyDown={onKeyDown}
     >
-      <ModalContentBox
+      <ContentBox
         header={
           <div className={cx("modal-header")}>
             <ModalContentTitle>{title}</ModalContentTitle>
@@ -43,9 +43,9 @@ export const AlertModal = ({
           </div>
         }
         content={
-          <ModalContentButton onClick={onClick} themeColor="red">
+          <ContentButton onClick={onClick} themeColor="red">
             {buttonText}
-          </ModalContentButton>
+          </ContentButton>
         }
         onCloseClick={onCloseClick}
       />
