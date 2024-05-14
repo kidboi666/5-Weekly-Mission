@@ -1,20 +1,19 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
-import { Contatiner, Wrap } from './mainStyle'
+import { Wrap } from './mainStyle'
 import Header from '@/components/common/Header'
 import Footer from '@/components/common/Footer'
 import '@/styles/globals.css'
+import LayoutProvider from '@/lib/LayoutContext'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <LayoutProvider>
       <Wrap>
         <Header />
-        <Contatiner>
-          <Component {...pageProps} />
-        </Contatiner>
+        <Component {...pageProps} />
         <Footer />
       </Wrap>
-    </>
+    </LayoutProvider>
   )
 }

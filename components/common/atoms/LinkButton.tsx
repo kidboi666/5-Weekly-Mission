@@ -13,7 +13,7 @@ export default function LinkButton({
   $target="_self"
 }: IButtonModule) {
   return (
-    <LinkModule href={$link} className={$linkClass} target="$target">
+    <LinkModule href={$link} className={$linkClass} target={$target}>
       {children}
     </LinkModule>
   );

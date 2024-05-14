@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ContainBody } from "@/styles/commonStyle";
+import { ContainBody, Contatiner } from "@/styles/commonStyle";
 import { modalOrder } from "@/src/constant/modal";
 import LinkAddHeader from "@/components/folder/LinkAddHeader";
 import SearchInputBox from "@/components/folder/SearchInputBox";
@@ -135,7 +135,7 @@ export default function Folder({$menu, $content}: {$menu:IFolderMenuButtonApi, $
 
   if(!$menu || !$content) return <Loading />
   return (
-    <>
+    <Contatiner>
       <FolderContainHead className='folder--header'>
         <LinkAddHeader $inputIconImg={linkImage} />
       </FolderContainHead>
@@ -167,6 +167,6 @@ export default function Folder({$menu, $content}: {$menu:IFolderMenuButtonApi, $
         </ContainBody>
 
       <Modal onOpen={modalShow} onClose={handleModalClose} $folderId={activeBtn} {...modalInfo} />
-    </>
+    </Contatiner>
   );
 }

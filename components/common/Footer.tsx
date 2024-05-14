@@ -1,5 +1,4 @@
 import Link from "next/link";
-import SocialLinkButton from "./SocialLinkButton";
 import {
   FootInner,
   FootNav,
@@ -7,35 +6,26 @@ import {
   FootSocial,
   FootWrap,
 } from "./footerStyle";
-export interface IImageSnsArr {
-  id: string;
-  src: string;
-  link: string;
-}
-const imageSnsArr: IImageSnsArr[] = [
-  {
-    id: "Facebook",
-    src: "/assets/icon/icons_face.svg",
-    link: "https://www.facebook.com/?locale=ko_KR",
-  },
-  {
-    id: "Twitter",
-    src: "/assets/icon/icons_twt.svg",
-    link: "https://twitter.com/?lang=ko",
-  },
-  {
-    id: "YouTube",
-    src: "/assets/icon/icons_you.svg",
-    link: "https://www.youtube.com/",
-  },
-  {
-    id: "Instagram",
-    src: "/assets/icon/icons_ins.svg",
-    link: "https://www.instagram.com/",
-  },
-];
+import { imageSnsArr } from "@/src/constant/snsLink";
+import { useRouter } from "next/router";
+import { pageLayoutConfig, urlName } from "@/src/constant/layoutConfig";
+import { useContext, useLayoutEffect } from "react";
+import { LayoutContext } from "@/lib/LayoutContext";
+import LinkButton from "./atoms/LinkButton";
 
 function Footer() {
+  const { pathname } = useRouter();
+  const results: urlName = pathname.split('/')[1];
+  const layoutConfig = pageLayoutConfig[results] || { footer: true };
+  const {headerShow, setHeaderShow} = useContext(LayoutContext)
+  
+  useLayoutEffect(()=>{
+    if (setHeaderShow) {
+      setHeaderShow(layoutConfig.footer);
+    }
+  },[pathname])
+  if(!headerShow) return null;
+  
   return (
     <FootWrap className="foot__main">
       <FootInner className="foot__inner">
@@ -52,7 +42,9 @@ function Footer() {
 
         <FootSocial className="d__flex foot__btn__sns">
           {imageSnsArr.map((sns) => (
-            <SocialLinkButton key={sns.id} {...sns} />
+            <LinkButton key={sns.id} $link={sns.link} $linkClass={`link--social-emoji`}>
+              <img src={sns.src} alt={sns.id} />
+            </LinkButton>
           ))}
         </FootSocial>
       </FootInner>

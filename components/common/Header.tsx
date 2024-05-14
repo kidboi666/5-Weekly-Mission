@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useLayoutEffect, useState } from "react";
 import axios from "@/lib/axios";
 import { Email, HeaderControl, HeaderInner, HeaderLogo, HeaderUserInfo, HeaderWrap } from "./headerStyle";
 import { useRouter } from "next/router";
@@ -6,6 +6,8 @@ import { Profile } from "@/styles/commonStyle";
 import LinkButton from "./atoms/LinkButton";
 import Link from "next/link";
 import Image from "next/image";
+import { LayoutContext } from "@/lib/LayoutContext";
+import { pageLayoutConfig, urlName } from "@/src/constant/layoutConfig";
 
 const logo = '/assets/logo/logo.svg';
 
@@ -36,15 +38,19 @@ export async function getStaticProps() {
 }
 
 function Header({userInfo}:IHeaderUserLoginInfoApi) {
-  const {pathname} = useRouter();
+  const { pathname } = useRouter();
+  const results: urlName = pathname.split('/')[1];
+  const layoutConfig = pageLayoutConfig[results] || { header: true };
+  const {headerShow, setHeaderShow} = useContext(LayoutContext)
   const [fixed, setFixed] = useState(true);
-
-  useEffect(() => {
-    if (pathname === '/folder') {
-      setFixed(false);
+  
+  useLayoutEffect(() => {
+    if (setHeaderShow) {
+      setHeaderShow(layoutConfig.header);
     }
   }, [pathname]);
-
+  
+  if(!headerShow) return null;
   return (
     <HeaderWrap className="head__wrap" $position={fixed}>
       <HeaderInner>
@@ -60,7 +66,7 @@ function Header({userInfo}:IHeaderUserLoginInfoApi) {
               <Email>{userInfo?.data[0].email}</Email>
             </HeaderUserInfo>
           ) : (
-            <LinkButton $link={'/signin'} $linkClass={'link--gradient link--login large'}>
+            <LinkButton $link={'/login'} $linkClass={'link--gradient link--login large'}>
               로그인
             </LinkButton>
           )}

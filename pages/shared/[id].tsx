@@ -1,4 +1,4 @@
-import { ContainBody, ContainHead, TitleMs } from "@/styles/commonStyle";
+import { ContainBody, ContainHead, Contatiner, TitleMs } from "@/styles/commonStyle";
 import { BodyInner, BoxLinkSearch, ShareHeadInner } from "../folder/folderStyle";
 import { IFolderContentApi, IFolderMenuButton } from "../folder/interface";
 import Input from "@/components/common/atoms/Input";
@@ -45,9 +45,9 @@ export interface IShareTitle {
 export default function Shared({$title, $content}:{$title:IShareTitle, $content:IFolderContentApi}) {
   const router = useRouter();
 
-  if(!$title.data[0]) router.push('/not-found');;
+  if(!$title.data[0]) router.push('/notfound');;
   return (
-    <>
+    <Contatiner>
       <ContainHead>
         <ShareHeadInner>
           <img src={logo} alt='@코드잇' />
@@ -67,6 +67,6 @@ export default function Shared({$title, $content}:{$title:IShareTitle, $content:
           <PostCardList $content={$content?.data} />
         </BodyInner>
       </ContainBody>   
-    </>
+    </Contatiner>
   );
 }

@@ -1,9 +1,9 @@
-import { InnerLarge } from "@/styles/commonStyle";
+import { Contatiner, InnerLarge } from "@/styles/commonStyle";
 
 export default function Faq() {
   return (
-    <div>
+    <Contatiner>
        <InnerLarge>Faq</InnerLarge>
-    </div>
+    </Contatiner>
   );
 }

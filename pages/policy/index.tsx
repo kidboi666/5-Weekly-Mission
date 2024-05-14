@@ -1,10 +1,10 @@
-import { InnerLarge } from "@/styles/commonStyle";
+import { Contatiner, InnerLarge } from "@/styles/commonStyle";
 
 export default function Policy() {
   return (
-    <div>
+    <Contatiner>
       <InnerLarge>Privacy Policy</InnerLarge>
-    </div>
+    </Contatiner>
   );
 }
 

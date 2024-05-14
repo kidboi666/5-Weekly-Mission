@@ -3,6 +3,22 @@
 import styled, { css } from "styled-components";
 import { theme } from "./theme";
 
+// ====  body layout  =====
+
+export const Contatiner = styled.main`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 5.8125rem;
+  background-color: ${theme.color.grayf};
+  &.no-header--container {
+    padding-top: 0;
+  }
+  @media screen and (max-width: ${theme.screenSize.pc}) {
+    padding-top: 3.9375rem;
+  }
+`;
+
 // ====  정렬  =====
 
 export const  dflex = css`
