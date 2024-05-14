@@ -24,6 +24,14 @@ const LinksContent = ({
   const isEmpty = !linksData || linksData.length === 0;
   const { modalState, openModal, closeModal } = useModal();
 
+  const handleModalToggle = (modalType: string) => {
+    if (modalState[modalType]) {
+      closeModal(modalType);
+    } else {
+      openModal(modalType);
+    }
+  };
+
   return (
     <>
       <div className={styles.foldermenu_toolbar}>
@@ -32,8 +40,7 @@ const LinksContent = ({
         </div>
         {activeFolderId !== null && (
           <ActionButton
-            activeFolderName={activeFolderName}
-            activeFolderId={activeFolderId}
+            handleModalToggle={handleModalToggle}
           />
         )}
       </div>
@@ -47,6 +54,36 @@ const LinksContent = ({
           ))
         )}
       </div>
+
+      {modalState.shareFolder && (
+        <Modal
+          activeFolderId={activeFolderId}
+          text="폴더 공유"
+          content={activeFolderName}
+          showShareIcons={true}
+          onClick={() => closeModal("shareFolder")}
+        />
+      )}
+      {modalState.renameFolder && (
+        <Modal
+          text="폴더 이름 변경"
+          showButton={true}
+          buttonText="변경하기"
+          buttonType="primary"
+          showInput={true}
+          onClick={() => closeModal("renameFolder")}
+        />
+      )}
+      {modalState.deleteFolder && (
+        <Modal
+          text="폴더 삭제"
+          showButton={true}
+          buttonText="삭제하기"
+          buttonType="red"
+          content={activeFolderName}
+          onClick={() => closeModal("deleteFolder")}
+        />
+      )}
 
       {modalState.deleteLink && (
         <Modal

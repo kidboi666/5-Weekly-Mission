@@ -9,39 +9,11 @@ import { useModal } from "src/context/ModalContext";
 import { FolderId } from "@components/Folder";
 import styles from "./ActionButton.module.css";
 
-interface CustomButtonProps {
-  onClick: () => void;
-  icon?: string;
-  text: string;
-}
-
-const CustomButton = ({ onClick, text }: CustomButtonProps) => {
-  return (
-    <button className={styles.custombutton} onClick={onClick}>
-      {text}
-    </button>
-  );
-};
-
 interface ActiveButtonProps {
-  activeFolderName: string;
-  activeFolderId: FolderId;
+  handleModalToggle: (modalType: string) => void;
 }
 
-const ActionButton = ({
-  activeFolderName,
-  activeFolderId,
-}: ActiveButtonProps) => {
-  const { modalState, openModal, closeModal } = useModal();
-
-  const handleModalToggle = (modalType: string) => {
-    if (modalState[modalType]) {
-      closeModal(modalType);
-    } else {
-      openModal(modalType);
-    }
-  };
-
+const ActionButton = ({ handleModalToggle }: ActiveButtonProps) => {
   return (
     <div className={styles.buttonwrapper}>
       <div className={styles.actionbutton}>
@@ -52,20 +24,13 @@ const ActionButton = ({
           width={18}
           height={18}
         />
-        <CustomButton
+        <button
+          className={styles.custombutton}
           onClick={() => handleModalToggle("shareFolder")}
-          text="공유"
-        />
+        >
+          공유
+        </button>
       </div>
-      {modalState.shareFolder && (
-        <Modal
-          activeFolderId={activeFolderId}
-          text="폴더 공유"
-          content={activeFolderName}
-          showShareIcons={true}
-          onClick={() => closeModal("shareFolder")}
-        />
-      )}
 
       <div className={styles.actionbutton}>
         <Image
@@ -75,21 +40,13 @@ const ActionButton = ({
           width={18}
           height={18}
         />
-        <CustomButton
+        <button
+          className={styles.custombutton}
           onClick={() => handleModalToggle("renameFolder")}
-          text="이름 변경"
-        />
+        >
+          이름 변경
+        </button>
       </div>
-      {modalState.renameFolder && (
-        <Modal
-          text="폴더 이름 변경"
-          showButton={true}
-          buttonText="변경하기"
-          buttonType="primary"
-          showInput={true}
-          onClick={() => closeModal("renameFolder")}
-        />
-      )}
 
       <div className={styles.actionbutton}>
         <Image
@@ -99,21 +56,13 @@ const ActionButton = ({
           width={18}
           height={18}
         />
-        <CustomButton
+        <button
+          className={styles.custombutton}
           onClick={() => handleModalToggle("deleteFolder")}
-          text="삭제"
-        />
+        >
+          삭제
+        </button>
       </div>
-      {modalState.deleteFolder && (
-        <Modal
-          text="폴더 삭제"
-          showButton={true}
-          buttonText="삭제하기"
-          buttonType="red"
-          content={activeFolderName}
-          onClick={() => closeModal("deleteFolder")}
-        />
-      )}
     </div>
   );
 };
