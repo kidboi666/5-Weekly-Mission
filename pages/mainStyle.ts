@@ -42,12 +42,14 @@ export const Section = styled.section`
     overflow: hidden;
     background: url('/assets/bg/bg-banner.svg') no-repeat center bottom;
     background-size: 1028px auto;
+
     .title {
       padding: 4.375rem 0 0;
       br:nth-of-type(2) {
         display: none;
       }
     }
+
     .btn__link-add {
       margin-top: 2.5rem;
       width: 100%;
@@ -57,6 +59,7 @@ export const Section = styled.section`
 
   &.section__link {
     padding: 4.375rem 0 0;
+
     .section__img__box {
       background-image: url('/assets/bg/bg-sec-1.png');
     }
@@ -78,23 +81,23 @@ export const Section = styled.section`
     font-weight: 700;
     background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
-  }
-  .title__clip.type {
-    background: linear-gradient(to right, ${theme.color.primary}, #FF9F9F);
-  }
-  .title__clip.type1 {
-    background: linear-gradient(to right, #FE8A8A, #A4CEFF);
-  }
-  .title__clip.type2 {
-    background: linear-gradient(to right, #6FBAFF, #FFD88B);
-  }
-  .title__clip.type3 {
-    background: linear-gradient(to right, #6D7CCD, #528885);
-  }
-  .title__clip.type4 {
-    background: linear-gradient(to right, #FE578F, #68E8F9);
-  }
 
+    &.type {
+      background: linear-gradient(to right, ${theme.color.primary}, #FF9F9F);
+    }
+    &.type1 {
+      background: linear-gradient(to right, #FE8A8A, #A4CEFF);
+    }
+    &.type2 {
+      background: linear-gradient(to right, #6FBAFF, #FFD88B);
+    }
+    &.type3 {
+      background: linear-gradient(to right, #6D7CCD, #528885);
+    }
+    &.type4 {
+      background: linear-gradient(to right, #FE578F, #68E8F9);
+    }
+  }
 
   @media screen and (max-width: ${theme.screenSize.pc}) {
     &:nth-child(odd) .section__inner .section__text__box {
@@ -104,11 +107,12 @@ export const Section = styled.section`
     &.section__banner {
       padding-bottom: 23.938rem;
       background-size: 40.625rem auto;
+
       .title {
         padding: 2.5rem 0 0;
-      }
-      .title br:nth-of-type(2) {
-        display: block;
+        br:nth-of-type(2) {
+          display: block;
+        }
       }
     }
 
@@ -132,6 +136,7 @@ export const Section = styled.section`
       .title {
         padding: 1.75rem 0 0;
       }
+
       .btn__link-add {
         margin-top: 1.5rem;
         width: 12.5rem;
@@ -164,12 +169,15 @@ export const Section = styled.section`
       align-items: flex-start;
       padding: 2.5rem 2rem;
       gap: 0;
+
       .title {
         padding: 0 0 1.25rem;
+
         br {
           display: none;
         }
       }
+
       .text__size__m {
         font-size: 0.938rem;
         line-height: 1.406rem;
@@ -191,6 +199,7 @@ export const Section = styled.section`
       font-style: normal;
       color: #6B6B6B;
       word-break: keep-all;
+
       &::before {
         content: "";
         display: none;
@@ -203,8 +212,10 @@ export const Section = styled.section`
         border-radius: 0.938rem;
       }
     }
+
     @media screen and (max-width: ${theme.screenSize.moLarge}) {
       width: 100;
+      
       p {
         padding: 0;
         &::before {

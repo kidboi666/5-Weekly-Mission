@@ -4,7 +4,7 @@ import {
   ContainHead,
   ContainHeadInner,
   DFlaxAlignCenter,
-  dflexBtw,
+  dflexCenterBtw,
   innerLarge,
 } from '@/styles/commonStyle';
 import { theme } from '@/styles/theme';
@@ -94,7 +94,7 @@ export const EmptyBox = styled.div`
 `;
 
 export const FolderBtnBox = css`
-  ${dflexBtw}
+  ${dflexCenterBtw}
   padding-bottom: 24px;
   gap: 0 32px;
 `;

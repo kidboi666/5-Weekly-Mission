@@ -2,7 +2,7 @@ import { LinkModule } from "./LinkButtonStyle";
 interface IButtonModule {
   children: React.ReactNode;
   $link: string;
-  $linkClass: string;
+  $linkClass?: string;
   $target?: string;
 }
 

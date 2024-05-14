@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { theme } from "@/styles/theme";
 import Link from "next/link";
-import { fontls } from "@/styles/commonStyle";
+import { font24 } from "@/styles/commonStyle";
 
 
 export const LinkModule = styled(Link)`
@@ -24,7 +24,7 @@ export const LinkModule = styled(Link)`
     }
     &--title {
       &-text {
-        ${fontls}
+        ${font24}
       }
     }
   }

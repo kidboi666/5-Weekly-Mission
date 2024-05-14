@@ -1,4 +1,4 @@
-import { DFlaxAlignCenter } from "@/styles/commonStyle";
+import { DFlaxAlignCenter, DFlaxAlignCenterCenter } from "@/styles/commonStyle";
 import { theme } from "@/styles/theme";
 import styled from "styled-components";
 
@@ -28,8 +28,7 @@ export const FootSign = styled.div`
     grid-area: a1;
    }
 `
-export const FootNav = styled(DFlaxAlignCenter)`
-  justify-content: center;
+export const FootNav = styled(DFlaxAlignCenterCenter)`
   gap: 0.938rem;
   a {
     color: #CFCFCF;

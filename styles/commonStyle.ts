@@ -21,27 +21,33 @@ export const Contatiner = styled.main`
 
 // ====  정렬  =====
 
-export const  dflex = css`
+export const dflex = css`
   display: flex;
 `
-export const  dflexCenter = css`
+export const dflexCenter = css`
   ${dflex}
   align-items: center;
 `
-export const  dflexBtw = css`
+export const dflexCenterBtw = css`
   ${dflexCenter}
   justify-content: space-between;
 `
+export const  dflexCenterCenter = css`
+  ${dflexCenter}
+  justify-content: center;
+`
 export const DFlaxAlignCenter = styled.div`
-  ${dflex}
-  align-items: center;
+  ${dflexCenter}
 `
 export const DFlaxAlignStart = styled.div`
  ${dflex}
   align-items: flex-start;
 `
-export const DFlaxAlignCenterBtw = styled(DFlaxAlignCenter)`
-  justify-content: space-between;
+export const DFlaxAlignCenterBtw = styled.div`
+  ${dflexCenterBtw}
+`
+export const DFlaxAlignCenterCenter = styled.div`
+  ${dflexCenterCenter}
 `
 
 // ====  타이틀  ====
@@ -74,24 +80,24 @@ export const ModlaTitle = styled.h2`
 export const bold = css`
   font-weight: 700;
 `
-export const fonts = css`
+export const font13 = css`
   font-size: ${theme.font.s};
 `
-export const fontsm = css`
+export const font14 = css`
   font-size: ${theme.font.sm};
 `
-export const fontm = css`
+export const font16 = css`
   font-size: ${theme.font.m};
   line-height: 1.5rem;
 `
-export const fontlm = css`
+export const font18 = css`
   font-size: ${theme.font.lm};
   line-height: 1.375rem;
 `
-export const fontl = css`
+export const font20 = css`
   font-size: ${theme.font.l};
 `
-export const fontls = css`
+export const font24 = css`
   font-size: ${theme.font.ls};
   line-height: 1.8125rem;
   font-weight: 600;
@@ -100,23 +106,23 @@ export const fontls = css`
     line-height: 1.5rem;
   }
 `
-export const Font13 = styled.div`
-  ${fonts};
+export const FontS = styled.div`
+  ${font13};
 `
-export const Font14 = styled.div`
-  ${fontsm};
+export const FontSM = styled.div`
+  ${font14};
 `
-export const Font16 = styled.div`
-  ${fontm};
+export const FontM = styled.div`
+  ${font16};
 `
-export const Font18 = styled.div`
-  ${fontlm};
+export const FontLM = styled.div`
+  ${font18};
 `
-export const Font20 = styled.div`
-  ${fontl};
+export const FontL = styled.div`
+  ${font20};
 `
-export const Font24 = styled.div`
-  ${fontls};
+export const FontLS = styled.div`
+  ${font24};
 `
 
 export interface IFont {
