@@ -4,7 +4,7 @@ import eyeOnIcon from '@/public/eye-on.svg';
 import eyeOffIcon from '@/public/eye-off.svg';
 import Image from 'next/image';
 
-function PasswordInput() {
+function PasswordInput({ placeholder }) {
   const [value, setValue] = useState<string>('');
   const [isEyeOn, setIsEyeOn] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -35,7 +35,7 @@ function PasswordInput() {
       <div className={styles.input__wrapper}>
         <input
           type={isEyeOn ? 'password' : 'text'}
-          placeholder="내용 입력"
+          placeholder={placeholder}
           alt="인풋 폼"
           value={value}
           onChange={(e) => setValue(e.target.value)}

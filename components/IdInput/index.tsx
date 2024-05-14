@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from '@/components/IdInput/index.module.css';
 
-function IdInput() {
+function IdInput({ placeholder = '내용을 입력하세요' }) {
   const [value, setValue] = useState<string>('');
   const [isError, setIsError] = useState(false);
   const [ErrorMsg, setErrorMsg] = useState('');
@@ -27,7 +27,7 @@ function IdInput() {
       <div className={styles.input__wrapper}>
         <input
           type="text"
-          placeholder="내용 입력"
+          placeholder={placeholder}
           alt="아이디 인풋 폼"
           value={value}
           onChange={(e) => setValue(e.target.value)}
