@@ -1,6 +1,7 @@
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 export default function signin() {
@@ -15,6 +16,14 @@ export default function signin() {
       password: "",
     },
   });
+
+  const [isClosed, setIsClosed] = useState(true);
+  const [inputType, setInputType] = useState<"text" | "password">("password");
+
+  const handleToggleImage = () => {
+    setIsClosed((prevState) => !prevState);
+    setInputType((prevType) => (prevType === "text" ? "password" : "text"));
+  };
 
   return (
     <div className="flex items-center justify-center h-screen bg-[#F0F6FF]">
@@ -43,8 +52,7 @@ export default function signin() {
             axios
               .post("https://bootcamp-api.codeit.kr/api/sign-in", data)
               .then((r) => {
-                console.log(r);
-                //로컬스토리지에 토큰 저장
+                localStorage.setItem("accessToken", r.data.data.accessToken);
                 router.push("/folder");
               })
               .catch((error) => console.error(error));
@@ -78,19 +86,16 @@ export default function signin() {
               id="password"
               {...register("password", {
                 required: "비밀번호를 입력해 주세요.",
-                minLength: {
-                  value: 4,
-                  message: "Min Length is 4",
-                },
               })}
-              type="password"
+              type={inputType}
               placeholder="비밀번호를 입력해 주세요."
               className="w-full mt-3 px-[15px] py-[18px] rounded-md"
             />
             <img
-              src="/images/eye-off.svg"
+              src={isClosed ? "/images/eye-off.svg" : "/images/eye-one.svg"}
               alt="eye-off"
               className="absolute right-3 bottom-5"
+              onClick={handleToggleImage}
             />
             <p className="text-[14px] text-[#FF5B56]">
               {errors.password?.message}
