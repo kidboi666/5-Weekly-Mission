@@ -12,7 +12,7 @@ const PageWrapper = styled.div`
   min-height: 100vh; /* 페이지의 최소 높이를 화면의 높이로 설정 */
 `;
 
-const PageDisplaye = styled.div`
+const PageDisplay = styled.div`
   display: flex;
   row-gap: 4rem;
   padding: 4rem 0 10rem;
@@ -43,9 +43,9 @@ function FolderPage() {
       <PageWrapper>
         <Navigation />
         <Addlink />
-        <PageDisplaye>
+        <PageDisplay>
           <Foldermenu />
-        </PageDisplaye>
+        </PageDisplay>
         <FooterWrapper>
           <Footer />
         </FooterWrapper>
