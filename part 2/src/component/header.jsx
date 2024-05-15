@@ -23,7 +23,7 @@ const Header = () => {
       </a>
       <div className="user-profile">
         <img className="profile-Img" src={profileImg} alt="profileImg"></img>
-        <h6 className="user-email">{email}</h6>
+        <div className="user-email font6">{email}</div>
         {/* <a href="signin.html">
           <button className="btn-large">로그인</button>
         </a> */}

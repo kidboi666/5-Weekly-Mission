@@ -1,4 +1,4 @@
-import "../shared/cardList.css";
+import "../cardList.css";
 import FolderCard from "./folderCard";
 import { useContext } from "react";
 import { folderContext } from "./folderMain";
@@ -17,7 +17,7 @@ const CardList = () => {
     ></FolderCard>
   ));
 
-  return <section className="card-list">{Cards}</section>;
+  return <section className="cardList">{Cards}</section>;
 };
 
 export default CardList;

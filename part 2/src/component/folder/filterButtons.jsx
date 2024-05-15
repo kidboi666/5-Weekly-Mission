@@ -6,15 +6,18 @@ import { useState, useEffect, createContext } from "react";
 
 const CardList = () => {
   const [folderData, setforderData] = useState({ folders: {} });
-  const [selectedValue, setSelectedValue] = useState('');
+
   useEffect(() => {
     const resData = async () => {
-      const data = await getUserFolders();
-      setforderData(data.userProfile.data);
+      try {
+        const data = await getUserFolders();
+        setforderData(data.userProfile.data);
+      } catch (error) {
+        console.error(error);
+      }
     };
     return resData;
   }, []);
-
 
   const filterButtons = Object.entries(folderData).map(([key, value]) => (
     <button key={key} name={value.name} className="filterBtn">

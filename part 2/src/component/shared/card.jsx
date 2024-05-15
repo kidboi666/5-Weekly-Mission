@@ -5,35 +5,36 @@ const Card = ({ date, title, url, img }) => {
   function displayedAt(date) {
     const milliSeconds = new Date() - new Date(date);
     const seconds = milliSeconds / 1000;
-    if (seconds < 120) return `1 minute ago`;
-    const minutes = seconds / 60;
-    if (minutes <= 59) return `${Math.floor(minutes)} minutes ago`;
-    if (minutes < 60) return `1 hour ago`;
-    const hours = minutes / 60;
-    if (hours <= 23) return `${Math.floor(hours)} hours ago`;
-    if (hours < 24) return `1 day ago`;
-    const days = hours / 24;
-    if (days <= 30) return `${Math.floor(days)} days ago`;
-    if (days < 31) return `1 month ago`;
-    const months = days / 30;
-    if (months <= 11) return `${Math.floor(months)} months ago`;
-    if (months < 12) return `1 year ago`;
-    const years = days / 365;
-    return `${Math.floor(years)} years ago`;
+
+    switch (true) {
+      case seconds < 120:
+        return `1 minute ago`;
+      case seconds < 60 * 60:
+        const minutes = seconds / 60;
+        return `${Math.floor(minutes)} minutes ago`;
+      case seconds < 60 * 60 * 24:
+        const hours = seconds / (60 * 60);
+        return `${Math.floor(hours)} hours ago`;
+      case seconds < 60 * 60 * 24 * 30:
+        const days = seconds / (60 * 60 * 24);
+        return `${Math.floor(days)} days ago`;
+      case seconds < 60 * 60 * 24 * 30 * 12:
+        const months = seconds / (60 * 60 * 24 * 30);
+        return `${Math.floor(months)} months ago`;
+      default:
+        const years = seconds / (60 * 60 * 24 * 365);
+        return `${Math.floor(years)} years ago`;
+    }
   }
 
   return (
     <>
       <a href={url} className="card" target="_blank" rel="noopener noreferrer">
-        <img
-          className="cardImg"
-          alt="cardImg"
-          src={img !== null ? img : noImg}
-        />
-        <div className={"card-text"}>
+        <img className="cardImg" alt="cardImg" src={img ?? noImg} />
+        <div className={"cardText"}>
           <p>{displayedAt(date)}</p>
-          <h4>{title}</h4>
-          <h6>{date?.slice(0, 10).replaceAll("-", ".")}</h6>
+          <div className="font4">{title}</div>
+          <div className="font6">{date?.slice(0, 10).replace(/-/g, ".")}</div>
         </div>
       </a>
     </>

@@ -28,7 +28,9 @@
   --gray_5: #f0f6ff;
 }
 
-h1 {
+
+
+.font1 {
   font-family: Pretendard;
   font-size: 64px;
   font-weight: 700;
@@ -36,7 +38,8 @@ h1 {
   letter-spacing: 0px;
 }
 
-h2 {
+
+.font2 {
   font-family: Pretendard;
   font-size: 48px;
   font-weight: 700;
@@ -44,7 +47,8 @@ h2 {
   letter-spacing: 0px;
 }
 
-h3 {
+
+.font3 {
   font-family: Pretendard;
   font-size: 18px;
   font-weight: 600;
@@ -52,7 +56,8 @@ h3 {
   letter-spacing: 0em;
 }
 
-h4 {
+
+.font4 {
   font-family: Pretendard;
   font-size: 16px;
   font-weight: 400;
@@ -61,7 +66,7 @@ h4 {
   text-align: left;
 }
 
-h5 {
+.font5 {
   font-family: Abel;
   font-size: 16px;
   font-weight: 400;
@@ -69,7 +74,7 @@ h5 {
   letter-spacing: 0px;
 }
 
-h6 {
+.font6 {
   font-family: Pretendard;
   font-size: 14px;
   font-weight: 400;
