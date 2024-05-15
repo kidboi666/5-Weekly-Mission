@@ -1,0 +1,28 @@
+.headerProfile {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.headerProfile .headerImg {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.headerProfile .headerImg img {
+  width: 100%;
+}
+
+.headerProfile .headerEmail {
+  font-size: 0.875rem;
+  line-height: 1.19357142857;
+}
+
+@media (max-width: 767px) {
+  /* 모바일 */
+
+  .headerEmail {
+    display: none;
+  }
+}

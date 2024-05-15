@@ -1,0 +1,20 @@
+.KebabList {
+  position: absolute;
+  right: 10px;
+  top: 40px;
+  background: #fff;
+  box-shadow: 0px 2px 8px 0px #3332361a;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.19357142857;
+  color: #333236;
+}
+
+.KebabList > li > button {
+  padding: 7px 17.5px;
+}
+
+.KebabList > li:hover {
+  background: #e7effb;
+  color: #6d6afe;
+}

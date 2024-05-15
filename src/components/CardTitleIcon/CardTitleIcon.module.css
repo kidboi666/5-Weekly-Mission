@@ -1,0 +1,13 @@
+.cardTitleUl {
+  display: flex;
+  gap: 12px;
+}
+
+.cardTitleUl button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  line-height: 1.19357142857;
+  color: #9fa6b2;
+}
