@@ -1,4 +1,3 @@
-// _app.tsx
 import { AppProps } from "next/app";
 import "../public/global.css";
 import Header from "../src/Components/Header/Header";
