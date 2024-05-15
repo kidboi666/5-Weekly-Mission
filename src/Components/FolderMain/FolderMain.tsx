@@ -1,35 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Cards from "../Cards/Cards";
 import Article from "../Article/Article";
 import styles from "./FolderMain.module.css";
-import { FolderDataAll, FolderData } from "../../api/parseData";
+import { useFolderDataAll, useFolderData } from "../../api/parseData";
 import { useFetch } from "../../hooks/useFetch";
 import { BASE_URL } from "../../constants/baseURL";
 import Modal from "../Modal/Modal";
 import Image from "next/image";
+import { Link, Card } from "../../types/interface";
+import useModalScrollLock from "../../hooks/useModalScrollLock";
 
-interface Card {
-    id: string;
-    url: string;
-    showStar?: boolean;
-    image_source?: string;
-    title?: string;
-    description?: string;
-    created_at: string;
-}
-
-interface Link {
-    id: string;
-    created_at: string;
-    name: string;
-    user_id: number;
-    favorite: boolean;
-    link: {
-        count: number;
-    };
-}
-
-const ALL_FOLDERS: string = "전체";
+const ALL_FOLDERS = "전체";
 const MODAL_TYPES = {
     ADD_FOLDER: "ADD_FOLDER",
     SHARE: "SHARE",
@@ -40,9 +21,9 @@ const MODAL_TYPES = {
 type ModalType = keyof typeof MODAL_TYPES | null;
 
 function FolderMain() {
-    const [activeButton, setActiveButton] = useState<string>(ALL_FOLDERS);
-    const [activeButtonId, setActiveButtonId] = useState<string>("");
-    const [searchTerm, setSearchTerm] = useState<string>("");
+    const [activeButton, setActiveButton] = useState(ALL_FOLDERS);
+    const [activeButtonId, setActiveButtonId] = useState("");
+    const [searchTerm, setSearchTerm] = useState("");
     const [modalType, setModalType] = useState<ModalType>(null);
 
     const folderList = useFetch(`${BASE_URL}users/1/folders`); // 개별 폴더
@@ -64,21 +45,10 @@ function FolderMain() {
         closeModal();
     };
 
-    // 모달 오픈 시 스크롤 막기
-    useEffect(() => {
-        if (modalType) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "auto";
-        }
-
-        return () => {
-            document.body.style.overflow = "auto";
-        };
-    }, [modalType]);
+    useModalScrollLock(modalType);
 
     const filteredCards: Card[] =
-        activeButtonId === "" ? FolderDataAll() : FolderData(activeButtonId);
+        activeButtonId === "" ? useFolderDataAll() : useFolderData(activeButtonId);
 
     const handleClearSearch = () => {
         setSearchTerm("");
@@ -101,7 +71,7 @@ function FolderMain() {
             <Article />
             <section className={styles.section}>
                 <div className={styles.search_div}>
-                    <Image src='/assets/Search.svg' width='15' height='15' alt='search_icon' />
+                    <Image src='/assets/Search.svg' width={15} height={15} alt='search_icon' />
                     <input
                         className={`${styles.search_input} input`}
                         placeholder='링크를 검색해보세요'

@@ -8,7 +8,7 @@ export default function NotFound() {
     return (
         <>
             <Header />
-            <div className={styles.notFound}>
+            <div className={styles.not_found}>
                 <Image
                     src='https://cdn-icons-png.flaticon.com/128/1466/1466643.png'
                     alt='notFound'

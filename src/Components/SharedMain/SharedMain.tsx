@@ -2,7 +2,7 @@
 import React from "react";
 import Cards from "../Cards/Cards";
 import styles from "./SharedMain.module.css";
-import { SharedData } from "../../api/parseData";
+import { useSharedData } from "../../api/parseData";
 import FolderInfo from "../FolderInfo/FolderInfo";
 import Image from "next/image";
 
@@ -18,7 +18,7 @@ function SharedMain() {
                         placeholder='링크를 검색해보세요'
                     />
                 </div>
-                <Cards items={SharedData()} />
+                <Cards items={useSharedData()} />
             </section>
         </main>
     );

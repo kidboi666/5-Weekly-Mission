@@ -1,57 +1,38 @@
-import React from "react";
-import { useState, useRef, useEffect } from "react";
-import moment from "moment";
+import React, { useState, useRef } from "react";
 import formatDate from "../../utils/formatDate";
 import styles from "./Cards.module.css";
 import Modal from "../Modal/Modal";
 import Link from "next/link";
 import Image from "next/image";
-
-interface Link {
-    id: string;
-    created_at: string;
-    name: string;
-    user_id: number;
-    favorite: boolean;
-    link: {
-        count: number;
-    };
-}
-
-interface Card {
-    id: string;
-    url: string;
-    showStar?: boolean;
-    image_source?: string;
-    title?: string;
-    description?: string;
-    created_at: string;
-}
+import { Card } from "../../types/interface";
+import generateTimeText from "../../utils/generateTimeText";
+import useModalScrollLock from "../../hooks/useModalScrollLock";
+import { ModalType } from "../../types/type";
 
 interface CardsProps {
     items: Card[];
 }
 
 function Cards({ items }: CardsProps) {
-    const [popoverIndex, setPopoverIndex] = useState<number | null>(null); // 각 카드의 index
-    const popoverRef = useRef<HTMLDivElement | null>(null);
-    const [modalType, setModalType] = useState<"DELETE_LINK" | "ADD" | null>(null);
+    const [activePopoverIndex, setActivePopoverIndex] = useState<number | null>(null);
+    const [modalType, setModalType] = useState<ModalType | null>(null);
+    const popoverRef = useRef<HTMLDivElement>(null);
 
-    const handleKebabClick = (index: number) => {
-        setPopoverIndex(index);
+    const openPopover = (index: number) => {
+        setActivePopoverIndex(index);
     };
 
-    const handleClosePopover = (e: React.MouseEvent<HTMLDivElement, MouseEvent> | MouseEvent) => {
+    const closePopover = (e: React.MouseEvent<HTMLDivElement, MouseEvent> | MouseEvent) => {
         if (
-            popoverIndex !== null &&
+            activePopoverIndex !== null &&
             popoverRef.current &&
             !popoverRef.current.contains(e.target as Node)
         ) {
-            setPopoverIndex(null);
+            setActivePopoverIndex(null);
         }
     };
 
-    const openModal = (type: "DELETE_LINK" | "ADD") => {
+    const openModal = (type: ModalType) => {
         setModalType(type);
     };
 
@@ -63,53 +44,12 @@ function Cards({ items }: CardsProps) {
         closeModal();
     };
 
-    // 모달 오픈 시 스크롤 막기
-    useEffect(() => {
-        if (modalType) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "auto";
-        }
-
-        return () => {
-            document.body.style.overflow = "auto";
-        };
-    }, [modalType]);
-
-    const MINUTES = 60;
-    const HOURS = 24;
-    const DAYS = 30;
-    const MONTHS = 12;
-
-    const generateTimeText = (createdAt: string) => {
-        const timeDiff = moment().diff(moment(createdAt), "minutes");
-
-        if (timeDiff < 2) {
-            return "1 minute ago";
-        }
-        if (timeDiff <= MINUTES - 1) {
-            return `${timeDiff} minutes ago`;
-        }
-        if (timeDiff < MINUTES * HOURS) {
-            const hours = Math.floor(timeDiff / MINUTES);
-            return hours === 1 ? "1 hour ago" : `${hours} hours ago`;
-        }
-        if (timeDiff <= MINUTES * HOURS * DAYS) {
-            const days = Math.floor(timeDiff / (MINUTES * HOURS));
-            return days === 1 ? "1 day ago" : `${days} days ago`;
-        }
-        if (timeDiff <= MINUTES * HOURS * DAYS * MONTHS) {
-            const months = Math.floor(timeDiff / (MINUTES * HOURS * DAYS));
-            return months === 1 ? "1 month ago" : `${months} months ago`;
-        }
-        const years = Math.floor(timeDiff / (MINUTES * HOURS * DAYS * MONTHS));
-        return years === 1 ? "1 year ago" : `${years} years ago`;
-    };
+    useModalScrollLock(modalType);
 
     return (
         <>
             {items && items.length > 0 ? (
-                <div className={styles.card_grid_container} onClick={handleClosePopover}>
+                <div className={styles.card_grid_container} onClick={closePopover}>
                     {items.map((link, index) => (
                         <div key={link.id} className={styles.card}>
                             {link.showStar && (
@@ -151,10 +91,10 @@ function Cards({ items }: CardsProps) {
                                     <div
                                         className={styles.dot_menu_button}
                                         tabIndex={0}
-                                        onClick={() => handleKebabClick(index)}
+                                        onClick={() => openPopover(index)}
                                         onKeyDown={(e) => {
                                             if (e.key === "Enter" || e.key === " ") {
-                                                handleKebabClick(index);
+                                                openPopover(index);
                                             }
                                         }}
                                     >
@@ -165,7 +105,7 @@ function Cards({ items }: CardsProps) {
                                             height={17}
                                         />
                                     </div>
-                                    {popoverIndex === index && (
+                                    {activePopoverIndex === index && (
                                         <div className={styles.popover} ref={popoverRef}>
                                             <div
                                                 role='button'

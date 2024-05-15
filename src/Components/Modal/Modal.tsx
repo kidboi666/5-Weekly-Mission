@@ -3,6 +3,7 @@ import styles from "./Modal.module.css";
 import { useFetch } from "../../hooks/useFetch";
 import { BASE_URL, DEPLOY_URL } from "../../constants/baseURL";
 import Image from "next/image";
+import { Link } from "../../types/interface";
 
 interface ModalProps {
     title: string;
@@ -16,17 +17,6 @@ interface ModalProps {
     folderId?: string;
     onClose: () => void;
     onSubmit?: (value: string) => void;
-}
-
-interface Link {
-    id: string;
-    created_at: string;
-    name: string;
-    user_id: number;
-    favorite: boolean;
-    link: {
-        count: number;
-    };
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -54,7 +44,9 @@ const Modal: React.FC<ModalProps> = ({
     const handleBlur = () => {
         if (inputValue.trim() !== "") {
             setIsError(false);
-        } else setIsError(true);
+        } else {
+            setIsError(true);
+        }
     };
 
     const handleSubmit = () => {

@@ -21,7 +21,7 @@ export interface Folder extends Card {
     };
 }
 
-export function SharedData() {
+export function useSharedData() {
     const [data, setData] = useState<Card[]>([]);
 
     const folderData = useFetch(`${BASE_URL}sample/folder`);
@@ -46,7 +46,7 @@ export function SharedData() {
 }
 
 // 폴더 전체
-export function FolderDataAll() {
+export function useFolderDataAll() {
     const [data, setData] = useState<Card[]>([]);
 
     const linksData = useFetch(`${BASE_URL}users/1/links`);
@@ -71,7 +71,7 @@ export function FolderDataAll() {
 }
 
 // 개별 폴더
-export function FolderData(folderId: string) {
+export function useFolderData(folderId: string) {
     const [data, setData] = useState<Folder[]>([]);
 
     const linksData = useFetch(`${BASE_URL}users/1/links?folderId=${folderId}`);

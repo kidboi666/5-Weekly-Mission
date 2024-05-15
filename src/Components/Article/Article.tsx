@@ -1,9 +1,9 @@
-// Article.jsx
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "./Article.module.css";
 import Modal from "../Modal/Modal";
 import Image from "next/image";
+import useModalScrollLock from "../../hooks/useModalScrollLock";
 
 function Article() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,17 +30,7 @@ function Article() {
         setLinkInput(e.target.value);
     };
 
-    useEffect(() => {
-        if (isModalOpen) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "auto";
-        }
-
-        return () => {
-            document.body.style.overflow = "auto";
-        };
-    }, [isModalOpen]);
+    useModalScrollLock(isModalOpen);
 
     return (
         <div className={styles.folder_info_container}>
