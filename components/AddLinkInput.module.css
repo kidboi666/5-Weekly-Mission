@@ -1,0 +1,68 @@
+.AddLinkFormWrap {
+  background-color: var(--Linkbrary-bg, #f0f6ff);
+}
+
+.AddLinkForm {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 60px;
+  padding-bottom: 90px;
+}
+
+.AddLinkForm__wrap {
+  position: relative;
+  width: 800px;
+}
+
+#AddLinkForm__Input {
+  display: flex;
+  width: calc(100% - 37px);
+  padding: 16px 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 37px;
+  gap: 8px;
+  border-radius: 15px;
+  border: 1px solid var(--Linkbrary-primary-color, #6d6afe);
+  background: var(--Linkbrary-white, #fff);
+  font-size: 16px;
+  text-indent: 27px;
+}
+
+.AddLinkForm__Img {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 35%;
+  bottom: 35%;
+  left: 20px;
+}
+
+.AddLinkForm__addBtn {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 16px;
+  background: none;
+  border: none;
+  width: 80px;
+  padding: 0;
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+@media (max-width: 1124px) {
+  .AddLinkForm__wrap {
+    width: 704px;
+  }
+}
+
+@media (max-width: 767px) {
+  .AddLinkForm__wrap {
+    width: 325px;
+  }
+}

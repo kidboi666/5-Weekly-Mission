@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <link rel="stylesheet" href="signup_style.css">
+</head>
+<body>
+  <main class="sign-up-layout">
+    <div class="sign-up__gap">
+      <header class="sign-up-header">
+        <a href="../"><img src="../icons/logo.svg" id="logo" alt="링크브러리 로고"></a>
+        <div class="sign-up-header__iogin-massage">이미 회원이신가요?<a href="../signin/signin.html" id="login-btn">로그인하기</a></div>
+      </header>
+      <form class="sign-up-form">
+        <div class="sign-up-form__group">
+          <div class="sign-up-form__input-group">
+            <label for="email">이메일</label>
+            <input id="email" name="email" type="email">
+          </div>
+          <div class="sign-up-form__input-group">
+            <label for="password">비밀번호</label>
+            <div class="sign-up-form__password-input">
+              <input id="password" name="password" type="password">
+              <img src="../icons/eye-on.svg" class="signin-form__password-icon" alt="비밀번호 보기">
+            </div>
+          </div>
+          <div class="sign-up-form__input-group">
+            <label for="confirm_password">비밀번호 확인</label>
+            <div class="sign-up-form__password-input">
+              <input id="confirm_password" name="confirm_password" type="password">
+              <img src="../icons/eye-on.svg" class="signin-form__password-icon" alt="비밀번호 보기">
+            </div>
+          </div>
+        </div>
+        <button id="sign-up-btn" type="submit">회원가입</button>
+      </form>
+    </div>
+    <div class="other-sign-up">
+      다른 방식으로 가입하기
+      <div class="social-sign-up__icons">
+        <a href="https://www.google.com/">
+          <div class="social-sign-up__icon">
+            <img src="../icons/google.svg" class="social-sign-up__background" alt="구글 계정연동하기"> 
+            <img src="../icons/c3a9be9cb365010056fa7aa9cc9f05a2.png" id="gooole-icon">
+          </div>
+        </a>
+        <a href="https://www.kakaocorp.com/page/">
+          <div class="social-sign-up__icon">
+            <img src="../icons/facebook.svg" class="social-sign-up__background" alt="카카토톡 계정연동하기">
+            <div class="social-sign-up__second"><img src="../icons/99FE484C5C3451F218 1.svg"  id="kakao-icon"></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </main>
+  
+</body>
+</html>

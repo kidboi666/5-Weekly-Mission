@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linkbrary</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index_style.css">
+</head>
+<body>
+  <header>
+    <nav class="linkbrary-nav">
+      <ul>
+        <li><a href="/"><img src="./icons/logo.svg" id="logo" alt="링크브러리 로고"></a></li>
+        <li><a href="./signin/signin.html" id="signin-btn">로그인</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div class="main-header">
+      <div class="main-header__card">
+        <h1 class="main-header__title">
+        <span id="title-gradation">세상의 모든 정보</span>를</br>
+        쉽게 저장하고 관리해 보세요
+        </h1>
+        <a href="./signup/signup.html" id="signup-btn">링크 추가하기</a>
+        <div class="linkbrary-section__preview">
+          <img src="/images/_img.png" id="preview-img" alt="미리보기 사진">
+        </div>
+      </div>
+    </div>
+    <section>
+      <div class="section__wrap">
+        <div class="section__card">
+          <div class="section__frame">
+            <h1>
+              <span id="card-gradation-orange-to-blue">원하는 링크</span>를</br>
+              저장하세요
+            </h1>
+            <p>
+              나중에 읽고 싶은 글, 다시 보고 싶은 영상,
+              사고 싶은 옷, 기억하고 싶은 모든 것을
+              한 공간에 저장하세요.
+            </p>
+          </div>
+          <div class="section__album scroll">
+            <div class="section__imgs">
+              <img class="section__img" src="./images/card1.png" alt="사진1">
+                <span class="section__img">
+                  <img class="section__img special" src="./images/card2.png" alt="사진2 다운로드">
+                  <img id="download-btn" src="./icons/Group 20.svg" alt="다운로드 아이콘">
+                </span> 
+                <img class="section__img" src="./images/card3.png" alt="사진3">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section__wrap">
+        <div class="section__card">
+          <div class="section__album">
+            <img src="./images/folder_image.png" alt="폴더 이름 변경하기">
+          </div>
+          <div class="section__frame">
+            <h1>
+            링크를 폴더로</br>
+            <span id="card-gradation-yellow-to-blue">관리</span>하세요
+            </h1>
+            <p>
+              나만의 폴더를 무제한으로 만들고 
+              다양하게 활용할 수 있습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="section__wrap">
+        <div class="section__card">
+          <div class="section__frame">
+            <h1>
+              저장한 링크를</br>
+              <span id="card-gradation-blue">공유</span>해 보세요.
+            </h1>
+            <p>
+              여러 링크를 폴더에 담고 공유할 수 있습니다. 가족, 친구, 동료들에게 쉽고 빠르게 링크를 
+              공유해 보세요.
+            </p>
+          </div>
+          <div class="section__folder-wrap">
+              <img id="folder-background-img" src="./images/_img.png" alt="폴더공유하기 배경이미지">
+              <div id="backgorund-shdow"></div>
+              <img id="folder-share" src="./images/forder_share.png" alt="폴더공유하기">
+          </div>
+        </div>
+      </div>
+      <div class="section__wrap">
+        <div class="section__card">
+          <div class="section__album hidden">
+              <img id="screenshot-codeit" src="./images/screenshot.png" alt="코드잇 검색 스크린샷">
+          </div>
+          <div class="section__frame">
+            <h1>
+              저장한 링크를</br>
+              <span id="card-gradation-sky">검색</span>해 보세요
+            </h1>
+            <p>중요한 정보들을 검색으로 쉽게 찾아보세요.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer__wrap">
+      <div class="footer__content">
+        <div id="history">©codeit - 2023</div>
+        <div id="support-link">
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/faq">FAQ</a>
+        </div>
+        <div id="sns-link">
+          <a href="https://www.facebook.com/" target="__blank"><img src="./icons/akar-icons_facebook-fill.svg"alt="페이스북 바로가기"></a>
+          <a href="https://twitter.com/?lang=ko"target="__blank"><img src="./icons/akar-icons_twitter-fill.svg" alt="트위터 바로가기"></a>
+          <a href="https://www.youtube.com/"target="__blank" ><img src="./icons/akar-icons_youtube-fill.svg" alt="유튜브 바로가기"></a>
+          <a href="https://www.instagram.com/"target="__blank" ><img src="./icons/ant-design_instagram-filled.svg" alt="인스타그램 바로가기"></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

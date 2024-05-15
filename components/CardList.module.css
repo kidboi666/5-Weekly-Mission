@@ -1,0 +1,24 @@
+.CardLinkList {
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 340px);
+  place-items: center;
+  justify-content: center;
+  grid-gap: 25px 20px;
+  list-style: none;
+}
+
+@media (max-width: 1199px) {
+  .CardLinkList {
+    grid-template-columns: repeat(2, 340px);
+  }
+}
+
+@media (max-width: 767px) {
+  .CardLinkList {
+    grid-template-columns: repeat(1, 325px);
+  }
+  .CardListItem {
+    height: 327px;
+  }
+}

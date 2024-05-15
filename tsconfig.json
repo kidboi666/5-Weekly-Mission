@@ -17,6 +17,15 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "components/Input.jsx",
+    "pages/folder.jsx",
+    "pages/folder.jsx",
+    "pages/folder.jsx",
+    "pages/folder.jsx"
+  ],
   "exclude": ["node_modules"]
 }
