@@ -8,7 +8,7 @@ export interface LinkData {
     url: string;
     description?: string;
     image_source?: string;
-  };
+  }[];
 }
 
 export async function fetchLinkData(folderId: FolderId) {

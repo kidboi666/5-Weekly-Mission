@@ -6,11 +6,19 @@ import Modal from "@components/Modal";
 import { useModal } from "src/context/ModalContext";
 import { Folder } from "@api/useFoldersByUserId";
 import { FolderId } from "@components/Folder";
+
 import styles from "./LinksContent.module.css";
 
 interface LinksContentProps {
   foldersData: Folder;
-  linksData: LinkData[];
+  linksData: {
+    id: number;
+    title: string;
+    created_at: string;
+    url: string;
+    description?: string;
+    image_source?: string;
+  }[];
   activeFolderName: string;
   activeFolderId: FolderId;
 }
@@ -39,9 +47,7 @@ const LinksContent = ({
           {activeFolderName}
         </div>
         {activeFolderId !== null && (
-          <ActionButton
-            handleModalToggle={handleModalToggle}
-          />
+          <ActionButton handleModalToggle={handleModalToggle} />
         )}
       </div>
 
@@ -50,7 +56,7 @@ const LinksContent = ({
           <NoLink />
         ) : (
           linksData.map((link) => (
-            <Card key={link.data.id} link={link.data} isFolderPage={true} />
+            <Card key={link.id} link={link} isFolderPage={true} />
           ))
         )}
       </div>

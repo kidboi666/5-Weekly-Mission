@@ -3,12 +3,17 @@ import LinksContent from "./LinksContent";
 import { Folder } from "@api/useFoldersByUserId";
 import { FolderId } from "@components/Folder";
 import { LinkData } from "@api/fetchFolderLinksData";
-import Modal from "../Modal";
-import { useModal } from "src/context/ModalContext";
 
 export interface FolderContentProps {
   foldersData: Folder;
-  allLinksData: LinkData[];
+  allLinksData: {
+    id: number;
+    title: string;
+    created_at: string;
+    url: string;
+    description?: string;
+    image_source?: string;
+  }[];
   activeFolderName: string;
   activeFolderId: FolderId;
 }
@@ -28,5 +33,4 @@ const FolderContent = ({
     />
   );
 };
-
 export default FolderContent;

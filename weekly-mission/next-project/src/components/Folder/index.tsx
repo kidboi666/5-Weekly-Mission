@@ -5,8 +5,10 @@ import FolderMenuList from "@components/FolderMenuList";
 import FolderContent from "@components/FolderContent";
 import AddButton from "@components/AddButton";
 import { fetchLinkData } from "@api/fetchFolderLinksData";
+import { LinkData } from "@api/fetchFolderLinksData";
 import useFoldersByUserId from "@api/useFoldersByUserId";
 import styles from "./Folder.module.css";
+import { get } from "http";
 
 export type FolderId = number | string | null;
 
@@ -51,23 +53,22 @@ const Folder = ({ folderId }: FolderProps) => {
   };
 
   const getFilteredLink = () => {
-    if (!allLinksData) {
+    if (!allLinksData || !allLinksData.data) {
       return [];
     }
 
     if (search === "") {
-      return [allLinksData];
+      return allLinksData.data;
     }
 
     const lowerSearch = search.toLowerCase();
 
-    return [allLinksData].filter((link) => {
+    return allLinksData.data.filter((link) => {
       return (
-        (link.data.url && link.data.url.toLowerCase().includes(lowerSearch)) ||
-        (link.data.title &&
-          link.data.title.toLowerCase().includes(lowerSearch)) ||
-        (link.data.description &&
-          link.data.description.toLowerCase().includes(lowerSearch))
+        (link.url && link.url.toLowerCase().includes(lowerSearch)) ||
+        (link.title && link.title.toLowerCase().includes(lowerSearch)) ||
+        (link.description &&
+          link.description.toLowerCase().includes(lowerSearch))
       );
     });
   };
