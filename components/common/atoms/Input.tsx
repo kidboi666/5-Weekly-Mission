@@ -4,21 +4,20 @@ import Button from './Button';
 import { Relative } from '@/styles/commonStyle';
 
 interface IButtonModule {
-  $id?:string,
+  $id?: string;
   $type?: string;
   $inputClass?: string;
   $btnShow?: boolean;
   $placeholder?: string;
   $beforeBgIcon?: string;
   $btnClass?: string;
-  $clickEvent?:string | undefined;
+  $clickEvent?: string | undefined;
   children?: ReactNode;
-  onclick?:() => void;
+  onclick?: () => void;
   onchange?: (value: string) => void;
 }
 
-function Input({ $id, $btnShow = false, $type = 'text', $inputClass, $placeholder, $beforeBgIcon = '', $btnClass = '', $clickEvent, children, onchange}: IButtonModule) {
-
+function Input({ $id, $btnShow = false, $type = 'text', $inputClass, $placeholder, $beforeBgIcon = '', $btnClass = '', $clickEvent, children, onchange }: IButtonModule) {
   const [value, setValue] = useState('');
   const refInput = useRef(null);
 
@@ -31,19 +30,19 @@ function Input({ $id, $btnShow = false, $type = 'text', $inputClass, $placeholde
       onchange(value);
     }
   };
-  const handleEventInput = (event:string) => {
-    if(!event) return ;
-    if(event === 'reset') {
+  const handleEventInput = (event: string) => {
+    if (!event) return;
+    if (event === 'reset') {
       setValue('');
       if (onchange) {
         onchange('');
       }
     }
-  }
+  };
 
   return (
-   <>
-     <Relative>
+    <>
+      <Relative>
         <InputModule
           id={$id}
           type={$type}
@@ -54,14 +53,15 @@ function Input({ $id, $btnShow = false, $type = 'text', $inputClass, $placeholde
           $beforeBgIcon={$beforeBgIcon}
           ref={refInput}
         />
-        {($btnShow && $clickEvent) &&    
-          <Button $btnClass={$btnClass} onclick={() => handleEventInput($clickEvent)}>
+        {$btnShow && $clickEvent && (
+          <Button
+            $btnClass={$btnClass}
+            onclick={() => handleEventInput($clickEvent)}>
             {children}
           </Button>
-        }
+        )}
       </Relative>
-      
-   </>
+    </>
   );
 }
 export default Input;

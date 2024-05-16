@@ -1,4 +1,4 @@
-import { IFolderMenuButtonApi } from "../folder/interface";
+import { IFolderMenuButtonApi } from '../folder/interface';
 
 export interface IModalData {
   data: any;

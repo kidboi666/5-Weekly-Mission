@@ -8,11 +8,16 @@ interface ICheckBoxData {
 function CheckBox({ $data }: ICheckBoxData) {
   if ($data?.data) {
     return (
-      <CheckBoxWrap className="chk--list-type1">
+      <CheckBoxWrap className='chk--list-type1'>
         {$data &&
           $data.data.map((list: any) => (
-            <div className="inner" key={list.id}>
-              <input type="checkbox" id={list.id} />
+            <div
+              className='inner'
+              key={list.id}>
+              <input
+                type='checkbox'
+                id={list.id}
+              />
               <label htmlFor={list.id}>
                 <strong>{list.name}</strong>
                 <span>{list.link.count}개 링크</span>
@@ -24,8 +29,8 @@ function CheckBox({ $data }: ICheckBoxData) {
   } else {
     return (
       <div>
-        <input type="text" />
-        <label htmlFor=""></label>
+        <input type='text' />
+        <label htmlFor=''></label>
       </div>
     );
   }

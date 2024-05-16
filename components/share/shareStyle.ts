@@ -1,6 +1,6 @@
-import { DFlaxAlignCenterBtw } from "@/styles/commonStyle";
-import { theme } from "@/styles/theme";
-import styled from "styled-components";
+import { DFlaxAlignCenterBtw } from '@/styles/commonStyle';
+import { theme } from '@/styles/theme';
+import styled from 'styled-components';
 
 export const ShareBox = styled(DFlaxAlignCenterBtw)`
   .tab-title {
@@ -15,4 +15,4 @@ export const ShareBox = styled(DFlaxAlignCenterBtw)`
       margin-bottom: 0.75rem;
     }
   }
-`
+`;

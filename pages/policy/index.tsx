@@ -1,4 +1,4 @@
-import { Contatiner, InnerLarge } from "@/styles/commonStyle";
+import { Contatiner, InnerLarge } from '@/styles/commonStyle';
 
 export default function Policy() {
   return (
@@ -7,4 +7,3 @@ export default function Policy() {
     </Contatiner>
   );
 }
-

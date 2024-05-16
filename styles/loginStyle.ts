@@ -1,6 +1,6 @@
-import { Contatiner, dflex, dflexCenterBtw, dflexCenterCenter } from "@/styles/commonStyle";
-import { theme } from "@/styles/theme";
-import styled, { keyframes } from "styled-components";
+import { Contatiner, dflex, dflexCenterBtw, dflexCenterCenter } from '@/styles/commonStyle';
+import { theme } from '@/styles/theme';
+import styled, { keyframes } from 'styled-components';
 
 export const JoinWrap = styled(Contatiner)`
   display: flex;
@@ -8,7 +8,7 @@ export const JoinWrap = styled(Contatiner)`
   align-items: center;
   height: 100vh;
   overflow: hidden;
-`
+`;
 
 export const JoinBody = styled.div`
   padding: 14.875rem 2rem 0;
@@ -21,7 +21,7 @@ export const JoinBody = styled.div`
   @media screen and (max-width: 767px) {
     padding: 7.5rem 2rem;
   }
-`
+`;
 
 export const JoinTitle = styled.h1`
   text-align: center;
@@ -29,26 +29,26 @@ export const JoinTitle = styled.h1`
   img {
     height: 2.375rem;
   }
-`
+`;
 
 export const JoinAccessControlBox = styled.div`
   ${dflexCenterCenter}
   padding: 1rem 0;
   flex-wrap: wrap;
-  
+
   span {
     line-height: 1.5rem;
   }
 
   a {
     display: block;
-    padding-left: .5rem;
+    padding-left: 0.5rem;
     color: ${theme.color.primary};
     text-decoration: underline;
     line-height: 1.5rem;
     font-weight: 600;
   }
-`
+`;
 
 export const JoinSocial = styled.div`
   ${dflexCenterBtw}
@@ -70,5 +70,4 @@ export const JoinSocial = styled.div`
       height: 2.625rem;
     }
   }
-
-`
+`;

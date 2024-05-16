@@ -1,16 +1,16 @@
-import { ContainBody, ContainHead, Contatiner, TitleMs } from "@/styles/commonStyle";
-import { BodyInner, BoxLinkSearch, ShareHeadInner } from "../../styles/folderStyle";
-import { IFolderContentApi, IFolderMenuButton } from "../../components/folder/interface";
-import Input from "@/components/common/atoms/Input";
-import PostCardList from "@/components/folder/PostCardList";
-import { instance } from "@/lib/axios";
-import { useRouter } from "next/router";
-import { GetServerSidePropsContext } from "next";
+import { ContainBody, ContainHead, Contatiner, TitleMs } from '@/styles/commonStyle';
+import { BodyInner, BoxLinkSearch, ShareHeadInner } from '../../styles/folderStyle';
+import { IFolderContentApi, IFolderMenuButton } from '../../components/folder/interface';
+import Input from '@/components/common/atoms/Input';
+import PostCardList from '@/components/folder/PostCardList';
+import { instance } from '@/lib/axios';
+import { useRouter } from 'next/router';
+import { GetServerSidePropsContext } from 'next';
 
 const logo = '/assets/logo/logo_codeit.svg';
 const search = '/assets/icon/icon_search.svg';
 
-export async function getServerSideProps(contaxt:GetServerSidePropsContext) {
+export async function getServerSideProps(contaxt: GetServerSidePropsContext) {
   let $title;
   let $content;
   const { query } = contaxt;
@@ -19,43 +19,46 @@ export async function getServerSideProps(contaxt:GetServerSidePropsContext) {
     const resContent = await instance.get(`/links?folderId=${query.id}`);
     $title = resTitle.data;
     $content = resContent.data;
-    if(!$title.data[0]) {
+    if (!$title.data[0]) {
       return {
         notFound: true,
-      }
+      };
     }
   } catch (error) {
     return {
       notFound: true,
-    }
+    };
   }
 
   return {
-    props:{
+    props: {
       $title,
-      $content
-    }
-  }
+      $content,
+    },
+  };
 }
 
 export interface IShareTitle {
   data: Omit<IFolderMenuButton[], 'link'>;
 }
 
-export default function Shared({$title, $content}:{$title:IShareTitle, $content:IFolderContentApi}) {
+export default function Shared({ $title, $content }: { $title: IShareTitle; $content: IFolderContentApi }) {
   const router = useRouter();
 
-  if(!$title.data[0]) router.push('/notfound');;
+  if (!$title.data[0]) router.push('/notfound');
   return (
     <Contatiner>
       <ContainHead>
         <ShareHeadInner>
-          <img src={logo} alt='@코드잇' />
+          <img
+            src={logo}
+            alt='@코드잇'
+          />
           <p>@코드잇</p>
           {$title?.data[0]?.name && <TitleMs>{$title?.data[0]?.name}</TitleMs>}
         </ShareHeadInner>
       </ContainHead>
-        <ContainBody>
+      <ContainBody>
         <BodyInner>
           <BoxLinkSearch>
             <Input
@@ -66,7 +69,7 @@ export default function Shared({$title, $content}:{$title:IShareTitle, $content:
           </BoxLinkSearch>
           <PostCardList $content={$content?.data} />
         </BodyInner>
-      </ContainBody>   
+      </ContainBody>
     </Contatiner>
   );
 }

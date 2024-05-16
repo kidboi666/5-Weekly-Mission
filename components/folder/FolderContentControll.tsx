@@ -29,7 +29,7 @@ const folderControlBtn = [
 interface iControll {
   $title: string;
   onclick: (type: string) => void;
-  $id?:number
+  $id?: number;
 }
 
 function FolderContentControll({ $title, onclick, $id }: iControll) {
@@ -39,11 +39,20 @@ function FolderContentControll({ $title, onclick, $id }: iControll) {
 
   return (
     <ShareBox>
-      {
-        $id &&
-        $id === -1 ? <FontLS as='strong' className='font--size-ls tab-title'>{$title}</FontLS>:
-        <LinkButton $link={`/shared/${$id}`} $linkClass="link--title-text tab-title" $target='_blank'>{$title}</LinkButton>  
-      }
+      {$id && $id === -1 ? (
+        <FontLS
+          as='strong'
+          className='font--size-ls tab-title'>
+          {$title}
+        </FontLS>
+      ) : (
+        <LinkButton
+          $link={`/shared/${$id}`}
+          $linkClass='link--title-text tab-title'
+          $target='_blank'>
+          {$title}
+        </LinkButton>
+      )}
       {$title === '전체' || (
         <ShareListBtn>
           {folderControlBtn.map((btn) => (
@@ -52,8 +61,7 @@ function FolderContentControll({ $title, onclick, $id }: iControll) {
               $id={btn.id}
               $btnClass={'button--icon-before'}
               $BeforButtonIcon={btn.imgSrc}
-              onclick={() => handleModalOpen(`${btn.body}`)}
-            >
+              onclick={() => handleModalOpen(`${btn.body}`)}>
               {btn.name}
             </Button>
           ))}

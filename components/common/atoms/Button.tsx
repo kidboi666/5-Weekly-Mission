@@ -10,22 +10,14 @@ interface IButtonModule {
   onclick?: () => void;
 }
 
-export default function Button({
-  children,
-  $btnClass,
-  $type = 'button',
-  $BeforButtonIcon = '',
-  $afterButtonIcon = '',
-  onclick,
-}: IButtonModule) {
+export default function Button({ children, $btnClass, $type = 'button', $BeforButtonIcon = '', $afterButtonIcon = '', onclick }: IButtonModule) {
   return (
     <ButtonModule
       className={$btnClass}
       type={$type}
       $BeforButtonIcon={$BeforButtonIcon}
       $afterButtonIcon={$afterButtonIcon}
-      onClick={onclick}
-    >
+      onClick={onclick}>
       {children}
     </ButtonModule>
   );

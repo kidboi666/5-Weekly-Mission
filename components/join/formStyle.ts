@@ -1,14 +1,14 @@
-import { theme } from "@/styles/theme";
-import styled from "styled-components";
+import { theme } from '@/styles/theme';
+import styled from 'styled-components';
 
 export const FormWrap = styled.div`
   display: flex;
   flex-direction: column;
-  
+
   .button--gradient {
     margin-top: 1.125rem;
   }
-`
+`;
 
 export const FormRowBox = styled.div`
   padding: 0.75rem 0;
@@ -19,10 +19,10 @@ export const FormRowBox = styled.div`
   }
 
   input {
-    &[type=password],
-    &[type=text],
-    &[type=number], 
-    &[type=email] {
+    &[type='password'],
+    &[type='text'],
+    &[type='number'],
+    &[type='email'] {
       padding: 1.125rem 0.938rem;
       width: 100%;
       line-height: 1.5rem;
@@ -30,7 +30,8 @@ export const FormRowBox = styled.div`
       border-radius: 0.5rem;
       outline: none !important;
 
-      &:active, &:focus {
+      &:active,
+      &:focus {
         border-color: ${theme.color.primary};
       }
     }
@@ -39,7 +40,7 @@ export const FormRowBox = styled.div`
       border-color: ${theme.color.red} !important;
     }
   }
-  
+
   .input__password-toggle {
     position: absolute;
     right: 0.938rem;
@@ -47,7 +48,7 @@ export const FormRowBox = styled.div`
     transform: translateY(-50%);
     padding: 0.25rem;
     z-index: 1;
-    
+
     img {
       display: block;
     }
@@ -65,7 +66,7 @@ export const FormRowBox = styled.div`
   .pw input {
     padding-right: 3.125rem;
   }
-`
+`;
 
 export const ErrorText = styled.div`
   /* display: none; */
@@ -73,4 +74,4 @@ export const ErrorText = styled.div`
   font-size: ${theme.font.s};
   color: ${theme.color.red};
   line-height: 1;
-`
+`;

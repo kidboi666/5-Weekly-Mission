@@ -1,5 +1,5 @@
-import { theme } from "@/styles/theme";
-import styled from "styled-components";
+import { theme } from '@/styles/theme';
+import styled from 'styled-components';
 
 export const Wrap = styled.div`
   display: flex;
@@ -83,19 +83,19 @@ export const Section = styled.section`
     -webkit-text-fill-color: transparent !important;
 
     &.type {
-      background: linear-gradient(to right, ${theme.color.primary}, #FF9F9F);
+      background: linear-gradient(to right, ${theme.color.primary}, #ff9f9f);
     }
     &.type1 {
-      background: linear-gradient(to right, #FE8A8A, #A4CEFF);
+      background: linear-gradient(to right, #fe8a8a, #a4ceff);
     }
     &.type2 {
-      background: linear-gradient(to right, #6FBAFF, #FFD88B);
+      background: linear-gradient(to right, #6fbaff, #ffd88b);
     }
     &.type3 {
-      background: linear-gradient(to right, #6D7CCD, #528885);
+      background: linear-gradient(to right, #6d7ccd, #528885);
     }
     &.type4 {
-      background: linear-gradient(to right, #FE578F, #68E8F9);
+      background: linear-gradient(to right, #fe578f, #68e8f9);
     }
   }
 
@@ -144,7 +144,7 @@ export const Section = styled.section`
         line-height: 2.313rem;
       }
     }
-    
+
     &.section__link {
       padding: 0;
       .section__text__box p::before {
@@ -197,11 +197,11 @@ export const Section = styled.section`
       padding: 0.625rem 0 0;
       font-weight: 500;
       font-style: normal;
-      color: #6B6B6B;
+      color: #6b6b6b;
       word-break: keep-all;
 
       &::before {
-        content: "";
+        content: '';
         display: none;
         padding: 40.17% 0;
         margin: 0 0 1rem;
@@ -215,7 +215,7 @@ export const Section = styled.section`
 
     @media screen and (max-width: ${theme.screenSize.moLarge}) {
       width: 100;
-      
+
       p {
         padding: 0;
         &::before {
@@ -245,4 +245,4 @@ export const Section = styled.section`
       display: none;
     }
   }
-`
+`;
