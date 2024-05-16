@@ -5,13 +5,13 @@ import { FolderLayout } from "@/page-layout/FolderLayout";
 import { FolderToolBar } from "@/components-FolderPage/feature-folder-tool-bar";
 import { SearchBar } from "@/components-SharedPage/ui-search-bar";
 import { useState } from "react";
-import { ALL_LINKS_ID } from "@/components-SharedPage/data-access-link/constant";
+import { allLinksId } from "@/components-SharedPage/data-access-link/constant";
 import { LinkForm } from "@/components-SharedPage/feature-link-form";
 import { CardList } from "@/components-SharedPage/feature-card-list";
 
 export const FolderPage = () => {
   const { data: folders } = useGetFolders();
-  const [selectedFolderId, setSelectedFolderId] = useState(ALL_LINKS_ID);
+  const [selectedFolderId, setSelectedFolderId] = useState(allLinksId);
   const { data: links, loading } = useGetLinks(selectedFolderId);
   const [keyword, setKeyword] = useState("");
 

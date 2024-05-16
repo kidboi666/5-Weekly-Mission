@@ -1,1 +1,1 @@
-export const ALL_LINKS_ID = "all";
+export const allLinksId = "all";

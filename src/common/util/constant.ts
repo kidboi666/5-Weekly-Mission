@@ -1,4 +1,4 @@
-export const ROUTE = {
+export const route = {
   랜딩: "/",
   로그인: "/signin",
   개인정보처리방침: "/privacy",
@@ -12,7 +12,7 @@ const day = hour * 24;
 const month = day * 31;
 const year = month * 12;
 
-export const TIME_IN_MILLISECONDS = {
+export const timeInMilliseconds = {
   second,
   minute,
   hour,
@@ -21,4 +21,4 @@ export const TIME_IN_MILLISECONDS = {
   year,
 };
 
-export const ROOT_ID = "root";
+export const rootId = "root";

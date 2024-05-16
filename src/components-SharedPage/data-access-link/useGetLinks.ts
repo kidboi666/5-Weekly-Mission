@@ -2,7 +2,7 @@ import { useCallback, useEffect } from "react";
 import { axiosInstance } from "@/common/util";
 import { mapLinksData } from "@/components-SharedPage/util-map/mapLinksData";
 import { useAsync } from "@/common/util";
-import { ALL_LINKS_ID } from "./constant";
+import { allLinksId } from "./constant";
 import {
   SampleLink,
   Response,
@@ -20,8 +20,8 @@ type mapDataFormat = ({
   description,
 }: Link) => SampleLink;
 
-export const useGetLinks = (folderId = ALL_LINKS_ID) => {
-  const queryString = folderId === ALL_LINKS_ID ? "" : `?folderId=${folderId}`;
+export const useGetLinks = (folderId = allLinksId) => {
+  const queryString = folderId === allLinksId ? "" : `?folderId=${folderId}`;
   const getLinks: () => Promise<AxiosResponse<Response, any>> = useCallback(
     () => axiosInstance.get(`users/1/links${queryString}`),
     [queryString]

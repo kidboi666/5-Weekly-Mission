@@ -1,1 +1,1 @@
-export const DEFAULT_IMAGE = "images/card-default.png";
+export const defaultImage = "images/card-default.png";

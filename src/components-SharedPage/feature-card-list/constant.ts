@@ -1,4 +1,4 @@
-export const MODALS_ID = {
+export const modalsId = {
   deleteLink: "deleteLink",
   addToFolder: "addToFolder",
 };

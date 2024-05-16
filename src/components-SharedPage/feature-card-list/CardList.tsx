@@ -2,7 +2,7 @@ import { EditableCard } from "@/components-SharedPage/ui-editable-card";
 import { NoLink } from "@/components-SharedPage/ui-no-link";
 import { useCallback, useRef, useState } from "react";
 import { CardList as UiCardList } from "@/components-SharedPage/ui-card-list";
-import { MODALS_ID } from "./constant";
+import { modalsId } from "./constant";
 import { AlertModal } from "@/components-SharedPage/ui-alert-modal";
 import { AddLinkModal } from "@/components-SharedPage/ui-addlink-modal";
 import { useGetFolders } from "@/components-FolderPage/data-access-folder";
@@ -51,16 +51,16 @@ export const CardList = ({ links }) => {
           popoverPosition={getPopoverPosition(index)}
           onDeleteClick={() => {
             setSelectedLinkUrl(link?.url);
-            setCurrentModal(MODALS_ID.deleteLink);
+            setCurrentModal(modalsId.deleteLink);
           }}
           onAddLinkClick={() => {
             setSelectedLinkUrl(link?.url);
-            setCurrentModal(MODALS_ID.addToFolder);
+            setCurrentModal(modalsId.addToFolder);
           }}
         />
       ))}
       <AlertModal
-        isOpen={currentModal === MODALS_ID.deleteLink}
+        isOpen={currentModal === modalsId.deleteLink}
         title="링크 삭제"
         buttonText="삭제하기"
         selectedLinkUrl={selectedLinkUrl}
@@ -68,7 +68,7 @@ export const CardList = ({ links }) => {
         onKeyDown={handleKeyDown}
       />
       <AddLinkModal
-        isOpen={currentModal === MODALS_ID.addToFolder}
+        isOpen={currentModal === modalsId.addToFolder}
         folders={folders}
         title="폴더에 추가"
         buttonText="추가하기"

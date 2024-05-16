@@ -1,9 +1,9 @@
 import styles from "./NavigationBar.module.scss";
 import classNames from "classnames/bind";
-import { ROUTE } from "@/common/util";
+import { route } from "@/common/util";
 import { Cta } from "@/common/ui-cta";
 import { Profile } from "@/components-user/ui-profile";
-import { LOGO_IMAGE, TEXT } from "./constant";
+import { logoImage, navText } from "./constant";
 
 const cx = classNames.bind(styles);
 
@@ -11,19 +11,19 @@ export const NavigationBar = ({ profile, isSticky }) => {
   return (
     <nav className={cx("container", { sticky: isSticky })}>
       <div className={cx("items")}>
-        <a href={ROUTE.랜딩}>
+        <a href={route.랜딩}>
           <img
             className={cx("logo")}
-            src={LOGO_IMAGE}
+            src={logoImage}
             alt="Linkbrary 서비스 로고"
           />
         </a>
         {profile ? (
           <Profile profile={profile} />
         ) : (
-          <a href={ROUTE.로그인}>
+          <a href={route.로그인}>
             <Cta>
-              <span className={cx("signin")}>{TEXT.login}</span>
+              <span className={cx("signin")}>{navText.login}</span>
             </Cta>
           </a>
         )}

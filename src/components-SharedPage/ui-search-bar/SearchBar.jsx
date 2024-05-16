@@ -1,6 +1,6 @@
 import styles from "./SearchBar.module.scss";
 import classNames from "classnames/bind";
-import { SEARCH_IMAGE } from "./constant";
+import { searchImage } from "./constant";
 import { useState } from "react";
 
 const cx = classNames.bind(styles);
@@ -24,7 +24,7 @@ export const SearchBar = ({ onKeywordSubmit }) => {
         placeholder="링크를 검색해 보세요."
       />
       <img
-        src={SEARCH_IMAGE}
+        src={searchImage}
         alt="검색창인 것을 알려주는 돋보기 아이콘"
         className={cx("icon")}
       />

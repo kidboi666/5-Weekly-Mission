@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { ROOT_ID } from "./constant";
+import { rootId } from "./constant";
 
 export const useBackgroundClick = (callback) => {
   useEffect(() => {
-    const rootElement = document.getElementById(ROOT_ID);
+    const rootElement = document.getElementById(rootId);
     rootElement?.addEventListener("click", callback);
     return () => {
       rootElement?.removeEventListener("click", callback);

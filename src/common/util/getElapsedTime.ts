@@ -1,10 +1,10 @@
-import { TIME_IN_MILLISECONDS } from "./constant";
+import { timeInMilliseconds } from "./constant";
 
 export const getElapsedTime = (createdAt: Date) => {
   const now = new Date();
   const past = new Date(createdAt);
   const elapsedTime = Number(now) - Number(past);
-  const { minute, hour, day, month, year } = TIME_IN_MILLISECONDS;
+  const { minute, hour, day, month, year } = timeInMilliseconds;
 
   if (year * 2 <= elapsedTime) {
     return `${Math.floor(elapsedTime / year)} years ago`;

@@ -1,13 +1,13 @@
 import styles from "./CardImage.module.scss";
 import classNames from "classnames/bind";
-import { DEFAULT_IMAGE } from "./constant";
+import { defaultImage } from "./constant";
 
 const cx = classNames.bind(styles);
 
 export const CardImage = ({ imageSource, alt, isZoomedIn }) => {
   return (
-    <div
-      style={{ backgroundImage: `url(${imageSource ?? DEFAULT_IMAGE})` }}
+    <img
+      style={{ backgroundImage: `url(${imageSource ?? defaultImage})` }}
       className={cx("container", { zoomin: isZoomedIn })}
       alt={alt}
     />

@@ -1,5 +1,5 @@
-export const TEXT = {
+export const navText = {
   login: "로그인",
 };
 
-export const LOGO_IMAGE = "images/linkbrary.svg";
+export const logoImage = "images/linkbrary.svg";

@@ -1,29 +1,29 @@
-export const MODALS_ID = {
+export const modalsId = {
   addFolder: "addFolder",
   share: "share",
   rename: "rename",
   delete: "delete",
 };
 
-export const BUTTONS = [
+export const buttons = [
   {
     iconSource: "images/share.svg",
     text: "공유",
-    modalId: MODALS_ID.share,
+    modalId: modalsId.share,
   },
   {
     iconSource: "images/pen.svg",
     text: "이름 변경",
-    modalId: MODALS_ID.rename,
+    modalId: modalsId.rename,
   },
   {
     iconSource: "images/trash.svg",
     text: "삭제",
-    modalId: MODALS_ID.delete,
+    modalId: modalsId.delete,
   },
 ];
 
-export const ALL_LINKS_TEXT = "전체";
+export const allLinksText = "전체";
 
 export const KAKAO_SHARE_DATA = {
   title: "Linkbrary",

@@ -1,7 +1,7 @@
 import styles from "./Footer.module.scss";
 import classNames from "classnames/bind";
-import { ROUTE } from "@/common/util";
-import { TEXT } from "./constant";
+import { route } from "@/common/util";
+import { footerText } from "./constant";
 
 const cx = classNames.bind(styles);
 
@@ -9,13 +9,13 @@ export const Footer = () => {
   return (
     <footer className={cx("container")}>
       <div className={cx("items")}>
-        <span className={cx("copyright")}>{TEXT.codeit}</span>
+        <span className={cx("copyright")}>{footerText.codeit}</span>
         <div className={cx("links")}>
-          <a className={cx("link")} href={ROUTE.개인정보처리방침}>
-            {TEXT.privacyPolicy}
+          <a className={cx("link")} href={route.개인정보처리방침}>
+            {footerText.privacyPolicy}
           </a>
-          <a className={cx("link")} href={ROUTE.FAQ}>
-            {TEXT.faq}
+          <a className={cx("link")} href={route.FAQ}>
+            {footerText.faq}
           </a>
         </div>
         <div className={cx("sns")}>
