@@ -39,13 +39,13 @@
     right: 15px;
     width: 16px;
     height: 16px;
-    background: url("/assets/eye-off.svg") no-repeat center center;
+    background: url('/assets/eye-off.svg') no-repeat center center;
     background-size: cover;
     border: none;
     cursor: pointer;
 }
 
 .eye_button.on {
-    background: url("/assets/eye-on.svg") no-repeat center center;
+    background: url('/assets/eye-on.svg') no-repeat center center;
     background-size: cover;
 }
