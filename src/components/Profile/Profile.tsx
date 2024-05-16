@@ -1,13 +1,6 @@
 import styles from "@/src/components/Profile/Profile.module.css";
 import Image from "next/image";
 
-interface loginFetchData {
-  id: number;
-  email: string;
-  name: string;
-  profileImageSource: string;
-}
-
 function Profile({ user }: { user: loginFetchData }) {
   const { name, email, profileImageSource } = user;
   return (
