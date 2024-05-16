@@ -59,7 +59,6 @@ export default function FolderMain({
   });
   const [folderId, setFolderId] = useState<number>(0);
   const [filteredLinks, setFilteredLinks] = useState<Link[]>([]);
-  const [originalLinks, setOriginalLinks] = useState<Link[]>([]);
 
   const { data: folders } = useUserFolders(user.id);
   const { data: links } = useSWR(

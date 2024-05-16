@@ -5,13 +5,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 /** TODO:
- * 1. 비밀번호 유효성 검증; 영문, 숫자 조합 8자 이상 => done
- * 2. 눈 아이콘 => done
- * 3. 이메일 중복 체크; /api/check-email POST 요청 => done
- * 4. 유효한 회원가입 체크; /api/sign-up POST 요청. 성공 시 /folder 이동 => done
  * 5. 공통 부분 컴포넌트화
  * 6. axios.create 후 instance import 해서 사용
- * 7. 에러 메세지 생성 시 눈 아이콘 위치가 input에서 벗어나는 오류 수정; 에러메세지가 있는 경우 bottom 값 조정 => done
  * 8. handleSubmit 내부 함수화
  */
 
@@ -31,7 +26,6 @@ export default function signup() {
     },
   });
 
-  const [emailDupCheck, setEmailDupCheck] = useState(false);
   const [isClosed, setIsClosed] = useState(true);
   const [inputType, setInputType] = useState<"text" | "password">("password");
 
