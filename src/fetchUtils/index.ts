@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "./axiosInstance";
 import camelcaseKeys from "camelcase-keys";
 
 const BASE_URL = "https://bootcamp-api.codeit.kr/";
@@ -45,6 +45,7 @@ export const tabDataList = async () => {
     if (response.data) {
       response.data = camelcaseKeys(response.data, { deep: true });
     }
+
     const { data } = response;
 
     return data;
