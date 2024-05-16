@@ -10,17 +10,17 @@ interface Folder {
 
 export default function FolderButtons({
   clickedButton,
+  handleButtonClick,
   handleAllButtonClick,
   folders,
-  handleButtonClick,
   openModal,
   closeModal,
   modalStates,
 }: {
   clickedButton: any;
+  handleButtonClick: any;
   handleAllButtonClick: any;
   folders: any;
-  handleButtonClick: any;
   openModal: any;
   closeModal: any;
   modalStates: any;

@@ -4,11 +4,8 @@ import LinkCardListByFolderId from "./LinkCardListByFolderId";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
 import axios from "axios";
-import ShareFolderModal from "./ShareFolderModal";
-import AddFolderModal from "./AddFolderModal";
-import EditFolderModal from "./EditFolderModal";
-import DeleteFolderModal from "./DeleteFolderModal";
 import FolderButtons from "./FolderButtons";
+import FolderTitlebar from "./FolderTitlebar";
 
 interface UserData {
   id: number;
@@ -126,37 +123,19 @@ export default function FolderMain({
     <>
       <FolderButtons
         clickedButton={clickedButton}
+        handleButtonClick={handleButtonClick}
         handleAllButtonClick={handleAllButtonClick}
         folders={folders}
-        handleButtonClick={handleButtonClick}
         openModal={openModal}
         closeModal={closeModal}
         modalStates={modalStates}
       />
-      <div className="flex items-center justify-between mt-[40px] px-[32px] xl:px-[200px]">
-        <div className="text-[30px] font-bold">{title}</div>
-        <div className="flex space-x-2">
-          {title !== "전체" ? (
-            <>
-              <ShareFolderModal
-                openModal={openModal}
-                closeModal={closeModal}
-                modalStates={modalStates}
-              />
-              <EditFolderModal
-                openModal={openModal}
-                closeModal={closeModal}
-                modalStates={modalStates}
-              />
-              <DeleteFolderModal
-                openModal={openModal}
-                closeModal={closeModal}
-                modalStates={modalStates}
-              />
-            </>
-          ) : null}
-        </div>
-      </div>
+      <FolderTitlebar
+        title={title}
+        openModal={openModal}
+        closeModal={closeModal}
+        modalStates={modalStates}
+      />
       <LinkCardListByFolderId
         links={links?.data}
         filteredLinks={filteredLinks}
