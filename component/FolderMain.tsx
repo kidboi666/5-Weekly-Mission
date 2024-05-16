@@ -8,6 +8,7 @@ import ShareFolderModal from "./ShareFolderModal";
 import AddFolderModal from "./AddFolderModal";
 import EditFolderModal from "./EditFolderModal";
 import DeleteFolderModal from "./DeleteFolderModal";
+import FolderButtons from "./FolderButtons";
 
 interface UserData {
   id: number;
@@ -45,6 +46,8 @@ export default function FolderMain({
   }
   const [title, setTitle] = useState<string>("전체");
   const [clickedButton, setClickedButton] = useState<number | null>(0);
+  const [folderId, setFolderId] = useState<number>(0);
+  const [filteredLinks, setFilteredLinks] = useState<Link[]>([]);
   const [modalStates, setModalStates] = useState<{
     addModal: boolean;
     shareModal: boolean;
@@ -60,8 +63,6 @@ export default function FolderMain({
     addLinkModal: false,
     deleteLinkModal: false,
   });
-  const [folderId, setFolderId] = useState<number>(0);
-  const [filteredLinks, setFilteredLinks] = useState<Link[]>([]);
 
   const { data: folders } = useUserFolders(user.id);
   const { data: links } = useSWR(
@@ -123,45 +124,15 @@ export default function FolderMain({
 
   return (
     <>
-      <div className="flex items-center justify-between mt-[40px] px-[32px] xl:px-[200px]">
-        <div>
-          <button
-            className={`px-3 py-2 mr-2 border rounded-md ${
-              clickedButton === 0
-                ? "bg-blue-500 text-white"
-                : "border-[#6D6AFE] text-black"
-            }`}
-            onClick={handleAllButtonClick}
-          >
-            전체
-          </button>
-          {folders &&
-            folders.data.map((folder: Folder) => {
-              return (
-                <button
-                  key={folder.id}
-                  className={`px-3 py-2 mr-2 border rounded-md ${
-                    folder.id === clickedButton
-                      ? "bg-blue-500 text-white"
-                      : "border-[#6D6AFE] text-black"
-                  }`}
-                  onClick={() => {
-                    handleButtonClick(folder.id);
-                  }}
-                >
-                  {folder.name}
-                </button>
-              );
-            })}
-        </div>
-        <div
-          className="text-[#6D6AFE] cursor-pointer"
-          onClick={() => openModal("addModal")}
-        >
-          폴더 추가 +
-        </div>
-        <AddFolderModal modalStates={modalStates} closeModal={closeModal} />
-      </div>
+      <FolderButtons
+        clickedButton={clickedButton}
+        handleAllButtonClick={handleAllButtonClick}
+        folders={folders}
+        handleButtonClick={handleButtonClick}
+        openModal={openModal}
+        closeModal={closeModal}
+        modalStates={modalStates}
+      />
       <div className="flex items-center justify-between mt-[40px] px-[32px] xl:px-[200px]">
         <div className="text-[30px] font-bold">{title}</div>
         <div className="flex space-x-2">
