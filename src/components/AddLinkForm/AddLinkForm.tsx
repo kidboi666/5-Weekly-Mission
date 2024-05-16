@@ -14,15 +14,13 @@ function AddLinkForm() {
   };
   return (
     <div className={styles.linkWrap}>
-      <form className={styles.linkAddForm}>
-        <div className={styles.linkConWrap}>
-          <Image width={20} height={20} src={LinkIcon} alt="" />
-          <input className={styles.linkInput} type="text" placeholder="링크를 추가해보세요." />
-          <button className={styles.linkButton} onClick={onClickModalOpen}>
-            추가하기
-          </button>
-        </div>
-      </form>
+      <div className={styles.linkConWrap}>
+        <Image width={20} height={20} src={LinkIcon} alt="" />
+        <input className={styles.linkInput} type="text" placeholder="링크를 추가해보세요." />
+        <button className={styles.linkButton} onClick={onClickModalOpen}>
+          추가하기
+        </button>
+      </div>
     </div>
   );
 }
