@@ -52,7 +52,6 @@ function Folder() {
       ]);
 
       setFolderTabDataList(folderTabDataList.data);
-      console.log(folderTabDataList);
       setUserFolderDataList(userFolderDataList.data);
     }
     fetchDataAndSetState();
