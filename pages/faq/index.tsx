@@ -1,9 +1,9 @@
-import { Contatiner, InnerLarge } from '@/styles/commonStyle';
+import { Container, InnerLarge } from '@/styles/commonStyle';
 
 export default function Faq() {
   return (
-    <Contatiner>
+    <Container>
       <InnerLarge>Faq</InnerLarge>
-    </Contatiner>
+    </Container>
   );
 }

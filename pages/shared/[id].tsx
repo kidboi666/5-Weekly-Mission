@@ -1,22 +1,22 @@
-import { ContainBody, ContainHead, Contatiner, TitleMs } from '@/styles/commonStyle';
-import { BodyInner, BoxLinkSearch, ShareHeadInner } from '../../styles/folderStyle';
+import { ContainBody, ContainHead, Container, TitleMs } from '@/styles/commonStyle';
+import { BodyInner, ShareHeadInner } from '../../styles/folderStyle';
 import { IFolderContentApi, IFolderMenuButton } from '../../components/folder/interface';
-import Input from '@/components/common/atoms/Input';
 import PostCardList from '@/components/folder/PostCardList';
 import { instance } from '@/lib/axios';
 import { useRouter } from 'next/router';
 import { GetServerSidePropsContext } from 'next';
+import SearchInputBox from '@/components/folder/SearchInputBox';
+import { useState } from 'react';
 
 const logo = '/assets/logo/logo_codeit.svg';
-const search = '/assets/icon/icon_search.svg';
+const searchImage = '/assets/icon/icon_search.svg';
 
 export async function getServerSideProps(contaxt: GetServerSidePropsContext) {
   let $title;
   let $content;
   const { query } = contaxt;
   try {
-    const resTitle = await instance.get(`/folders/${query.id}`);
-    const resContent = await instance.get(`/links?folderId=${query.id}`);
+    const [resTitle, resContent] = await Promise.all([instance.get(`/folders/${query.id}`), instance.get(`/links?folderId=${query.id}`)]);
     $title = resTitle.data;
     $content = resContent.data;
     if (!$title.data[0]) {
@@ -24,18 +24,19 @@ export async function getServerSideProps(contaxt: GetServerSidePropsContext) {
         notFound: true,
       };
     }
+
+    return {
+      props: {
+        $title,
+        $content,
+      },
+    };
   } catch (error) {
+    console.log('ERROR IN SERVER FETCHING DATA: ', error);
     return {
       notFound: true,
     };
   }
-
-  return {
-    props: {
-      $title,
-      $content,
-    },
-  };
 }
 
 export interface IShareTitle {
@@ -44,10 +45,28 @@ export interface IShareTitle {
 
 export default function Shared({ $title, $content }: { $title: IShareTitle; $content: IFolderContentApi }) {
   const router = useRouter();
+  const [searchContatn, setSearchContent] = useState<any>();
+
+  // Search
+  const handelSearch = (value: string) => {
+    let filter;
+    if (value) {
+      filter = $content?.data.filter((con) => {
+        if (!con) return;
+        return con.description?.includes(value) || con.title?.includes(value) || con.url?.includes(value);
+      });
+      setSearchContent(filter);
+      return;
+    }
+    setSearchContent($content?.data);
+  };
+
+  // search
+  const contentSearch = searchContatn ?? $content?.data;
 
   if (!$title.data[0]) router.push('/notfound');
   return (
-    <Contatiner>
+    <Container>
       <ContainHead>
         <ShareHeadInner>
           <img
@@ -60,16 +79,15 @@ export default function Shared({ $title, $content }: { $title: IShareTitle; $con
       </ContainHead>
       <ContainBody>
         <BodyInner>
-          <BoxLinkSearch>
-            <Input
-              $inputClass={'input__link--search'}
-              $placeholder={'링크를 검색해 보세요.'}
-              $beforeBgIcon={search}
-            />
-          </BoxLinkSearch>
-          <PostCardList $content={$content?.data} />
+          {/* 검색창 */}
+          <SearchInputBox
+            $inputIconImg={searchImage}
+            onchange={handelSearch}
+          />
+
+          <PostCardList $content={contentSearch} />
         </BodyInner>
       </ContainBody>
-    </Contatiner>
+    </Container>
   );
 }

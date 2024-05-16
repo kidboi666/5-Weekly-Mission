@@ -8,7 +8,7 @@ interface IFolderList {
 }
 
 function PostCardList({ $content }: IFolderList) {
-  if (!$content) return <EmptyBox>저장된 링크가 없습니다.</EmptyBox>;
+  if (!$content || !$content.length) return <EmptyBox>저장된 링크가 없습니다.</EmptyBox>;
   return (
     <PostCardWrap>
       {$content?.map((data) => (

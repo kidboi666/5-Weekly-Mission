@@ -1,9 +1,9 @@
-import { Contatiner, InnerLarge } from '@/styles/commonStyle';
+import { Container, InnerLarge } from '@/styles/commonStyle';
 
 export default function Policy() {
   return (
-    <Contatiner>
+    <Container>
       <InnerLarge>Privacy Policy</InnerLarge>
-    </Contatiner>
+    </Container>
   );
 }

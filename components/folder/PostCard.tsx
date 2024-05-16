@@ -59,7 +59,6 @@ export default function PostCard({ image_source, description, created_at }: IFol
                 <img
                   className='empty'
                   src={emptyImg}
-                  alt=''
                 />
               )}
             </div>

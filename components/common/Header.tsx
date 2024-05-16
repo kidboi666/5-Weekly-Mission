@@ -21,7 +21,8 @@ export interface IHeaderUser {
 }
 
 function Header() {
-  const { pathname } = useRouter();
+  const router = useRouter();
+  const { pathname } = router;
   const results: urlName = pathname.split('/')[1];
   const layoutConfig = pageLayoutConfig[results] || { header: true };
   const { headerShow, setHeaderShow, isLoggedIn, setIsLoggedIn } = useContext(LayoutContext);
@@ -36,6 +37,7 @@ function Header() {
   const handleLogout = () => {
     localStorage.removeItem('linkbrary');
     if (setIsLoggedIn) setIsLoggedIn(false);
+    router.push('/');
   };
 
   useEffect(() => {

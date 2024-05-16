@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ContainBody, Contatiner } from '@/styles/commonStyle';
+import { ContainBody, Container } from '@/styles/commonStyle';
 import { modalOrder } from '@/src/constant/modal';
 import LinkAddHeader from '@/components/folder/LinkAddHeader';
 import SearchInputBox from '@/components/folder/SearchInputBox';
@@ -35,6 +35,7 @@ export async function getServerSideProps(contaxt: GetServerSidePropsContext) {
     $menu = resMenu.data;
     $content = resContent.data;
   } catch (error) {
+    console.log('ERROR IN SERVER FETCHING DATA: ', error);
     return {
       notFound: true,
     };
@@ -133,7 +134,7 @@ export default function Folder({ $menu, $content }: { $menu: IFolderMenuButtonAp
 
   if (!$menu || !$content) return <Loading />;
   return (
-    <Contatiner>
+    <Container>
       <FolderContainHead className='folder--header'>
         <LinkAddHeader $inputIconImg={linkImage} />
       </FolderContainHead>
@@ -176,6 +177,6 @@ export default function Folder({ $menu, $content }: { $menu: IFolderMenuButtonAp
         $folderId={activeBtn}
         {...modalInfo}
       />
-    </Contatiner>
+    </Container>
   );
 }

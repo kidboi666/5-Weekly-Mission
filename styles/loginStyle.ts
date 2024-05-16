@@ -1,8 +1,8 @@
-import { Contatiner, dflex, dflexCenterBtw, dflexCenterCenter } from '@/styles/commonStyle';
+import { Container, dflex, dflexCenterBtw, dflexCenterCenter } from '@/styles/commonStyle';
 import { theme } from '@/styles/theme';
 import styled, { keyframes } from 'styled-components';
 
-export const JoinWrap = styled(Contatiner)`
+export const JoinWrap = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;

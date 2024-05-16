@@ -5,7 +5,7 @@ import { theme } from './theme';
 
 // ====  body layout  =====
 
-export const Contatiner = styled.main`
+export const Container = styled.main`
   flex: 1;
   display: flex;
   flex-direction: column;

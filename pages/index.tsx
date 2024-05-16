@@ -1,10 +1,10 @@
-import { Contatiner, TitleLs, TitleMs } from '@/styles/commonStyle';
+import { Container, TitleLs, TitleMs } from '@/styles/commonStyle';
 import { Section } from '../styles/mainStyle';
 import LinkButton from '@/components/common/atoms/LinkButton';
 
 export default function Home() {
   return (
-    <Contatiner className='body__main'>
+    <Container className='body__main'>
       <Section className='section__banner'>
         <TitleLs className='title'>
           <span className='title__clip type'>세상의 모든 정보</span>를<br />
@@ -87,6 +87,6 @@ export default function Home() {
           <div className='section__img__box'></div>
         </div>
       </Section>
-    </Contatiner>
+    </Container>
   );
 }
