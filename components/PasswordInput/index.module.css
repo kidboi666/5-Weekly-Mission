@@ -17,7 +17,7 @@
   color: var(--text-content-gray);
 }
 
-.focused {
+.input__form:focus {
   border: 1px solid var(--primary);
 }
 

@@ -1,5 +1,5 @@
 import { useFetch } from '@/hooks/useFetch';
-import { formatDate, generateTimeText } from '@/hooks/date';
+import { formatDate, generateTimeText } from '@/utils/date';
 import styles from '@/components/Cards/index.module.css';
 import Image from 'next/image';
 import { SyntheticEvent } from 'react';

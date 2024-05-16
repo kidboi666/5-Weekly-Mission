@@ -1,5 +1,5 @@
 import { useFetch } from '@/hooks/useFetch';
-import { formatDate, generateTimeText } from '../../hooks/date';
+import { formatDate, generateTimeText } from '../../utils/date';
 import thumbnail from '@/public/thumbnail.svg';
 import styles from '@/components/Cardsfolder/index.module.css';
 import starticon from '@/public/staricon.svg';

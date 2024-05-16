@@ -1,25 +1,26 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import styles from '@/components/IdInput/index.module.css';
 
-function IdInput({ placeholder = '내용을 입력하세요' }) {
-  const [value, setValue] = useState<string>('');
-  const [isError, setIsError] = useState(false);
-  const [ErrorMsg, setErrorMsg] = useState('');
-  const [isFocused, setIsFocused] = useState<boolean>(false);
+export interface InputProps {
+  value: string;
+  onChange: (value: string) => void;
+  placeholder: string;
+  isError: boolean;
+  ErrorMsg: string;
+  onBlur: () => void;
+}
 
-  const handleFocus = () => {
-    setIsFocused(true);
-  };
-
-  const handleBlur = () => {
-    setIsFocused(false);
-    if (value == '') {
-      setIsError(true);
-      setErrorMsg('내용을 입력하세요.');
-    } else {
-      setIsError(false);
-      setErrorMsg('');
-    }
+function IdInput({
+  value,
+  onChange,
+  placeholder,
+  isError,
+  ErrorMsg,
+  onBlur,
+}: InputProps) {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    onChange(newValue);
   };
 
   return (
@@ -30,12 +31,9 @@ function IdInput({ placeholder = '내용을 입력하세요' }) {
           placeholder={placeholder}
           alt="아이디 인풋 폼"
           value={value}
-          onChange={(e) => setValue(e.target.value)}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          className={`${styles.input__form} ${
-            isFocused ? styles.focused : ''
-          } ${isError ? styles.error : ''}`}
+          onChange={handleChange}
+          onBlur={onBlur}
+          className={`${styles.input__form} ${isError ? styles.error : ''}`}
         />
       </div>
       {isError && <p className={styles.error__msg}>{ErrorMsg}</p>}
