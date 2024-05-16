@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import Button from '../common/atoms/Button';
 import { ShareBox } from '../share/shareStyle';
-import { ShareListBtn } from '@/pages/folder/folderStyle';
+import { ShareListBtn } from '@/styles/folderStyle';
 import LinkButton from '../common/atoms/LinkButton';
 import { FontLS } from '@/styles/commonStyle';
 

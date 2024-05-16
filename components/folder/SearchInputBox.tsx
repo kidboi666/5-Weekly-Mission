@@ -1,4 +1,4 @@
-import { BoxLinkSearch, SearchResults } from "@/pages/folder/folderStyle";
+import { BoxLinkSearch, SearchResults } from "@/styles/folderStyle";
 import Input from "../common/atoms/Input";
 import { memo, useState } from "react";
 

@@ -10,8 +10,8 @@ import PostCardList from "@/components/folder/PostCardList";
 import Modal from "@/components/modal/Modal";
 import { IModal } from "@/components/modal/interface";
 import Loading from "@/components/loading/Loading";
-import { BodyInner, BookmarkBox, FolderContainHead } from "./folderStyle";
-import { IFolderContentApi, IFolderMenuButtonApi} from "./interface";
+import { BodyInner, BookmarkBox, FolderContainHead } from "../../styles/folderStyle";
+import { IFolderContentApi, IFolderMenuButtonApi} from "../../components/folder/interface";
 import { instance } from "@/lib/axios";
 import { useRouter } from "next/router";
 import { GetServerSidePropsContext } from "next";
@@ -131,7 +131,7 @@ export default function Folder({$menu, $content}: {$menu:IFolderMenuButtonApi, $
       alert('페이지가 없습니다.');
       router.push(`/folder`)
     }
-  },[])
+  },[$menu])
 
   if(!$menu || !$content) return <Loading />
   return (

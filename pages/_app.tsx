@@ -1,6 +1,6 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
-import { Wrap } from './mainStyle'
+import { Wrap } from '../styles/mainStyle'
 import Header from '@/components/common/Header'
 import Footer from '@/components/common/Footer'
 import '@/styles/globals.css'

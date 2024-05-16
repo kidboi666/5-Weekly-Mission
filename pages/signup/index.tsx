@@ -2,8 +2,8 @@ import { FontSM, Relative } from "@/styles/commonStyle";
 import LinkButton from "@/components/common/atoms/LinkButton";
 import Button from "@/components/common/atoms/Button";
 import { ErrorText, FormRowBox, FormWrap } from "@/components/join/formStyle";
-import { JoinAccessControlBox, JoinBody, JoinTitle, JoinWrap, JoinSocial } from "../login/loginStyle";
-import { useState } from "react";
+import { JoinAccessControlBox, JoinBody, JoinTitle, JoinWrap, JoinSocial } from "../../styles/loginStyle";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { joinInstance } from "@/lib/axios";
 import { useRouter } from "next/router";
@@ -41,6 +41,13 @@ export default function SignUp() {
     handlePassWordCheck(password, passwordConfirm)
     router.push('/folder')
   }
+
+  useEffect(() => {
+    if(localStorage.getItem('linkbrary')) {
+      alert('로그인한 상태입니다.');
+      router.push('/folder')
+    }    
+  },[router])
   return   (
     <JoinWrap className="no-header--container login__wrap">
       <JoinBody>

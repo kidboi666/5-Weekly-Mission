@@ -9,6 +9,7 @@ export interface IFolderMenuButton {
     count?: number;
   };
 }
+
 export interface IFolderMenuButtonApi {
   data: IFolderMenuButton[];
 }
@@ -24,6 +25,7 @@ export interface IFolderContent {
   image_source: string | null;
   folder_id: string | null;
 }
+
 export interface IFolderContentApi {
   data: IFolderContent[];
 }

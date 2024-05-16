@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { NotFoundWrap } from './errorStyle';
+import { NotFoundWrap } from '../styles/errorStyle';
 import { TitleMs } from '@/styles/commonStyle';
 
 export default function NotFound() {

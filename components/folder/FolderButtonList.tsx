@@ -1,7 +1,7 @@
-import { BookMarkBtnList } from '@/pages/folder/folderStyle';
+import { BookMarkBtnList } from '@/styles/folderStyle';
 import { memo } from 'react';
 import Button from '../common/atoms/Button';
-import { IFolderMenuButtonApi } from '@/pages/folder/interface';
+import { IFolderMenuButtonApi } from './interface';
 
 interface IButtonList {
   $menu: IFolderMenuButtonApi | null;

@@ -1,12 +1,12 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { IFolderContent} from "@/pages/folder/interface";
 import { IModal } from "../modal/interface";
 import { calculateTimeAgo } from "@/src/utils/calcTilmAgo";
 import Modal from "../modal/Modal";
 import { BookMarkBtn, CardMenu, CardWrap } from "./PostCardStyle";
 import { DFlaxAlignCenterBtw, EllipsisLine } from "@/styles/commonStyle";
 import Image from "next/image";
+import { IFolderContent } from "./interface";
 
 const emptyImg = '/assets/logo/logo.svg';
 

@@ -1,7 +1,7 @@
 import { memo } from 'react';
-import { IFolderContent } from '@/pages/folder/interface';
 import PostCard from './PostCard';
-import { EmptyBox, PostCardWrap } from '@/pages/folder/folderStyle';
+import { EmptyBox, PostCardWrap } from '@/styles/folderStyle';
+import { IFolderContent } from './interface';
 
 
 interface IFolderList {

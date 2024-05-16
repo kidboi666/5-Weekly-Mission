@@ -1,7 +1,6 @@
 interface IPageLayoutConfig {
   [key:string] : {
-    header:boolean
-    footer:boolean
+    [key:string]:boolean
   }
 }
 

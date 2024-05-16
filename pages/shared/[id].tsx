@@ -1,6 +1,6 @@
 import { ContainBody, ContainHead, Contatiner, TitleMs } from "@/styles/commonStyle";
-import { BodyInner, BoxLinkSearch, ShareHeadInner } from "../folder/folderStyle";
-import { IFolderContentApi, IFolderMenuButton } from "../folder/interface";
+import { BodyInner, BoxLinkSearch, ShareHeadInner } from "../../styles/folderStyle";
+import { IFolderContentApi, IFolderMenuButton } from "../../components/folder/interface";
 import Input from "@/components/common/atoms/Input";
 import PostCardList from "@/components/folder/PostCardList";
 import { instance } from "@/lib/axios";

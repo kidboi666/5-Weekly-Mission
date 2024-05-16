@@ -1,4 +1,4 @@
-import { LinkAddHeadInner } from "@/pages/folder/folderStyle";
+import { LinkAddHeadInner } from "@/styles/folderStyle";
 import Input from "../common/atoms/Input";
 import { memo } from "react";
 

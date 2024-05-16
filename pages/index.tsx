@@ -1,5 +1,5 @@
 import { Contatiner, TitleLs, TitleMs } from "@/styles/commonStyle";
-import { Section} from "./mainStyle";
+import { Section} from "../styles/mainStyle";
 import LinkButton from "@/components/common/atoms/LinkButton";
 
 export default function Home() {

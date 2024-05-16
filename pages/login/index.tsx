@@ -1,9 +1,9 @@
 import { FontSM, Relative } from "@/styles/commonStyle";
-import { JoinBody, JoinAccessControlBox, JoinSocial, JoinTitle, JoinWrap } from "./loginStyle";
+import { JoinBody, JoinAccessControlBox, JoinSocial, JoinTitle, JoinWrap } from "../../styles/loginStyle";
 import LinkButton from "@/components/common/atoms/LinkButton";
 import Button from "@/components/common/atoms/Button";
 import { ErrorText, FormRowBox, FormWrap } from "@/components/join/formStyle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { loginForm } from "@/components/join/interfase";
 import { joinInstance } from "@/lib/axios";
@@ -11,8 +11,8 @@ import { useRouter } from "next/router";
 
 export default function Login() {
   const router = useRouter();
-  const {register, handleSubmit, formState: { errors }, setError} = useForm<loginForm>({ mode:'onBlur' });
   const [visibility, setVisibility] = useState(false);
+  const {register, handleSubmit, formState: { errors }, setError} = useForm<loginForm>({ mode:'onBlur' });
 
   const handleLoginCheck = async (email:loginForm['email'], password:loginForm['password']) => {
     try {
@@ -34,6 +34,13 @@ export default function Login() {
     handleLoginCheck(email, password);
   }
 
+
+  useEffect(() => {
+    if(localStorage.getItem('linkbrary')) {
+      alert('로그인한 상태입니다.');
+      router.push('/folder')
+    }    
+  },[router])
   return (
     <JoinWrap className="no-header--container login__wrap">
       <JoinBody>
