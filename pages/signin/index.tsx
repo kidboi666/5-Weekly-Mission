@@ -10,7 +10,7 @@ import { joinInstance } from "@/lib/axios";
 import { useRouter } from "next/router";
 import { LayoutContext } from "@/lib/LayoutContext";
 
-export default function Login() {
+export default function SignIn() {
   const router = useRouter();
   const {setIsLoggedIn} = useContext(LayoutContext)
   const [visibility, setVisibility] = useState(false);
@@ -68,7 +68,7 @@ export default function Login() {
                    value:/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+/,
                    message:'올바른 이메일 주소가 아닙니다'
                  },
-              })} type="email" name="email" id="input__id-element" />
+              })} type="email" name="email" id="input__id-element" className={errors.email ? 'error':''}/>
               <ErrorText className="error__text">{errors.email?.message}</ErrorText>
             </FormRowBox>
             <FormRowBox className="input__password">
@@ -80,7 +80,7 @@ export default function Login() {
                     value:/^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
                     message:'비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.'
                   },
-                })} type={visibility ? 'text' : 'password'} name="password" id="input__password-element" />
+                })} type={visibility ? 'text' : 'password'} name="password" id="input__password-element" className={errors.password ? 'error':''}/>
                 <Button $btnClass={'button--input-password'} onclick={() => setVisibility((prev) => !prev)}>
                   <img src={`/assets/icon/icon-eye-${visibility ? 'on' : 'off'}.svg`} alt="비밀번호 보기" />
                 </Button>

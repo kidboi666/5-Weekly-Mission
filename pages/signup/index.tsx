@@ -75,7 +75,7 @@ export default function SignUp() {
                 },
                 onBlur: (e) => handleEmailCheck(e.target.value),
               })} 
-              type="email" id="input__id-element" placeholder="이메일을 입력해 주세요." />
+              type="email" id="input__id-element" placeholder="이메일을 입력해 주세요." className={errors.email ? 'error':''}/>
               {/* onBlur: (e) => handleEmailCheck(e.target.value) == undefined || '있는 아이디', */}
               <ErrorText className="error__text">{errors.email?.message}</ErrorText>
             </FormRowBox>
@@ -90,7 +90,7 @@ export default function SignUp() {
                   message:'비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.'
                 },
                 })} 
-                type={pwVisibility ? 'text' : 'password'} id="input__password-element" placeholder="비밀번호를 입력해 주세요." />
+                type={pwVisibility ? 'text' : 'password'} id="input__password-element" placeholder="비밀번호를 입력해 주세요." className={errors.password ? 'error':''}/>
                 <Button $btnClass={'button--input-password'} onclick={() => setPwVisibility((prev) => !prev)}>
                   <img src={`/assets/icon/icon-eye-${pwVisibility ? 'on' : 'off'}.svg`} alt="비밀번호 보기" />
                 </Button>
@@ -108,7 +108,7 @@ export default function SignUp() {
                   message:'비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.'
                 },
                 })} 
-                type={pwConfirmVisibility ? 'text' : 'password'} id="input__password-confilrm" placeholder="비밀번호 확인을 입력해 주세요." />
+                type={pwConfirmVisibility ? 'text' : 'password'} id="input__password-confilrm" placeholder="비밀번호 확인을 입력해 주세요." className={errors.passwordConfirm ? 'error':''} />
                 <Button $btnClass={'button--input-password'} onclick={() => setPwConfirmVisibility((prev) => !prev)}>
                   <img src={`/assets/icon/icon-eye-${pwConfirmVisibility ? 'on' : 'off'}.svg`} alt="비밀번호 보기" />
                 </Button>

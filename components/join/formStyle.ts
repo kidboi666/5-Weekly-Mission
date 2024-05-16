@@ -34,6 +34,10 @@ export const FormRowBox = styled.div`
         border-color: ${theme.color.primary};
       }
     }
+
+    &.error {
+      border-color: ${theme.color.red} !important;
+    }
   }
   
   .input__password-toggle {
@@ -55,15 +59,6 @@ export const FormRowBox = styled.div`
       &__off {
         display: block;
       }
-    }
-  }
-  &.error {
-    .error__text {
-      display: block;
-    }
-
-    input {
-      border-color: ${theme.color.red};
     }
   }
 
