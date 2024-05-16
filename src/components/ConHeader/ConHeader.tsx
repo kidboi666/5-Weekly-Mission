@@ -4,20 +4,22 @@ import Image from "next/image";
 interface FolderData {
   id: number;
   name: string;
-  owner: {
-    id: number;
-    name: string;
-    profileImageSource: string;
-  };
-  links: {
-    id: number;
-    createdAt: string;
-    url: string;
-    title: string;
-    description: string;
-    imageSource?: string;
-  }[];
+  owner: FolderDataOwner;
+  links: folderLinks[];
   count: number;
+}
+interface FolderDataOwner {
+  id: number;
+  name: string;
+  profileImageSource: string;
+}
+interface folderLinks {
+  id: number;
+  createdAt: string;
+  url: string;
+  title: string;
+  description: string;
+  imageSource?: string;
 }
 
 function ConHeader({ folderData }: { folderData: FolderData | null }) {

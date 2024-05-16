@@ -8,20 +8,22 @@ import { fetchData } from "@/src/fetchUtils/index";
 interface FolderData {
   id: number;
   name: string;
-  owner: {
-    id: number;
-    name: string;
-    profileImageSource: string;
-  };
-  links: {
-    id: number;
-    createdAt: string;
-    url: string;
-    title: string;
-    description: string;
-    imageSource?: string;
-  }[];
+  owner: FolderDataOwner;
+  links: folderLinks[];
   count: number;
+}
+interface FolderDataOwner {
+  id: number;
+  name: string;
+  profileImageSource: string;
+}
+interface folderLinks {
+  id: number;
+  createdAt: string;
+  url: string;
+  title: string;
+  description: string;
+  imageSource?: string;
 }
 
 interface CardListData {
