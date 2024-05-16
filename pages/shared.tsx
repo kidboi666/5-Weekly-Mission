@@ -5,44 +5,14 @@ import CardList from "@/src/components/CardList/CardList";
 import { useEffect, useState } from "react";
 import { fetchData } from "@/src/fetchUtils/index";
 
-interface FolderData {
-  id: number;
-  name: string;
-  owner: FolderDataOwner;
-  links: folderLinks[];
-  count: number;
-}
-interface FolderDataOwner {
-  id: number;
-  name: string;
-  profileImageSource: string;
-}
-interface folderLinks {
-  id: number;
-  createdAt: string;
-  url: string;
-  title: string;
-  description: string;
-  imageSource?: string;
-}
-
-interface CardListData {
-  id: number;
-  createdAt: string;
-  url: string;
-  title: string;
-  description: string;
-  imageSource?: string;
-}
-
 interface FetchSharedResponse {
-  cardListData: CardListData[];
+  cardListData: folderLinks[];
   folderData: FolderData;
 }
 
 function Shared() {
   const [folderData, setFolderData] = useState<FolderData | null>(null);
-  const [cardListData, setCardListData] = useState<CardListData[]>([]);
+  const [cardListData, setCardListData] = useState<folderLinks[]>([]);
   const [searchInputValue, setSearchInputValue] = useState<string>("");
 
   useEffect(() => {

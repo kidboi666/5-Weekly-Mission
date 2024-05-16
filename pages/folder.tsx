@@ -8,28 +8,6 @@ import useModal from "@/src/hooks/useModal";
 import ModalContext from "@/src/components/Modal/ModalContext";
 import ModalContainer from "@/src/components/Modal/ModalContainer";
 
-interface FolderTabDataList {
-  id: number;
-  createdAt: string;
-  favorite: boolean;
-  link: {
-    count: number;
-  };
-  name: string;
-  userId: number;
-}
-
-interface UserFolderdataList {
-  id: number;
-  createdAt: string;
-  description?: string;
-  folderId?: number;
-  title?: string;
-  updatedAt?: string;
-  url: string;
-  imageSource?: string;
-}
-
 function Folder() {
   const [folderTabDataList, setFolderTabDataList] = useState<FolderTabDataList[]>([]);
   const [userFolderDataList, setUserFolderDataList] = useState<UserFolderdataList[]>();

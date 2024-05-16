@@ -2,27 +2,7 @@ import styles from "@/src/components/CardList/CardList.module.css";
 import Card from "../Card/Card";
 import { useRouter } from "next/router";
 
-interface CardListData {
-  id: number;
-  createdAt: string;
-  url: string;
-  title: string;
-  description: string;
-  imageSource?: string;
-}
-
-interface UserFolderCardData {
-  id: number;
-  createdAt: string;
-  description?: string;
-  folderId?: number;
-  title?: string;
-  updatedAt?: string;
-  url: string;
-  imageSource?: string;
-}
-
-function renderCardList(cardData: CardListData[] | UserFolderCardData[] | undefined) {
+function renderCardList(cardData: folderLinks[] | UserFolderdataList[] | undefined) {
   if (!cardData) return null;
 
   return (
@@ -39,8 +19,8 @@ function CardList({
   userFolderDataList,
   searchInputValue,
 }: {
-  cardListData?: CardListData[];
-  userFolderDataList?: UserFolderCardData[];
+  cardListData?: folderLinks[];
+  userFolderDataList?: UserFolderdataList[];
   searchInputValue: string;
 }) {
   const router = useRouter();
