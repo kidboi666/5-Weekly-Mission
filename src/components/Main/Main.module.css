@@ -1,0 +1,122 @@
+.imgBox {
+  width: 34.375rem;
+  height: 28.125rem;
+  background: rgba(240, 246, 255, 1);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.imgBox > img {
+  width: 100%;
+}
+
+.section01 {
+  background: url(../../assets/images/main/sec01_img.png) no-repeat center bottom 0
+    rgba(240, 246, 255, 1);
+  text-align: center;
+  padding: 10.1875rem 0 39.375rem;
+}
+
+.section01 > h2 {
+  margin: 0 0 2.5rem;
+}
+
+.section02 ul > li {
+  margin: 6.25rem 0 0;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section02 ul > li:first-child {
+  margin: 7.5rem 0 0;
+}
+
+.section02 ul > li:nth-child(1) .textGradient {
+  background: linear-gradient(95.63deg, #fe8a8a 1.72%, #a4ceff 74.97%) text;
+}
+
+.section02 ul > li:nth-child(2) .textGradient {
+  background: linear-gradient(277.01deg, #6fbaff 11.22%, #ffd88b 93.66%) text;
+}
+
+.section02 ul > li:nth-child(3) .textGradient {
+  background: linear-gradient(99.5deg, #6d7ccd 44.76%, rgba(82, 136, 133, 0.22) 100%) text;
+}
+
+.section02 ul > li:nth-child(4) .textGradient {
+  background: linear-gradient(271.36deg, #fe578f -200%, #68e8f9 107.18%) text;
+}
+
+.section02 ul > li p {
+  margin: 0.625rem 0 0;
+}
+
+@media (max-width: 1199px) {
+  /* 타블렛 */
+
+  .section01 {
+    background-size: 693px;
+    padding: 8.3125rem 0 23.125rem;
+  }
+
+  .wrap {
+    width: 43.625rem;
+  }
+
+  .imgBox {
+    width: 24.0625rem;
+    height: 19.6875rem;
+  }
+}
+
+@media (max-width: 767px) {
+  /* 모바일 */
+
+  .br {
+    display: inline-block;
+    content: "";
+  }
+
+  .wrap {
+    width: auto;
+    padding: 0 2rem;
+  }
+
+  .imgBox {
+    width: 100%;
+    height: 16.5625rem;
+    margin: 1.25rem 0 1rem;
+    position: relative;
+  }
+
+  .imgBox > img {
+    height: 100%;
+  }
+
+  .section01 {
+    background-size: 325px;
+    padding: 5.6875rem 0 11.5rem;
+  }
+
+  .section01 > h2 {
+    margin: 0 0 1.5rem;
+  }
+
+  .section02 ul > li {
+    margin: 11.9375rem 0 0;
+    position: relative;
+    flex-direction: column;
+    align-items: baseline;
+  }
+
+  .section02 ul > li:nth-child(2n) h3 {
+    position: absolute;
+    left: 0;
+    top: -1.75rem;
+  }
+
+  .section02 ul > li p {
+    position: absolute;
+    bottom: -2.8rem;
+  }
+}
