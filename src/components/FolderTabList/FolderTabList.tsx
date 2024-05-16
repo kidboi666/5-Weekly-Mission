@@ -30,21 +30,24 @@ interface UserFolderdataList {
 
 interface FolderTabListInterface {
   folderTabDataList: FolderTabDataList[];
+  forderDataId: number;
   setUserFolderDataList: (data: UserFolderdataList[]) => void;
   setFolderTabName: (name: string | null) => void;
+  setForderDataId: (id: number) => void;
 }
 
 function FolderTabList({
   folderTabDataList,
   setUserFolderDataList,
   setFolderTabName,
+  forderDataId,
+  setForderDataId,
 }: FolderTabListInterface) {
-  const [buttonClass, setButtonClass] = useState<number>(0);
   const [name, setName] = useState<string>();
 
   const onClickButton = useCallback(
     async (id: number, name: string) => {
-      setButtonClass(id);
+      setForderDataId(id);
       setName(name);
       setFolderTabName(name);
       try {
@@ -58,11 +61,11 @@ function FolderTabList({
         }
       }
     },
-    [setUserFolderDataList, setFolderTabName]
+    [setUserFolderDataList, setFolderTabName, setForderDataId]
   );
 
   const onClickTotalButton = useCallback(async () => {
-    setButtonClass(0);
+    setForderDataId(0);
     try {
       const response = await userFoldersData();
       const data = response.data;
@@ -73,7 +76,6 @@ function FolderTabList({
       }
     }
   }, [setUserFolderDataList]);
-
   return (
     <>
       <div className={styles.tabWrap}>
@@ -81,7 +83,9 @@ function FolderTabList({
           <li>
             <button
               className={
-                buttonClass === 0 ? `${styles.select} ${styles.tabListBtn}` : `${styles.tabListBtn}`
+                forderDataId === 0
+                  ? `${styles.select} ${styles.tabListBtn}`
+                  : `${styles.tabListBtn}`
               }
               onClick={() => onClickTotalButton()}
             >
@@ -91,7 +95,7 @@ function FolderTabList({
           {folderTabDataList.map((data) => {
             return (
               <li key={data.id}>
-                <Button data={data} onClickButton={onClickButton} buttonClass={buttonClass} />
+                <Button data={data} onClickButton={onClickButton} forderDataId={forderDataId} />
               </li>
             );
           })}
@@ -99,8 +103,8 @@ function FolderTabList({
         <FolderAddButton />
       </div>
       <div className={styles.cardTitleWrap}>
-        <h3 className={styles.cardTitle}>{buttonClass === null ? "전체" : name}</h3>
-        {buttonClass !== null ? <CardTitleIcon /> : null}
+        <h3 className={styles.cardTitle}>{forderDataId === 0 ? "전체" : name}</h3>
+        {forderDataId !== null ? <CardTitleIcon /> : null}
       </div>
     </>
   );

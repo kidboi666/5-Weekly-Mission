@@ -28,6 +28,7 @@ function Folder() {
   const [cardUrl, setCardUrl] = useState("");
   const [folderTabName, setFolderTabName] = useState<string | null>("");
   const [searchInputValue, setSearchInputValue] = useState<string>("");
+  const [forderDataId, setForderDataId] = useState<number>(0);
 
   useEffect(() => {
     async function fetchDataAndSetState() {
@@ -53,7 +54,9 @@ function Folder() {
 
   return (
     <div className="content-wrap">
-      <ModalContext.Provider value={{ isOpen, openModal, closeModal, setModalType, setCardUrl }}>
+      <ModalContext.Provider
+        value={{ isOpen, openModal, closeModal, setModalType, setCardUrl, forderDataId }}
+      >
         <AddLinkForm />
         <ModalContainer
           modalType={modalType}
@@ -67,6 +70,8 @@ function Folder() {
             folderTabDataList={folderTabDataList}
             setUserFolderDataList={setUserFolderDataList}
             setFolderTabName={setFolderTabName}
+            forderDataId={forderDataId}
+            setForderDataId={setForderDataId}
           />
           <CardList userFolderDataList={userFolderDataList} searchInputValue={searchInputValue} />
         </div>
