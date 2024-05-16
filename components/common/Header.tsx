@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from "react";
-import { instance } from "@/lib/axios";
-import { Email, HeaderControl, HeaderInner, HeaderLogo, HeaderUserInfo, HeaderWrap } from "./headerStyle";
+import { joinInstance } from "@/lib/axios";
+import { Email, HeaderControl, HeaderInner, HeaderLogo, HeaderWrap } from "./headerStyle";
 import { useRouter } from "next/router";
 import { Profile } from "@/styles/commonStyle";
 import LinkButton from "./atoms/LinkButton";
 import Link from "next/link";
-import Image from "next/image";
 import { LayoutContext } from "@/lib/LayoutContext";
 import { pageLayoutConfig, urlName } from "@/src/constant/layoutConfig";
+import Button from "./atoms/Button";
 
 const logo = '/assets/logo/logo.svg';
 
@@ -20,36 +20,42 @@ export interface IHeaderUser {
   auth_id:string
 }
 
-export interface IHeaderUserLoginInfoApi {
-  userInfo?: {
-    data: IHeaderUser[];
-  };
-}
 
-export async function getStaticProps() {
-  const res = await instance.get(``);
-  const userInfo = res.data;
-
-  return {
-    props:{
-      userInfo,
-    }
-  }
-}
-
-function Header({userInfo}:IHeaderUserLoginInfoApi) {
+function Header() {
   const { pathname } = useRouter();
   const results: urlName = pathname.split('/')[1];
   const layoutConfig = pageLayoutConfig[results] || { header: true };
-  const {headerShow, setHeaderShow} = useContext(LayoutContext)
+  const {headerShow, setHeaderShow, isLoggedIn, setIsLoggedIn} = useContext(LayoutContext)
   const [fixed, setFixed] = useState(true);
+  const [userInfo, setUserInfo] = useState<IHeaderUser | null>();
+
+  const handleUserinfo = async () => {
+    const res = await joinInstance.get(`/sample/user`);
+    setUserInfo(JSON.parse(JSON.stringify(res.data)));
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem('linkbrary');
+    if(setIsLoggedIn) setIsLoggedIn(false);
+  }
+
+  useEffect(() => { // 유저정보
+    handleUserinfo();
+    if(setIsLoggedIn) {
+      if(localStorage.getItem('linkbrary')){
+        setIsLoggedIn(true)
+      } else {
+        setIsLoggedIn(false)
+      }
+    }
+  },[])
   
-  useEffect(() => {
+  useEffect(() => { // 페이지 컴포넌트 유무
     if (setHeaderShow) {
       setHeaderShow(layoutConfig.header);
     }
   }, [pathname]);
-  
+
   if(!headerShow) return null;
   return (
     <HeaderWrap className="head__wrap" $position={fixed}>
@@ -60,11 +66,11 @@ function Header({userInfo}:IHeaderUserLoginInfoApi) {
           </Link>
         </HeaderLogo>
         <HeaderControl className="head__login__box">
-          {userInfo ? (
-            <HeaderUserInfo>
+          {isLoggedIn ? (
+            <Button onclick={handleLogout}>
               <Profile></Profile>
-              <Email>{userInfo?.data[0].email}</Email>
-            </HeaderUserInfo>
+              <Email>{userInfo?.email}</Email>
+            </Button>
           ) : (
             <LinkButton $link={'/login'} $linkClass={'link--gradient link--login large'}>
               로그인

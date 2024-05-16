@@ -1,6 +1,7 @@
-import { DFlaxAlignCenter, DFlaxAlignCenterBtw } from "@/styles/commonStyle";
+import { DFlaxAlignCenter, DFlaxAlignCenterBtw, dflexCenter } from "@/styles/commonStyle";
 import { theme } from "@/styles/theme";
 import styled from "styled-components";
+import Button from "./atoms/Button";
 
 export const HeaderWrap = styled.header<{$position:boolean | undefined}>`
   position: ${({$position})=> $position ? 'fixed' : 'absolute'};
@@ -34,10 +35,13 @@ export const HeaderLogo = styled.h1`
     }
   }
 `
-export const HeaderControl = styled.div``
-export const HeaderUserInfo = styled(DFlaxAlignCenter)`
-  gap: 0.375rem;
+export const HeaderControl = styled.div`
+  button {
+    ${dflexCenter};
+    gap: 0.375rem;
+  }
 `
+
 export const Email = styled.span`
   color: ${theme.color.gray3};
   @media screen and (max-width: ${theme.screenSize.moLarge}) {

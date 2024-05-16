@@ -158,6 +158,7 @@ export interface IProfileImg {
 }
 
 export const Profile = styled.span<IProfileImg>`
+  display: block;
   width: 28px;
   height: 28px;
   border-radius: 50em;

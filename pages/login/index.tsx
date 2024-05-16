@@ -3,14 +3,16 @@ import { JoinBody, JoinAccessControlBox, JoinSocial, JoinTitle, JoinWrap } from 
 import LinkButton from "@/components/common/atoms/LinkButton";
 import Button from "@/components/common/atoms/Button";
 import { ErrorText, FormRowBox, FormWrap } from "@/components/join/formStyle";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { loginForm } from "@/components/join/interfase";
 import { joinInstance } from "@/lib/axios";
 import { useRouter } from "next/router";
+import { LayoutContext } from "@/lib/LayoutContext";
 
 export default function Login() {
   const router = useRouter();
+  const {setIsLoggedIn} = useContext(LayoutContext)
   const [visibility, setVisibility] = useState(false);
   const {register, handleSubmit, formState: { errors }, setError} = useForm<loginForm>({ mode:'onBlur' });
 
@@ -19,7 +21,8 @@ export default function Login() {
       const res = await joinInstance.post('/sign-in',{email, password});
       const { data } = res;
       if(data) {
-        localStorage.setItem('linkbrary', data.data.accessToken)
+        if(setIsLoggedIn) setIsLoggedIn(true);
+        localStorage.setItem('linkbrary', data.data.accessToken);
         router.push('/folder');
       }
     } catch {

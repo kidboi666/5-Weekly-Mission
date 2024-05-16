@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes } from 'react';
 import { ButtonModule } from './buttonStyle';
 interface IButtonModule {
   children: React.ReactNode;
-  $btnClass: string;
+  $btnClass?: string;
   $BeforButtonIcon?: string;
   $id?: string;
   $afterButtonIcon?: string;
