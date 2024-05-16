@@ -3,7 +3,7 @@ import { BodyInner, BoxLinkSearch, ShareHeadInner } from "../folder/folderStyle"
 import { IFolderContentApi, IFolderMenuButton } from "../folder/interface";
 import Input from "@/components/common/atoms/Input";
 import PostCardList from "@/components/folder/PostCardList";
-import axios from "@/lib/axios";
+import { instance } from "@/lib/axios";
 import { useRouter } from "next/router";
 import { GetServerSidePropsContext } from "next";
 
@@ -15,8 +15,8 @@ export async function getServerSideProps(contaxt:GetServerSidePropsContext) {
   let $content;
   const { query } = contaxt;
   try {
-    const resTitle = await axios.get(`/folders/${query.id}`);
-    const resContent = await axios.get(`/links?folderId=${query.id}`);
+    const resTitle = await instance.get(`/folders/${query.id}`);
+    const resContent = await instance.get(`/links?folderId=${query.id}`);
     $title = resTitle.data;
     $content = resContent.data;
     if(!$title.data[0]) {

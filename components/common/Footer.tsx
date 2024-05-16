@@ -9,7 +9,7 @@ import {
 import { imageSnsArr } from "@/src/constant/snsLink";
 import { useRouter } from "next/router";
 import { pageLayoutConfig, urlName } from "@/src/constant/layoutConfig";
-import { useContext, useLayoutEffect } from "react";
+import { useContext, useEffect } from "react";
 import { LayoutContext } from "@/lib/LayoutContext";
 import LinkButton from "./atoms/LinkButton";
 
@@ -19,7 +19,7 @@ function Footer() {
   const layoutConfig = pageLayoutConfig[results] || { footer: true };
   const {headerShow, setHeaderShow} = useContext(LayoutContext)
   
-  useLayoutEffect(()=>{
+  useEffect(()=>{
     if (setHeaderShow) {
       setHeaderShow(layoutConfig.footer);
     }

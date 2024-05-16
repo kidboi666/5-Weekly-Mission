@@ -1,6 +1,6 @@
-import { BoxLinkSearch } from "@/pages/folder/folderStyle";
+import { BoxLinkSearch, SearchResults } from "@/pages/folder/folderStyle";
 import Input from "../common/atoms/Input";
-import { memo } from "react";
+import { memo, useState } from "react";
 
 interface ISearch {
   $inputIconImg: string;
@@ -8,6 +8,11 @@ interface ISearch {
 }
 
 function SearchInputBox({ $inputIconImg, onchange }: ISearch) {
+  const [value, setValue] = useState('')
+  const handleSearchResult = (value:string) => {
+    setValue(value)
+  }
+
   return (
     <BoxLinkSearch>
       <Input
@@ -17,10 +22,11 @@ function SearchInputBox({ $inputIconImg, onchange }: ISearch) {
         $btnShow={true}
         $btnClass={'button--modal-close'}
         $clickEvent={'reset'}
-        onchange={onchange}
+        onchange={handleSearchResult}
       >
         <img src="/assets/icon/icon_close.svg" alt="닫기" />
       </Input>
+      {value && <SearchResults><span>{value}</span> 으로 검색한 결과입니다.</SearchResults>}
     </BoxLinkSearch>
   );
 }

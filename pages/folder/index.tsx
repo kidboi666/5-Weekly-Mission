@@ -12,7 +12,7 @@ import { IModal } from "@/components/modal/interface";
 import Loading from "@/components/loading/Loading";
 import { BodyInner, BookmarkBox, FolderContainHead } from "./folderStyle";
 import { IFolderContentApi, IFolderMenuButtonApi} from "./interface";
-import axios from "@/lib/axios";
+import { instance } from "@/lib/axios";
 import { useRouter } from "next/router";
 import { GetServerSidePropsContext } from "next";
 
@@ -26,11 +26,11 @@ export async function getServerSideProps(contaxt:GetServerSidePropsContext) {
   const { query } = contaxt;
   try {
     let resContent ;
-    const resMenu = await axios.get(`/folders`);
+    const resMenu = await instance.get(`/folders`);
     if(query.id) {
-      resContent = await axios.get(`/links?folderId=${query.id}`);
+      resContent = await instance.get(`/links?folderId=${query.id}`);
     } else {
-      resContent = await axios.get(`/links`);
+      resContent = await instance.get(`/links`);
     }
     $menu = resMenu.data;
     $content = resContent.data;

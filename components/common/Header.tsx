@@ -1,5 +1,5 @@
-import { useContext, useEffect, useLayoutEffect, useState } from "react";
-import axios from "@/lib/axios";
+import { useContext, useEffect, useState } from "react";
+import { instance } from "@/lib/axios";
 import { Email, HeaderControl, HeaderInner, HeaderLogo, HeaderUserInfo, HeaderWrap } from "./headerStyle";
 import { useRouter } from "next/router";
 import { Profile } from "@/styles/commonStyle";
@@ -27,7 +27,7 @@ export interface IHeaderUserLoginInfoApi {
 }
 
 export async function getStaticProps() {
-  const res = await axios.get(``);
+  const res = await instance.get(``);
   const userInfo = res.data;
 
   return {
@@ -44,7 +44,7 @@ function Header({userInfo}:IHeaderUserLoginInfoApi) {
   const {headerShow, setHeaderShow} = useContext(LayoutContext)
   const [fixed, setFixed] = useState(true);
   
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (setHeaderShow) {
       setHeaderShow(layoutConfig.header);
     }

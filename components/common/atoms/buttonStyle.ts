@@ -68,6 +68,20 @@ export const ButtonModule = styled.button<{
         padding-top: 10px;
       }
     }
+    &--input {
+      &-password {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 1rem;
+        z-index: 1;
+        img {
+          width: 16px;
+          height: 20px;
+        }
+      }
+    }
   }
 
   &.large {

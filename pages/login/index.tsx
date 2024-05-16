@@ -2,10 +2,11 @@ import { FontSM, Relative } from "@/styles/commonStyle";
 import { JoinBody, JoinAccessControlBox, JoinSocial, JoinTitle, JoinWrap } from "./loginStyle";
 import LinkButton from "@/components/common/atoms/LinkButton";
 import Button from "@/components/common/atoms/Button";
-import { ErrorText, FormRowBox, FormWrap } from "@/components/common/form/formStyle";
+import { ErrorText, FormRowBox, FormWrap } from "@/components/join/formStyle";
 
 export default function Login() {
-  return   (
+  
+  return (
     <JoinWrap className="no-header--container login__wrap">
       <JoinBody>
         <JoinTitle>
@@ -32,7 +33,7 @@ export default function Login() {
                 <input type="password" name="password" id="input__password-element" />
                 <button type="button" className="input__toggle btn__pw">
                   <img src="/assets/icon/icon-eye-on.svg" alt="비밀번호 보기" className="pw__on" />
-                  <img src="/assets/icon/icon-eye-off.svg" alt="비밀번호 숨기기" className="pw__off" />
+                  {/* <img src="/assets/icon/icon-eye-off.svg" alt="비밀번호 숨기기" className="pw__off" /> */}
                 </button>
               </Relative>
               <ErrorText className="error__text"></ErrorText>

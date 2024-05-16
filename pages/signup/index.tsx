@@ -1,10 +1,59 @@
 import { FontSM, Relative } from "@/styles/commonStyle";
 import LinkButton from "@/components/common/atoms/LinkButton";
 import Button from "@/components/common/atoms/Button";
-import { ErrorText, FormRowBox, FormWrap } from "@/components/common/form/formStyle";
+import { ErrorText, FormRowBox, FormWrap } from "@/components/join/formStyle";
 import { JoinAccessControlBox, JoinBody, JoinTitle, JoinWrap, JoinSocial } from "../login/loginStyle";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { joinInstance } from "@/lib/axios";
+import { useRouter } from "next/router";
+
+interface IFormValues {
+  signUpEmail: string;
+  signUpPassword:string;
+  signUpPasswordConfirm:string;
+}
+
+type fomInitial = keyof IFormValues;
 
 export default function SignUp() {
+  const router = useRouter();
+  const [pwVisibility, setPwVisibility] = useState<Boolean>(false)
+  const [pwConfirmVisibility, setPwConfirmVisibility] = useState<Boolean>(false)
+  const {register, handleSubmit, formState: {errors}, setError, setValue} = useForm<IFormValues>({mode:'onBlur'})
+
+  const handleEmailCheck = async (data:IFormValues['signUpEmail']) => {
+    let response ;
+    try {
+      response = await joinInstance.post('/check-email', { email: data });
+      if(response?.status === 200 ) {
+        return true;
+      } 
+    } catch {
+      setError("signUpEmail", { message :  "사용중인 이메일 입니다." },{ shouldFocus:true });
+      return ;
+    }
+  }
+
+  const handlePassWordCheck = (password:IFormValues['signUpPassword'], passwordConfirm:IFormValues['signUpPasswordConfirm']) => {
+    if(password !== passwordConfirm) {
+      setError("signUpPasswordConfirm", { message :  "비밀번호가 다릅니다." },{ shouldFocus:true });
+    }
+  }
+
+  const onValid =  (data:IFormValues) => {
+    const reset = Object.keys(data);
+
+    // 비밀번호 같은지 확인
+    handlePassWordCheck(data.signUpPassword, data.signUpPasswordConfirm)
+
+    // input 초기화
+    for (let key of reset) {
+      setValue(key as fomInitial , '')  ;
+    }
+
+    router.push('/folder')
+  }
   return   (
     <JoinWrap className="no-header--container login__wrap">
       <JoinBody>
@@ -20,35 +69,60 @@ export default function SignUp() {
           </LinkButton>
         </JoinAccessControlBox>
         <FormWrap>
-          <form>
+          <form onSubmit={handleSubmit(onValid)}>
+              {/* 이메일 */}
             <FormRowBox className="input__id">
               <label htmlFor="input__id-element" className="input__id-label">이메일</label>
-              <input type="text" name="email" id="input__id-element" />
-              <ErrorText className="error__text"></ErrorText>
+              <input {...register("signUpEmail", { 
+                required:'이메일을 입력해 주세요.',
+                pattern: {
+                  value:/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+/,
+                  message:'올바른 이메일 주소가 아닙니다'
+                },
+                validate: (value) => !value.includes('no'),
+                onBlur: (e) => handleEmailCheck(e.target.value),
+              })} 
+              type="text" id="input__id-element" placeholder="이메일을 입력해 주세요." />
+              {/* onBlur: (e) => handleEmailCheck(e.target.value) == undefined || '있는 아이디', */}
+              <ErrorText className="error__text">{errors.signUpEmail?.message}</ErrorText>
             </FormRowBox>
+            {/* 비밀번호 */}
             <FormRowBox className="input__password">
               <label htmlFor="input__password-element" className="input__password-label">비밀번호</label>
               <Relative>
-                <input type="password" name="password" id="input__password-element" />
-                <button type="button" className="input__password-toggle btn__pw">
-                  <img src="/assets/icon/icon-eye-on.svg" alt="비밀번호 보기" className="pw__on" />
-                  <img src="/assets/icon/icon-eye-off.svg" alt="비밀번호 숨기기" className="pw__off" />
-                </button>
+              <input {...register("signUpPassword", { 
+                required:'비밀번호를 입력해 주세요', 
+                pattern: {
+                  value:/^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+                  message:'비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.'
+                },
+                })} 
+                type={pwVisibility ? 'text' : 'password'} id="input__password-element" placeholder="비밀번호를 입력해 주세요." />
+                <Button $btnClass={'button--input-password'} onclick={() => setPwVisibility((prev) => !prev)}>
+                  <img src={`/assets/icon/icon-eye-${pwVisibility ? 'on' : 'off'}.svg`} alt="비밀번호 보기" />
+                </Button>
               </Relative>
-              <ErrorText className="error__text"></ErrorText>
+              <ErrorText className="error__text">{errors.signUpPassword?.message}</ErrorText>
             </FormRowBox>
+            {/* 비밀번호 확인*/}
             <FormRowBox className="input__password__confilrm">
               <label htmlFor="input__password-confilrm" className="input__password-label">비밀번호 확인</label>
               <Relative>
-                <input type="password" name="password" id="input__password-confilrm" />
-                <button type="button" className="input__password-toggle btn__pw-comfilrm">
-                  <img src="/assets/icon/icon-eye-on.svg" alt="비밀번호 보기" className="pw__on" />
-                  <img src="/assets/icon/icon-eye-off.svg" alt="비밀번호 숨기기" className="pw__off" />
-                </button>
+              <input {...register("signUpPasswordConfirm", { 
+                required:'비밀번호를 다시 한번 입력해 주세요', 
+                pattern: {
+                  value:/^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+                  message:'비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.'
+                },
+                })} 
+                type={pwConfirmVisibility ? 'text' : 'password'} id="input__password-confilrm" placeholder="비밀번호 확인을 입력해 주세요." />
+                <Button $btnClass={'button--input-password'} onclick={() => setPwConfirmVisibility((prev) => !prev)}>
+                  <img src={`/assets/icon/icon-eye-${pwConfirmVisibility ? 'on' : 'off'}.svg`} alt="비밀번호 보기" />
+                </Button>
               </Relative>
-              <ErrorText className="error__text"></ErrorText>
+              <ErrorText className="error__text">{errors.signUpPasswordConfirm?.message}</ErrorText>
             </FormRowBox>
-            <Button $btnClass={`button--gradient large btn_login`}>회원가입</Button>
+            <Button $type="submit" $btnClass={`button--gradient large btn_login`}>회원가입</Button>
           </form>
         </FormWrap>
         <JoinSocial>

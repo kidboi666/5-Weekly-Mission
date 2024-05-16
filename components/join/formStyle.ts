@@ -21,7 +21,8 @@ export const FormRowBox = styled.div`
   input {
     &[type=password],
     &[type=text],
-    &[type=number] {
+    &[type=number], 
+    &[type=email] {
       padding: 1.125rem 0.938rem;
       width: 100%;
       line-height: 1.5rem;
@@ -55,17 +56,6 @@ export const FormRowBox = styled.div`
         display: block;
       }
     }
-    /* &__off {
-      top: calc(50% - 1px);
-      .pw {
-        &__on {
-          display: block;
-        }
-        &__off {
-          display: none;
-        }
-      }
-    } */
   }
   &.error {
     .error__text {
@@ -83,7 +73,7 @@ export const FormRowBox = styled.div`
 `
 
 export const ErrorText = styled.div`
-  display: none;
+  /* display: none; */
   padding: 0.375rem 0 0;
   font-size: ${theme.font.s};
   color: ${theme.color.red};
