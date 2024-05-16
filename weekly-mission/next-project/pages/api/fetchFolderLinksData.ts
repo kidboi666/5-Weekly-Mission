@@ -12,10 +12,7 @@ export interface LinkData {
 }
 
 export async function fetchLinkData(folderId: FolderId) {
-  let query = "";
-  if (folderId) {
-    query = `?folderId=${folderId}`;
-  }
+  const query = folderId ? `?folderId=${folderId}` : "";
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BASE_URL}/users/1/links${query}`
   );

@@ -43,9 +43,9 @@ const useFolderList = (): FolderListState => {
         const fetchedData = await response.json();
 
         setData(fetchedData);
-        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching folders data:", error);
+      } finally {
         setIsLoading(false);
       }
     };

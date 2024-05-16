@@ -6,12 +6,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button = ({ children, btnType, onClick }: ButtonProps) => {
-  const buttonClass =
-    btnType === "primary"
-      ? styles.primary
-      : btnType === "red"
-      ? styles.red
-      : "";
+  const buttonClass = btnType ? styles[btnType] : "";
   return (
     <button
       className={`${styles.StyledButton} ${buttonClass}`}

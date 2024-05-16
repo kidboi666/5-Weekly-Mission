@@ -4,9 +4,6 @@ import shareIcon from "../../images/share.svg";
 import deleteIcon from "../../images/delete.png";
 import renameIcon from "../../images/pen.png";
 import Image from "next/image";
-import Modal from "../Modal";
-import { useModal } from "src/context/ModalContext";
-import { FolderId } from "@components/Folder";
 import styles from "./ActionButton.module.css";
 
 interface ActiveButtonProps {
