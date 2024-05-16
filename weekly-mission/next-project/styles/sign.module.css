@@ -1,0 +1,7 @@
+.sign_container {
+  background-color: #f0f6ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150vh;
+}

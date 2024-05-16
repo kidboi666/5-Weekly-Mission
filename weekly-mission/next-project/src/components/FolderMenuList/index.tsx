@@ -1,13 +1,12 @@
 import React from "react";
 import AllButton from "@components/AllButton";
-import { Folder } from "@api/useFoldersByUserId";
-import { FolderId } from "@components/Folder";
+import { Folder } from "pages/service/useFoldersByUserId";
 import styles from "./FolderMenuList.module.css";
 
 interface FolderMenuListProps {
   folders: Folder;
-  activeButton: FolderId;
-  handleButtonClick: (folderId: FolderId, folderName: string) => void;
+  activeButton: number | string | null;
+  handleButtonClick: (folderId: number | null, folderName: string) => void;
 }
 
 const FolderMenuList = ({

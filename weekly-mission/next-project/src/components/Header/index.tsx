@@ -1,7 +1,7 @@
 import React from "react";
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import useFolderList from "@api/useFolderList";
+import useFolderList from "pages/service/useFolderList";
 import AddFolderLink from "../AddFolderLinkBar";
 import styles from "./Header.module.css";
 

@@ -4,13 +4,13 @@ import SearchBar from "@components/Searchbar";
 import FolderMenuList from "@components/FolderMenuList";
 import FolderContent from "@components/FolderContent";
 import AddButton from "@components/AddButton";
-import { fetchLinkData } from "@api/fetchFolderLinksData";
-import { LinkData } from "@api/fetchFolderLinksData";
-import useFoldersByUserId from "@api/useFoldersByUserId";
+import { fetchLinkData } from "pages/service/fetchFolderLinksData";
+import { LinkData } from "pages/service/fetchFolderLinksData";
+import useFoldersByUserId from "pages/service/useFoldersByUserId";
 import styles from "./Folder.module.css";
 import { get } from "http";
 
-export type FolderId = number | string | null;
+type FolderId = number | string | null;
 
 interface FolderProps {
   folderId: string;

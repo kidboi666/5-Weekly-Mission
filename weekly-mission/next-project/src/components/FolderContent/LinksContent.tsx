@@ -4,8 +4,7 @@ import NoLink from "@components/NoLink";
 import ActionButton from "@components/ActionButton";
 import Modal from "@components/Modal";
 import { useModal } from "src/context/ModalContext";
-import { Folder } from "@api/useFoldersByUserId";
-import { FolderId } from "@components/Folder";
+import { Folder } from "pages/service/useFoldersByUserId";
 
 import styles from "./LinksContent.module.css";
 
@@ -20,7 +19,7 @@ interface LinksContentProps {
     image_source?: string;
   }[];
   activeFolderName: string;
-  activeFolderId: FolderId;
+  activeFolderId: number;
 }
 
 const LinksContent = ({

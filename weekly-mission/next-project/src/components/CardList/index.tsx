@@ -1,7 +1,7 @@
 import React from "react";
 import SearchBar from "@components/Searchbar";
 import Folder from "../Folder";
-import useFolderList from "@api/useFolderList";
+import useFolderList from "pages/service/useFolderList";
 import { memo } from "react";
 import Card from "../Card";
 import styles from "./CardList.module.css";

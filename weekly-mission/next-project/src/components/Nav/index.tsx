@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import profileImage from "../../images/profileimg.jpg";
 import LinkbraryImage from "../../images/Linkbrary.png";
-import useProfileData from "@api/useProfileData";
+import useProfileData from "pages/service/useProfileData";
 import styles from "./Nav.module.css";
 
 const Nav = () => {

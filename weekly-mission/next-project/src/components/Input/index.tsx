@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState } from "react";
 import styles from "./InputField.module.css";
 
 interface InputFieldProps {
-  type: "email" | "password";
+  type: "email" | "password" | "confirmPassword";
   label: string;
   placeholder: string;
 }
@@ -15,8 +15,8 @@ const InputField: React.FC<InputFieldProps> = ({
   const [value, setValue] = useState<string>("");
   const [error, setError] = useState<string>("");
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
   };
 
   const handleBlur = () => {
@@ -34,6 +34,10 @@ const InputField: React.FC<InputFieldProps> = ({
         setError("비밀번호를 입력하세요.");
         return;
       }
+      if (value.length < 8 || !/[a-zA-Z]/.test(value) || !/\d/.test(value)) {
+        setError("비밀번호는 영문, 숫자 조합 8자 이상 입력해주세요.");
+        return;
+      }
     }
     setError("");
   };
@@ -44,7 +48,7 @@ const InputField: React.FC<InputFieldProps> = ({
   };
 
   return (
-    <>
+    <div className={styles.input_container}>
       <label htmlFor={type} className={styles.label}>
         {label}
       </label>
@@ -54,7 +58,7 @@ const InputField: React.FC<InputFieldProps> = ({
         }`}
       >
         <input
-          type={type}
+          type={type === "confirmPassword" ? "password" : type}
           placeholder={placeholder}
           value={value}
           onChange={handleChange}
@@ -64,7 +68,7 @@ const InputField: React.FC<InputFieldProps> = ({
         />
       </div>
       {error && <p className={styles.input_error}>{error}</p>}
-    </>
+    </div>
   );
 };
 
