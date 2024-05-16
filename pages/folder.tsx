@@ -8,6 +8,17 @@ import useModal from "@/src/hooks/useModal";
 import ModalContext from "@/src/components/Modal/ModalContext";
 import ModalContainer from "@/src/components/Modal/ModalContainer";
 
+interface FolderTabDataList {
+  id: number;
+  createdAt: string;
+  favorite: boolean;
+  link: {
+    count: number;
+  };
+  name: string;
+  userId: number;
+}
+
 interface UserFolderdataList {
   id: number;
   createdAt: string;
@@ -20,7 +31,7 @@ interface UserFolderdataList {
 }
 
 function Folder() {
-  const [folderTabDataList, setFolderTabDataList] = useState([]);
+  const [folderTabDataList, setFolderTabDataList] = useState<FolderTabDataList[]>([]);
   const [userFolderDataList, setUserFolderDataList] = useState<UserFolderdataList[]>();
 
   const { isOpen, openModal, closeModal } = useModal();
@@ -32,18 +43,17 @@ function Folder() {
 
   useEffect(() => {
     async function fetchDataAndSetState() {
-      const folderTabDataList = await tabDataList();
-      const { data } = folderTabDataList;
-      setFolderTabDataList(data);
-    }
-    fetchDataAndSetState();
-  }, []);
+      const folderTabDataListPromise = tabDataList();
+      const userFolderDataListPromise = userFoldersData();
 
-  useEffect(() => {
-    async function fetchDataAndSetState() {
-      const userFolderDataList = await userFoldersData();
-      const { data } = userFolderDataList;
-      setUserFolderDataList(data);
+      const [folderTabDataList, userFolderDataList] = await Promise.all([
+        folderTabDataListPromise,
+        userFolderDataListPromise,
+      ]);
+
+      setFolderTabDataList(folderTabDataList.data);
+      console.log(folderTabDataList);
+      setUserFolderDataList(userFolderDataList.data);
     }
     fetchDataAndSetState();
   }, []);

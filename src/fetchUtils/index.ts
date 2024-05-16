@@ -42,6 +42,9 @@ export const tabDataList = async () => {
     if (response.status !== 200) {
       throw new Error("서버에서 폴더 메뉴 정보를 가져오는데 실패 했습니다.");
     }
+    if (response.data) {
+      response.data = camelcaseKeys(response.data, { deep: true });
+    }
     const { data } = response;
 
     return data;
@@ -82,7 +85,6 @@ export const userFoldersTapData = async (id: number) => {
     if (response.data) {
       response.data = camelcaseKeys(response.data, { deep: true });
     }
-
     const { data } = response;
 
     return data;

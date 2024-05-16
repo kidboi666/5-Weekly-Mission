@@ -14,7 +14,7 @@ interface FolderTabDataList {
     count: number;
   };
   name: string;
-  user_id: number;
+  userId: number;
 }
 
 interface UserFolderdataList {
