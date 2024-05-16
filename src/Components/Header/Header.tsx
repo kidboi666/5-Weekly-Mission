@@ -1,4 +1,3 @@
-// Header.js
 import React from "react";
 import { useFetch } from "../../hooks/useFetch";
 import { BASE_URL } from "../../constants/baseURL";
@@ -26,7 +25,7 @@ function Header() {
                     <span className={styles.email}>{profileData.data[0].email}</span>
                 </div>
             ) : (
-                <Link href='../sign/signin.html' className={styles.login_button}>
+                <Link href='/signin' className={styles.login_button}>
                     로그인
                 </Link>
             )}
