@@ -19,7 +19,7 @@ export const pageLayoutConfig: IPageLayoutConfig = {
     header:true,
     footer:true,
   },
-  login: {
+  signin: {
     header:false,
     footer:false,
   },

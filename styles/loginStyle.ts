@@ -1,20 +1,19 @@
 import { Contatiner, dflex, dflexCenterBtw, dflexCenterCenter } from "@/styles/commonStyle";
 import { theme } from "@/styles/theme";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const JoinWrap = styled(Contatiner)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
 `
 
 export const JoinBody = styled.div`
   padding: 14.875rem 2rem 0;
   width: 100%;
   max-width: 29rem;
-  transition: padding .3s;
-
   @media screen and (max-width: 1199px) {
     padding: 12.5rem 2rem;
   }

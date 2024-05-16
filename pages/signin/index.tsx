@@ -45,7 +45,7 @@ export default function SignIn() {
     }    
   },[router])
   return (
-    <JoinWrap className="no-header--container login__wrap">
+    <JoinWrap className="no-header--container signin__wrap">
       <JoinBody>
         <JoinTitle>
           <LinkButton $link={`/`}>
@@ -93,10 +93,10 @@ export default function SignIn() {
         <JoinSocial>
           <FontSM as={'h6'}>소셜 로그인</FontSM>
           <div className="login__sns">
-            <LinkButton $link={'https://www.google.co.kr/?hl=ko'}>
+            <LinkButton $link={'https://www.google.co.kr/?hl=ko'} $target="_blank">
               <img src="/assets/icon/icon_google.png" alt="구글로고" />
             </LinkButton>
-            <LinkButton $link={'https://www.kakaocorp.com/page/'}>
+            <LinkButton $link={'https://www.kakaocorp.com/page/'} $target="_blank">
               <img src="/assets/icon/icon_kakao.png" alt="카카오로고" />
             </LinkButton>
           </div>

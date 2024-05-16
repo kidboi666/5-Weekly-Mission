@@ -20,7 +20,6 @@ export interface IHeaderUser {
   auth_id:string
 }
 
-
 function Header() {
   const { pathname } = useRouter();
   const results: urlName = pathname.split('/')[1];

@@ -47,7 +47,7 @@ export default function PostCard({ image_source, description, created_at}: IFold
           <figure>
             <div className="card__image">
               {image_source ? (
-                <Image fill src={image_source} alt={image_source} sizes="100% 100%"/>
+                <Image fill src={image_source} alt={image_source} sizes="auto auto"/>
               ) : (
                 <img className="empty" src={emptyImg} alt="" />
               )}

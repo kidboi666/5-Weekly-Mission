@@ -10,6 +10,7 @@ interface ISearch {
 function SearchInputBox({ $inputIconImg, onchange }: ISearch) {
   const [value, setValue] = useState('')
   const handleSearchResult = (value:string) => {
+    onchange(value)
     setValue(value)
   }
 

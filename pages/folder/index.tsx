@@ -76,7 +76,7 @@ export default function Folder({$menu, $content}: {$menu:IFolderMenuButtonApi, $
       let title = $menu.data.filter(data => `${data.id}` === `${id}`);
       setTabTitle(`${title[0].name}`);
     }
-    setActiveBtn(id)
+    setActiveBtn(id);
   };
 
   // modal open

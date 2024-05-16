@@ -10,7 +10,7 @@ export default function Home() {
           <span className="title__clip type">세상의 모든 정보</span>를<br />
           쉽게 저장하고 <br />관리해 보세요
         </TitleLs>
-        <LinkButton $link="/signup.html" $linkClass="link--gradient large btn__link-add">링크 추가하기</LinkButton>
+        <LinkButton $link="/folder" $linkClass="link--gradient large btn__link-add">링크 추가하기</LinkButton>
       </Section>
 
       <Section className="section__link">
