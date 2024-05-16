@@ -4,12 +4,21 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
+/** TODO:
+ * 1. 공통 부분 컴포넌트화
+ * 2. axios.create 후 instance import 해서 사용
+ * 3. 에러 메세지 생성 시 눈 아이콘 위치가 input에서 벗어나는 오류 수정; 에러메세지가 있는 경우 bottom 값 조정 => done
+ * 4. handleSubmit 내부 함수화
+ * 5. 로그인 실패 시 에러메시지 => done
+ */
+
 export default function signin() {
   const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm({
     defaultValues: {
       email: "",
@@ -55,7 +64,14 @@ export default function signin() {
                 localStorage.setItem("accessToken", r.data.data.accessToken);
                 router.push("/folder");
               })
-              .catch((error) => console.error(error));
+              .catch((error) => {
+                setError("email", {
+                  message: "이메일을 확인해 주세요.",
+                });
+                setError("password", {
+                  message: "비밀번호를 확인해 주세요.",
+                });
+              });
           })}
         >
           <div className="pt-[30px]">
@@ -94,7 +110,9 @@ export default function signin() {
             <img
               src={isClosed ? "/images/eye-off.svg" : "/images/eye-one.svg"}
               alt="eye-off"
-              className="absolute right-3 bottom-5"
+              className={`absolute right-3 ${
+                errors.password?.message ? "bottom-10" : "bottom-5"
+              }`}
               onClick={handleToggleImage}
             />
             <p className="text-[14px] text-[#FF5B56]">
