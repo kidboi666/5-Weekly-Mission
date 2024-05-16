@@ -4,9 +4,10 @@ import styles from "./Input.module.css";
 interface InputProps {
     id: string;
     placeholder: string;
+    type: string;
 }
 
-const Input: React.FC<InputProps> = ({ id, placeholder }) => {
+const Input: React.FC<InputProps> = ({ id, placeholder, type }) => {
     const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>("");
 
@@ -16,27 +17,31 @@ const Input: React.FC<InputProps> = ({ id, placeholder }) => {
 
     const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
         if (!event.target.value) {
-            setErrorMessage("내용을 입력하세요.");
+            setErrorMessage(placeholder);
         } else {
             setErrorMessage("");
         }
     };
+
+    const inputType = type === "password" && passwordVisible ? "text" : type;
 
     return (
         <div className={styles.input_container}>
             <input
                 id={id}
                 className={`${styles.input} ${errorMessage ? styles.invalid : ""}`}
-                type={passwordVisible ? "text" : "password"}
+                type={inputType}
                 placeholder={placeholder}
                 onBlur={handleBlur}
             />
             {errorMessage && <span className={styles.error_msg}>{errorMessage}</span>}
-            <button
-                className={`${styles.eye_button} ${passwordVisible ? styles.on : ""}`}
-                onClick={handleEyeToggle}
-                type='button'
-            ></button>
+            {type === "password" && (
+                <button
+                    className={`${styles.eye_button} ${passwordVisible ? styles.on : ""}`}
+                    onClick={handleEyeToggle}
+                    type='button'
+                ></button>
+            )}
         </div>
     );
 };
