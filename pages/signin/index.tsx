@@ -6,8 +6,71 @@ import GoggleIcon from '../../src/images/login_google.svg';
 import KakaotalkIcon from '../../src/images/login_kakaotalk.svg';
 import EyeOnIcon from '../../src/images/eye_on.svg';
 import EyeOffIcon from '../../src/images/eye_off.svg';
+import { ChangeEvent, FocusEvent, FormEvent, useState } from 'react';
+import { postSignIn } from '@/apis/api';
+import { useRouter } from 'next/router';
 
 export default function SignInPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showError, setShowError] = useState({
+    email: { error: false, message: '' },
+    password: { error: false, message: '' },
+  });
+  const router = useRouter();
+
+  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    const result = await postSignIn(email, password);
+    localStorage.setItem('accessToken', result?.accessToken);
+    router.push('/folder');
+  };
+
+  const handleEmailBlur = (e: FocusEvent<HTMLInputElement>) => {
+    if (!e.target.value) {
+      setShowError((prev) => ({
+        ...prev,
+        email: { error: true, message: '이메일을 입력해 주세요.' },
+      }));
+      return;
+    }
+    const emailPattern: RegExp =
+      /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+    if (!emailPattern.test(e.target.value)) {
+      setShowError((prev) => ({
+        ...prev,
+        email: { error: true, message: '올바른 이메일 주소가 아닙니다.' },
+      }));
+      return;
+    }
+    setShowError((prev) => ({
+      ...prev,
+      email: { error: false, message: '' },
+    }));
+  };
+
+  const handlePasswordBlur = (e: FocusEvent<HTMLInputElement>) => {
+    if (!e.target.value) {
+      setShowError((prev) => ({
+        ...prev,
+        password: { error: true, message: '비밀번호를 입력해 주세요.' },
+      }));
+      return;
+    }
+    setShowError((prev) => ({
+      ...prev,
+      password: { error: false, message: '' },
+    }));
+  };
+
   return (
     <S.Layout>
       <S.Inner>
@@ -18,15 +81,19 @@ export default function SignInPage() {
           <S.Text>회원이 아니신가요?</S.Text>
           <S.SignLink href='/signup'>회원 가입하기</S.SignLink>
         </S.TextWrap>
-        <S.Form>
+        <S.Form onSubmit={handleSubmit}>
           <S.FormField>
             <S.Label htmlFor='email'>이메일</S.Label>
             <S.Input
               id='email'
               type='email'
               placeholder='이메일을 입력해 주세요.'
+              onBlur={handleEmailBlur}
+              iserror={showError.email.error.toString()}
             />
-            <S.ErrorMessage></S.ErrorMessage>
+            {showError.email.error && (
+              <S.ErrorMessage>{showError.email.message}</S.ErrorMessage>
+            )}
           </S.FormField>
           <S.FormField>
             <S.Label htmlFor='password'>비밀번호</S.Label>
@@ -35,6 +102,8 @@ export default function SignInPage() {
                 id='password'
                 type='password'
                 placeholder='비밀번호를 입력해 주세요.'
+                onBlur={handlePasswordBlur}
+                iserror={showError.password.error.toString()}
               />
               <S.EyeButton type='button' id='passwordEyeButton'>
                 <Image
@@ -45,7 +114,9 @@ export default function SignInPage() {
                 />
               </S.EyeButton>
             </S.PasswordWrap>
-            <S.ErrorMessage></S.ErrorMessage>
+            {showError.password.error && (
+              <S.ErrorMessage>{showError.password.message}</S.ErrorMessage>
+            )}
           </S.FormField>
           <S.SubmitButton text='로그인' />
         </S.Form>

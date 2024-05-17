@@ -36,7 +36,6 @@ export default function SignUpPage() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const result = await postSignUp(email, password);
-    console.log(result);
     localStorage.setItem('accessToken', result?.accessToken);
     router.push('/folder');
   };
@@ -109,7 +108,7 @@ export default function SignUpPage() {
           <S.Text>이미 회원이신가요?</S.Text>
           <S.SignLink href='/signin'>로그인 하기</S.SignLink>
         </S.TextWrap>
-        <S.Form onSubmit={handleSubmit} method='POST'>
+        <S.Form onSubmit={handleSubmit}>
           <S.FormField>
             <S.Label htmlFor='email'>이메일</S.Label>
             <S.Input

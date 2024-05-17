@@ -32,6 +32,18 @@ export async function postSignUp(id: string, pw: string) {
   return result;
 }
 
+export async function postSignIn(id: string, pw: string) {
+  const response = await axios.post(`${BASIC_URL}/sign-up`, {
+    email: id,
+    password: pw,
+  });
+  if (response.status < 200 || response.status >= 300) {
+    throw new Error('회원가입에 실패했습니다.');
+  }
+  const result = response.data.data;
+  return result;
+}
+
 export async function getFolders(folderId: number) {
   const queryParam = folderId === undefined ? '' : `?folderId=${folderId}`;
   const response = await axios.get(`${BASIC_URL}/users/1/folders${queryParam}`);
