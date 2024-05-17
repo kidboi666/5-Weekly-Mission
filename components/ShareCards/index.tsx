@@ -2,7 +2,7 @@ import { useFetch } from '@/hooks/useFetch';
 import { formatDate, generateTimeText } from '@/utils/date';
 import styles from '@/components/ShareCards/index.module.css';
 import Image from 'next/image';
-import { SyntheticEvent } from 'react';
+import { SyntheticEvent, useState } from 'react';
 import thumbnail from '@/public/thumbnail.svg';
 import Link from 'next/link';
 
@@ -24,9 +24,12 @@ interface FolderData {
 function ShareCards({ url }: { url: string }) {
   const Card = useFetch<FolderData>(url);
   const CardDatas = Card?.folder.links;
+  const [imageErrors, setImageErrors] = useState<{ [key: string]: boolean }>(
+    {}
+  );
 
-  const AddThumbnail = (e: SyntheticEvent<HTMLImageElement, Event>) => {
-    e.currentTarget.src = '/thumbnail.svg';
+  const handleImageError = (id: string) => {
+    setImageErrors((prev) => ({ ...prev, [id]: true }));
   };
 
   return (
@@ -41,10 +44,14 @@ function ShareCards({ url }: { url: string }) {
                 <Image
                   width="320"
                   height="200"
-                  src={CardData.imageSource ? CardData.imageSource : thumbnail}
+                  src={
+                    imageErrors[CardData.id]
+                      ? thumbnail
+                      : CardData.imageSource || thumbnail
+                  }
                   className={styles.card_img}
                   alt={CardData.imageSource ? CardData.title : '썸네일'}
-                  onError={AddThumbnail}
+                  onError={() => handleImageError(CardData.id)}
                 />
               </div>
               <div className={styles.card_txt_div}>

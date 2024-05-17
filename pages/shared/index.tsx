@@ -13,7 +13,7 @@ function SharedPage() {
     <>
       <Navigation />
       <FolderData />
-      <div className={styles.PageDisplay}>
+      <div className={styles.pageDisplay}>
         <SearchBar />
         <ShareCards url={BASE_URL_FOLDER_SAMPLE} />
       </div>
