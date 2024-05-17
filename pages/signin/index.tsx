@@ -11,9 +11,9 @@ export default function SignInPage() {
   return (
     <S.Layout>
       <S.Inner>
-        <Link href='/'>
+        <S.LogoLink href='/'>
           <Image src={LogoIcon} alt='Linkbrary logo' width='211' height='38' />
-        </Link>
+        </S.LogoLink>
         <S.TextWrap>
           <S.Text>회원이 아니신가요?</S.Text>
           <S.SignLink href='/signup'>회원 가입하기</S.SignLink>

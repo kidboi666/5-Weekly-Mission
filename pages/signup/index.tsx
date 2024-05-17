@@ -28,15 +28,18 @@ export default function SignUpPage() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const result = await postSignUp('dssdsdf@sdfs.sdf', 'sd3fsdfsdf');
+    const result = await postSignUp(email, password);
+    console.log(result);
+    localStorage.setItem('accessToken', result?.accessToken);
+    console.log(localStorage);
   };
 
   return (
     <S.Layout>
       <S.Inner>
-        <Link href='/'>
+        <S.LogoLink href='/'>
           <Image src={LogoIcon} alt='Linkbrary logo' width='211' height='38' />
-        </Link>
+        </S.LogoLink>
         <S.TextWrap>
           <S.Text>이미 회원이신가요?</S.Text>
           <S.SignLink href='/signin'>로그인 하기</S.SignLink>

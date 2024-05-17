@@ -26,10 +26,10 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
-  img {
+  /* img {
     display: block;
     width: 100%;
-  }
+  } */
 
   address {
     font-style: normal;

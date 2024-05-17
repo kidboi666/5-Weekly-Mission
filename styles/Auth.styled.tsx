@@ -17,6 +17,11 @@ export const Inner = styled.div`
   padding: 0 32px;
 `;
 
+export const LogoLink = styled(Link)`
+  width: fit-content;
+  margin: 0 auto;
+`;
+
 export const TextWrap = styled.div`
   display: flex;
   justify-content: center;

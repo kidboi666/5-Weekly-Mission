@@ -22,7 +22,8 @@ export async function postSignUp(id: string, pw: string) {
     }),
   });
   const body = await response.json();
-  console.log(body);
+  const result = body.data;
+  return result;
 }
 
 export async function getFolders(folderId: number) {
