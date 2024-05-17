@@ -4,8 +4,31 @@ import * as S from '../../styles/Auth.styled';
 import LogoIcon from '../../src/images/logo.svg';
 import GoggleIcon from '../../src/images/login_google.svg';
 import KakaotalkIcon from '../../src/images/login_kakaotalk.svg';
+import EyeOnIcon from '../../src/images/eye_on.svg';
+import EyeOffIcon from '../../src/images/eye_off.svg';
+import { ChangeEvent, useState } from 'react';
 
 export default function SignUpPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordConform, setPasswordConform] = useState('');
+
+  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+
+  const handlePasswordConformChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPasswordConform(e.target.value);
+  };
+
+  const handleSubmit = (e: SubmitEvent) => {
+    e.preventDefault();
+  };
+
   return (
     <S.Layout>
       <S.Inner>
@@ -19,25 +42,54 @@ export default function SignUpPage() {
         <S.Form>
           <S.FormField>
             <S.Label htmlFor='email'>이메일</S.Label>
-            <S.Input id='email' type='email' />
+            <S.Input
+              id='email'
+              type='email'
+              placeholder='이메일을 입력해 주세요.'
+              value={email}
+              onChange={handleEmailChange}
+            />
             <S.ErrorMessage></S.ErrorMessage>
           </S.FormField>
           <S.FormField>
             <S.Label htmlFor='password'>비밀번호</S.Label>
             <S.PasswordWrap>
-              <S.Input id='password' type='password' />
-              <S.EyeButton type='button' id='passwordEyeButton'></S.EyeButton>
+              <S.Input
+                id='password'
+                type='password'
+                placeholder='영문, 숫자를 조합해 8자 이상 입력해 주세요.'
+                value={password}
+                onChange={handlePasswordChange}
+              />
+              <S.EyeButton type='button' id='passwordEyeButton'>
+                <Image
+                  src={EyeOffIcon}
+                  alt='안 보이기'
+                  width='16'
+                  height='16'
+                />
+              </S.EyeButton>
             </S.PasswordWrap>
             <S.ErrorMessage></S.ErrorMessage>
           </S.FormField>
           <S.FormField>
             <S.Label htmlFor='passwordConfirm'>비밀번호 확인</S.Label>
             <S.PasswordWrap>
-              <S.Input id='passwordConfirm' type='password' />
-              <S.EyeButton
-                type='button'
-                id='passwordConfirmEyeButton'
-              ></S.EyeButton>
+              <S.Input
+                id='passwordConfirm'
+                type='password'
+                placeholder='비밀번호와 일치하는 값을 입력해 주세요.'
+                value={passwordConform}
+                onChange={handlePasswordConformChange}
+              />
+              <S.EyeButton type='button' id='passwordConfirmEyeButton'>
+                <Image
+                  src={EyeOffIcon}
+                  alt='안 보이기'
+                  width='16'
+                  height='16'
+                />
+              </S.EyeButton>
             </S.PasswordWrap>
             <S.ErrorMessage></S.ErrorMessage>
           </S.FormField>

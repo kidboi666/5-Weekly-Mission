@@ -4,6 +4,8 @@ import * as S from '../../styles/Auth.styled';
 import LogoIcon from '../../src/images/logo.svg';
 import GoggleIcon from '../../src/images/login_google.svg';
 import KakaotalkIcon from '../../src/images/login_kakaotalk.svg';
+import EyeOnIcon from '../../src/images/eye_on.svg';
+import EyeOffIcon from '../../src/images/eye_off.svg';
 
 export default function SignInPage() {
   return (
@@ -19,14 +21,29 @@ export default function SignInPage() {
         <S.Form>
           <S.FormField>
             <S.Label htmlFor='email'>이메일</S.Label>
-            <S.Input id='email' type='email' />
+            <S.Input
+              id='email'
+              type='email'
+              placeholder='이메일을 입력해 주세요.'
+            />
             <S.ErrorMessage></S.ErrorMessage>
           </S.FormField>
           <S.FormField>
             <S.Label htmlFor='password'>비밀번호</S.Label>
             <S.PasswordWrap>
-              <S.Input id='password' type='password' />
-              <S.EyeButton type='button' id='passwordEyeButton'></S.EyeButton>
+              <S.Input
+                id='password'
+                type='password'
+                placeholder='비밀번호를 입력해 주세요.'
+              />
+              <S.EyeButton type='button' id='passwordEyeButton'>
+                <Image
+                  src={EyeOffIcon}
+                  alt='안 보이기'
+                  width='16'
+                  height='16'
+                />
+              </S.EyeButton>
             </S.PasswordWrap>
             <S.ErrorMessage></S.ErrorMessage>
           </S.FormField>

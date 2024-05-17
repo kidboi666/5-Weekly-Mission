@@ -71,6 +71,10 @@ export const Input = styled.input`
   line-height: 24px;
   color: #373740;
 
+  &::placeholder {
+    color: var(--Linkbrary-gray20);
+  }
+
   &:focus {
     border: 1px solid var(--Linkbrary-primary);
   }
