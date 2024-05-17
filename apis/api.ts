@@ -11,6 +11,15 @@ export async function getUser() {
   return result;
 }
 
+export async function getUserData() {
+  const response = await axios.get(`${BASIC_URL}/users`);
+  if (response.status < 200 || response.status >= 300) {
+    throw new Error('사용자 데이터를 불러오는데 실패했습니다.');
+  }
+  const result = response.data.data[0];
+  return result;
+}
+
 export async function postSignUp(id: string, pw: string) {
   const response = await axios.post(`${BASIC_URL}/sign-up`, {
     email: id,

@@ -6,13 +6,20 @@ import GoggleIcon from '../../src/images/login_google.svg';
 import KakaotalkIcon from '../../src/images/login_kakaotalk.svg';
 import EyeOnIcon from '../../src/images/eye_on.svg';
 import EyeOffIcon from '../../src/images/eye_off.svg';
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { ChangeEvent, FocusEvent, FormEvent, useState } from 'react';
 import { postSignUp } from '@/apis/api';
+import { useRouter } from 'next/router';
 
 export default function SignUpPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConform, setPasswordConform] = useState('');
+  const [showError, setShowError] = useState({
+    email: { error: false, message: '' },
+    password: { error: false, message: '' },
+    passwordConform: { error: false, message: '' },
+  });
+  const router = useRouter();
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -31,7 +38,65 @@ export default function SignUpPage() {
     const result = await postSignUp(email, password);
     console.log(result);
     localStorage.setItem('accessToken', result?.accessToken);
-    console.log(localStorage);
+    router.push('/folder');
+  };
+
+  const handleEmailBlur = (e: FocusEvent<HTMLInputElement>) => {
+    if (!e.target.value) {
+      setShowError((prev) => ({
+        ...prev,
+        email: { error: true, message: '이메일을 입력해 주세요.' },
+      }));
+      return;
+    }
+    const emailPattern: RegExp =
+      /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+    if (!emailPattern.test(e.target.value)) {
+      setShowError((prev) => ({
+        ...prev,
+        email: { error: true, message: '올바른 이메일 주소가 아닙니다.' },
+      }));
+      return;
+    }
+    setShowError((prev) => ({
+      ...prev,
+      email: { error: false, message: '' },
+    }));
+  };
+
+  const handlePasswordBlur = (e: FocusEvent<HTMLInputElement>) => {
+    const passwordPattern: RegExp = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
+    if (e.target.value.length < 8 || !passwordPattern.test(e.target.value)) {
+      setShowError((prev) => ({
+        ...prev,
+        password: {
+          error: true,
+          message: '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.',
+        },
+      }));
+      return;
+    }
+    setShowError((prev) => ({
+      ...prev,
+      password: { error: false, message: '' },
+    }));
+  };
+
+  const handlePasswordConformBlur = (e: FocusEvent<HTMLInputElement>) => {
+    if (e.target.value !== password) {
+      setShowError((prev) => ({
+        ...prev,
+        passwordConform: {
+          error: true,
+          message: '비밀번호가 일치하지 않아요.',
+        },
+      }));
+      return;
+    }
+    setShowError((prev) => ({
+      ...prev,
+      passwordConform: { error: false, message: '' },
+    }));
   };
 
   return (
@@ -53,8 +118,12 @@ export default function SignUpPage() {
               placeholder='이메일을 입력해 주세요.'
               value={email}
               onChange={handleEmailChange}
+              onBlur={handleEmailBlur}
+              iserror={showError.email.error.toString()}
             />
-            <S.ErrorMessage></S.ErrorMessage>
+            {showError.email.error && (
+              <S.ErrorMessage>{showError.email.message}</S.ErrorMessage>
+            )}
           </S.FormField>
           <S.FormField>
             <S.Label htmlFor='password'>비밀번호</S.Label>
@@ -65,6 +134,8 @@ export default function SignUpPage() {
                 placeholder='영문, 숫자를 조합해 8자 이상 입력해 주세요.'
                 value={password}
                 onChange={handlePasswordChange}
+                onBlur={handlePasswordBlur}
+                iserror={showError.password.error.toString()}
               />
               <S.EyeButton type='button' id='passwordEyeButton'>
                 <Image
@@ -75,6 +146,9 @@ export default function SignUpPage() {
                 />
               </S.EyeButton>
             </S.PasswordWrap>
+            {showError.password.error && (
+              <S.ErrorMessage>{showError.password.message}</S.ErrorMessage>
+            )}
             <S.ErrorMessage></S.ErrorMessage>
           </S.FormField>
           <S.FormField>
@@ -86,6 +160,8 @@ export default function SignUpPage() {
                 placeholder='비밀번호와 일치하는 값을 입력해 주세요.'
                 value={passwordConform}
                 onChange={handlePasswordConformChange}
+                onBlur={handlePasswordConformBlur}
+                iserror={showError.passwordConform.error.toString()}
               />
               <S.EyeButton type='button' id='passwordConfirmEyeButton'>
                 <Image
@@ -96,7 +172,11 @@ export default function SignUpPage() {
                 />
               </S.EyeButton>
             </S.PasswordWrap>
-            <S.ErrorMessage></S.ErrorMessage>
+            {showError.passwordConform.error && (
+              <S.ErrorMessage>
+                {showError.passwordConform.message}
+              </S.ErrorMessage>
+            )}
           </S.FormField>
           <S.SubmitButton text='회원가입' type='submit' />
         </S.Form>
