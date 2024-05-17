@@ -4,6 +4,8 @@ import Search from "@/src/components/Search/Search";
 import CardList from "@/src/components/CardList/CardList";
 import { useEffect, useState } from "react";
 import { fetchData } from "@/src/fetchUtils/index";
+import Header from "@/src/components/Header/Header";
+import Footer from "@/src/components/Footer/Footer";
 
 interface FetchSharedResponse {
   cardListData: folderLinks[];
@@ -32,13 +34,17 @@ function Shared() {
   };
 
   return (
-    <div className="content-wrap">
-      <ConHeader folderData={folderData} />
-      <div className="wrap">
-        <Search searchInputValue={searchInputValue} onChangeValue={onChangeValue} />
-        <CardList cardListData={cardListData} searchInputValue={searchInputValue} />
+    <>
+      <Header />
+      <div className="content-wrap">
+        <ConHeader folderData={folderData} />
+        <div className="wrap">
+          <Search searchInputValue={searchInputValue} onChangeValue={onChangeValue} />
+          <CardList cardListData={cardListData} searchInputValue={searchInputValue} />
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }
 

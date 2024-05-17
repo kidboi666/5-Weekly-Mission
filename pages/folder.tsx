@@ -7,6 +7,8 @@ import CardList from "@/src/components/CardList/CardList";
 import useModal from "@/src/hooks/useModal";
 import ModalContext from "@/src/components/Modal/ModalContext";
 import ModalContainer from "@/src/components/Modal/ModalContainer";
+import Header from "@/src/components/Header/Header";
+import Footer from "@/src/components/Footer/Footer";
 
 function Folder() {
   const [folderTabDataList, setFolderTabDataList] = useState<FolderTabDataList[]>([]);
@@ -40,30 +42,34 @@ function Folder() {
   };
 
   return (
-    <div className="content-wrap">
-      <ModalContext.Provider
-        value={{ isOpen, openModal, closeModal, setModalType, setCardUrl, forderDataId }}
-      >
-        <AddLinkForm />
-        <ModalContainer
-          modalType={modalType}
-          folderTabDataList={folderTabDataList}
-          cardUrl={cardUrl}
-          folderTabName={folderTabName}
-        />
-        <div className="wrap">
-          <Search searchInputValue={searchInputValue} onChangeValue={onChangeValue} />
-          <FolderTabList
+    <>
+      <Header />
+      <div className="content-wrap">
+        <ModalContext.Provider
+          value={{ isOpen, openModal, closeModal, setModalType, setCardUrl, forderDataId }}
+        >
+          <AddLinkForm />
+          <ModalContainer
+            modalType={modalType}
             folderTabDataList={folderTabDataList}
-            setUserFolderDataList={setUserFolderDataList}
-            setFolderTabName={setFolderTabName}
-            forderDataId={forderDataId}
-            setForderDataId={setForderDataId}
+            cardUrl={cardUrl}
+            folderTabName={folderTabName}
           />
-          <CardList userFolderDataList={userFolderDataList} searchInputValue={searchInputValue} />
-        </div>
-      </ModalContext.Provider>
-    </div>
+          <div className="wrap">
+            <Search searchInputValue={searchInputValue} onChangeValue={onChangeValue} />
+            <FolderTabList
+              folderTabDataList={folderTabDataList}
+              setUserFolderDataList={setUserFolderDataList}
+              setFolderTabName={setFolderTabName}
+              forderDataId={forderDataId}
+              setForderDataId={setForderDataId}
+            />
+            <CardList userFolderDataList={userFolderDataList} searchInputValue={searchInputValue} />
+          </div>
+        </ModalContext.Provider>
+      </div>
+      <Footer />
+    </>
   );
 }
 
