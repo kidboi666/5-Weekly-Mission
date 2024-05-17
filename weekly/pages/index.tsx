@@ -56,8 +56,9 @@ function App() {
 
   return (
     <>
-      <Link href={`/shared?${queryParam}`} />
-      <Link href="/FolderPage" />
+      {/* <Link href={`/shared?${queryParam}`} /> */}
+      {/* <Link href="/FolderPage" /> */}
+      <Link href="signin" />
     </>
   );
 }

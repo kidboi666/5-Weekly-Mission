@@ -1,6 +1,6 @@
 import styles from '@/styles/Nav.module.css';
 import GradientButton from '../Button/GradientButton';
-import Profile from '../Profile/Profile';
+import Profile from './Profile';
 import styled from 'styled-components';
 
 function Nav({ userInfo, isfixed = true }) {
