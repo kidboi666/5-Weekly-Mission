@@ -7,6 +7,7 @@ export const Layout = styled.div`
   justify-content: center;
   min-height: 100vh;
   padding-top: 238px;
+  padding-bottom: 20px;
   background: var(--Linkbrary-bg);
 `;
 

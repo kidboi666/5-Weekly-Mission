@@ -6,7 +6,8 @@ import GoggleIcon from '../../src/images/login_google.svg';
 import KakaotalkIcon from '../../src/images/login_kakaotalk.svg';
 import EyeOnIcon from '../../src/images/eye_on.svg';
 import EyeOffIcon from '../../src/images/eye_off.svg';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { postSignUp } from '@/apis/api';
 
 export default function SignUpPage() {
   const [email, setEmail] = useState('');
@@ -25,8 +26,9 @@ export default function SignUpPage() {
     setPasswordConform(e.target.value);
   };
 
-  const handleSubmit = (e: SubmitEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    const result = await postSignUp('dssdsdf@sdfs.sdf', 'sd3fsdfsdf');
   };
 
   return (
@@ -39,7 +41,7 @@ export default function SignUpPage() {
           <S.Text>이미 회원이신가요?</S.Text>
           <S.SignLink href='/signin'>로그인 하기</S.SignLink>
         </S.TextWrap>
-        <S.Form>
+        <S.Form onSubmit={handleSubmit} method='POST'>
           <S.FormField>
             <S.Label htmlFor='email'>이메일</S.Label>
             <S.Input
@@ -93,7 +95,7 @@ export default function SignUpPage() {
             </S.PasswordWrap>
             <S.ErrorMessage></S.ErrorMessage>
           </S.FormField>
-          <S.SubmitButton text='회원가입' />
+          <S.SubmitButton text='회원가입' type='submit' />
         </S.Form>
         <S.SnsWrap>
           <S.SnsTitle>다른 방식으로 가입하기</S.SnsTitle>
