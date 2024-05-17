@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['ssl.pstatic.net'],
+    remotePatterns: [{ hostname: '**' }],
   },
 };
 

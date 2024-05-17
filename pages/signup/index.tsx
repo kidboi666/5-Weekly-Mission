@@ -21,6 +21,7 @@ export default function SignUpPage() {
       router.push('/folder');
     }
   }, []);
+
   const {
     email,
     isIdError,
@@ -48,7 +49,7 @@ export default function SignUpPage() {
     handlePWdCheckErrorOnSubmit,
   } = useSignUpPwdCheck({ password });
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     try {

@@ -6,14 +6,12 @@ import Image from 'next/image';
 interface ModalAddToFolderProps {
   title: string;
   targetName: string;
-  isModalOpen: boolean;
   onClose: (isOpen: boolean) => void;
 }
 
 const ModalAddToFolder: React.FC<ModalAddToFolderProps> = ({
   title,
   targetName,
-  isModalOpen,
   onClose,
 }) => {
   const [selectedOption, setSelectedOption] = useState<string>(''); // 선택된 옵션을 상태로 관리합니다.

@@ -1,27 +1,28 @@
 import { useFetch } from '@/hooks/useFetch';
 import { formatDate, generateTimeText } from '../../utils/date';
 import thumbnail from '@/public/thumbnail.svg';
-import styles from '@/components/Cardsfolder/index.module.css';
+import styles from '@/components/FolderCards/index.module.css';
 import starticon from '@/public/staricon.svg';
 import moreoptionicon from '@/public/moreoptionicon.svg';
 import { useState } from 'react';
 import ModalFolder from '@/components/modal/ModalFolder';
 import ModalDelete from '@/components/modal/ModalDelete';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface Link {
   id: string;
   url: string;
-  image_source?: string; // 이미지 소스는 옵셔널
+  image_source?: string;
+  thumbnail?: string;
   title: string;
   created_at: Date;
   description: string;
 }
 
-function Cardsfolder({ url }: { url: string }) {
-  // props를 비구조화 할당하여 사용
-  const cardData = useFetch<{ data: Link[] }>(url);
-  const [hoverStates, setHoverStates] = useState<boolean[]>([]);
+function FolderCards({ url }: { url: string }) {
+  const card = useFetch<{ data: Link[] }>(url);
+  const cardData = card?.data;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [popoverStates, setPopoverStates] = useState<{
@@ -29,22 +30,6 @@ function Cardsfolder({ url }: { url: string }) {
   }>({});
   const [selectedCardDescription, setSelectedCardDescription] =
     useState<string>('');
-
-  const handleMouseOver = (index: number) => {
-    setHoverStates((prevStates) => {
-      const updatedStates = [...prevStates];
-      updatedStates[index] = true;
-      return updatedStates;
-    });
-  };
-
-  const handleMouseOut = (index: number) => {
-    setHoverStates((prevStates) => {
-      const updatedStates = [...prevStates];
-      updatedStates[index] = false;
-      return updatedStates;
-    });
-  };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -56,6 +41,7 @@ function Cardsfolder({ url }: { url: string }) {
 
   const handleClickButton = () => {
     setIsModalOpen((prev) => !prev);
+    setIsModalDeleteOpen(false);
   };
 
   const handleDeleteClickButton = (linkDescription: string) => {
@@ -71,46 +57,25 @@ function Cardsfolder({ url }: { url: string }) {
     setSelectedCardDescription(linkDescription);
   };
 
-  const handleFavoriteButtonClick = (
-    e: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    e.stopPropagation();
-  };
-
-  if (!cardData) {
-    return null;
-  }
-
   return (
     <div className={styles.card_grid_container}>
-      {cardData.data.length ? (
-        cardData.data.map((link, index) => (
-          <div
-            className={`${styles.card_container} ${
-              hoverStates[index] ? styles.isHovering : ''
-            }`}
-            key={link.id}
-            onMouseOver={() => handleMouseOver(index)}
-            onMouseOut={() => handleMouseOut(index)}
-          >
-            <a href={link.url}>
+      {!cardData ? (
+        <div className={styles.noLinkText}>
+          <p>저장된 링크가 없습니다</p>
+        </div>
+      ) : (
+        cardData.map((link) => (
+          <div className={styles.card_container} key={link.id}>
+            <Link href={link.url}>
               <div className={styles.card}>
                 <div className={styles.card_img_div}>
-                  {link.image_source ? (
-                    <img
-                      src={link.image_source}
-                      className={styles.card_img}
-                      alt={link.title}
-                    />
-                  ) : (
-                    <Image
-                      width="320"
-                      height="200"
-                      src={thumbnail}
-                      className={styles.card_img}
-                      alt={link.title}
-                    />
-                  )}
+                  <Image
+                    width="320"
+                    height="200"
+                    src={link.image_source ? link.image_source : thumbnail}
+                    className={styles.card_img}
+                    alt={link.title}
+                  />
                 </div>
                 <div className={styles.card_txt_div}>
                   <div className={styles.card_txt_div_top}>
@@ -128,7 +93,7 @@ function Cardsfolder({ url }: { url: string }) {
                   </div>
                 </div>
               </div>
-            </a>
+            </Link>
             <button
               className={styles.card_moreoption_icon}
               onClick={() => handleOptionButtonClick(link.id, link.description)}
@@ -149,18 +114,11 @@ function Cardsfolder({ url }: { url: string }) {
                 </div>
               </div>
             )}
-            <button
-              className={styles.card_favorite_icon}
-              onClick={handleFavoriteButtonClick}
-            >
+            <button className={styles.card_favorite_icon}>
               <Image src={starticon} alt="즐겨찾기 별 아이콘" />
             </button>
           </div>
         ))
-      ) : (
-        <div className={styles.noLinkText}>
-          <p>저장된 링크가 없습니다</p>
-        </div>
       )}
       {isModalOpen && (
         <ModalFolder
@@ -183,4 +141,4 @@ function Cardsfolder({ url }: { url: string }) {
   );
 }
 
-export default Cardsfolder;
+export default FolderCards;

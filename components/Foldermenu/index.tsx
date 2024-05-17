@@ -1,21 +1,24 @@
 import { useFetch } from '../../hooks/useFetch';
-import styled from 'styled-components';
 import styles from './index.module.css';
 import addfolderIcon from '@/public/addfolder.svg';
 import deleteicon from '@/public/deleteicon.svg';
 import changenameicon from '@/public/changenameicon.svg';
 import shareicon from '@/public/shareicon.svg';
 import { useState } from 'react';
-import Cardsfolder from '@/components/Cardsfolder';
+import FolderCards from '@/components/FolderCards';
 import ModalFolder from '@/components/modal/ModalFolder';
 import ModalShare from '@/components/modal/ModalShare';
 import ModalDelete from '@/components/modal/ModalDelete';
 import SearchableBar from '@/components/SearchableBar';
 import Image from 'next/image';
+import S from './foldermenu.module.css';
+import {
+  BASE_URL_FOLDER,
+  BASE_URL_ALL_FOLDER,
+  BASE_FOLDER_ID,
+} from '@/constant/folder-constant';
 
-const BASE_FOLDER_ID = 'all';
-
-interface Link {
+interface Card {
   id: string;
   url: string;
   title: string;
@@ -30,75 +33,36 @@ interface FolderResponse {
   data: Folder[];
 }
 
-const BASE_URL_FOLDER = 'https://bootcamp-api.codeit.kr/api/users/1/folders';
-const BASE_URL_ALL_FOLDER = 'https://bootcamp-api.codeit.kr/api/users/1/links';
-
-const FolderListContainer = styled.div`
-  display: flex;
-  justify-content: start;
-  gap: 0.8rem;
-  position: relative;
-  flex-wrap: wrap;
-`;
-
-const FolderMenuContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 2.4rem;
-  height: 3.2rem;
-  margin-bottom: 2.4rem;
-`;
-
-const ImageContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 1.2rem;
-  height: 1.8rem;
-`;
-
 function Foldermenu() {
-  const folderData = useFetch<FolderResponse>(BASE_URL_FOLDER);
+  const folder = useFetch<FolderResponse>(BASE_URL_FOLDER);
+  const folderNames = folder?.data;
   const [activeButton, setActiveButton] = useState('전체');
   const [url, setUrl] = useState(BASE_URL_ALL_FOLDER);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isModalShareOpen, setIsModalShareOpen] = useState(false);
-  const [isModalRenameOpen, setIsModalRenameOpen] = useState(false);
-  const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [currentFolderId, setCurrentFolderId] = useState<string | null>(
     BASE_FOLDER_ID
   );
-  const [filteredLinks, setFilteredLinks] = useState<Link[]>([]);
+  const [filteredLinks, setFilteredLinks] = useState<Card[]>([]);
+  const [modalState, setModalState] = useState({
+    addFolder: false,
+    shareFolder: false,
+    renameFolder: false,
+    deleteFolder: false,
+  });
 
-  function handleCloseModal() {
-    setIsModalOpen(false);
-  }
-  function handleClickButton() {
-    setIsModalOpen(true);
-  }
+  const handleModalOpen = (modalType: string) => {
+    setModalState((prevState) => ({
+      ...prevState,
+      [modalType]: true,
+    }));
+  };
 
-  function handleCloseShareModal() {
-    setIsModalShareOpen(false);
-  }
-  function handleClickShareButton() {
-    setIsModalShareOpen(true);
-  }
-
-  function handleCloseRenameModal() {
-    setIsModalRenameOpen(false);
-  }
-  function handleClickRenameButton() {
-    setIsModalRenameOpen(true);
-  }
-
-  function handleCloseDeleteModal() {
-    setIsModalDeleteOpen(false);
-  }
-  function handleClickDeleteButton() {
-    setIsModalDeleteOpen(true);
-  }
-
-  const handleSearch = (filteredLinks: Link[]) => {
+  const handleModalClose = (modalType: string) => {
+    setModalState((prevState) => ({
+      ...prevState,
+      [modalType]: false,
+    }));
+  };
+  const handleSearch = (filteredLinks: Card[]) => {
     setFilteredLinks(filteredLinks);
   };
 
@@ -119,7 +83,7 @@ function Foldermenu() {
     <div>
       <SearchableBar links={filteredLinks} onSearch={handleSearch} />
       <div className={styles.buttonContainer}>
-        <FolderListContainer>
+        <div className={S.folderListContainer}>
           <button
             className={`${styles.folderButtons} ${styles.allFolders} ${
               currentFolderId == BASE_FOLDER_ID ? styles.active : ''
@@ -129,21 +93,21 @@ function Foldermenu() {
           >
             전체
           </button>
-          {folderData?.data &&
-            folderData?.data.map((folderdata) => (
+          {folderNames &&
+            folderNames.map((foldername) => (
               <button
                 className={`${styles.folderButtons} ${
-                  currentFolderId == folderdata.id ? styles.active : ''
+                  currentFolderId == foldername.id ? styles.active : ''
                 }`}
-                key={folderdata.id}
+                key={foldername.id}
                 onClick={handleOnClick}
-                id={folderdata.id}
+                id={foldername.id}
               >
-                {folderdata.name}
+                {foldername.name}
               </button>
             ))}
-        </FolderListContainer>
-        <button onClick={handleClickButton}>
+        </div>
+        <button onClick={() => handleModalOpen('addFolder')}>
           <Image
             className={styles.addFolderIcon}
             src={addfolderIcon}
@@ -151,57 +115,57 @@ function Foldermenu() {
           />
         </button>
       </div>
-      <FolderMenuContainer>
+      <div className={S.folderMenuContainer}>
         <p className={styles.folderName}>{activeButton}</p>
         {activeButton === '전체' && (
-          <ImageContainer>
-            <button onClick={handleClickShareButton}>
+          <div className={S.imageContainer}>
+            <button onClick={() => handleModalOpen('shareFolder')}>
               <Image src={shareicon} alt="폴더 공유 아이콘" />
             </button>
-            <button onClick={handleClickRenameButton}>
+            <button onClick={() => handleModalOpen('renameFolder')}>
               <Image src={changenameicon} alt="폴더 이름 변경 아이콘" />
             </button>
-            <button onClick={handleClickDeleteButton}>
+            <button onClick={() => handleModalOpen('deleteFolder')}>
               <Image src={deleteicon} alt="폴더 삭제 아이콘" />
             </button>
-          </ImageContainer>
+          </div>
         )}
-      </FolderMenuContainer>
-      <Cardsfolder url={url} />
+      </div>
+      <FolderCards url={url} />
 
-      {isModalOpen && (
+      {modalState.addFolder && (
         <ModalFolder
           title={'폴더 추가'}
           folderName={''}
-          onClose={handleCloseModal}
+          onClose={() => handleModalClose('addFolder')}
           buttonName={'추가하기'}
-          isModalOpen={isModalOpen}
+          isModalOpen={modalState.addFolder}
         />
       )}
-      {isModalShareOpen && (
+      {modalState.shareFolder && (
         <ModalShare
           title={'폴더 공유'}
           targetName={activeButton}
-          onClose={handleCloseShareModal}
-          isModalOpen={isModalShareOpen}
+          onClose={() => handleModalClose('shareFolder')}
+          isModalOpen={modalState.shareFolder}
           currentFolderId={currentFolderId}
         />
       )}
-      {isModalRenameOpen && (
+      {modalState.renameFolder && (
         <ModalFolder
           title={'폴더 이름 변경'}
           folderName={activeButton}
-          onClose={handleCloseRenameModal}
+          onClose={() => handleModalClose('renameFolder')}
           buttonName={'변경하기'}
-          isModalOpen={isModalRenameOpen}
+          isModalOpen={modalState.renameFolder}
         />
       )}
-      {isModalDeleteOpen && (
+      {modalState.deleteFolder && (
         <ModalDelete
           title={'폴더 삭제'}
           DeleteName={activeButton}
-          onClose={handleCloseDeleteModal}
-          isModalOpen={isModalDeleteOpen}
+          onClose={() => handleModalClose('deleteFolder')}
+          isModalOpen={modalState.deleteFolder}
         />
       )}
     </div>
