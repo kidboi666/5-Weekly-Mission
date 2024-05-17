@@ -38,7 +38,7 @@ export default function SignInPage() {
     handlePWdErrorOnSubmit,
   } = useSignInPwd();
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     try {
