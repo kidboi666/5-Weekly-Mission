@@ -33,6 +33,7 @@ function SigninPage() {
         buttonText="로그인"
         socialProvidersText="소셜 로그인"
         isPasswordConfirmation={false}
+        isSignUp={false}
       />
     </div>
   );

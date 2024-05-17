@@ -20,6 +20,7 @@ function SignupPage() {
         buttonText="회원가입"
         socialProvidersText="다른 방식으로 가입하기"
         isPasswordConfirmation={true}
+        isSignUp={true}
       />
     </div>
   );
