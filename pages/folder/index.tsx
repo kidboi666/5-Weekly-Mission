@@ -1,5 +1,5 @@
 import React, { MouseEvent, useCallback, useEffect, useState } from 'react';
-import { SectionWrap } from '../../styles/CommonPage.styled';
+import { Layout, SectionWrap } from '../../styles/CommonPage.styled';
 import LinkInput from '../../components/LinkInput/LinkInput';
 import * as S from '../../styles/FolderPage.styled';
 import { getLinks, getFolders } from '../../apis/api';
@@ -121,7 +121,7 @@ export default function FolderPage() {
   }, [currentFolder, handleLoadItems]);
 
   return (
-    <>
+    <Layout>
       <S.StyledTopWrap>
         <LinkInput
           folderNames={folderNames}
@@ -212,6 +212,6 @@ export default function FolderPage() {
           onClose={setIsVisibleDeleteFolder}
         />
       )}
-    </>
+    </Layout>
   );
 }

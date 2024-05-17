@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Search from '../../components/Search/Search';
 import { getFolders, getLinks, getUser } from '../../apis/api';
-import { SectionWrap, TopWrap } from '../../styles/CommonPage.styled';
+import { Layout, SectionWrap, TopWrap } from '../../styles/CommonPage.styled';
 import * as S from '../../styles/SharedPage.styled';
 import Profile from '../../components/Profile/Profile';
 import CardList from '../../components/CardList/CardList';
@@ -40,7 +40,7 @@ export default function SharedPage() {
   }, [handleLoad]);
 
   return (
-    <>
+    <Layout>
       <TopWrap>
         <Profile
           src={user?.image_source}
@@ -54,6 +54,6 @@ export default function SharedPage() {
         <Search />
         {links && <CardList items={links} />}
       </SectionWrap>
-    </>
+    </Layout>
   );
 }

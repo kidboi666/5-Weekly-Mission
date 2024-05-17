@@ -23,3 +23,7 @@ export const SectionWrap = styled.section`
     padding-bottom: 60px;
   }
 `;
+
+export const Layout = styled.div`
+  min-height: calc(100vh - 250px);
+`;
