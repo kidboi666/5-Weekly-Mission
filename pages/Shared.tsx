@@ -20,7 +20,7 @@ interface Link {
   [key: string]: any;
 }
 
-interface LinkProps {
+interface SharedProps {
   links: Link[];
 }
 
@@ -34,7 +34,7 @@ export async function getStaticProps() {
   };
 }
 
-function Shared({ links }: LinkProps) {
+function Shared({ links }: SharedProps) {
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   const handleSearch = (term: string): void => {

@@ -17,15 +17,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "components/Input.jsx",
-    "pages/folder.jsx",
-    "pages/folder.jsx",
-    "pages/folder.jsx",
-    "pages/folder.jsx"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
