@@ -9,6 +9,7 @@ import EditAndAddFolder from "../modals/EditAndAddFolder";
 import ShareFolder from "../modals/ShareFolder";
 import { useState } from "react";
 import CardListSection from "./CardListSection";
+import FolderMenu from "./FolderMenu";
 import SearchInput from "./SearchInput";
 import Image from "next/image";
 
@@ -50,35 +51,7 @@ const FolderList: React.FC<FolderListProp> = ({ folders }) => {
     <section className={styles.folderLayout}>
       <SearchInput onSearch={handleSearch} />
       <div className={styles.folderLinkList}>
-        <div className={styles.folderLinkList__folders}>
-          <button
-            className={
-              "전체" === title
-                ? styles.folderLinkList__folder__active
-                : styles.folderLinkList__folder
-            }
-            id="0"
-            onClick={() => handleTitle("전체", null)}
-          >
-            전체
-          </button>
-          {folders.map((folder) => (
-            <button
-              className={
-                folder.name === title
-                  ? styles.folderLinkList__folder__active
-                  : styles.folderLinkList__folder
-              }
-              id={id?.toString()}
-              key={folder.id}
-              onClick={() => {
-                handleTitle(folder.name, folder.id);
-              }}
-            >
-              {folder.name}
-            </button>
-          ))}
-        </div>
+        <FolderMenu title={title} folders={folders} handleTitle={handleTitle} />
         <button
           className={styles.folderLinkList__addFolderButton}
           onClick={(e) => {

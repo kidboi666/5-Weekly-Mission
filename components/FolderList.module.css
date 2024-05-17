@@ -7,40 +7,6 @@
   margin-top: 40px;
 }
 
-.folderLinkList__folders {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.folderLinkList__folder {
-  cursor: pointer;
-  border-radius: 5px;
-  border: 1px solid var(--Linkbrary-primary-color, #6d6afe);
-  background: #fff;
-  padding: 8px 12px;
-  color: #000;
-  font-size: 16px;
-  font-family: Pretendard;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-
-.folderLinkList__folder__active {
-  cursor: pointer;
-  border-radius: 5px;
-  border: 1px solid var(--Linkbrary-primary-color, #6d6afe);
-  background: var(--Linkbrary-primary-color, #6d6afe);
-  padding: 8px 12px;
-  color: #fff;
-  font-size: 16px;
-  font-family: Pretendard;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-
 .folderLinkList__folder:hover {
   background: var(--Linkbrary-gray10, #e7effb);
 }
