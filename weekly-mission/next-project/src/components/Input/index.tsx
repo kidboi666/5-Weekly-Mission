@@ -7,7 +7,7 @@ interface InputFieldProps {
   label: string;
   placeholder: string;
   register: UseFormRegisterReturn;
-  error?: string;
+  error?: string | { email?: string; password?: string };
   onFocus?: () => void;
 }
 
@@ -19,6 +19,25 @@ const InputField: React.FC<InputFieldProps> = ({
   error,
   onFocus,
 }: InputFieldProps) => {
+  const renderErrorMessage = () => {
+    if (!error) return null;
+    if (typeof error === "string") {
+      return <p className={styles.input_error}>{error}</p>;
+    } else {
+      // 에러 객체가 전달된 경우 email과 password에 따라 다른 에러 메시지를 표시
+      return (
+        <>
+          {type === "email" && error.email && (
+            <p className={styles.input_error}>{error.email}</p>
+          )}
+          {type === "password" && error.password && (
+            <p className={styles.input_error}>{error.password}</p>
+          )}
+        </>
+      );
+    }
+  };
+
   return (
     <div className={styles.input_container}>
       <label htmlFor={type} className={styles.label}>
@@ -26,7 +45,9 @@ const InputField: React.FC<InputFieldProps> = ({
       </label>
       <div
         className={`${styles.input_wrapper} ${
-          error ? styles.error_wrapper : ""
+          error && (typeof error === "string" || error.email || error.password)
+            ? styles.error_wrapper
+            : ""
         }`}
       >
         <input
@@ -37,7 +58,7 @@ const InputField: React.FC<InputFieldProps> = ({
           onFocus={onFocus}
         />
       </div>
-      {error && <p className={styles.input_error}>{error}</p>}
+      {renderErrorMessage()}
     </div>
   );
 };

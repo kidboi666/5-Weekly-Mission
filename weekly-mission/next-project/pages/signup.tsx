@@ -1,6 +1,5 @@
 import React from "react";
 import { useRouter } from "next/router";
-import instance from "lib/api";
 import styles from "@/styles/sign.module.css";
 import Form from "@components/Form";
 

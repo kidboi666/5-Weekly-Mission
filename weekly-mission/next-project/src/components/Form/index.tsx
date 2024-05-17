@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import Image from "next/image";
 import logoSrc from "../../images/Linkbrary.png";
 import KaKaoImg from "../../images/kakao.png";
@@ -22,15 +22,18 @@ interface FormProps {
   socialProvidersText: string;
   isPasswordConfirmation: boolean;
   isSignUp: boolean;
+  errorMessage: { email?: string; password?: string };
 }
 
 const Form = ({
+  onSubmit,
   headermessage,
   headerlink,
   buttonText,
   socialProvidersText,
   isPasswordConfirmation,
   isSignUp,
+  errorMessage,
 }: FormProps) => {
   const {
     handleSubmit,
@@ -40,11 +43,6 @@ const Form = ({
     clearErrors,
     formState: { errors },
   } = useForm<FormValues>({ mode: "onBlur" });
-
-  // 폼 제출 핸들러
-  const onSubmit = (data: any) => {
-    console.log(data);
-  };
 
   const password = watch("password");
   const passwordConfirmation = watch("passwordConfirmation");
@@ -93,9 +91,10 @@ const Form = ({
               message: "올바른 이메일 주소가 아닙니다.",
             },
           })}
-          error={errors.email?.message}
+          error={errors.email?.message || errorMessage}
           onFocus={() => onFocusIn("email")}
         />
+
         <InputField
           type="password"
           label="비밀번호"
@@ -106,18 +105,21 @@ const Form = ({
           }
           register={register("password", {
             required: "비밀번호를 입력해주세요.",
-            minLength: {
-              value: 8,
-              message: "비밀번호는 영문, 숫자 조합 8자 이상이어야 합니다.",
-            },
-            pattern: {
-              value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,}$/,
-              message: "비밀번호는 영문, 숫자 조합이어야 합니다.",
-            },
+            ...(isSignUp && {
+              minLength: {
+                value: 8,
+                message: "비밀번호는 영문, 숫자 조합 8자 이상이어야 합니다.",
+              },
+              pattern: {
+                value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,}$/,
+                message: "비밀번호는 영문, 숫자 조합이어야 합니다.",
+              },
+            }),
           })}
-          error={errors.password?.message}
+          error={errors.password?.message || errorMessage}
           onFocus={() => onFocusIn("password")}
         />
+
         {isPasswordConfirmation && (
           <InputField
             type="confirmPassword"

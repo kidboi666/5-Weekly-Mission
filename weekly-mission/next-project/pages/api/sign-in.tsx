@@ -10,11 +10,7 @@ export default async function handler(
     if (email === "test@codeit.com" && password === "sprint101") {
       res.status(200).json({ success: true });
     } else {
-      res
-        .status(401)
-        .json({ success: false, message: "Invalid email or password" });
+      res.status(401).json({ success: false, message: "로그인 실패" });
     }
-  } else {
-    res.status(405).json({ success: false, message: "Method Not Allowed" });
   }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import instance from "lib/api";
 import styles from "@/styles/sign.module.css";
@@ -6,6 +6,9 @@ import Form from "@components/Form";
 
 function SigninPage() {
   const router = useRouter();
+  const [errors, setErrors] = useState<{ email?: string; password?: string }>(
+    {}
+  );
 
   const handleSignIn = async (data: any) => {
     const { email, password } = data;
@@ -17,10 +20,14 @@ function SigninPage() {
         router.push("/folder");
       } else {
         // 로그인 실패
-        console.error(response.data.message);
+        console.error("Sign in failed");
       }
     } catch (error) {
-      console.error("로그인 요청 중 에러 발생:", error);
+      console.error("Error:", error);
+      setErrors({
+        email: "이메일을 확인해 주세요.",
+        password: "비밀번호를 확인해 주세요.",
+      });
     }
   };
 
@@ -34,6 +41,7 @@ function SigninPage() {
         socialProvidersText="소셜 로그인"
         isPasswordConfirmation={false}
         isSignUp={false}
+        errorMessage={errors}
       />
     </div>
   );
