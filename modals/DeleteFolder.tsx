@@ -5,7 +5,7 @@ import { MouseEvent } from "react";
 interface DeleteFolderProps {
   madalTitle: string;
   title: string;
-  onClose: (close: string) => void;
+  onClose: () => void;
 }
 
 const DeleteFolder: React.FC<DeleteFolderProps> = ({
@@ -15,7 +15,7 @@ const DeleteFolder: React.FC<DeleteFolderProps> = ({
 }) => {
   const onClosing = (e: MouseEvent) => {
     e.preventDefault();
-    onClose("");
+    onClose();
   };
 
   return (

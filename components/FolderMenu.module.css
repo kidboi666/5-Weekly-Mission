@@ -1,7 +1,12 @@
 .folderLinkList__folders {
   display: flex;
+  overflow: auto;
   align-items: flex-start;
   gap: 12px;
+}
+
+.folderLinkList__folders::-webkit-scrollbar {
+  display: none;
 }
 
 .folderLinkList__folder {
@@ -16,6 +21,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  white-space: nowrap;
 }
 
 .folderLinkList__folder__active {
@@ -30,4 +36,5 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  white-space: nowrap;
 }

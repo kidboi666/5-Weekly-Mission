@@ -49,6 +49,10 @@ const KebabMenu: React.FC<KebabMenuProps> = ({ url, folders }) => {
     setViewDropdown(!viewDropdown);
   };
 
+  function handleClose() {
+    setModalOpen("");
+  }
+
   return (
     <div className={styles.KebabMenu} ref={kebabButtonRefRef}>
       <button className={styles.KebabMenu__btn} onClick={dropdownToggle}>
@@ -89,11 +93,11 @@ const KebabMenu: React.FC<KebabMenuProps> = ({ url, folders }) => {
         <DeleteFolder
           madalTitle={"링크 삭제"}
           title={url}
-          onClose={setModalOpen}
+          onClose={handleClose}
         />
       )}
       {modalOpen === "addFolder" && (
-        <AddLinkToFolder title={url} folders={folders} onClose={setModalOpen} />
+        <AddLinkToFolder title={url} folders={folders} onClose={handleClose} />
       )}
     </div>
   );
