@@ -15,6 +15,7 @@ const StyledInput = styled.input`
   border-radius: 8px;
   border: 1px solid var(--Linkbrary-gray20, #ccd5e3);
   background: var(--Linkbrary-white, #fff);
+  margin-top: 12px;
 
   &:focus {
     border: 1px solid var(--Linkbrary-primary-color, #6d6afe);
