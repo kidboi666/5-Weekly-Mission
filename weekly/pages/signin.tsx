@@ -1,5 +1,6 @@
 import SignInput from '@/components/Auth/SignInput';
 import SignLabel from '@/components/Auth/SignLabel';
+import GradientButton from '@/components/Button/GradientButton';
 import styled from 'styled-components';
 
 function SignInPage() {
@@ -15,6 +16,7 @@ function SignInPage() {
           <SignInput type="password" placeholder="비밀번호를 입력해 주세요" />
         </SignLabel>
       </div>
+      <GradientButton size="auto">로그인</GradientButton>
     </SignForm>
   );
 }
@@ -22,6 +24,7 @@ function SignInPage() {
 const SignForm = styled.form`
   display: flex;
   flex-direction: column;
+  width: 400px;
 `;
 
 export default SignInPage;
