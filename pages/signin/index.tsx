@@ -5,7 +5,7 @@ import LogoIcon from '../../src/images/logo.svg';
 import GoggleIcon from '../../src/images/login_google.svg';
 import KakaotalkIcon from '../../src/images/login_kakaotalk.svg';
 
-export default function SignUpPage() {
+export default function SignInPage() {
   return (
     <S.Layout>
       <S.Inner>
@@ -13,8 +13,8 @@ export default function SignUpPage() {
           <Image src={LogoIcon} alt='Linkbrary logo' width='211' height='38' />
         </Link>
         <S.TextWrap>
-          <S.Text>이미 회원이신가요?</S.Text>
-          <S.SignLink href='/signin'>로그인 하기</S.SignLink>
+          <S.Text>회원이 아니신가요?</S.Text>
+          <S.SignLink href='/signup'>회원 가입하기</S.SignLink>
         </S.TextWrap>
         <S.Form>
           <S.FormField>
@@ -30,21 +30,10 @@ export default function SignUpPage() {
             </S.PasswordWrap>
             <S.ErrorMessage></S.ErrorMessage>
           </S.FormField>
-          <S.FormField>
-            <S.Label htmlFor='passwordConfirm'>비밀번호 확인</S.Label>
-            <S.PasswordWrap>
-              <S.Input id='passwordConfirm' type='password' />
-              <S.EyeButton
-                type='button'
-                id='passwordConfirmEyeButton'
-              ></S.EyeButton>
-            </S.PasswordWrap>
-            <S.ErrorMessage></S.ErrorMessage>
-          </S.FormField>
-          <S.SubmitButton text='회원가입' />
+          <S.SubmitButton text='로그인' />
         </S.Form>
         <S.SnsWrap>
-          <S.SnsTitle>다른 방식으로 가입하기</S.SnsTitle>
+          <S.SnsTitle>소셜 로그인</S.SnsTitle>
           <S.SnsList>
             <li>
               <Link href='https://www.google.com/'>

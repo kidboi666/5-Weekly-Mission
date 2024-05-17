@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 
 export default function App({ Component, pageProps }: AppProps) {
   const pathname = usePathname();
-  const isAuthPage = pathname === ('/signup' || '/signin');
+  const isAuthPage = pathname === '/signup' || pathname === '/signin';
 
   return (
     <>
