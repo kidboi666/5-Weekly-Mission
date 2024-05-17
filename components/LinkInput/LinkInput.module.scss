@@ -1,0 +1,101 @@
+.LinkInput-wrapper {
+  padding: 60px 90px;
+  background-color: #f0f6ff;
+}
+
+.LinkInput {
+  border-radius: 15px;
+  border: 1px solid var(--Linkbrary-primary-color, #6d6afe);
+  background-color: white;
+  width: 800px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
+}
+
+.LinkInput .input-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.LinkInput input {
+  font-family: Pretendard;
+  font-size: 16px;
+  font-weight: 400;
+  border-width: 0;
+}
+
+.add-url-button {
+  border-radius: 8px;
+  background: var(
+    --gra-purpleblue-to-skyblue,
+    linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%)
+  );
+  color: #f5f5f5;
+  padding: 10px 16px;
+  font-size: 14px;
+}
+
+.modal-contents {
+  width: 100%;
+}
+
+.folder-select-wrapper {
+  max-height: 172px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.folder-select-wrapper input {
+  display: none;
+}
+
+.folder-select {
+  font-size: 16px;
+  display: flex;
+  padding: 8px;
+  justify-content: space-between;
+}
+
+.folder-select p {
+  display: flex;
+  align-items: center;
+  height: 24px;
+}
+
+.background {
+  background-color: #f0f6ff;
+}
+
+.folder-select .link-text {
+  color: #9fa6b2;
+}
+
+.LinkInput input::placeholder {
+  color: #9fa6b2;
+}
+
+.selected-style {
+  color: red;
+}
+
+.LinkInput input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  border-radius: 0;
+  outline: none;
+}
+
+.folder-select .text-wrapper {
+  display: flex;
+  gap: 8px;
+}
