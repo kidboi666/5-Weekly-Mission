@@ -8,13 +8,13 @@ import Header from "@/src/components/Header/Header";
 import Footer from "@/src/components/Footer/Footer";
 
 interface FetchSharedResponse {
-  cardListData: folderLinks[];
+  cardListData: FolderLinks[];
   folderData: FolderData;
 }
 
 function Shared() {
   const [folderData, setFolderData] = useState<FolderData | null>(null);
-  const [cardListData, setCardListData] = useState<folderLinks[]>([]);
+  const [cardListData, setCardListData] = useState<FolderLinks[]>([]);
   const [searchInputValue, setSearchInputValue] = useState<string>("");
 
   useEffect(() => {
