@@ -1,64 +1,93 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>signIn</title>
-    <link rel="stylesheet" href="CSS/signin.style.css" />
-    <link rel="stylesheet" href="CSS/global.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <main class="section">
-      <div class="content">
-        <section class="title">
-          <a href="index.html">
-            <img class="logo-img" src="img/logo.svg" alt="" />
-          </a>
-          <div class="question">
-            <div class="question-text">회원이 아니신가요?</div>
-            <a class="signupLink" href="signup.html">회원 가입하기</a>
-          </div>
-        </section>
-        <form class="input">
-          <div class="input__section">
-            <label class="text">이메일<br /></label>
-            <input id="email" class="user-input" type="email" name="email" />
-            <div id="email-errorText" class="errortext error"></div>
-          </div>
-          <div class="input__section password-section">
-            <label class="text">비밀번호<br /></label>
-            <input
-              id="password"
-              class="user-input"
-              type="password"
-              name="password"
-            />
-            <i class="fa fa-eye fa-lg"></i>
-            <div id="password-errorText" class="errortext error"></div>
-          </div>
-          <button type="submit" id="btn" class="signin">로그인</button>
-        </form>
-        <div class="social">
-          <div class="social-text">소셜 로그인</div>
-          <div class="social-link">
-            <a href="https://www.google.com/"
-              ><img src="img/google.svg" alt="Google icon"
-            /></a>
-            <a href="https://www.kakaocorp.com/page/"
-              ><img src="img/kakao.svg" alt="Kakao icon"
-            /></a>
+import Image from "next/image";
+import styles from "@/styles/signin.module.scss";
+import classNames from "classnames/bind";
+import Link from "next/link";
+
+export default function signin() {
+  const cx = classNames.bind(styles);
+
+  return (
+    <div className={cx("body")}>
+      <main className={cx("section")}>
+        <div className={cx("content")}>
+          <section className={cx("title")}>
+            <Link href="/">
+              <Image
+                width={210}
+                height={38}
+                className={cx("logo-img")}
+                src="/img/logo.svg"
+                alt=""
+              />
+            </Link>
+            <div className={cx("question")}>
+              <div className={cx("question-text")}>회원이 아니신가요?</div>
+              <Link className={cx("signupLink")} href="/signup">
+                회원 가입하기
+              </Link>
+            </div>
+          </section>
+          <form className={cx("input")}>
+            <div className={cx("input__section")}>
+              <label className={cx("text")}>
+                이메일
+                <br />
+              </label>
+              <input
+                id="email"
+                className={cx("user-input")}
+                type="email"
+                name="email"
+              />
+              <div
+                id="email-errorText"
+                className={cx("errortext", "error")}
+              ></div>
+            </div>
+            <div className={cx("input__section", "password-section")}>
+              <label className={cx("text")}>
+                비밀번호
+                <br />
+              </label>
+              <input
+                id="password"
+                className={cx("user-input")}
+                type="password"
+                name="password"
+              />
+              <i className={cx("i", "fa", "fa-eye", "fa-lg")}></i>
+              <div
+                id="password-errorText"
+                className={cx("errortext", "error")}
+              ></div>
+            </div>
+            <button type="submit" id="btn" className={cx("button", "signin")}>
+              로그인
+            </button>
+          </form>
+          <div className={cx("social")}>
+            <div className={cx("social-text")}>소셜 로그인</div>
+            <div className={cx("social-link")}>
+              <Link href="https://www.google.com/">
+                <Image
+                  width={42}
+                  height={42}
+                  src="/img/google.svg"
+                  alt="Google icon"
+                />
+              </Link>
+              <Link href="https://www.kakaocorp.com/page/">
+                <Image
+                  width={42}
+                  height={42}
+                  src="/img/kakao.svg"
+                  alt="Kakao icon"
+                />
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
-    </main>
-    <script type="module" src="JS/email.js"></script>
-    <script type="module" src="JS/password.js"></script>
-    <script type="module" src="JS/signin.js"></script>
-    <script src="JS/passwordToggle.js"></script>
-  </body>
-</html>
+      </main>
+    </div>
+  );
+}

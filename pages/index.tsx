@@ -18,7 +18,7 @@ export default function Home() {
               priority
             />
           </Link>
-          <Link className={cx("login__link")} href="signin.html">
+          <Link className={cx("login__link")} href="/signin">
             로그인
           </Link>
         </div>
