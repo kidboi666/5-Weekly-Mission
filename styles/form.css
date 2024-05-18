@@ -3,7 +3,7 @@
 @import url(./font.css);
 @import url(./zIndex.css);
 
-.width-full {
+.widthFull {
   width: 100%;
 }
 
@@ -32,7 +32,7 @@
   color: var(--whiteColor);
 }
 
-.text-gradient {
+.textGradient {
   background: linear-gradient(91.26deg, #6d6afe 17.28%, #ff9f9f 74.98%) text;
   color: transparent;
 }
@@ -55,23 +55,23 @@
   width: auto;
 }
 
-.input-login-form01 {
+.inputLoginForm01 {
   display: flex;
   flex-direction: column;
   margin: 1.125rem 0 0;
 }
 
-.input-login-form01:first-child {
+.inputLoginForm01:first-child {
   margin: 0;
 }
 
-.input-login-form01 label {
+.inputLoginForm01 label {
   font-size: 0.875rem;
   line-height: 1.19357142857;
   margin: 0 0 0.75rem;
 }
 
-.input-login-form01 input {
+.inputLoginForm01 input {
   width: 100%;
   font-size: 1rem;
   line-height: 1.5;
@@ -83,37 +83,41 @@
   padding: 1.125rem 0.9375rem;
 }
 
-.input-login-form01 input:hover,
-.input-login-form01 input:focus {
+.inputLoginForm01 input:hover,
+.inputLoginForm01 input:focus {
   border: 1px solid var(--primaryColor);
 }
 
-.input-icon-div {
+.inputIconDiv {
   position: relative;
 }
 
-.input-icon-div .input-icon {
+.inputIconDiv .inputIcon {
   display: block;
   position: absolute;
   right: 15px;
   top: 50%;
 }
 
-.input-icon-div .input-icon.on img {
+.inputIconDiv .inputIcon.on img {
   margin: -4px 0 0;
   display: block;
 }
 
-.input-icon-div .input-icon.off img {
+.inputIconDiv .inputIcon.off img {
   margin: -5px 0 0;
   display: block;
 }
 
-.login-form .login-button {
+.loginForm .loginButton {
   width: 100%;
 }
 
-.social-login {
+.loginForm .loginButton {
+  margin: 30px 0 0;
+}
+
+.socialLogin {
   background: var(--grayColor200);
   border: 1px solid var(--grayColor300);
   border-radius: 0.5rem;
@@ -121,29 +125,29 @@
   margin: 2rem 0 0;
 }
 
-.social-login.flexBox {
+.socialLogin.flexBox {
   align-items: center;
   justify-content: space-between;
 }
 
-.social-login span {
+.socialLogin span {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.19357142857;
   color: var(--grayColor500);
 }
 
-.social-login > ul.flexBox {
+.socialLogin > ul.flexBox {
   gap: 1rem;
 }
 
-.social-login > .social-con-wrap > .social-con > a {
+.socialLogin > .socialConWrap > .socialCon > a {
   display: flex;
   border-radius: 50%;
   transition: 0.3s box-shadow;
 }
 
-.social-login > .social-con-wrap > .social-con > a:hover {
+.socialLogin > .socialConWrap > .socialCon > a:hover {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
