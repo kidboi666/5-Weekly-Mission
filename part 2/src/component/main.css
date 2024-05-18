@@ -12,26 +12,7 @@
     padding: 63px 0 0;
   }
 }
-.folderTitle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
-.itemManager {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  color: #9fa6b2;
-  font-family: Pretendard;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-}
-.itemManager div {
-  margin: auto;
-}
 
 .linkAddInput {
   width: 100%;

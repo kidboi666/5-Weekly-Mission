@@ -2,10 +2,12 @@ import "../card.css";
 import starIcon from "../../icon/star.svg";
 import kebab from "../../icon/kebab.svg";
 import noImg from "../../img/이미지 없을 때 배경.svg";
+import Modal from "./modal/modal";
 import { useState } from "react";
 
 const FolderCard = ({ date, title, url, img }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [modalDelLink, setModalDelLink] = useState(false);
 
   const displayedAt = (date) => {
     const milliSeconds = new Date() - new Date(date);
@@ -36,6 +38,10 @@ const FolderCard = ({ date, title, url, img }) => {
     setIsOpen(!isOpen);
   };
 
+  const showModalDelLink = () => {
+    setModalDelLink(true);
+  };
+
   return (
     <article className="card">
       <a href={url} target="_blank" rel="noopener noreferrer">
@@ -52,7 +58,18 @@ const FolderCard = ({ date, title, url, img }) => {
           </div>
           {isOpen && (
             <ul className="dropdownContent">
-              <li href="#">삭제하기</li>
+              <li onClick={showModalDelLink} href="#">
+                삭제하기
+              </li>
+              {modalDelLink && (
+                <Modal
+                  setModal={setModalDelLink}
+                  title={"링크 삭제"}
+                  mid={<div className="modaltext">httpw://www.abc.com</div>}
+                  btnname={"삭제하기"}
+                  btnColor={"modalBtnDel"}
+                />
+              )}
               <li href="#">폴더에 추가</li>
             </ul>
           )}
