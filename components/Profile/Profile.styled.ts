@@ -39,6 +39,7 @@ export const ImgBox = styled.div<{ $size: string }>`
   object-fit: cover;
   width: ${({ $size }) => `${(SIZES as any)[$size].pc}px`};
   height: ${({ $size }) => `${(SIZES as any)[$size].pc}px`};
+  overflow: hidden;
 
   @media (max-width: 767px) {
     width: ${({ $size }) => `${(SIZES as any)[$size].mo}px`};

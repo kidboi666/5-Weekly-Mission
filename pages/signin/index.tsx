@@ -6,7 +6,7 @@ import GoggleIcon from '../../src/images/login_google.svg';
 import KakaotalkIcon from '../../src/images/login_kakaotalk.svg';
 import EyeOnIcon from '../../src/images/eye_on.svg';
 import EyeOffIcon from '../../src/images/eye_off.svg';
-import { ChangeEvent, FocusEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { postSignIn } from '@/apis/api';
 import { useRouter } from 'next/router';
 import { validateEmail, validateSignInPassword } from '@/utils/validate';

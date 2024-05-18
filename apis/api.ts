@@ -3,16 +3,11 @@ import axios from 'axios';
 const BASIC_URL = 'https://bootcamp-api.codeit.kr/api';
 
 export async function getUser() {
-  const response = await axios.get(`${BASIC_URL}/users/1`);
-  if (response.status < 200 || response.status >= 300) {
-    throw new Error('사용자 데이터를 불러오는데 실패했습니다.');
-  }
-  const result = response.data.data[0];
-  return result;
-}
-
-export async function getUserData() {
-  const response = await axios.get(`${BASIC_URL}/users`);
+  const response = await axios.get(`${BASIC_URL}/users`, {
+    headers: {
+      Authorization: localStorage.accessToken,
+    },
+  });
   if (response.status < 200 || response.status >= 300) {
     throw new Error('사용자 데이터를 불러오는데 실패했습니다.');
   }

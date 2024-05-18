@@ -6,13 +6,7 @@ import GoggleIcon from '../../src/images/login_google.svg';
 import KakaotalkIcon from '../../src/images/login_kakaotalk.svg';
 import EyeOnIcon from '../../src/images/eye_on.svg';
 import EyeOffIcon from '../../src/images/eye_off.svg';
-import {
-  ChangeEvent,
-  FocusEvent,
-  FormEvent,
-  MouseEvent,
-  useState,
-} from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { postSignUp } from '@/apis/api';
 import { useRouter } from 'next/router';
 import {
@@ -53,7 +47,7 @@ export default function SignUpPage() {
     validateEmail(email, setShowError);
     validateSignUpPassword(password, setShowError);
     validatePasswordConform(passwordConform, password, setShowError);
-    if (!showError.error) {
+    if (showError.error) {
       return;
     }
     const result = await postSignUp(email, password);
@@ -109,7 +103,7 @@ export default function SignUpPage() {
           </S.FormField>
           <S.FormField>
             <S.Label htmlFor='password'>비밀번호</S.Label>
-            <S.PasswordWrap onBlur={handlePasswordBlur} tabIndex={0}>
+            <S.PasswordWrap>
               <S.Input
                 id='password'
                 type={isVisiblePassword ? 'text' : 'password'}
@@ -117,6 +111,7 @@ export default function SignUpPage() {
                 value={password}
                 onChange={handlePasswordChange}
                 $iserror={showError.password.error.toString()}
+                onBlur={handlePasswordBlur}
               />
               <S.EyeButton type='button' onClick={handlePasswordEyeButtonClick}>
                 <Image
@@ -133,7 +128,7 @@ export default function SignUpPage() {
           </S.FormField>
           <S.FormField>
             <S.Label htmlFor='passwordConfirm'>비밀번호 확인</S.Label>
-            <S.PasswordWrap onBlur={handlePasswordConformBlur}>
+            <S.PasswordWrap>
               <S.Input
                 id='passwordConfirm'
                 type='password'
@@ -141,6 +136,7 @@ export default function SignUpPage() {
                 value={passwordConform}
                 onChange={handlePasswordConformChange}
                 $iserror={showError.passwordConform.error.toString()}
+                onBlur={handlePasswordConformBlur}
               />
               <S.EyeButton
                 type='button'
