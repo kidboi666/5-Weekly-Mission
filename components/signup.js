@@ -1,5 +1,5 @@
-import { emailInput, emailError, emailCheck } from "./email.js";
-import { passwordInput, passwordError } from "./password.js";
+import { emailInput, emailError, emailCheck } from "./EmailInput.js";
+import { passwordInput, passwordError } from "./PasswordInput.js";
 import {
   isValidPassword,
   pwConfirmInput,

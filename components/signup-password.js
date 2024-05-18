@@ -1,4 +1,4 @@
-import { passwordInput, passwordError } from "./password.js";
+import { passwordInput, passwordError } from "./PasswordInput.js";
 export const pwConfirmInput = document.querySelector("#password-confirm");
 export const pwConfirmError = document.querySelector(
   "#password-confirm-errorText"
