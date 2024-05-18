@@ -15,6 +15,7 @@ export default function SignInPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showError, setShowError] = useState({
+    error: false,
     email: { error: false, message: '' },
     password: { error: false, message: '' },
     passwordConform: { error: false, message: '' },

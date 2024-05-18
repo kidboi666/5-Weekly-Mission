@@ -4,6 +4,7 @@ export function validateEmail(
   email: string,
   setter: Dispatch<
     SetStateAction<{
+      error: boolean;
       email: { error: boolean; message: string };
       password: { error: boolean; message: string };
       passwordConform: { error: boolean; message: string };
@@ -36,6 +37,7 @@ export function validateSignUpPassword(
   password: string,
   setter: Dispatch<
     SetStateAction<{
+      error: boolean;
       email: { error: boolean; message: string };
       password: { error: boolean; message: string };
       passwordConform: { error: boolean; message: string };
@@ -63,6 +65,7 @@ export function validateSignInPassword(
   password: string,
   setter: Dispatch<
     SetStateAction<{
+      error: boolean;
       email: { error: boolean; message: string };
       password: { error: boolean; message: string };
       passwordConform: { error: boolean; message: string };
@@ -87,6 +90,7 @@ export function validatePasswordConform(
   password: string,
   setter: Dispatch<
     SetStateAction<{
+      error: boolean;
       email: { error: boolean; message: string };
       password: { error: boolean; message: string };
       passwordConform: { error: boolean; message: string };
