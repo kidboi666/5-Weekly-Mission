@@ -6,15 +6,20 @@ type Props = {
   type: string;
   placeholder: string;
   id: string;
+  handleChange?: (pw: string) => void;
+  password?: string;
 };
 
-function SignInput({ type, placeholder, id }: Props) {
+function SignInput({ type, placeholder, id, handleChange, password }: Props) {
   const [iSInvalid, setIsInvalid] = useState(false);
   const [value, setValue] = useState('');
   const [message, setMessage] = useState('');
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
+    if (id === 'password') {
+      handleChange?.(value);
+    }
   };
 
   const onBlur = () => {
@@ -32,6 +37,16 @@ function SignInput({ type, placeholder, id }: Props) {
       if (value === '') {
         setIsInvalid(true);
         setMessage('비밀번호를 입력해주세요');
+      } else {
+        setIsInvalid(false);
+      }
+    } else if (id === 'passwordCheck') {
+      if (value === '') {
+        setIsInvalid(true);
+        setMessage('비밀번호를 입력해주세요');
+      } else if (value !== password) {
+        setIsInvalid(true);
+        setMessage('비밀번호가 일치하지 않아요');
       } else {
         setIsInvalid(false);
       }

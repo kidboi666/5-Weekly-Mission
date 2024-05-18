@@ -9,7 +9,7 @@ function SignInPage() {
   return (
     <SigninWrapper>
       <SignForm>
-        <Logo />
+        <Logo href="/signup" message="회원이 아니신가요?" linkMessage="회원 가입하기" />
         <div>
           <SignLabel>
             이메일
@@ -21,7 +21,7 @@ function SignInPage() {
           </SignLabel>
         </div>
         <GradientButton size="auto">로그인</GradientButton>
-        <Social />
+        <Social message="소셜 로그인" />
       </SignForm>
     </SigninWrapper>
   );

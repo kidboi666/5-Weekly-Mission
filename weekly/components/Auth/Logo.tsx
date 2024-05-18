@@ -3,15 +3,21 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import logoImage from '@/assets/logo.svg';
 
-function Logo() {
+type Props = {
+  href: string;
+  message: string;
+  linkMessage: string;
+};
+
+function Logo({ href, message, linkMessage }: Props) {
   return (
     <LogoWrapper>
       <Link href="/">
         <Image className="logo" src={logoImage} alt="로고 이미지" />
       </Link>
       <SignupWrapper>
-        <p>회원이 아니신가요?</p>
-        <Link href="/signup">회원 가입하기</Link>
+        <p>{message}</p>
+        <Link href={href}>{linkMessage}</Link>
       </SignupWrapper>
     </LogoWrapper>
   );

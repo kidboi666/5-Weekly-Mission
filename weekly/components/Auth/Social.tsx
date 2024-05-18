@@ -3,10 +3,14 @@ import SocialIcon from './SocialIcon';
 import kakaoIcon from '@/assets/icon-kakaotalk.svg';
 import googleIcon from '@/assets/icon-google.svg';
 
-function Social() {
+type Props = {
+  message: string;
+};
+
+function Social({ message }: Props) {
   return (
     <SocialWrapper>
-      <p>소셜 로그인</p>
+      <p>{message}</p>
       <IconWrapper>
         <SocialIcon imgUrl={googleIcon} />
         <SocialIcon imgUrl={kakaoIcon} />
