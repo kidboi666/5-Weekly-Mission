@@ -1,28 +1,28 @@
 import { memo } from 'react';
-import Button from '../common/atoms/Button';
+import { FontLS } from '@/styles/commonStyle';
 import { ShareBox } from '../share/shareStyle';
 import { ShareListBtn } from '@/styles/folderStyle';
+import Button from '../common/atoms/Button';
 import LinkButton from '../common/atoms/LinkButton';
-import { FontLS } from '@/styles/commonStyle';
 
 const folderControlBtn = [
   {
     id: 'fcb1',
     name: '공유',
     imgSrc: '/assets/icon/icon_gray_share.svg',
-    body: 'folderShare',
+    bodyType: 'folderShare',
   },
   {
     id: 'fcb2',
     name: '이름 변경',
     imgSrc: '/assets/icon/icon_gray_pen.svg',
-    body: 'folderChangeName',
+    bodyType: 'folderChangeName',
   },
   {
     id: 'fcb3',
     name: '삭제',
     imgSrc: '/assets/icon/icon_gray_delete.svg',
-    body: 'folderDelete',
+    bodyType: 'folderDelete',
   },
 ];
 
@@ -33,7 +33,7 @@ interface iControll {
 }
 
 function FolderContentControll({ $title, onclick, $id }: iControll) {
-  const handleModalOpen = (type: any) => {
+  const handleModalOpen = (type: string) => {
     onclick(type);
   };
 
@@ -61,7 +61,7 @@ function FolderContentControll({ $title, onclick, $id }: iControll) {
               $id={btn.id}
               $btnClass={'button--icon-before'}
               $BeforButtonIcon={btn.imgSrc}
-              onclick={() => handleModalOpen(`${btn.body}`)}>
+              onclick={() => handleModalOpen(`${btn.bodyType}`)}>
               {btn.name}
             </Button>
           ))}

@@ -1,30 +1,47 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { IModal } from '../modal/interface';
-import { calculateTimeAgo } from '@/src/utils/calcTilmAgo';
-import Modal from '../modal/Modal';
+import Image from 'next/image';
+import Modal, { IModalInfo } from '../modal/Modal';
 import { BookMarkBtn, CardMenu, CardWrap } from './PostCardStyle';
 import { DFlaxAlignCenterBtw, EllipsisLine } from '@/styles/commonStyle';
-import Image from 'next/image';
+import { calculateTimeAgo } from '@/src/utils/calcTilmAgo';
+import { IModal } from '@/src/constant/modal';
+import { instance } from '@/lib/axios';
 import { IFolderContent } from './interface';
 
 const EMPTY_IMAGE = '/assets/logo/logo.svg';
 
-export default function PostCard({ image_source, description, created_at }: IFolderContent) {
+type SelectedModalInfo = { $type: string } & Partial<Pick<IModalInfo, '$card_Id' | '$folder_Id' | '$descText'>>;
+
+export default function PostCard({ id, folder_id, image_source, description, created_at, url }: IFolderContent) {
   const [isBookMark, setIsBookMark] = useState(false);
   const [isCardMenu, setIsCardMenu] = useState(false);
   const [isModalShow, setIsModalShow] = useState(false);
-  const [modalInfo] = useState<IModal>({
-    $title: '',
-    $titleDescText: null,
-    $body: null,
-    $buttonStyle: null,
-    $buttonText: null,
-    $modalData: null,
+  const [modalType, setModalType] = useState<SelectedModalInfo>({
+    $card_Id: '',
+    $type: '',
   });
-
+  const [modalData, setModalData] = useState<IModal<any>>();
   const handelerBookMarkActive = () => setIsBookMark((prev) => !prev);
   const handelerCardDropdown = () => setIsCardMenu((prev) => !prev);
+
+  const handleModalOpen = (type: string) => {
+    // 미트볼메뉴-삭제하기
+    if (type === 'linkDelete') {
+      setModalType({
+        $type: type,
+        $card_Id: `${id}`,
+        $descText: url,
+      });
+    }
+    // 미트볼메뉴-폴더에추가
+    if (type === 'folderInAdd') {
+      setModalType({
+        $type: type,
+      });
+    }
+    setIsModalShow(true);
+  };
 
   const handleModalClose = () => {
     setIsModalShow(false);
@@ -32,6 +49,17 @@ export default function PostCard({ image_source, description, created_at }: IFol
 
   const date = useMemo(() => {
     return new Date(`${created_at}`);
+  }, []);
+
+  const handleModalProps = async () => {
+    // 클릭한 link의 폴더명
+    const resMenu = await instance.get(`/folders`);
+    const folderName = resMenu.data.data;
+    if (folderName) setModalData(folderName);
+  };
+
+  useEffect(() => {
+    handleModalProps();
   }, []);
 
   return (
@@ -43,7 +71,7 @@ export default function PostCard({ image_source, description, created_at }: IFol
           북마크버튼
         </BookMarkBtn>
         <Link
-          href='/'
+          href={url}
           target='_blank'
           className='card__link'>
           <figure>
@@ -90,16 +118,16 @@ export default function PostCard({ image_source, description, created_at }: IFol
           </button>
           {isCardMenu && (
             <div className='card__dropdown-menu'>
-              {/* <button
+              <button
                 className='card__menu-btn'
-                onClick={() => handleModalOpen('folderDelete')}>
+                onClick={() => handleModalOpen('linkDelete')}>
                 삭제하기
               </button>
               <button
                 className='card__menu-btn'
                 onClick={() => handleModalOpen('folderInAdd')}>
                 폴더에 추가
-              </button> */}
+              </button>
             </div>
           )}
         </CardMenu>
@@ -107,7 +135,9 @@ export default function PostCard({ image_source, description, created_at }: IFol
       <Modal
         onOpen={isModalShow}
         onClose={handleModalClose}
-        {...modalInfo}
+        $type={modalType.$type}
+        $card_Id={`${id}`}
+        $modalData={modalData}
       />
     </>
   );

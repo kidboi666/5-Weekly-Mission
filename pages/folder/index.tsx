@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { GetServerSidePropsContext } from 'next';
 import { ContainBody, Container } from '@/styles/commonStyle';
-import { modalOrder } from '@/src/constant/modal';
 import LinkAddHeader from '@/components/folder/LinkAddHeader';
 import SearchInputBox from '@/components/folder/SearchInputBox';
 import FolderButtonList from '@/components/folder/FolderButtonList';
@@ -8,13 +9,10 @@ import Button from '@/components/common/atoms/Button';
 import FolderContentControll from '@/components/folder/FolderContentControll';
 import PostCardList from '@/components/folder/PostCardList';
 import Modal from '@/components/modal/Modal';
-import { IModal } from '@/components/modal/interface';
 import Loading from '@/components/loading/Loading';
 import { BodyInner, BookmarkBox, FolderContainHead } from '../../styles/folderStyle';
 import { IFolderContentApi, IFolderMenuButtonApi } from '../../components/folder/interface';
 import { instance } from '@/lib/axios';
-import { useRouter } from 'next/router';
-import { GetServerSidePropsContext } from 'next';
 
 const ADD_IMAGE = '/assets/icon/icon_primary_add.svg';
 const SEARCH_IMAGE = '/assets/icon/icon_search.svg';
@@ -51,15 +49,8 @@ export default function Folder({ $menu, $content }: { $menu: IFolderMenuButtonAp
   const router = useRouter();
   const [tabTitle, setTabTitle] = useState('전체');
   const [activeBtn, setActiveBtn] = useState<number>(-1);
-  const [isModalShow, setModalShow] = useState(false);
-  const [modalInfo, setIsModalShow] = useState<IModal>({
-    $title: '',
-    $titleDescText: null,
-    $body: null,
-    $buttonStyle: null,
-    $buttonText: null,
-    $modalData: null,
-  });
+  const [isModalShow, setIsModalShow] = useState(false);
+  const [modalType, setModalType] = useState<string>('');
   const [searchContatn, setSearchContent] = useState<any>();
 
   // 폴더리스트버튼
@@ -79,20 +70,16 @@ export default function Folder({ $menu, $content }: { $menu: IFolderMenuButtonAp
 
   // modal open
   const handleModalOpen = (type: string) => {
-    let modalInfo = modalOrder[type];
-    if (type === 'folderInAdd') {
-      modalInfo = {
-        ...modalInfo,
-        $modalData: $menu,
-      };
+    setIsModalShow(true);
+    if (type === 'folderDelete') {
+      let aaa = tabTitle;
     }
-    setIsModalShow(modalInfo);
-    setModalShow(true);
+    setModalType(type);
   };
 
   // modal close
   const handleModalClose = () => {
-    setModalShow(false);
+    setIsModalShow(false);
   };
 
   // Search
@@ -128,9 +115,10 @@ export default function Folder({ $menu, $content }: { $menu: IFolderMenuButtonAp
       alert('페이지가 없습니다.');
       router.push(`/folder`);
     }
-  }, [$menu]);
+  }, [$menu, router]);
 
   if (!$menu || !$content) return <Loading />;
+
   return (
     <Container>
       <FolderContainHead className='folder--header'>
@@ -172,8 +160,8 @@ export default function Folder({ $menu, $content }: { $menu: IFolderMenuButtonAp
       <Modal
         onOpen={isModalShow}
         onClose={handleModalClose}
-        $folderId={activeBtn}
-        {...modalInfo}
+        $type={modalType}
+        $descText={modalType === 'folderDelete' ? tabTitle : ''}
       />
     </Container>
   );

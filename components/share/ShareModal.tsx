@@ -1,20 +1,16 @@
-import { snsShare } from '@/src/constant/share';
-import Button from '../common/atoms/Button';
-import { ShareBox } from './shareStyle';
 import Image from 'next/image';
+import Button from '../common/atoms/Button';
+import { snsShare } from '@/src/constant/share';
+import { ShareBox } from './shareStyle';
+import { useRouter } from 'next/router';
 
-const handleLinkCopy = async (id: number) => {
-  try {
-    navigator.clipboard.writeText(`${window.location.host}/shared/${id}`);
-  } catch (e) {
-    console.log(e);
-  }
-};
+function ShareModal() {
+  const router = useRouter();
+  const { id } = router.query;
 
-function ShareModal({ sharedId }: { sharedId: number | null }) {
   const handlerSns = (snsId: string) => {
-    if (sharedId && snsId === 'sh_link') {
-      handleLinkCopy(sharedId);
+    if (snsId === 'sh_link') {
+      navigator.clipboard.writeText(`${window.location.host}/shared/${id}`);
       alert('주소를 복사하였습니다.');
     } else if (snsId === 'sh_kakao') {
       // 추후 작업 예정..
