@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { Profile } from '@/styles/commonStyle';
 import LinkButton from './atoms/LinkButton';
 import Link from 'next/link';
-import { LayoutContext } from '@/lib/LayoutContext';
+// import { LayoutContext } from '@/lib/LayoutContext';
 import { pageLayoutConfig, urlName } from '@/src/constant/layoutConfig';
 import Button from './atoms/Button';
 
@@ -22,10 +22,10 @@ export interface IHeaderUser {
 
 function Header() {
   const router = useRouter();
-  const { pathname } = router;
-  const results: urlName = pathname.split('/')[1];
-  const layoutConfig = pageLayoutConfig[results] || { header: true };
-  const { headerShow, setHeaderShow, isLoggedIn, setIsLoggedIn } = useContext(LayoutContext);
+  // const { pathname } = router;
+  // const results: urlName = pathname.split('/')[1];
+  // const layoutConfig = pageLayoutConfig[results] || { header: true };
+  // const { headerShow, setHeaderShow, isLoggedIn, setIsLoggedIn } = useContext(LayoutContext);
   const [fixed, setFixed] = useState(true);
   const [userInfo, setUserInfo] = useState<IHeaderUser | null>();
 
@@ -34,32 +34,32 @@ function Header() {
     setUserInfo(JSON.parse(JSON.stringify(res.data)));
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('linkbrary');
-    if (setIsLoggedIn) setIsLoggedIn(false);
-    router.push('/');
-  };
+  // const handleLogout = () => {
+  //   localStorage.removeItem('linkbrary');
+  //   if (setIsLoggedIn) setIsLoggedIn(false);
+  //   router.push('/');
+  // };
 
-  useEffect(() => {
-    // 유저정보
-    handleUserinfo();
-    if (setIsLoggedIn) {
-      if (localStorage.getItem('linkbrary')) {
-        setIsLoggedIn(true);
-      } else {
-        setIsLoggedIn(false);
-      }
-    }
-  }, []);
+  // useEffect(() => {
+  //   // 유저정보
+  //   handleUserinfo();
+  //   if (setIsLoggedIn) {
+  //     if (localStorage.getItem('linkbrary')) {
+  //       setIsLoggedIn(true);
+  //     } else {
+  //       setIsLoggedIn(false);
+  //     }
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    // 페이지 컴포넌트 유무
-    if (setHeaderShow) {
-      setHeaderShow(layoutConfig.header);
-    }
-  }, [pathname]);
+  // useEffect(() => {
+  //   // 페이지 컴포넌트 유무
+  //   if (setHeaderShow) {
+  //     setHeaderShow(layoutConfig.header);
+  //   }
+  // }, [pathname]);
 
-  if (!headerShow) return null;
+  // if (!headerShow) return null;
   return (
     <HeaderWrap
       className='head__wrap'
@@ -74,8 +74,8 @@ function Header() {
           </Link>
         </HeaderLogo>
         <HeaderControl className='head__login__box'>
-          {isLoggedIn ? (
-            <Button onclick={handleLogout}>
+          {false ? (
+            <Button>
               <Profile></Profile>
               <Email>{userInfo?.email}</Email>
             </Button>

@@ -8,6 +8,51 @@ import { useForm } from 'react-hook-form';
 import { joinInstance } from '@/lib/axios';
 import { useRouter } from 'next/router';
 import { IJoinForm } from '@/components/join/interfase';
+import { GetServerSidePropsContext } from 'next';
+
+const BASE_PAGE_URL = '/';
+const SIGNUP_PAGE_URL = '/signup';
+
+export async function getServerSideProps(contaxt: GetServerSidePropsContext) {
+  const { req, resolvedUrl } = contaxt;
+  const isSignupPage = resolvedUrl === SIGNUP_PAGE_URL;
+
+  if (req.headers.referer) {
+    // 내부 접속
+    if (req.headers.cookie) {
+      return {
+        redirect: {
+          destination: req.headers.referer,
+          permanent: false,
+        },
+      };
+    }
+  }
+
+  if (!req.headers.referer) {
+    //외부 접속
+    if (req.headers.cookie) {
+      return {
+        redirect: {
+          destination: BASE_PAGE_URL,
+          permanent: false,
+        },
+      };
+    }
+  }
+
+  if (!req.headers.cookie && !isSignupPage) {
+    return {
+      redirect: {
+        destination: SIGNUP_PAGE_URL,
+        permanent: false,
+      },
+    };
+  }
+
+  console.log(req.headers);
+  return { props: {} };
+}
 
 export default function SignUp() {
   const router = useRouter();

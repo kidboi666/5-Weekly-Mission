@@ -8,11 +8,58 @@ import { useForm } from 'react-hook-form';
 import { loginForm } from '@/components/join/interfase';
 import { joinInstance } from '@/lib/axios';
 import { useRouter } from 'next/router';
-import { LayoutContext } from '@/lib/LayoutContext';
+import { AuthContext } from '@/lib/auto.context';
+import { GetServerSidePropsContext } from 'next';
+
+const BASE_PAGE_URL = '/';
+const SIGNIN_PAGE_URL = '/signin';
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { req, resolvedUrl } = context;
+  if (!req) return { props: {} };
+
+  const isSigninPage = resolvedUrl === SIGNIN_PAGE_URL;
+
+  if (req.headers.referer) {
+    // 내부 접속
+    if (req.headers.cookie) {
+      return {
+        redirect: {
+          destination: req.headers.referer,
+          permanent: false,
+        },
+      };
+    }
+  }
+
+  if (!req.headers.referer) {
+    //외부 접속
+    if (req.headers.cookie) {
+      return {
+        redirect: {
+          destination: BASE_PAGE_URL,
+          permanent: false,
+        },
+      };
+    }
+  }
+
+  if (!req.headers.cookie && !isSigninPage) {
+    return {
+      redirect: {
+        destination: SIGNIN_PAGE_URL,
+        permanent: false,
+      },
+    };
+  }
+
+  console.log(req.headers);
+  return { props: {} };
+}
 
 export default function SignIn() {
   const router = useRouter();
-  const { setIsLoggedIn } = useContext(LayoutContext);
+  const { handleLogin } = useContext(AuthContext);
   const [visibility, setVisibility] = useState(false);
   const {
     register,
@@ -26,8 +73,7 @@ export default function SignIn() {
       const res = await joinInstance.post('/sign-in', { email, password });
       const { data } = res;
       if (data) {
-        if (setIsLoggedIn) setIsLoggedIn(true);
-        localStorage.setItem('linkbrary', data.data.accessToken);
+        handleLogin(data.data.accessToken);
         router.push('/folder');
       }
     } catch {
