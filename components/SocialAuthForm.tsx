@@ -4,7 +4,11 @@ import styles from "./SocialAuthForm.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
-function SocialAuthForm({ message }) {
+interface SocialAuthFormProps {
+  message: string;
+}
+
+function SocialAuthForm({ message }: SocialAuthFormProps) {
   return (
     <div className={styles.socialAuthForm}>
       {message}
