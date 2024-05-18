@@ -1,5 +1,5 @@
 import GoogleIcon from "../public/Google.svg";
-import KakaoIcon from "../public/kakao.svg";
+import KakaoIcon from "../public/Kakao.svg";
 import styles from "./SocialAuthForm.module.css";
 import Link from "next/link";
 import Image from "next/image";
