@@ -17,7 +17,7 @@ function SignInPage() {
           </SignLabel>
           <SignLabel>
             비밀번호
-            {/* <SignInput type="password" placeholder="비밀번호를 입력해 주세요" /> */}
+            <SignInput type="password" placeholder="비밀번호를 입력해 주세요" id="password" />
           </SignLabel>
         </div>
         <GradientButton size="auto">로그인</GradientButton>

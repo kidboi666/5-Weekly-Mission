@@ -28,6 +28,13 @@ function SignInput({ type, placeholder, id }: Props) {
       } else {
         setIsInvalid(false);
       }
+    } else if (id === 'password') {
+      if (value === '') {
+        setIsInvalid(true);
+        setMessage('비밀번호를 입력해주세요');
+      } else {
+        setIsInvalid(false);
+      }
     }
   };
 
