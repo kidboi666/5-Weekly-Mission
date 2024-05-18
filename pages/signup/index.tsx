@@ -6,7 +6,13 @@ import GoggleIcon from '../../src/images/login_google.svg';
 import KakaotalkIcon from '../../src/images/login_kakaotalk.svg';
 import EyeOnIcon from '../../src/images/eye_on.svg';
 import EyeOffIcon from '../../src/images/eye_off.svg';
-import { ChangeEvent, FocusEvent, FormEvent, useState } from 'react';
+import {
+  ChangeEvent,
+  FocusEvent,
+  FormEvent,
+  MouseEvent,
+  useState,
+} from 'react';
 import { postSignUp } from '@/apis/api';
 import { useRouter } from 'next/router';
 
@@ -19,6 +25,9 @@ export default function SignUpPage() {
     password: { error: false, message: '' },
     passwordConform: { error: false, message: '' },
   });
+  const [isVisiblePassword, setIsVisiblePassword] = useState(false);
+  const [isVisiblePasswordConform, setIsVisiblePasswordConform] =
+    useState(false);
   const router = useRouter();
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -98,6 +107,14 @@ export default function SignUpPage() {
     }));
   };
 
+  const handlePasswordEyeButtonClick = () => {
+    setIsVisiblePassword((prev) => !prev);
+  };
+
+  const handlePasswordConformEyeButtonClick = () => {
+    setIsVisiblePasswordConform((prev) => !prev);
+  };
+
   return (
     <S.Layout>
       <S.Inner>
@@ -129,17 +146,17 @@ export default function SignUpPage() {
             <S.PasswordWrap>
               <S.Input
                 id='password'
-                type='password'
+                type={isVisiblePassword ? 'text' : 'password'}
                 placeholder='영문, 숫자를 조합해 8자 이상 입력해 주세요.'
                 value={password}
                 onChange={handlePasswordChange}
                 onBlur={handlePasswordBlur}
                 $iserror={showError.password.error.toString()}
               />
-              <S.EyeButton type='button' id='passwordEyeButton'>
+              <S.EyeButton type='button' onClick={handlePasswordEyeButtonClick}>
                 <Image
-                  src={EyeOffIcon}
-                  alt='안 보이기'
+                  src={isVisiblePassword ? EyeOnIcon : EyeOffIcon}
+                  alt='비밀번호 눈 버튼'
                   width='16'
                   height='16'
                 />
@@ -148,7 +165,6 @@ export default function SignUpPage() {
             {showError.password.error && (
               <S.ErrorMessage>{showError.password.message}</S.ErrorMessage>
             )}
-            <S.ErrorMessage></S.ErrorMessage>
           </S.FormField>
           <S.FormField>
             <S.Label htmlFor='passwordConfirm'>비밀번호 확인</S.Label>
@@ -162,10 +178,13 @@ export default function SignUpPage() {
                 onBlur={handlePasswordConformBlur}
                 $iserror={showError.passwordConform.error.toString()}
               />
-              <S.EyeButton type='button' id='passwordConfirmEyeButton'>
+              <S.EyeButton
+                type='button'
+                onClick={handlePasswordConformEyeButtonClick}
+              >
                 <Image
-                  src={EyeOffIcon}
-                  alt='안 보이기'
+                  src={isVisiblePassword ? EyeOnIcon : EyeOffIcon}
+                  alt='비밀번호확인 눈 버튼'
                   width='16'
                   height='16'
                 />

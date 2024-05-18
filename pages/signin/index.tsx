@@ -105,7 +105,7 @@ export default function SignInPage() {
                 onBlur={handlePasswordBlur}
                 $iserror={showError.password.error.toString()}
               />
-              <S.EyeButton type='button' id='passwordEyeButton'>
+              <S.EyeButton type='button'>
                 <Image
                   src={EyeOffIcon}
                   alt='안 보이기'
