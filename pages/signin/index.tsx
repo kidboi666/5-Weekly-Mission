@@ -1,15 +1,15 @@
+import { useContext, useEffect, useState } from 'react';
 import { FontSM, Relative } from '@/styles/commonStyle';
 import { JoinBody, JoinAccessControlBox, JoinSocial, JoinTitle, JoinWrap } from '../../styles/loginStyle';
+import { ErrorText, FormRowBox, FormWrap } from '@/components/join/formStyle';
 import LinkButton from '@/components/common/atoms/LinkButton';
 import Button from '@/components/common/atoms/Button';
-import { ErrorText, FormRowBox, FormWrap } from '@/components/join/formStyle';
-import { useContext, useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { loginForm } from '@/components/join/interfase';
 import { joinInstance } from '@/lib/axios';
-import { useRouter } from 'next/router';
 import { AuthContext } from '@/lib/auto.context';
 import { GetServerSidePropsContext } from 'next';
+import { useRouter } from 'next/router';
+import { useForm } from 'react-hook-form';
 
 const BASE_PAGE_URL = '/';
 const SIGNIN_PAGE_URL = '/signin';
@@ -53,7 +53,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     };
   }
 
-  console.log(req.headers);
   return { props: {} };
 }
 

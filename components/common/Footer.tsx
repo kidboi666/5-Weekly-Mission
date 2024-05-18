@@ -1,10 +1,9 @@
-import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { FootInner, FootNav, FootSign, FootSocial, FootWrap } from './footerStyle';
-import { useRouter } from 'next/router';
-import { pageLayoutConfig, urlName } from '@/src/constant/layoutConfig';
-import { useContext, useEffect } from 'react';
-// import { LayoutContext } from "@/lib/LayoutContext";
 import LinkButton from './atoms/LinkButton';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 export const snsIconSrc = [
   {
@@ -29,18 +28,17 @@ export const snsIconSrc = [
   },
 ];
 
+const hidePages = ['/signin', '/signup'];
+
 function Footer() {
   const { pathname } = useRouter();
-  const results: urlName = pathname.split('/')[1];
-  const layoutConfig = pageLayoutConfig[results] || { footer: true };
-  // const { headerShow, setHeaderShow } = useContext(LayoutContext);
+  const [hideFooter, setHideFooter] = useState(true);
 
-  // useEffect(() => {
-  //   if (setHeaderShow) {
-  //     setHeaderShow(layoutConfig.footer);
-  //   }
-  // }, [pathname]);
-  // if (!headerShow) return null;
+  useEffect(() => {
+    setHideFooter(hidePages.includes(pathname));
+  }, [pathname]);
+
+  if (hideFooter) return null;
 
   return (
     <FootWrap className='foot__main'>
@@ -64,9 +62,11 @@ function Footer() {
               key={sns.id}
               $link={sns.link}
               $linkClass={`link--social-emoji`}>
-              <img
+              <Image
                 src={sns.src}
                 alt={sns.id}
+                width={20}
+                height={20}
               />
             </LinkButton>
           ))}

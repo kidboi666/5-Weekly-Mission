@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Button from './atoms/Button';
 
 export const HeaderWrap = styled.header<{ $position: boolean | undefined }>`
-  position: ${({ $position }) => ($position ? 'fixed' : 'absolute')};
+  position: ${({ $position }) => ($position ? 'absolute' : 'fixed')};
   top: 0;
   left: 0;
   right: 0;

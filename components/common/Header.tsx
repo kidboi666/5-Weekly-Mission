@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from 'react';
-import { joinInstance } from '@/lib/axios';
 import { Email, HeaderControl, HeaderInner, HeaderLogo, HeaderWrap } from './headerStyle';
-import { useRouter } from 'next/router';
 import { Profile } from '@/styles/commonStyle';
+import { AuthContext } from '@/lib/auto.context';
+import { joinInstance } from '@/lib/axios';
 import LinkButton from './atoms/LinkButton';
-import Link from 'next/link';
-// import { LayoutContext } from '@/lib/LayoutContext';
-import { pageLayoutConfig, urlName } from '@/src/constant/layoutConfig';
 import Button from './atoms/Button';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 const logo = '/assets/logo/logo.svg';
 
@@ -20,62 +20,48 @@ export interface IHeaderUser {
   auth_id: string;
 }
 
+const hidePages = ['/signin', '/signup'];
+const noHeaderFixed = ['/folder'];
+
 function Header() {
   const router = useRouter();
-  // const { pathname } = router;
-  // const results: urlName = pathname.split('/')[1];
-  // const layoutConfig = pageLayoutConfig[results] || { header: true };
-  // const { headerShow, setHeaderShow, isLoggedIn, setIsLoggedIn } = useContext(LayoutContext);
-  const [fixed, setFixed] = useState(true);
+  const { pathname } = router;
+  const { isLoggedIn, handleLogout } = useContext(AuthContext);
+  const [isfixed, setIsFixed] = useState(true);
+  const [hideHeader, setHideHeader] = useState(true);
   const [userInfo, setUserInfo] = useState<IHeaderUser | null>();
 
-  const handleUserinfo = async () => {
+  const handleUserInfo = async () => {
     const res = await joinInstance.get(`/sample/user`);
     setUserInfo(JSON.parse(JSON.stringify(res.data)));
   };
 
-  // const handleLogout = () => {
-  //   localStorage.removeItem('linkbrary');
-  //   if (setIsLoggedIn) setIsLoggedIn(false);
-  //   router.push('/');
-  // };
+  useEffect(() => {
+    handleUserInfo();
+    setHideHeader(hidePages.includes(pathname));
+    setIsFixed(noHeaderFixed.includes(pathname));
+  }, [pathname]);
 
-  // useEffect(() => {
-  //   // 유저정보
-  //   handleUserinfo();
-  //   if (setIsLoggedIn) {
-  //     if (localStorage.getItem('linkbrary')) {
-  //       setIsLoggedIn(true);
-  //     } else {
-  //       setIsLoggedIn(false);
-  //     }
-  //   }
-  // }, []);
+  if (hideHeader) return null;
 
-  // useEffect(() => {
-  //   // 페이지 컴포넌트 유무
-  //   if (setHeaderShow) {
-  //     setHeaderShow(layoutConfig.header);
-  //   }
-  // }, [pathname]);
-
-  // if (!headerShow) return null;
   return (
     <HeaderWrap
       className='head__wrap'
-      $position={fixed}>
+      $position={isfixed}>
       <HeaderInner>
         <HeaderLogo className='head__logo'>
           <Link href='/'>
-            <img
+            <Image
               src={logo}
               alt='linkbrary'
+              width={133}
+              height={25}
             />
           </Link>
         </HeaderLogo>
         <HeaderControl className='head__login__box'>
-          {false ? (
-            <Button>
+          {isLoggedIn ? (
+            <Button onclick={handleLogout}>
               <Profile></Profile>
               <Email>{userInfo?.email}</Email>
             </Button>

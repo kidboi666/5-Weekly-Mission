@@ -22,6 +22,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
     setIsLoggedIn(token);
   };
   const handleLogout = () => {
+    document.cookie = `accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
     setIsLoggedIn(null);
   };
 

@@ -50,7 +50,6 @@ export async function getServerSideProps(contaxt: GetServerSidePropsContext) {
     };
   }
 
-  console.log(req.headers);
   return { props: {} };
 }
 
