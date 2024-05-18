@@ -1,6 +1,8 @@
 import styles from "./AuthForm.module.css";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useState } from "react";
 import { submitLoginForm, accessTokenCheck } from "@/api/Auth";
+import PasswordToggleButton from "./PasswordToggleButton";
 
 interface SigninFormValues {
   email: string;
@@ -8,6 +10,9 @@ interface SigninFormValues {
 }
 
 function SigninForm() {
+  const [passwordType, setPasswordType] = useState<"password" | "text">(
+    "password"
+  );
   const {
     register,
     handleSubmit,
@@ -17,7 +22,13 @@ function SigninForm() {
   const onSubmit: SubmitHandler<SigninFormValues> = (data) => {
     submitLoginForm(data.email, data.password);
   };
-  accessTokenCheck();
+  // accessTokenCheck();
+
+  const handlePasswordType = (
+    setType: React.Dispatch<React.SetStateAction<"password" | "text">>
+  ) => {
+    setType((prevType) => (prevType === "password" ? "text" : "password"));
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.authForm}>
@@ -39,14 +50,20 @@ function SigninForm() {
       </div>
       <div className={styles.inputGroup}>
         <label htmlFor="password">비밀번호</label>
-        <input
-          id="password"
-          type="password"
-          placeholder="비밀번호를 입력해주세요."
-          {...register("password", {
-            required: { value: true, message: "비밀번호를 입력해주세요." },
-          })}
-        />
+        <div className={styles.passwordInput}>
+          <input
+            id="password"
+            type={passwordType}
+            placeholder="비밀번호를 입력해주세요."
+            {...register("password", {
+              required: { value: true, message: "비밀번호를 입력해주세요." },
+            })}
+          />
+          <PasswordToggleButton
+            passwordType={passwordType}
+            handlePasswordType={() => handlePasswordType(setPasswordType)}
+          />
+        </div>
         <p className={styles.errorMessage}>{errors.password?.message}</p>
       </div>
       <button className={styles.signinButton} type="submit">

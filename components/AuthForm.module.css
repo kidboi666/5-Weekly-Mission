@@ -39,6 +39,10 @@
   background: var(--Linkbrary-white, #fff);
 }
 
+.passwordInput {
+  position: relative;
+}
+
 .errorMessage {
   color: var(--Linkbrary-red, #ff5b56);
   font-family: Pretendard;

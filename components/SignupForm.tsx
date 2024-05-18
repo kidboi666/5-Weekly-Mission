@@ -1,7 +1,8 @@
 import styles from "./AuthForm.module.css";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { submitSignUpForm } from "@/api/Auth";
+import PasswordToggleButton from "./PasswordToggleButton";
 
 interface SigninFormValues {
   email: string;
@@ -10,6 +11,12 @@ interface SigninFormValues {
 }
 
 function SigninForm() {
+  const [passwordType, setPasswordType] = useState<"password" | "text">(
+    "password"
+  );
+  const [passwordConfirmType, setPasswordConfirmType] = useState<
+    "password" | "text"
+  >("password");
   const {
     register,
     handleSubmit,
@@ -22,6 +29,12 @@ function SigninForm() {
 
   const onSubmit: SubmitHandler<SigninFormValues> = (data) => {
     submitSignUpForm(data.email, data.password);
+  };
+
+  const handlePasswordType = (
+    setType: React.Dispatch<React.SetStateAction<"password" | "text">>
+  ) => {
+    setType((prevType) => (prevType === "password" ? "text" : "password"));
   };
 
   return (
@@ -44,39 +57,53 @@ function SigninForm() {
       </div>
       <div className={styles.inputGroup}>
         <label htmlFor="password">비밀번호</label>
-        <input
-          id="password"
-          type="password"
-          placeholder="비밀번호를 입력해주세요."
-          {...register("password", {
-            required: {
-              value: true,
-              message: "영문, 숫자를 조합해 8자 이상 입력해 주세요.",
-            },
-            minLength: {
-              value: 8,
-              message: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
-            },
-            pattern: {
-              value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-              message: "비밀번호는 영문과 숫자 조합 8자 이상 입력해 주세요.",
-            },
-          })}
-        />
+        <div className={styles.passwordInput}>
+          <input
+            id="password"
+            type={passwordType}
+            placeholder="비밀번호를 입력해주세요."
+            {...register("password", {
+              required: {
+                value: true,
+                message: "영문, 숫자를 조합해 8자 이상 입력해 주세요.",
+              },
+              minLength: {
+                value: 8,
+                message: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
+              },
+              pattern: {
+                value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+                message: "비밀번호는 영문과 숫자 조합 8자 이상 입력해 주세요.",
+              },
+            })}
+          />
+          <PasswordToggleButton
+            passwordType={passwordType}
+            handlePasswordType={() => handlePasswordType(setPasswordType)}
+          />
+        </div>
         <p className={styles.errorMessage}>{errors.password?.message}</p>
       </div>
       <div className={styles.inputGroup}>
         <label htmlFor="passwordConfirm">비밀번호 확인</label>
-        <input
-          id="passwordConfirm"
-          type="password"
-          placeholder="비밀번호와 일치하는 값을 입력해 주세요."
-          {...register("passwordConfirm", {
-            required: { value: true, message: "비밀번호가 일치하지 않아요." },
-            validate: (value) =>
-              value === passwordRef.current || "비밀번호가 일치하지 않아요.",
-          })}
-        />
+        <div className={styles.passwordInput}>
+          <input
+            id="passwordConfirm"
+            type={passwordConfirmType}
+            placeholder="비밀번호와 일치하는 값을 입력해 주세요."
+            {...register("passwordConfirm", {
+              required: { value: true, message: "비밀번호가 일치하지 않아요." },
+              validate: (value) =>
+                value === passwordRef.current || "비밀번호가 일치하지 않아요.",
+            })}
+          />
+          <PasswordToggleButton
+            passwordType={passwordConfirmType}
+            handlePasswordType={() =>
+              handlePasswordType(setPasswordConfirmType)
+            }
+          />
+        </div>
         <p className={styles.errorMessage}>{errors.passwordConfirm?.message}</p>
       </div>
       <button className={styles.signinButton} type="submit">
