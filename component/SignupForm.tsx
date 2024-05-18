@@ -3,6 +3,12 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
+interface SignupData {
+  email: string;
+  password: string;
+  passwordCheck: string;
+}
+
 export default function SignupForm() {
   const router = useRouter();
 
@@ -24,6 +30,36 @@ export default function SignupForm() {
   const [isClosed, setIsClosed] = useState(true);
   const [inputType, setInputType] = useState<"text" | "password">("password");
 
+  const handleCheckDuplicateEmail = (data: SignupData) => {
+    axios
+      .post("https://bootcamp-api.codeit.kr/api/check-email", {
+        email: data.email,
+      })
+      .then((r) => {
+        console.log(r);
+      })
+      .catch((error) => {
+        console.error(error);
+        setError("email", {
+          message: "중복된 이메일입니다.",
+        });
+      });
+  };
+
+  const handleSubmitSignupData = (data: SignupData) => {
+    axios
+      .post("https://bootcamp-api.codeit.kr/api/sign-up", {
+        email: data.email,
+        password: data.password,
+      })
+      .then((r) => {
+        router.push("/folder");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   const handleToggleImage = () => {
     setIsClosed((prevState) => !prevState);
     setInputType((prevType) => (prevType === "text" ? "password" : "text"));
@@ -33,30 +69,8 @@ export default function SignupForm() {
     <form
       className="w-full"
       onSubmit={handleSubmit((data) => {
-        axios
-          .post("https://bootcamp-api.codeit.kr/api/check-email", {
-            email: data.email,
-          })
-          .then((r) => {
-            console.log(r);
-          })
-          .catch((error) => {
-            console.error(error);
-            setError("email", {
-              message: "중복된 이메일입니다.",
-            });
-          });
-        axios
-          .post("https://bootcamp-api.codeit.kr/api/sign-up", {
-            email: data.email,
-            password: data.password,
-          })
-          .then((r) => {
-            router.push("/folder");
-          })
-          .catch((error) => {
-            console.error(error);
-          });
+        handleCheckDuplicateEmail(data);
+        handleSubmitSignupData(data);
       })}
     >
       <div className="pt-[30px]">
