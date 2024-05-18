@@ -1,6 +1,6 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 
-type login = string | null;
+type login = boolean | undefined;
 
 interface layoutContextType {
   isLoggedIn: login;
@@ -9,22 +9,26 @@ interface layoutContextType {
 }
 
 export const AuthContext = createContext<layoutContextType>({
-  isLoggedIn: null,
+  isLoggedIn: undefined,
   handleLogin: (token: string) => {},
   handleLogout: () => {},
 });
 
 export default function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [isLoggedIn, setIsLoggedIn] = useState<login>(null);
+  const [isLoggedIn, setIsLoggedIn] = useState<login>();
 
   const handleLogin = (token: string) => {
     document.cookie = `accessToken=${token}`;
-    setIsLoggedIn(token);
+    setIsLoggedIn(Boolean(document.cookie));
   };
   const handleLogout = () => {
     document.cookie = `accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-    setIsLoggedIn(null);
+    setIsLoggedIn(false);
   };
+
+  useEffect(() => {
+    setIsLoggedIn(Boolean(document.cookie));
+  }, []);
 
   return <AuthContext.Provider value={{ isLoggedIn, handleLogin, handleLogout }}>{children}</AuthContext.Provider>;
 }
