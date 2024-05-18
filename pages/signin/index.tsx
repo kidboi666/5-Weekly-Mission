@@ -89,7 +89,7 @@ export default function SignInPage() {
               type='email'
               placeholder='이메일을 입력해 주세요.'
               onBlur={handleEmailBlur}
-              iserror={showError.email.error.toString()}
+              $iserror={showError.email.error.toString()}
             />
             {showError.email.error && (
               <S.ErrorMessage>{showError.email.message}</S.ErrorMessage>
@@ -103,7 +103,7 @@ export default function SignInPage() {
                 type='password'
                 placeholder='비밀번호를 입력해 주세요.'
                 onBlur={handlePasswordBlur}
-                iserror={showError.password.error.toString()}
+                $iserror={showError.password.error.toString()}
               />
               <S.EyeButton type='button' id='passwordEyeButton'>
                 <Image

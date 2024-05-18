@@ -118,7 +118,7 @@ export default function SignUpPage() {
               value={email}
               onChange={handleEmailChange}
               onBlur={handleEmailBlur}
-              iserror={showError.email.error.toString()}
+              $iserror={showError.email.error.toString()}
             />
             {showError.email.error && (
               <S.ErrorMessage>{showError.email.message}</S.ErrorMessage>
@@ -134,7 +134,7 @@ export default function SignUpPage() {
                 value={password}
                 onChange={handlePasswordChange}
                 onBlur={handlePasswordBlur}
-                iserror={showError.password.error.toString()}
+                $iserror={showError.password.error.toString()}
               />
               <S.EyeButton type='button' id='passwordEyeButton'>
                 <Image
@@ -160,7 +160,7 @@ export default function SignUpPage() {
                 value={passwordConform}
                 onChange={handlePasswordConformChange}
                 onBlur={handlePasswordConformBlur}
-                iserror={showError.passwordConform.error.toString()}
+                $iserror={showError.passwordConform.error.toString()}
               />
               <S.EyeButton type='button' id='passwordConfirmEyeButton'>
                 <Image

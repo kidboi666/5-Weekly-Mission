@@ -66,10 +66,10 @@ export const Label = styled.label`
   font-size: 14px;
 `;
 
-export const Input = styled.input<{ iserror: string }>`
+export const Input = styled.input<{ $iserror: string }>`
   width: 100%;
   padding: 18px 15px;
-  border: ${({ iserror }) =>
+  border: ${({ $iserror: iserror }) =>
     iserror === 'true'
       ? '1px solid var(--Linkbrary-red)'
       : '1px solid var(--Linkbrary-gray20)'};
