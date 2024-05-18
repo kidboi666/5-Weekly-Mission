@@ -183,7 +183,7 @@ export default function SignUpPage() {
                 onClick={handlePasswordConformEyeButtonClick}
               >
                 <Image
-                  src={isVisiblePassword ? EyeOnIcon : EyeOffIcon}
+                  src={isVisiblePasswordConform ? EyeOnIcon : EyeOffIcon}
                   alt='비밀번호확인 눈 버튼'
                   width='16'
                   height='16'

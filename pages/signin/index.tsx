@@ -17,6 +17,7 @@ export default function SignInPage() {
     email: { error: false, message: '' },
     password: { error: false, message: '' },
   });
+  const [isVisiblePassword, setIsVisiblePassword] = useState(false);
   const router = useRouter();
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -71,6 +72,10 @@ export default function SignInPage() {
     }));
   };
 
+  const handlePasswordEyeButtonClick = () => {
+    setIsVisiblePassword((prev) => !prev);
+  };
+
   return (
     <S.Layout>
       <S.Inner>
@@ -100,14 +105,14 @@ export default function SignInPage() {
             <S.PasswordWrap>
               <S.Input
                 id='password'
-                type='password'
+                type={isVisiblePassword ? 'text' : 'password'}
                 placeholder='비밀번호를 입력해 주세요.'
                 onBlur={handlePasswordBlur}
                 $iserror={showError.password.error.toString()}
               />
-              <S.EyeButton type='button'>
+              <S.EyeButton type='button' onClick={handlePasswordEyeButtonClick}>
                 <Image
-                  src={EyeOffIcon}
+                  src={isVisiblePassword ? EyeOnIcon : EyeOffIcon}
                   alt='안 보이기'
                   width='16'
                   height='16'
