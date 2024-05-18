@@ -15,6 +15,11 @@ import {
 } from 'react';
 import { postSignUp } from '@/apis/api';
 import { useRouter } from 'next/router';
+import {
+  validateEmail,
+  validatePassword,
+  validatePasswordConform,
+} from '@/utils/validate';
 
 export default function SignUpPage() {
   const [email, setEmail] = useState('');
@@ -50,61 +55,15 @@ export default function SignUpPage() {
   };
 
   const handleEmailBlur = (e: FocusEvent<HTMLInputElement>) => {
-    if (!e.target.value) {
-      setShowError((prev) => ({
-        ...prev,
-        email: { error: true, message: '이메일을 입력해 주세요.' },
-      }));
-      return;
-    }
-    const emailPattern: RegExp =
-      /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
-    if (!emailPattern.test(e.target.value)) {
-      setShowError((prev) => ({
-        ...prev,
-        email: { error: true, message: '올바른 이메일 주소가 아닙니다.' },
-      }));
-      return;
-    }
-    setShowError((prev) => ({
-      ...prev,
-      email: { error: false, message: '' },
-    }));
+    validateEmail(e, setShowError);
   };
 
   const handlePasswordBlur = (e: FocusEvent<HTMLInputElement>) => {
-    const passwordPattern: RegExp = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
-    if (e.target.value.length < 8 || !passwordPattern.test(e.target.value)) {
-      setShowError((prev) => ({
-        ...prev,
-        password: {
-          error: true,
-          message: '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.',
-        },
-      }));
-      return;
-    }
-    setShowError((prev) => ({
-      ...prev,
-      password: { error: false, message: '' },
-    }));
+    validatePassword(e, setShowError);
   };
 
   const handlePasswordConformBlur = (e: FocusEvent<HTMLInputElement>) => {
-    if (e.target.value !== password) {
-      setShowError((prev) => ({
-        ...prev,
-        passwordConform: {
-          error: true,
-          message: '비밀번호가 일치하지 않아요.',
-        },
-      }));
-      return;
-    }
-    setShowError((prev) => ({
-      ...prev,
-      passwordConform: { error: false, message: '' },
-    }));
+    validatePasswordConform(e, password, setShowError);
   };
 
   const handlePasswordEyeButtonClick = () => {
