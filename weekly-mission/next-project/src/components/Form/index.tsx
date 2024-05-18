@@ -16,6 +16,7 @@ interface FormValues {
 
 interface FormProps {
   onSubmit: (data: FormValues) => void;
+  checkEmailDuplication?: (email: string) => Promise<void>;
   headermessage: string;
   headerlink: string;
   buttonText: string;
@@ -27,6 +28,7 @@ interface FormProps {
 
 const Form = ({
   onSubmit,
+  checkEmailDuplication,
   headermessage,
   headerlink,
   buttonText,
@@ -42,6 +44,7 @@ const Form = ({
     setError,
     clearErrors,
     formState: { errors },
+    trigger,
   } = useForm<FormValues>({ mode: "onBlur" });
 
   const password = watch("password");
@@ -63,6 +66,29 @@ const Form = ({
   // focusin 이벤트 핸들러
   const onFocusIn = (fieldName: keyof FormValues) => {
     clearErrors(fieldName);
+  };
+
+  const handleEmailBlur = async (event: React.FocusEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    // 이메일 필드의 유효성 검사를 수행하고, 검사 결과를 확인
+    const isValid = await trigger("email");
+
+    // 이메일이 유효하지 않은 경우, 중복 검사를 수행하지 않고 함수 종료
+    if (!isValid) {
+      return;
+    }
+
+    if (checkEmailDuplication) {
+      // 중복 검사를 수행
+      await checkEmailDuplication(value);
+    }
+  };
+
+  const handlePasswordBlur = async (
+    event: React.FocusEvent<HTMLInputElement>
+  ) => {
+    // 비밀번호 필드의 유효성 검사를 수행하고, 검사 결과를 확인
+    await trigger("password");
   };
 
   return (
@@ -93,6 +119,7 @@ const Form = ({
           })}
           error={errors.email?.message || errorMessage}
           onFocus={() => onFocusIn("email")}
+          onBlur={handleEmailBlur}
         />
 
         <InputField
@@ -118,6 +145,7 @@ const Form = ({
           })}
           error={errors.password?.message || errorMessage}
           onFocus={() => onFocusIn("password")}
+          onBlur={handlePasswordBlur}
         />
 
         {isPasswordConfirmation && (
@@ -139,17 +167,17 @@ const Form = ({
       <div className={styles.socialProviders_container}>
         <p>{socialProvidersText}</p>
         <div className={styles.socialProviders_icon}>
-          <button>
+          <Link href="https://www.google.com">
             <Image src={GoogleImg} alt="구글 아이콘" width={42} height={42} />
-          </button>
-          <button>
+          </Link>
+          <Link href="https://www.kakaocorp.com/page">
             <Image
               src={KaKaoImg}
               alt="카카오톡 아이콘"
               width={42}
               height={42}
             />
-          </button>
+          </Link>
         </div>
       </div>
     </form>

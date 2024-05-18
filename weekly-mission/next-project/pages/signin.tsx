@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import instance from "lib/api";
 import styles from "@/styles/sign.module.css";
@@ -10,6 +10,13 @@ function SigninPage() {
     {}
   );
 
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
+      router.push("/folder");
+    }
+  }, []);
+
   const handleSignIn = async (data: any) => {
     const { email, password } = data;
 
@@ -17,6 +24,8 @@ function SigninPage() {
       const response = await instance.post(`/sign-in`, { email, password });
       if (response.status === 200) {
         // 로그인 성공
+        const { accessToken } = response.data;
+        localStorage.setItem("accessToken", accessToken);
         router.push("/folder");
       } else {
         // 로그인 실패

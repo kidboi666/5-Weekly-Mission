@@ -9,6 +9,7 @@ interface InputFieldProps {
   register: UseFormRegisterReturn;
   error?: string | { email?: string; password?: string };
   onFocus?: () => void;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -18,6 +19,7 @@ const InputField: React.FC<InputFieldProps> = ({
   register,
   error,
   onFocus,
+  onBlur,
 }: InputFieldProps) => {
   const renderErrorMessage = () => {
     if (!error) return null;
@@ -38,6 +40,12 @@ const InputField: React.FC<InputFieldProps> = ({
     }
   };
 
+  const handleBlur = async (event: React.FocusEvent<HTMLInputElement>) => {
+    if (onBlur) {
+      await onBlur(event); // 외부에서 전달된 onBlur 이벤트 핸들러 실행
+    }
+  };
+
   return (
     <div className={styles.input_container}>
       <label htmlFor={type} className={styles.label}>
@@ -45,7 +53,10 @@ const InputField: React.FC<InputFieldProps> = ({
       </label>
       <div
         className={`${styles.input_wrapper} ${
-          error && (typeof error === "string" || error.email || error.password)
+          (typeof error === "string" && error) ||
+          (typeof error === "object" &&
+            ((type === "email" && error.email) ||
+              (type === "password" && error.password)))
             ? styles.error_wrapper
             : ""
         }`}
@@ -56,6 +67,7 @@ const InputField: React.FC<InputFieldProps> = ({
           {...register}
           className={styles.input_form}
           onFocus={onFocus}
+          onBlur={handleBlur}
         />
       </div>
       {renderErrorMessage()}
