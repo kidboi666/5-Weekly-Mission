@@ -5,7 +5,7 @@ const SignLabel = styled.label`
   flex-direction: column;
   color: var(--black, #000);
   font-size: 14px;
-  margin-bottom: 24px;
+  margin-top: 24px;
 `;
 
 export default SignLabel;

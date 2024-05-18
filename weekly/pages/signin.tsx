@@ -1,3 +1,4 @@
+import Logo from '@/components/Auth/Logo';
 import SignInput from '@/components/Auth/SignInput';
 import SignLabel from '@/components/Auth/SignLabel';
 import Social from '@/components/Auth/Social';
@@ -8,6 +9,7 @@ function SignInPage() {
   return (
     <SigninWrapper>
       <SignForm>
+        <Logo />
         <div>
           <SignLabel>
             이메일
@@ -28,13 +30,17 @@ function SignInPage() {
 const SignForm = styled.form`
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 400px;
+  gap: 30px;
 `;
 
 const SigninWrapper = styled.div`
   display: flex;
+  height: 100vh;
   justify-content: center;
   align-items: center;
+  background: var(--Linkbrary-bg, #f0f6ff);
 `;
 
 export default SignInPage;
