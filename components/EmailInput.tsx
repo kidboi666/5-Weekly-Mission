@@ -1,55 +1,69 @@
 import React, { useState } from "react";
+import classNames from "classnames/bind";
 import styles from "@/styles/signin.module.scss";
 
-export function emailCheck(email) {
-  const emailForm =
-    /^[0-9a-zA-Z]([_\\.\\-]?[0-9a-zA-Z])*@[0-9a-zA-Z]([_\\.\\-]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-  return emailForm.test(email);
+interface EmailInputProps {
+  value: string;
+  onChange: (value: string) => void;
+  error?: string;
 }
 
-export function EmailInput() {
-  const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState("");
+export const emailCheck = (email: string) => {
+  const emailForm =
+    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+  return emailForm.test(email);
+};
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+export function EmailInput({ value, onChange, error }: EmailInputProps) {
+  const cx = classNames.bind(styles);
+  const [isFocused, setIsFocused] = useState(false);
+  const [emailErrorText, setEmailErrorText] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const emailInput = e.target.value;
+    onChange(emailInput);
   };
 
-  const handleEmailBlur = () => {
-    if (!email) {
-      setEmailError("이메일을 입력하세요.");
-    } else {
-      const emailChecked = emailCheck(email);
-      if (emailChecked) {
-        setEmailError("");
+  const handleBlur = () => {
+    setIsFocused(false);
+    if (value) {
+      if (!emailCheck(value)) {
+        setEmailErrorText("올바른 이메일 주소가 아닙니다.");
       } else {
-        setEmailError("올바른 이메일 주소가 아닙니다.");
+        setEmailErrorText("");
       }
+    } else {
+      setEmailErrorText("이메일을 입력해 주세요.");
     }
   };
 
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const isError = !isFocused && (error || emailErrorText);
+
   return (
-    <div className="input__section">
-      <label className="text">
-        이메일
-        <br />
+    <div className={cx("input__section")}>
+      <label className={cx("text")}>
+        이메일 <br />
       </label>
       <input
         id="email"
-        className={`${styles["user-input"]} ${
-          emailError ? styles["error-input"] : ""
-        }`}
+        placeholder="이메일을 입력해 주세요."
+        className={cx("user-input", { "error-input": isError })}
         type="email"
         name="email"
-        value={email}
-        onChange={handleEmailChange}
-        onBlur={handleEmailBlur}
+        value={value}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
       />
       <div
         id="email-errorText"
-        className={`errortext ${emailError ? "" : "error"}`}
+        className={cx("errortext", { error: !isError })}
       >
-        {emailError}
+        {error || emailErrorText}
       </div>
     </div>
   );
