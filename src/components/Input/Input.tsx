@@ -1,27 +1,26 @@
-interface Iinput {
+import React from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
+
+interface InputProps {
   id: string;
-  name: string;
   type: string;
   placeholder?: string;
   className?: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  value: string;
-  onBlur: () => void;
+  register: UseFormRegisterReturn;
+  onBlur?: () => void;
 }
 
-function Input({ id, name, type, placeholder, className, onChange, value, onBlur }: Iinput) {
+const Input = ({ id, type, placeholder, className, register, ...rest }: InputProps) => {
   return (
     <input
       id={id}
-      name={name}
       type={type}
       placeholder={placeholder}
       className={className}
-      onChange={onChange}
-      value={value}
-      onBlur={onBlur}
+      {...register}
+      {...rest}
     />
   );
-}
+};
 
 export default Input;

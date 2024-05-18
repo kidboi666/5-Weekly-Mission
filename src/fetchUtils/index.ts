@@ -1,3 +1,4 @@
+import { SignInFormInputs } from "../widgets/signIn/signInForm";
 import axios from "./axiosInstance";
 import camelcaseKeys from "camelcase-keys";
 
@@ -67,6 +68,20 @@ export const userFoldersTapData = async (id: number) => {
     if (response.data) {
       response.data = camelcaseKeys(response.data, { deep: true });
     }
+    const { data } = response;
+
+    return data;
+  } catch (e) {
+    if (e instanceof Error) {
+      alert(e.message);
+    }
+  }
+};
+
+export const userSignInData = async (signInData: SignInFormInputs) => {
+  try {
+    const response = await axios.post(`/api/sign-in`, signInData);
+
     const { data } = response;
 
     return data;

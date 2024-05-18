@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Auth.module.css";
-import LoginForm from "./SignInForm";
-import LoginHeader from "./SignInHeader";
+import LoginForm from "./signInForm";
+import LoginHeader from "./signInHeader";
 import AuthContainer from "@/src/components/AuthContainer/AuthContainer";
 
 function SignIn() {
