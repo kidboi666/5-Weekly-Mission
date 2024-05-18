@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
 import { EmailInput } from "./EmailInput";
 import { PasswordInput } from "./PasswordInput";
 import styles from "@/styles/signin.module.scss";
@@ -10,50 +12,29 @@ export function SignIn() {
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-
+  const router = useRouter();
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    const checkedEmail = email === "test@codeit.com";
-    const checkedPassword = password === "sprint101";
-
-    if (!checkedEmail) {
-      setEmailError("이메일을 확인해주세요.");
-      return;
-    }
-
-    if (!checkedPassword) {
-      setPasswordError("비밀번호를 확인해주세요.");
-      return;
-    }
-
-    const data = {
-      email,
-      password,
-    };
-
+    setEmailError("");
+    setPasswordError("");
+    const data = { email, password };
     try {
-      const response = await fetch(
+      const response = await axios.post(
         "https://bootcamp-api.codeit.kr/api/sign-in",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
+        data
       );
-
-      if (response.ok) {
-        // TODO: 로그인 성공 후 처리 (예: 토큰 저장, 리디렉션 등)
-      } else {
-        alert("로그인 실패");
+      if (response.status === 200) {
+        router.push("/folder");
       }
-    } catch (error) {
-      console.log("Error", error);
+    } catch (error: any) {
+      if (error.response) {
+        if (error.response.status === 400) {
+          setEmailError("이메일을 확인해 주세요.");
+          setPasswordError("비밀번호를 확인해 주세요.");
+        }
+      }
     }
   };
-
   return (
     <form className={cx("input")} onSubmit={handleSubmit}>
       <EmailInput value={email} onChange={setEmail} error={emailError} />
