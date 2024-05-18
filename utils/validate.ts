@@ -32,7 +32,7 @@ export function validateEmail(
   }));
 }
 
-export function validatePassword(
+export function validateSignUpPassword(
   e: FocusEvent<HTMLInputElement>,
   setter: Dispatch<
     SetStateAction<{
@@ -50,6 +50,29 @@ export function validatePassword(
         error: true,
         message: '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.',
       },
+    }));
+    return;
+  }
+  setter((prev) => ({
+    ...prev,
+    password: { error: false, message: '' },
+  }));
+}
+
+export function validateSignInPassword(
+  e: FocusEvent<HTMLInputElement>,
+  setter: Dispatch<
+    SetStateAction<{
+      email: { error: boolean; message: string };
+      password: { error: boolean; message: string };
+      passwordConform: { error: boolean; message: string };
+    }>
+  >
+) {
+  if (!e.target.value) {
+    setter((prev) => ({
+      ...prev,
+      password: { error: true, message: '비밀번호를 입력해 주세요.' },
     }));
     return;
   }

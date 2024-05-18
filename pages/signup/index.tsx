@@ -17,7 +17,7 @@ import { postSignUp } from '@/apis/api';
 import { useRouter } from 'next/router';
 import {
   validateEmail,
-  validatePassword,
+  validateSignUpPassword,
   validatePasswordConform,
 } from '@/utils/validate';
 
@@ -59,7 +59,7 @@ export default function SignUpPage() {
   };
 
   const handlePasswordBlur = (e: FocusEvent<HTMLInputElement>) => {
-    validatePassword(e, setShowError);
+    validateSignUpPassword(e, setShowError);
   };
 
   const handlePasswordConformBlur = (e: FocusEvent<HTMLInputElement>) => {

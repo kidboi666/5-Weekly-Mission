@@ -9,6 +9,7 @@ import EyeOffIcon from '../../src/images/eye_off.svg';
 import { ChangeEvent, FocusEvent, FormEvent, useState } from 'react';
 import { postSignIn } from '@/apis/api';
 import { useRouter } from 'next/router';
+import { validateEmail, validateSignInPassword } from '@/utils/validate';
 
 export default function SignInPage() {
   const [email, setEmail] = useState('');
@@ -16,6 +17,7 @@ export default function SignInPage() {
   const [showError, setShowError] = useState({
     email: { error: false, message: '' },
     password: { error: false, message: '' },
+    passwordConform: { error: false, message: '' },
   });
   const [isVisiblePassword, setIsVisiblePassword] = useState(false);
   const router = useRouter();
@@ -36,40 +38,11 @@ export default function SignInPage() {
   };
 
   const handleEmailBlur = (e: FocusEvent<HTMLInputElement>) => {
-    if (!e.target.value) {
-      setShowError((prev) => ({
-        ...prev,
-        email: { error: true, message: '이메일을 입력해 주세요.' },
-      }));
-      return;
-    }
-    const emailPattern: RegExp =
-      /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
-    if (!emailPattern.test(e.target.value)) {
-      setShowError((prev) => ({
-        ...prev,
-        email: { error: true, message: '올바른 이메일 주소가 아닙니다.' },
-      }));
-      return;
-    }
-    setShowError((prev) => ({
-      ...prev,
-      email: { error: false, message: '' },
-    }));
+    validateEmail(e, setShowError);
   };
 
   const handlePasswordBlur = (e: FocusEvent<HTMLInputElement>) => {
-    if (!e.target.value) {
-      setShowError((prev) => ({
-        ...prev,
-        password: { error: true, message: '비밀번호를 입력해 주세요.' },
-      }));
-      return;
-    }
-    setShowError((prev) => ({
-      ...prev,
-      password: { error: false, message: '' },
-    }));
+    validateSignInPassword(e, setShowError);
   };
 
   const handlePasswordEyeButtonClick = () => {
