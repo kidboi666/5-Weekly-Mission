@@ -8,7 +8,7 @@ import { DFlaxAlignCenterBtw, EllipsisLine } from '@/styles/commonStyle';
 import Image from 'next/image';
 import { IFolderContent } from './interface';
 
-const emptyImg = '/assets/logo/logo.svg';
+const EMPTY_IMAGE = '/assets/logo/logo.svg';
 
 export default function PostCard({ image_source, description, created_at }: IFolderContent) {
   const [bookMark, setBookMark] = useState(false);
@@ -58,7 +58,7 @@ export default function PostCard({ image_source, description, created_at }: IFol
               ) : (
                 <img
                   className='empty'
-                  src={emptyImg}
+                  src={EMPTY_IMAGE}
                 />
               )}
             </div>

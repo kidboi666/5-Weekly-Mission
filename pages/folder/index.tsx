@@ -16,9 +16,9 @@ import { instance } from '@/lib/axios';
 import { useRouter } from 'next/router';
 import { GetServerSidePropsContext } from 'next';
 
-const addImage = '/assets/icon/icon_primary_add.svg';
-const searchImage = '/assets/icon/icon_search.svg';
-const linkImage = '/assets/icon/icon_primaty_link.svg';
+const ADD_IMAGE = '/assets/icon/icon_primary_add.svg';
+const SEARCH_IMAGE = '/assets/icon/icon_search.svg';
+const LINK_IMAGE = '/assets/icon/icon_primaty_link.svg';
 
 export async function getServerSideProps(contaxt: GetServerSidePropsContext) {
   let $menu;
@@ -136,14 +136,14 @@ export default function Folder({ $menu, $content }: { $menu: IFolderMenuButtonAp
   return (
     <Container>
       <FolderContainHead className='folder--header'>
-        <LinkAddHeader $inputIconImg={linkImage} />
+        <LinkAddHeader $inputIconImg={LINK_IMAGE} />
       </FolderContainHead>
 
       <ContainBody className='folder__dody'>
         <BodyInner>
           {/* 검색창 */}
           <SearchInputBox
-            $inputIconImg={searchImage}
+            $inputIconImg={SEARCH_IMAGE}
             onchange={handelSearch}
           />
           {/* 폴더 리스트 버튼 */}
@@ -155,7 +155,7 @@ export default function Folder({ $menu, $content }: { $menu: IFolderMenuButtonAp
             />
             <Button
               $btnClass={'button--icon-after button--folder-add'}
-              $afterButtonIcon={addImage}
+              $afterButtonIcon={ADD_IMAGE}
               onclick={() => handleModalOpen('folderAdd')}>
               폴더추가
             </Button>

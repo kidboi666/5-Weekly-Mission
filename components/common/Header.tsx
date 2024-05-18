@@ -9,7 +9,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-const logo = '/assets/logo/logo.svg';
+const LOGO_IMAGE = '/assets/logo/logo.svg';
 
 export interface IHeaderUser {
   id: number;
@@ -52,7 +52,7 @@ function Header() {
         <HeaderLogo className='head__logo'>
           <Link href='/'>
             <Image
-              src={logo}
+              src={LOGO_IMAGE}
               alt='linkbrary'
               width={133}
               height={25}

@@ -8,8 +8,8 @@ import { GetServerSidePropsContext } from 'next';
 import SearchInputBox from '@/components/folder/SearchInputBox';
 import { useState } from 'react';
 
-const logo = '/assets/logo/logo_codeit.svg';
-const searchImage = '/assets/icon/icon_search.svg';
+const LOGO_IMAGE = '/assets/logo/logo_codeit.svg';
+const SEARCH_IMAGE = '/assets/icon/icon_search.svg';
 
 export async function getServerSideProps(contaxt: GetServerSidePropsContext) {
   let $title;
@@ -70,7 +70,7 @@ export default function Shared({ $title, $content }: { $title: IShareTitle; $con
       <ContainHead>
         <ShareHeadInner>
           <img
-            src={logo}
+            src={LOGO_IMAGE}
             alt='@코드잇'
           />
           <p>@코드잇</p>
@@ -81,7 +81,7 @@ export default function Shared({ $title, $content }: { $title: IShareTitle; $con
         <BodyInner>
           {/* 검색창 */}
           <SearchInputBox
-            $inputIconImg={searchImage}
+            $inputIconImg={SEARCH_IMAGE}
             onchange={handelSearch}
           />
 
