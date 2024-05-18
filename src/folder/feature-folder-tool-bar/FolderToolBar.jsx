@@ -5,6 +5,11 @@ import { FolderButton } from "folder/ui-folder-button";
 import { IconAndTextButton } from "sharing/ui-icon-and-text-button";
 import { ALL_LINKS_TEXT, BUTTONS } from "./constant";
 import { ALL_LINKS_ID } from "link/data-access-link/constant";
+import { useModals } from "folder/modal/useModal";
+import { InputModal } from "folder/modal/InputModal";
+import { Modals } from "folder/modal/Modals";
+import { ShareModal } from "folder/modal/ShareModal";
+import { DeleteModal } from "folder/modal/DeleteModal";
 
 const cx = classNames.bind(styles);
 
@@ -13,6 +18,51 @@ export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }) => {
     ALL_LINKS_ID === selectedFolderId
       ? ALL_LINKS_TEXT
       : folders?.find(({ id }) => id === selectedFolderId)?.name;
+
+  const shareLink = `${window.location.origin}/shared/${selectedFolderId}`;
+
+  const { openModal } = useModals();
+
+  const handleClick = (e) => {
+    if (e.target.innerText === "폴더 추가") {
+      openModal(InputModal, {
+        title: "폴더 추가",
+        button: "추가하기",
+        onSubmit: () => {
+          console.log("ffff");
+        },
+      });
+    }
+
+    if (e.target.innerText === "이름 변경") {
+      openModal(InputModal, {
+        title: "폴더 이름 변경",
+        button: "변경하기",
+        onSubmit: () => {
+          console.log("ffff");
+        },
+      });
+    }
+
+    if (e.target.innerText === "공유") {
+      openModal(ShareModal, {
+        title: "폴더 공유",
+        subtitle: folderName,
+        shareLink: shareLink,
+      });
+    }
+
+    if (e.target.innerText === "삭제") {
+      openModal(DeleteModal, {
+        title: "폴더 삭제",
+        subtitle: folderName,
+        button: "삭제하기",
+        onSubmit: () => {
+          console.log("ffff");
+        },
+      });
+    }
+  };
 
   return (
     <div className={cx("container")}>
@@ -33,16 +83,21 @@ export const FolderToolBar = ({ folders, selectedFolderId, onFolderClick }) => {
         ))}
       </div>
       <div className={cx("add-button")}>
-        <AddFolderButton />
+        <AddFolderButton onClick={handleClick} />
       </div>
       <h2 className={cx("folder-name")}>{folderName}</h2>
       {selectedFolderId !== ALL_LINKS_ID && (
         <div className={cx("buttons")}>
           {BUTTONS.map((buttonData) => (
-            <IconAndTextButton key={buttonData.text} {...buttonData} />
+            <IconAndTextButton
+              key={buttonData.text}
+              {...buttonData}
+              onClick={handleClick}
+            />
           ))}
         </div>
       )}
+      <Modals />
     </div>
   );
 };
