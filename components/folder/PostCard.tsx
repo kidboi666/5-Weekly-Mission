@@ -11,10 +11,10 @@ import { IFolderContent } from './interface';
 const EMPTY_IMAGE = '/assets/logo/logo.svg';
 
 export default function PostCard({ image_source, description, created_at }: IFolderContent) {
-  const [bookMark, setBookMark] = useState(false);
-  const [cardMenuShow, setCardMenuShow] = useState(false);
-  const [modalShow, setModalShow] = useState(false);
-  const [modalInfo, setModalInfo] = useState<IModal>({
+  const [isBookMark, setIsBookMark] = useState(false);
+  const [isCardMenu, setIsCardMenu] = useState(false);
+  const [isModalShow, setIsModalShow] = useState(false);
+  const [modalInfo] = useState<IModal>({
     $title: '',
     $titleDescText: null,
     $body: null,
@@ -23,11 +23,11 @@ export default function PostCard({ image_source, description, created_at }: IFol
     $modalData: null,
   });
 
-  const handelerBookMarkActive = () => setBookMark((prev) => !prev);
-  const handelerCardDropdown = () => setCardMenuShow((prev) => !prev);
+  const handelerBookMarkActive = () => setIsBookMark((prev) => !prev);
+  const handelerCardDropdown = () => setIsCardMenu((prev) => !prev);
 
   const handleModalClose = () => {
-    setModalShow(false);
+    setIsModalShow(false);
   };
 
   const date = useMemo(() => {
@@ -38,7 +38,7 @@ export default function PostCard({ image_source, description, created_at }: IFol
     <>
       <CardWrap>
         <BookMarkBtn
-          className={bookMark ? 'active' : ''}
+          className={isBookMark ? 'active' : ''}
           onClick={handelerBookMarkActive}>
           북마크버튼
         </BookMarkBtn>
@@ -82,7 +82,7 @@ export default function PostCard({ image_source, description, created_at }: IFol
               alt='메뉴'
             />
           </button>
-          {cardMenuShow && (
+          {isCardMenu && (
             <div className='card__dropdown-menu'>
               {/* <button
                 className="card__menu-btn"
@@ -101,7 +101,7 @@ export default function PostCard({ image_source, description, created_at }: IFol
         </CardMenu>
       </CardWrap>
       <Modal
-        onOpen={modalShow}
+        onOpen={isModalShow}
         onClose={handleModalClose}
         {...modalInfo}
       />

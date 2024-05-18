@@ -28,7 +28,7 @@ function Header() {
   const { pathname } = router;
   const { isLoggedIn, handleLogout } = useContext(AuthContext);
   const [isfixed, setIsFixed] = useState(true);
-  const [hideHeader, setHideHeader] = useState(true);
+  const [isHideHeader, setIsHideHeader] = useState(true);
   const [userInfo, setUserInfo] = useState<IHeaderUser | null>();
 
   const handleUserInfo = async () => {
@@ -38,11 +38,11 @@ function Header() {
 
   useEffect(() => {
     handleUserInfo();
-    setHideHeader(hidePages.includes(pathname));
+    setIsHideHeader(hidePages.includes(pathname));
     setIsFixed(noHeaderFixed.includes(pathname));
   }, [pathname]);
 
-  if (hideHeader) return null;
+  if (isHideHeader) return null;
 
   return (
     <HeaderWrap

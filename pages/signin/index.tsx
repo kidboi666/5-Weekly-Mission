@@ -59,7 +59,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 export default function SignIn() {
   const router = useRouter();
   const { handleLogin } = useContext(AuthContext);
-  const [visibility, setVisibility] = useState(false);
+  const [IsVisibility, setIsVisibility] = useState(false);
   const {
     register,
     handleSubmit,
@@ -146,16 +146,16 @@ export default function SignIn() {
                       message: '비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.',
                     },
                   })}
-                  type={visibility ? 'text' : 'password'}
+                  type={IsVisibility ? 'text' : 'password'}
                   name='password'
                   id='input__password-element'
                   className={errors.password ? 'error' : ''}
                 />
                 <Button
                   $btnClass={'button--input-password'}
-                  onclick={() => setVisibility((prev) => !prev)}>
+                  onclick={() => setIsVisibility((prev) => !prev)}>
                   <img
-                    src={`/assets/icon/icon-eye-${visibility ? 'on' : 'off'}.svg`}
+                    src={`/assets/icon/icon-eye-${IsVisibility ? 'on' : 'off'}.svg`}
                     alt='비밀번호 보기'
                   />
                 </Button>

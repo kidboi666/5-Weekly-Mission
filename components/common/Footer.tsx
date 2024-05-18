@@ -32,13 +32,13 @@ const hidePages = ['/signin', '/signup'];
 
 function Footer() {
   const { pathname } = useRouter();
-  const [hideFooter, setHideFooter] = useState(true);
+  const [isHideFooter, setIsHideFooter] = useState(true);
 
   useEffect(() => {
-    setHideFooter(hidePages.includes(pathname));
+    setIsHideFooter(hidePages.includes(pathname));
   }, [pathname]);
 
-  if (hideFooter) return null;
+  if (isHideFooter) return null;
 
   return (
     <FootWrap className='foot__main'>

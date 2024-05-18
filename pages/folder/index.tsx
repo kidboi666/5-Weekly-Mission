@@ -53,8 +53,8 @@ export default function Folder({ $menu, $content }: { $menu: IFolderMenuButtonAp
   const router = useRouter();
   const [tabTitle, setTabTitle] = useState('전체');
   const [activeBtn, setActiveBtn] = useState<number>(-1);
-  const [modalShow, setModalShow] = useState(false);
-  const [modalInfo, setModalInfo] = useState<IModal>({
+  const [isModalShow, setModalShow] = useState(false);
+  const [modalInfo, setIsModalShow] = useState<IModal>({
     $title: '',
     $titleDescText: null,
     $body: null,
@@ -88,7 +88,7 @@ export default function Folder({ $menu, $content }: { $menu: IFolderMenuButtonAp
         $modalData: $menu,
       };
     }
-    setModalInfo(modalInfo);
+    setIsModalShow(modalInfo);
     setModalShow(true);
   };
 
@@ -172,7 +172,7 @@ export default function Folder({ $menu, $content }: { $menu: IFolderMenuButtonAp
       </ContainBody>
 
       <Modal
-        onOpen={modalShow}
+        onOpen={isModalShow}
         onClose={handleModalClose}
         $folderId={activeBtn}
         {...modalInfo}
