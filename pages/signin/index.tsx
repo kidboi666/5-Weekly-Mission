@@ -10,6 +10,7 @@ import { AuthContext } from '@/lib/auto.context';
 import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
+import Image from 'next/image';
 
 const BASE_PAGE_URL = '/';
 const SIGNIN_PAGE_URL = '/signin';
@@ -98,9 +99,11 @@ export default function SignIn() {
       <JoinBody>
         <JoinTitle>
           <LinkButton $link={`/`}>
-            <img
+            <Image
               src='/assets/logo/logo.svg'
               alt='linkbrary'
+              width={202}
+              height={38}
             />
           </LinkButton>
         </JoinTitle>
@@ -154,9 +157,11 @@ export default function SignIn() {
                 <Button
                   $btnClass={'button--input-password'}
                   onclick={() => setIsVisibility((prev) => !prev)}>
-                  <img
+                  <Image
                     src={`/assets/icon/icon-eye-${IsVisibility ? 'on' : 'off'}.svg`}
                     alt='비밀번호 보기'
+                    width={16}
+                    height={16}
                   />
                 </Button>
               </Relative>
@@ -175,17 +180,21 @@ export default function SignIn() {
             <LinkButton
               $link={'https://www.google.co.kr/?hl=ko'}
               $target='_blank'>
-              <img
+              <Image
+                fill
                 src='/assets/icon/icon_google.png'
                 alt='구글로고'
+                sizes='40px 40px'
               />
             </LinkButton>
             <LinkButton
               $link={'https://www.kakaocorp.com/page/'}
               $target='_blank'>
-              <img
+              <Image
+                fill
                 src='/assets/icon/icon_kakao.png'
                 alt='카카오로고'
+                sizes='40px 40px'
               />
             </LinkButton>
           </div>

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { font24 } from '@/styles/commonStyle';
 
 export const LinkModule = styled(Link)`
+  position: relative;
   display: block;
   text-align: center;
   &.link {

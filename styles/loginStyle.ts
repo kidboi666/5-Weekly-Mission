@@ -25,10 +25,6 @@ export const JoinBody = styled.div`
 
 export const JoinTitle = styled.h1`
   text-align: center;
-
-  img {
-    height: 2.375rem;
-  }
 `;
 
 export const JoinAccessControlBox = styled.div`

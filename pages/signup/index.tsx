@@ -9,6 +9,7 @@ import { joinInstance } from '@/lib/axios';
 import { useRouter } from 'next/router';
 import { IJoinForm } from '@/components/join/interfase';
 import { GetServerSidePropsContext } from 'next';
+import Image from 'next/image';
 
 const BASE_PAGE_URL = '/';
 const SIGNUP_PAGE_URL = '/signup';
@@ -101,9 +102,11 @@ export default function SignUp() {
       <JoinBody>
         <JoinTitle>
           <LinkButton $link={`/`}>
-            <img
+            <Image
               src='/assets/logo/logo.svg'
               alt='linkbrary'
+              width={202}
+              height={38}
             />
           </LinkButton>
         </JoinTitle>
@@ -161,9 +164,11 @@ export default function SignUp() {
                 <Button
                   $btnClass={'button--input-password'}
                   onclick={() => setPwVisibility((prev) => !prev)}>
-                  <img
+                  <Image
                     src={`/assets/icon/icon-eye-${pwVisibility ? 'on' : 'off'}.svg`}
                     alt='비밀번호 보기'
+                    width={16}
+                    height={16}
                   />
                 </Button>
               </Relative>
@@ -193,9 +198,11 @@ export default function SignUp() {
                 <Button
                   $btnClass={'button--input-password'}
                   onclick={() => setPwConfirmVisibility((prev) => !prev)}>
-                  <img
+                  <Image
                     src={`/assets/icon/icon-eye-${pwConfirmVisibility ? 'on' : 'off'}.svg`}
                     alt='비밀번호 보기'
+                    width={16}
+                    height={16}
                   />
                 </Button>
               </Relative>
@@ -214,7 +221,8 @@ export default function SignUp() {
             <LinkButton
               $link={'https://www.google.co.kr/?hl=ko'}
               $target='_blank'>
-              <img
+              <Image
+                fill
                 src='/assets/icon/icon_google.png'
                 alt='구글로고'
               />
@@ -222,7 +230,8 @@ export default function SignUp() {
             <LinkButton
               $link={'https://www.kakaocorp.com/page/'}
               $target='_blank'>
-              <img
+              <Image
+                fill
                 src='/assets/icon/icon_kakao.png'
                 alt='카카오로고'
               />

@@ -5,6 +5,7 @@ import ShareModal from '../share/ShareModal';
 import { IModal } from './interface';
 import { ModalBody, ModalContainer, ModalDim, ModalFoot, ModalHead, ModalWrap } from './modalStyle';
 import Button from '../common/atoms/Button';
+import Image from 'next/image';
 
 interface IModalInfo extends IModal {
   onOpen: boolean;
@@ -51,9 +52,11 @@ function Modal({ onOpen, onClose, $folderId = null, $title, $titleDescText, $bod
           <Button
             $btnClass={'button--modal-close'}
             onclick={() => modalClose()}>
-            <img
+            <Image
               src='/assets/icon/icon_close.svg'
               alt='닫기'
+              width={24}
+              height={24}
             />
           </Button>
         </ModalContainer>

@@ -74,10 +74,6 @@ export const ButtonModule = styled.button<{
         transform: translateY(-50%);
         padding: 1rem;
         z-index: 1;
-        img {
-          width: 16px;
-          height: 20px;
-        }
       }
     }
   }

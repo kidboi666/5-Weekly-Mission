@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import { GetServerSidePropsContext } from 'next';
 import SearchInputBox from '@/components/folder/SearchInputBox';
 import { useState } from 'react';
+import Image from 'next/image';
 
 const LOGO_IMAGE = '/assets/logo/logo_codeit.svg';
 const SEARCH_IMAGE = '/assets/icon/icon_search.svg';
@@ -68,9 +69,11 @@ export default function Shared({ $title, $content }: { $title: IShareTitle; $con
     <Container>
       <ContainHead>
         <ShareHeadInner>
-          <img
+          <Image
             src={LOGO_IMAGE}
             alt='@코드잇'
+            width={60}
+            height={60}
           />
           <p>@코드잇</p>
           {$title?.data[0]?.name && <TitleMs>{$title?.data[0]?.name}</TitleMs>}

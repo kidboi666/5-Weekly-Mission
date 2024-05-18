@@ -1,6 +1,7 @@
 import { BoxLinkSearch, SearchResults } from '@/styles/folderStyle';
 import Input from '../common/atoms/Input';
 import { memo, useState } from 'react';
+import Image from 'next/image';
 
 interface ISearch {
   $inputIconImg: string;
@@ -24,9 +25,11 @@ function SearchInputBox({ $inputIconImg, onchange }: ISearch) {
         $btnClass={'button--modal-close'}
         $clickEvent={'reset'}
         onchange={handleSearchResult}>
-        <img
+        <Image
           src='/assets/icon/icon_close.svg'
           alt='닫기'
+          width={24}
+          height={24}
         />
       </Input>
       {value && (

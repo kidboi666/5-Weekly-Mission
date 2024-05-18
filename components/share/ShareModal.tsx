@@ -1,6 +1,7 @@
 import { snsShare } from '@/src/constant/share';
 import Button from '../common/atoms/Button';
 import { ShareBox } from './shareStyle';
+import Image from 'next/image';
 
 const handleLinkCopy = async (id: number) => {
   try {
@@ -28,9 +29,11 @@ function ShareModal({ sharedId }: { sharedId: number | null }) {
           key={sns.id}
           $btnClass={'button--sns-share'}
           onclick={() => handlerSns(sns.id)}>
-          <img
+          <Image
             src={sns.src}
             alt={sns.name}
+            width={42}
+            height={42}
           />
           <span className='share--text'>{sns.name}</span>
         </Button>

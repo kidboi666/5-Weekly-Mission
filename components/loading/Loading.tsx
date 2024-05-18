@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styled from 'styled-components';
 
 const LoadingWrap = styled.div`
@@ -19,7 +20,7 @@ const LoadingWrap = styled.div`
 function Loading() {
   return (
     <LoadingWrap>
-      <img
+      <Image
         src='/assets/icon/icon_loading.svg'
         alt='loading'
       />

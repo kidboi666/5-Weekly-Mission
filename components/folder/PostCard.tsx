@@ -53,12 +53,16 @@ export default function PostCard({ image_source, description, created_at }: IFol
                   fill
                   src={image_source}
                   alt={image_source}
-                  sizes='auto auto'
+                  sizes='(max-width: 23.4375rem) 300px, 500px'
+                  priority
                 />
               ) : (
-                <img
+                <Image
                   className='empty'
                   src={EMPTY_IMAGE}
+                  alt='로고'
+                  width={133}
+                  height={25}
                 />
               )}
             </div>
@@ -77,23 +81,23 @@ export default function PostCard({ image_source, description, created_at }: IFol
           <button
             className='card__dropdown-contant'
             onClick={handelerCardDropdown}>
-            <img
+            <Image
               src='/assets/icon/icon_dotte.svg'
               alt='메뉴'
+              width={21}
+              height={17}
             />
           </button>
           {isCardMenu && (
             <div className='card__dropdown-menu'>
               {/* <button
-                className="card__menu-btn"
-                onClick={() => handleModalOpen('folderDelete')}
-              >
+                className='card__menu-btn'
+                onClick={() => handleModalOpen('folderDelete')}>
                 삭제하기
               </button>
               <button
-                className="card__menu-btn"
-                onClick={() => handleModalOpen('folderInAdd')}
-              >
+                className='card__menu-btn'
+                onClick={() => handleModalOpen('folderInAdd')}>
                 폴더에 추가
               </button> */}
             </div>
