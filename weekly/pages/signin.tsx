@@ -1,5 +1,3 @@
-import { useState, ChangeEvent } from 'react';
-import isValidEmail from '@/utils/isValidEmail';
 import Logo from '@/components/Auth/Logo';
 import SignInput from '@/components/Auth/SignInput';
 import SignLabel from '@/components/Auth/SignLabel';
@@ -8,26 +6,6 @@ import GradientButton from '@/components/Button/GradientButton';
 import styled from 'styled-components';
 
 function SignInPage() {
-  const [iSInvalid, setIsInvalid] = useState(false);
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-
-  const onChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  };
-
-  const onBlurEmail = () => {
-    if (email === '') {
-      setIsInvalid(true);
-      setMessage('이메일을 입력해주세요');
-    } else if (!isValidEmail(email)) {
-      setIsInvalid(true);
-      setMessage('올바른 이메일 주소가 아닙니다.');
-    } else {
-      setIsInvalid(false);
-    }
-  };
-
   return (
     <SigninWrapper>
       <SignForm>
@@ -35,7 +13,7 @@ function SignInPage() {
         <div>
           <SignLabel>
             이메일
-            <SignInput type="email" placeholder="이메일을 입력해 주세요" onChange={onChangeEmail} onBlur={onBlurEmail} isValid={iSInvalid} message={message} />
+            <SignInput type="email" placeholder="이메일을 입력해 주세요" id="email" />
           </SignLabel>
           <SignLabel>
             비밀번호
