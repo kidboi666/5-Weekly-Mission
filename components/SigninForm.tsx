@@ -1,5 +1,6 @@
 import styles from "./AuthForm.module.css";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { submitLoginForm, accessTokenCheck } from "@/api/Auth";
 
 interface SigninFormValues {
   email: string;
@@ -14,8 +15,9 @@ function SigninForm() {
   } = useForm<SigninFormValues>();
 
   const onSubmit: SubmitHandler<SigninFormValues> = (data) => {
-    console.log(data);
+    submitLoginForm(data.email, data.password);
   };
+  accessTokenCheck();
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.authForm}>

@@ -1,6 +1,7 @@
 import styles from "./AuthForm.module.css";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useRef } from "react";
+import { submitSignUpForm } from "@/api/Auth";
 
 interface SigninFormValues {
   email: string;
@@ -20,7 +21,7 @@ function SigninForm() {
   passwordRef.current = watch("password");
 
   const onSubmit: SubmitHandler<SigninFormValues> = (data) => {
-    console.log(data);
+    submitSignUpForm(data.email, data.password);
   };
 
   return (
