@@ -21,8 +21,6 @@ const SEARCH_IMAGE = '/assets/icon/icon_search.svg';
 const LINK_IMAGE = '/assets/icon/icon_primaty_link.svg';
 
 export async function getServerSideProps(contaxt: GetServerSidePropsContext) {
-  let $menu;
-  let $content;
   const { query } = contaxt;
   try {
     let resContent;
@@ -32,21 +30,21 @@ export async function getServerSideProps(contaxt: GetServerSidePropsContext) {
     } else {
       resContent = await instance.get(`/links`);
     }
-    $menu = resMenu.data;
-    $content = resContent.data;
+
+    const $menu = resMenu.data;
+    const $content = resContent.data;
+    return {
+      props: {
+        $menu,
+        $content,
+      },
+    };
   } catch (error) {
     console.log('ERROR IN SERVER FETCHING DATA: ', error);
     return {
       notFound: true,
     };
   }
-
-  return {
-    props: {
-      $menu,
-      $content,
-    },
-  };
 }
 
 export default function Folder({ $menu, $content }: { $menu: IFolderMenuButtonApi; $content: IFolderContentApi }) {

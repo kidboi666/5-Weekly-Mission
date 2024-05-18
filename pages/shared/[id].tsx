@@ -12,13 +12,12 @@ const LOGO_IMAGE = '/assets/logo/logo_codeit.svg';
 const SEARCH_IMAGE = '/assets/icon/icon_search.svg';
 
 export async function getServerSideProps(contaxt: GetServerSidePropsContext) {
-  let $title;
-  let $content;
   const { query } = contaxt;
   try {
     const [resTitle, resContent] = await Promise.all([instance.get(`/folders/${query.id}`), instance.get(`/links?folderId=${query.id}`)]);
-    $title = resTitle.data;
-    $content = resContent.data;
+    const $title = resTitle.data;
+    const $content = resContent.data;
+
     if (!$title.data[0]) {
       return {
         notFound: true,
