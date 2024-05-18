@@ -33,6 +33,11 @@ export default function SignInPage() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    validateEmail(email, setShowError);
+    validateSignInPassword(password, setShowError);
+    if (!showError.error) {
+      return;
+    }
     const result = await postSignIn(email, password);
     localStorage.setItem('accessToken', result?.accessToken);
     router.push('/folder');
@@ -67,6 +72,8 @@ export default function SignInPage() {
               id='email'
               type='email'
               placeholder='이메일을 입력해 주세요.'
+              value={email}
+              onChange={handleEmailChange}
               onBlur={handleEmailBlur}
               $iserror={showError.email.error.toString()}
             />
@@ -81,6 +88,8 @@ export default function SignInPage() {
                 id='password'
                 type={isVisiblePassword ? 'text' : 'password'}
                 placeholder='비밀번호를 입력해 주세요.'
+                value={password}
+                onChange={handlePasswordChange}
                 onBlur={handlePasswordBlur}
                 $iserror={showError.password.error.toString()}
               />
