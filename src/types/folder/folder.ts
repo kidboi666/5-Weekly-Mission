@@ -2,9 +2,7 @@ interface FolderTabDataList {
   id: number;
   createdAt: string;
   favorite: boolean;
-  link: {
-    count: number;
-  };
+  link: Pick<FolderData, "count">;
   name: string;
   userId: number;
 }
@@ -32,7 +30,7 @@ interface FolderData {
   id: number;
   name: string;
   owner: FolderDataOwner;
-  links: folderLinks[];
+  links: FolderLinks[];
   count: number;
 }
 
@@ -42,7 +40,7 @@ interface FolderDataOwner {
   profileImageSource: string;
 }
 
-interface folderLinks {
+interface FolderLinks {
   id: number;
   createdAt: string;
   url: string;
