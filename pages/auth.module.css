@@ -1,0 +1,7 @@
+.contentWrap {
+  background: var(--Linkbrary-bg, #f0f6ff);
+  padding: 238px 0px 117px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

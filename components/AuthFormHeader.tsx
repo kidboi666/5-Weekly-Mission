@@ -5,10 +5,11 @@ import Image from "next/image";
 
 interface AuthFormHeaderProps {
   message: string;
+  link: string;
   linkMassege: string;
 }
 
-function AuthFormHeader({ message, linkMassege }: AuthFormHeaderProps) {
+function AuthFormHeader({ message, link, linkMassege }: AuthFormHeaderProps) {
   return (
     <header className={styles.AuthFormHeader}>
       <Link href="/">
@@ -18,7 +19,7 @@ function AuthFormHeader({ message, linkMassege }: AuthFormHeaderProps) {
       </Link>
       <div className={styles.AuthFormMessage}>
         {message}
-        <Link href="/signup">{linkMassege}</Link>
+        <Link href={link}>{linkMassege}</Link>
       </div>
     </header>
   );
