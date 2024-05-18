@@ -54,16 +54,16 @@ export default function SignUpPage() {
     router.push('/folder');
   };
 
-  const handleEmailBlur = (e: FocusEvent<HTMLInputElement>) => {
-    validateEmail(e, setShowError);
+  const handleEmailBlur = () => {
+    validateEmail(email, setShowError);
   };
 
-  const handlePasswordBlur = (e: FocusEvent<HTMLInputElement>) => {
-    validateSignUpPassword(e, setShowError);
+  const handlePasswordBlur = () => {
+    validateSignUpPassword(password, setShowError);
   };
 
-  const handlePasswordConformBlur = (e: FocusEvent<HTMLInputElement>) => {
-    validatePasswordConform(e, password, setShowError);
+  const handlePasswordConformBlur = () => {
+    validatePasswordConform(passwordConform, password, setShowError);
   };
 
   const handlePasswordEyeButtonClick = () => {
@@ -102,14 +102,13 @@ export default function SignUpPage() {
           </S.FormField>
           <S.FormField>
             <S.Label htmlFor='password'>비밀번호</S.Label>
-            <S.PasswordWrap>
+            <S.PasswordWrap onBlur={handlePasswordBlur} tabIndex={0}>
               <S.Input
                 id='password'
                 type={isVisiblePassword ? 'text' : 'password'}
                 placeholder='영문, 숫자를 조합해 8자 이상 입력해 주세요.'
                 value={password}
                 onChange={handlePasswordChange}
-                onBlur={handlePasswordBlur}
                 $iserror={showError.password.error.toString()}
               />
               <S.EyeButton type='button' onClick={handlePasswordEyeButtonClick}>
@@ -127,14 +126,13 @@ export default function SignUpPage() {
           </S.FormField>
           <S.FormField>
             <S.Label htmlFor='passwordConfirm'>비밀번호 확인</S.Label>
-            <S.PasswordWrap>
+            <S.PasswordWrap onBlur={handlePasswordConformBlur}>
               <S.Input
                 id='passwordConfirm'
                 type='password'
                 placeholder='비밀번호와 일치하는 값을 입력해 주세요.'
                 value={passwordConform}
                 onChange={handlePasswordConformChange}
-                onBlur={handlePasswordConformBlur}
                 $iserror={showError.passwordConform.error.toString()}
               />
               <S.EyeButton

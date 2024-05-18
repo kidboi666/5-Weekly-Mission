@@ -37,12 +37,12 @@ export default function SignInPage() {
     router.push('/folder');
   };
 
-  const handleEmailBlur = (e: FocusEvent<HTMLInputElement>) => {
-    validateEmail(e, setShowError);
+  const handleEmailBlur = () => {
+    validateEmail(email, setShowError);
   };
 
-  const handlePasswordBlur = (e: FocusEvent<HTMLInputElement>) => {
-    validateSignInPassword(e, setShowError);
+  const handlePasswordBlur = () => {
+    validateSignInPassword(password, setShowError);
   };
 
   const handlePasswordEyeButtonClick = () => {

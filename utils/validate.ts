@@ -1,7 +1,7 @@
 import { Dispatch, FocusEvent, SetStateAction } from 'react';
 
 export function validateEmail(
-  e: FocusEvent<HTMLInputElement>,
+  email: string,
   setter: Dispatch<
     SetStateAction<{
       email: { error: boolean; message: string };
@@ -10,7 +10,7 @@ export function validateEmail(
     }>
   >
 ) {
-  if (!e.target.value) {
+  if (!email) {
     setter((prev) => ({
       ...prev,
       email: { error: true, message: '이메일을 입력해 주세요.' },
@@ -19,7 +19,7 @@ export function validateEmail(
   }
   const emailPattern: RegExp =
     /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
-  if (!emailPattern.test(e.target.value)) {
+  if (!emailPattern.test(email)) {
     setter((prev) => ({
       ...prev,
       email: { error: true, message: '올바른 이메일 주소가 아닙니다.' },
@@ -33,7 +33,7 @@ export function validateEmail(
 }
 
 export function validateSignUpPassword(
-  e: FocusEvent<HTMLInputElement>,
+  password: string,
   setter: Dispatch<
     SetStateAction<{
       email: { error: boolean; message: string };
@@ -43,7 +43,7 @@ export function validateSignUpPassword(
   >
 ) {
   const passwordPattern: RegExp = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/;
-  if (e.target.value.length < 8 || !passwordPattern.test(e.target.value)) {
+  if (password.length < 8 || !passwordPattern.test(password)) {
     setter((prev) => ({
       ...prev,
       password: {
@@ -60,7 +60,7 @@ export function validateSignUpPassword(
 }
 
 export function validateSignInPassword(
-  e: FocusEvent<HTMLInputElement>,
+  password: string,
   setter: Dispatch<
     SetStateAction<{
       email: { error: boolean; message: string };
@@ -69,7 +69,7 @@ export function validateSignInPassword(
     }>
   >
 ) {
-  if (!e.target.value) {
+  if (!password) {
     setter((prev) => ({
       ...prev,
       password: { error: true, message: '비밀번호를 입력해 주세요.' },
@@ -83,7 +83,7 @@ export function validateSignInPassword(
 }
 
 export function validatePasswordConform(
-  e: FocusEvent<HTMLInputElement>,
+  passwordConform: string,
   password: string,
   setter: Dispatch<
     SetStateAction<{
@@ -93,7 +93,7 @@ export function validatePasswordConform(
     }>
   >
 ) {
-  if (e.target.value !== password) {
+  if (passwordConform !== password) {
     setter((prev) => ({
       ...prev,
       passwordConform: {
