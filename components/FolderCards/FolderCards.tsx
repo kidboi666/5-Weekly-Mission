@@ -1,6 +1,7 @@
 import styles from "./FolderCards.module.scss";
 import classNames from "classnames/bind";
 import { MainSearchBar, LinkItems, FolderToolBar, Cards } from "..";
+import { useEffect, useState } from "react";
 
 const cx = classNames.bind(styles);
 
@@ -13,7 +14,7 @@ export const FolderCards = ({
   setFolderId,
   search,
 }) => {
-  // let hasCards = false;
+  // const [cards, setCards] = useState(false);
 
   return (
     <div className={cx("container")}>
@@ -31,7 +32,7 @@ export const FolderCards = ({
       {/* <ul className={cx("cards-block")}>
         {links.map((item) => {
           if (folderId === item.folder_id || folderName === "전체") {
-            hasCards = true;
+         
             return <Cards key={item.id} item={item} folders={folders} />;
           } else {
             return null;
@@ -39,7 +40,7 @@ export const FolderCards = ({
         })}
       </ul> */}
 
-      {/* {!hasCards && ( */}
+      {/* {!cards && ( */}
         <div className={cx("text-block")}>
           <p className={cx("text")}>저장된 링크가 없습니다</p>
         </div>

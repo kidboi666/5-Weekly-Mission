@@ -34,6 +34,7 @@ export const AddFolderModal = ({ modal, setModal, url, folders }) => {
               return (
                 <button
                   key={item.id}
+                  className={cx("button")}
                   // onClick={() => clickButton(item, index)}
                   type="button"
                 >

@@ -72,12 +72,12 @@
     width: 100%;
     text-align: left;
     padding: 0.8rem;
-    @include font(1.4rem, $color-black, 400);
+    @include font(1.2rem, $color-black, 400);
 
     &:hover {
       border-radius: 0.5rem;
       background: $color-light-blue;
-      @include font(1.4rem, $color-primary, 400);
+      @include font(1.2rem, $color-primary, 400);
     }
   }
 }
@@ -101,4 +101,9 @@
   background: $color-linear-gradient;
 
   @include font(1.2rem, $color-gray-light, 600);
+}
+
+.button {
+  border: none;
+  background-color: #fff;
 }
