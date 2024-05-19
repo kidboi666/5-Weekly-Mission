@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 function AuthHeader() {
   const router = useRouter();
 
-  console.log(router);
   return (
     <div className={styles.loginHeader}>
       <h2 className={styles.loginLogo}>

@@ -29,7 +29,6 @@ const SignUpForm = () => {
     formState: { errors },
   } = useForm<SignUpFormInputs>({
     resolver: zodResolver(signUpSchema),
-    mode: "onBlur",
   });
 
   const router = useRouter();
