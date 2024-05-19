@@ -7,7 +7,13 @@ const SIZES = {
   small: '80px',
 };
 
-const GradientButton = styled.button`
+type SizeKey = keyof typeof SIZES;
+
+interface Props {
+  size: SizeKey;
+}
+
+const GradientButton = styled.button<Props>`
   width: ${({ size }) => SIZES[size ?? 'medium']};
   font-family: Pretendard;
   padding: 16px ${({ size }) => (size === 'small' ? '10' : '20')}px;

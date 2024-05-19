@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { getLinkList } from '../api';
-import Nav from '../components/Nav/Nav';
+import Nav from '../components/Common/Nav';
 import AddLink from '../components/AddLink';
-import Search from '../components/Search/Search';
+import Search from '../components/FolderPage/Search';
 import FolderToolBar from '../components/FolderToolBar';
-import NoLink from '../components/NoLink';
-import CardList from '../components/CardList/CardList';
+import NoLink from '../components/Common/NoLink';
+import CardList from '../components/FolderPage/CardList';
 import Footer from '../components/Footer/Footer';
 import styles from '@/styles/MainContent.module.css';
 

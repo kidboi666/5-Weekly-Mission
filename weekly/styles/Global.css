@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  font-size: 16px;
+  margin: 0;
+}
+
+:root {
+  --primary: #6d6afe;
+  --red: #ff5b56;
+  --jungle-black: #111322;
+  --black: #000;
+  --white: #fff;
+  --bg-color: #f0f6ff;
+  --gray2: #e7effb;
+  --gray3: #ccd5e3;
+  --gray4: #9fa6b2;
+  --gray5: #3e3e43;
+  --button-text-color: #f5f5f5;
+  --p-color: #6b6b6b;
+  --grad-purple-to-blue: linear-gradient(91deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+}
