@@ -2,7 +2,6 @@ import Link from "next/link";
 import styles from "../styles/singin.module.scss";
 import classNames from "classnames/bind";
 import { SinginForm } from "../components/SinginForm/SinginForm";
-import { useEffect, useRef } from "react";
 
 const cx = classNames.bind(styles);
 

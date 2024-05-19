@@ -18,7 +18,9 @@ export function SinginForm() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    mode: "onBlur",
+  });
 
   const onSubmit = (data) => {
     console.log(data);
@@ -29,6 +31,11 @@ export function SinginForm() {
       <div className={cx("input-wrapper")}>
         <label>이메일</label>
         <input
+          className={cx({
+            "red-border": errors.email,
+            "default-border": !errors.email,
+          })}
+          placeholder="이메일을 입력해 주세요"
           {...register("email", { required: true, pattern: email_regex })}
         />
         {errors.email && errors.email.type === "required" && (
@@ -41,6 +48,11 @@ export function SinginForm() {
       <div className={cx("input-wrapper", "pwd")}>
         <label>비밀번호</label>
         <input
+          className={cx({
+            "red-border": errors.password,
+            "default-border": !errors.password,
+          })}
+          placeholder="비밀번호를 입력해 주세요"
           type={isToggle ? "password" : "text"}
           {...register("password", { required: true })}
         />
