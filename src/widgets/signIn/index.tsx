@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Auth.module.css";
-import SignInForm from "./signInForm";
+import SignInForm from "./SignInForm/SignInForm";
 import AuthHeader from "../../components/AuthHeader";
 import AuthContainer from "@/src/components/AuthContainer/AuthContainer";
 
