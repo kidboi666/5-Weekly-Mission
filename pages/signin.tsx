@@ -1,8 +1,8 @@
-import SignInForm from "@/src/widgets/signIn";
+import SignInPage from "@/src/widgets/signIn";
 import React from "react";
 
 function SignIn() {
-  return <SignInForm />;
+  return <SignInPage />;
 }
 
 export default SignIn;

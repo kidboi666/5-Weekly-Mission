@@ -1,16 +1,16 @@
 import React from "react";
 import styles from "./Auth.module.css";
-import LoginForm from "./signInForm";
-import LoginHeader from "./signInHeader";
+import SignInForm from "./signInForm";
+import AuthHeader from "../../components/AuthHeader";
 import AuthContainer from "@/src/components/AuthContainer/AuthContainer";
 
 function SignIn() {
   return (
     <AuthContainer>
       <div className={styles.loginCon}>
-        <LoginHeader />
+        <AuthHeader />
         <article className={styles.conArticle}>
-          <LoginForm />
+          <SignInForm />
         </article>
       </div>
     </AuthContainer>
