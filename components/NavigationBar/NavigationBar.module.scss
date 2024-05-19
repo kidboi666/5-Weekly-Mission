@@ -1,0 +1,26 @@
+@import "/styles/globals.scss";
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem 10rem;
+  background: $color-light-blue;
+
+  @include tablet {
+    padding: 0.2rem 4rem;
+  }
+
+  @include mobile {
+    padding: 0.2rem 2rem;
+  }
+}
+
+.image {
+  position: relative;
+  width: 9rem;
+
+  @include mobile {
+    width: 7rem;
+  }
+}
