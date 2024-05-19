@@ -57,8 +57,7 @@
 @media (max-width: 1199px) {
   /* 타블렛 */
   .loginBody {
-    margin: 14.875rem 0;
-    padding: 0 2rem;
+    padding: 14.855rem 2rem;
   }
 }
 
@@ -69,11 +68,15 @@
   }
 
   .loginBody {
-    margin: 7.5rem 0;
+    padding: 7.5rem 2rem;
   }
 
   .loginForm .loginButton {
     font-size: 1.125rem;
     padding: 1rem 0;
+  }
+
+  .loginLogo {
+    padding: 0;
   }
 }

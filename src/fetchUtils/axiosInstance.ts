@@ -26,6 +26,9 @@ instance.interceptors.response.use(
         case 404:
           console.error("404 에러");
           break;
+        case 409:
+          console.error("409 에러");
+          break;
         case 500:
           console.error("500 에러");
           break;

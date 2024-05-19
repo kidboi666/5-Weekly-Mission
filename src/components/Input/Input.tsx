@@ -7,7 +7,7 @@ interface InputProps {
   placeholder?: string;
   className?: string;
   register: UseFormRegisterReturn;
-  onBlur?: () => void;
+  onBlur?: React.FocusEventHandler<HTMLInputElement>;
 }
 
 const Input = ({ id, type, placeholder, className, register, ...rest }: InputProps) => {

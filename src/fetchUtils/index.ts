@@ -91,3 +91,18 @@ export const userSignInData = async (signInData: SignInFormInputs) => {
     }
   }
 };
+
+export const checkEmailAvailability = async (email: string) => {
+  try {
+    const response = await axios.post(`/api/check-email`, email);
+    console.log(response);
+
+    return response.data.data.isUsableNickname;
+  } catch (e) {
+    if (e instanceof Error) {
+      console.log(e);
+
+      console.error(e.message);
+    }
+  }
+};
