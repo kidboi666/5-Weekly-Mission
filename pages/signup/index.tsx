@@ -10,6 +10,7 @@ import { useRouter } from 'next/router';
 import { IJoinForm } from '@/components/join/interfase';
 import { GetServerSidePropsContext } from 'next';
 import Image from 'next/image';
+import Loading from '@/components/loading/Loading';
 
 const BASE_PAGE_URL = '/';
 const SIGNUP_PAGE_URL = '/signup';
@@ -65,6 +66,7 @@ export default function SignUp() {
     setError,
     setValue,
   } = useForm<IJoinForm>({ mode: 'onBlur' });
+  const [isStylesLoaded, setIsStylesLoaded] = useState(false);
 
   const handleEmailCheck = async (email: IJoinForm['email']) => {
     try {
@@ -96,7 +98,11 @@ export default function SignUp() {
       alert('로그인한 상태입니다.');
       router.push('/folder');
     }
+    setIsStylesLoaded(true);
   }, [router]);
+
+  if (!isStylesLoaded) return <Loading />;
+
   return (
     <JoinWrap className='no-header--container signup__wrap'>
       <JoinBody>

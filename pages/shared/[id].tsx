@@ -65,6 +65,7 @@ export default function Shared({ $title, $content }: { $title: IShareTitle; $con
   const contentSearch = searchContatn ?? $content?.data;
 
   if (!$title.data[0]) router.push('/notfound');
+
   return (
     <Container>
       <ContainHead>

@@ -10,7 +10,7 @@ import FolderContentControll from '@/components/folder/FolderContentControll';
 import PostCardList from '@/components/folder/PostCardList';
 import Modal from '@/components/modal/Modal';
 import Loading from '@/components/loading/Loading';
-import { BodyInner, BookmarkBox, FolderContainHead } from '../../styles/folderStyle';
+import { BodyInner, BookmarkBox, EmptyBox, FolderContainHead } from '../../styles/folderStyle';
 import { IFolderContentApi, IFolderMenuButtonApi } from '../../components/folder/interface';
 import { instance } from '@/lib/axios';
 
@@ -52,6 +52,7 @@ export default function Folder({ $menu, $content }: { $menu: IFolderMenuButtonAp
   const [isModalShow, setIsModalShow] = useState(false);
   const [modalType, setModalType] = useState<string>('');
   const [searchContatn, setSearchContent] = useState<any>();
+  const [isStylesLoaded, setIsStylesLoaded] = useState(false);
 
   // 폴더리스트버튼
   const handleClick = (id: number) => {
@@ -115,9 +116,11 @@ export default function Folder({ $menu, $content }: { $menu: IFolderMenuButtonAp
       alert('페이지가 없습니다.');
       router.push(`/folder`);
     }
+
+    setIsStylesLoaded(true);
   }, [$menu, router]);
 
-  if (!$menu || !$content) return <Loading />;
+  if (!isStylesLoaded) return <Loading />;
 
   return (
     <Container>

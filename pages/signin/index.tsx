@@ -11,6 +11,7 @@ import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import Image from 'next/image';
+import Loading from '@/components/loading/Loading';
 
 const BASE_PAGE_URL = '/';
 const SIGNIN_PAGE_URL = '/signin';
@@ -61,6 +62,8 @@ export default function SignIn() {
   const router = useRouter();
   const { handleLogin } = useContext(AuthContext);
   const [IsVisibility, setIsVisibility] = useState(false);
+  const [isStylesLoaded, setIsStylesLoaded] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -93,7 +96,11 @@ export default function SignIn() {
       alert('로그인한 상태입니다.');
       router.push('/folder');
     }
+    setIsStylesLoaded(true);
   }, [router]);
+
+  if (!isStylesLoaded) return <Loading />;
+
   return (
     <JoinWrap className='no-header--container signin__wrap'>
       <JoinBody>

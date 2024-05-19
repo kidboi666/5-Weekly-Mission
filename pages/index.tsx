@@ -1,8 +1,18 @@
 import { Container, TitleLs, TitleMs } from '@/styles/commonStyle';
 import { Section } from '../styles/mainStyle';
 import LinkButton from '@/components/common/atoms/LinkButton';
+import { useEffect, useState } from 'react';
+import Loading from '@/components/loading/Loading';
 
 export default function Home() {
+  const [isStylesLoaded, setIsStylesLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsStylesLoaded(true);
+  }, []);
+
+  if (!isStylesLoaded) return <Loading />;
+
   return (
     <Container className='body__main'>
       <Section className='section__banner'>
