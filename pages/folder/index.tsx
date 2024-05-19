@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import axios from "/lib/axios";
-import { LinkAddSearchBar, NavigationBar, FolderCards, Footer } from "/components";
+import { LinkAddSearchBar, NavigationBar, FolderCards, Footer } from "components";
+import { getUser, getLinks, getFolders } from "./api";
 
 export default function Folder() {
   const router = useRouter();
@@ -12,45 +12,35 @@ export default function Folder() {
   const [folderId, setFolderId] = useState(null);
   const { q } = router.query;
 
-  // 유저 정보
-  async function getUser() {
-    const user = await axios.get(`/sample/user`);
-    const nextUser = user.data;
-  
-    setUser(nextUser);
-  }
+  const fetchData = async () => {
+    const user = await getUser();
+    const link = await getLinks();
+    const folder = await getFolders();
 
-  async function getLink() {
-    const links = await axios.get(`/users/1/links`);
-    const nextLink = links.data;
-
-    setLink(nextLink.data)
-  }
-
-  async function getFolder() {
-    const folders = await axios.get(`/users/1/folders`);
-    const nextFolder = folders.data;
-
-    setFolder(nextFolder.data)
-  }
+    setUser(user);
+    setLink(link);
+    setFolder(folder);
+  };
 
   useEffect(() => {
-    getUser();
-    getLink();
-    getFolder();
+    fetchData();
   }, [])
 
-  if (!user) return null;
-  if (!link) return null;
-  if (!folder) return null;
+  if (!user || !link || !folder) return null;
+
+  const {name, profileImageSource: profile, email} = user;
 
   return (
     <div>
-      <NavigationBar user={user} />
+      <NavigationBar 
+        name={name}  
+        profile={profile}
+        email={email}
+      />
 
-      <LinkAddSearchBar initialValue={q}/>
+      <LinkAddSearchBar />
 
-      <h2>{q} 검색 결과</h2>
+      {/* <h2>{q} 검색 결과</h2> */}
 
       <FolderCards
         links={link}
@@ -59,6 +49,8 @@ export default function Folder() {
         setFolderName={setFolderName}
         folderId={folderId}
         setFolderId={setFolderId}
+
+        search={q}
       />
 
       <Footer />

@@ -27,6 +27,8 @@
 .form-block {
   width: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 1rem;
 
   @include mobile {
@@ -64,4 +66,9 @@
   @include mobile {
     @include font(0.8rem, $color-white, 600);
   }
+}
+
+.image {
+  width: 1.5rem;
+  height: 1.5rem;
 }

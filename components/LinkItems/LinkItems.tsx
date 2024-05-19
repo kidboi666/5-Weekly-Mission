@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./LinkItems.module.scss";
 import classNames from "classnames/bind";
+import Image from "next/image";
 import { DeleteModal, AddModal, ShareModal } from "..";
 import { SEARCH_ICON, PEN_ICON, WASTEBASKET_ICON } from "./constant";
 
@@ -30,9 +31,9 @@ export const LinkItems = ({ folderName }) => {
   const [shareModal, setShareModal] = useState(false);
 
   const handleClick = (text) => {
-    text === "삭제" && setDeleteModal(true);
-    text === "이름 변경" && setAddModal(true);
-    text === "공유" && setShareModal(true);
+    // text === "삭제" && setDeleteModal(true);
+    // text === "이름 변경" && setAddModal(true);
+    // text === "공유" && setShareModal(true);
   };
 
   return (
@@ -49,7 +50,7 @@ export const LinkItems = ({ folderName }) => {
                   key={item.id}
                   onClick={() => handleClick(item.text)}
                 >
-                  <img src={item.image} alt={item.text} />
+                  <Image className={cx("image")} src={item.image} alt={item.text} width={100} height={100}/>
                   <p className={cx("text")}>{item.text}</p>
                 </button>
               );

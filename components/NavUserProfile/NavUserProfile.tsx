@@ -1,13 +1,9 @@
 import styles from "./NavUserProfile.module.scss";
 import classNames from "classnames/bind";
+import Image from "next/image";
+import { User } from "components/type";
 
 const cx = classNames.bind(styles);
-
-interface User {
-  name: string;
-  profile: string;
-  email: string;
-}
 
 export const NavUserProfile = ({ name, profile, email }: User) => {
   return (
@@ -16,8 +12,9 @@ export const NavUserProfile = ({ name, profile, email }: User) => {
         className={cx("image")}
         src={profile}
         alt={name}
+        width={100} 
+        height={100}
       />
-
       <p>{email}</p>
     </div>
   );

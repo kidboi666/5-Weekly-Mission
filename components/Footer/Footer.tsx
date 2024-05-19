@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "./Footer.module.scss";
 import classNames from "classnames/bind";
+import Image from "next/image";
 import {
   FACEBOOK_ICON,
   TWITTER_ICON,
@@ -56,7 +57,7 @@ export const Footer = () => {
         {iconItems.map((item) => {
           return (
             <Link key={item.id} href={item.link} target="_blank">
-              <img src={item.image} alt={item.text} />
+              <Image className={cx("image")} src={item.image} alt={item.text} width={100} height={100}/>
             </Link>
           );
         })}

@@ -11,8 +11,9 @@ export const FolderCards = ({
   setFolderName,
   folderId,
   setFolderId,
+  search,
 }) => {
-  let hasCards = false;
+  // let hasCards = false;
 
   return (
     <div className={cx("container")}>
@@ -27,7 +28,7 @@ export const FolderCards = ({
 
       <LinkItems folderName={folderName} />
 
-      <ul className={cx("cards-block")}>
+      {/* <ul className={cx("cards-block")}>
         {links.map((item) => {
           if (folderId === item.folder_id || folderName === "전체") {
             hasCards = true;
@@ -36,13 +37,13 @@ export const FolderCards = ({
             return null;
           }
         })}
-      </ul>
+      </ul> */}
 
-      {!hasCards && (
+      {/* {!hasCards && ( */}
         <div className={cx("text-block")}>
           <p className={cx("text")}>저장된 링크가 없습니다</p>
         </div>
-      )}
+      {/* )} */}
     </div>
   );
 };

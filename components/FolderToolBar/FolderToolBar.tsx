@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./FolderToolBar.module.scss";
 import classNames from "classnames/bind";
+import Image from "next/image";
 import { AddModal } from "..";
 import { ADD_ICON } from "./constant";
 
@@ -11,14 +12,14 @@ export const FolderToolBar = ({ folders, setFolderName, setFolderId }) => {
   const [buttonIndex, setButtonIndex] = useState(null);
   const [addemodal, setAddModal] = useState(false);
 
-  function onClick() {
+  const onClick = () => {
     setFolderName("전체");
     setFolderId(null);
     setButtonIndex(null);
     setButton(true);
   }
 
-  function clickButton(item, index) {
+  const clickButton = (item, index) => {
     setFolderName(item.name);
     setFolderId(item.id);
     setButtonIndex(index);
@@ -57,7 +58,7 @@ export const FolderToolBar = ({ folders, setFolderName, setFolderId }) => {
       <div className={cx("add-button")}>
         <button className={cx("text")} onClick={handleClick}>
           <p className={cx("button-text")}>폴더 추가</p>
-          <img src={ADD_ICON} alt="폴더 추가" />
+          <Image className={cx("image")} src={ADD_ICON} alt="폴더 추가" width={100} height={100}/>
         </button>
       </div>
 

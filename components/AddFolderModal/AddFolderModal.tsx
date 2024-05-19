@@ -11,7 +11,7 @@ export const AddFolderModal = ({ modal, setModal, url, folders }) => {
   // 모달 영역 밖 클릭 시 닫기
   useEffect(() => {
     const handleModal = (event) => {
-      if (modal && !modalRef.current.contains(event.target)) {
+      if (modal && !modalRef.current?.contains?.(event.target)) {
         setModal(false);
       }
     };
@@ -29,7 +29,6 @@ export const AddFolderModal = ({ modal, setModal, url, folders }) => {
         <div className={cx("title")}>
           <h2>폴더에 추가</h2>
           <p>{url}</p>
-
           <div className={cx("folder-block")}>
             {folders.map((item) => {
               return (
