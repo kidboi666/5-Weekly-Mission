@@ -42,3 +42,13 @@
   font-weight: 600;
   margin-top: 6px;
 }
+
+.pwd.input-wrapper {
+  position: relative;
+}
+
+.pwd .eye-onoff {
+  position: absolute;
+  right: 15px;
+  top: 53px;
+}

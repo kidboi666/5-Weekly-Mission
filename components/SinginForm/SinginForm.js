@@ -2,13 +2,17 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./SinginForm.module.scss";
 import classNames from "classnames/bind";
 import { useForm } from "react-hook-form";
-import { PasswordToggle } from "components";
+import Image from "next/image";
 
 const cx = classNames.bind(styles);
 const email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
 
 export function SinginForm() {
   const [isToggle, setIsToggle] = useState(false);
+
+  const handleToggle = () => {
+    setIsToggle(!isToggle);
+  };
 
   const {
     register,
@@ -34,7 +38,7 @@ export function SinginForm() {
           <span>올바른 이메일 주소가 아닙니다</span>
         )}
       </div>
-      <div className={cx("input-wrapper")}>
+      <div className={cx("input-wrapper", "pwd")}>
         <label>비밀번호</label>
         <input
           type={isToggle ? "password" : "text"}
@@ -43,7 +47,14 @@ export function SinginForm() {
         {errors.password && errors.password.type === "required" && (
           <span>비밀번호를 입력해 주세요.</span>
         )}
-        <PasswordToggle isToggle={isToggle} setIsToggle={setIsToggle} />
+        <Image
+          width={16}
+          height={16}
+          src={isToggle ? "images/eye-off.svg" : "images/eye-on.svg"}
+          alt="비밀번호 보기"
+          onClick={handleToggle}
+          className={cx("eye-onoff")}
+        />
       </div>
       <button type="submit" className={cx("submit-button")}>
         로그인

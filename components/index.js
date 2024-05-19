@@ -8,4 +8,3 @@ export * from "./SearchBar";
 export * from "./Sorting";
 export * from "./ModalLayout";
 export * from "./FolderTitle";
-export * from "./PasswordToggle";

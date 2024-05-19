@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
 
 function singInPage() {
   return (
-    <>
+    <div className={cx("page-container")}>
       <div className={cx("contents")}>
         <div className={cx("title")}>
           <Link href="/">
@@ -16,7 +16,7 @@ function singInPage() {
           </Link>
           <h2>
             회원이 아니신가요?
-            <Link className={cx("singin-link")} href="./signup.html">
+            <Link className={cx("singin-link")} href="./signup">
               회원가입하기
             </Link>
           </h2>
@@ -41,7 +41,7 @@ function singInPage() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
