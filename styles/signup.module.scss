@@ -1,4 +1,4 @@
-body {
+.body {
   background-color: #f0f6ff;
   width: 100%;
   height: 982px;
@@ -71,7 +71,7 @@ body {
   letter-spacing: 0em;
   text-align: left;
 }
-.input {
+.signup__form {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -93,7 +93,7 @@ body {
 .error {
   display: none;
 }
-.error-text {
+.errortext {
   color: rgba(255, 91, 86, 1);
   font-size: 14px;
   font-weight: 400;
@@ -106,12 +106,7 @@ body {
   border: 1px solid rgba(204, 213, 227, 1);
   padding: 18px 15px;
 }
-i {
-  position: absolute;
-  left: 90%;
-  top: 45%;
-  z-index: 1;
-}
+
 .user-input.error-input {
   border: 1px solid rgba(255, 91, 86, 1);
 }
@@ -119,10 +114,8 @@ i {
   border-color: blue;
   outline: none;
 }
-button {
-  cursor: pointer;
-}
-.signup {
+
+.signup__button {
   font-family: Pretendard;
   font-size: 18px;
   font-weight: 600;

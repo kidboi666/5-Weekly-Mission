@@ -5,10 +5,18 @@ import styles from "@/styles/signin.module.scss";
 interface PasswordInputProps {
   value: string;
   onChange: (value: string) => void;
+  onBlur?: () => void;
   error?: string;
+  id?: string;
 }
 
-export function PasswordInput({ value, onChange, error }: PasswordInputProps) {
+export function PasswordInput({
+  value,
+  onChange,
+  onBlur,
+  error,
+  id,
+}: PasswordInputProps) {
   const cx = classNames.bind(styles);
   const [isFocused, setIsFocused] = useState(false);
   const [errorText, setErrorText] = useState("");
@@ -19,6 +27,9 @@ export function PasswordInput({ value, onChange, error }: PasswordInputProps) {
 
   const handleBlur = () => {
     setIsFocused(false);
+    if (onBlur) {
+      onBlur();
+    }
     if (!value) {
       setErrorText("비밀번호를 입력해 주세요.");
     } else {
@@ -38,7 +49,7 @@ export function PasswordInput({ value, onChange, error }: PasswordInputProps) {
         비밀번호 <br />
       </label>
       <input
-        id="password"
+        id={id || "password"}
         placeholder="비밀번호를 입력해 주세요."
         className={cx("user-input", { "error-input": isError })}
         type="password"
@@ -48,7 +59,6 @@ export function PasswordInput({ value, onChange, error }: PasswordInputProps) {
         onBlur={handleBlur}
         onFocus={handleFocus}
       />
-      <i className={cx("fa", "fa-eye", "fa-lg")}></i>
       <div
         id="password-errorText"
         className={cx("errortext", { error: !isError })}

@@ -20,6 +20,7 @@ export default function Signin() {
                 className={cx("logo-img")}
                 src="/img/logo.svg"
                 alt=""
+                priority
               />
             </Link>
             <div className={cx("question")}>

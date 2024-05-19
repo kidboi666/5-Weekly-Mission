@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+// components/EmailInput.tsx
+
+import React, { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "@/styles/signin.module.scss";
 
@@ -18,6 +20,10 @@ export function EmailInput({ value, onChange, error }: EmailInputProps) {
   const cx = classNames.bind(styles);
   const [isFocused, setIsFocused] = useState(false);
   const [emailErrorText, setEmailErrorText] = useState("");
+
+  useEffect(() => {
+    setEmailErrorText(error || "");
+  }, [error]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const emailInput = e.target.value;
@@ -63,7 +69,7 @@ export function EmailInput({ value, onChange, error }: EmailInputProps) {
         id="email-errorText"
         className={cx("errortext", { error: !isError })}
       >
-        {error || emailErrorText}
+        {emailErrorText}
       </div>
     </div>
   );
