@@ -11,7 +11,6 @@ import { signUpSchema } from "@/src/utils/validation";
 import { checkEmailAvailability, userSignInData } from "@/src/fetchUtils";
 import { useRouter } from "next/router";
 import AuthIconButton from "@/src/components/AuthIconButton/AuthIconButton";
-import { SignInFormInputs } from "../../signIn/signInForm";
 
 export interface SignUpFormInputs extends SignInFormInputs {
   confirmPassword: string;

@@ -4,3 +4,8 @@ interface loginFetchData {
   name: string;
   profileImageSource: string;
 }
+
+interface SignInFormInputs {
+  email: string;
+  password: string;
+}

@@ -12,11 +12,6 @@ import { userSignInData } from "@/src/fetchUtils";
 import { useRouter } from "next/router";
 import AuthIconButton from "@/src/components/AuthIconButton/AuthIconButton";
 
-export interface SignInFormInputs {
-  email: string;
-  password: string;
-}
-
 const SignInForm = () => {
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
