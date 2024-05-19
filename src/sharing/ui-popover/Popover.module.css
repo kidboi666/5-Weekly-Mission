@@ -1,6 +1,0 @@
-@import "@/styles/global.css";
-
-.popover {
-  position: absolute;
-  z-index: var(--z-index-popover);
-}
