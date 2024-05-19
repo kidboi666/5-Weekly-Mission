@@ -1,34 +1,26 @@
-.form-wrapper {
-  width: 100%;
+.input-wrapper input {
+  margin-top: 12px;
+  font-size: 16px;
+  padding: 18px 15px;
+  border-radius: 8px;
+  background: var(--Linkbrary-white, #fff);
+}
+
+.input-wrapper input:focus {
+  border: 1px #6d6afe solid;
+  outline: none;
+}
+
+.input-wrapper span {
+  margin-top: 6px;
+  color: red;
+}
+
+.input-wrapper {
   display: flex;
-  gap: 24px;
   flex-direction: column;
-  font-size: 14px;
-
-  input {
-    margin-top: 12px;
-    font-size: 16px;
-    padding: 18px 15px;
-    border-radius: 8px;
-    border: 1px solid var(--Linkbrary-gray20, #ccd5e3);
-    background: var(--Linkbrary-white, #fff);
-  }
-
-  input:focus {
-    border: 1px #6d6afe solid;
-    outline: none;
-  }
-
-  span {
-    margin-top: 6px;
-    color: red;
-  }
-
-  .input-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
+  gap: 6px;
+  position: relative;
 }
 
 .submit-button {
@@ -41,4 +33,18 @@
   font-family: Pretendard;
   font-weight: 600;
   margin-top: 6px;
+}
+
+.input-wrapper .eye-onoff {
+  position: absolute;
+  right: 15px;
+  top: 53px;
+}
+
+.red-border {
+  border: 1px solid red;
+}
+
+.default-border {
+  border: 1px solid var(--Linkbrary-gray20, #ccd5e3);
 }
