@@ -28,3 +28,11 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+input {
+  border: 0;
+}
+
+button {
+  border: 0;
+}
