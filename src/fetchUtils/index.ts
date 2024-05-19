@@ -1,4 +1,4 @@
-import { SignInFormInputs } from "../widgets/signIn/signInForm";
+import { SignInFormInputs } from "@/src/widgets/signIn/signInForm";
 import axios from "./axiosInstance";
 import camelcaseKeys from "camelcase-keys";
 
