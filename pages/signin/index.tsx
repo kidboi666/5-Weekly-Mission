@@ -6,22 +6,27 @@ import GoggleIcon from '../../src/images/login_google.svg';
 import KakaotalkIcon from '../../src/images/login_kakaotalk.svg';
 import EyeOnIcon from '../../src/images/eye_on.svg';
 import EyeOffIcon from '../../src/images/eye_off.svg';
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { postSignIn } from '@/apis/api';
 import { useRouter } from 'next/router';
 import { validateEmail, validateSignInPassword } from '@/utils/validate';
+import useAsync from '@/hooks/useAsync';
 
 export default function SignInPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showError, setShowError] = useState({
-    error: false,
     email: { error: false, message: '' },
     password: { error: false, message: '' },
     passwordConform: { error: false, message: '' },
   });
   const [isVisiblePassword, setIsVisiblePassword] = useState(false);
   const router = useRouter();
+  const {
+    pending: signInPending,
+    error: signInError,
+    requestFunction: signInRequest,
+  } = useAsync(postSignIn);
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -35,10 +40,29 @@ export default function SignInPage() {
     e.preventDefault();
     validateEmail(email, setShowError);
     validateSignInPassword(password, setShowError);
-    if (!showError.error) {
+    if (
+      (showError.email.error &&
+        showError.email.message !== '이메일을 확인해 주세요.') ||
+      (showError.password.error &&
+        showError.password.message !== '비밀번호를 확인해 주세요.')
+    )
+      return;
+    const result = await signInRequest(email, password);
+    if (signInError) {
+      setShowError((prev) => ({
+        ...prev,
+        email: {
+          error: true,
+          message: '이메일을 확인해 주세요.',
+        },
+        password: {
+          error: true,
+          message: '비밀번호를 확인해 주세요.',
+        },
+      }));
       return;
     }
-    const result = await postSignIn(email, password);
+    if (!result) return;
     localStorage.setItem('accessToken', result?.accessToken);
     router.push('/folder');
   };

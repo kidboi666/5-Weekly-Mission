@@ -28,12 +28,12 @@ export async function postSignUp(id: string, pw: string) {
 }
 
 export async function postSignIn(id: string, pw: string) {
-  const response = await axios.post(`${BASIC_URL}/sign-up`, {
+  const response = await axios.post(`${BASIC_URL}/sign-in`, {
     email: id,
     password: pw,
   });
   if (response.status < 200 || response.status >= 300) {
-    throw new Error('회원가입에 실패했습니다.');
+    throw new Error('로그인에 실패했습니다.');
   }
   const result = response.data.data;
   return result;

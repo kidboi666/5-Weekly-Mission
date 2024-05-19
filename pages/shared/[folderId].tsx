@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import Search from '../../components/Search/Search';
 import { getFolders, getLinks, getUser } from '../../apis/api';
 import { Layout, SectionWrap, TopWrap } from '../../styles/CommonPage.styled';
@@ -6,22 +6,18 @@ import * as S from '../../styles/SharedPage.styled';
 import Profile from '../../components/Profile/Profile';
 import CardList from '../../components/CardList/CardList';
 import { useRouter } from 'next/router';
+import { UserContext } from '@/contexts/UserContext';
 
 export default function SharedPage() {
+  const { user } = useContext(UserContext);
   const [links, setLinks] = useState([]);
   const [folderName, setFolderName] = useState();
-  const [user, setUser] = useState({
-    id: 0,
-    created_at: '',
-    name: '',
-    image_source: '',
-    email: '',
-    auth_id: '',
-  });
 
   interface ParamsType {
     folderId: number;
   }
+
+  console.log(user);
 
   const router = useRouter();
   const { folderId } = router.query as unknown as ParamsType;
@@ -29,10 +25,8 @@ export default function SharedPage() {
   const handleLoad = useCallback(async () => {
     const nextLinks = await getLinks(folderId || 0);
     const { name: nextFolderName } = await getFolders(folderId);
-    const nextUser = await getUser();
     setLinks(nextLinks);
     setFolderName(nextFolderName);
-    setUser(nextUser);
   }, [folderId]);
 
   useEffect(() => {

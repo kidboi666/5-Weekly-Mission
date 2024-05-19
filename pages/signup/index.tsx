@@ -20,7 +20,6 @@ export default function SignUpPage() {
   const [password, setPassword] = useState('');
   const [passwordConform, setPasswordConform] = useState('');
   const [showError, setShowError] = useState({
-    error: false,
     email: { error: false, message: '' },
     password: { error: false, message: '' },
     passwordConform: { error: false, message: '' },
@@ -47,7 +46,11 @@ export default function SignUpPage() {
     validateEmail(email, setShowError);
     validateSignUpPassword(password, setShowError);
     validatePasswordConform(passwordConform, password, setShowError);
-    if (showError.error) {
+    if (
+      showError.email.error ||
+      showError.password.error ||
+      showError.passwordConform.error
+    ) {
       return;
     }
     const result = await postSignUp(email, password);
