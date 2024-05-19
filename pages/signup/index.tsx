@@ -7,13 +7,14 @@ import KakaotalkIcon from '../../src/images/login_kakaotalk.svg';
 import EyeOnIcon from '../../src/images/eye_on.svg';
 import EyeOffIcon from '../../src/images/eye_off.svg';
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { postSignUp } from '@/apis/api';
+import { postSignUp, postValidateSignUp } from '@/apis/api';
 import { useRouter } from 'next/router';
 import {
   validateEmail,
   validateSignUpPassword,
   validatePasswordConform,
 } from '@/utils/validate';
+import useAsync from '@/hooks/useAsync';
 
 export default function SignUpPage() {
   const [email, setEmail] = useState('');
@@ -28,6 +29,16 @@ export default function SignUpPage() {
   const [isVisiblePasswordConform, setIsVisiblePasswordConform] =
     useState(false);
   const router = useRouter();
+  const {
+    pending: validateSignUpPending,
+    error: validateSignUpError,
+    requestFunction: validateSignUpRequest,
+  } = useAsync(postValidateSignUp);
+  const {
+    pending: signUpPending,
+    error: signUpError,
+    requestFunction: signUpRequest,
+  } = useAsync(postSignUp);
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -46,15 +57,44 @@ export default function SignUpPage() {
     validateEmail(email, setShowError);
     validateSignUpPassword(password, setShowError);
     validatePasswordConform(passwordConform, password, setShowError);
+
     if (
-      showError.email.error ||
+      (showError.email.error &&
+        showError.email.message !== '이미 사용 중인 이메일입니다.') ||
       showError.password.error ||
       showError.passwordConform.error
-    ) {
+    )
+      return;
+
+    const validateResult = await validateSignUpRequest(email);
+
+    if (validateSignUpError) {
+      setShowError((prev) => ({
+        ...prev,
+        email: {
+          error: true,
+          message: '이미 사용 중인 이메일입니다.',
+        },
+      }));
       return;
     }
-    const result = await postSignUp(email, password);
-    localStorage.setItem('accessToken', result?.accessToken);
+
+    if (!validateResult) return;
+
+    const signUpResult = await signUpRequest(email, password);
+
+    if (signUpError) {
+      setShowError((prev) => ({
+        ...prev,
+        email: {
+          error: true,
+          message: '이미 사용 중인 이메일입니다.',
+        },
+      }));
+      return;
+    }
+
+    localStorage.setItem('accessToken', signUpResult?.data.data.accessToken);
     router.push('/folder');
   };
 

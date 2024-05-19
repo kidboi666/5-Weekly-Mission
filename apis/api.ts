@@ -15,16 +15,32 @@ export async function getUser() {
   return result;
 }
 
+export async function postValidateSignUp(id: string) {
+  const response = await axios.post(`${BASIC_URL}/check-email`, {
+    email: id,
+  });
+  console.log(response);
+
+  if (response.status < 200 || response.status >= 300) {
+    throw new Error('이미 사용 중인 이메일입니다.');
+  }
+  // const result = response.data.isUsableNickname;
+
+  return response;
+}
+
 export async function postSignUp(id: string, pw: string) {
   const response = await axios.post(`${BASIC_URL}/sign-up`, {
     email: id,
     password: pw,
   });
+  console.log(response);
+
   if (response.status < 200 || response.status >= 300) {
     throw new Error('회원가입에 실패했습니다.');
   }
-  const result = response.data.data;
-  return result;
+  // const result = response.data.data;
+  return response;
 }
 
 export async function postSignIn(id: string, pw: string) {

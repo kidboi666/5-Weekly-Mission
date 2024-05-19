@@ -1,30 +1,23 @@
-import { useCallback, useState } from 'react';
+import { useState, useCallback } from 'react';
 
-type AsyncFunction<TArgs extends any[], TResult> = (
-  ...args: TArgs
-) => Promise<TResult>;
+type AsyncFunction<T, A extends any[]> = (...args: A) => Promise<T>;
 
-interface UseAsyncResult<TResult> {
-  pending: boolean;
-  error: Error | null;
-  requestFunction: (...args: any[]) => Promise<TResult | undefined>;
-}
-
-export default function useAsync<TArgs extends any[], TResult>(
-  asyncFunction: AsyncFunction<TArgs, TResult>
-): UseAsyncResult<TResult> {
-  const [pending, setPending] = useState(false);
+const useAsync = <T, A extends any[]>(asyncFunction: AsyncFunction<T, A>) => {
+  const [pending, setPending] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
+  const [result, setResult] = useState<T | null>(null);
 
   const requestFunction = useCallback(
-    async (...args: TArgs): Promise<TResult | undefined> => {
+    async (...args: A) => {
+      setPending(true);
+      setError(null);
       try {
-        setError(null);
-        setPending(true);
-        return await asyncFunction(...args);
-      } catch (error) {
-        setError(error as Error);
-        return;
+        const response = await asyncFunction(...args);
+        setResult(response);
+        return response;
+      } catch (err) {
+        setError(err as Error);
+        return null;
       } finally {
         setPending(false);
       }
@@ -32,5 +25,7 @@ export default function useAsync<TArgs extends any[], TResult>(
     [asyncFunction]
   );
 
-  return { pending, error, requestFunction };
-}
+  return { pending, error, result, requestFunction };
+};
+
+export default useAsync;
