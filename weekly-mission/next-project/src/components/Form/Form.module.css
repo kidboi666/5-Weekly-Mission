@@ -1,0 +1,64 @@
+.form_container {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  gap: 32px;
+}
+
+.header_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.header_content {
+  display: flex;
+  gap: 8px;
+}
+
+.header_message {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.header_link {
+  font-size: 16px;
+  font-weight: 600;
+  color: #6d6afe;
+  text-decoration: underline;
+}
+
+.input_container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.signbutton {
+  width: 400px;
+  border-radius: 8px;
+  padding: 16px 20px;
+  background-image: linear-gradient(90.99deg, #6d6afe 0.12%, #6ae3fe 101.84%);
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.socialProviders_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: #e7effb;
+  border: 1px solid #ccd5e3;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.socialProviders_icon {
+  display: flex;
+  gap: 16px;
+}
