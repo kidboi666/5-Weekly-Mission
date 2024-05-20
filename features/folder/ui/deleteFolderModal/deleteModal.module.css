@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 360px;
+  height: 193px;
+}
+
+.title {
+  color: var(--Linkbrary-gray100, #373740);
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 18.5px;
+}
+
+.subTitle {
+  color: var(--Linkbrary-gray60, #9fa6b2);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px; /* 157.143% */
+  margin-bottom: 24px;
+}
+
+.deleteBtn {
+  display: flex;
+  width: 280px;
+  padding: 16px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  border-radius: 8px;
+  background: var(--Linkbrary-red, #ff5b56);
+}
+
+.deleteBtn > p {
+  color: var(--Grey-Light, #f5f5f5);
+  font-size: 16px;
+  font-weight: 600;
+}

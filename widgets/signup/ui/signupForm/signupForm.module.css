@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.inputWrap {
+  position: relative;
+}
+
+.eyeBtn {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translate(0, 40%);
+  width: 16px;
+  height: 16px;
+}
+
+.loginBtn {
+  margin-top: 6px;
+}
+
+.errMsg {
+  margin-top: -10px;
+  color: red;
+  font-size: 14px;
+}

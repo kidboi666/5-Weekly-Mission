@@ -1,0 +1,17 @@
+.optionBtn {
+  display: flex;
+  margin-top: 12px;
+  gap: 12px;
+}
+
+.optionBtn > button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.optionBtn > button > p {
+  color: var(--Linkbrary-gray60, #9fa6b2);
+  font-size: 14px;
+  font-weight: 600;
+}

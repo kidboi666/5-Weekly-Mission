@@ -1,3 +1,4 @@
+import { atom, useAtom } from "jotai";
 import React, { ReactNode } from "react";
 
 const PaddingPage = ({ children }: { children: ReactNode }) => {

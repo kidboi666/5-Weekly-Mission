@@ -1,0 +1,8 @@
+.eyeBtn {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translate(0, 40%);
+  width: 16px;
+  height: 16px;
+}

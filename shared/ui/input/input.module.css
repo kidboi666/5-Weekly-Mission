@@ -1,0 +1,28 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 400px;
+  gap: 12px;
+}
+
+.styledInput {
+  width: 100%;
+  padding: 18px 15px;
+  border-radius: 8px;
+  border: 1px solid #6d6afe;
+  background: #fff;
+}
+
+.styledErrInput {
+  width: 100%;
+  padding: 18px 15px;
+  border-radius: 8px;
+  border: 1px solid red;
+  background: #fff;
+}
+
+.errMsg {
+  color: red;
+  font-size: 14px;
+}

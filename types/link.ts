@@ -1,4 +1,4 @@
-export interface Link {
+interface Link {
   id: number;
   created_at: string;
   updated_at: string | null;
@@ -8,3 +8,5 @@ export interface Link {
   image_source: string | null;
   folder_id: number;
 }
+
+export type { Link };

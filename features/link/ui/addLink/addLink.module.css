@@ -1,0 +1,63 @@
+/* mobile */
+.container {
+  padding: 24px 32px 40px;
+  background: var(--Linkbrary-bg, #f0f6ff);
+}
+
+.addLinkBar {
+  width: 100%;
+  border-radius: 15px;
+  border: 1px solid var(--Linkbrary-primary-color, #6d6afe);
+  background: var(--Linkbrary-white, #fff);
+  display: flex;
+  gap: 8px;
+  padding: 8px 10px;
+  justify-content: space-between;
+}
+
+.addLinkInput {
+  outline: none;
+}
+
+.wrap {
+  display: flex;
+  flex: 1;
+  gap: 10px;
+}
+
+.addBtn {
+  width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* tablet */
+@media screen and (min-width: 767px) {
+  .container {
+    padding: 60px 32.5px 90px;
+  }
+
+  .addLinkBar {
+    width: 100%;
+    padding: 16px 20px;
+  }
+
+  .addLinkInput {
+    width: 100%;
+  }
+
+  .addBtn {
+    width: 105px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+/* web */
+@media screen and (min-width: 1028px) {
+  .addBtn {
+    width: 105px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+}

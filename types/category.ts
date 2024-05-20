@@ -1,4 +1,4 @@
-export interface Category {
+interface Category {
   id: number;
   created_at?: Date;
   name: string;
@@ -8,3 +8,5 @@ export interface Category {
     count: number;
   };
 }
+
+export type { Category };

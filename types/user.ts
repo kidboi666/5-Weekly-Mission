@@ -1,4 +1,4 @@
-export interface User {
+interface User {
   id: number;
   created_at: Date;
   name: string;
@@ -6,3 +6,5 @@ export interface User {
   email: string;
   auth_id: string;
 }
+
+export type { User };

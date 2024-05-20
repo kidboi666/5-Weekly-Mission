@@ -1,12 +1,14 @@
-import FixedAddFolderBtn from "@/components/button/ui/FixedAddFolderBtn";
-import AddLink from "@/widgets/folder/ui/AddLink";
-import Categories from "@/widgets/folder/ui/Categories";
-import FolderData from "@/widgets/folder/ui/FolderData";
-import Header from "@/widgets/folder/ui/Header";
-import PaddingPage from "@/widgets/folder/ui/PaddingPage";
-import SearchBar from "@/widgets/folder/ui/SearchBar";
-import Footer from "@/widgets/home/ui/Footer";
+import FolderData from "@/features/folder/ui/folderData/FolderData";
+import Header from "@/entities/folder/ui/folderHeader/Header";
+
+import Footer from "@//widgets/home/ui/footer/Footer";
 import React from "react";
+
+import AddLink from "@/features/link/ui/addLink/AddLink";
+import SearchBar from "@/features/link/ui/searchLink/SearchBar";
+import PaddingPage from "@//widgets/folder/ui/PaddingPage";
+import FolderList from "@//widgets/folder/ui/folderList/FolderList";
+import AddFolderBtn from "@/features/folder/ui/addFolder/AddFolderBtn";
 
 const index = () => {
   return (
@@ -15,11 +17,11 @@ const index = () => {
       <AddLink />
       <SearchBar />
       <PaddingPage>
-        <Categories />
+        <FolderList />
         <FolderData />
       </PaddingPage>
       <Footer />
-      <FixedAddFolderBtn />
+      <AddFolderBtn />
     </>
   );
 };

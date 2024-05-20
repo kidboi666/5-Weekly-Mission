@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  width: 400px;
+  padding: 12px 24px;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: 8px;
+  border: 1px solid #ccd5e3;
+  background: #e7effb;
+}
+
+.container > p {
+  color: #373740;
+
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.socialContainer {
+  display: flex;
+  gap: 16px;
+}
+
+.googleBtn {
+  width: 42px;
+  height: 42px;
+  padding: 10px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.kakaoBtn {
+  width: 42px;
+  height: 42px;
+  padding: 10px;
+  border-radius: 50%;
+  background: #f5e14b;
+}
