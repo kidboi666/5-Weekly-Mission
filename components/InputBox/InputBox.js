@@ -37,9 +37,9 @@ export function InputBox({ label, name, valid, errors, register }) {
         placeholder="이메일을 입력해 주세요"
         {...register(name, valid)}
       />
-      {validKeys.map((key) => {
+      {validKeys.map((key, i) => {
         if (errors[name] && errors[name].type === key) {
-          return <span>{errorMessages[key][name]}</span>;
+          return <span key={i}>{errorMessages[key][name]}</span>;
         }
       })}
       {name !== "email" && (
