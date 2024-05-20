@@ -16,7 +16,14 @@ const errorMessages = {
   },
 };
 
-export function InputBox({ label, name, valid, errors, register }) {
+export function InputBox({
+  label,
+  name,
+  valid,
+  errors,
+  register,
+  placeholder,
+}) {
   const validKeys = Object.keys(valid);
 
   const [isToggle, setIsToggle] = useState(false);
@@ -34,7 +41,7 @@ export function InputBox({ label, name, valid, errors, register }) {
           "default-border": !errors[name],
         })}
         type={name !== "email" ? (isToggle ? "password" : "text") : "text"}
-        placeholder="이메일을 입력해 주세요"
+        placeholder={placeholder}
         {...register(name, valid)}
       />
       {validKeys.map((key, i) => {
