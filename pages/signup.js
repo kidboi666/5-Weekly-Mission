@@ -1,12 +1,12 @@
 import Link from "next/link";
 import styles from "../styles/sign.module.scss";
 import classNames from "classnames/bind";
-import { SinginForm } from "../components/SinginForm/SinginForm";
 import { SocalLogin } from "../components/SocalLogin/SocalLogin";
+import { SingupForm } from "../components/SingupForm/SingupForm";
 
 const cx = classNames.bind(styles);
 
-function singInPage() {
+function singupPage() {
   return (
     <div className={cx("page-container")}>
       <div className={cx("contents")}>
@@ -15,17 +15,17 @@ function singInPage() {
             <img className={cx("logo")} src="/images/logo.svg" alt="로고" />
           </Link>
           <h2>
-            회원이 아니신가요?
-            <Link className={cx("singin-link")} href="./signup">
-              회원가입하기
+            이미 회원이신가요?
+            <Link className={cx("singin-link")} href="./signin">
+              로그인하기
             </Link>
           </h2>
         </div>
-        <SinginForm />
+        <SingupForm />
         <SocalLogin />
       </div>
     </div>
   );
 }
 
-export default singInPage;
+export default singupPage;
