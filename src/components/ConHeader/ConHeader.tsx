@@ -1,25 +1,6 @@
 import styles from "@/src/components/ConHeader/ConHeader.module.css";
 import Image from "next/image";
 
-interface FolderData {
-  id: number;
-  name: string;
-  owner: {
-    id: number;
-    name: string;
-    profileImageSource: string;
-  };
-  links: {
-    id: number;
-    createdAt: string;
-    url: string;
-    title: string;
-    description: string;
-    imageSource?: string;
-  }[];
-  count: number;
-}
-
 function ConHeader({ folderData }: { folderData: FolderData | null }) {
   const owner = folderData?.owner;
 

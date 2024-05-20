@@ -7,20 +7,11 @@ import CardList from "@/src/components/CardList/CardList";
 import useModal from "@/src/hooks/useModal";
 import ModalContext from "@/src/components/Modal/ModalContext";
 import ModalContainer from "@/src/components/Modal/ModalContainer";
-
-interface UserFolderdataList {
-  id: number;
-  createdAt: string;
-  description?: string;
-  folderId?: number;
-  title?: string;
-  updatedAt?: string;
-  url: string;
-  imageSource?: string;
-}
+import Header from "@/src/components/Header/Header";
+import Footer from "@/src/components/Footer/Footer";
 
 function Folder() {
-  const [folderTabDataList, setFolderTabDataList] = useState([]);
+  const [folderTabDataList, setFolderTabDataList] = useState<FolderTabDataList[]>([]);
   const [userFolderDataList, setUserFolderDataList] = useState<UserFolderdataList[]>();
 
   const { isOpen, openModal, closeModal } = useModal();
@@ -28,21 +19,20 @@ function Folder() {
   const [cardUrl, setCardUrl] = useState("");
   const [folderTabName, setFolderTabName] = useState<string | null>("");
   const [searchInputValue, setSearchInputValue] = useState<string>("");
+  const [forderDataId, setForderDataId] = useState<number>(0);
 
   useEffect(() => {
     async function fetchDataAndSetState() {
-      const folderTabDataList = await tabDataList();
-      const { data } = folderTabDataList;
-      setFolderTabDataList(data);
-    }
-    fetchDataAndSetState();
-  }, []);
+      const folderTabDataListPromise = tabDataList();
+      const userFolderDataListPromise = userFoldersData();
 
-  useEffect(() => {
-    async function fetchDataAndSetState() {
-      const userFolderDataList = await userFoldersData();
-      const { data } = userFolderDataList;
-      setUserFolderDataList(data);
+      const [folderTabDataList, userFolderDataList] = await Promise.all([
+        folderTabDataListPromise,
+        userFolderDataListPromise,
+      ]);
+
+      setFolderTabDataList(folderTabDataList.data);
+      setUserFolderDataList(userFolderDataList.data);
     }
     fetchDataAndSetState();
   }, []);
@@ -52,26 +42,34 @@ function Folder() {
   };
 
   return (
-    <div className="content-wrap">
-      <ModalContext.Provider value={{ isOpen, openModal, closeModal, setModalType, setCardUrl }}>
-        <AddLinkForm />
-        <ModalContainer
-          modalType={modalType}
-          folderTabDataList={folderTabDataList}
-          cardUrl={cardUrl}
-          folderTabName={folderTabName}
-        />
-        <div className="wrap">
-          <Search searchInputValue={searchInputValue} onChangeValue={onChangeValue} />
-          <FolderTabList
+    <>
+      <Header />
+      <div className="content-wrap">
+        <ModalContext.Provider
+          value={{ isOpen, openModal, closeModal, setModalType, setCardUrl, forderDataId }}
+        >
+          <AddLinkForm />
+          <ModalContainer
+            modalType={modalType}
             folderTabDataList={folderTabDataList}
-            setUserFolderDataList={setUserFolderDataList}
-            setFolderTabName={setFolderTabName}
+            cardUrl={cardUrl}
+            folderTabName={folderTabName}
           />
-          <CardList userFolderDataList={userFolderDataList} searchInputValue={searchInputValue} />
-        </div>
-      </ModalContext.Provider>
-    </div>
+          <div className="wrap">
+            <Search searchInputValue={searchInputValue} onChangeValue={onChangeValue} />
+            <FolderTabList
+              folderTabDataList={folderTabDataList}
+              setUserFolderDataList={setUserFolderDataList}
+              setFolderTabName={setFolderTabName}
+              forderDataId={forderDataId}
+              setForderDataId={setForderDataId}
+            />
+            <CardList userFolderDataList={userFolderDataList} searchInputValue={searchInputValue} />
+          </div>
+        </ModalContext.Provider>
+      </div>
+      <Footer />
+    </>
   );
 }
 

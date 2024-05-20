@@ -1,14 +1,9 @@
-import axios from "axios";
+import axios from "./axiosInstance";
 import camelcaseKeys from "camelcase-keys";
-
-const BASE_URL = "https://bootcamp-api.codeit.kr/";
 
 export const fetchData = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}api/sample/folder`);
-    if (response.status !== 200) {
-      throw new Error("서버에서 데이터를 가져오는 데 실패했습니다.");
-    }
+    const response = await axios.get(`/api/sample/folder`);
     const { data } = response;
     const { folder } = data;
     const { links } = folder;
@@ -22,10 +17,7 @@ export const fetchData = async () => {
 
 export const loginFetchData = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}api/sample/user`);
-    if (response.status !== 200) {
-      throw new Error("서버에서 로그인정보를 가져오는데 실패 했습니다.");
-    }
+    const response = await axios.get(`/api/sample/user`);
     const { data } = response;
 
     return data;
@@ -38,10 +30,11 @@ export const loginFetchData = async () => {
 
 export const tabDataList = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}api/users/1/folders`);
-    if (response.status !== 200) {
-      throw new Error("서버에서 폴더 메뉴 정보를 가져오는데 실패 했습니다.");
+    const response = await axios.get(`/api/users/1/folders`);
+    if (response.data) {
+      response.data = camelcaseKeys(response.data, { deep: true });
     }
+
     const { data } = response;
 
     return data;
@@ -54,11 +47,7 @@ export const tabDataList = async () => {
 
 export const userFoldersData = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}api/users/1/links`);
-
-    if (response.status !== 200) {
-      throw new Error("서버에서 유저 폴더 정보를 가져오는데 실패 했습니다.");
-    }
+    const response = await axios.get(`/api/users/1/links`);
     if (response.data) {
       response.data = camelcaseKeys(response.data, { deep: true });
     }
@@ -74,14 +63,23 @@ export const userFoldersData = async () => {
 
 export const userFoldersTapData = async (id: number) => {
   try {
-    const response = await axios.get(`${BASE_URL}api/users/1/links?folderId=${id}`);
-
-    if (response.status !== 200) {
-      throw new Error("서버에서 유저 폴더 정보를 가져오는데 실패 했습니다.");
-    }
+    const response = await axios.get(`/api/users/1/links?folderId=${id}`);
     if (response.data) {
       response.data = camelcaseKeys(response.data, { deep: true });
     }
+    const { data } = response;
+
+    return data;
+  } catch (e) {
+    if (e instanceof Error) {
+      alert(e.message);
+    }
+  }
+};
+
+export const userSignInData = async (signInData: SignInFormInputs) => {
+  try {
+    const response = await axios.post(`/api/sign-in`, signInData);
 
     const { data } = response;
 
@@ -89,6 +87,18 @@ export const userFoldersTapData = async (id: number) => {
   } catch (e) {
     if (e instanceof Error) {
       alert(e.message);
+    }
+  }
+};
+
+export const checkEmailAvailability = async (email: string) => {
+  try {
+    const response = await axios.post(`/api/check-email`, { email });
+
+    return response.data.data.isUsableNickname;
+  } catch (e) {
+    if (e instanceof Error) {
+      console.error(e.message);
     }
   }
 };

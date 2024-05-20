@@ -1,7 +1,7 @@
-function GetDate({ createdAt }: { createdAt: string }) {
+function getDate({ createdAt }: { createdAt: string }) {
   const createdAtDate = new Date(createdAt).toLocaleDateString();
 
   return createdAtDate;
 }
 
-export default GetDate;
+export default getDate;

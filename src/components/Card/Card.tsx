@@ -10,18 +10,7 @@ import EditableStarButton from "./EditableStarButton";
 import KebabButton from "./KebabButton";
 import { useRouter } from "next/router";
 
-interface FolderCardData {
-  id: number;
-  createdAt: string;
-  description?: string;
-  folderId?: number;
-  title?: string;
-  updatedAt?: string;
-  url: string;
-  imageSource?: string;
-}
-
-function Card({ card }: { card: FolderCardData }) {
+function Card({ card }: { card: UserFolderdataList }) {
   const { description, id, title, url, imageSource, createdAt } = card;
   const [display, setDisplay] = useToggle();
   const location = useRouter();

@@ -8,13 +8,6 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "@/src/components/Header/Header.module.css";
 
-interface loginFetchData {
-  id: number;
-  email: string;
-  name: string;
-  profileImageSource: string;
-}
-
 function Header() {
   const [user, setUser] = useState<loginFetchData>();
   const location = useRouter();

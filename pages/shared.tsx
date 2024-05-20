@@ -4,43 +4,17 @@ import Search from "@/src/components/Search/Search";
 import CardList from "@/src/components/CardList/CardList";
 import { useEffect, useState } from "react";
 import { fetchData } from "@/src/fetchUtils/index";
-
-interface FolderData {
-  id: number;
-  name: string;
-  owner: {
-    id: number;
-    name: string;
-    profileImageSource: string;
-  };
-  links: {
-    id: number;
-    createdAt: string;
-    url: string;
-    title: string;
-    description: string;
-    imageSource?: string;
-  }[];
-  count: number;
-}
-
-interface CardListData {
-  id: number;
-  createdAt: string;
-  url: string;
-  title: string;
-  description: string;
-  imageSource?: string;
-}
+import Header from "@/src/components/Header/Header";
+import Footer from "@/src/components/Footer/Footer";
 
 interface FetchSharedResponse {
-  cardListData: CardListData[];
+  cardListData: FolderLinks[];
   folderData: FolderData;
 }
 
 function Shared() {
   const [folderData, setFolderData] = useState<FolderData | null>(null);
-  const [cardListData, setCardListData] = useState<CardListData[]>([]);
+  const [cardListData, setCardListData] = useState<FolderLinks[]>([]);
   const [searchInputValue, setSearchInputValue] = useState<string>("");
 
   useEffect(() => {
@@ -60,13 +34,17 @@ function Shared() {
   };
 
   return (
-    <div className="content-wrap">
-      <ConHeader folderData={folderData} />
-      <div className="wrap">
-        <Search searchInputValue={searchInputValue} onChangeValue={onChangeValue} />
-        <CardList cardListData={cardListData} searchInputValue={searchInputValue} />
+    <>
+      <Header />
+      <div className="content-wrap">
+        <ConHeader folderData={folderData} />
+        <div className="wrap">
+          <Search searchInputValue={searchInputValue} onChangeValue={onChangeValue} />
+          <CardList cardListData={cardListData} searchInputValue={searchInputValue} />
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }
 
