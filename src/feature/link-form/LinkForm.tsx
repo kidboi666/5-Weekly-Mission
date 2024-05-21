@@ -2,7 +2,7 @@ import styles from "./LinkForm.module.scss";
 import classNames from "classnames/bind";
 import { useGetFolders } from "@/src/data-access";
 import { LinkForm as UiLinkForm, AddLinkModal } from "@/src/ui";
-import { ChangeEvent, KeyboardEventHandler, useState } from "react";
+import { ChangeEvent, KeyboardEventHandler, useCallback, useMemo, useState } from "react";
 import { useIntersectionObserver } from "@/src/util";
 
 const cx = classNames.bind(styles);
@@ -17,21 +17,22 @@ export const LinkForm = ({ hideFixedLinkForm = false }: LinkFormProps) => {
   const [selectedFolderId, setSelectedFolderId] = useState<number | null>(null);
   const [linkUrl, setLinkUrl] = useState<string>("");
   const { ref, isIntersecting } = useIntersectionObserver<HTMLFormElement>();
-  const showFixedLinkForm = !hideFixedLinkForm && !isIntersecting;
+  const showFixedLinkForm = useMemo(() => !hideFixedLinkForm && !isIntersecting, [hideFixedLinkForm, isIntersecting]);
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     setLinkUrl(event.target.value);
-  };
+  }, []);
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setSelectedFolderId(null);
     setIsModalOpen(false);
-  };
-  const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (event) => {
+  }, []);
+
+  const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = useCallback((event) => {
     if (event.key === "Escape") {
       closeModal();
     }
-  };
+  }, [closeModal]);
 
   return (
     <div className={cx("container")}>

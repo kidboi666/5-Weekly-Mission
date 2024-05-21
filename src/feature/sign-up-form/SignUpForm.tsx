@@ -1,5 +1,5 @@
 import { Cta } from "@/src/ui";
-import { useCheckEmailDuplicate, useSignUp } from "@/src/data-access";
+import { useSignUp } from "@/src/data-access";
 import { useTokenRedirect } from "@/src/util";
 
 import { useForm } from "react-hook-form";
