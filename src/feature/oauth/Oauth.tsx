@@ -1,4 +1,4 @@
-import { OauthBadge } from "../ui-oauth-badge";
+import { OauthBadge } from "@/src/ui";
 import styles from "./Oauth.module.scss";
 import classNames from "classnames/bind";
 import { OAUTH_BADGES } from "./constant";

@@ -1,13 +1,13 @@
-import { Input } from "@/src/sharing/ui-input";
-import { PasswordInput } from "@/src/sharing/ui-password-input";
+import { Input, Cta, PasswordInput } from "@/src/ui";
+import { useSignIn } from "@/src/data-access";
+import { useTokenRedirect } from "@/src/util";
+
 import { Controller, useForm } from "react-hook-form";
-import { useSignIn } from "../data-access-auth";
-import { ERROR_MESSAGE, PLACEHOLDER } from "./constant";
 import { useEffect } from "react";
+
+import { ERROR_MESSAGE, PLACEHOLDER } from "./constant";
 import styles from "./SignInForm.module.scss";
 import classNames from "classnames/bind";
-import { Cta } from "@/src/sharing/ui-cta";
-import { useTokenRedirect } from "../util-use-token-redirect";
 
 const cx = classNames.bind(styles);
 
@@ -26,7 +26,10 @@ export const SignInForm = () => {
   useEffect(() => {
     if (error) {
       setError("email", { type: "invalid", message: ERROR_MESSAGE.emailCheck });
-      setError("password", { type: "invalid", message: ERROR_MESSAGE.passwordCheck });
+      setError("password", {
+        type: "invalid",
+        message: ERROR_MESSAGE.passwordCheck,
+      });
     }
   }, [error, setError]);
 
@@ -39,7 +42,10 @@ export const SignInForm = () => {
           name="email"
           rules={{
             required: ERROR_MESSAGE.emailRequired,
-            pattern: { value: /\S+@\S+\.\S+/, message: ERROR_MESSAGE.emailInvalid },
+            pattern: {
+              value: /\S+@\S+\.\S+/,
+              message: ERROR_MESSAGE.emailInvalid,
+            },
           }}
           render={({ field, fieldState }) => (
             <Input
