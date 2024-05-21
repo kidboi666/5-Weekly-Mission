@@ -1,4 +1,4 @@
-.card-list {
+.cardList {
   margin: 0;
   padding: 0;
   display: grid;
@@ -8,7 +8,7 @@
 }
 
 @media (max-width: 1124px) {
-  .card-list {
+  .ccardList {
     grid-template-columns: 1fr 1fr;
     row-gap: 25px;
     column-gap: 24px;
@@ -16,7 +16,7 @@
 }
 
 @media (max-width: 767px) {
-  .card-list {
+  .cardList {
     grid-template-columns: 1fr;
     gap: 20px;
   }

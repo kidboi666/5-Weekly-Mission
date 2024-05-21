@@ -13,7 +13,7 @@ const Title = () => {
     <section className="my-bookmark">
       <div className="my-bookmark-title">
         <img className="profileImage" src={profileImage}></img>
-        <h6 className="titleName">{name}</h6>
+        <div className="titleName font6">{name}</div>
         <div className="folderName">{folderName}</div>
       </div>
     </section>

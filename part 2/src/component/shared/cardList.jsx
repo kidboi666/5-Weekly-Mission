@@ -1,4 +1,4 @@
-import "./cardList.css";
+import "../cardList.css";
 import Card from "./card";
 import { useContext } from "react";
 import { folderContext } from "./sharedMain";
@@ -19,7 +19,7 @@ const CardList = () => {
       />
     ));
 
-  return <section className="card-list">{Cards}</section>;
+  return <section className="cardList">{Cards}</section>;
 };
 
 export default CardList;
