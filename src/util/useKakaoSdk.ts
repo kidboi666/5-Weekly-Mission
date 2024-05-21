@@ -35,6 +35,22 @@ declare const window: Window & {
   };
 };
 
+/**
+ * useKakaoSdk 훅은 Kakao SDK를 초기화하고, Kakao 링크 공유 기능을 제공하는 훅입니다.
+ *
+ * @returns {Object} 훅의 반환 객체입니다.
+ * @returns {(params: ShareKakaoParams) => void} return.shareKakao - Kakao 링크를 공유하는 함수입니다.
+ *
+ * @example
+ * const { shareKakao } = useKakaoSdk();
+ * 
+ * shareKakao({
+ *   url: "https://example.com",
+ *   title: "Example Title",
+ *   description: "Example Description",
+ *   imageUrl: "https://example.com/image.jpg"
+ * });
+ */
 export const useKakaoSdk = () => {
   const shareKakao = ({ url, title, description, imageUrl }: ShareKakaoParams) => {
     if (window.Kakao) {

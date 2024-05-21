@@ -1,5 +1,15 @@
 import { TIME_IN_MILLISECONDS } from "./constant";
 
+/**
+ * 주어진 생성 일자 문자열로부터 경과 시간을 계산하여 사람이 읽을 수 있는 형식으로 반환하는 함수입니다.
+ *
+ * @param {string} createdAt - 생성 일자 문자열입니다.
+ * @returns {string} 사람이 읽을 수 있는 형식의 경과 시간 문자열입니다.
+ *
+ * @example
+ * const elapsedTime = getElapsedTime("2022-01-01T00:00:00Z");
+ * console.log(elapsedTime); // "1 year ago", "2 months ago", 등
+ */
 export const getElapsedTime = (createdAt: string) => {
   const now = new Date();
   const createdAtDate = new Date(createdAt);
