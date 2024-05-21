@@ -1,9 +1,9 @@
-import { Input, PasswordInput, Cta } from "@/src/ui";
+import { Cta } from "@/src/ui";
 import { useCheckEmailDuplicate, useSignUp } from "@/src/data-access";
 import { useTokenRedirect } from "@/src/util";
 
-import { Controller, useForm } from "react-hook-form";
-import { ERROR_MESSAGE, PLACEHOLDER } from "./constant";
+import { useForm } from "react-hook-form";
+import { EmailField, PasswordConfirmField, PasswordField } from "./fields";
 import styles from "./SignUpForm.module.scss";
 import classNames from "classnames/bind";
 
@@ -15,9 +15,6 @@ export const SignUpForm = () => {
     mode: "onBlur",
     reValidateMode: "onBlur",
   });
-  const { execute: checkEmailDuplicate } = useCheckEmailDuplicate(
-    watch("email")
-  );
   const { execute: signUp, data } = useSignUp({
     email: watch("email"),
     password: watch("password"),
@@ -27,86 +24,9 @@ export const SignUpForm = () => {
 
   return (
     <form className={cx("form")} onSubmit={handleSubmit(signUp)}>
-      <div className={cx("input-box")}>
-        <label className={cx("label")}>이메일</label>
-        <Controller
-          control={control}
-          name="email"
-          rules={{
-            required: ERROR_MESSAGE.emailRequired,
-            pattern: {
-              value: /\S+@\S+\.\S+/,
-              message: ERROR_MESSAGE.emailInvalid,
-            },
-            validate: {
-              alreadyExist: async () => {
-                const response = await checkEmailDuplicate();
-                if (!response?.data?.data.isUsableNickname) {
-                  return ERROR_MESSAGE.emailAlreadyExist;
-                }
-                return true;
-              },
-            },
-          }}
-          render={({ field, fieldState }) => (
-            <Input
-              {...field}
-              placeholder={PLACEHOLDER.email}
-              hasError={Boolean(fieldState.error)}
-              helperText={fieldState.error?.message}
-            />
-          )}
-        />
-      </div>
-      <div className={cx("input-box")}>
-        <label className={cx("label")}>비밀번호</label>
-        <Controller
-          control={control}
-          name="password"
-          rules={{
-            required: ERROR_MESSAGE.passwordInvalid,
-            pattern: {
-              value: /^(?=.*[A-Za-z])(?=.*\d).{8,}$/,
-              message: ERROR_MESSAGE.passwordInvalid,
-            },
-          }}
-          render={({ field, fieldState }) => (
-            <PasswordInput
-              {...field}
-              hasEyeIcon
-              placeholder={PLACEHOLDER.password}
-              hasError={Boolean(fieldState.error)}
-              helperText={fieldState.error?.message}
-            />
-          )}
-        />
-      </div>
-      <div className={cx("input-box")}>
-        <label className={cx("label")}>비밀번호 확인</label>
-        <Controller
-          control={control}
-          name="confirmedPassword"
-          rules={{
-            validate: {
-              isMatch: (value) => {
-                if (value !== watch("password")) {
-                  return ERROR_MESSAGE.confirmedPasswordNotMatch;
-                }
-                return true;
-              },
-            },
-          }}
-          render={({ field, fieldState }) => (
-            <PasswordInput
-              {...field}
-              hasEyeIcon
-              placeholder={PLACEHOLDER.confirmedPassword}
-              hasError={Boolean(fieldState.error)}
-              helperText={fieldState.error?.message}
-            />
-          )}
-        />
-      </div>
+      <EmailField control={control} watch={watch} />
+      <PasswordField control={control} />
+      <PasswordConfirmField control={control} watch={watch} />
       <button className={cx("button")} type="submit">
         <Cta>회원가입</Cta>
       </button>
