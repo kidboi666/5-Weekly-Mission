@@ -21,10 +21,10 @@ export function InputBox({
     setIsToggle(!isToggle);
   };
 
-  const validationProps =
-    name === "email" || name === "password"
-      ? register(name, valid)
-      : register(name, { validate });
+  const validationProps = {
+    ...valid, // 이메일 필드에 대한 기본 유효성 검사를 포함합니다.
+    validate,
+  };
 
   return (
     <div className={cx("input-wrapper")}>
@@ -36,7 +36,7 @@ export function InputBox({
         })}
         type={name !== "email" ? (isToggle ? "test" : "password") : "text"}
         placeholder={placeholder}
-        {...validationProps}
+        {...register(name, validationProps)}
       />
       <ErrorMessage
         errors={errors}

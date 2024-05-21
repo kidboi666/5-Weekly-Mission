@@ -2,7 +2,7 @@ import styles from "./SingupForm.module.scss";
 import classNames from "classnames/bind";
 import { useForm } from "react-hook-form";
 import { InputBox } from "../InputBox/InputBox";
-import { regexData } from "../../utils";
+import { checkDuplicateEmail, regexData } from "../../utils";
 
 const cx = classNames.bind(styles);
 
@@ -29,14 +29,15 @@ export function SingupForm() {
     handleSubmit,
     formState: { errors },
     watch,
+    setError,
   } = useForm({
     mode: "onBlur",
   });
 
   const password = watch("password");
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = () => {
+    location.href = "folder";
   };
 
   return (
@@ -48,6 +49,7 @@ export function SingupForm() {
         errors={errors}
         valid={ValidData.email}
         register={register}
+        validate={(value) => checkDuplicateEmail(value) || "이메일 중복됨"}
       />
       <InputBox
         label="비밀번호"

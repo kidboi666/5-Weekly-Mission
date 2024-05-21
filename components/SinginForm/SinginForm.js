@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState } from "react";
 import styles from "./SinginForm.module.scss";
 import classNames from "classnames/bind";
 import { useForm } from "react-hook-form";
 import { InputBox } from "../InputBox/InputBox";
-import { regexData } from "../../utils";
+import { postIdPwd, regexData, ApiUrl, checkAccessToken } from "../../utils";
 
 const cx = classNames.bind(styles);
 
@@ -20,17 +19,20 @@ const ValidData = {
   },
 };
 
+checkAccessToken("signInToken");
+
 export function SinginForm() {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm({
     mode: "onBlur",
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    postIdPwd(ApiUrl.signin, data, setError, "signInToken");
   };
 
   return (
