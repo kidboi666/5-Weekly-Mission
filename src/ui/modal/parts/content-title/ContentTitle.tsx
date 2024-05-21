@@ -4,10 +4,10 @@ import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-type ModalContentTitleProps = {
+type ContentTitleProps = {
   children: ReactNode;
 };
 
-export const ModalContentTitle = ({ children }: ModalContentTitleProps) => {
+export const ContentTitle = ({ children }: ContentTitleProps) => {
   return <h2 className={cx("title")}>{children}</h2>;
 };

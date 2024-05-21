@@ -1,21 +1,21 @@
-import styles from "./CardContent.module.scss";
+import styles from "./Content.module.scss";
 import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-type CardContentProps = {
+type ContentProps = {
   elapsedTime: string;
   description: string;
   createdAt: string;
   isHovered: boolean;
 };
 
-export const CardContent = ({
+export const Content = ({
   elapsedTime,
   description,
   createdAt,
   isHovered,
-}: CardContentProps) => {
+}: ContentProps) => {
   return (
     <div className={cx("container", { hovered: isHovered })}>
       <span className={cx("elapsed-time")}>{elapsedTime}</span>

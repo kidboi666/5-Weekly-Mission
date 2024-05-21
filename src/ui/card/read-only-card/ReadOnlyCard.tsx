@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CardTemplate, CardContent, CardImage } from "../parts";
+import { Template, Content, Image } from "../parts";
 
 type ReadOnlyCardProps = {
   url: string;
@@ -24,18 +24,15 @@ export const ReadOnlyCard = ({
 
   return (
     <a href={url} target="_blank" rel="noopener noreferrer">
-      <CardTemplate
-        onMouseOver={handleMouseOver}
-        onMouseLeave={handleMouseLeave}
-      >
-        <CardImage imageSource={imageSource} alt={alt} isZoomedIn={isHovered} />
-        <CardContent
+      <Template onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
+        <Image imageSource={imageSource} alt={alt} isZoomedIn={isHovered} />
+        <Content
           elapsedTime={elapsedTime}
           description={description}
           createdAt={createdAt}
           isHovered={isHovered}
         />
-      </CardTemplate>
+      </Template>
     </a>
   );
 };

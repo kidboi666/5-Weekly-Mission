@@ -7,14 +7,8 @@ import {
   useRef,
   useState,
 } from "react";
-import {
-  Popover,
-} from "@/src/ui";
-import {
-	CardTemplate,
-	CardContent,
-	CardImage,
-} from "../parts"
+import { Popover } from "@/src/ui";
+import { Template, Content, Image } from "../parts";
 
 const cx = classNames.bind(styles);
 
@@ -71,12 +65,9 @@ export const EditableCard = ({
 
   return (
     <a href={url} target="_blank" rel="noopener noreferrer">
-      <CardTemplate
-        onMouseOver={handleMouseOver}
-        onMouseLeave={handleMouseLeave}
-      >
-        <CardImage imageSource={imageSource} alt={alt} isZoomedIn={isHovered} />
-        <CardContent
+      <Template onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
+        <Image imageSource={imageSource} alt={alt} isZoomedIn={isHovered} />
+        <Content
           elapsedTime={elapsedTime}
           description={description}
           createdAt={createdAt}
@@ -106,7 +97,7 @@ export const EditableCard = ({
             <li onClick={handleAddToFolderClick}>폴더에 추가</li>
           </ul>
         </Popover>
-      </CardTemplate>
+      </Template>
     </a>
   );
 };

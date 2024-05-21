@@ -1,16 +1,16 @@
-import styles from "./CardImage.module.scss";
+import styles from "./Image.module.scss";
 import classNames from "classnames/bind";
 import { DEFAULT_IMAGE } from "./constant";
 
 const cx = classNames.bind(styles);
 
-type CardImageProps = {
+type ImageProps = {
   imageSource: string;
   isZoomedIn: boolean;
   alt: string;
 };
 
-export const CardImage = ({ imageSource, isZoomedIn, alt }: CardImageProps) => {
+export const Image = ({ imageSource, isZoomedIn, alt }: ImageProps) => {
   return (
     <div className={cx("container")}>
       <img

@@ -1,10 +1,10 @@
 import styles from "./ShareModal.module.scss";
 import classNames from "classnames/bind";
 import {
-  ModalTemplate,
+  Template,
   ContentBox,
-  ModalContentDescription,
-  ModalContentTitle,
+  ContentDescription,
+  ContentTitle,
 } from "../parts";
 import { KeyboardEventHandler, MouseEventHandler } from "react";
 import { KakaoIcon, FacebookIcon, LinkIcon } from "./constant";
@@ -30,8 +30,14 @@ export const ShareModal = ({
   onCloseClick,
   onKeyDown,
 }: ShareModalProps) => {
+  const buttons = [
+    { onClick: onKakaoClick, Icon: KakaoIcon, label: "카카오톡" },
+    { onClick: onFacebookClick, Icon: FacebookIcon, label: "페이스북" },
+    { onClick: onLinkCopyClick, Icon: LinkIcon, label: "링크 복사" },
+  ];
+
   return (
-    <ModalTemplate
+    <Template
       isOpen={isOpen}
       onBackdropClick={onCloseClick}
       onKeyDown={onKeyDown}
@@ -39,28 +45,22 @@ export const ShareModal = ({
       <ContentBox
         header={
           <div className={cx("modal-header")}>
-            <ModalContentTitle>폴더 공유</ModalContentTitle>
-            <ModalContentDescription>{folderName}</ModalContentDescription>
+            <ContentTitle>폴더 공유</ContentTitle>
+            <ContentDescription>{folderName}</ContentDescription>
           </div>
         }
         content={
           <div className={cx("modal-content")}>
-            <button className={cx("button")} onClick={onKakaoClick}>
-              <KakaoIcon />
-              <span>카카오톡</span>
-            </button>
-            <button className={cx("button")} onClick={onFacebookClick}>
-              <FacebookIcon />
-              <span>페이스북</span>
-            </button>
-            <button className={cx("button")} onClick={onLinkCopyClick}>
-              <LinkIcon />
-              <span>링크 복사</span>
-            </button>
+            {buttons.map(({ onClick, Icon, label }) => (
+              <button key={label} className={cx("button")} onClick={onClick}>
+                <Icon />
+                <span>{label}</span>
+              </button>
+            ))}
           </div>
         }
         onCloseClick={onCloseClick}
       />
-    </ModalTemplate>
+    </Template>
   );
 };

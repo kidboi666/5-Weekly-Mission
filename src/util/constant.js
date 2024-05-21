@@ -1,6 +1,8 @@
 export const ROUTE = {
   랜딩: "/",
   로그인: "/signin",
+  회원가입: "/signup",
+  폴더: "/folder",
   개인정보처리방침: "/privacy",
   FAQ: "/faq",
 };

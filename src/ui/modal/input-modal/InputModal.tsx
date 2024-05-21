@@ -5,12 +5,7 @@ import {
   KeyboardEventHandler,
   MouseEventHandler,
 } from "react";
-import {
-  ModalTemplate,
-  ContentBox,
-  ContentButton,
-  ModalContentTitle,
-} from "../parts";
+import { Template, ContentBox, ContentButton, ContentTitle } from "../parts";
 import { Input } from "@/src/ui";
 
 const cx = classNames.bind(styles);
@@ -37,13 +32,13 @@ export const InputModal = ({
   onChange,
 }: InputModalProps) => {
   return (
-    <ModalTemplate
+    <Template
       isOpen={isOpen}
       onBackdropClick={onCloseClick}
       onKeyDown={onKeyDown}
     >
       <ContentBox
-        header={<ModalContentTitle>{title}</ModalContentTitle>}
+        header={<ContentTitle>{title}</ContentTitle>}
         content={
           <div className={cx("modal-content")}>
             <Input
@@ -56,6 +51,6 @@ export const InputModal = ({
         }
         onCloseClick={onCloseClick}
       />
-    </ModalTemplate>
+    </Template>
   );
 };

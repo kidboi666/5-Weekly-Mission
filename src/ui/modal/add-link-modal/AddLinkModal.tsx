@@ -4,11 +4,11 @@ import { Folder } from "@/src/type";
 import { FolderItem } from "@/src/ui";
 import { Dispatch, KeyboardEventHandler, SetStateAction } from "react";
 import {
-  ModalTemplate,
+  Template,
   ContentBox,
   ContentButton,
-  ModalContentDescription,
-  ModalContentTitle,
+  ContentDescription,
+  ContentTitle,
 } from "../parts";
 
 const cx = classNames.bind(styles);
@@ -35,7 +35,7 @@ export const AddLinkModal = ({
   onKeyDown,
 }: AddLinkModalProps) => {
   return (
-    <ModalTemplate
+    <Template
       isOpen={isOpen}
       onBackdropClick={onCloseClick}
       onKeyDown={onKeyDown}
@@ -43,8 +43,8 @@ export const AddLinkModal = ({
       <ContentBox
         header={
           <div className={cx("modal-header")}>
-            <ModalContentTitle>폴더에 추가</ModalContentTitle>
-            <ModalContentDescription>{description}</ModalContentDescription>
+            <ContentTitle>폴더에 추가</ContentTitle>
+            <ContentDescription>{description}</ContentDescription>
           </div>
         }
         content={
@@ -65,6 +65,6 @@ export const AddLinkModal = ({
         }
         onCloseClick={onCloseClick}
       />
-    </ModalTemplate>
+    </Template>
   );
 };

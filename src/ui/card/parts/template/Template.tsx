@@ -1,20 +1,20 @@
 import { MouseEventHandler, ReactNode } from "react";
-import styles from "./Card.module.scss";
+import styles from "./Template.module.scss";
 import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-type CardProps = {
+type TemplateProps = {
   children: ReactNode;
   onMouseOver: MouseEventHandler<HTMLDivElement>;
   onMouseLeave: MouseEventHandler<HTMLDivElement>;
 };
 
-export const CardTemplate = ({
+export const Template = ({
   children,
   onMouseOver,
   onMouseLeave,
-}: CardProps) => {
+}: TemplateProps) => {
   return (
     <div
       className={cx("container")}

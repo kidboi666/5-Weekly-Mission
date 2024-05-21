@@ -1,13 +1,13 @@
 import { ReactNode } from "react";
-import styles from "./ModalContentDescription.module.scss";
+import styles from "./ContentDescription.module.scss";
 import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-type ModalContentDescriptionProps = {
+type ContentDescriptionProps = {
   children: ReactNode;
 };
 
-export const ModalContentDescription = ({ children }: ModalContentDescriptionProps) => {
+export const ContentDescription = ({ children }: ContentDescriptionProps) => {
   return <p className={cx("description")}>{children}</p>;
 };

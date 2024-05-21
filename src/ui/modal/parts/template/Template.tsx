@@ -1,4 +1,4 @@
-import styles from "./ModalTemplate.module.scss";
+import styles from "./Template.module.scss";
 import classNames from "classnames/bind";
 import {
   KeyboardEvent,
@@ -11,7 +11,7 @@ import { Portal } from "@/src/ui";
 
 const cx = classNames.bind(styles);
 
-type ModalProps = {
+type TemplateProps = {
   children: ReactNode;
   isOpen?: boolean;
   disableScrollLock?: boolean;
@@ -20,14 +20,14 @@ type ModalProps = {
   onKeyDown?: KeyboardEventHandler<HTMLDivElement>;
 };
 
-export const ModalTemplate = ({
+export const Template = ({
   children,
   isOpen = false,
   disableScrollLock = false,
   hideBackdrop = false,
   onBackdropClick,
   onKeyDown,
-}: ModalProps) => {
+}: TemplateProps) => {
   const handleBackdropClick = (event: MouseEvent<HTMLDivElement>) => {
     if (event.target !== event.currentTarget) {
       return;

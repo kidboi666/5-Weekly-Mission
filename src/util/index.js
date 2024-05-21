@@ -12,3 +12,4 @@ export * from "./mapLinksData"
 export * from "./useSearchLink"
 export * from "./mapFolderData";
 export * from "./mapFoldersData"
+export * from "./useTokenRedirect";

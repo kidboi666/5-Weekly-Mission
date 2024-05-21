@@ -1,1 +1,1 @@
-export * from "./ModalContentDescription";
+export * from "./ContentDescription";
