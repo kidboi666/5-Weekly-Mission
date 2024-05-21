@@ -5,10 +5,10 @@ import { UserRawData } from "@/src/type";
 /**
  * useGetUser 훅은 사용자 데이터를 가져와 반환합니다.
  *
- * @returns {Object} 훅의 반환 객체입니다.
- * @returns {boolean} return.loading - 사용자 데이터를 가져오는 요청의 로딩 상태입니다.
- * @returns {any | null} return.error - 사용자 데이터를 가져오는 요청 중 발생한 오류입니다.
- * @returns {UserRawData | null} return.data - 가져온 사용자 데이터입니다.
+ * @returns 훅의 반환 객체입니다.
+ * @returns return.loading - 사용자 데이터를 가져오는 요청의 로딩 상태입니다.
+ * @returns return.error - 사용자 데이터를 가져오는 요청 중 발생한 오류입니다.
+ * @returns return.data - 가져온 사용자 데이터입니다.
  *
  * @example
  * const { loading, error, data } = useGetUser();

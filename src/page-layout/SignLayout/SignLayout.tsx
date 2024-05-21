@@ -4,13 +4,13 @@ import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-type SignInLayoutProps = {
+type SignLayoutProps = {
   header: ReactNode;
   form: ReactNode;
   oauth: ReactNode;
 };
 
-export const SignLayout = ({ header, form, oauth }: SignInLayoutProps) => {
+export const SignLayout = ({ header, form, oauth }: SignLayoutProps) => {
   return (
     <div className={cx("container")}>
       <div className={cx("items")}>
