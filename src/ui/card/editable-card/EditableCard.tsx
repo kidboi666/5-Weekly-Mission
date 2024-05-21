@@ -64,7 +64,7 @@ type EditableCardProps = {
  * @param {CSSProperties["left"]} [props.popoverPosition.left] - 팝오버의 왼쪽 위치입니다.
  * @param {() => void} props.onDeleteClick - 삭제 버튼 클릭 시 호출되는 함수입니다.
  * @param {() => void} props.onAddToFolderClick - 폴더에 추가 버튼 클릭 시 호출되는 함수입니다.
- * 
+ *
  * @returns {JSX.Element} 수정 가능한 카드를 렌더링하는 컴포넌트입니다.
  */
 export const EditableCard = ({
@@ -83,29 +83,57 @@ export const EditableCard = ({
   const kebabButtonRef = useRef<HTMLButtonElement>(null);
   const popperRef = useRef<HTMLDivElement>(null);
 
-  const { styles: popperStyles, attributes } = usePopper(kebabButtonRef.current, popperRef.current, {
-    placement: 'bottom-end',
-  });
+  const { styles: popperStyles, attributes } = usePopper(
+    kebabButtonRef.current,
+    popperRef.current,
+    {
+      placement: "bottom-end",
+      modifiers: [
+        {
+          name: "offset",
+          options: {
+            offset: [0, 8], // Adjust the offset to position the popover
+          },
+        },
+        {
+          name: "preventOverflow",
+          options: {
+            boundary: "clippingParents",
+            padding: 8, // Add padding to prevent overflow
+          },
+        },
+      ],
+    }
+  );
 
   const handleMouseOver = useCallback(() => setIsHovered(true), []);
   const handleMouseLeave = useCallback(() => setIsHovered(false), []);
-  const handleKebabClick: MouseEventHandler<HTMLButtonElement> = useCallback((event) => {
-    event.preventDefault();
-    setIsPopoverOpen((prev) => !prev);
-  }, []);
+  const handleKebabClick: MouseEventHandler<HTMLButtonElement> = useCallback(
+    (event) => {
+      event.preventDefault();
+      setIsPopoverOpen((prev) => !prev);
+    },
+    []
+  );
   const handleBackgroundClick = useCallback(() => {
     setIsPopoverOpen(false);
   }, []);
-  const handleDeleteClick: MouseEventHandler<HTMLLIElement> = useCallback((event) => {
-    event.preventDefault();
-    onDeleteClick();
-    setIsPopoverOpen(false);
-  }, [onDeleteClick]);
-  const handleAddToFolderClick: MouseEventHandler<HTMLLIElement> = useCallback((event) => {
-    event.preventDefault();
-    onAddToFolderClick();
-    setIsPopoverOpen(false);
-  }, [onAddToFolderClick]);
+  const handleDeleteClick: MouseEventHandler<HTMLLIElement> = useCallback(
+    (event) => {
+      event.preventDefault();
+      onDeleteClick();
+      setIsPopoverOpen(false);
+    },
+    [onDeleteClick]
+  );
+  const handleAddToFolderClick: MouseEventHandler<HTMLLIElement> = useCallback(
+    (event) => {
+      event.preventDefault();
+      onAddToFolderClick();
+      setIsPopoverOpen(false);
+    },
+    [onAddToFolderClick]
+  );
 
   return (
     <a href={url} target="_blank" rel="noopener noreferrer">
@@ -121,18 +149,26 @@ export const EditableCard = ({
           className={cx("star")}
           onClick={(event) => event.preventDefault()}
         >
-          <AiFillStar style={{ fontSize: '2.4rem' }} />
+          <AiFillStar style={{ fontSize: "2.4rem" }} />
         </button>
         <button
           ref={kebabButtonRef}
           className={cx("kebab")}
           onClick={handleKebabClick}
         >
-          <AiOutlineMore style={{ fontSize: '2.1rem' }} />
+          <AiOutlineMore style={{ fontSize: "2.1rem" }} />
         </button>
         {isPopoverOpen && (
-          <div ref={popperRef} style={popperStyles.popper} {...attributes.popper}>
-            <Popover isOpen={isPopoverOpen} onBackgroundClick={handleBackgroundClick}>
+          <div
+            ref={popperRef}
+            className={cx("popper")}
+            style={popperStyles.popper}
+            {...attributes.popper}
+          >
+            <Popover
+              isOpen={isPopoverOpen}
+              onBackgroundClick={handleBackgroundClick}
+            >
               <ul className={cx("popover-list")}>
                 <li onClick={handleDeleteClick}>삭제하기</li>
                 <li onClick={handleAddToFolderClick}>폴더에 추가</li>

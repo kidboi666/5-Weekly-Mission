@@ -1,5 +1,9 @@
 @import "@/styles/global.scss";
 
+.container {
+  position: relative;
+}
+
 .star {
   position: absolute;
   top: 1.5rem;
@@ -40,4 +44,12 @@
       color: $color-primary;
     }
   }
+}
+
+.popover {
+  z-index: 10;
+}
+
+.popper {
+  display: inline-block;
 }
