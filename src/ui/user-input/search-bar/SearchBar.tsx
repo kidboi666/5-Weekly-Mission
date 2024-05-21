@@ -1,8 +1,7 @@
 import styles from "./SearchBar.module.scss";
 import classNames from "classnames/bind";
-import { SEARCH_IMAGE } from "./constant";
-import { ChangeEventHandler, MouseEventHandler } from "react";
-import CloseIcon from "./close.svg";
+import { ChangeEventHandler, MouseEventHandler, useMemo, useCallback } from "react";
+import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
 
 const cx = classNames.bind(styles);
 
@@ -20,7 +19,7 @@ type SearchBarProps = {
  * return (
  *   <SearchBar
  *     value="검색어"
- *     onChange={(e) => console.log(e.target.value)}
+ *     onChange={(e) => console.log(e.target.value))}
  *     onCloseClick={() => console.log("Close Clicked")}
  *   />
  * );
@@ -33,6 +32,16 @@ type SearchBarProps = {
  * @returns {JSX.Element} 사용자가 검색 기능을 사용할 수 있도록 하는 검색 바 컴포넌트입니다.
  */
 export const SearchBar = ({ value, onChange, onCloseClick }: SearchBarProps) => {
+  const searchIcon = useMemo(() => <AiOutlineSearch style={{ fontSize: '2.4rem' }} className={cx("search-icon")} />, []);
+  const closeIcon = useMemo(() => <AiOutlineClose style={{ fontSize: '2.4rem' }} className={cx("close-icon")} />, []);
+
+  const handleCloseClick = useCallback(
+    (event) => {
+      onCloseClick(event);
+    },
+    [onCloseClick]
+  );
+
   return (
     <div className={cx("container")}>
       <input
@@ -42,14 +51,10 @@ export const SearchBar = ({ value, onChange, onCloseClick }: SearchBarProps) => 
         value={value}
         onChange={onChange}
       />
-      <img
-        src={SEARCH_IMAGE}
-        alt="검색창인 것을 알려주는 돋보기 아이콘"
-        className={cx("search-icon")}
-      />
+      {searchIcon}
       {value && (
-        <button className={cx("close")} onClick={onCloseClick}>
-          <CloseIcon />
+        <button className={cx("close")} onClick={handleCloseClick}>
+          {closeIcon}
         </button>
       )}
     </div>
