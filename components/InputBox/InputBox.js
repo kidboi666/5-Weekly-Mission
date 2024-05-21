@@ -2,35 +2,29 @@ import { useState } from "react";
 import styles from "./InputBox.module.scss";
 import classNames from "classnames/bind";
 import Image from "next/image";
+import { ErrorMessage } from "@hookform/error-message";
 
 const cx = classNames.bind(styles);
-
-const errorMessages = {
-  required: {
-    email: "이메일을 입력해 주세요.",
-    password: "비밀번호를 입력해 주세요",
-  },
-  pattern: {
-    email: "올바른 이메일 주소가 아닙니다.",
-    password: "비밀번호는 영문, 숫자 조합 8자 이상 입력해 주세요.",
-  },
-};
 
 export function InputBox({
   label,
   name,
-  valid,
   errors,
   register,
   placeholder,
+  valid,
+  validate,
 }) {
-  const validKeys = Object.keys(valid);
-
   const [isToggle, setIsToggle] = useState(false);
 
   const handleToggle = () => {
     setIsToggle(!isToggle);
   };
+
+  const validationProps =
+    name === "email" || name === "password"
+      ? register(name, valid)
+      : register(name, { validate });
 
   return (
     <div className={cx("input-wrapper")}>
@@ -40,20 +34,20 @@ export function InputBox({
           "red-border": errors[name],
           "default-border": !errors[name],
         })}
-        type={name !== "email" ? (isToggle ? "password" : "text") : "text"}
+        type={name !== "email" ? (isToggle ? "test" : "password") : "text"}
         placeholder={placeholder}
-        {...register(name, valid)}
+        {...validationProps}
       />
-      {validKeys.map((key, i) => {
-        if (errors[name] && errors[name].type === key) {
-          return <span key={i}>{errorMessages[key][name]}</span>;
-        }
-      })}
+      <ErrorMessage
+        errors={errors}
+        name={name}
+        render={({ message }) => <p>{message}</p>}
+      />
       {name !== "email" && (
         <Image
           width={16}
           height={16}
-          src={isToggle ? "images/eye-off.svg" : "images/eye-on.svg"}
+          src={isToggle ? "images/eye-on.svg" : "images/eye-off.svg"}
           alt="비밀번호 보기"
           onClick={handleToggle}
           className={cx("eye-onoff")}

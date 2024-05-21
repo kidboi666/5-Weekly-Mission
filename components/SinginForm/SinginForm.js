@@ -3,12 +3,22 @@ import styles from "./SinginForm.module.scss";
 import classNames from "classnames/bind";
 import { useForm } from "react-hook-form";
 import { InputBox } from "../InputBox/InputBox";
+import { regexData } from "../../utils";
 
 const cx = classNames.bind(styles);
 
-const email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
-const emailValidData = { required: true, pattern: email_regex };
-const pwdValidData = { required: true };
+const ValidData = {
+  email: {
+    required: { value: true, message: "이메일을 입력해 주세요" },
+    pattern: {
+      value: regexData.email,
+      message: "올바른 이메일 주소가 아닙니다.",
+    },
+  },
+  pwd: {
+    required: { value: true, message: "비밀번호를 입력해 주세요" },
+  },
+};
 
 export function SinginForm() {
   const {
@@ -29,7 +39,7 @@ export function SinginForm() {
         label="이메일"
         name="email"
         placeholder="이메일을 입력해 주세요"
-        valid={emailValidData}
+        valid={ValidData.email}
         errors={errors}
         register={register}
       />
@@ -37,7 +47,7 @@ export function SinginForm() {
         label="비밀번호"
         name="password"
         placeholder="비밀번호를 입력해 주세요"
-        valid={pwdValidData}
+        valid={ValidData.pwd}
         errors={errors}
         register={register}
       />
