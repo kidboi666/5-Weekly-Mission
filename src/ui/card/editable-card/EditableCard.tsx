@@ -7,6 +7,8 @@ import {
   useRef,
   useState,
 } from "react";
+import { usePopper } from "react-popper";
+import { AiOutlineMore, AiFillStar } from "react-icons/ai";
 import { Popover } from "@/src/ui";
 import { Template, Content, Image } from "../parts";
 
@@ -19,7 +21,7 @@ type EditableCardProps = {
   elapsedTime: string;
   description: string;
   createdAt: string;
-  popoverPosition: {
+  popoverPosition?: {
     top?: CSSProperties["top"];
     right?: CSSProperties["right"];
     bottom?: CSSProperties["bottom"];
@@ -43,7 +45,6 @@ type EditableCardProps = {
  *     elapsedTime="5분 전"
  *     description="이것은 설명입니다."
  *     createdAt="2022-01-01"
- *     popoverPosition={{ top: "10px", left: "10px" }}
  *     onDeleteClick={() => console.log("삭제 클릭됨")}
  *     onAddToFolderClick={() => console.log("폴더에 추가 클릭됨")}
  *   />
@@ -56,7 +57,7 @@ type EditableCardProps = {
  * @param {string} props.elapsedTime - 경과 시간을 나타내는 텍스트입니다.
  * @param {string} props.description - 카드의 설명 텍스트입니다.
  * @param {string} props.createdAt - 생성 일자를 나타내는 텍스트입니다.
- * @param {Object} props.popoverPosition - 팝오버의 위치를 설정하는 객체입니다.
+ * @param {Object} [props.popoverPosition] - 팝오버의 위치를 설정하는 객체입니다.
  * @param {CSSProperties["top"]} [props.popoverPosition.top] - 팝오버의 상단 위치입니다.
  * @param {CSSProperties["right"]} [props.popoverPosition.right] - 팝오버의 오른쪽 위치입니다.
  * @param {CSSProperties["bottom"]} [props.popoverPosition.bottom] - 팝오버의 하단 위치입니다.
@@ -79,26 +80,32 @@ export const EditableCard = ({
 }: EditableCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
-  const kebabButtonRef = useRef(null);
-  const handleMouseOver = () => setIsHovered(true);
-  const handleMouseLeave = () => setIsHovered(false);
-  const handleKebabClick: MouseEventHandler<HTMLButtonElement> = (event) => {
+  const kebabButtonRef = useRef<HTMLButtonElement>(null);
+  const popperRef = useRef<HTMLDivElement>(null);
+
+  const { styles: popperStyles, attributes } = usePopper(kebabButtonRef.current, popperRef.current, {
+    placement: 'bottom-end',
+  });
+
+  const handleMouseOver = useCallback(() => setIsHovered(true), []);
+  const handleMouseLeave = useCallback(() => setIsHovered(false), []);
+  const handleKebabClick: MouseEventHandler<HTMLButtonElement> = useCallback((event) => {
     event.preventDefault();
-    setIsPopoverOpen(true);
-  };
+    setIsPopoverOpen((prev) => !prev);
+  }, []);
   const handleBackgroundClick = useCallback(() => {
     setIsPopoverOpen(false);
   }, []);
-  const handleDeleteClick: MouseEventHandler<HTMLLIElement> = (event) => {
+  const handleDeleteClick: MouseEventHandler<HTMLLIElement> = useCallback((event) => {
     event.preventDefault();
     onDeleteClick();
     setIsPopoverOpen(false);
-  };
-  const handleAddToFolderClick: MouseEventHandler<HTMLLIElement> = (event) => {
+  }, [onDeleteClick]);
+  const handleAddToFolderClick: MouseEventHandler<HTMLLIElement> = useCallback((event) => {
     event.preventDefault();
     onAddToFolderClick();
     setIsPopoverOpen(false);
-  };
+  }, [onAddToFolderClick]);
 
   return (
     <a href={url} target="_blank" rel="noopener noreferrer">
@@ -114,26 +121,25 @@ export const EditableCard = ({
           className={cx("star")}
           onClick={(event) => event.preventDefault()}
         >
-          <img src="images/star.svg" alt="즐겨찾기를 나타내는 별" />
+          <AiFillStar style={{ fontSize: '2.4rem' }} />
         </button>
         <button
           ref={kebabButtonRef}
           className={cx("kebab")}
           onClick={handleKebabClick}
         >
-          <img src="images/kebab.svg" alt="더보기를 나타내는 점 3개" />
+          <AiOutlineMore style={{ fontSize: '2.1rem' }} />
         </button>
-        <Popover
-          isOpen={isPopoverOpen}
-          anchorRef={kebabButtonRef}
-          anchorPosition={popoverPosition}
-          onBackgroundClick={handleBackgroundClick}
-        >
-          <ul className={cx("popover-list")}>
-            <li onClick={handleDeleteClick}>삭제하기</li>
-            <li onClick={handleAddToFolderClick}>폴더에 추가</li>
-          </ul>
-        </Popover>
+        {isPopoverOpen && (
+          <div ref={popperRef} style={popperStyles.popper} {...attributes.popper}>
+            <Popover isOpen={isPopoverOpen} onBackgroundClick={handleBackgroundClick}>
+              <ul className={cx("popover-list")}>
+                <li onClick={handleDeleteClick}>삭제하기</li>
+                <li onClick={handleAddToFolderClick}>폴더에 추가</li>
+              </ul>
+            </Popover>
+          </div>
+        )}
       </Template>
     </a>
   );

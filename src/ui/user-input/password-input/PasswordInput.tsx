@@ -73,7 +73,7 @@ import {
 		>
 		  {isPasswordVisible ? <AiOutlineEyeInvisible style={{ fontSize: '1.6rem' }}/> : <AiOutlineEye style={{ fontSize: '1.6rem' }}/>}
 		</button>
-	  ),
+	  ), 
 	  [isPasswordVisible, handleEyeIconClick]
 	);
   
