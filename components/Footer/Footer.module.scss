@@ -1,0 +1,38 @@
+@import "/styles/globals.scss";
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $color-black;
+  color: $color-white;
+  margin-top: 6.25rem;
+  padding: 2rem 6.5rem 4rem;
+}
+
+.date-text {
+  width: 12rem;
+
+  @include mobile {
+    position: absolute;
+    top: 6rem;
+  }
+}
+
+.link-text {
+  display: flex;
+  gap: 2rem;
+}
+
+.icon {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  width: 12rem;
+}
+
+.image {
+  width: 1.2rem;
+  height: 1.2rem;
+}

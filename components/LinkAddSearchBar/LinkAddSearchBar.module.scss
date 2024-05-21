@@ -1,0 +1,74 @@
+@import "/styles/globals.scss";
+
+.container {
+  padding: 8rem 15rem 10rem;
+  background: $color-light-blue;
+
+  @include tablet {
+    padding: 8rem 12rem 10rem;
+  }
+
+  @include mobile {
+    padding: 6rem 4rem 8rem;
+  }
+}
+
+.searchBar-block {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0.9375rem;
+  border: 1px solid $color-primary;
+  background: $color-white;
+  border-radius: 1rem;
+}
+
+.form-block {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+
+  @include mobile {
+    padding: 0.8rem;
+  }
+}
+
+.link-block {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.input-text {
+  width: 100%;
+  padding: 0.5rem;
+  border: 0px;
+  @include font(1rem, $color-gray60, 400);
+
+  @include mobile {
+    @include font(0.8rem, $color-gray60, 400);
+  }
+}
+
+.button-text {
+  width: 7.5rem;
+  padding: 1rem;
+  margin-left: 1rem;
+  background: $color-linear-gradient;
+  border-color: #ffff;
+  border-radius: 1rem;
+  @include font(1rem, $color-white, 600);
+
+  @include mobile {
+    @include font(0.8rem, $color-white, 600);
+  }
+}
+
+.image {
+  width: 1.5rem;
+  height: 1.5rem;
+}

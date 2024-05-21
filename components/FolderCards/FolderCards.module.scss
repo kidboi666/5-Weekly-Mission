@@ -1,0 +1,42 @@
+@import "/styles/globals.scss";
+
+.container {
+  margin: 4rem auto;
+  max-width: 74rem;
+
+  @include tablet {
+    max-width: 50rem;
+  }
+
+  @include mobile {
+    max-width: 24rem;
+  }
+}
+
+.cards-block {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(auto, 24rem));
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+
+  @include tablet {
+    grid-template-columns: repeat(2, minmax(auto, 24rem));
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(1, minmax(auto, 24rem));
+  }
+}
+
+.text-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2.5625rem 0rem 2.1875rem;
+}
+
+.text {
+  @include font(1rem, $color-black, 400);
+}

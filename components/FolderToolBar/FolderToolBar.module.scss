@@ -1,0 +1,85 @@
+@import "/styles/globals.scss";
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+
+.add-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  @include tablet {
+    width: 12rem;
+    height: 2rem;
+    display: flex;
+    gap: 1rem;
+  }
+
+  @include mobile {
+    width: 100%;
+    z-index: 1;
+    position: fixed;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: 6.3125rem;
+  }
+}
+
+.text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  background-color: #fff;
+
+  @include mobile {
+    padding: 0.2rem 1.6rem;
+    border-radius: 1.8rem;
+    border: 1px solid $color-white;
+    background: $color-primary;
+  }
+}
+
+.button-text {
+  @include font(1rem, $color-primary, 500);
+
+  @include mobile {
+    @include font(1rem, $color-white, 500);
+  }
+}
+
+.folders-block {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.button {
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  border: 1px solid $color-primary;
+  background: $color-white;
+  @include font(1rem, $color-black, 400);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.button-click {
+  @extend .button;
+  color: $color-white;
+  border-color: $color-primary;
+  background: $color-primary;
+}
+
+.image {
+  width: 1rem;
+  height: 1rem;
+}
