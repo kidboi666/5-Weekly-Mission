@@ -29,6 +29,19 @@ const snsLinks = [
   },
 ];
 
+/**
+ * Footer 컴포넌트는 애플리케이션의 하단에 표시되는 footer를 렌더링합니다.
+ *
+ * @component
+ * @example
+ * return (
+ *   <Footer ref={footerRef} />
+ * );
+ *
+ * @param {React.Ref<HTMLElement>} ref - 푸터 요소에 전달할 ref입니다.
+ * 
+ * @returns {JSX.Element} 애플리케이션 하단에 표시되는 푸터 컴포넌트입니다.
+ */
 export const Footer = forwardRef<HTMLElement>((_, ref) => {
   return (
     <footer ref={ref} className={cx("container")}>
