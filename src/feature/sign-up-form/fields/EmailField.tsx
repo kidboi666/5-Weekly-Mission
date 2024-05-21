@@ -13,6 +13,12 @@ interface EmailInputProps {
   watch: UseFormWatch<any>;
 }
 
+/**
+ * EmailField 컴포넌트는 이메일 입력 필드를 렌더링합니다.
+ * @component
+ * @param {Control} control - react-hook-form의 control 객체
+ * @param {UseFormWatch} watch - react-hook-form의 watch 함수
+ */
 export const EmailField = ({ control, watch }: EmailInputProps) => {
   const { execute: checkEmailDuplicate } = useCheckEmailDuplicate(
     watch("email")

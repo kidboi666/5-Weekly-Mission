@@ -1,3 +1,4 @@
+import React, { useCallback } from "react";
 import { Cta } from "@/src/ui";
 import { useSignUp } from "@/src/data-access";
 import { useTokenRedirect } from "@/src/util";
@@ -9,6 +10,10 @@ import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
+/**
+ * SignUpForm 컴포넌트는 사용자 회원가입 폼을 렌더링합니다.
+ * @component
+ */
 export const SignUpForm = () => {
   const { control, handleSubmit, watch } = useForm({
     defaultValues: { email: "", password: "", confirmedPassword: "" },
@@ -22,8 +27,12 @@ export const SignUpForm = () => {
 
   useTokenRedirect(data?.data.accessToken);
 
+  const onSubmit = useCallback(() => {
+    signUp();
+  }, [signUp]);
+
   return (
-    <form className={cx("form")} onSubmit={handleSubmit(signUp)}>
+    <form className={cx("form")} onSubmit={handleSubmit(onSubmit)}>
       <EmailField control={control} watch={watch} />
       <PasswordField control={control} />
       <PasswordConfirmField control={control} watch={watch} />

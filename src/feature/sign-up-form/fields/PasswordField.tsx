@@ -11,6 +11,11 @@ interface PasswordInputProps {
   control: Control<any>;
 }
 
+/**
+ * PasswordField 컴포넌트는 비밀번호 입력 필드를 렌더링합니다.
+ * @component
+ * @param {Control} control - react-hook-form의 control 객체
+ */
 export const PasswordField = ({ control }: PasswordInputProps) => (
   <div className={cx("input-box")}>
     <label className={cx("label")}>비밀번호</label>
