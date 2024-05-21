@@ -1,5 +1,4 @@
-// useFetch.ts
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 export function useFetch(url: string) {
     const [data, setData] = useState<any>(null);
@@ -15,7 +14,7 @@ export function useFetch(url: string) {
                     setData(null);
                 }
             } catch (error) {
-                console.error("Error fetching data:", error);
+                console.error('Error fetching data:', error);
                 setData(null);
             }
         };

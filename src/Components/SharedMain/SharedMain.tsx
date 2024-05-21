@@ -1,4 +1,3 @@
-// SharedMain.jsx
 import React from "react";
 import Cards from "../Cards/Cards";
 import styles from "./SharedMain.module.css";

@@ -6,8 +6,8 @@ class MyDocument extends Document {
                 <Head>
                     <link rel='stylesheet' href='/global.css' />
                     <link rel='icon' href='/favicon.ico' />
-                    <meta name='viewport' content='width=device-width, initial-scale=1' />
                     <meta property='og:title' content='Linkbrary' />
+                    <meta name='viewport' content='width=device-width, initial-scale=1' />
                     <meta
                         property='og:description'
                         content='세상의 모든 정보를 쉽게 저장하고 관리해 보세요'
