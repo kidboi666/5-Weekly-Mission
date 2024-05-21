@@ -28,15 +28,13 @@ export const ButtonModule = styled.button<{
     &--icon-before {
       display: inline-block;
       padding-left: 22px;
-      background: url(${({ $BeforButtonIcon }) => $BeforButtonIcon || ''})
-        no-repeat left center;
+      background: url(${({ $BeforButtonIcon }) => $BeforButtonIcon || ''}) no-repeat left center;
       background-size: 18px 18px;
     }
     &--icon-after {
       display: inline-block;
       padding-right: 20px;
-      background: url(${({ $afterButtonIcon }) => $afterButtonIcon || ''})
-        no-repeat right center;
+      background: url(${({ $afterButtonIcon }) => $afterButtonIcon || ''}) no-repeat right center;
       background-size: 18px 18px;
     }
     &--gradient {
@@ -66,6 +64,16 @@ export const ButtonModule = styled.button<{
       flex-direction: column;
       .share--text {
         padding-top: 10px;
+      }
+    }
+    &--input {
+      &-password {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 1rem;
+        z-index: 1;
       }
     }
   }

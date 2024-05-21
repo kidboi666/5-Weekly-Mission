@@ -1,12 +1,5 @@
 import styled, { css } from 'styled-components';
-import {
-  ContainBodyInner,
-  ContainHead,
-  ContainHeadInner,
-  DFlaxAlignCenter,
-  dflexBtw,
-  innerLarge,
-} from '@/styles/commonStyle';
+import { ContainBodyInner, ContainHead, ContainHeadInner, DFlaxAlignCenter, dflexCenterBtw, innerLarge } from '@/styles/commonStyle';
 import { theme } from '@/styles/theme';
 
 export const ShareHeadInner = styled(ContainHeadInner)`
@@ -29,7 +22,7 @@ export const FolderContainHead = styled(ContainHead)`
   @media screen and (max-width: ${theme.screenSize.moLarge}) {
     padding: 4px auto 24px;
   }
-`
+`;
 
 export const LinkAddHeadInner = styled.div`
   padding: 24px 32px;
@@ -94,7 +87,7 @@ export const EmptyBox = styled.div`
 `;
 
 export const FolderBtnBox = css`
-  ${dflexBtw}
+  ${dflexCenterBtw}
   padding-bottom: 24px;
   gap: 0 32px;
 `;
@@ -120,8 +113,7 @@ export const BookmarkBox = styled.div`
       color: ${theme.color.white};
       border: 1px solid ${theme.color.white};
       border-radius: 50em;
-      background: ${theme.color.primary} url('/assets/icon/icon_white_add.svg')
-        no-repeat;
+      background: ${theme.color.primary} url('/assets/icon/icon_white_add.svg') no-repeat;
       background-position: right 18px center;
       transform: translateX(-50%);
       z-index: 5;
@@ -170,7 +162,7 @@ export const ShareListBtn = styled(DFlaxAlignCenter)`
 export const BoxLinkSearch = styled.div`
   position: relative;
   margin-bottom: 40px;
-  
+
   @media screen and (max-width: ${theme.screenSize.moLarge}) {
     margin-bottom: 32px;
   }
@@ -185,4 +177,4 @@ export const SearchResults = styled.div`
   span {
     font-weight: 600;
   }
-`
+`;

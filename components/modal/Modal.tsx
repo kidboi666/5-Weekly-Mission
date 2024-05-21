@@ -1,69 +1,78 @@
-import { ModlaTitle } from "@/styles/commonStyle";
-import CheckBox from "../common/atoms/CheckBox";
-import Input from "../common/atoms/Input";
-import ShareModal from "../share/ShareModal";
-import { IModal } from "./interface";
-import { ModalBody, ModalContainer, ModalDim, ModalFoot, ModalHead, ModalWrap } from "./modalStyle";
-import Button from "../common/atoms/Button";
+import { useEffect, useState } from 'react';
+import { ModalBody, ModalContainer, ModalDim, ModalFoot, ModalHead, ModalWrap } from './modalStyle';
+import { ModlaTitle } from '@/styles/commonStyle';
+import { IModal, modalOrder } from '@/src/constant/modal';
+import CheckBox from '../common/atoms/CheckBox';
+import Input from '../common/atoms/Input';
+import ShareModal from '../share/ShareModal';
+import Button from '../common/atoms/Button';
+import Image from 'next/image';
 
-interface IModalInfo extends IModal {
+export interface IModalInfo {
+  $card_Id?: string;
+  $folder_Id?: string;
+  $type: string;
+  $descText?: string;
   onOpen: boolean;
   onClose: () => void;
-  $folderId?:number | null
+  $modalData?: IModal<any>;
 }
 
-function bodyContent(body: string, data: IModal['$modalData'], id :number|null = null) {
+function bodyContent(body: string, data?: IModal<any>) {
   if (body === 'input') {
     return <Input />;
   } else if (body === 'sns') {
-    return <ShareModal sharedId={id} />;
+    return <ShareModal />;
   } else if (body === 'checkbox') {
-    if (!data) return null;
     return <CheckBox $data={data} />;
   }
 }
 
-function Modal({
-  onOpen,
-  onClose,
-  $folderId = null,
-  $title,
-  $titleDescText,
-  $body,
-  $buttonStyle,
-  $buttonText,
-  $modalData,
-}: IModalInfo) {
-
+function Modal({ onOpen, onClose, $type, $card_Id, $folder_Id, $descText, $modalData }: IModalInfo) {
+  const [value, setSetValue] = useState<IModal<any>>();
   const modalClose = () => {
     onClose();
   };
 
+  useEffect(() => {
+    setSetValue(modalOrder[$type]);
+  }, [$type]);
+
   if (!onOpen) return null;
+
   return (
     <>
       <ModalWrap>
         <ModalDim onClick={modalClose}></ModalDim>
         <ModalContainer>
-          <ModalHead>
-            <ModlaTitle>{$title}</ModlaTitle>
-            {$titleDescText && <div className="desc">{$titleDescText}</div>}
-          </ModalHead>
-          {$body && 
-            <ModalBody>{bodyContent($body, $modalData, $folderId)}</ModalBody>
-          }
-          {$buttonStyle && (
-            <ModalFoot>
-              <Button $btnClass={$buttonStyle} onclick={() => modalClose()}>
-                {$buttonText}
-              </Button>
-            </ModalFoot>
+          {value && (
+            <>
+              <ModalHead>
+                <ModlaTitle>{value.title}</ModlaTitle>
+                {$descText && <div className='desc'>{$descText}</div>}
+              </ModalHead>
+              {value.bodyType && <ModalBody>{bodyContent(value.bodyType, $modalData ? $modalData : undefined)}</ModalBody>}
+              {value.buttonStyle && (
+                <ModalFoot>
+                  <Button
+                    $btnClass={value.buttonStyle}
+                    onclick={() => modalClose()}>
+                    {value.buttonText}
+                  </Button>
+                </ModalFoot>
+              )}
+            </>
           )}
+
           <Button
             $btnClass={'button--modal-close'}
-            onclick={() => modalClose()}
-          >
-            <img src="/assets/icon/icon_close.svg" alt="닫기" />
+            onclick={() => modalClose()}>
+            <Image
+              src='/assets/icon/icon_close.svg'
+              alt='닫기'
+              width={24}
+              height={24}
+            />
           </Button>
         </ModalContainer>
       </ModalWrap>

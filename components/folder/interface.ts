@@ -9,6 +9,7 @@ export interface IFolderMenuButton {
     count?: number;
   };
 }
+
 export interface IFolderMenuButtonApi {
   data: IFolderMenuButton[];
 }
@@ -17,13 +18,14 @@ export interface IFolderMenuButtonApi {
 export interface IFolderContent {
   id: number;
   created_at: Date;
-  updated_at: Date | null;
+  updated_at?: Date | null;
   url: string;
   title: string | null;
-  description: string | null;
-  image_source: string | null;
+  description?: string | null;
+  image_source?: string | null;
   folder_id: string | null;
 }
+
 export interface IFolderContentApi {
   data: IFolderContent[];
 }

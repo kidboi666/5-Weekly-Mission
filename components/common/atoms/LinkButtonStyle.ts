@@ -1,18 +1,18 @@
-import styled from "styled-components";
-import { theme } from "@/styles/theme";
-import Link from "next/link";
-import { font24 } from "@/styles/commonStyle";
-
+import styled from 'styled-components';
+import { theme } from '@/styles/theme';
+import Link from 'next/link';
+import { font24 } from '@/styles/commonStyle';
 
 export const LinkModule = styled(Link)`
+  position: relative;
   display: block;
   text-align: center;
   &.link {
     &--gradient {
       color: #fff;
       font-weight: 600;
-      text-align:center;
-      background:${theme.bgColor.gradient};
+      text-align: center;
+      background: ${theme.bgColor.gradient};
       border-radius: 8px;
     }
     &--login {
@@ -29,7 +29,7 @@ export const LinkModule = styled(Link)`
     }
   }
   &.full {
-    width: 100% !important; 
+    width: 100% !important;
   }
   &.large {
     font-size: 18px;
@@ -46,4 +46,4 @@ export const LinkModule = styled(Link)`
     line-height: 37px;
     font-weight: 600;
   }
-`
+`;

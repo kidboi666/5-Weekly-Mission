@@ -1,34 +1,26 @@
 import { ChangeEvent, ReactNode, useEffect, useRef, useState } from 'react';
 import { InputModule } from './inputStyle';
 import Button from './Button';
-import { SearchResults } from '@/pages/folder/folderStyle';
 import { Relative } from '@/styles/commonStyle';
 
 interface IButtonModule {
+  $id?: string;
   $type?: string;
   $inputClass?: string;
   $btnShow?: boolean;
   $placeholder?: string;
   $beforeBgIcon?: string;
   $btnClass?: string;
+  $clickEvent?: string | undefined;
   children?: ReactNode;
-  $clickEvent?: string;
+  onclick?: () => void;
   onchange?: (value: string) => void;
 }
 
-function Input({
-  $btnShow = false,
-  $type = 'text',
-  $inputClass,
-  $placeholder,
-  $beforeBgIcon = '',
-  $btnClass = '',
-  children,
-  $clickEvent,
-  onchange,
-}: IButtonModule) {
+function Input({ $id, $btnShow = false, $type = 'text', $inputClass, $placeholder, $beforeBgIcon = '', $btnClass = '', $clickEvent, children, onchange }: IButtonModule) {
   const [value, setValue] = useState('');
   const refInput = useRef(null);
+
   const handleChangInput = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setValue(value);
@@ -38,18 +30,21 @@ function Input({
       onchange(value);
     }
   };
-
-  const handleButtonEvent = (text: string) => {
-    if (!$clickEvent) return;
-    if ($clickEvent === 'reset') {
+  const handleEventInput = (event: string) => {
+    if (!event) return;
+    if (event === 'reset') {
       setValue('');
+      if (onchange) {
+        onchange('');
+      }
     }
   };
 
   return (
-   <>
-     <Relative>
+    <>
+      <Relative>
         <InputModule
+          id={$id}
           type={$type}
           className={$inputClass}
           placeholder={$placeholder}
@@ -58,14 +53,15 @@ function Input({
           $beforeBgIcon={$beforeBgIcon}
           ref={refInput}
         />
-        {$btnShow && (
-          <Button $btnClass={$btnClass} onclick={() => handleButtonEvent(value)}>
+        {$btnShow && $clickEvent && (
+          <Button
+            $btnClass={$btnClass}
+            onclick={() => handleEventInput($clickEvent)}>
             {children}
           </Button>
         )}
       </Relative>
-    {value && <SearchResults><span>{value} </span>으로 검색한 결과입니다.</SearchResults>}
-   </>
+    </>
   );
 }
 export default Input;

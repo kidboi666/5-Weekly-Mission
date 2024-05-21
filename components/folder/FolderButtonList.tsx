@@ -1,27 +1,21 @@
-import { BookMarkBtnList } from '@/pages/folder/folderStyle';
+import { BookMarkBtnList } from '@/styles/folderStyle';
 import { memo } from 'react';
 import Button from '../common/atoms/Button';
-import { IFolderMenuButtonApi } from '@/pages/folder/interface';
+import { IFolderMenuButtonApi } from './interface';
 
 interface IButtonList {
   $menu: IFolderMenuButtonApi | null;
   $activeBtnId: number;
-  onClick: (id:number) => void;
+  onClick: (id: number) => void;
 }
 
-function FolderButtonList({
-  $menu,
-  $activeBtnId,
-  onClick,
-}: IButtonList) {
-
+function FolderButtonList({ $menu, $activeBtnId, onClick }: IButtonList) {
   return (
     <BookMarkBtnList>
       <Button
         $id={`-1`}
         $btnClass={`button--outlined ${$activeBtnId === -1 ? 'active' : ''}`}
-        onclick={() => onClick(-1)}
-      >
+        onclick={() => onClick(-1)}>
         전체
       </Button>
       {$menu &&
@@ -29,11 +23,8 @@ function FolderButtonList({
           <Button
             key={item.id}
             $id={`${item.id}`}
-            $btnClass={`button--outlined ${
-              $activeBtnId === item.id ? 'active' : ''
-            }`}
-            onclick={() => onClick(item.id)}
-          >
+            $btnClass={`button--outlined ${$activeBtnId === item.id ? 'active' : ''}`}
+            onclick={() => onClick(item.id)}>
             {item.name}
           </Button>
         ))}

@@ -1,20 +1,20 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import { theme } from '@/styles/theme';
 
 export const CardWrap = styled.div`
   position: relative;
-  .card__link { 
+  .card__link {
     display: block;
     position: relative;
     border: 1px solid transparent;
     border-radius: 0.9375rem;
-    box-shadow: 0 0.3125rem 1.5625rem rgba(0,0,0,.08);
+    box-shadow: 0 0.3125rem 1.5625rem rgba(0, 0, 0, 0.08);
     overflow: hidden;
     &:hover {
       border: 1px solid ${theme.color.primary};
       .card__image {
         img {
-          transform: scale(1.3)
+          transform: scale(1.3);
         }
       }
     }
@@ -28,7 +28,7 @@ export const CardWrap = styled.div`
       width: 100%;
       height: 12.5rem;
       overflow: hidden;
-      background-color: #DDDFFF;
+      background-color: #dddfff;
       img {
         object-fit: cover;
         transition: transform 0.3s;
@@ -67,14 +67,14 @@ export const CardWrap = styled.div`
     }
   }
 
-  @media screen and (max-width: ${theme.screenSize.moLarge}){
+  @media screen and (max-width: ${theme.screenSize.moLarge}) {
     .card {
       &__image {
         height: 12rem;
       }
     }
   }
-`
+`;
 
 export const BookMarkBtn = styled.button`
   position: absolute;
@@ -87,9 +87,9 @@ export const BookMarkBtn = styled.button`
   background: url('/assets/icon/icon_star_off.svg');
   z-index: 1;
   &.active {
-    background: url('/assets/icon/icon_star_on.svg');  
+    background: url('/assets/icon/icon_star_on.svg');
   }
-`
+`;
 
 export const CardMenu = styled.div`
   position: absolute;
@@ -100,7 +100,7 @@ export const CardMenu = styled.div`
   z-index: 2;
   .card {
     &__dropdown-contant {
-      width:21px;
+      width: 21px;
       height: 17px;
       background: url(/assets/icon/icon_dotte.svg) no-repeat center;
     }
@@ -119,10 +119,10 @@ export const CardMenu = styled.div`
         background-color: ${theme.color.grayf};
       }
     }
-  }  
-  @media screen and (max-width: ${theme.screenSize.tablet}){
+  }
+  @media screen and (max-width: ${theme.screenSize.tablet}) {
     .card__dropdown-menu {
       right: -10px;
     }
   }
-`
+`;
