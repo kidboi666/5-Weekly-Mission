@@ -3,7 +3,7 @@ import styles from "./AddLinkInput.module.css";
 import InputBtn from "./InputBtn";
 import Image from "next/image";
 
-const AddLinkInput: React.FC = () => {
+const AddLinkInput = () => {
   return (
     <div className={styles.AddLinkFormWrap}>
       <form className={styles.AddLinkForm}>

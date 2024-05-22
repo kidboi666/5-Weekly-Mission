@@ -3,8 +3,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import CardList from "../components/CardList";
 import { getSampleFolderData } from "../api/Api";
-import { useEffect, useState } from "react";
-import useData from "../hooks/useData";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import SearchInput from "@/components/SearchInput";
 
@@ -20,7 +19,7 @@ interface Link {
   [key: string]: any;
 }
 
-interface LinkProps {
+interface SharedProps {
   links: Link[];
 }
 
@@ -34,7 +33,7 @@ export async function getStaticProps() {
   };
 }
 
-function Shared({ links }: LinkProps) {
+function Shared({ links }: SharedProps) {
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   const handleSearch = (term: string): void => {

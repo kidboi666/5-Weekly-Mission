@@ -5,7 +5,7 @@ import { MouseEvent } from "react";
 interface EditAndAddFolderProps {
   madalTitle: string;
   alter: string;
-  onClose: (close: string) => void;
+  onClose: () => void;
 }
 
 const EditAndAddFolder: React.FC<EditAndAddFolderProps> = ({
@@ -15,7 +15,7 @@ const EditAndAddFolder: React.FC<EditAndAddFolderProps> = ({
 }) => {
   const onClosing = (e: MouseEvent) => {
     e.preventDefault();
-    onClose("");
+    onClose();
   };
 
   return (

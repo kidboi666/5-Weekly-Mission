@@ -6,7 +6,7 @@ import useData from "@/hooks/useData";
 import { getFolderListData } from "@/api/Api";
 import AddLinkInput from "@/components/AddLinkInput";
 
-interface FolderProps {
+interface Folder {
   created_at: string;
   favorite: boolean;
   id: number;
@@ -18,7 +18,7 @@ interface FolderProps {
 }
 
 interface FolderProps {
-  folders: FolderProps[];
+  folders: Folder[];
 }
 
 export async function getStaticProps() {

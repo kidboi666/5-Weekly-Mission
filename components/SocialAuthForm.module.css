@@ -1,0 +1,22 @@
+.socialAuthForm {
+  display: flex;
+  width: 352px;
+  padding: 12px 24px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--Linkbrary-gray20, #ccd5e3);
+  background: var(--Linkbrary-gray10, #e7effb);
+}
+
+.socialAuthIcons {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.socialAuthIcon {
+  position: relative;
+  width: 42px;
+  height: 42px;
+}

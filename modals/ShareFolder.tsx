@@ -4,7 +4,7 @@ import { MouseEvent } from "react";
 interface EditAndAddFolderProps {
   title: string;
   id: number;
-  onClose: (close: string) => void;
+  onClose: () => void;
 }
 
 const ShareFolder: React.FC<EditAndAddFolderProps> = ({
@@ -14,7 +14,7 @@ const ShareFolder: React.FC<EditAndAddFolderProps> = ({
 }) => {
   const onClosing = (e: MouseEvent) => {
     e.preventDefault();
-    onClose("");
+    onClose();
   };
 
   const sendUrl = `https://linkbrary-hakyoung.netlify.app/shared/${id}`;

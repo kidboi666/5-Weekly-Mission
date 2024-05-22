@@ -40,8 +40,9 @@ const CardListSection: React.FC<CardListSectionProps> = ({
   folders,
   searchTerm,
 }) => {
-  const result = useSelectFolder<UseSelectFolderResult>({ url });
+  const result = useSelectFolder<UseSelectFolderResult>({ url }); // url을 받아 카드 배열 리턴
   const links = result?.data;
+
   return (
     <>
       {links ? (

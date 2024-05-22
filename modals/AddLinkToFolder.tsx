@@ -18,7 +18,7 @@ interface Folder {
 interface AddLinkToFolderProps {
   title: string;
   folders: Folder[];
-  onClose: (close: string) => void;
+  onClose: () => void;
 }
 
 const AddLinkToFolder: React.FC<AddLinkToFolderProps> = ({
@@ -30,7 +30,7 @@ const AddLinkToFolder: React.FC<AddLinkToFolderProps> = ({
 
   const onClosing = (e: MouseEvent): void => {
     e.preventDefault();
-    onClose("");
+    onClose();
   };
   return (
     <div className={styles.modalBackdrop} onClick={onClosing}>
