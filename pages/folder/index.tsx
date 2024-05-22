@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Footer from '@/components/Footer';
 import Addlink from '@/components/Addlink';
 import Foldermenu from '@/components/Foldermenu';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 /*테블릿 1124 이상 모바일 최소여백 32       테블릿 768~1199 모바일 375 ~767    */
 
@@ -38,19 +40,32 @@ const FooterWrapper = styled.footer`
 `;
 
 function FolderPage() {
+  const router = useRouter();
+
+  const handleLogout = () => {
+    localStorage.removeItem('accessToken');
+    router.push('/signin'); // 로그인 페이지로 이동
+  };
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (!accessToken) {
+      router.push('/signin'); // accessToken이 없으면 로그인 페이지로 이동
+    }
+  }, []);
+
   return (
-    <>
-      <PageWrapper>
-        <Navigation />
-        <Addlink />
-        <PageDisplay>
-          <Foldermenu />
-        </PageDisplay>
-        <FooterWrapper>
-          <Footer />
-        </FooterWrapper>
-      </PageWrapper>
-    </>
+    <PageWrapper>
+      <Navigation />
+      <Addlink />
+      <PageDisplay>
+        <button onClick={handleLogout}>로그아웃</button>
+        <Foldermenu />
+      </PageDisplay>
+      <FooterWrapper>
+        <Footer />
+      </FooterWrapper>
+    </PageWrapper>
   );
 }
 

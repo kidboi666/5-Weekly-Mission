@@ -21,7 +21,7 @@ const ModalDelete: React.FC<ModalDeleteProps> = ({
   };
 
   return (
-    <div className={`${styles.modal} ${isModalOpen ? styles.show : ''}`}>
+    <div className={styles.modal}>
       <div className={styles.modal__content}>
         <div className={styles.modal__content__header}>{title}</div>
 

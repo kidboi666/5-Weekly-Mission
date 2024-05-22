@@ -3,6 +3,7 @@ import styles from './index.module.css';
 import { useFetch } from '@/hooks/useFetch';
 import Image from 'next/image';
 import Link from 'next/link';
+import { BASE_URL_USER } from '@/constant/navigation-constant';
 
 interface UserProfile {
   data: {
@@ -10,8 +11,6 @@ interface UserProfile {
     image_source: string;
   }[];
 }
-
-const BASE_URL_USER = 'https://bootcamp-api.codeit.kr/api/users/1';
 
 function Navigation() {
   const userProfile = useFetch<UserProfile>(BASE_URL_USER);
@@ -28,7 +27,9 @@ function Navigation() {
         </Link>
         {userProfile ? (
           <div className={styles.userProfile}>
-            <img
+            <Image
+              width="28"
+              height="28"
               src={userProfile.data[0].image_source}
               alt="유저 프로필사진"
               className={styles.userProfileImg}
