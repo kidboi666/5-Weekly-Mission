@@ -7,7 +7,7 @@ import {
   KAKAO_SHARE_DATA,
   MODALS_ID,
 } from "./constant";
-import { KeyboardEvent, useState } from "react";
+import { KeyboardEvent, useCallback, useMemo, useReducer, memo } from "react";
 import {
   AddFolderButton,
   AlertModal,
@@ -27,47 +27,88 @@ type FolderToolBarProps = {
   onFolderClick: (folderId: SelectedFolderId) => void;
 };
 
+type State = {
+  currentModal: string | null;
+  inputValue: string;
+};
+
+type Action =
+  | { type: "SET_MODAL"; payload: string | null }
+  | { type: "SET_INPUT_VALUE"; payload: string };
+
+const initialState: State = {
+  currentModal: null,
+  inputValue: "",
+};
+
+const reducer = (state: State, action: Action): State => {
+  switch (action.type) {
+    case "SET_MODAL":
+      return { ...state, currentModal: action.payload };
+    case "SET_INPUT_VALUE":
+      return { ...state, inputValue: action.payload };
+    default:
+      return state;
+  }
+};
+
+const MemoizedFolderButton = memo(FolderButton);
 export const FolderToolBar = ({
   folders,
   selectedFolderId,
   onFolderClick,
 }: FolderToolBarProps) => {
   const { shareKakao } = useKakaoSdk();
-  const [currentModal, setCurrentModal] = useState<string | null>(null);
-  const [inputValue, setInputValue] = useState<string>("");
+  const [state, dispatch] = useReducer(reducer, initialState);
   const router = useRouter();
 
-  const folderName =
-    ALL_LINKS_ID === selectedFolderId
+  const folderName = useMemo(() => {
+    return ALL_LINKS_ID === selectedFolderId
       ? ALL_LINKS_TEXT
       : folders?.find(({ id }) => id === selectedFolderId)?.name ?? "";
+  }, [selectedFolderId, folders]);
 
-  const getShareLink = () =>
-    `${window.location.origin}/shared?user=1&folder=${selectedFolderId}`;
-  const closeModal = () => setCurrentModal(null);
-  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === "Escape") {
-      closeModal();
-    }
-  };
-  const handleKakaoClick = () => {
+  const getShareLink = useCallback(() => {
+    return `${window.location.origin}/shared?user=1&folder=${selectedFolderId}`;
+  }, [selectedFolderId]);
+
+  const closeModal = useCallback(
+    () => dispatch({ type: "SET_MODAL", payload: null }),
+    []
+  );
+
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === "Escape") {
+        closeModal();
+      }
+    },
+    [closeModal]
+  );
+
+  const handleKakaoClick = useCallback(() => {
     shareKakao({ url: getShareLink(), ...KAKAO_SHARE_DATA });
-  };
-  const handleFacebookClick = () =>
+  }, [getShareLink, shareKakao]);
+
+  const handleFacebookClick = useCallback(() => {
     window?.open(`http://www.facebook.com/sharer.php?u=${getShareLink()}`);
-  const handleLinkCopyClick = () => copyToClipboard(getShareLink());
+  }, [getShareLink]);
+
+  const handleLinkCopyClick = useCallback(() => {
+    copyToClipboard(getShareLink());
+  }, [getShareLink]);
 
   return (
     <div className={cx("container")}>
       <div className={cx("folders")}>
-        <FolderButton
+        <MemoizedFolderButton
           key={ALL_LINKS_ID}
           text={ALL_LINKS_TEXT}
           onClick={() => onFolderClick(ALL_LINKS_ID)}
           isSelected={ALL_LINKS_ID === selectedFolderId}
         />
         {folders?.map(({ id, name }) => (
-          <FolderButton
+          <MemoizedFolderButton
             key={id}
             text={name}
             onClick={() => onFolderClick(id)}
@@ -76,16 +117,22 @@ export const FolderToolBar = ({
         ))}
       </div>
       <div className={cx("add-button")}>
-        <AddFolderButton onClick={() => setCurrentModal(MODALS_ID.addFolder)} />
+        <AddFolderButton
+          onClick={() =>
+            dispatch({ type: "SET_MODAL", payload: MODALS_ID.addFolder })
+          }
+        />
         <InputModal
-          isOpen={currentModal === MODALS_ID.addFolder}
+          isOpen={state.currentModal === MODALS_ID.addFolder}
           title="폴더 추가"
           placeholder="내용 입력"
           buttonText="추가하기"
           onCloseClick={closeModal}
           onKeyDown={handleKeyDown}
-          value={inputValue}
-          onChange={(event) => setInputValue(event.target.value)}
+          value={state.inputValue}
+          onChange={(event) =>
+            dispatch({ type: "SET_INPUT_VALUE", payload: event.target.value })
+          }
         />
       </div>
       <h2 className={cx("folder-name")}>{folderName}</h2>
@@ -96,11 +143,11 @@ export const FolderToolBar = ({
               key={text}
               text={text}
               iconSource={iconSource}
-              onClick={() => setCurrentModal(modalId)}
+              onClick={() => dispatch({ type: "SET_MODAL", payload: modalId })}
             />
           ))}
           <ShareModal
-            isOpen={currentModal === MODALS_ID.share}
+            isOpen={state.currentModal === MODALS_ID.share}
             folderName={folderName}
             onKakaoClick={handleKakaoClick}
             onFacebookClick={handleFacebookClick}
@@ -109,17 +156,19 @@ export const FolderToolBar = ({
             onKeyDown={handleKeyDown}
           />
           <InputModal
-            isOpen={currentModal === MODALS_ID.rename}
+            isOpen={state.currentModal === MODALS_ID.rename}
             title="폴더 이름 변경"
             placeholder="내용 입력"
             buttonText="변경하기"
             onCloseClick={closeModal}
             onKeyDown={handleKeyDown}
-            value={inputValue}
-            onChange={(event) => setInputValue(event.target.value)}
+            value={state.inputValue}
+            onChange={(event) =>
+              dispatch({ type: "SET_INPUT_VALUE", payload: event.target.value })
+            }
           />
           <AlertModal
-            isOpen={currentModal === MODALS_ID.delete}
+            isOpen={state.currentModal === MODALS_ID.delete}
             title="폴더 삭제"
             description={folderName}
             buttonText="삭제하기"

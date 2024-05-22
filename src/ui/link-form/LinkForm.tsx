@@ -17,14 +17,35 @@ type LinkFormProps = {
 };
 
 /**
+ * LinkForm 컴포넌트는 사용자가 링크를 추가하기 위해 URL을 입력할 수 있는 폼을 렌더링합니다.
+ *
  * @component
+ * @example
+ * const [url, setUrl] = useState("");
+ * 
+ * const handleChange = (e) => setUrl(e.target.value);
+ * const handleSubmit = (e) => {
+ *   e.preventDefault();
+ *   console.log("Submitted URL:", url);
+ * };
+ * 
+ * return (
+ *   <LinkForm
+ *     value={url}
+ *     onChange={handleChange}
+ *     onSubmit={handleSubmit}
+ *   />
+ * );
+ *
  * @param {Object} props - 컴포넌트의 props입니다.
  * @param {string} props.value - 텍스트 입력의 현재 값입니다.
- * @param {Function} props.onChange - 입력 값 변경을 처리하는 콜백 함수입니다.
- * @param {Function} props.onSubmit - 폼 제출을 처리하는 콜백 함수입니다.
+ * @param {ChangeEventHandler<HTMLInputElement>} props.onChange - 입력 값 변경을 처리하는 콜백 함수입니다.
+ * @param {FormEventHandler<HTMLFormElement>} props.onSubmit - 폼 제출을 처리하는 콜백 함수입니다.
  * @param {React.Ref<HTMLFormElement>} ref - 폼 요소에 전달할 ref입니다.
- * @returns {JSX.Element} 사용자가 링크 추가하기 위해 해당 입력 칸에 url작성하는 그러한 컴포넌트
+ * 
+ * @returns {JSX.Element} 사용자가 링크를 추가하기 위해 URL을 입력하는 폼 컴포넌트입니다.
  */
+
 export const LinkForm = forwardRef<HTMLFormElement, LinkFormProps>(
   ({ value, onChange, onSubmit }: LinkFormProps, ref) => {
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
