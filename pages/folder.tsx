@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { useContext } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import * as S from '../styles/folder.styled';
 import SearchBar from '../components/SearchBar/SearchBar';
@@ -9,43 +9,24 @@ import useGetFolderList from '../hooks/useGetFolderList';
 import FolderButtonContainer from '../components/FolderButtonContainer/FolderButtonContainer';
 import { ContextValue, useModal } from '../contexts/ModalContext';
 import AddModal from '../components/Modal/AddModal/AddModal';
-import ShareModal from '../components/Modal/ShareModal/ShareModal';
-import EditModal from '../components/Modal/EditModal/EditModal';
-import DeleteModal from '../components/Modal/DeleteModal/DeleteModal';
-import AddfolderModal from '../components/Modal/AddFolderModal/AddFolderModal';
-import DeleteLinkModal from '../components/Modal/DeleteLinkModal/DeleteLinkModal';
 import ModalPortal from '../Portal';
-import Image from 'next/image';
-
-function FolderIcon({
-  image,
-  children,
-  onOpen,
-  state,
-}: {
-  image: string;
-  children: ReactNode;
-  onOpen: (modalName: string) => void;
-  state: string;
-}) {
-  return (
-    <S.FolderModalIcon onClick={() => onOpen(`${state}`)}>
-      <Image src={image} alt={`${image}`} width={20} height={20} />
-      {children}
-    </S.FolderModalIcon>
-  );
-}
+import { UserContext } from '@/contexts/UserContext';
+import FolderModals from '@/components/FolderModalContainer/FolderModals';
 
 function Folder() {
-  const id = 1;
-  const [folderId, setFolderId] = useState(0);
-  const [folderName, setFolderName] = useState('');
+  const id = useContext(UserContext);
+  const [onSelect, setOnSelect] = useState({
+    id: 0,
+    name: '',
+  });
   const [searchKeyword, setSearchKeyWord] = useState('');
-  const { linkList, loading } = useGetFolder(id, searchKeyword, folderId);
+  const { linkList, loading } = useGetFolder(id, searchKeyword, onSelect.id);
   const { link } = useGetFolderList(id);
-  const obsRef = useRef(null);
   const [toggleInput, setToggleInput] = useState(true);
-  const { modalState, openModal, closeModal }: ContextValue = useModal();
+  const { modalState, openModal }: ContextValue = useModal();
+  const obsRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [url, setUrl] = useState('');
 
   const handleObserver = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry) => {
@@ -69,21 +50,26 @@ function Folder() {
 
   return (
     <>
-      <S.Header $view={toggleInput}>
-        <S.HeaderModal>
-          <S.LinkIcon src="/link.svg"></S.LinkIcon>
-          <S.AddLinkInput placeholder="링크를 추가해보세요." />
-          <S.AddButton size="sm" onClick={() => openModal('add')}>
-            추가하기
-          </S.AddButton>
-          {modalState.add && (
-            <ModalPortal>
-              <AddModal onClose={closeModal} link={link} />
-            </ModalPortal>
-          )}
-        </S.HeaderModal>
-      </S.Header>
       <div ref={obsRef}></div>
+      <S.HeaderBody>
+        <S.Header $view={toggleInput}>
+          <S.HeaderModal>
+            <S.LinkIcon src="/link.svg"></S.LinkIcon>
+            <S.AddLinkInput placeholder="링크를 추가해보세요." ref={inputRef} />
+            <S.AddButton
+              size="sm"
+              onClick={() => {
+                openModal('add');
+                if (inputRef.current) {
+                  setUrl(inputRef.current.value);
+                }
+              }}
+            >
+              추가하기
+            </S.AddButton>
+          </S.HeaderModal>
+        </S.Header>
+      </S.HeaderBody>
       <S.FolderContents>
         <SearchBar setSearchKeyWord={setSearchKeyWord} />
         {searchKeyword && (
@@ -91,61 +77,25 @@ function Folder() {
             <p>{searchKeyword}</p>으로 검색한 결과입니다.
           </S.SearchResult>
         )}
-        <FolderButtonContainer
-          link={link}
-          setFolderId={setFolderId}
-          setFolderName={setFolderName}
-        />
+        <FolderButtonContainer link={link} setOnSelect={setOnSelect} />
         <S.FolderModalContainer>
-          {folderName ? folderName : '전체'}
-          {folderId > 0 && (
-            <S.FolderModal>
-              <FolderIcon image="/share.svg" onOpen={openModal} state={'share'}>
-                공유
-              </FolderIcon>
-              {modalState.share && (
-                <ModalPortal>
-                  <ShareModal onClose={closeModal} folderName={folderName} />
-                </ModalPortal>
-              )}
-              <FolderIcon image="/pen.svg" onOpen={openModal} state={'edit'}>
-                이름 변경
-              </FolderIcon>
-              {modalState.edit && (
-                <ModalPortal>
-                  <EditModal onClose={closeModal} />
-                </ModalPortal>
-              )}
-              <FolderIcon
-                image="/Group36.svg"
-                onOpen={openModal}
-                state={'delete'}
-              >
-                삭제
-              </FolderIcon>
-              {modalState.delete && (
-                <ModalPortal>
-                  <DeleteModal onClose={closeModal} folderName={folderName} />
-                </ModalPortal>
-              )}
-            </S.FolderModal>
+          {onSelect.name ? onSelect.name : '전체'}
+          {onSelect.name && (
+            <FolderModals id={onSelect.id} name={onSelect.name} />
           )}
         </S.FolderModalContainer>
         <ContentsContainer content={linkList.length}>
           {linkList.length > 0 ? (
-            linkList.map((item) => <Card item={item} key={item.id} />)
+            linkList.map((item) => (
+              <Card item={item} key={item.id} setUrl={setUrl} />
+            ))
           ) : (
             <S.EmptyFolder>저장된 링크가 없습니다.</S.EmptyFolder>
           )}
         </ContentsContainer>
-        {modalState.addFolder && (
+        {modalState.add && inputRef.current && (
           <ModalPortal>
-            <AddfolderModal onClose={closeModal} />
-          </ModalPortal>
-        )}
-        {modalState.deleteLink && (
-          <ModalPortal>
-            <DeleteLinkModal onClose={closeModal} />
+            <AddModal link={link} url={url} />
           </ModalPortal>
         )}
       </S.FolderContents>

@@ -16,15 +16,17 @@ export interface Folder {
 
 export interface Folders extends Array<Folder> {}
 
-function useGetFolderList(userId: number) {
+function useGetFolderList(userId: string) {
   const [link, setLink] = useState<Folders>([]);
 
   useEffect(() => {
-    const loadFolderList = async () => {
-      const links = await getFolder(userId);
-      setLink(links.data);
-    };
-    loadFolderList();
+    if (userId) {
+      const loadFolderList = async () => {
+        const links = await getFolder(userId);
+        setLink(links.data);
+      };
+      loadFolderList();
+    }
   }, [userId]);
 
   return {

@@ -24,7 +24,7 @@ export const ItemImg = styled.div<{ image: string }>`
   background-position: center;
 
   &:hover {
-    background-size: 130%;
+    background-size: 150%;
   }
 `;
 
@@ -56,7 +56,6 @@ export const StarIcon = styled.img`
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
-  z-index: 10;
 `;
 
 export const ItemInfo = styled.div`
@@ -88,6 +87,7 @@ export const ItemDescription = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  padding-top: 0.2rem;
 
   a {
     text-decoration: none;

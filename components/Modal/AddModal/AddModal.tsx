@@ -1,45 +1,98 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import * as S from './AddModal.styled';
 import BaseModal from '../BaseModal/BaseModal';
 import { Folder, Folders } from '../../../hooks/useGetFolderList';
 import { Button } from '../../Button/Button';
 import Image from 'next/image';
+import { postLink } from '@/pages/api/api';
+import { useRouter } from 'next/router';
+import { useModal } from '@/contexts/ModalContext';
 
-function FolderButton({ item }: { item: Folder }) {
-  const [check, setCheck] = useState(false);
-
+function FolderButton({
+  item,
+  $isSelected,
+  index,
+  handleMenuClick,
+  folderId,
+}: {
+  item: Folder;
+  $isSelected: string;
+  index: number;
+  handleMenuClick: (index: number, folderId: number) => void;
+  folderId: number;
+}) {
   return (
-    <S.FolderButton $check={check} onClick={() => setCheck(!check)}>
+    <S.FolderButton
+      $isSelected={$isSelected}
+      onClick={() => {
+        handleMenuClick(index, folderId);
+      }}
+    >
       <S.FolderInfo>
         <h2>{item.name}</h2>
         <p>{item.link.count}개의 링크</p>
       </S.FolderInfo>
-      {check && (
-        <Image src="/check.svg" alt="체크 아이콘" width={20} height={20} />
+      {$isSelected === 'select' && (
+        <Image src="/check.svg" alt="체크 아이콘" width={15} height={15} />
       )}
     </S.FolderButton>
   );
 }
 
-function AddModal({
-  link,
-  onClose,
-}: {
-  link: Folders;
-  onClose: (modalName: string) => void;
-}) {
+function AddModal({ link, url }: { link: Folders; url: string }) {
+  const [folderSelected, setFolderSelected] = useState<string[]>([]);
+  const [selectedId, setSelectedId] = useState(0);
+  const { openModal, closeModal } = useModal();
+  const router = useRouter();
+
+  const handleMenuClick = (index: number, folderId: number) => {
+    const booleanArr: string[] = new Array(link.length).fill('none');
+    booleanArr[index] = 'select';
+    setFolderSelected(booleanArr);
+    setSelectedId(folderId);
+  };
+
+  const addLink = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const result = await postLink(selectedId, url);
+    if (result) {
+      router.reload();
+    }
+  };
+
   return (
-    <BaseModal onClose={onClose} state={'add'}>
+    <BaseModal state={'add'}>
       <S.Header>
-        <p>폴더에 추가</p>
-        <span>폴더명</span>
+        <S.Title>폴더에 추가</S.Title>
       </S.Header>
       <S.FolderContainer>
-        {link.map((item) => (
-          <FolderButton key={item.id} item={item} />
-        ))}
+        {link[0] ? (
+          link.map((item, index) => (
+            <FolderButton
+              key={item.id}
+              item={item}
+              $isSelected={folderSelected[index]}
+              index={index}
+              handleMenuClick={handleMenuClick}
+              folderId={item.id}
+            />
+          ))
+        ) : (
+          <S.AddFolder
+            onClick={() => {
+              closeModal('add');
+              openModal('addFolder');
+            }}
+          >
+            폴더 추가
+          </S.AddFolder>
+        )}
       </S.FolderContainer>
-      <Button size="md">추가하기</Button>
+      <S.InputForm onSubmit={addLink}>
+        <Button size="md" type="submit">
+          추가하기
+        </Button>
+      </S.InputForm>
     </BaseModal>
   );
 }

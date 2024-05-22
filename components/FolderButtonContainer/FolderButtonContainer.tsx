@@ -3,19 +3,21 @@ import * as S from './FolderButtonContainer.styled';
 import FolderButton from '../FolderButton/FolderButton';
 import { useModal } from '../../contexts/ModalContext';
 import { Folders } from '../../hooks/useGetFolderList';
+import ModalPortal from '@/Portal';
+import AddFolderModal from '../Modal/AddFolderModal/AddFolderModal';
 
 function FolderButtonContainer({
   link,
-  setFolderName,
-  setFolderId,
+  setOnSelect,
 }: {
   link: Folders;
-  setFolderName: React.Dispatch<React.SetStateAction<string>>;
-  setFolderId: React.Dispatch<React.SetStateAction<number>>;
+  setOnSelect: React.Dispatch<
+    React.SetStateAction<{ id: number; name: string }>
+  >;
 }) {
   const [linkSelected, setLinkSelected] = useState<string[]>([]);
   const [totalBtn, setTotalBtn] = useState(true);
-  const { openModal } = useModal();
+  const { modalState, openModal } = useModal();
 
   const handleMenuClick = (index: number) => {
     const booleanArr: string[] = new Array(link.length).fill('white');
@@ -27,8 +29,7 @@ function FolderButtonContainer({
   const handleClickTotalButton = () => {
     const totalArr: string[] = new Array(link.length).fill('white');
     setLinkSelected(totalArr);
-    setFolderId(0);
-    setFolderName('');
+    setOnSelect({ id: 0, name: '' });
     setTotalBtn(true);
   };
 
@@ -46,8 +47,7 @@ function FolderButtonContainer({
               <FolderButton
                 item={item}
                 key={item.name}
-                setFolderId={setFolderId}
-                setFolderName={setFolderName}
+                setOnSelect={setOnSelect}
                 isSelected={linkSelected[index]}
                 handleMenuClick={handleMenuClick}
                 index={index}
@@ -59,6 +59,11 @@ function FolderButtonContainer({
         폴더 추가
         <S.PlusIcon />
       </S.AddFolderButton>
+      {modalState.addFolder && (
+        <ModalPortal>
+          <AddFolderModal />
+        </ModalPortal>
+      )}
     </S.FolderMenu>
   );
 }

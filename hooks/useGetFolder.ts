@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getFolderList } from '../pages/api/api';
 
-export type Link = {
+export type LinkData = {
   id: number;
   created_at: Date;
   updated_at?: Date;
@@ -9,12 +9,12 @@ export type Link = {
   title: string;
   description: string;
   image_source: string;
-  folder_id?: number;
+  folder_id?: string;
 };
 
-interface Links extends Array<Link> {}
+export interface Links extends Array<LinkData> {}
 
-function useGetFolder(id: number, searchKeyword: string, folderId: number) {
+function useGetFolder(id: string, searchKeyword: string, folderId: number) {
   const [linkList, setLinkList] = useState<Links>([]);
   const [loading, setLoading] = useState(false);
 
@@ -43,22 +43,24 @@ function useGetFolder(id: number, searchKeyword: string, folderId: number) {
   };
 
   useEffect(() => {
-    try {
-      setLoading(true);
-      const loadFolder = async () => {
-        const list = await getFolderList(id, folderId);
-        if (searchKeyword) {
-          const searchList = search(list);
-          setLinkList(searchList);
-        } else {
-          setLinkList(list);
-        }
-      };
-      loadFolder();
-      setLoading(false);
-    } catch (error) {
-      console.error(error);
-      setLoading(false);
+    if (id) {
+      try {
+        setLoading(true);
+        const loadFolder = async () => {
+          const list = await getFolderList(id, folderId);
+          if (searchKeyword) {
+            const searchList = search(list);
+            setLinkList(searchList);
+          } else {
+            setLinkList(list);
+          }
+        };
+        loadFolder();
+        setLoading(false);
+      } catch (error) {
+        console.error(error);
+        setLoading(false);
+      }
     }
   }, [folderId, id, searchKeyword]);
 

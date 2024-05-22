@@ -1,16 +1,15 @@
-import { Dispatch, FormEvent } from 'react';
-import { useEffect, useState } from 'react';
+import { ChangeEvent, Dispatch, SetStateAction } from 'react';
+import { useState } from 'react';
 import * as S from './SearchBar.styled';
 
 interface PropsType {
-  setSearchKeyWord: Dispatch<React.SetStateAction<string>>;
+  setSearchKeyWord: Dispatch<SetStateAction<string>>;
 }
 
 function SearchModal({ setSearchKeyWord }: PropsType) {
   const [text, setText] = useState('');
-  const [inputImage, setInputImage] = useState('');
 
-  const searchLink = (e: FormEvent) => {
+  const searchLink = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSearchKeyWord(text);
   };
@@ -19,14 +18,6 @@ function SearchModal({ setSearchKeyWord }: PropsType) {
     setText('');
     setSearchKeyWord('');
   };
-
-  useEffect(() => {
-    if (text) {
-      setInputImage('/SearchPurple.svg');
-      return;
-    }
-    setInputImage('/Search.svg');
-  }, [text]);
 
   return (
     <S.SearchBarModal>
@@ -37,7 +28,10 @@ function SearchModal({ setSearchKeyWord }: PropsType) {
           id="word"
           value={text}
         />
-        <S.SearchIcon src={inputImage} alt="돋보기 아이콘" />
+        <S.SearchIcon
+          src={text ? '/SearchPurple.svg' : '/Search.svg'}
+          alt="돋보기 아이콘"
+        />
         {text && (
           <S.CloseIcon
             src="/close.svg"
