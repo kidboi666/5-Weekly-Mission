@@ -5,6 +5,68 @@ import Image from "next/image";
 const YEAR = new Date().getFullYear();
 const ICON_H_W = 20;
 
+const Footer = ({
+  observer,
+}: {
+  observer?: (node?: Element | null | undefined) => void;
+}) => {
+  return (
+    <Foote ref={observer}>
+      <UnderBar>
+        <CopyRight>©codeit - {YEAR}</CopyRight>
+        <FaqPolicy>
+          <Hlink href="https://www.google.com/" rel="noreferrer">
+            Privacy Policy
+          </Hlink>
+          <Hlink href="https://www.naver.com/" rel="noreferrer">
+            FAQ
+          </Hlink>
+        </FaqPolicy>
+        <LinkIcons>
+          <Hlink href="http://facebook.com" target="_blank" rel="noreferrer">
+            <LinkImg
+              src="/akar-icons_facebook-fill.svg"
+              alt="페이스북"
+              width={ICON_H_W}
+              height={ICON_H_W}
+            />
+          </Hlink>
+          <Hlink href="https://twitter.com/" target="_blank" rel="noreferrer">
+            <LinkImg
+              src="/akar-icons_twitter-fill.svg"
+              alt="트위터X"
+              width={ICON_H_W}
+              height={ICON_H_W}
+            />
+          </Hlink>
+          <Hlink
+            href="https://www.youtube.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <LinkImg
+              src="/akar-icons_youtube-fill.svg"
+              alt="유튜브"
+              width={ICON_H_W}
+              height={ICON_H_W}
+            />
+          </Hlink>
+          <Hlink href="http://instagram.com" target="_blank" rel="noreferrer">
+            <LinkImg
+              src="/ant-design_instagram-filled.svg"
+              alt="인스타그램"
+              width={ICON_H_W}
+              height={ICON_H_W}
+            />
+          </Hlink>
+        </LinkIcons>
+      </UnderBar>
+    </Foote>
+  );
+};
+
+export default Footer;
+
 const Hlink = styled.a`
   color: #cfcfcf;
 `;
@@ -77,65 +139,3 @@ const LinkIcons = styled.div`
     grid-column: 3/4;
   }
 `;
-
-const Footer = ({
-  observer,
-}: {
-  observer?: (node?: Element | null | undefined) => void;
-}) => {
-  return (
-    <Foote ref={observer}>
-      <UnderBar>
-        <CopyRight>©codeit - {YEAR}</CopyRight>
-        <FaqPolicy>
-          <Hlink href="https://www.google.com/" rel="noreferrer">
-            Privacy Policy
-          </Hlink>
-          <Hlink href="https://www.naver.com/" rel="noreferrer">
-            FAQ
-          </Hlink>
-        </FaqPolicy>
-        <LinkIcons>
-          <Hlink href="http://facebook.com" target="_blank" rel="noreferrer">
-            <LinkImg
-              src="/akar-icons_facebook-fill.svg"
-              alt="페이스북"
-              width={ICON_H_W}
-              height={ICON_H_W}
-            />
-          </Hlink>
-          <Hlink href="https://twitter.com/" target="_blank" rel="noreferrer">
-            <LinkImg
-              src="/akar-icons_twitter-fill.svg"
-              alt="트위터X"
-              width={ICON_H_W}
-              height={ICON_H_W}
-            />
-          </Hlink>
-          <Hlink
-            href="https://www.youtube.com/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <LinkImg
-              src="/akar-icons_youtube-fill.svg"
-              alt="유튜브"
-              width={ICON_H_W}
-              height={ICON_H_W}
-            />
-          </Hlink>
-          <Hlink href="http://instagram.com" target="_blank" rel="noreferrer">
-            <LinkImg
-              src="/ant-design_instagram-filled.svg"
-              alt="인스타그램"
-              width={ICON_H_W}
-              height={ICON_H_W}
-            />
-          </Hlink>
-        </LinkIcons>
-      </UnderBar>
-    </Foote>
-  );
-};
-
-export default Footer;

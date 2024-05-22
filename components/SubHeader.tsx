@@ -2,6 +2,17 @@ import styled from "styled-components";
 import { GRAY5 } from "./color";
 import { ReactNode } from "react";
 
+interface Props {
+  children: ReactNode;
+  headerfixed: boolean;
+}
+
+const SubHeader = ({ children, headerfixed = true }: Props) => {
+  return <Container $headerfixed={headerfixed}>{children}</Container>;
+};
+
+export default SubHeader;
+
 const Container = styled.div<{ $headerfixed: boolean }>`
   padding: 113px 32px 60px;
   display: flex;
@@ -14,14 +25,3 @@ const Container = styled.div<{ $headerfixed: boolean }>`
     padding: 103px 32px 60px;
   }
 `;
-
-interface Props {
-  children: ReactNode;
-  headerfixed: boolean;
-}
-
-const SubHeader = ({ children, headerfixed = true }: Props) => {
-  return <Container $headerfixed={headerfixed}>{children}</Container>;
-};
-
-export default SubHeader;

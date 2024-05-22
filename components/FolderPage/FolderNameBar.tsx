@@ -10,6 +10,60 @@ import { GRAY2 } from "../color";
 const ICON_MARGIN = "4px";
 const ICON_H_W = "18px";
 
+function FolderNameBar({ selectedFolder }: { selectedFolder?: FolderType }) {
+  const [deleteFolder, setDeleteFolder] = useState(false);
+  const [nameChange, setNameChange] = useState(false);
+  const [share, setShare] = useState(false);
+
+  const handleDel = () => {
+    setDeleteFolder(!deleteFolder);
+  };
+
+  const handleChange = () => {
+    setNameChange(!nameChange);
+  };
+
+  const handleShare = () => {
+    setShare(!share);
+  };
+
+  return (
+    <Bar>
+      <Name>{selectedFolder?.name ?? "전체"}</Name>
+      {selectedFolder?.name && (
+        <Tools>
+          <ToolShared
+            type="button"
+            className="Tool_shared"
+            onClick={handleShare}
+          >
+            공유
+          </ToolShared>
+          <ToolNameChange
+            type="button"
+            className="Tool_nameChange"
+            onClick={handleChange}
+          >
+            이름 변경
+          </ToolNameChange>
+          <ToolDelete type="button" className="Tool_delete" onClick={handleDel}>
+            삭제
+          </ToolDelete>
+        </Tools>
+      )}
+      <Portal elementId="modal-root">
+        {deleteFolder && (
+          <ModalDeleteFolder info={selectedFolder?.name} onClick={handleDel} />
+        )}
+        {nameChange && <ModalEdit onClick={handleChange} />}
+        {share && <ModalShare onClick={handleShare} info={selectedFolder} />}
+      </Portal>
+    </Bar>
+  );
+}
+
+export default FolderNameBar;
+
 const Bar = styled.div`
   display: flex;
   width: 100%;
@@ -82,57 +136,3 @@ const ToolDelete = styled(Tool)`
     margin-right: ${ICON_MARGIN};
   }
 `;
-
-function FolderNameBar({ selectedFolder }: { selectedFolder?: FolderType }) {
-  const [deleteFolder, setDeleteFolder] = useState(false);
-  const [nameChange, setNameChange] = useState(false);
-  const [share, setShare] = useState(false);
-
-  const handleDel = () => {
-    setDeleteFolder(!deleteFolder);
-  };
-
-  const handleChange = () => {
-    setNameChange(!nameChange);
-  };
-
-  const handleShare = () => {
-    setShare(!share);
-  };
-
-  return (
-    <Bar>
-      <Name>{selectedFolder?.name ?? "전체"}</Name>
-      {selectedFolder?.name && (
-        <Tools>
-          <ToolShared
-            type="button"
-            className="Tool_shared"
-            onClick={handleShare}
-          >
-            공유
-          </ToolShared>
-          <ToolNameChange
-            type="button"
-            className="Tool_nameChange"
-            onClick={handleChange}
-          >
-            이름 변경
-          </ToolNameChange>
-          <ToolDelete type="button" className="Tool_delete" onClick={handleDel}>
-            삭제
-          </ToolDelete>
-        </Tools>
-      )}
-      <Portal elementId="modal-root">
-        {deleteFolder && (
-          <ModalDeleteFolder info={selectedFolder?.name} onClick={handleDel} />
-        )}
-        {nameChange && <ModalEdit onClick={handleChange} />}
-        {share && <ModalShare onClick={handleShare} info={selectedFolder} />}
-      </Portal>
-    </Bar>
-  );
-}
-
-export default FolderNameBar;

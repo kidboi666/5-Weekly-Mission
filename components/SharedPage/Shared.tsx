@@ -11,12 +11,11 @@ function Shared({ items }: { items: LinkItem[] }) {
   const [searching, setSearching] = useState<string>("");
 
   const searchedItems = items?.filter((item: LinkItem) => {
-    if (searching === "" || searching === undefined) return true;
+    if (!searching || searching === " ") return true;
     return (
-      searching !== undefined &&
-      (item.url?.indexOf(searching) >= 0 ||
-        item.title?.indexOf(searching) >= 0 ||
-        item.description?.indexOf(searching) >= 0)
+      item.url?.indexOf(searching) >= 0 ||
+      item.title?.indexOf(searching) >= 0 ||
+      item.description?.indexOf(searching) >= 0
     );
   });
 

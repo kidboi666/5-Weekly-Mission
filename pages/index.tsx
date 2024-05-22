@@ -16,6 +16,10 @@ export default function Home() {
         <br />
         <Link href="/shared">공유 페이지</Link>
         <br />
+        <Link href="/signin">로그인 페이지</Link>
+        <br />
+        <Link href="/signup">회원가입 페이지</Link>
+        <br />
       </main>
     </>
   );

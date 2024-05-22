@@ -17,5 +17,10 @@ export function useData(
     [asyncFunction]
   );
 
-  return [data, getData] as [any, (value?: string | number) => Promise<void>];
+  const returnArray: [any, (value?: string | number) => Promise<void>] = [
+    data,
+    getData,
+  ];
+
+  return returnArray;
 }

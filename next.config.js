@@ -6,7 +6,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "codeit-frontend.codeit.com",
+        hostname: "*",
         port: "",
         pathname: "/**",
       },

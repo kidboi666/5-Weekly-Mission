@@ -1,6 +1,53 @@
 import styled from "styled-components";
 import Card from "./Card";
 
+export interface LinkItem {
+  id: number;
+  createdAt?: string;
+  created_at?: string;
+  url: string;
+  title: string;
+  description: string;
+  imageSource?: string;
+  image_source?: string;
+}
+
+export type FolderObject = {
+  data: {
+    id: number;
+    created_at: string;
+    favorite: boolean;
+    link: { count: number };
+    name: string;
+    user_id: number;
+  }[];
+};
+
+export interface CardBase {
+  folder?: FolderObject;
+  folderPage?: boolean;
+}
+
+interface CardListProps extends CardBase {
+  items: LinkItem[];
+}
+
+function CardList({ items, folder, folderPage }: CardListProps) {
+  return (
+    <CardsList>
+      {items?.map((item) => {
+        return (
+          <li key={item?.id}>
+            <Card item={item} folder={folder} folderPage={folderPage} />
+          </li>
+        );
+      })}
+    </CardsList>
+  );
+}
+
+export default CardList;
+
 const CardsList = styled.ul`
   display: grid;
   gap: 25px 20px;
@@ -15,30 +62,3 @@ const CardsList = styled.ul`
     grid-template-columns: repeat(1, 1fr);
   }
 `;
-
-export interface LinkItem {
-  id: number;
-  createdAt?: string;
-  created_at?: string;
-  url: string;
-  title: string;
-  description: string;
-  imageSource?: string;
-  image_source?: string;
-}
-
-function CardList({ items, folder }: { items: LinkItem[]; folder?: any }) {
-  return (
-    <CardsList>
-      {items?.map((item) => {
-        return (
-          <li key={item?.id}>
-            <Card item={item} folder={folder} />
-          </li>
-        );
-      })}
-    </CardsList>
-  );
-}
-
-export default CardList;

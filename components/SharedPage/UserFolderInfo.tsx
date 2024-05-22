@@ -1,6 +1,33 @@
 import Image from "next/image";
 import styled from "styled-components";
 
+interface Props {
+  name: string;
+  profileImg: string;
+  folderName: string;
+}
+
+const UserFolderInfo = ({ name, profileImg, folderName }: Props) => {
+  if (!profileImg) return <Empty></Empty>;
+  return (
+    <>
+      <Info>
+        <Image
+          className="Info_Img"
+          src={profileImg}
+          alt="유저이미지"
+          height={60}
+          width={60}
+        />
+        <span className="Info_nameSpan">{name}</span>
+      </Info>
+      <FolderName>{folderName}</FolderName>
+    </>
+  );
+};
+
+export default UserFolderInfo;
+
 const Info = styled.div`
   display: flex;
   flex-direction: column;
@@ -25,28 +52,7 @@ const FolderName = styled.h2`
   line-height: normal;
 `;
 
-interface Props {
-  name: string;
-  profileImg: string;
-  folderName: string;
-}
-
-const UserFolderInfo = ({ name, profileImg, folderName }: Props) => {
-  return (
-    <>
-      <Info>
-        <Image
-          className="Info_Img"
-          src={profileImg}
-          alt="유저이미지"
-          height={60}
-          width={60}
-        />
-        <span className="Info_nameSpan">{name}</span>
-      </Info>
-      <FolderName>{folderName}</FolderName>
-    </>
-  );
-};
-
-export default UserFolderInfo;
+const Empty = styled.div`
+  height: 164px;
+  width: 100%;
+`;

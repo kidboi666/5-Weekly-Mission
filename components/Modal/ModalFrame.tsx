@@ -1,6 +1,39 @@
 import styled from "styled-components";
 import { ReactNode, useEffect } from "react";
 
+interface ModalProps {
+  children: ReactNode;
+  name: string;
+  onClick: () => void;
+}
+
+const ModalFrame = ({ children, name, onClick }: ModalProps) => {
+  useEffect(() => {
+    document.body.style.cssText = `
+    position: fixed; 
+    top: -${window.scrollY}px;
+    overflow-y: scroll;
+    width: 100%;`;
+    return () => {
+      const scrollY = document.body.style.top;
+      document.body.style.cssText = "";
+      window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+    };
+  }, []);
+
+  return (
+    <Modal>
+      <Frame>
+        <Close onClick={onClick} type="button"></Close>
+        <Title>{name}</Title>
+        {children}
+      </Frame>
+    </Modal>
+  );
+};
+
+export default ModalFrame;
+
 const Modal = styled.div`
   position: fixed;
   top: 0;
@@ -42,36 +75,3 @@ const Title = styled.h3`
   font-weight: 700;
   line-height: normal;
 `;
-
-interface ModalProps {
-  children: ReactNode;
-  name: string;
-  onClick: () => void;
-}
-
-const ModalFrame = ({ children, name, onClick }: ModalProps) => {
-  useEffect(() => {
-    document.body.style.cssText = `
-      position: fixed; 
-      top: -${window.scrollY}px;
-      overflow-y: scroll;
-      width: 100%;`;
-    return () => {
-      const scrollY = document.body.style.top;
-      document.body.style.cssText = "";
-      window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
-    };
-  }, []);
-
-  return (
-    <Modal>
-      <Frame>
-        <Close onClick={onClick} type="button"></Close>
-        <Title>{name}</Title>
-        {children}
-      </Frame>
-    </Modal>
-  );
-};
-
-export default ModalFrame;

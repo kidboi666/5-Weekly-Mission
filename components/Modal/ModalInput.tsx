@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import { PRIMARY } from "../color";
 
+const ModalInput = () => {
+  return <Input type="text" placeholder="내용 입력" />;
+};
+
+export default ModalInput;
+
 const Input = styled.input`
   width: 280px;
   padding: 18px 15px;
@@ -20,9 +26,3 @@ const Input = styled.input`
     outline: none;
   }
 `;
-
-const ModalInput = () => {
-  return <Input type="text" placeholder="내용 입력" />;
-};
-
-export default ModalInput;

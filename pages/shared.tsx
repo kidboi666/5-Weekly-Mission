@@ -10,13 +10,9 @@ import React from "react";
 function shared() {
   const [folder, getFolder] = useData(getFolderData);
 
-  const getData = useCallback(async () => {
-    await getFolder();
-  }, [getFolder]);
-
   useEffect(() => {
-    getData();
-  }, [getData]);
+    getFolder();
+  }, [getFolder]);
 
   return (
     <App headerFixed={true}>

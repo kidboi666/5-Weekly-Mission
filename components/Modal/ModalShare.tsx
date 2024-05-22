@@ -5,46 +5,6 @@ import FaceBookShare from "../snsShares/FaceBookShare";
 import copyUrl from "../snsShares/copyUrl";
 import { ToastContainer } from "react-toastify";
 
-const Span = styled.span`
-  color: #9fa6b2;
-  text-align: center;
-  font-size: 14px;
-  width: 100%;
-  font-weight: 400;
-  line-height: 22px;
-  margin: 8px 0 24px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`;
-
-const Shares = styled.div`
-  display: flex;
-  column-gap: 32px;
-`;
-
-const IconName = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  row-gap: 10px;
-  color: #373740;
-  text-align: center;
-  font-family: Inter;
-  font-size: 13px;
-  line-height: 15px;
-`;
-
-const IconContainer = styled.button<{ $color: string; $img: string }>`
-  width: 42px;
-  height: 42px;
-  border-radius: 37.333px;
-  background-color: ${({ $color }) => $color};
-  background-image: url(${({ $img }) => $img});
-  background-position: center;
-  background-repeat: no-repeat;
-`;
-
 interface Props {
   onClick: () => void;
   info: any;
@@ -112,3 +72,43 @@ const ModalShare = ({ onClick, info }: Props) => {
 };
 
 export default ModalShare;
+
+const Span = styled.span`
+  color: #9fa6b2;
+  text-align: center;
+  font-size: 14px;
+  width: 100%;
+  font-weight: 400;
+  line-height: 22px;
+  margin: 8px 0 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+const Shares = styled.div`
+  display: flex;
+  column-gap: 32px;
+`;
+
+const IconName = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  row-gap: 10px;
+  color: #373740;
+  text-align: center;
+  font-family: Inter;
+  font-size: 13px;
+  line-height: 15px;
+`;
+
+const IconContainer = styled.button<{ $color: string; $img: string }>`
+  width: 42px;
+  height: 42px;
+  border-radius: 37.333px;
+  background-color: ${({ $color }) => $color};
+  background-image: url(${({ $img }) => $img});
+  background-position: center;
+  background-repeat: no-repeat;
+`;

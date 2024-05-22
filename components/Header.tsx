@@ -3,6 +3,60 @@ import { GRAY5 } from "./color";
 import Link from "next/link";
 import Image from "next/image";
 
+interface UserProfileProps {
+  email: string;
+  img: string;
+}
+
+interface HeaderProps extends UserProfileProps {
+  isLogIn: boolean;
+  fixed: boolean;
+}
+
+const UserProfile = ({ email, img }: UserProfileProps) => {
+  if (!img) return;
+  return (
+    <Profile>
+      <PorfileImage
+        className="profileImg"
+        src={img}
+        alt="프로필"
+        width={28}
+        height={28}
+      />
+      <span className="Span_email"> {email}</span>
+    </Profile>
+  );
+};
+
+const Header = ({ isLogIn, email, img, fixed }: HeaderProps) => {
+  return (
+    <Heading $headerFixed={fixed}>
+      <HeaderContent>
+        <Link href="/">
+          <H1Logo>
+            <Image
+              className="linkbararyLogo"
+              src={"/logo.svg"}
+              alt="Linkbrary"
+              width={133}
+              height={24}
+              priority={true}
+            />
+          </H1Logo>
+        </Link>
+        {isLogIn ? (
+          <UserProfile email={email} img={img} />
+        ) : (
+          <Button type="button">로그인</Button>
+        )}
+      </HeaderContent>
+    </Heading>
+  );
+};
+
+export default Header;
+
 const Heading = styled.header<{ $headerFixed: boolean }>`
   position: ${({ $headerFixed }) => ($headerFixed ? "fixed" : "static")};
   left: 0;
@@ -100,55 +154,3 @@ const PorfileImage = styled(Image)`
   border-radius: 9999px;
   border: 0px;
 `;
-
-interface UserProfileProps {
-  email: string;
-  img: string;
-}
-
-interface HeaderProps extends UserProfileProps {
-  isLogIn: boolean;
-  fixed: boolean;
-}
-
-const UserProfile = ({ email, img }: UserProfileProps) => {
-  return (
-    <Profile>
-      <PorfileImage
-        className="profileImg"
-        src={img}
-        alt="프로필"
-        width={28}
-        height={28}
-      />
-      <span className="Span_email"> {email}</span>
-    </Profile>
-  );
-};
-
-const Header = ({ isLogIn, email, img, fixed }: HeaderProps) => {
-  return (
-    <Heading $headerFixed={fixed}>
-      <HeaderContent>
-        <Link href="/">
-          <H1Logo>
-            <Image
-              className="linkbararyLogo"
-              src={"/logo.svg"}
-              alt="Linkbrary"
-              width={133}
-              height={24}
-            />
-          </H1Logo>
-        </Link>
-        {isLogIn ? (
-          <UserProfile email={email} img={img} />
-        ) : (
-          <Button type="button">로그인</Button>
-        )}
-      </HeaderContent>
-    </Heading>
-  );
-};
-
-export default Header;

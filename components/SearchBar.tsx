@@ -13,75 +13,6 @@ import {
 const BAR_COLOR = "#f5f5f5";
 const BAR_BORDER_RADIUS = "10px";
 
-const BarOfSearch = styled.form`
-  display: flex;
-  padding: 15px 16px;
-  border-radius: ${BAR_BORDER_RADIUS};
-  background-color: ${BAR_COLOR};
-  overflow: hidden;
-
-  &::before {
-    content: "";
-    background-image: url("/Search.svg");
-    background-size: cover;
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    margin-right: 10px;
-    align-self: center;
-  }
-`;
-const SearchInput = styled.input`
-  flex-grow: 1;
-  background-color: ${BAR_COLOR};
-  border: 0px;
-  height: 24px;
-  outline: none;
-`;
-
-const CloseButton = styled.button<{ $hidden: boolean }>`
-  background-image: url("/inputclose.png");
-  background-size: cover;
-  width: 24px;
-  height: 24px;
-  display: ${({ $hidden }) => $hidden && "none"};
-`;
-
-const HiddenButton = styled.button`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  border: 0;
-  clip: rect(0 0 0 0);
-`;
-
-const HiddenLabel = styled.label`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  border: 0;
-  clip: rect(0 0 0 0);
-`;
-
-const Div = styled.div`
-  color: #9fa6b2;
-  font-size: 32px;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: -0.2px;
-  & .searching {
-    color: #373740;
-  }
-`;
-
 const SearchBar = ({
   placeholder,
   search,
@@ -137,7 +68,7 @@ const SearchBar = ({
       </BarOfSearch>
       {searching && (
         <Div>
-          <strong className="searching">{searching}</strong> 으로 검색한
+          <strong className="searching">'{searching}' </strong> 검색한
           결과입니다.
         </Div>
       )}
@@ -146,3 +77,72 @@ const SearchBar = ({
 };
 
 export default memo(SearchBar);
+
+const BarOfSearch = styled.form`
+  display: flex;
+  padding: 15px 16px;
+  border-radius: ${BAR_BORDER_RADIUS};
+  background-color: ${BAR_COLOR};
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    background-image: url("/Search.svg");
+    background-size: cover;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    align-self: center;
+  }
+`;
+const SearchInput = styled.input`
+  flex-grow: 1;
+  background-color: ${BAR_COLOR};
+  border: 0px;
+  height: 24px;
+  outline: none;
+`;
+
+const CloseButton = styled.button<{ $hidden: boolean }>`
+  background-image: url("/inputclose.png");
+  background-size: cover;
+  width: 24px;
+  height: 24px;
+  display: ${({ $hidden }) => $hidden && "none"};
+`;
+
+const Div = styled.div`
+  color: #9fa6b2;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  & .searching {
+    color: #373740;
+  }
+`;
+
+const HiddenLabel = styled.label`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  border: 0;
+  clip: rect(0 0 0 0);
+`;
+
+const HiddenButton = styled.button`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  border: 0;
+  clip: rect(0 0 0 0);
+`;

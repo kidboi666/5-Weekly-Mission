@@ -1,5 +1,24 @@
 import styled from "styled-components";
 
+const DeleteButton = ({
+  info,
+  onClick,
+}: {
+  info?: string;
+  onClick?: (...prams: any[]) => void;
+}) => {
+  return (
+    <>
+      <Span>{info}</Span>
+      <Button onClick={onClick} type="button">
+        삭제하기
+      </Button>
+    </>
+  );
+};
+
+export default DeleteButton;
+
 const Button = styled.button`
   display: flex;
   width: 280px;
@@ -25,22 +44,3 @@ const Span = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
 `;
-
-const DeleteButton = ({
-  info,
-  onClick,
-}: {
-  info?: string;
-  onClick?: (...prams: any[]) => void;
-}) => {
-  return (
-    <>
-      <Span>{info}</Span>
-      <Button onClick={onClick} type="button">
-        삭제하기
-      </Button>
-    </>
-  );
-};
-
-export default DeleteButton;
