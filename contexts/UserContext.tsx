@@ -39,6 +39,7 @@ export function UserProvider({ children }: Props) {
   const handleLoadUser = async () => {
     const nextUser = await getUser();
     setUser(nextUser);
+    console.log(user);
   };
 
   useEffect(() => {

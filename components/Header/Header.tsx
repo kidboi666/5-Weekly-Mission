@@ -28,9 +28,10 @@ export default function Header() {
             />
           </Link>
         </S.Logo>
-        {!user && <S.StyledButton link='/signin.html' text='로그인' />}
-        {user && (
+        {user ? (
           <Profile user={user.email} src={user.image_source} $size='s' />
+        ) : (
+          <S.StyledButton link='/signin' text='로그인' />
         )}
       </S.Inner>
     </S.Header>
