@@ -15,13 +15,11 @@ interface Link {
 export default function LinkCardByFolderId({
   link,
   modalStates,
-  setModalStates,
   openModal,
   closeModal,
 }: {
   link: Link;
   modalStates: any;
-  setModalStates: any;
   openModal: any;
   closeModal: any;
 }) {

@@ -1,6 +1,7 @@
 import Footer from "@/component/Footer";
 import Hero from "@/component/Hero";
 import LandingDescription from "@/component/LandingDescription";
+import LandingDescriptionMobile from "@/component/LandingDescriptionMobile";
 import Navbar from "@/component/Navbar";
 import useCurrentUser from "@/hooks/useCurrentUser";
 
@@ -12,6 +13,7 @@ export default function Home() {
       <Navbar user={user} />
       <Hero />
       <LandingDescription />
+      <LandingDescriptionMobile />
       <Footer />
     </>
   );
