@@ -6,15 +6,34 @@ import Modal from "@/context/Modal";
 import ModalPortal from "@/components/common/modal/ModalPortal";
 
 export default function App({ Component, pageProps }: AppProps) {
-  return (
-    <StyledComponentsRegistry>
-      <GlobalStyle />
-      <Layout>
+  let isRemoveLayoutPage = false;
+  let childContent: React.ReactNode;
+  switch (pageProps.layoutType) {
+    case "removeLayout":
+      childContent = (
         <Modal>
           <Component {...pageProps} />
           <ModalPortal />
         </Modal>
-      </Layout>
+      );
+      isRemoveLayoutPage = true;
+      break;
+    default:
+      childContent = (
+        <Layout>
+          <Modal>
+            <Component {...pageProps} />
+            <ModalPortal />
+          </Modal>
+        </Layout>
+      );
+      break;
+  }
+
+  return (
+    <StyledComponentsRegistry>
+      <GlobalStyle isRemoveLayoutPage={isRemoveLayoutPage} />
+      {childContent}
     </StyledComponentsRegistry>
   );
 }

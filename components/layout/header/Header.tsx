@@ -4,7 +4,7 @@ import Link from "next/link";
 import main_logo from "@/public/image/icon/main_logo.svg";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { getSignInProfile } from "@/api/header";
+import { getSignInProfile } from "@/api/user";
 import UserProfile from "@/components/layout/header/UserProfile";
 import { IUserData } from "@/types/User";
 
@@ -14,17 +14,20 @@ const Header = () => {
 
   const location = useRouter();
 
-  const handleLoadUserProfile = async () => {
-    const userProfile = await getSignInProfile();
+  const handleLoadUserProfile = async (userToken: string) => {
+    const userProfile = await getSignInProfile(userToken);
 
     if (userProfile !== null) {
-      setUser(userProfile);
+      setUser(userProfile.data[0]);
     }
   };
 
   useEffect(() => {
-    handleLoadUserProfile();
+    const token = localStorage.getItem("userToken");
+    if (token) handleLoadUserProfile(token);
+  }, []);
 
+  useEffect(() => {
     const handleHeaderScroll = () => {
       setIsScrolled(window.scrollY !== 0);
     };
