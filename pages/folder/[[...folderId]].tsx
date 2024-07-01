@@ -77,7 +77,9 @@ const FolderPage = () => {
   }, [isLoggedIn])
 
   useEffect(() => {
-    setTotalPaperPage(paperList?.totalPage)
+    if (totalPaperPage !== paperList?.totalPage) {
+      setTotalPaperPage(paperList?.totalPage)
+    }
   }, [paperList])
 
   return (
